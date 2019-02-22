@@ -22,10 +22,11 @@ def sections(coursedir, track):
         # for testing manual sectioning
         sections = [
             "introduction",
+            "types de base",
             "syntaxe & instructions",
             "fonctions",
             "modules & packages",
-            "classes & POO"
+            "classes & programmation objet",
             ]
         sections = [
             Section(coursedir=coursedir,
