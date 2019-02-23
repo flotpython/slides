@@ -28,7 +28,10 @@ PLAN = [
         "héritage",
         "surcharge des opérateurs",
     ]),
-#    "exceptions",
+    "exceptions",
+#    ("autres", [
+#        "",
+#    ]),
 #    "librairies de base",
 ]
 
