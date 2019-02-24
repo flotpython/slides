@@ -8,27 +8,42 @@ PLAN = [
         "containers: <code>list</code>, <code>tuple</code>, <code>set</code>, <code>dict</code>",
         "fichier",
         "références partagées",
-    ]),                                         # 03
-    ("syntaxe et instructions", [
+    ]),
+    ("syntaxe et instructions", [               # 03
         "syntaxe & opérateurs",
         "instructions",
         "itérations",
     ]),
     ("fonctions", [
-        "déclaration, passage de paramètres",
+        "déclaration, passage de paramètres",   # 04
         "portée des variables",
         "objets fonction et lambdas",
     ]),
-    ("modules & packages", [
+    ("modules & packages", [                    # 05
         "modules",
         "packages",
     ]),
-    ("classes", [
+    ("classes", [                               # 06
         "encapsulation",
         "héritage",
         "surcharge des opérateurs",
     ]),
-    "exceptions",
+    ("compléments", [                           # 07
+        "exceptions",
+        "librairies utiles",
+        "outils utiles",
+        "type hints",
+        "asyncio",
+        # "regexps",          # vide pour l'instant
+    ]),
+    ("sujets avancés", [                        # 08
+        "context managers",
+        "méthodes statiques et de classe",
+        "décorateurs",
+        "protocole d'accès aux attributs",
+        "métaclasses",
+        "générateurs",
+    ]),
 #    ("autres", [
 #        "",
 #    ]),
