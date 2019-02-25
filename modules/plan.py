@@ -40,9 +40,10 @@ PLAN = [
         "context managers",
         "méthodes statiques et de classe",
         "décorateurs",
+        "espaces de nommage",
         "protocole d'accès aux attributs",
-        "métaclasses",
         "générateurs",
+        "métaclasses",
     ]),
 #    ("autres", [
 #        "",
