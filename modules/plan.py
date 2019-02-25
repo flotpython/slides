@@ -1,5 +1,7 @@
 from IPython.display import HTML
 
+# a None section is meant as a separator
+
 PLAN = [
     "introduction",                             # 01
     ("types de base", [                         # 02
@@ -23,6 +25,7 @@ PLAN = [
         "modules",
         "packages",
     ]),
+    None,
     ("classes", [                               # 06
         "encapsulation",
         "héritage",
@@ -52,7 +55,7 @@ PLAN = [
 ]
 
 
-def span(text, bold, strike):
+def span(text, bold=False, strike=False):
     class_ = ''
     if bold or strike:
         class_ += ' class="'
@@ -65,11 +68,17 @@ def span(text, bold, strike):
     return (f"<span{class_}>{text}</span>")
 
 
-def plan(title, subtitle=None, level=2):
+def section_plan(data, title, subtitle, level):
+    """
+    one specific section, and possibly one specific subsection
+    """
     result = f"<h{level} class='plan'>plan du cours</h{level}>"
     result += "<ul class='plan'>"
     done = True
-    for item in PLAN:
+    for item in data:
+        # ignore sectioning
+        if item is None:
+            continue
         # are there subsections ?
         if isinstance(item, str):
             pl_title, pl_subtitles = item, []
@@ -97,3 +106,45 @@ def plan(title, subtitle=None, level=2):
         result +="</li>"
     result += "</ul>"
     return HTML(result)
+
+
+def detailed_plan(data, level):
+    """
+    all sections and subsections
+    """
+    result = f"<h{level} class='plan'>plan du cours</h{level}>"
+    result += "<div class='plan-container'>"
+    result += "<div class='plan-part'>"
+    result += "<ul class='plan'>"
+    for item in data:
+        if item is None:
+            result += "</ul>"
+            result += "</div>" # class='plan-part'
+            result += "<div class='plan-part'>"
+            result += "<ul class='plan'>"
+            continue
+        # are there subsections ?
+        if isinstance(item, str):
+            pl_title, pl_subtitles = item, []
+        else:
+            pl_title, pl_subtitles = item
+        result += f"<li>{span(pl_title)}"
+        if pl_subtitles:
+            result += "<ul class='subplan'>"
+            for pl_subtitle in pl_subtitles:
+                result += f"<li>{span(pl_subtitle)}</li>"
+            result += "</ul>"
+        # close section
+        result +="</li>"
+    result += "</ul>"
+    result += "</div>" # class='plan-part'
+    result += "</div>" # class='plan-container'
+    return HTML(result)
+
+
+
+def plan(title=None, subtitle=None, *, level=1):
+    if title is None:
+        return detailed_plan(PLAN, level)
+    else:
+        return section_plan(PLAN, title, subtitle, level)

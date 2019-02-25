@@ -23,8 +23,9 @@ body.rise-enabled .reveal ol, body.rise-enabled .reveal dl, body.rise-enabled .r
     margin-top: 0.2em;
 }
 
-h2.plan{
+h1.plan, h2.plan, h3.plan {
     text-align: center;
+    padding-bottom: 30px;
 }
 
 ul.plan>li>span.plan-bold {
@@ -41,4 +42,9 @@ ul.plan>li>ul.subplan>li>span.plan-bold {
 .plan-strike {
     opacity: 0.4;
 /*    text-decoration: line-through; */
+}
+
+div.plan-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
