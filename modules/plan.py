@@ -48,10 +48,6 @@ PLAN = [
         "générateurs",
         "métaclasses",
     ]),
-#    ("autres", [
-#        "",
-#    ]),
-#    "librairies de base",
 ]
 
 
