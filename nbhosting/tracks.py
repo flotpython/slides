@@ -35,17 +35,17 @@ def tracks(coursedir):
         "packaging",
     ]
 
-    def _track(section_names):
+    def _track(topdir, section_names):
         sections = [
             Section(coursedir=coursedir,
                     name=section_name,
                     notebooks=notebooks_by_pattern(
                         coursedir,
-                        f"slides/{number:02}*.ipynb"))
+                        f"{topdir}/{number:02}*.ipynb"))
             for number, section_name in enumerate(section_names, 1)]
         return Sections(coursedir, sections)
 
     return {
-        DEFAULT_TRACK: _track(default_section_names),
-        'extras': _track(extra_section_names),
+        DEFAULT_TRACK: _track("slides", default_section_names),
+        'extras': _track("slides-extras", extra_section_names),
     }
