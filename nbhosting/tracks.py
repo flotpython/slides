@@ -17,7 +17,7 @@ def tracks(coursedir):
     result should be a Sections object
     """
 
-    sections = [
+    default_section_names = [
         "introduction",
         "types de base",
         "syntaxe & instructions",
@@ -25,12 +25,27 @@ def tracks(coursedir):
         "modules & packages",
         "classes & programmation objet",
         ]
-    sections = [
-        Section(coursedir=coursedir,
-                name=section,
-                notebooks=notebooks_by_pattern(
-                    coursedir,
-                    f"slides/{number:02}*.ipynb"))
-        for number, section in enumerate(sections, 1)]
 
-    return {DEFAULT_TRACK: Sections(coursedir, sections)}
+    extra_section_names = [
+        "numpy",
+        "pandas",
+        "notebooks",
+        "tests",
+        "doc",
+        "packaging",
+    ]
+
+    def _track(section_names):
+        sections = [
+            Section(coursedir=coursedir,
+                    name=section_name,
+                    notebooks=notebooks_by_pattern(
+                        coursedir,
+                        f"slides/{number:02}*.ipynb"))
+            for number, section_name in enumerate(section_names, 1)]
+        return Sections(coursedir, sections)
+
+    return {
+        DEFAULT_TRACK: _track(default_section_names),
+        'extras': _track(extra_section_names),
+    }

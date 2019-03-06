@@ -2,54 +2,80 @@ from IPython.display import HTML
 
 # a None section is meant as a separator
 
-PLAN = [
-    "introduction",                             # 01
-    ("types de base", [                         # 02
-        "nombres: <code>int</code>, <code>float</code>, <code>complex</code>, <code>bool</code>",
-        "séquences: <code>str</code>, <code>bytes</code>",
-        "containers: <code>list</code>, <code>tuple</code>, <code>set</code>, <code>dict</code>",
-        "fichier",
-        "références partagées",
-    ]),
-    ("syntaxe et instructions", [               # 03
-        "syntaxe & opérateurs",
-        "instructions",
-        "itérations",
-    ]),
-    ("fonctions", [
-        "déclaration, passage de paramètres",   # 04
-        "portée des variables",
-        "objets fonction et lambdas",
-    ]),
-    ("modules & packages", [                    # 05
-        "modules",
-        "packages",
-    ]),
-    None,
-    ("classes", [                               # 06
-        "encapsulation",
-        "héritage",
-        "surcharge des opérateurs",
-    ]),
-    ("compléments", [                           # 07
-        "exceptions",
-        "librairies utiles",
-        "outils utiles",
-        "type hints",
-        "asyncio",
-        # "regexps",          # vide pour l'instant
-    ]),
-    ("sujets avancés", [                        # 08
-        "context managers",
-        "méthodes statiques et de classe",
-        "décorateurs",
-        "espaces de nommage",
-        "protocole d'accès aux attributs",
-        "générateurs",
-        "métaclasses",
-    ]),
-]
+PLAN = {
+    'header': "plan du cours",
+    'outline': [
+        "introduction",                             # 01
+        ("types de base", [                         # 02
+            "nombres: <code>int</code>, <code>float</code>, "
+                "<code>complex</code>, <code>bool</code>", # pylint: disable=c0330
+            "séquences: <code>str</code>, <code>bytes</code>",
+            "containers: <code>list</code>, <code>tuple</code>, "
+                "<code>set</code>, <code>dict</code>",  # pylint: disable=c0330
+            "fichier",
+            "références partagées",
+        ]),
+        ("syntaxe et instructions", [               # 03
+            "syntaxe & opérateurs",
+            "instructions",
+            "itérations",
+        ]),
+        ("fonctions", [
+            "déclaration, passage de paramètres",   # 04
+            "portée des variables",
+            "objets fonction et lambdas",
+        ]),
+        ("modules & packages", [                    # 05
+            "modules",
+            "packages",
+        ]),
+        None,
+        ("classes", [                               # 06
+            "encapsulation",
+            "héritage",
+            "surcharge des opérateurs",
+        ]),
+        ("compléments", [                           # 07
+            "exceptions",
+            "librairies utiles",
+            "outils utiles",
+            "type hints",
+            "asyncio",
+            # "regexps",          # vide pour l'instant
+        ]),
+        ("sujets avancés", [                        # 08
+            "context managers",
+            "méthodes statiques et de classe",
+            "décorateurs",
+            "espaces de nommage",
+            "protocole d'accès aux attributs",
+            "générateurs",
+            "métaclasses",
+        ]),
+    ],
+}
 
+
+PLAN_EXTRAS = {
+    'header': "plan des suppléments",
+    'outline': [
+        ("numpy", [                          # 01
+            "dimension 1",
+            "dimension supérieures",
+            "algèbre linéaire",
+            "structured arrays",
+        ]),
+        "pandas (in english)",               # 02
+        None,
+        "notebooks",                         # 03
+        "tests - bonnes pratiques",          # 04
+        ("génération de documentation", [    # 05
+            "outils",
+            "readthedocs.io",
+        ]),
+        "packaging",                         # 06
+    ],
+}
 
 def span(text, bold=False, strike=False):
     class_ = ''
@@ -68,10 +94,10 @@ def section_plan(data, title, subtitle, level):
     """
     one specific section, and possibly one specific subsection
     """
-    result = f"<h{level} class='plan'>plan du cours</h{level}>"
+    result = f"<h{level} class='plan'>{data['header']}</h{level}>"
     result += "<ul class='plan'>"
     done = True
-    for item in data:
+    for item in data['outline']:
         # ignore sectioning
         if item is None:
             continue
@@ -108,11 +134,11 @@ def detailed_plan(data, level):
     """
     all sections and subsections
     """
-    result = f"<h{level} class='plan'>plan du cours</h{level}>"
+    result = f"<h{level} class='plan'>{data['header']}</h{level}>"
     result += "<div class='plan-container'>"
     result += "<div class='plan-part'>"
     result += "<ul class='plan'>"
-    for item in data:
+    for item in data['outline']:
         if item is None:
             result += "</ul>"
             result += "</div>" # class='plan-part'
@@ -144,3 +170,10 @@ def plan(title=None, subtitle=None, *, level=1):
         return detailed_plan(PLAN, level)
     else:
         return section_plan(PLAN, title, subtitle, level)
+
+
+def plan_extras(title=None, subtitle=None, level=1):
+    if title is None:
+        return detailed_plan(PLAN_EXTRAS, level)
+    else:
+        return section_plan(PLAN_EXTRAS, title, subtitle, level)
