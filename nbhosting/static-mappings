@@ -1,0 +1,13 @@
+# mappings that need to be created in all subdirs
+# (that have at least one notebook)
+# so for example with the settings below,
+# once a student has opened slides/01-introduction.ipynb
+# then in his working directory there will be
+# slides/
+#   01-introduction.ipynb
+#   data -> /nbhosting/static/python-slides/data
+#   media -> /nbhosting/static/python-slides/media
+#   rise.css -> /nbhosting/static/python-slides/media/rise.css
+static static
+media media
+media/rise.css rise.css
