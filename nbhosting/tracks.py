@@ -48,4 +48,7 @@ def tracks(coursedir):
     return {
         DEFAULT_TRACK: _track("slides", default_section_names),
         'extras': _track("slides-extras", extra_section_names),
+        'samples': sections_by_directory(
+            coursedir,
+            notebooks_by_pattern(coursedir, "samples/*.ipynb")),
     }
