@@ -8,6 +8,6 @@
 #   data -> /nbhosting/static/python-slides/data
 #   media -> /nbhosting/static/python-slides/media
 #   rise.css -> /nbhosting/static/python-slides/media/rise.css
-static -> static
+data -> data
 media -> media
 rise.css -> media/rise.css 
