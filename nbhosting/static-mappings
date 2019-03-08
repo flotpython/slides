@@ -13,6 +13,6 @@
 #   rise.css -> /home/jovyan/static/media/rise.css
 # ---
 # for this course:
-data -> data
-pics -> pictures
 rise.css -> media/rise.css 
+data -> data
+pictures -> pictures
