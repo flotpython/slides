@@ -1,7 +1,7 @@
 # pylint: disable=c0111
 from nbhosting.courses import (
-    Sections, Section, Notebook,
-    notebooks_by_pattern, sections_by_directory,
+    Track, Section, Notebook,
+    notebooks_by_pattern, track_by_directory,
     DEFAULT_TRACK)
 
 def tracks(coursedir):
@@ -9,13 +9,14 @@ def tracks(coursedir):
     coursedir is a CourseDir object that points
     at the root directory of the filesystem tree
     that holds notebooks
-    track is a name that is set by the nbhosting admin,
-    by default it is "course" which would mean the full
-    course, but you can define alternate tracks among the
-    course material
 
-    result should be a Sections object
+    result is a dictionary trabkname -> Track instance
     """
+
+    # in this repo we want to define 3 tracks:
+    # (*) one for the plain course in 'slides',
+    # (*) another one named 'extras' for the contents in 'slides-extras'
+    # (*) last one from 'samples'
 
     default_section_names = [
         "introduction",
@@ -43,12 +44,12 @@ def tracks(coursedir):
                         coursedir,
                         f"{topdir}/{number:02}*.ipynb"))
             for number, section_name in enumerate(section_names, 1)]
-        return Sections(coursedir, sections)
+        return Track(coursedir, sections)
 
     return {
         DEFAULT_TRACK: _track("slides", default_section_names),
         'extras': _track("slides-extras", extra_section_names),
-        'samples': sections_by_directory(
+        'samples': track_by_directory(
             coursedir,
             notebooks_by_pattern(coursedir, "samples/*.ipynb")),
     }
