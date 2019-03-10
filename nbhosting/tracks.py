@@ -1,8 +1,7 @@
 # pylint: disable=c0111
 from nbhosting.courses import (
     Track, Section, Notebook,
-    notebooks_by_pattern, track_by_directory,
-    DEFAULT_TRACK)
+    notebooks_by_pattern, track_by_directory)
 
 def tracks(coursedir):
     """
@@ -36,7 +35,7 @@ def tracks(coursedir):
         "packaging",
     ]
 
-    def _track(topdir, section_names):
+    def _track(topdir, section_names, *, name, description):
         sections = [
             Section(coursedir=coursedir,
                     name=section_name,
@@ -44,12 +43,14 @@ def tracks(coursedir):
                         coursedir,
                         f"{topdir}/{number:02}*.ipynb"))
             for number, section_name in enumerate(section_names, 1)]
-        return Track(coursedir, sections)
+        return Track(coursedir, sections, name=name, description=description)
 
-    return {
-        DEFAULT_TRACK: _track("slides", default_section_names),
-        'extras': _track("slides-extras", extra_section_names),
-        'samples': track_by_directory(
+    return [
+        _track("slides", default_section_names, name="slides", description="Cours: tronc commun"),
+        _track("slides-extras", extra_section_names, name="options", description="Cours: suppléments"),
+        track_by_directory(
             coursedir,
-            notebooks_by_pattern(coursedir, "samples/*.ipynb")),
-    }
+            name="échantillons",
+            description="Des exemples de codes plus réalistes",
+            notebooks=notebooks_by_pattern(coursedir, "samples/*.ipynb")),
+    ]
