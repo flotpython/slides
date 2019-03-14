@@ -9,7 +9,7 @@ def tracks(coursedir):
     at the root directory of the filesystem tree
     that holds notebooks
 
-    result is a dictionary trabkname -> Track instance
+    result is a list of Track instances
     """
 
     # in this repo we want to define 3 tracks:
@@ -47,7 +47,7 @@ def tracks(coursedir):
 
     return [
         _track("slides", default_section_names, name="slides", description="Cours: tronc commun"),
-        _track("slides-extras", extra_section_names, name="options", description="Cours: suppléments"),
+        _track("slides-extras", extra_section_names, name="extras", description="Cours: suppléments"),
         track_by_directory(
             coursedir,
             name="échantillons",
