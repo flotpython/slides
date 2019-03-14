@@ -24,6 +24,8 @@ def tracks(coursedir):
         "fonctions",
         "modules & packages",
         "classes & programmation objet",
+        "compléments",
+        "notions avancés",
         ]
 
     extra_section_names = [
