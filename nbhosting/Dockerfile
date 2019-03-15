@@ -22,6 +22,6 @@ RUN pip install rise && jupyter-nbextension install rise --py && jupyter-nbexten
 
 # --------
 # a decent stack
-RUN pip install numpy pandas matplotlib
+RUN pip install numpy pandas matplotlib ipywidgets 
 
-RUN pip install ipywidgets
+RUN pip install folium mpld3 bokeh plotly
