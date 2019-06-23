@@ -17,7 +17,7 @@ RUN jupyter nbextension enable splitcell/splitcell
 
 
 # install rise
-RUN pip install rise && jupyter-nbextension install rise --py && jupyter-nbextension enable rise --py
+RUN pip install --pre rise
 
 
 # --------
