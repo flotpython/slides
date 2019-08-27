@@ -25,3 +25,6 @@ RUN pip install --pre rise
 RUN pip install numpy pandas matplotlib ipywidgets
 
 RUN pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx
+
+### speed up jupyter lab startup
+RUN jupyter lab build
