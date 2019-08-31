@@ -35,6 +35,7 @@ def tracks(coursedir):
         "tests",
         "doc",
         "packaging",
+        "vscode",
     ]
 
     def _track(topdir, section_names, *, name, description):
