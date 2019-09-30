@@ -27,7 +27,7 @@ RUN pip install numpy pandas matplotlib ipywidgets
 RUN pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx
 
 # graphviz
-RUN apt-get install graphviz && pip install graphviz
+RUN apt-get install -y graphviz && pip install graphviz
 
 ### speed up jupyter lab startup
 RUN jupyter lab build
