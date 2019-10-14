@@ -14,6 +14,7 @@ PLAN = {
                 "<code>set</code>, <code>dict</code>",  # pylint: disable=c0330
             "fichier",
             "références partagées",
+            "toolregexps",
         ]),
         ("syntaxe et instructions", [               # 03
             "syntaxe & opérateurs",
