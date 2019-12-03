@@ -24,7 +24,7 @@ RUN pip install --pre rise
 # a decent stack
 RUN pip install numpy pandas matplotlib ipywidgets 
 
-RUN pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy
+RUN pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy autograd
 
 # graphviz
 RUN apt-get install -y graphviz && pip install graphviz
