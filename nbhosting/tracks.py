@@ -56,4 +56,9 @@ def tracks(coursedir):
             name="échantillons",
             description="Des exemples de codes plus réalistes",
             notebooks=notebooks_by_pattern(coursedir, "samples/*.ipynb")),
+        track_by_directory(
+            coursedir,
+            name="TPs",
+            description="TPs",
+            notebooks=notebooks_by_pattern(coursedir, "tps/metro/metro.py")),
     ]
