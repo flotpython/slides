@@ -14,6 +14,7 @@
 #     language: python
 #     name: python3
 #   notebookname: metro parisien
+#   version: '1.0'
 # ---
 
 # %% [markdown]
