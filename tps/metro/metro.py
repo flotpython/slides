@@ -13,7 +13,7 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: metro parisien
+#   notebookname: "m\xE9tro parisien"
 #   version: '1.0'
 # ---
 
