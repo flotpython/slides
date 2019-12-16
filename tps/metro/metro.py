@@ -13,7 +13,7 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: "m\xE9tro parisien"
+#   notebookname: metro parisien
 # ---
 
 # %% [markdown]
