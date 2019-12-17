@@ -268,9 +268,6 @@ def scan(start_node, storage):
 #
 # graph.nb_edges()
 #
-# graph.find_node_from_station_id(
-#     station_id)
-#
 # node.nb_edges()
 #
 # ```
@@ -334,8 +331,6 @@ Station = pd.Series
 # mais il se trouve que dans `hops.txt` on nous donne aussi le numéro de la ligne de métro qui connecte deux stations, on va donc vouloir attacher à chaque lien ce numéro de ligne, et du coup un ensemble n'est sans doute pas ce qu'il y a de mieux...
 
 # %%
-# version étudiant : à vous de compléter le code
-
 class Node:
     """
     a node has a reference to a unique Station object
@@ -345,74 +340,94 @@ class Node:
     drawing the graph on a map
     """
     def __init__(self, station: Station):
-        ...
+        self.station = station
+        # use a dictionary to attach a value to each link (here the line number)
+        self.line_by_neighbour = dict() # type: Dict[Node -> str]
+        self.label = None
         
+    def __repr__(self):
+        return str(f"[Node {self.station.name}]")
+    
     def add_edge(self, neighbour: "Node", line):
-        ...
+        self.line_by_neighbour[neighbour] = line
         
     def nb_edges(self):
-        ...
+        return len(self.line_by_neighbour)
     
     def iter_neighbours(self):
         "iterates (neighbour, line) over neighbours"
-        ...
+        for neighbour, line in self.line_by_neighbour.items():
+            yield neighbour, line
 
-    # we also need to be able to use
-    # node.latitude
-    # node.longitude
+    @property
+    def latitude(self):
+        return float(self.station['latitude'])
+
+    @property
+    def longitude(self):
+        return float(self.station['longitude'])        
 
 
 # %%
-# version étudiant : à vous de compléter le code
-
-# NOTE : vous remarquerez qu'on a choisi de créer les arêtes 
-# à partir de `station_id`s 
-# il faut donc pouvoir retrouver un noeud à partir de cette information
-
 class Graph:
     """
     the toplevel object that models the complete graph
     as essentially a set of nodes (thus of stations)
+    for efficiency we also maintain an index of those hashed by station_id
     """
     def __init__(self):
-        ...
+        self.nodes = set()
+        self.nodes_by_station_id = {}
         
     def add_node(self, station):
         """
         insert a station in graph; duplicates are simply ignored
         """
-        ...
+        # this is how to retrieve the 'index' column 
+        # in an indexed dataframe (must not be indexed with inplace=True)
+        station_id = station.name
 
+        # don't add it if already there
+        if station_id in self.nodes_by_station_id:
+            return
+        node = Node(station)
+        self.nodes.add(node)
+        self.nodes_by_station_id[station_id] = node
+        
     def find_node_from_station_id(self, station_id):
-        """
-        spot a node from a specific station id
-        """
-        ...
+        return self.nodes_by_station_id[station_id]
 
     def add_edge(self, from_station_id, to_station_id, line):
         """
         insert an edge - both ends must exist already
         """
-        ...
+        # locate both ends that MUST be present already
+        node_from = self.find_node_from_station_id(from_station_id)
+        node_to = self.find_node_from_station_id(to_station_id)
+        if not node_from or not node_to:
+            print(f"OOPS - cannot add edge {from_station_id}->{to_station_id}")
+            return
+        node_from.add_edge(node_to, line)
         
+    def __len__(self):
+        return len(self.nodes)
+    
+    def nb_edges(self):
+        return sum(node.nb_edges() for node in self.nodes)
+    
     def iter_nodes(self):
         """
         an iterator on nodes
         """
-        ...
+        return iter(self.nodes)
     
     def iter_edges(self):
         """
         iterates over triples (node_from, node_to, line)
         """
-        ...
-                
-    # optionnel
-    def __len__(self):
-        ...
-    
-    def nb_edges(self):
-        ...                
+        for node in self.iter_nodes():
+            for neighbour, line in node.iter_neighbours():
+                yield node, neighbour, line
 
 
 # %% [markdown]
@@ -428,17 +443,15 @@ print(f"notre graphe a {len(metro)} stations et {metro.nb_edges()} liens")
 
 # %%
 # exercice: calculer le nombre de lignes
-nb_lines = ...
+lines = {line for node, neighbour, line in metro.iter_edges()}
 
-print(nb_lines)
+print(lines)
 
 # %% [markdown]
 # ## dessiner le graphe sur une carte
 
 # %% [markdown]
 # on va utiliser la librairie `folium` pour afficher les cartes
-#
-# pas de code à écrire de votre part dans cette partie, mais vous pouvez prendre le temps de voir comment c'est fait
 
 # %%
 import folium
@@ -541,9 +554,6 @@ def build_map(metro, show_labels=True):
     return map
 
 
-# %% [markdown]
-# à ce stade si votre code pour `Node` et `Graph` est correct vous pouvez voir ici la carte du réseau avec la station Chatelet numérotée `0`
-
 # %%
 # on met au moins un label pour voir l'effet
 metro.find_node_from_station_id(chatelet_station_id).label = '0'
@@ -554,7 +564,7 @@ build_map(metro)
 # ## parcours : implémentation et illustration
 
 # %% [markdown]
-# ### rappel des objectifs
+# ### objectives
 
 # %% [markdown]
 # nous voulons écrire un **generateur** qui implémente les deux stratégies de parcours, à partir d'un sommet du graphe
@@ -573,32 +583,31 @@ build_map(metro)
 from collections import deque
 class Fifo:
     def __init__(self):
-        ...
+        self.line = deque()
     def store(self, item):
-        ...
+        self.line.append(item)
     def retrieve(self):
-        ...
-    # pour 'while storage:' 
+        if self.line:
+            return self.line.popleft()
     def __len__(self):
-        ...
+        return len(self.line)
 
 
 # %% {"cell_style": "split"}
 from collections import deque
 class Filo:
     def __init__(self):
-        ...
+        self.line = deque()
     def store(self, item):
-        ...
+        self.line.append(item)
     def retrieve(self):
-        ...
-    # ditto
+        if self.line:
+            return self.line.pop()
     def __len__(self):
-        ...
+        return len(self.line)        
 
 
 # %% {"cell_style": "split"}
-# pour vérifier
 fifo = Fifo()
 for i in range(1, 4):
     fifo.store(i)
@@ -607,7 +616,6 @@ while fifo:
 
 
 # %% {"cell_style": "split"}
-# pour vérifier
 filo = Filo()
 for i in range(1, 4):
     filo.store(i)
@@ -635,10 +643,19 @@ def scan(start_node, storage):
 
     storage.store(start_node)
     # keep track of what we've seen
-    ...
+    scanned = set()
     
     while storage:
-        ...
+        current_node = storage.retrieve()
+        # skip vertices already seen
+        # station.name is actually station['station_id']
+        # but it is now indexed
+        if current_node.station.name in scanned:
+            continue
+        yield current_node
+        scanned.add(current_node.station.name)
+        for neighbour, line in current_node.iter_neighbours():
+            storage.store(neighbour)
 
 
 # %% [markdown]
