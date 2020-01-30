@@ -60,5 +60,6 @@ def tracks(coursedir):
             coursedir,
             name="TPs",
             description="TPs",
-            notebooks=notebooks_by_pattern(coursedir, "tps/metro/metro.py")),
+            notebooks=notebooks_by_pattern(coursedir, "tps/metro/metro.py")
+                      + notebooks_by_pattern(coursedir, "tps/redis/README.md")),
     ]
