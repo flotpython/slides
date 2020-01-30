@@ -13,6 +13,18 @@ jupyter:
     display_name: Python 3
     language: python
     name: python3
+  toc:
+    base_numbering: 1
+    nav_menu: {}
+    number_sections: true
+    sideBar: true
+    skip_h1_title: false
+    title_cell: Table of Contents
+    title_sidebar: Contents
+    toc_cell: false
+    toc_position: {}
+    toc_section_display: true
+    toc_window_display: false
 ---
 
 <!-- #region {"trusted": true} -->
@@ -108,3 +120,13 @@ bien sûr ce prototype a des zillions de défauts :
 * tout est fait en une seule boucle à la cadence du rafraichissement; la vitesse de déplacement d'un joueur n'est pas forcément la vitesse de reafraichissement
 * il manque un moyen de dire ou de chercher où est le serveur redis; du coup les joeurs doivent forcément être sur le même ordi (et donc le même écran)...
 * etc…
+
+
+# le code
+
+
+pour télécharger le code, [cliquez sur ce lien](player.py)  
+
+**Remarque 1** sur nbhosting il va s'ouvrir comme un notebook, utilisez le menu *File* -> *Download as* -> *Python (.py)*
+
+**Remarque 2** n'essayez pas de l'exécuter sur nbhosting, puisqu'il vous faut lancer le serveur *redis* d'abord, ça ne va pas fonctionner de toutes façons.
