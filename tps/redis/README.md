@@ -125,8 +125,42 @@ bien sûr ce prototype a des zillions de défauts :
 # le code
 
 
-pour télécharger le code, [cliquez sur ce lien](player.py)  
+https://github.com/flotpython/slides/tree/master/tps/redis
 
-**Remarque 1** sur nbhosting il va s'ouvrir comme un notebook, utilisez le menu *File* -> *Download as* -> *Python (.py)*
+n'oubliez pas de lancer le serveur *redis* **d'abord**, ça ne va pas fonctionner sinon.
 
-**Remarque 2** n'essayez pas de l'exécuter sur nbhosting, puisqu'il vous faut lancer le serveur *redis* d'abord, ça ne va pas fonctionner de toutes façons.
+
+# plusieurs ordinateurs
+
+
+jusqu'ici on a fait tourner tous les processus dans le même ordinateur
+
+en vraie grandeur bien sûr, on veut faire tourner ça sur plusieurs ordinateurs
+
+![](ip-address.svg)
+
+pour que ça puisse fonctionner dans ce type de configuration il faut que Jacques lance le jeu en lui indiquant sur quel ordinateur se trouve le serveur redis
+
+
+## trouver son IP address
+
+
+selon les systèmes, lancez dans un terminal la commande suivante
+* Windows `ipconfig`
+* MacOS `ifconfig`
+* LInux `ip address show`
+
+et cherchez une adresse parmi les intervalles réservés aux adresses privées
+
+
+![](private-ranges.png)
+
+<!-- #region {"slideshow": {"slide_type": "slide"}} -->
+## pour lancer le jeu
+
+dans notre configuration, si Pierre est sur l'adresse disons `192.168.200.20`, il suffit aux autres joueurs qui veulent le rejoindre de lancer par exemple
+
+```
+main.py --server 192.168.200.20 Jacques
+```
+<!-- #endregion -->

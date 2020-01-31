@@ -1,8 +1,6 @@
 import random
 import json
 
-import redis
-
 def random_color():
     return [random.randint(0, 255) for _ in range(3)]
 
@@ -13,8 +11,12 @@ def random_move():
 
 
 class Player:
+    """
+    manage the local player, and broadcast 
+    its position to the redis server
+    """
     
-    def __init__(self, name, width, height):
+    def __init__(self, name, width, height, redis_server):
         """
         name is the name of the local player
         """
@@ -25,7 +27,7 @@ class Player:
                           random.randint(0, self.height-1)]
         self.color = random_color()
         #
-        self._redis = redis.Redis()
+        self.redis_server = redis_server
 
 
     def join(self):
@@ -34,17 +36,18 @@ class Player:
         with a random color
         """
         position = 0, 0
-        self._redis.hmset(self.name, 
-                         {'color' : json.dumps(self.color),
-                          'position': json.dumps(position),
-                         })
+        self.redis_server.hmset(
+            self.name, 
+            {'color' : json.dumps(self.color),
+             'position': json.dumps(position),
+            })
 
 
     def leave(self):
         """
         remove local name from database
         """
-        self._redis.delete(self.name)
+        self.redis_server.delete(self.name)
         
     
     def random_move(self):
@@ -55,18 +58,7 @@ class Player:
         self.position[0] %= self.width
         self.position[1] += dy
         self.position[1] %= self.height
-        self._redis.hset(self.name, 'position',
-                        json.dumps(self.position))
+        self.redis_server.hset(self.name, 'position',
+                               json.dumps(self.position))
         
-
-    def all_players(self):
-        # xxx need to optimize these multiple round trips
-        player_names = self._redis.keys()
-        players = []
-        for player_name in player_names:
-            player = self._redis.hgetall(player_name)
-            for k, v in player.items():
-                player[k] = json.loads(v)
-            players.append(player)
-        return players
 
