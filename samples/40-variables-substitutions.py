@@ -70,8 +70,7 @@
 #
 # soit donc $f : [x1 .. x2] \times [y1 .. y2] \longrightarrow \mathbb{R}$
 #
-# pour se ramener à une fonction qui vérifie les hypothèses de `simple_contour`, on voit qu'il s'agit de déformer le domaine de manière linéaire de sorte que le pavé  
-# $[x1 .. x2] \times [y1 .. y2]$ corresponde à $[0..1]^2$.
+# pour se ramener à une fonction qui vérifie les hypothèses de `simple_contour`, on voit qu'il s'agit de déformer le domaine de manière linéaire de sorte que le pavé $[x1 .. x2] \times [y1 .. y2]$ corresponde à $[0..1]^2$
 #
 # et comme `simple_contour` fait l'hypothèse que le contour commence sur le bord gauche, on va envisager aussi les 4 rotations du pavé
 
@@ -89,11 +88,8 @@
 # ### translations
 
 # %% [markdown]
-# le changement de variable le plus élémentaire est la translation:
-#
-# en partant de la fonction $f : \mathbb{R}^2 \longrightarrow \mathbb{R}$ et étant donné deux réels $(x_0,y_0)$, on peut facilement dériver une fonction $f_{t(x_0,y_0)}$ qui correspond à $f$ translatée de $(x_0, y_0)$ par
-#
-# $f_{t(x_0,y_0)}(x, y) = f(x-x_0, y-y_0)$
+# le changement de variable le plus élémentaire est la translation : en partant de la fonction $$f : \mathbb{R}^2 \longrightarrow \mathbb{R}$$ et étant donné deux réels $(x_0,y_0)$, on peut facilement définir une fonction $f_{t(x_0,y_0)}$ qui correspond à $f$ translatée de $(x_0, y_0)$ par
+# $$f_{t(x_0,y_0)}(x, y) = f(x-x_0, y-y_0)$$
 #
 # on peut très facilement coder la fonction `translate` en Python :
 
@@ -343,7 +339,7 @@ from contour import simple_contour
 
 # %% {"slideshow": {"slide_type": "slide"}}
 # pour voir comment l'appeler
-# simple_contour?
+simple_contour?
 
 # %% {"slideshow": {"slide_type": "slide"}}
 X, Y = simple_contour(h, 0.5)
@@ -414,14 +410,14 @@ for c in np.arange(-1.5, 1.5001, .5):
 # ### discussion
 
 # %% [markdown]
-# il pourrait être tentant d'utiliser nos 'rotate() / scale() / translate()' pour inverser le mapping initial dans la dernière partie de contour
+# il pourrait être tentant d'utiliser nos `rotate()` / `scale()` / `translate()` pour inverser le mapping initial dans la dernière partie de contour
 #
 # en fait la formule pour revenir en arrière, avec les mêmes notations - i.e. $x_{01} \in [0..1]$ - ressemble à ceci, de manière disons imagée :
 #
 # x = (((rotation_inverse(x_01, y_01) ) * (x2-x1) ) + x1
 #
-# et remarquons ici que notre fonction `translate` calcule $f(x+x0)$ et non pas $f(x)+x0$, qui est le gener de formule que nous avons besoin d'écrire ici
+# et remarquons ici que notre fonction `translate` calcule $f(x+x0)$ et non pas $f(x)+x0$, qui est le genre de formule que nous avons besoin d'écrire ici
 #
 # très intuitivement donc, vous pouvez voir quels sont les éléments qui nous manqueraient à ce stade si on voulait finir le problème avec le même genre d'outils que ceux que nous nous sommes donnés jusqu'ici
 #
-# qui est bien sûr un exercice pour ceux qui sont arrivé ici très en avance :)
+# qui est bien sûr un exercice pour ceux qui sont arrivés ici très en avance :)
