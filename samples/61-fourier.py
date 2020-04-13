@@ -9,6 +9,7 @@
 #       format_name: percent
 #       format_version: '1.2'
 #       jupytext_version: 1.2.4
+#   notebookname: "La résonance de Fourier illustr\xE9e"
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
