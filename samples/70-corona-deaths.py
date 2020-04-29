@@ -22,23 +22,38 @@ nb_days = 30
 nb_text_days = 3
 
 def strip_2020(x):
-    return x.replace('2020-', '')
+    stage1 = x.replace('2020-', '')
+    month, day = stage1.split('-')
+    if day == "1": 
+        return stage1
+    else:
+        return day
 
 
-# %% cell_style="center"
+# %%
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib notebook
+
+# %%
+# + cell_style="center"
 from ipywidgets import HTML
 css = """
 <style>
 .outline {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: bold;
     padding-left: 5px;
     padding-right: 5px;
+    color: orange;
 }
 </style>"""
 def outline(*args):
     return f"<span class='outline'>{''.join(str(x) for x in args)}</span>"
 
+
+# %% [markdown]
+# -
 
 # %%
 import json
@@ -57,6 +72,8 @@ NB_DAYS = max(len(country) for country in decoded.values())
 country = "France"
 yesterday_in_france = decoded[country][-1]
 france_deaths = yesterday_in_france['deaths']
+france_last_24h = france_deaths - decoded[country][-2]['deaths']
+yesterday_in_france
 
 
 # %%
@@ -96,15 +113,19 @@ def total_deaths(day_index):
     return day_index, theday, sum(country['deaths'] for country in all_countries_at_day)
 
 
-# %% cell_style="center"
+# %%
+# + cell_style="center"
 _, yesterday, TOTAL_DEATHS = total_deaths(-1)
-summary = f"""{outline(yesterday, ":")}: data is available on {NB_COUNTRIES} countries and on {NB_DAYS} days
-<br>
-{outline(TOTAL_DEATHS)}</span> total deaths, 
-of which {outline(france_deaths)} in France alone
-and {outline(last_24h)} during the last 24h"""
+summary = f"""
+{outline(yesterday, ":")} data is available on {NB_COUNTRIES} countries and on {NB_DAYS} days
+<br>{outline(TOTAL_DEATHS)} total deaths worldwide, {outline(last_24h)} during the last 24h
+<br>{outline(france_deaths)} total deaths in France, {outline(france_last_24h)} during the last 24h
+"""
 HTML(css+summary)
 
+
+# %% [markdown]
+# -
 
 # %%
 def show_day(index, label=None):
@@ -141,31 +162,44 @@ for index in range(-NB_DAYS-3, 0):
             DEATHS_DERIV.append(nb-past)
         past = nb
 
-# %%
-import numpy as np
-import matplotlib.pyplot as plt
-# %matplotlib notebook
 
-# %% scrolled=false
+# %%
+# utility to show only one tick every n
+# make sure the last one is on though
+def fewer_x_ticks(axis, period):
+    tick_labels = list(axis.xaxis.get_ticklabels())
+    last = len(tick_labels) - 1
+    for index, label in enumerate(tick_labels):
+        if (index - last) % period != 0:
+            label.set_visible(False)
+
+
+# %%
+# + scrolled=false
 fig = plt.figure(figsize=(8, 6))
 ax_total = fig.add_subplot(111)
 ax_daily = ax_total.twinx()
 
+# %%
 plt.xticks(ALL_DAYS, LABELS, rotation='vertical')
 
+# %%
 color = 'tab:blue'
 ax_total.plot(ALL_DAYS, DEATHS, label="worldwide deaths")
 ax_total.legend(loc='upper left')
 ax_total.margins(0.05)
 ax_total.set_ylabel("total", color=color)
 ax_total.tick_params(axis='y', labelcolor=color)
+fewer_x_ticks(ax_total, 5)
 
+# %%
 color = 'tab:orange'
 ax_daily.plot(ALL_DAYS, DEATHS_DERIV, color=color, label="daily")
 ax_daily.margins(0.05)
 ax_daily.tick_params(axis='y', labelcolor=color)
 ax_daily.legend(loc="lower right")
 
+# %%
 plt.show();
 
 # %%
@@ -203,21 +237,25 @@ for i_top in range(nb_top):
 # %%
 top_countries
 
-# %% cell_style="center"
+# %%
+# + cell_style="center"
 plt.figure(figsize=(10, 6))
 
+# %%
 for top in range(nb_top):
     plt.plot(last_days[1:], YS[top][1:])    
 plt.legend(top_countries)
 plt.show()
 
-# %% scrolled=false
+# %%
+# + scrolled=false {"scrolled": false}
 # this is the max number of daily deaths in one country 
 # using this as ylim for all drawings would result in a 
 # series of superposable diagrams
 # but that's not very good for smaller countries so..
 MAX_DEATHS = decoded[top_countries[0]][-1]['deaths']
 
+# %%
 for top in range(nb_top):
     color = 'tab:blue'
     country_name = top_countries[top]
@@ -227,9 +265,9 @@ for top in range(nb_top):
     MAX_DEATHS_COUNTRY = decoded[country_name][-1]['deaths']
     ax_total.set_ylim(0, MAX_DEATHS_COUNTRY*1.1)
     ax_total.set_ylabel("total")
-    ax_total.plot(last_days[1:], Y[top][1:], label=country_name)
+    ax_total.plot(last_days[1:], Y[top][1:], label=f"{country_name}: {MAX_DEATHS_COUNTRY}")
     ax_total.tick_params(axis='y', labelcolor=color)
-    ax_total.legend(loc="lower right")
+    ax_total.legend(loc="upper left")
     
     color = 'tab:orange'
     Y_shift = Y[top][:-1]
@@ -238,5 +276,11 @@ for top in range(nb_top):
     ax_daily.set_ylim(0, max(Y_daily)*1.1)
     ax_daily.set_ylabel("daily", color=color)
     ax_daily.tick_params(axis='y', labelcolor=color)
-    ax_daily.legend()
     plt.show()
+# -
+
+# %%
+decoded['India'][-1]
+
+# %%
+decoded['US'][-1]
