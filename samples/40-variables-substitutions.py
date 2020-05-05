@@ -4,13 +4,12 @@
 #   celltoolbar: Slideshow
 #   jupytext:
 #     cell_metadata_filter: all
+#     cell_metadata_json: true
 #     formats: py:percent
-#     notebook_metadata_filter: all,-language_info
+#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -22,18 +21,6 @@
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   toc:
-#     base_numbering: 1
-#     nav_menu: {}
-#     number_sections: true
-#     sideBar: true
-#     skip_h1_title: false
-#     title_cell: Table of Contents
-#     title_sidebar: Contents
-#     toc_cell: false
-#     toc_position: {}
-#     toc_section_display: true
-#     toc_window_display: false
 #   version: '1.0'
 # ---
 
@@ -338,8 +325,8 @@ show_3d(X1, Y1, Zb)
 from contour import simple_contour
 
 # %% {"slideshow": {"slide_type": "slide"}}
-# pour voir comment l'appeler
-simple_contour?
+# pour voir comment l'appeler, décommenter
+# # simple_contour?
 
 # %% {"slideshow": {"slide_type": "slide"}}
 X, Y = simple_contour(h, 0.5)

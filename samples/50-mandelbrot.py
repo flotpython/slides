@@ -3,12 +3,11 @@
 # jupyter:
 #   jupytext:
 #     cell_metadata_filter: all
-#     notebook_metadata_filter: all,-language_info,-jupytext.text_representation.jupytext_version
+#     cell_metadata_json: true
+#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -20,20 +19,6 @@
 #     transition: cube
 #     width: 1280
 #   notebookname: Mandelbrot
-#   toc:
-#     base_numbering: 1
-#     nav_menu:
-#       height: 30px
-#       width: 253px
-#     number_sections: true
-#     sideBar: true
-#     skip_h1_title: false
-#     title_cell: Table of Contents
-#     title_sidebar: Contents
-#     toc_cell: false
-#     toc_position: {}
-#     toc_section_display: block
-#     toc_window_display: false
 #   version: '1.0'
 # ---
 

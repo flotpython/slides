@@ -3,30 +3,17 @@
 # jupyter:
 #   jupytext:
 #     cell_metadata_filter: all
+#     cell_metadata_json: true
 #     formats: py:percent
-#     notebook_metadata_filter: all,-language_info,-jupytext.text_representation.jupytext_version
+#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: "Le th\xE9or\xE8me de Taylor illustr\xE9"
-#   toc:
-#     base_numbering: 1
-#     nav_menu: {}
-#     number_sections: true
-#     sideBar: true
-#     skip_h1_title: false
-#     title_cell: Table of Contents
-#     title_sidebar: Contents
-#     toc_cell: false
-#     toc_position: {}
-#     toc_section_display: true
-#     toc_window_display: false
+#   notebookname: Taylor
 #   version: '1.0'
 # ---
 
@@ -156,7 +143,7 @@ def taylor(X, derivatives, n):
 #
 # il se trouve que cette cette façon d'écrire les choses a soulevé des problèmes de conversions entre types de données, par ex. avec sinus à partir de l'ordre 21
 #
-# en effet lorsqu'on essaie de faire le calcul à l'ordre 21, on calcule à un moment $21!$ qui ne "tient plus" dans un entier 64 bits; avec les types de base de Python (`int` et `float`) cela ne poserait pas de problème particulier, mais ici c'est un souci...
+# en effet lorsqu'on essaie de faire le calcul à l'ordre 21, on calcule à un moment $21!$ qui ne "tient plus" dans un entier 64 bits; avec les types de base de Python (`int` et `float`) cela ne poserait pas de problème particulier, mais ici avec numpy, c'est un souci...
 
 # %%
 # à partir de 21, le factoriel ne tient plus sur un entier de 64 bits
@@ -312,5 +299,3 @@ interactive_exponential_taylor(-4, 4, 11)
 # %%
 # agrandissons le domaine
 interactive_exponential_taylor(-5, 10, 17)
-
-# %%

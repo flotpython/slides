@@ -3,29 +3,15 @@
 #   jupytext:
 #     cell_metadata_filter: all
 #     formats: py:percent
-#     notebook_metadata_filter: all,-language_info,-jupytext.text_representation.jupytext_version
+#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
-#   notebookname: "La résonance de Fourier illustr\xE9e"
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   toc:
-#     base_numbering: 1
-#     nav_menu: {}
-#     number_sections: true
-#     sideBar: true
-#     skip_h1_title: false
-#     title_cell: Table of Contents
-#     title_sidebar: Contents
-#     toc_cell: false
-#     toc_position: {}
-#     toc_section_display: true
-#     toc_window_display: false
+#   notebookname: Fourier
 # ---
 
 # %% [markdown]
@@ -44,7 +30,7 @@
 import numpy as np
 
 def f(t): 
-    'sin(x) + sin(2x) + sin(3x) - 2'
+    'sin(x) + sin(2x) + sin(3x) + 2'
     return np.sin(t) + np.sin(2*t) + np.sin(3*t) - 2
 
 
