@@ -15,7 +15,7 @@
 # ---
 
 # %% [markdown]
-# # Visualizating the effect of the Fourier Transform
+# # Visualizing the effect of the Fourier Transform
 
 # %% [markdown]
 # ## The periodic case
@@ -90,7 +90,7 @@ def rotating_plot (f, phi, rounds):
     since we want to span <rounds> rounds around the X axis,
     we will have <t> range from 0 to 2*pi*rounds
     """
-    fig = plt.figure()
+    fig = plt.figure(figsize=(8, 8))
     # initially show as if looking from infinite time
     ax = fig.gca(projection='3d', azim = 0., elev=0.)
     t = np.linspace(0, rounds * 2 * math.pi, 100 * rounds)
