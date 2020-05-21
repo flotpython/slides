@@ -255,7 +255,7 @@ plt.show()
 # but that's not very good for smaller countries so..
 MAX_DEATHS = decoded[top_countries[0]][-1]['deaths']
 
-# %%
+# %% scrolled=false
 for top in range(nb_top):
     color = 'tab:blue'
     country_name = top_countries[top]
@@ -284,3 +284,35 @@ decoded['India'][-1]
 
 # %%
 decoded['US'][-1]
+
+# %% [markdown]
+# *****
+
+# %%
+import pandas as pd
+
+
+# %%
+def extract_last_days(countryname, value, days):
+    country = decoded[countryname]
+    cropped = country[-(days):]
+    dates = np.array([chunk['date'] for chunk in cropped])
+    # take one more than requested for computing deltas including
+    # for the first day (we need the value the day before the first day)
+    cropped = country[-(days+1):]
+    values = np.array([chunk[value] for chunk in cropped])
+    # shift one day so we get the value from the day before
+    shifted = np.roll(values, 1)
+    # the daily increase; ignore first value which is wrong
+    deltas = (values - shifted)[1:]
+    relevant = values[1:]
+    # all 3 arrays dates, deltas and relevant have the same shape
+    data = {'dates': dates, value: relevant, 'deltas': deltas}
+    return pd.DataFrame(data=data)
+    
+
+df = extract_last_days('France', 'deaths', 45)
+    
+
+# %%
+df.plot();
