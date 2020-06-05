@@ -1,0 +1,38 @@
+#- file: intro
+#- file: content
+#  sections:
+#    - file: markdown
+#    - file: notebooks
+- file: 01-introduction.ipynb
+- file: 02-1-nombres.ipynb
+- file: 02-2-str-bytes.ipynb
+- file: 02-3-containers.ipynb
+- file: 02-4-files.ipynb
+- file: 02-5-references.ipynb
+- file: 02-6-regexps.ipynb
+- file: 03-1-syntaxe-operateurs.ipynb
+- file: 03-2-instructions.ipynb
+- file: 03-3-iterations.ipynb
+- file: 03-4-pep008.ipynb
+- file: 04-1-functions-arguments.ipynb
+- file: 04-2-variables-scope.ipynb
+- file: 04-3-lambdas.ipynb
+- file: 05-1-modules.ipynb
+- file: 05-2-packages.ipynb
+- file: 06-1-classes-encapsulation.ipynb
+- file: 06-2-classes-heritage.ipynb
+- file: 06-3-surcharge-operateurs.ipynb
+- file: 07-1-exceptions.ipynb
+- file: 07-2-useful-libs.ipynb
+- file: 07-3-useful-tools.ipynb
+- file: 07-4-type-hints.ipynb
+- file: 07-5-asyncio.ipynb
+- file: 08-1-context-managers.ipynb
+- file: 08-2-methodes-statiques.ipynb
+- file: 08-3-decorateurs.ipynb
+- file: 08-5-acces-attributs.ipynb
+- file: 08-6-generateurs.ipynb
+- file: 08-7-metaclasses-companion.ipynb
+- file: short-02-2-str-bytes.ipynb
+- file: short-02-3-containers.ipynb
+- file: short-02-4-files.ipynb

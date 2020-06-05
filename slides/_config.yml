@@ -1,0 +1,11 @@
+# Book settings
+title: Python slides
+author: Thierry Parmentelat
+logo: ../pictures/inria-50-alpha.png
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+execute:
+  execute_notebooks: cache
