@@ -1,0 +1,20 @@
+#- file: intro
+#- file: content
+#  sections:
+#    - file: markdown
+#    - file: notebooks
+#- file: 00-intro-extras.ipynb
+- file: 01-1-numpy-dimension-1-shape-type.ipynb
+- file: 01-2-numpy-dimensions-n-slicing-broadcasting.ipynb
+- file: 01-3-numpy-algebre-lineaire.ipynb
+- file: 01-4-numpy-structured-arrays.ipynb
+- file: 01-5-optional-numpy-broadcasting.ipynb
+- file: 02-1-pandas.ipynb
+- file: 02-2-optional-pandas-bytes.ipynb
+- file: 03-1-notebooks-basic.ipynb
+- file: 03-2-notebooks-advanced.ipynb
+- file: 04-tests-bonnes-pratiques.ipynb
+- file: 05-1-doc-generation.ipynb
+- file: 05-2-readthedocs.ipynb
+- file: 06-packaging.ipynb
+- file: 07-vscode.ipynb

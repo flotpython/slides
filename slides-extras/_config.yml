@@ -1,5 +1,5 @@
 # Book settings
-title: Python slides
+title: Python extra slides
 author: Thierry Parmentelat
 logo: ../pictures/inria-50-alpha.png
 
@@ -8,6 +8,8 @@ latex:
     targetname: book.tex
   latex_engine: xelatex
 
+# cannot use the cache strategy here
+# because the reference to ../data/ 
+# won't work in cache mode
 execute:
-#  execute_notebooks: cache
   execute_notebooks: auto
