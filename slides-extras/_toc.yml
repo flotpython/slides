@@ -4,8 +4,8 @@
 #    - file: markdown
 #    - file: notebooks
 #- file: 00-intro-extras.ipynb
-- file: 01-1-numpy-dimension-1-shape-type.ipynb
-- file: 01-2-numpy-dimensions-n-slicing-broadcasting.ipynb
+- file: 01-1-numpy-dimension-1-shape-type.md
+- file: 01-2-numpy-dimensions-n-slicing-broadcasting.py
 - file: 01-3-numpy-algebre-lineaire.ipynb
 - file: 01-4-numpy-structured-arrays.ipynb
 - file: 01-5-optional-numpy-broadcasting.ipynb
