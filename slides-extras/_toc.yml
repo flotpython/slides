@@ -4,11 +4,11 @@
 #    - file: markdown
 #    - file: notebooks
 #- file: 00-intro-extras.ipynb
-- file: 01-1-numpy-dimension-1-shape-type.md
+- file: 01-1-numpy-dimension-1-shape-type.py
 - file: 01-2-numpy-dimensions-n-slicing-broadcasting.py
-- file: 01-3-numpy-algebre-lineaire.ipynb
-- file: 01-4-numpy-structured-arrays.ipynb
-- file: 01-5-optional-numpy-broadcasting.ipynb
+- file: 01-3-numpy-algebre-lineaire.py
+- file: 01-4-numpy-structured-arrays.py
+- file: 01-5-optional-numpy-broadcasting.py
 - file: 02-1-pandas.ipynb
 - file: 02-2-optional-pandas-bytes.ipynb
 - file: 03-1-notebooks-basic.ipynb

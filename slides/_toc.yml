@@ -4,16 +4,21 @@
 #    - file: markdown
 #    - file: notebooks
 - file: 01-introduction.ipynb
-- file: 02-1-nombres.ipynb
-- file: 02-2-str-bytes.ipynb
-- file: 02-3-containers.ipynb
-- file: 02-4-files.ipynb
-- file: 02-5-references.ipynb
-- file: 02-6-regexps.ipynb
-- file: 03-1-syntaxe-operateurs.ipynb
-- file: 03-2-instructions.ipynb
-- file: 03-3-iterations.ipynb
-- file: 03-4-pep008.ipynb
+- file: 02-0-types-de-base.ipynb
+  sections:
+    - file: 02-1-nombres.ipynb
+    - file: 02-2-sequences-str.ipynb
+    - file: 02-3-containers.ipynb
+    - file: 02-4-references.ipynb
+    - file: 02-5-bytes.ipynb
+    - file: 02-6-files.ipynb
+    - file: 02-7-regexps.ipynb
+- file: 03-0-syntaxe.ipynb
+  sections:
+    - file: 03-1-syntaxe-operateurs.ipynb
+    - file: 03-2-instructions.ipynb
+    - file: 03-3-iterations.ipynb
+    - file: 03-4-pep008.ipynb
 - file: 04-1-functions-arguments.ipynb
 - file: 04-2-variables-scope.ipynb
 - file: 04-3-lambdas.ipynb

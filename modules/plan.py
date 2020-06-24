@@ -1,5 +1,39 @@
 from IPython.display import HTML
 
+plan_style = """
+<style>
+h1.plan, h2.plan, h3.plan {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.plan-bold {
+    font-weight: bold;
+    font-style: italic;
+    background-color: #eee;
+}
+
+ul.plan>li>span.plan-bold {
+    font-size: 110%;
+    padding: 4px;
+}
+
+ul.plan>li>ul.subplan>li>span.plan-bold {
+    padding: 2px 4px;
+}
+
+.plan-strike {
+    opacity: 0.4;
+/*    text-decoration: line-through; */
+}
+
+div.plan-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+</style>
+"""
+
 # a None section is meant as a separator
 
 PLAN = {
@@ -7,14 +41,15 @@ PLAN = {
     'outline': [
         "introduction",                             # 01
         ("types de base", [                         # 02
-            "nombres: <code>int</code>, <code>float</code>, "
+            "nombres&nbsp;:<code>int</code>, <code>float</code>, "
                 "<code>complex</code>, <code>bool</code>", # pylint: disable=c0330
-            "séquences: <code>str</code>, <code>bytes</code>",
-            "containers: <code>list</code>, <code>tuple</code>, "
+            "séquences & chaines&nbsp;:<code>str</code>",
+            "containers&nbsp;:<code>list</code>, <code>tuple</code>, "
                 "<code>set</code>, <code>dict</code>",  # pylint: disable=c0330
-            "fichier",
             "références partagées",
-            "expressions régulières",
+            "fichiers",
+            "données brutes&nbsp;:<code>bytes</code>",
+            "expressions régulières, module <code>re</code>",
         ]),
         ("syntaxe et instructions", [               # 03
             "syntaxe & opérateurs",
@@ -95,7 +130,9 @@ def section_plan(data, title, subtitle, level):
     """
     one specific section, and possibly one specific subsection
     """
-    result = f"<h{level} class='plan'>{data['header']}</h{level}>"
+    result = ""
+    result += plan_style
+    result += f"<h{level} class='plan'>{data['header']}</h{level}>"
     result += "<ul class='plan'>"
     done = True
     for item in data['outline']:
@@ -135,7 +172,9 @@ def detailed_plan(data, level):
     """
     all sections and subsections
     """
-    result = f"<h{level} class='plan'>{data['header']}</h{level}>"
+    result = ""
+    result += plan_style
+    result += f"<h{level} class='plan'>{data['header']}</h{level}>"
     result += "<div class='plan-container'>"
     result += "<div class='plan-part'>"
     result += "<ul class='plan'>"

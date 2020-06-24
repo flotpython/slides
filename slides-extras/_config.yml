@@ -12,4 +12,5 @@ latex:
 # because the reference to ../data/ 
 # won't work in cache mode
 execute:
-  execute_notebooks: auto
+#  execute_notebooks: auto
+  execute_notebooks: force
