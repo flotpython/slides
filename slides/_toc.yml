@@ -24,8 +24,10 @@
     - file: 04-1-functions-arguments.ipynb
     - file: 04-2-variables-scope.ipynb
     - file: 04-3-lambdas.ipynb
-- file: 05-1-modules.ipynb
-- file: 05-2-packages.ipynb
+- file: 05-0-modules-packages.ipynb
+  sections:
+    - file: 05-1-modules.ipynb
+    - file: 05-2-packages.ipynb
 - file: 06-1-classes-encapsulation.ipynb
 - file: 06-2-classes-heritage.ipynb
 - file: 06-3-surcharge-operateurs.ipynb
