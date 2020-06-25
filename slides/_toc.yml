@@ -19,9 +19,11 @@
     - file: 03-2-instructions.ipynb
     - file: 03-3-iterations.ipynb
     - file: 03-4-pep008.ipynb
-- file: 04-1-functions-arguments.ipynb
-- file: 04-2-variables-scope.ipynb
-- file: 04-3-lambdas.ipynb
+- file: 04-0-functions.ipynb
+  sections:
+    - file: 04-1-functions-arguments.ipynb
+    - file: 04-2-variables-scope.ipynb
+    - file: 04-3-lambdas.ipynb
 - file: 05-1-modules.ipynb
 - file: 05-2-packages.ipynb
 - file: 06-1-classes-encapsulation.ipynb
@@ -38,6 +40,3 @@
 - file: 08-5-acces-attributs.ipynb
 - file: 08-6-generateurs.ipynb
 - file: 08-7-metaclasses-companion.ipynb
-- file: short-02-2-str-bytes.ipynb
-- file: short-02-3-containers.ipynb
-- file: short-02-4-files.ipynb
