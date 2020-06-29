@@ -28,9 +28,11 @@
   sections:
     - file: 05-1-modules.ipynb
     - file: 05-2-packages.ipynb
-- file: 06-1-classes-encapsulation.ipynb
-- file: 06-2-classes-heritage.ipynb
-- file: 06-3-surcharge-operateurs.ipynb
+- file: 06-0-classes.ipynb
+  sections:
+    - file: 06-1-classes-encapsulation.ipynb
+    - file: 06-2-classes-heritage.ipynb
+    - file: 06-3-surcharge-operateurs.ipynb
 - file: 07-1-exceptions.ipynb
 - file: 07-2-useful-libs.ipynb
 - file: 07-3-useful-tools.ipynb
