@@ -3,44 +3,44 @@
 #  sections:
 #    - file: markdown
 #    - file: notebooks
-- file: 01-introduction.ipynb
-- file: 02-0-types-de-base.ipynb
+- file: 01-introduction
+- file: 02-0-types-de-base
   sections:
-    - file: 02-1-nombres.ipynb
-    - file: 02-2-sequences-str.ipynb
-    - file: 02-3-containers.ipynb
-    - file: 02-4-references.ipynb
-    - file: 02-5-bytes.ipynb
-    - file: 02-6-files.ipynb
-    - file: 02-7-regexps.ipynb
-- file: 03-0-syntaxe.ipynb
+    - file: 02-1-nombres
+    - file: 02-2-sequences-str
+    - file: 02-3-containers
+    - file: 02-4-references
+    - file: 02-5-bytes
+    - file: 02-6-files
+    - file: 02-7-regexps
+- file: 03-0-syntaxe
   sections:
-    - file: 03-1-syntaxe-operateurs.ipynb
-    - file: 03-2-instructions.ipynb
-    - file: 03-3-iterations.ipynb
-    - file: 03-4-pep008.ipynb
-- file: 04-0-functions.ipynb
+    - file: 03-1-syntaxe-operateurs
+    - file: 03-2-instructions
+    - file: 03-3-iterations
+    - file: 03-4-pep008
+- file: 04-0-functions
   sections:
-    - file: 04-1-functions-arguments.ipynb
-    - file: 04-2-variables-scope.ipynb
-    - file: 04-3-lambdas.ipynb
-- file: 05-0-modules-packages.ipynb
+    - file: 04-1-functions-arguments
+    - file: 04-2-variables-scope
+    - file: 04-3-lambdas
+- file: 05-0-modules-packages
   sections:
-    - file: 05-1-modules.ipynb
-    - file: 05-2-packages.ipynb
-- file: 06-0-classes.ipynb
+    - file: 05-1-modules
+    - file: 05-2-packages
+- file: 06-0-classes
   sections:
-    - file: 06-1-classes-encapsulation.ipynb
-    - file: 06-2-classes-heritage.ipynb
-    - file: 06-3-surcharge-operateurs.ipynb
-- file: 07-1-exceptions.ipynb
-- file: 07-2-useful-libs.ipynb
-- file: 07-3-useful-tools.ipynb
-- file: 07-4-type-hints.ipynb
-- file: 07-5-asyncio.ipynb
-- file: 08-1-context-managers.ipynb
-- file: 08-2-methodes-statiques.ipynb
-- file: 08-3-decorateurs.ipynb
-- file: 08-5-acces-attributs.ipynb
-- file: 08-6-generateurs.ipynb
-- file: 08-7-metaclasses-companion.ipynb
+    - file: 06-1-classes-encapsulation
+    - file: 06-2-classes-heritage
+    - file: 06-3-surcharge-operateurs
+- file: 07-1-exceptions
+- file: 07-2-useful-libs
+- file: 07-3-useful-tools
+- file: 07-4-type-hints
+- file: 07-5-asyncio
+- file: 08-1-context-managers
+- file: 08-2-methodes-statiques
+- file: 08-3-decorateurs
+- file: 08-5-acces-attributs
+- file: 08-6-generateurs
+- file: 08-7-metaclasses-companion
