@@ -1,0 +1,39 @@
+# first we have the core requirements
+# i.e. libraries used for running 
+# code in the notebooks per se
+#
+ipykernel
+ipythontutor
+nbautoeval
+ipywidgets
+numpy
+pandas
+matplotlib
+sklearn
+# mpld3
+# bokeh
+# plotly
+# folium
+# vispy
+# seaborn
+# pygal
+# networkx
+
+# jupyter extensions
+#
+rise
+jupyter-contrib-nbextensions
+
+# this part is more for authors
+# 
+jupyterlab
+nbstripout
+nbdime
+nbmerge
+
+#
+# this part is for readthedocs or similar
+#
+ipypublish[sphinx]
+sphinx-rtd-theme
+jupyter_client
