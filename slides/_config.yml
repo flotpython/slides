@@ -3,12 +3,7 @@ title: Python slides
 author: Thierry Parmentelat
 logo: ../pictures/inria-50-alpha.png
 
-latex:
-  latex_documents:
-    targetname: book.tex
-  latex_engine: xelatex
-
 execute:
 #  execute_notebooks: cache
   execute_notebooks: auto
-  jupyter_execute_notebooks: force
+  exclude_patterns: 0[78]*
