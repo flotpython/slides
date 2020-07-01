@@ -22,6 +22,7 @@ class OutlineNotes(Preprocessor):
         if cell.cell_type != "markdown":
              return cell, resources
         if ('slideshow' in cell.metadata and 
+            'slide_type' in cell.metadata['slideshow'] and
              cell.metadata['slideshow']['slide_type'] == 'notes'):
             cell.source = f".. note::\n\n{indent(cell.source)}\n"
         return cell, resources
