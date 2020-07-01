@@ -39,8 +39,8 @@ ipysphinx_output_prompt = 'Out:'
 ipysphinx_input_toggle = True
 ipysphinx_output_toggle = True
 html_theme = "sphinx_rtd_theme" 
-html_title = "Python primer" 
-project = "python primer"
+html_title = "Python slides" 
+project = "flotpython/slides"
 author = "Thierry Parmentelat"
 html_theme_options = {
     'display_version': False,

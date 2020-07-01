@@ -31,4 +31,4 @@ Index
 
 Licence CC BY-NC-ND - Thierry Parmentelat - Inria 
 
-Created by IPyPublish (version 0.10.8)
+Created by IPyPublish (version 0.10.10)
