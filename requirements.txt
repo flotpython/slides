@@ -18,6 +18,8 @@ sklearn
 # seaborn
 # pygal
 # networkx
+aiohttp
+requests
 
 # jupyter extensions
 #
