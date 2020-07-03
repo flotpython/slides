@@ -33,14 +33,18 @@
     - file: 06-1-classes-encapsulation
     - file: 06-2-classes-heritage
     - file: 06-3-surcharge-operateurs
-- file: 07-1-exceptions
-- file: 07-2-useful-libs
-- file: 07-3-useful-tools
-- file: 07-4-type-hints
-- file: 07-5-asyncio
-- file: 08-1-context-managers
-- file: 08-2-methodes-statiques
-- file: 08-3-decorateurs
-- file: 08-5-acces-attributs
-- file: 08-6-generateurs
-- file: 08-7-metaclasses-companion
+- file: 07-0-complements
+  sections:
+    - file: 07-1-exceptions
+    - file: 07-2-useful-libs
+    - file: 07-3-useful-tools
+    - file: 07-4-type-hints
+    - file: 07-5-asyncio
+- file: 08-0-sujets-avances
+  sections:
+    - file: 08-1-context-managers
+    - file: 08-2-methodes-statiques
+    - file: 08-3-decorateurs
+    - file: 08-4-acces-attributs
+    - file: 08-5-generateurs
+#    - file: 08-7-metaclasses-companion

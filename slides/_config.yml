@@ -5,5 +5,8 @@ logo: ../pictures/inria-50-alpha.png
 
 execute:
 #  execute_notebooks: cache
-  execute_notebooks: auto
-  exclude_patterns: 0[78]*
+  execute_notebooks: force
+  exclude_patterns: 
+    - _book/**
+    - _ipypublish/**
+    - _book/_build/jupyter_execute/*
