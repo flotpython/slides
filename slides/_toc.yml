@@ -1,8 +1,3 @@
-#- file: intro
-#- file: content
-#  sections:
-#    - file: markdown
-#    - file: notebooks
 - file: 01-introduction
 - file: 02-0-types-de-base
   sections:
