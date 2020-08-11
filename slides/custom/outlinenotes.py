@@ -1,7 +1,5 @@
 from IPython.nbconvert.preprocessors import *
 
-count = 4
-
 # quick and dirty - that must exist some place else
 def indent(text, space=4):
     sep = space * ' '
