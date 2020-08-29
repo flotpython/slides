@@ -7,9 +7,9 @@ FROM nbhosting/minimal-notebook
 
 # --------
 # a decent stack
-RUN true \\
- && pip install numpy pandas matplotlib ipywidgets \\
- && pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy autograd k3d \\
- && apt-get install -y graphviz && pip install graphviz \\
- && pip install geopandas keplergl \\
+RUN true \
+ && pip install numpy pandas matplotlib ipywidgets \
+ && pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy autograd k3d \
+ && apt-get install -y graphviz && pip install graphviz \
+ && pip install geopandas keplergl \
  && true
