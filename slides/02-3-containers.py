@@ -3,7 +3,7 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
 #     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
@@ -22,22 +22,22 @@
 #   version: '1.0'
 # ---
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""}
 from plan import plan; plan("types", "containers")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # les containers
 
 # %% [markdown]
 # ## la liste
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * permet de créer une liste de n’importe quels objets
 # * les listes sont dynamiques, de **taille variable**
 # * une liste peut être **hétérogène** (avoir des composants de types différents)
@@ -46,28 +46,28 @@ from plan import plan; plan("types", "containers")
 #   * ou y mettre d'autres containers
 #   
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L = []
 L = [4, 'bob', 10 + 1j, True]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # les indices en python
 # commencent à 0
 L[2]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L[0] = 10
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification par index
 
 # %% cell_style="center"
@@ -81,7 +81,7 @@ L[3] = False
 # ce que ça donne
 L
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification par slice
 
 # %% cell_style="split"
@@ -92,37 +92,37 @@ liste = [1, 2, 4, 8, 16, 32]
 # sur les listes
 liste[2:]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% cell_style="split" slideshow={"slide_type": ""}
 # on peut aussi modifier 
 # toute une slice
 liste[2:4] = [10, 20, 30]
 liste
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
 # ![](pictures/writing-a-list-slice.png)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### attention
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # * `L[i] = L2`
 #   * **remplace** le i-ème élément de `L` par la liste `L2`
 # * `L[i:j] = L2`
 #   * **insère** tous les éléments de la liste `L2` à la position `i`
 #   * après avoir supprimé les éléments `i` jusqu’à `j-1` dans `L`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification sous pythontutor
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 liste = [1, 2, 4, 8, 16, 32]
 liste
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 liste[2:4] = [10, 20, 30]
 liste
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 liste[3] = [100, 200]
 liste
 
@@ -135,14 +135,14 @@ liste = [1, 2, 4, 8, 16, 32]
 liste[2:4] = [10, 20, 30]
 liste[3] = [100, 200]
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les listes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * les méthodes sur les listes
 # * sont optimisées pour les ajouts **à la fin** de la liste
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L = []
 for i in range(4):
     L.append(i)
@@ -159,10 +159,10 @@ while L:
 from collections import deque
 # deque?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### ajouts et tris
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * des méthodes spécifiques aux types mutables  
 #   (modifications *in-place*)
 #
@@ -172,20 +172,20 @@ from collections import deque
 #   * `L.sort()`  trie `L`
 #   * `L.reverse()` renverse les éléments de `L`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### retraits
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `L.pop(i)` supprime l’élément à la position `i`, si i n’est pas fourni, supprime le dernier élément. La fonction retourne l’élément supprimé
 #   * utilisé pour faire une pile d’éléments
 # * `L.remove(x)` supprime la première occurrence de `x` dans `L`. S’il n’y a pas de `x`, une exception est retournée
 # * `del L[i:j:k]` supprime tous les éléments entre `i` et `j-1` par pas de `k` éléments
 #   * si `i == j` supprime l’élément `i`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### digression: `range()`
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # * `range()` est une fonction native (en anglai *builtin*)
 # * qui retourne un objet **itérateur**
 # * c'est-à-dire sur lequel on peut faire un `for`
@@ -195,10 +195,10 @@ from collections import deque
 for i in range(4):
     print(i, end=" ")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### digression: `range()`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * essentiellement, **même logique que le slicing**
 # * `range(j)` balaie de `0` à `j-1`
 # * `range(i, j)` balaie de `i` à `j-1`
@@ -206,23 +206,23 @@ for i in range(4):
 # * pour obtenir une liste on transforme (*cast*)  
 #   en liste en appelant `list()`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 for i in range(1, 21, 5):
     print(i, end=" ")
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 list(range(1, 21, 5))
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # la fonction list() permet
 # de convertir en liste
 L = list(range(5))
 L
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # un par un
 L.append(100)
 
@@ -230,22 +230,22 @@ L.append(100)
 L.extend([10, 20])
 L
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # très souvent utilisé
 # rappel: optimisé pour ça
 L.pop()
 L
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # pour trier c'est simple
 # on va creuser ça tout de suite
 L.sort()
 L
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### tri sur les listes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * le tri des listes est très puissant en Python
 #   * tri **en place** méthode `list.sort()`
 # * il a aussi la fonction built-in `sorted()`  
@@ -259,7 +259,7 @@ L = [10, -5, 3, 100]
 L.sort()
 L
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L1 = [10, -5, 3, 100]
 
 # crée une copie
@@ -267,15 +267,15 @@ L2 = sorted(L1)
 print(L1)
 print(L2)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * on peut aussi trier selon un critère *ad hoc*
 # * on en reparlera plus tard
 # * voir aussi <https://docs.python.org/3.5/howto/sorting.html>
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### avertissements à propos des listes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # #### les itérateurs sont plus forts
 #
 # * outil très très pratique
@@ -285,7 +285,7 @@ print(L2)
 # * dans ce cas, techniques + adaptées : itérateurs et autres générateurs
 # * sujet avancé que l’on verra plus tard
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### pas efficace pour calculs
 #
 # * le coté flexible en taille et en type rend la liste **très pratique**
@@ -295,38 +295,38 @@ print(L2)
 #   d'un bon vieux tableau C/C++/Fortran
 # * penser absolument aux **tableaux `numpy`** pour ce type d'application
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## le tuple
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * comme des listes, mais **immutables**
 # * syntaxe: `()` au lieu de `[]`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # syntaxe pour un tuple vide
 T = ()
 T
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # syntaxe pour un singleton
 T1 = (4,)
 # ou encore
 T2 = 4,
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 T1 == T2
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # * **attention** 
 #   * `(4)` est un **entier**, et
 #   * `(4,)` est un **tuple**
 # * c'est la virgule qui est importante
 # * on peut omettre les `()` - la plupart du temps
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # syntaxe pour plusieurs éléments
 T1 = (3, 5, 'alice', 10+1j)
 # ou encore
@@ -334,39 +334,39 @@ T2 =  3, 5, 'alice', 10+1j
 # ou encore
 T3 =  3, 5, 'alice', 10+1j,
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 T1 == T2
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 T1 == T3
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 #
 # * un tuple est **non mutable**
 # * les fonctions faisant des modifications *in-place* ne s’appliquent donc pas aux tuples
 #
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 try: T1[3] = 5   # python n'est pas content
 except Exception as e: print("OOPS", e)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## problèmes avec les séquences
 
 # %% [markdown]
 # ### les recherches sont lentes
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 a = range(30000000)
 'x' in a      # c’est long !
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### on ne peut indexer que par un entier
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 a[3]          # on peut utiliser un indice entier
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 a = []
 # on ne peut pas indexer avec un nom ou autre chose qu'un entier
 try:
@@ -374,10 +374,10 @@ try:
 except TypeError as e:
     print("OOPS", e)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### récapitulons
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * une séquence est une liste ordonnée d’éléments  
 #   indexés par des entiers
 #
@@ -388,25 +388,25 @@ except TypeError as e:
 #   * une insertion, effacement et recherche en *O(1)*
 #   * une indexation par clef quelconque
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## la solution : les tables de hash
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * une table de hash T indexe des valeurs par des clefs
 #   * chaque clef est unique
 #   * T[clef] = valeur
 #   * insertion, effacement, recherche en O(1)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### table de hash
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ![hash](pictures/hash.png)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### table de hash
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * la fonction de hash *f()* choisie de façon à ce que
 #   * *f(key, size)* retourne toujours la même valeur 
 #   * *key* doit être **immutable**
@@ -415,27 +415,27 @@ except TypeError as e:
 # * une bonne façon de minimiser les collisions  
 #   est de garantir une distribution uniforme
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### table de hash et Python
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * le dictionnaire `dict` est une table de hash  
 #   qui utilise comme clef un **objet immutable**  
 #   et comme valeur n’importe quel objet
 #
 #   * association clé → valeur  
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "fragment"}
+# %% [markdown] slideshow={"slide_type": "fragment"}
 # * l'ensemble `set` est une table de hash  
 #   qui utilise comme clef un **objet immutable**  
 #   et qui n’associe pas la clef à une valeur
 #
 #   * notion d’ensemble mathématique
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## le `set`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * collection non ordonnée d’objets uniques et **immutables**
 # * utile pour tester l’appartenance
 #   * optimisé, beaucoup + rapide que `list`
@@ -444,23 +444,23 @@ except TypeError as e:
 # * les sets autorisent les opérations sur des ensembles
 #   * union (|), intersection (&), différence (-), etc.
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # attention: {} c'est 
 # un DICTIONNAIRE vide 
 set()          # ensemble vide
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L1 = [1, 2, 3, 1, 1, 6, 4]
 S1 = set(L1)
 S1
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
 
-# %% cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% cell_style="center"
 # attention: il faut passer 
 # à set UN itérable
 try:
@@ -468,14 +468,14 @@ try:
 except Exception as exc:
     print(f"OOPS {type(exc)}")    
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
 
 # %% cell_style="split"
 S1
 
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 L2 = [3, 4, 1]
 S2 = set(L2)
 S2
@@ -483,43 +483,43 @@ S2
 # %% cell_style="split"
 4 in S2
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 S1 - S2            # différence
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 S1 | S2            # union
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 S1 & S2            # intersection
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`: méthodes
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # ensemble littéral
 S3 = {1, 2, 3, 4}        
 S3
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # ajout d'un élément
 
 S3.add('spam')
 S3
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # pas de duplication
 # et pas d'ordre particulier
 S3.update([10, 11, 10, 11])
 S3
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 S3.remove(11)
 S3
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * un `set` est un objet **mutable**
 # * le `frozenset` est équivalent mais **non mutable**
 # * un peu comme `list` et `tuple`
@@ -528,57 +528,57 @@ S3
 # %% cell_style="split"
 fs = frozenset([1, 2, 3, 4])
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # frozenset pas mutable
 try:
     fs.add(5)
 except AttributeError as e:
     print("OOPS", e)   
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### rapide test de performance
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # pour la recherche d’un élément  
 # les sets sont **beaucoup plus rapides**
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 import timeit
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = list(range(100000))", stmt = '"c" in x',
               number = 300)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = set(range(100000))", stmt = '"c" in x',
               number = 300)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### rapide test de performance
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = list(range(2))", stmt = '"c" in x',
               number = 6000000)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = set(range(2))", stmt = '"c" in x',
               number = 6000000)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # même si la liste est très petite
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### rapide test de performance
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = list(range(2))", stmt = '0 in x',
               number = 6000000)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = set(range(2))", stmt = '0 in x',
               number = 6000000)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * il faut que l’élément cherché soit le premier de la liste pour que les listes soient un peu plus rapides que les sets
 # * donc, toujours utiliser les sets pour les tests d’appartenance
 
@@ -588,18 +588,18 @@ timeit.timeit(setup= "x = set(range(2))", stmt = '0 in x',
 # %% [markdown]
 # avec `ipython` vous pouvez faire vos benchmarks un peu plus simplement
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 timeit.timeit(setup= "x = set(range(2))", stmt = '0 in x',
               number = 6000000)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 x = set(range(2))
 # %timeit -n 6000000 0 in x
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * généralisation d’une table de hash
 # * collection non ordonnée d’objets
 # * techniquement, uniquement les pointeurs sont stockés, mais pas une copie des objets
@@ -608,42 +608,42 @@ x = set(range(2))
 # * c’est une structure de données très puissante
 # * le dictionnaire est un type **mutable**
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * on peut voir les dictionnaires comme une collection non ordonnée de couples (clef, valeur)
 # * chaque clef est unique** et permet d’accéder à **une** valeur qui pointe vers un objet
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * construction
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # ATTENTION : {} n'est pas un ensemble
 # les dictionnaires étaient là avant les ensembles !
 D = {}
 D
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # un dictionnaire créé de manière littérale
 { 'douze' : 12, 1: 'un', 'liste' : [1, 2, 3] }
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # une autre façon quand 
 # les clés sont des chaînes
 dict( a = 'A', b = 'B')
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # à partir d'une liste de couples
 dict( [ ('a', 'A'), ('b', 'B') ] )
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `len(D)` retourne le nombre de clefs dans D
 # * `D[clef]` retourne la valeur pour la clef
 # * `D[clef] = x` change la valeur pour la clef
@@ -674,33 +674,33 @@ d
 del d['jim']
 d
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `D.get(clef)`
 #   * retourne la valeur associée à cette clé si elle est présente, `None` sinon
 #   * notez bien que `D[clef]` lance une exception si la clé n'est pas présente
 #   * `D.get(clef, un_truc)` retourne `un_truc` quand la clé n'est pas présente
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"}
 d
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # la clé n'est pas présente
 try:
     d['marc']
 except KeyError as e:
     print("OOPS", e)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # on peut utiliser `get` plutôt si on préfère un retour de fonction
 d.get('marc', '?')
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `D.setdefault(clef, x)`
 #   * si la clé est présente: retourne `D[clef]`
 #   * sinon fait `D[clef] = x` et retourne `x`
@@ -726,21 +726,21 @@ try:
 except Exception as exc:
     print(f"OOPS {type(exc)}")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `D.items()` retourne **une vue** sur les (clef, valeur) de `D`
 # * `D.keys()` retourne une vue sur les clefs de `D`
 # * `D.values()` retourne une vue sur les valeurs de `D`
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 len(dir(dict))
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### qu’est-ce qu’une vue ?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * c’est un objet qui donne une vue **dynamique** sur un dictionnaire `D`
 #   * permet le test d’appartenance avec `in`
 #   * permet l’itération (une vue est itérable)
@@ -751,45 +751,45 @@ len(dir(dict))
 del d['bob']
 d
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 clefs = d.keys()
 clefs
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 d['bob'] = 20
 d
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 clefs
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * [beaucoup d’autres méthodes](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # les clés / valeurs ne sont pas forcément de même type
 d = {'alice': 35, (1, 2): {3: '9', 10 + 1j: 6}}
 d
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 d['alice']
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 d[1, 2]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # retire une clé au hasard
 d.popitem()
 
 # %% cell_style="split"
 d
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### quel avantage d’un objet vue ?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * une vue est compacte - pas de liste temporaire
 #   * Python 3.x utilise uniquement les vues
 # * si on modifie `D`, la modification sera immédiatement reflétée dans la vue

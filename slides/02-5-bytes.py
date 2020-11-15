@@ -3,7 +3,7 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
 #     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
@@ -22,7 +22,7 @@
 #   version: '1.0'
 # ---
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
@@ -31,13 +31,13 @@
 # %%
 from plan import plan; plan("types", "bytes")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # # données brutes : le type `bytes`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # ## le type `bytes`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### non mutable
 
 # %% [markdown]
@@ -56,26 +56,26 @@ try:
 except Exception as exc:
     print(f"OOPS - {type(exc)}\n{exc}")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### littéral
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # pour construire un `bytes` on peut soit
 #
 # * utiliser le constructeur `bytes()` - comme slide précédent
 # * lire un fichier ouvert en mode binaire - vu plus tard
 # * mettre un `b` devant une chaîne de caractères
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # caractère -> code ASCII
 b = b'ABC'
 b
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% cell_style="split" slideshow={"slide_type": ""}
 # sinon en hexa
 b'\x45\xff'
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### affichage comme des caractères
 
 # %% [markdown]
@@ -85,7 +85,7 @@ b'\x45\xff'
 # * c'est un usage répandu
 # * mais ça peut être **source de confusion**
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # on peut écrire ceci
 b1 = b'ete'
 b1
@@ -96,7 +96,7 @@ b2 = bytes(
 )
 b1 == b2
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * par exemple ceci ne **marcherait pas**
 # ```
 # >>> b'été'
@@ -104,46 +104,46 @@ b1 == b2
 # SyntaxError: bytes can only contain ASCII literal characters.
 # ```
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # * en interne, le type `bytes` ne stocke que des entiers
 # * la représentation sous forme de caractères est uniquement  
 #   pour **faciliter la lecture** de l’ASCII
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 s = b'a\xff'
 s[0], s[1]
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### un `bytes` est une séquence
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * on manipule des objets `bytes` presque comme des objets `str`
 # * les bytes sont des séquences (donc indexation, slicing, ...)
 # * essentiellement les mêmes méthodes que pour les `str`
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # méthodes dans `str`, mais pas dans `bytes`
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # méthodes dans `bytes`, mais pas dans `str`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 set(dir(str)) - set(dir(bytes))
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 set(dir(bytes)) - set(dir(str))
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## texte, binaire et encodage
 
 # %% [markdown]
 # * choisir entre `str` et `bytes`
 # * quand et comment convertir 
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### le problème
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * dès que vous échangez avec l'extérieur, i.e.
 #   * Internet (Web, mail, etc.)
 #   * stockage (disque dur, clef USB)
@@ -153,10 +153,10 @@ set(dir(bytes)) - set(dir(str))
 #   * et notamment en présence d'accents
 #   * ou autres caractères non-ASCII
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### contenus binaires et textuels
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # * toutes les données ne sont pas textuelles
 #   * exemple : fichiers exécutables comme `cmd.exe`
 #   * stockage de données propriétaires
@@ -165,10 +165,10 @@ set(dir(bytes)) - set(dir(str))
 #   * il faut leur **donner un sens**
 #   * c'est l'encodage
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### codage et décodage en python
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ![](pictures/str-bytes.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -201,10 +201,10 @@ set(dir(bytes)) - set(dir(str))
 #     * UTF-32: taille fixe, 4 octets par caractère
 #     * UTF-16: taile variable, 2 ou 4 octets
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ![](pictures/unicode-table.png)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ![](pictures/unicode-decode-example.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -276,16 +276,16 @@ len(octets)
 # %% cell_style="split"
 octets.decode(encoding="utf-8")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## Martine Ã©crit en UTF-8
 
 # %% [markdown] cell_style="split"
 # ![](../pictures/martine-ecrit-en-utf8.png)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### pourquoi l’encodage c’est souvent un souci ?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * chaque fois qu'une application écrit du texte dans un fichier
 #   * elle utilise un encodage
 # * cette information (quel encodage?) est **parfois** disponible
@@ -296,7 +296,7 @@ octets.decode(encoding="utf-8")
 #   * pas prévu dans le format
 #   * il faudrait des **métadata**
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # * du coup on utilise le  
 #   plus souvent des heuristiques
 # * comme d'utiliser une  
@@ -320,36 +320,36 @@ reçu = binaire.decode(encoding="cp1252")
 # Pierre voit ceci dans son mailer
 reçu
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### mais le plus souvent ça marche !
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * lorsqu’on travaille toujours sur la même machine, 
 #   * si toutes les applications utilisent l'encodage de l'OS
 #   * tout le monde parle le même encodage
 # * le problème se corse
 #   * dès qu'il s'agit de données externes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### comment en est on arrivé là ?
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # * le standard définit les 128 premières valeurs
 #   * c’est l’ASCII classique
 # * du coup pendant longtemps le modèle mental a été
 #   * ***un char = un octet***
 # * cf. le type `char` en C
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # * pendant les années 1990 on a introduit un patch
 #   * encodages comme `iso-latin1`, `cp1252`
 #   * préserve l'invariant ***un char = un octet***
 #   * au prix .. d'une multitude d'encodages
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### comment faire en pratique ?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * le défaut en Python est d'utiliser UTF-8
 #   * pour les sources
 #   * pour ouvrir les fichiers
@@ -360,20 +360,20 @@ reçu
 #   * `str.encode()`, `bytes.decode()`, et `open()`
 #   * le défaut dans ce cas va dépendre de l'OS !
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### configurer son éditeur de texte pour supporter Unicode/UTF-8
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * notamment lorsque vous écrivez du code
 # * il est important que votre éditeur
 # * écrive bien vos fichiers source en **UTF-8**
 # * de plus en plus c'est le cas par défaut
 # * sinon il y a sans doute un réglage dans l'éditeur pour ça
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### configurer son éditeur de texte pour Unicode/UTF-8
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * si votre éditeur sauve en autre chose qu’utf-8, vous devez obligatoirement ajouter la ligne suivante au début de votre fichier
 # ```
 #     # -*- coding: utf8 -*-
@@ -381,87 +381,87 @@ reçu
 #
 #   En remplaçant utf8 par l’encodage utilisé par votre éditeur
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### encodages par défaut
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # on connait l’encodage du terminal avec
 import sys
 sys.stdin.encoding
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # et dans l'autre sens
 # 
 sys.stdout.encoding
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # on connait l’encodage du système de fichier avec
 sys.getfilesystemencoding()
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # et le réglage système par défaut
 sys.getdefaultencoding()
 
 # %% [markdown]
 # en principe, au 21-ème siècle vous devez avoir utf-8 partout !
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### comment changer d'encodage ?
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * on passe toujours par le type `bytes`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # j'écris un mail
 s = 'un été, à noël'
 # il se fait encoder
 b8 = s.encode()
 b8
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # on envoie les bytes par mail
 # si à l'arrivée on utilise le mauvais
 s1 = b8.decode('latin1')
 s1
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## outils annexes utiles
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### décodage dégradé
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * pour ***décoder*** avec un encodage qui ne supporte pas tous les caractères encodés
 # * `decode()` accepte un argument `error`
 #   * `"strict"` (par défaut)
 #   * `"ignore"` (jette le caractère non supporté)
 #   * `"replace"` (remplace le caractère non supporté)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 octets = 'un été, à noël'.encode(encoding='utf-8')
 octets.decode('ascii', errors='ignore')
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 octets.decode('ascii', errors='replace')
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### encodage dégradé
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * comment ***encoder*** avec un encodage qui ne supporte pas tous les caractères Unicode
 # * `encode()` accepte un argument `error`, identique i.e.:
 #   * `"strict"` (par défaut)
 #   * `"ignore"` (jette le caractère non supporté)
 #   * `"replace"` (remplace le caractère non supporté)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = 'un été, à noël'
 s.encode('ascii', errors='ignore')
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s.encode('ascii', errors='replace')
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ### Unicode vers ASCII
 #
 # * je veux convertir une chaîne Unicode en ASCII en convertissant en caractères proches
@@ -486,10 +486,10 @@ s.encode('ascii', errors='replace')
 # %%
 # !chardetect ../data/une-charogne.txt
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### à savoir : le BOM
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # * le [`BOM` (byte order mark)](https://en.wikipedia.org/wiki/Byte_order_mark)  
 #   est un mécanisme permettant de disambigüer  
 #   entre les 3 encodages utf-8, utf-16 et utf-32
@@ -504,106 +504,106 @@ s.encode('ascii', errors='replace')
 #   
 #
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # en UTF-32:  1 char = 4 bytes
 # donc on devrait voir 4
 len("a".encode('utf32'))
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # les 4 premiers octets correspondent 
 # à la constante 'UTF32-LE'
 b = "a".encode('utf32')
 b[:4]
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # évidemment ce n'est ajouté qu'une seule fois
 s1000 = 1000*'x'
 len(s1000.encode('utf32'))
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## petit retour sur le type `str`  
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # ### les chaines littérales
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # lorsqu'on veut écrire directement dans le programme  
 # une chaine avec des caractères exotiques
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # entré directement au clavier
 accent = 'é'
 accent
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # copié collé
 warn = '⚠'
 warn
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # défini à partir de son codepoint
 # si petit (un octet), format hexadécimal
 '\xe9'
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # si plus grand, utiliser \u 
 # pour les codepoints sur 2 octets
 "\u26A0"
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # Enfin `\Uxxxxxxxx` pour 4 octets, si codepoint encore plus grand (pas fréquemment utile)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### un exemple
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 s = '\u0534\u06AB\u05E7\u098b\u0bf8\u0f57\u2fb6'
 print(s)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # avec ces trois notations '\x` `\u` et `\u` il faut bien sûr utiliser **exactement**, respectivement, 2, 4 ou 8 digits hexadécimaux.
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # le retour chariot a pour code ASCII 10
 print('\x0a')
 
-# %% run_control={"frozen": false, "read_only": false} tags=["raises-exception"]
+# %% tags=["raises-exception"]
 # je ne peux pas faire l'économie du 0 
 try:
     print('\xa') # python n'est pas content
 except:
     import traceback; traceback.print_exc()
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## le type `bytearray` (avancé)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * c’est un objet similaire au type `bytes`, mais qui est **mutable**
 # * on l’utilise lorsque l’on a besoin de modifier un objets `bytes`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 source = b'spam'
 buff = bytearray(source)
 buff
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # remplacer 'a' bar 'e'
 buff[2] = ord('e')
 buff
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 for char in buff:
     print(char, end=" ")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur `bytearray`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # méthode dans bytes 
 # mais pas dans bytearray
 set(dir(bytes)) - set(dir(bytearray))
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # méthode dans bytearray 
 # mais pas dans bytes
 set(dir(bytearray)) - set(dir(bytes))

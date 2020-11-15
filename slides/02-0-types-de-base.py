@@ -2,7 +2,7 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
 #     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
@@ -30,5 +30,5 @@
 # %% [markdown]
 # # types de base
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""}
 from plan import plan; plan('types')

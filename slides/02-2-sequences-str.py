@@ -3,7 +3,7 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
 #     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
 #       extension: .py
@@ -22,7 +22,7 @@
 #   version: '1.0'
 # ---
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
@@ -31,25 +31,25 @@
 # %%
 from plan import plan; plan("types", "séquences")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # séquences & chaines
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * suite finie et ordonnée d'objets
 # * du coup indexable `seq[n]`
 # * indices **commencent à 0**
 # * peuvent contenir des duplications
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * mutable
 #   * `list`, `bytearray`
 # * immutable
 #   * `str`, `bytes`, `tuple`, `range`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## fonctions sur toutes les séquences
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ### indexation, longueur
 #
 # * `S[i]`
@@ -57,10 +57,10 @@ from plan import plan; plan("types", "séquences")
 # * `len(S)` 
 #   * donne la taille en nombre d’éléments
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### concaténation, comparaisons
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `S + T`
 #  * retourne une nouvelle séquence qui est la concaténation de S et T
 # * `S*n` ou `n*S`
@@ -68,10 +68,10 @@ from plan import plan; plan("types", "séquences")
 # * `min(S)` (resp. `max(S)`)
 #   * retourne le plus petit (resp. le plus grand) élément de S
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### appartenance, recherches
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # * `x in S`; selon les types:
 #  * `True` si un élément de S est égal à x (e.g. `list`)
 #  * `True` si S contient x (e.g. `str`)
@@ -80,10 +80,10 @@ from plan import plan; plan("types", "séquences")
 # * `S.count(a)`
 #   * retourne le nombre d’occurrences de a dans S
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## slicing
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `S[i:j]` retourne 
 #   * une nouvelle séquence de même type
 #   * contenant tous les éléments de l’indice i à l’indice j-1
@@ -91,7 +91,7 @@ from plan import plan; plan("types", "séquences")
 #   * une nouvelle séquence de même type
 #   * prenant tous les éléments de l’indice i à l’indice j-1, par sauts de k éléments
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # <img src="pictures/egg-bacon.png"/>
 
 # %% [markdown] cell_style="split"
@@ -100,28 +100,28 @@ from plan import plan; plan("types", "séquences")
 # * on peut compter du début ou de la fin
 # * on peut omettre les bornes
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = "egg, bacon"
 s[0:3]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # si on omet une borne 
 # ce sera le début ..
 s[:3]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # ... ou la fin:
 s[5:]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # les indices peuvent être négatifs
 s[-3:10]
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # tout entier: une shallow-copy
 s[:]
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # <img src="pictures/egg-bacon-bornes.png" text-align="center">
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
@@ -142,7 +142,7 @@ s[6:]
 # %% cell_style="split"
 s[0:3] + s[3:6] + s[6:] == s
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # <img src="pictures/egg-bacon.png" text-align="center">
 
 # %% [markdown] cell_style="split"
@@ -153,19 +153,19 @@ s[0:3] + s[3:6] + s[6:] == s
 # * peut aussi être négatif
 # * ou omis (défaut 1)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[0:10:2]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[::2]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[:8:3]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[-2::-3]
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # <img src="pictures/egg-bacon.png" text-align="center">
 
 # %% [markdown] cell_style="split"
@@ -174,38 +174,38 @@ s[-2::-3]
 # %% [markdown] cell_style="split"
 # les slices ont un comportement plus permissif que l'indexation
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # Si j'essaie d'utiliser un index inexistant
 try: s[100]
 except Exception as e: print("OOPS", e)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # par contre avec un slice, pas de souci
 s[5:100]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # vraiment..
 s[100:200]
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # <img src="pictures/egg-bacon.png" text-align="center">
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[-1]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[-3:-1]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[:-3]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[::-1]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[2:0:-1]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s[2::-1]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -233,10 +233,10 @@ s[::-1]
 # * **ATTENTION**
 #   * un caractère ce **n'est pas** un octet
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaînes de caractères `str`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * un cas particulier de séquence
 # * une chaîne de caractères est définie de manière équivalente par des simples ou doubles guillemets (`'` ou `"`)
 # * on peut ainsi facilement inclure un guillemet
@@ -250,10 +250,10 @@ print("c'est l'été")
 # entre simple quotes
 print('on se dit "pourquoi pas"')
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaîne de caractères sur plusieurs lignes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * pour écrire une chaîne sur plusieurs lignes on utilise `"""` ou `'''`
 
 # %% cell_style="center"
@@ -261,7 +261,7 @@ print("""et pour entrer plusieurs
 lignes avec des " et/ou des ' 
 c'est facile""")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaînes de caractères accolées
 
 # %% [markdown]
@@ -280,79 +280,79 @@ print(s)
 # %% [markdown]
 # dans ce deuxième exemple, notez les parenthèses (sinon c'est une erreur de syntaxe)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### échappements dans les chaines
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * on écrit un retour chariot avec un `\n`
 # * autres caractères utilisant un backslash
 #   * `\\`  `\'` `\"` `\t`
 #   * `\x` `\u` `\U` 
 #   …
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = "l'hôtel"
 print(s)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = 'une "bonne" idée'
 print(s)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = """une très longue phrase
 avec saut de ligne"""
 print(s)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = '  un backslash \\ un quote \' ' 
 print(s)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### *raw-strings*
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # Voici un problème commun, surtout sous Windows:
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = 'C:\Temp\test.txt'
 print(s)
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="center"
 # * `\T` n’existe pas, Python interprète correctement `\T`
 # * mais `\t` est compris comme une tabulation !!
 
-# %% [markdown] cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% [markdown] cell_style="split"
 # * 1$^{ère}$solution : utiliser `\\`
 # * mais pas très élegant
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s = 'C:\\Temp\\test1.bin'
 print(s)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # #### *raw-strings* (suite)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * la bonne solution : "raw string" 
 # * chaîne de caractères dans laquelle les backslash ne sont *pas interprétés*
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # pour créer une raw-string, simplement faire précéder le string d'un 'r'
 s = r'C:\Temp\test1.bin'
 print(s)
 
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### *docstrings*
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * les triples guillemets sont souvent utilisé pour les *docstrings*  
 #   (aides des fonctions)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 def double(n):
     """
     Returns the double of its input parameter
@@ -365,55 +365,55 @@ def double(n):
 # %% cell_style="split"
 help(double)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérations sur les `str`
 #
 # ### toutes les opérations des séquences
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s1 = 'abcdéfg'
 s2 = 'bob'
 len(s1)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # concaténation
 s1 + s2
 'abcdefbob'
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 s1[-1::-2]
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 '=' * 30
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### une chaine est une séquence (suite)
 
 # %% cell_style="split"
 s1
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 'x' in s1
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 'cdé' in s1
 
 # %% cell_style="split"
 s1.index('cdé')
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### objet `str` non mutable
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * par contre **ATTENTION** un `str` n'est **pas mutable**
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 try: 
     s1[2] = 'x'
 except TypeError as e:
     print("OOPS", e, type(e))    
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## formatage des chaînes : f-strings
 
 # %% [markdown] cell_style="split"
@@ -438,19 +438,19 @@ f"{nom} a {age} ans"
 # %% cell_style="split"
 f"360° = {2*math.pi} radians"
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### *f-string* : expression et format
 
 # %% [markdown] slideshow={"slide_type": ""}
 # ![](pictures/f-string.png)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 print(f"ᴨ arrondi à deux décimales = {math.pi:.2f}")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### expression dans le format
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""}
 # * le format peut à son tour contenir des expressions
 
 # %% cell_style="split"
@@ -476,11 +476,11 @@ f"value = >{value:{width}.{precision}}<"
 # %% [markdown]
 # formats scientifiques usuels: `e` `f` et `g`, cf. `printf`
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 x = 23451.23423536563
 f'{x:e} | {x:f} | {x:g} | {x:010.1f} | {x:.2f}'
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 y = 769876.11434
 f'{x:e} | {y:f} | {x:g} | {y:010.2f} | {x:.2f}'
 
@@ -502,10 +502,10 @@ f"|{nom:<12}|{nom:^12}|{nom:>12}|"
 num = 123
 f"|{num:<12}|{num:-^12}|{num:0>12}|"
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## formatage : anciennes méthodes
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * avant Python-3.6, il y a eu deux autres méthodes pour formatter
 # * `str.format()`
 # * l'opérateur `%`
@@ -515,58 +515,58 @@ f"|{num:<12}|{num:-^12}|{num:0>12}|"
 # * mais les deux autres formes existent encore
 # * a minima savoir les lire
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### formatage avec `str.format()` (*old-school*)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # anonyme (dans l'ordre)
 print('We are the {} who say "{}!"'.format('knights', 'Ni'))
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # par index
 print('{1} and {0} {0}'.format('spam', 'eggs'))
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # par nom
 print('This {food} is {adjective}'
       .format(food='spam', adjective='absolutely horrible'))
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### formatage avec `%` (*very old-school*)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * encore plus ancienne méthode
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 nom = "Alice"
 "%s dit bonjour" % nom
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 d = 3
 "%i + %i = %i" % (d, d, d + d)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 "%(food)s is %(adjective)s" % {'food' : 'bacon',
                                'adjective' : 'delicious' }
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # * on peut être parfois tenté d’utiliser la concaténation `+`
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 'abc' + 'def' 
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * par contre **attention**, on ne peut concaténer que des `str`, il faut convertir explicitement avec `str()`
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 age = 35
 try: 'alice a ' + age + ' ans'
 except Exception as e: print ("OOPS", e)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 'alice a ' + str(age) + ' ans'
 
-# %% [markdown] cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # ## méthodes sur les `str`
 
 # %% [markdown]
@@ -584,7 +584,7 @@ dirty
 # c'est la méthode la plus simple pour nettoyer
 dirty.strip()
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### `split()` et `join()`
 
 # %% cell_style="split"
@@ -592,33 +592,33 @@ dirty.strip()
 s = "une phrase\nsur deux lignes"
 s
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # sans argument, split
 # découpe selon les espaces
 # et tabulations et newline
 liste = s.split()
 liste
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # recoller les morceaux
 "".join(liste)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # le plus souvent
 " ".join(liste)
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # ou n'importe quel autre séparateur
 "+++".join(liste)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### remplacements, recherches
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 s = "une petite phrase"
 s.replace('petite', 'grande')
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 # l'index du premier caractère
 s.find('hra')
 
@@ -628,14 +628,14 @@ s[12]
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### et plein d'autres..
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * de nombreuses méthodes disponibles
 # * personne ne retient l'intégralité des méthodes sur les types de base
 # * le bon réflexe : chercher dans la dos Python qui est très bien faite
 # * google les simples mots clés 'python str', vous trouvez
 # * <https://docs.python.org/3/library/stdtypes.html>
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## un peu d'introspection (avancé)
 
 # %% [markdown]
@@ -647,7 +647,7 @@ type("abc")
 # %% cell_style="split"
 str
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # 'str' est une variable prédéfinie, qui référence 
 # le type (la classe) de toutes les chaines
 type("abc") is str
@@ -656,7 +656,7 @@ type("abc") is str
 # du coup son type, c'est .. le type <type>
 type(str)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### un peu d'introspection...
 
 # %%
@@ -665,7 +665,7 @@ type(str)
 # regardons par exemple les premiers et les derniers
 dir(str)[:2], dir(str)[-2:]
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 # avec len() je peux savoir combien il y en a
 len(dir(str))
 
