@@ -1,7 +1,8 @@
 # pylint: disable=c0111
 from nbhosting.courses import (
     Track, Section, Notebook,
-    notebooks_by_pattern, track_by_directory)
+    notebooks_by_patterns,
+    track_by_directory)
 
 def tracks(coursedir):
     """
@@ -42,9 +43,10 @@ def tracks(coursedir):
         sections = [
             Section(coursedir=coursedir,
                     name=section_name,
-                    notebooks=notebooks_by_pattern(
+                    notebooks=notebooks_by_patterns(
                         coursedir,
-                        f"{topdir}/{number:02}*.ipynb"))
+                        (f"{topdir}/{number:02}*.py", f"{topdir}/{number:02}*.ipynb"),
+                        ))
             for number, section_name in enumerate(section_names, 1)]
         return Track(coursedir, sections, name=name, description=description)
 
@@ -55,13 +57,13 @@ def tracks(coursedir):
             coursedir,
             name="échantillons",
             description="Des exemples de codes plus réalistes",
-            notebooks=notebooks_by_pattern(coursedir, "samples/[0-9]*.ipynb")
-                     +notebooks_by_pattern(coursedir, "samples/[0-9]*.py")),
+            notebooks=notebooks_by_patterns(coursedir, ("samples/[0-9]*.ipynb", "samples/[0-9]*.py"))),
         track_by_directory(
             coursedir,
             name="TPs",
             description="TPs",
-            notebooks=notebooks_by_pattern(coursedir, "tps/metro/metro.py")
-                      + notebooks_by_pattern(coursedir, "tps/redis/README.md")
-                      + notebooks_by_pattern(coursedir, "tps/boxes/unicode-boxes.py")),
+            notebooks=notebooks_by_patterns(coursedir,
+                                            ("tps/metro/metro.py",
+                                             "tps/redis/README.md",
+                                             "tps/boxes/unicode-boxes.py"))),
     ]
