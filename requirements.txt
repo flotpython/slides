@@ -10,14 +10,6 @@ numpy
 pandas
 matplotlib
 sklearn
-# mpld3
-# bokeh
-# plotly
-# folium
-# vispy
-# seaborn
-# pygal
-# networkx
 aiohttp
 requests
 
@@ -38,4 +30,5 @@ nbmerge
 #
 ipypublish[sphinx]
 sphinx-rtd-theme
+jupytext
 jupyter_client
