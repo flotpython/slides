@@ -51,10 +51,12 @@
 #   * https://github.com/flotpython/slides  
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan()
+# le plan : survol
+from plan import plan; plan("intro")
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("intro")
+# le plan : un peu plus de détails
+from plan import plan; plan()
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## comment lancer python ?
@@ -62,11 +64,20 @@ from plan import plan; plan("intro")
 # %% [markdown]
 # ### depuis un terminal ...
 #
-# * taper `python3` dans le terminal
+# * taper `python` dans le terminal
 #   * interpréteur en ligne de commande
-# * en option, `ipython3` en remplacement
+# * en option, `ipython` en remplacement
 #   * nécessite une installation supplémentaire
 #   * `pip3 install ipython`
+
+# %% [markdown] slideshow={"slide_type": "slide"} cell_style="split"
+# <img src="pictures/python-ipython-in-terminal.png"
+#      width="600px">
+
+# %% [markdown] slideshow={"slide_type": "slide"} cell_style="split"
+# ***Note***
+#
+# *sur des installations un peu anciennes on peut avoir à taper `python3` ou `ipython3`*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ... ou dans un environnement graphique
