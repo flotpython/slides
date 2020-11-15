@@ -1,0 +1,323 @@
+# -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   celltoolbar: Slideshow
+#   jupytext:
+#     cell_metadata_filter: all,-hidden,-heading_collapsed
+#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#   kernelspec:
+#     display_name: Python 3
+#     language: python
+#     name: python3
+#   notebookname: "r\xE9f\xE9rences partag\xE9es"
+#   rise:
+#     autolaunch: true
+#     slideNumber: c/t
+#     start_slideshow_at: selected
+#     theme: sky
+#     transition: cube
+#   version: '1.0'
+# ---
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# <div class="licence">
+# <span>Licence CC BY-NC-ND</span>
+# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
+# </div>
+
+# %%
+from plan import plan; plan("types", "références")
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# # références partagées
+
+# %%
+# %load_ext ipythontutor
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## composition des types de base
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * tous ces containers peuvent être imbriqués
+# * ils peuvent être composés sans limite
+# * uniquement votre faculté à vous y retrouver
+
+# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %%ipythontutor heapPrimitives=true curInstr=1 width=900 height=850
+# une liste avec une sous-liste qui contient un dict et un tuple
+L = ['abc', [ { (1, 2) : 1}, ([3], 4)], 5]
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## typage dynamique
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * si on exécute `a = 3`
+# * Python va
+#   * créer un objet représentant 3
+#   * créer une variable `a` si elle n’existe pas encore  
+#     (une entrée dans une table)
+#
+#   * faire de `a` une **référence** de l’objet
+
+# %% slideshow={"slide_type": "slide"}
+# %%ipythontutor heapPrimitives=true width=800 curInstr=1
+a = 3 
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## références partagées
+
+# %% [markdown]
+# du coup on peut facilement avoir plusieurs variables qui référencent le même objet
+
+# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %%ipythontutor heapPrimitives=true width=800 curInstr=1
+
+a = 3
+b = a
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## rappel : mutable *vs* immutable
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * les entiers, les chaines, les tuples sont `immutables`
+#   * ils ne **peuvent pas** être modifiés
+#   * il n’y a **pas d’effet de bord** possible  
+#     sur un objet immutable
+#
+#   * il est impossible qu’une modification sur `b` affecte `a`    
+
+# %% [markdown]
+# ### références partagées vers objet immutable
+
+# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %%ipythontutor heapPrimitives=true width=800 curInstr=1
+
+a = 3
+b = a
+a = a + 2
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### idem avec objet mutable
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * que se passe-t-il si l’objet est mutable ?
+#   * il peut être changé 
+# * impact sur **toutes** les références vers cet objet  
+#   * depuis une variable 
+#   * ou depuis l'intérieur d'un autre objet
+
+# %% cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %%ipythontutor heapPrimitives=true width=800 height=300 curInstr=1
+a = [1, 2]
+b = a
+a[0] = 'spam'
+
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### types mutables / immutables
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# | type  | mutable ? |
+# |-------|-----------|
+# | *int* et autres nombres | immutable       |
+# | *list* | **mutable**       |
+# | *tuple* | immutable       |
+# | *dict* | **mutable**       |
+# | *set* | **mutable**       |
+# | *frozenset* | immutable       |
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## *shallow* et *deep* copies
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * pour ne pas modifier `b`, faire une **copie** de `a`
+# * il y a deux types de copies en Python
+# * la *shallow copy* (superficielle)
+#   * pour les toutes les séquences, utiliser simplement `a[:]`
+#   * pour les dictionnaires utiliser `D.copy()`
+#   * sinon, utiliser le module `copy.copy()`
+# * la *deep copy* (profonde)
+#   * `copy.deepcopy()` pour tout copier de manière récursive
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### *shallow* et *deep* copies
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * la différence entre *shallow* et *deep* copy n’existe que pour les  
+#   objets composites (les objets qui contiennent d’autres objets)
+#
+# * shallow copy
+#   * crée un nouvel objet composite et y insère  
+#     les **références** vers les objets contenus dans l’original
+#
+# * deep copy
+#   * crée un nouvel objet et insère de **manière récursive**  
+#     une copie des objets trouvés dans l’original
+#
+#   * évite les boucles infinies
+
+# %% cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %%ipythontutor heapPrimitives=true height=400 width=800 curInstr=1
+a = [1, 2]
+# cette fois-ci on (shallow) copie d'abord
+b = a[:] 
+a[0] = 'spam'
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+# les types `tuple` et `frozenset` permettent notamment  
+# de construire des **clés** pour les dictionnaires et autres ensembles
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## `is` et `==`
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * `obj1 is obj2`
+#   * ssi obj1 et obj2 sont **le même objet**
+#   * forme inverse: `obj1 is not obj2`
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * `obj1 == obj2`
+#   * ssi **les valeurs des objets sont égales**
+#   * forme inverse `obj1 != obj2`
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### `is` et `==`
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": ""}
+a = [0, 1, 2]
+b = a[:]
+a is b
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+
+
+
+a == b
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+c = d = [0, 1, 2]
+c is d
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+c == a
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### copie profonde nécessaire ?
+
+# %% cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %%ipythontutor heapPrimitives=true height=600 width=800 curInstr=1
+a = [1, [2]]
+# on ne fait qu'une copie 'shallow'
+b = a[:]
+a[1][0] = 'spam'
+print(a)
+print(b)
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### avec une copie profonde
+
+# %% cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={}
+# %%ipythontutor heapPrimitives=true height=600 width=900 curInstr=2
+import copy
+a = [1, [2]]
+# avec une copie profonde on n'a plus de souci
+b = copy.deepcopy(a)
+a[1][0] = 'spam'
+print(a)
+print(b)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## autres types de références partagées
+
+# %% [markdown]
+# jusqu'ici, références partagées créées par **affectation**  
+#
+# il existe d'autres cas de figure :
+# * appel de fonction  
+#   l'objet passé en argument à une fonction  
+#   se retrouve affecté au paramètre dans la fonction
+# * se méfier aussi des références **entre objets**
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### appel de fonction
+
+# %%
+# %%ipythontutor
+
+L = [1, 2, 3]
+
+def foo(x):
+    x[1] = 'BOOM'
+
+foo(L)    
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### références entre objets
+
+# %% [markdown]
+# toutes les parties d'objet qui sont atteignables à partir d'autres objets peuvent devenir des références partagées
+#
+# pas besoin qu'il y ait nécessairement plusieurs variables dans le paysage
+#
+# on peut le voir sur l'exemple pathologique suivant
+
+# %% cell_style="center" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %%ipythontutor heapPrimitives=true height=400 width=900 curInstr=1
+
+repete = 4 * [[0]]
+print(f"repete avant {repete}")
+
+repete[0][0] = 1
+print(f"repete après {repete}")
+
+# %%
+# %%ipythontutor
+
+L = [None]
+L[0] = L
+L
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ## gestion de la mémoire
+
+# %% [markdown] run_control={"frozen": false, "read_only": false}
+# * Python sait réutiliser les objets  
+#   *e.g.* les petits entiers - slide suivant
+#
+# * Python sait libérer les objets non utilisés (garbage collector)
+#   * un objet sans référence est libéré
+#   * contrôle via le module `gc`
+# * chaque objet contient deux champs dans l’entête
+#   * un champ désignant le typage - cf `type(obj)`
+#   * un champ contenant un compteur de références  
+#     voir `sys.getrefcount(obj)`      
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### optimisation interne à Python
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# avec cette forme 
+# on crée deux objets liste
+L = [1, 2]
+M = [1, 2] # nouvel objet liste
+L is M
+
+# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# ici aussi on pourrait penser
+# créer deux objets int
+I = 18
+J = 18   # nouvel objet entier ?
+I is J   # non: partage
+         # (optimisation)
+
+# %% [markdown]
+# * est-ce que ça pose un problème ?
+#   * non ! l’optimisation n’est que pour des types **immutables**
+
+# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# ### exercice
+#
+# [filterlist](exos/references-filterlist.ipynb)
