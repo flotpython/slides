@@ -2,6 +2,7 @@
 # ---
 # jupyter:
 #   jupytext:
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
 #     formats: py:percent
 #     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
 #     text_representation:
@@ -21,7 +22,7 @@
 #   version: '1.0'
 # ---
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat</span>
@@ -30,119 +31,119 @@
 # %% slideshow={"slide_type": "slide"}
 from plan import plan_extras; plan_extras("numpy", "linéaire")
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # algèbre linéaire
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 import numpy as np
 import matplotlib.pyplot as plt
 # %matplotlib inline
 plt.ion()
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * Un aspect important de l'utilisation de numpy
 # * consiste à manipuler des matrices et vecteurs
 # * [voir doc complète](https://docs.scipy.org/doc/numpy/reference/routines.linalg.html)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # produit matriciel
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ## ne pas utiliser `*`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # **rappel** : on a déjà vu que `*` entre deux tableaux fait une multiplication terme à terme
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 ligne = 1 + np.arange(3)
 print(ligne)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 colonne = 1 + np.arange(3).reshape(3, 1)
 print(colonne)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ##### ce n'est pas ce qu'on veut ici !
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 print(ligne * colonne)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## `np.dot()`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * l'opération de produit matriciel s'appelle `dot` 
 # * c'est une méthode sur les tableaux
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 m1 = np.array([[1, 1],
                [2, 2]])
 print(m1)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 m2 = np.array([[10, 20],
                [30, 40]])
 print(m2)
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %% slideshow={"slide_type": "-"}
 np.dot(m1, m2)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### `dot` fait aussi le produit scalaire !
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 v1 = np.array([1, 2, 3])
 print(v1)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 v2 = np.array([4, 5, 6])
 print(v2)
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %% slideshow={"slide_type": "-"}
 np.dot(v1, v2)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## `np.matmul()`
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # * `matmut` réalise aussi l'opération de multiplication de matrices
 # * c'est un ajout plus récent
 # * qui supporte le *stacking* :
 # * on peut donner des entrées de dimensions supérieures
 # * et on fait alors une sorte de broadcast
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% cell_style="split" slideshow={"slide_type": "slide"}
 m1 = np.ones((2, 2))
 e = np.vstack((m1, 2*m1, 3*m1))\
    .reshape(3, 2, 2)
 print(e)
 
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 m2 = np.array([[10, 20],
                [30, 40]])
 print(m2)
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "-"}
+# %% slideshow={"slide_type": "-"}
 np.matmul(e, m2)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # ## `m.T` 
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # la transposée de la matrice `m` est `m.t`
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 m = np.arange(4).reshape(2, 2)
 print(m)
 
-# %% cell_style="split" run_control={"frozen": false, "read_only": false}
+# %% cell_style="split"
 print(m.T)
 
-# %% [markdown] run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## calculs matriciels
 
-# %% [markdown] run_control={"frozen": false, "read_only": false}
+# %% [markdown]
 # | outil           |   propos |
 # |-----------------|--------|
 # | `np.linalg.det` | déterminant |
@@ -154,8 +155,8 @@ print(m.T)
 # | `...`           | ...|
 #
 
-# %% run_control={"frozen": false, "read_only": false} slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"}
 np.diag(np.arange(16).reshape(4,4))
 
-# %% run_control={"frozen": false, "read_only": false}
+# %%
 np.diag([1,2,3,4 ])
