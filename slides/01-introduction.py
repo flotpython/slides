@@ -71,7 +71,7 @@ from plan import plan; plan()
 #   * `pip3 install ipython`
 
 # %% [markdown] slideshow={"slide_type": "slide"} cell_style="split"
-# <img src="pictures/python-ipython-in-terminal.png"
+# <img src="media/python-ipython-in-terminal.png"
 #      width="600px">
 
 # %% [markdown] slideshow={"slide_type": "slide"} cell_style="split"
@@ -276,8 +276,8 @@ sys.getsizeof([10, 20, 30])
 # * Programming Python, 4th Edition, Mark Lutz
 #   * niveau confirmé
 #
-# <span style="float:left;"><img src="pictures/book-learning-python.png"></span>
-# <span style="float:right;"><img src="pictures/book-programming-python.png"></span>
+# <span style="float:left;"><img src="media/book-learning-python.png"></span>
+# <span style="float:right;"><img src="media/book-programming-python.png"></span>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### in english

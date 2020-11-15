@@ -111,7 +111,7 @@ driver()
 
 
 # %% [markdown] cell_style="split"
-# ![uncaught](pictures/except-stack-uncaught.png)
+# ![uncaught](media/except-stack-uncaught.png)
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 def driver_try():
@@ -124,7 +124,7 @@ def driver_try():
 driver_try()    
 
 # %% [markdown] cell_style="split"
-# ![try](pictures/except-stack-try.png)
+# ![try](media/except-stack-try.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## clause `except`
@@ -141,7 +141,7 @@ driver_try()
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![exceptions](pictures/except-list.png)
+# ![exceptions](media/except-list.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### clause `except`

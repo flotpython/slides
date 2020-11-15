@@ -718,7 +718,7 @@ A().B()
 #   * liste de recettes empiriques des auteurs
 #   * propices à l'exploitation de l'héritage
 #
-# ![design patterns](pictures/book-design-patterns.png)
+# ![design patterns](media/book-design-patterns.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## partie optionnelle

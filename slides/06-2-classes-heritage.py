@@ -210,7 +210,7 @@ foo.x
 # * allant des super-classes aux instances
 
 # %% [markdown] cell_style="split"
-# ![arbre de classes](pictures/classes.png)
+# ![arbre de classes](media/classes.png)
 
 # %% cell_style="split"
 class C1: 
@@ -848,7 +848,7 @@ except Exception as e:
 #   * et la fonction `mro()` (liste)
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# ![MRO](pictures/mro.png)
+# ![MRO](media/mro.png)
 
 # %% cell_style="split"
 class A: pass

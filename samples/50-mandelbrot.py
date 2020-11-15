@@ -40,7 +40,7 @@ plt.ion()
 #
 # calculer l'image de la convergence de mandelbrot:
 #
-# <img src="pictures/mandelbrot.png" width="2000px">
+# <img src="media/mandelbrot.png" width="2000px">
 
 # %% [markdown] {"cell_style": "split", "run_control": {"frozen": false, "read_only": false}, "slideshow": {"slide_type": "slide"}}
 # * dans l'espace complexe où

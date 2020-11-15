@@ -1,7 +1,7 @@
 # Book settings
 title: Python extra slides
 author: Thierry Parmentelat
-logo: ../pictures/inria-50-alpha.png
+logo: ../media/inria-50-alpha.png
 
 latex:
   latex_documents:

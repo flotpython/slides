@@ -169,7 +169,7 @@ set(dir(bytes)) - set(dir(str))
 # ### codage et décodage en python
 
 # %% [markdown]
-# ![](pictures/str-bytes.png)
+# ![](media/str-bytes.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### de multiples encodages
@@ -202,10 +202,10 @@ set(dir(bytes)) - set(dir(str))
 #     * UTF-16: taile variable, 2 ou 4 octets
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![](pictures/unicode-table.png)
+# ![](media/unicode-table.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![](pictures/unicode-decode-example.png)
+# ![](media/unicode-decode-example.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### UTF-8
@@ -217,13 +217,13 @@ set(dir(bytes)) - set(dir(str))
 #   * en particulier, ne prennent qu'un octet
 
 # %% [markdown] slideshow={"slide_type": ""}
-# ![](pictures/unicode-utf8-areas.png)
+# ![](media/unicode-utf8-areas.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### Unicode et Python: `chr` et `ord`
 
 # %% [markdown] cell_style="split"
-# ![](pictures/unicode-e-accent.png)
+# ![](media/unicode-e-accent.png)
 
 # %% cell_style="split"
 # le codepoint du é accent aigu
@@ -280,7 +280,7 @@ octets.decode(encoding="utf-8")
 # ## Martine Ã©crit en UTF-8
 
 # %% [markdown] cell_style="split"
-# ![](../pictures/martine-ecrit-en-utf8.png)
+# ![](../media/martine-ecrit-en-utf8.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### pourquoi l’encodage c’est souvent un souci ?

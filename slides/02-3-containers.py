@@ -99,7 +99,7 @@ liste[2:4] = [10, 20, 30]
 liste
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
-# ![](pictures/writing-a-list-slice.png)
+# ![](media/writing-a-list-slice.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### attention
@@ -401,7 +401,7 @@ except TypeError as e:
 # ### table de hash
 
 # %% [markdown]
-# ![hash](pictures/hash.png)
+# ![hash](media/hash.png)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### table de hash
