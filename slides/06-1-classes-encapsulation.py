@@ -33,7 +33,7 @@ from plan import plan; plan("classes", "encapsulation")
 
 
 # %% [markdown]
-# # encapsulation
+# # POO : encapsulation
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## pour réutiliser du code en python
@@ -54,11 +54,11 @@ from plan import plan; plan("classes", "encapsulation")
 
 # %% cell_style="split"
 class MyFirstClass:
-    
+
     def __init__(self, nom, age):
         self.nom = nom
         self.age = age
-        
+
     def __repr__(self):
         return (f"je suis {self.nom}, "
                 f"j'ai {self.age} ans")
@@ -75,30 +75,30 @@ person
 #   pourquoi et comment ?
 
 # %% [markdown] cell_style="split"
-# ####  deux objectifs 
+# ####  deux objectifs
 #
 # * modularité
 # * réutilisabilité
 
 # %% [markdown] cell_style="split"
-# #### deux moyens 
+# #### deux moyens
 #
 # * espaces de nom
 # * héritage
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### avertissement : POO et langage
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # * la POO est présente dans tous les langages modernes
 # * cependant l'implémentation *a un impact*
 # * sur le paradigme présenté au programmeur
 # * se méfier des habitudes héritées d'autres langages
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # * C++/Java
 #   * fort typage statique
-#   * **impose** l'existence d'une classe *chapeau* 
+#   * **impose** l'existence d'une classe *chapeau*
 #   * par exemple la classe `Simulable`
 # * Python
 #   * on peut parfaitement se passer de la classe `Simulable`
@@ -114,7 +114,7 @@ person
 #   * grouper le code dans une classe
 #   * grouper les données dans un objet
 # * c'est là qu'interviennent les espaces de nom
-# * (comme avec les notions de module et de package)  
+# * (comme avec les notions de module et de package)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### réutilisabilité
@@ -160,11 +160,11 @@ person
 # %% [markdown] cell_style="split"
 # #### deux mondes étanches
 #
-# * variables 
+# * variables
 # * attributs
 
 # %% [markdown] cell_style="split"
-# #### se mélangent 
+# #### se mélangent
 
 # %% [markdown]
 # * typiquement dans une expression comme `a.b.c.d`
@@ -257,16 +257,16 @@ class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        
+
 point = Point(2, 3)
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
-# la classe possède 
-# l'attribut '__init__' 
+# la classe possède
+# l'attribut '__init__'
 '__init__' in Point.__dict__
 
 # %% cell_style="split"
-# c'est la méthode 
+# c'est la méthode
 # qu'on a définie
 type(Point.__init__)
 
@@ -292,7 +292,7 @@ class Vector:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-       
+
     def length(self):
         return math.sqrt(self.x**2 + self.y**2)
 
@@ -323,7 +323,7 @@ class Vector:
         self.y = y
     def length(self):
         return math.sqrt(self.x**2 + self.y**2)
-   
+
 vector = Vector(2, 2)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -345,7 +345,7 @@ list(vector.__dict__)
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * l'objet `vector` ne possède pas en propre l'attribut `length`
-# * et pourtant on peut écrire `vector.length()` 
+# * et pourtant on peut écrire `vector.length()`
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * pour évaluer `vector.length()`
@@ -367,7 +367,7 @@ list(vector.__dict__)
 
 # %%
 # une classe fille sans aucun contenu
-class SubVector(Vector): 
+class SubVector(Vector):
     pass
 
 subvector = SubVector(6, 8)
@@ -425,7 +425,7 @@ class Factory:
 
     def __init__(self, label):
         self.label = label
-        # ici je pourrais aussi bien écrire 
+        # ici je pourrais aussi bien écrire
         # Factory.all_labels.append(label)
         self.all_labels.append(label)
 
@@ -446,7 +446,7 @@ class Factory:
     all_labels = []
     def __init__(self, label):
         self.label = label
-        # ici je pourrais aussi bien écrire 
+        # ici je pourrais aussi bien écrire
         # Factory.all_labels.append(label)
         self.all_labels.append(label)
 f1 = Factory('premier')
@@ -456,7 +456,7 @@ f2 = Factory('second')
 # ### **remarque importante** : lecture ≠ écriture
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * le mécanisme de recherche d'attribut qu'on vient de voir 
+# * le mécanisme de recherche d'attribut qu'on vient de voir
 # * ne fonctionne que **pour la lecture des attributs**
 # * donc ici en partant de l'instance
 # * on trouve bien l'attribut de la classe
@@ -471,7 +471,7 @@ f1.all_labels
 # #### **remarque importante** : lecture ≠ écriture
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# * mais attention lorsqu'on **écrit** un attribut 
+# * mais attention lorsqu'on **écrit** un attribut
 #   * *i.e.* si l'expression `foo.bar` est à gauche d'une affectation
 # * alors l'attribut `bar` est créé/écrit **dans l'objet `foo`**
 # * il n'y a **pas de recherche** dans ce cas !
@@ -507,7 +507,7 @@ f1.all_labels = 'overridden'
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### lecture ≠ écriture - discussion
 #
-# * cela ne se remarque pas avec les méthodes 
+# * cela ne se remarque pas avec les méthodes
 #   * car c'est très rare d'écrire `instance.methode = ...`
 # * mais du coup, lire et écrire un attribut ne **sont pas symétriques**
 
@@ -619,12 +619,12 @@ tutu()
 #   l'attribut par une `property` qui fasse les contrôles
 
 # %% cell_style="split"
-# une jauge a une valeur forcément 
+# une jauge a une valeur forcément
 # dans un intervalle fixe
-# 
+#
 # toutefois en Python on expose typiquement
 # un attribut `value` en lecture / écriture
-# 
+#
 class Gauge:
     def __init__(self, value):
         self.value = value
@@ -634,7 +634,7 @@ class Gauge:
 
 
 # %% [markdown] cell_style="split"
-# En C++ / Java typiquement, on définirait ici 
+# En C++ / Java typiquement, on définirait ici
 # * un attribut privé `_value`
 # * deux méthodes *getter/setter*
 #
@@ -646,7 +646,7 @@ class Gauge:
 # ## mécanismes Python pour l'encapsulation
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * les mécanismes offerts par Python 
+# * les mécanismes offerts par Python
 #   * visibilité des attributs
 #   * properties
 
@@ -654,13 +654,13 @@ class Gauge:
 # ### visibilité des attributs
 
 # %% [markdown]
-# * pas de vraie notion d'attributs privé/public 
+# * pas de vraie notion d'attributs privé/public
 # * **toutefois** des conventions de nommage
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### PEP8 
+# ### PEP8
 #
-# * `_single_leading_underscore` : 
+# * `_single_leading_underscore` :
 #   * weak "internal use" indicator. E.g. `from M import *` does not import objects whose name starts with an underscore.
 #   * correspond *en gros* aux champs protégés
 #   * **enforcé** seulement pour les **modules**
@@ -669,7 +669,7 @@ class Gauge:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### PEP8
 #
-# * `__double_leading_underscore` : 
+# * `__double_leading_underscore` :
 #   * when naming a class attribute, invokes name mangling  
 #     (inside class `FooBar`, `__boo` becomes `_FooBar__boo` ; see below).
 #
@@ -679,16 +679,16 @@ class Gauge:
 # #### PEP8 ...
 #
 # * `__double_leading_and_trailing_underscore__`
-#   *  "magic" objects or attributes that live in user-controlled namespaces. E.g. `__init__` , `__import__` or `__file__` . 
+#   *  "magic" objects or attributes that live in user-controlled namespaces. E.g. `__init__` , `__import__` or `__file__` .
 #   * **never invent such names**; only use them as documented.
 #
-# * `single_trailing_underscore_` : 
+# * `single_trailing_underscore_` :
 #   * used by convention to avoid conflicts with Python keyword, e.g.
 #   * `Tkinter.Toplevel(master, class_='ClassName')`
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 class Underscore:
-    def __init__(self, x): 
+    def __init__(self, x):
         self.x = x
         self._x = x ** 2
         self.__x = x ** 3
@@ -703,7 +703,7 @@ u._x = 2 * u._x
 
 # %%
 # mais même pas lire __x
-try:       
+try:
     u.__x
 except AttributeError as e:
     print(f"OOPS {type(e)}: {e}")
@@ -739,7 +739,7 @@ except AttributeError as e:
 # %% [markdown]
 # dans un langage avec protection "dure" comme C++ ou Java:
 #
-# * on expose très souvent une API à base de `get/set` 
+# * on expose très souvent une API à base de `get/set`
 
 # %% [markdown]
 # ce n'est pas du tout le cas en Python:
@@ -792,7 +792,7 @@ class Constrained:
         self._value = min(1000, max(0, value))
 
     # c'est ici qu'on définit la property `value`
-    value = property(fget=_get_value, fset=_set_value, 
+    value = property(fget=_get_value, fset=_set_value,
                      doc="a constrained value between 0 and 1000")
 
 
@@ -801,7 +801,7 @@ c1, c2, c3 = Constrained(-12), Constrained(500), Constrained(2000)
 c1.value, c2.value, c3.value
 
 # %% cell_style="center"
-# l'API ressemble toujours à une 
+# l'API ressemble toujours à une
 # simple utilisation d'attribut
 c2.value = 10**6
 c2.value
@@ -861,7 +861,7 @@ d2.value
 # ## exercice
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * écrire une variante de `Constrained` 
+# * écrire une variante de `Constrained`
 # * avec des bornes variables
 # * passées au constructeur
 #
@@ -875,7 +875,7 @@ d2.value
 # ## dataclasses
 
 # %% [markdown]
-# depuis Python-3.7, ce mécanisme permet 
+# depuis Python-3.7, ce mécanisme permet
 #
 # * de définir plus rapidement
 # * une classe comme une simple juxtaposition de données

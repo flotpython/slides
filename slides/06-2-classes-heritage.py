@@ -33,7 +33,7 @@ from plan import plan; plan("classes", "héritage")
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# # héritage
+# # POO : héritage
 
 # %% [markdown]
 # * l'autre aspect de la POO
