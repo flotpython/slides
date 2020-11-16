@@ -29,6 +29,8 @@ nbmerge
 # this part is for readthedocs or similar
 #
 ipypublish[sphinx]
+# nov 2020: latest panflute 2.0.5 breaks our build
+panflute==1.12.5
 sphinx-rtd-theme
 jupytext
 jupyter_client

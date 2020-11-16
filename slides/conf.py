@@ -14,7 +14,11 @@ needs_sphinx = "1.6"
 
 master_doc = "index"
 
-source_suffix = ['.rst']
+source_suffix = {
+    '.rst': 'restructuredtext',
+#    '.ipynb': 'jupyter_notebook',
+    '.py': 'jupyter_notebook'
+}
 
 exclude_patterns = ['_build', 'build', '**.ipynb_checkpoints']
 
