@@ -32,7 +32,7 @@
 from plan import plan; plan("classes", "attributs")
 
 
-# %% [markdown]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # POO : encapsulation
 
 # %% [markdown] slideshow={"slide_type": "slide"}

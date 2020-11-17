@@ -909,19 +909,7 @@ g.draw()
 #   * ce qui permet de garantir certains invariants
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## quand utiliser la POO en Python ?
-
-# %% [markdown]
-# * utilisation de base
-#   * sans héritage mais avec encapsulation
-#   * bénéfice de grouper le code et les données
-#   * dans des espaces de noms étanches
-# * héritage
-#   * demande en général un peu de conception en amont
-#   * ce n'est **pas forcément le plus gros bénéfice**
-#   * sauf à mon humble avis pour la surcharge des opérateurs
-#   * qui s'avère vite utile - homéopatiquement
-#   * une fois qu'on a passé le barrage d'entrée
+# ## du bon usage de Python ?
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### modules ou classes ?
@@ -938,3 +926,106 @@ g.draw()
 #   * ne me souviens pas d'avoir écrit un module sans classe
 #   * ou alors pour grouper quelques helpers → `utils.py`
 #   * ce qui ne veut pas dire qu'un module ne contient jamais de fonction
+
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### POO : avec ou sans héritage ?
+
+# %% [markdown]
+# * utilisation de base
+#   * sans héritage mais avec encapsulation
+#   * bénéfice de grouper le code et les données
+#   * dans des espaces de noms étanches
+# * héritage
+#   * demande en général un peu de conception en amont
+#   * ce n'est **pas forcément le plus gros bénéfice**
+#   * sauf à mon humble avis pour la surcharge des opérateurs
+#   * qui s'avère vite utile - homéopatiquement
+#   * une fois qu'on a passé le barrage d'entrée
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### POO : héritage *vs* composition 
+
+# %% [markdown]
+# #### exemples de conception avec héritage
+
+# %% [markdown]
+# **gestion de ressources humaines**
+#
+# * classe de base : `Salarié`
+# * chaque catégorie de personnel  
+#   donne lieu à une sous-classe
+#
+# * correspond à la notion   
+#   d'inclusion dans les ensembles
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# **chaque sous-classe peut**
+#
+# * hériter une méthode telle quelle
+#   * il suffit de ne pas la redéfinir
+#   * ex. `imprimer_paie()`
+# * (re)définir complètement une méthode
+#   * ex. `evolution_carriere()`
+# * amender le comportement générique
+#   * redéfissant sa propre méthode
+#   * qui appelle la méthode de `Salarié`
+#   * ex. `calcul_revenu()`
+#   * peut ajouter un appel à `bonus()`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### exemples de conception avec composition
+
+# %% [markdown]
+# **les interfaces graphiques**
+#
+# * classes de base
+#   * ascenseur de défilement
+#   * cadre
+#   * titre
+# * une fenêtre va être **composée** des trois classes de base
+# * une interface graphique va être **composée** de fenêtres
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### héritage *vs* composition
+
+# %% [markdown] cell_style="center"
+# * héritage:
+#
+# ```python
+# class Circle(Graphic):
+#     def __init__(self, graphic_context = None):
+#         Graphic.__init__(self, graphic_context)
+# ```
+
+# %% [markdown] cell_style="center"
+# * composition:
+#
+# ```python
+# class Truck:
+#    def __init__(self, wheel_diameter):
+#        self.wheel = Wheel(wheel_diameter)
+# ```
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### héritage *vs* composition - suite
+#
+# * ce n'est pas parce que un `Truck` a exactement un `Wheel`
+# * qu'un camion est un volant
+# * en cas de doute, posez vous la question
+#   * est-ce que l'objet X **est** un objet Y
+#   * ou est-ce qu'il **possède** ou **contient** un objet Y
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### héritage - discussion
+
+# %% [markdown] slideshow={"slide_type": ""}
+# * imaginez que vous avez une classe `Vecteur2D`
+# * vous avez besoin d'une classe `Vecteur3D`
+# * on pourrait se dire
+#   * `Vecteur3D` hérite de `Vecteur2D`
+#   * et lui ajoute un champ `z`
+# * c'est une **très mauvaise idée**
+#   * l'ensemble des vecteurs 3D
+#   * n'est pas inclus dans l'ensemble des vecteurs 2D
+#   * c'est exactement  le contraire !

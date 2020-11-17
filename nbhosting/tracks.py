@@ -45,7 +45,7 @@ def tracks(coursedir):
                     name=section_name,
                     notebooks=notebooks_by_patterns(
                         coursedir,
-                        (f"{topdir}/{number:02}*.py",),
+                        (f"{topdir}/{number:02}-[0-9]*.py",),
                         ))
             for number, section_name in enumerate(section_names, 1)]
         return Track(coursedir, sections, name=name, description=description)

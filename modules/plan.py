@@ -70,7 +70,7 @@ PLAN = {
             "intro et exemples",
             "surcharge des opérateurs",
             "classes et attributs",
-            "héritage",
+            "classes - avancé",
         ]),
         ("compléments", [                           # 07
             "exceptions",

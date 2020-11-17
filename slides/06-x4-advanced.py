@@ -29,102 +29,11 @@
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("classes", "héritage")
+from plan import plan; plan("classes", "avancé")
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# # POO : héritage
-
-# %% [markdown]
-# * l'autre aspect de la POO
-# * en sus de l'encapsulation
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## héritage *vs* composition 
-
-# %% [markdown]
-# ### exemples de conception avec héritage
-
-# %% [markdown]
-# **gestion de ressources humaines**
-#
-# * classe de base : `Salarié`
-# * chaque catégorie de personnel  
-#   donne lieu à une sous-classe
-#
-# * correspond à la notion   
-#   d'inclusion dans les ensembles
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# **chaque sous-classe peut**
-#
-# * hériter une méthode telle quelle
-#   * il suffit de ne pas la redéfinir
-#   * ex. `imprimer_paie()`
-# * (re)définir complètement une méthode
-#   * ex. `evolution_carriere()`
-# * amender le comportement générique
-#   * redéfissant sa propre méthode
-#   * qui appelle la méthode de `Salarié`
-#   * ex. `calcul_revenu()`
-#   * peut ajouter un appel à `bonus()`
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemples de conception avec composition
-
-# %% [markdown]
-# **les interfaces graphiques**
-#
-# * classes de base
-#   * ascenseur de défilement
-#   * cadre
-#   * titre
-# * une fenêtre va être composée des trois classes de base
-# * une interface graphique va être composée de fenêtres
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### héritage *vs* composition
-
-# %% [markdown] cell_style="center"
-# * héritage:
-#
-# ```python
-# class Circle(Graphic):
-#     def __init__(self, graphic_context = None):
-#         Graphic.__init__(self, graphic_context)
-# ```
-
-# %% [markdown] cell_style="center"
-# * composition:
-#
-# ```python
-# class Truck:
-#    def __init__(self, wheel_diameter):
-#        self.wheel = Wheel(wheel_diameter)
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### héritage *vs* composition - suite
-#
-# * ce n'est pas parce que un `Truck` a exactement un `Wheel`
-# * qu'un camion est un volant
-# * en cas de doute, posez vous la question
-#   * est-ce que l'objet X **est** un objet Y
-#   * ou est-ce qu'il **possède** ou **contient** un objet Y
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## héritage - discussion
-
-# %% [markdown] slideshow={"slide_type": ""}
-# * imaginez que vous avez une classe `Vecteur2D`
-# * vous avez besoin d'une classe `Vecteur3D`
-# * on pourrait se dire
-#   * `Vecteur3D` hérite de `Vecteur2D`
-#   * et lui ajoute un champ `z`
-# * c'est une très mauvaise idée
-#   * l'ensemble des vecteurs 3D
-#   * n'est pas inclus dans l'ensemble des vecteurs 2D
-#   * c'est exactement  le contraire !
+# # POO : avancé
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## classes et instances
@@ -188,7 +97,7 @@ foo.x
 # ### classe = usine à objets
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * une classe est une usine à instance
+# * une classe est une usine à instances
 # * peut créer **plusieurs instances** d’une même classe
 # * en cela une classe est **différente d’un module**
 
@@ -223,36 +132,11 @@ class C(C1, C2):
 o1 = C()
 o2 = C()
 
-# %%
-C.mro()
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### *Method Resolution Order*
+# %% [markdown] tags=["level_intermediate"] slideshow={"slide_type": "slide"}
+# ## attributs de classe
 
-# %% [markdown] tags=["level_intermediate"]
-# * l'héritage entre les classes
-# * détermine l'ordre dans lequel sont cherchés les attributs
-# * en sus de l'instance elle-même
-# * en anglais *method resolution order*
-# * ou `mro()` (une méthode de la classe)
-# * concept surtout utile avec l'héritage multiple
-# * mais qui me semble pertinent pour illustrer notre propos
-
-# %% tags=["level_intermediate"]
-C.mro()
-
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# #### attributs non fonctionnels (≠ méthode)
-
-# %% [markdown] tags=["level_intermediate"]
-# * on peut utiliser les même concepts
-# * pour gérer des attributs de donnée (i.e. ≠ méthode)
-
-# %% [markdown]
-# ### attributs de classe
-
-# %% slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% slideshow={"slide_type": ""} tags=["level_intermediate"]
 class Factory:
     # un compteur global à la classe
     all_labels = []
@@ -261,6 +145,8 @@ class Factory:
         self.label = label
         # ici je pourrais aussi bien écrire
         # Factory.all_labels.append(label)
+        # MAIS PAS self.all_labels = self.all_labels + [label]
+        # pourquoi ?
         self.all_labels.append(label)
 
 Factory.all_labels
@@ -274,35 +160,31 @@ f2 = Factory('second')
 Factory.all_labels
 
 
-# %% cell_style="center" slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% tags=["level_intermediate"] slideshow={"slide_type": "slide"}
+# %load_ext ipythontutor
+
+# %% cell_style="center" slideshow={"slide_type": ""} tags=["level_intermediate"]
 # %%ipythontutor width=1000 height=400
 class Factory:
     all_labels = []
     def __init__(self, label):
         self.label = label
-        # ici je pourrais aussi bien écrire
-        # Factory.all_labels.append(label)
         self.all_labels.append(label)
 f1 = Factory('premier')
 f2 = Factory('second')
 
-# %%
-# %load_ext ipythontutor
-
-# %%
-# %%ipythontutor width=1000 height=400 curInstr=11
+# %% tags=["level_advanced"]
+# %%ipythontutor width=1000 height=400 curInstr=1
 class Factory:
-    # un compteur global à la classe
     all_labels = []
 
     def __init__(self, label):
         self.label = label
-        Factory.all_labels.append(label)
+        # cette forme ne fonctionne pas comme attendu
+        self.all_labels = self.all_labels + [label]
 
 f1 = Factory('premier')
 f2 = Factory('second')
-
-f1.all_labels = 'overridden'
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -345,8 +227,8 @@ getattr(bar, attribut)
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * avec `getattr` le nom de l'attribut est un `str`
-# * pas restreint par la syntaxe des identifieurs
-# * de plus on peut le **calculer**
+#   * pas restreint par la syntaxe des identifieurs
+#   * de plus on peut le **calculer**
 # * la fonction *builtin* `setattr`
 #   * fait ce que vous croyez..
 
@@ -478,66 +360,6 @@ o.__class__.__bases__
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## méthode
-
-# %% [markdown]
-# * une méthode est une fonction rangée dans un attribut de la classe
-# * la seule différence avec une fonction classique est que
-#   * lors de l’appel de la méthode par une instance
-#   * Python passe automatiquement une référence vers l’instance
-# * cette référence s'appelle traditionnellement `self`
-#   * ainsi une méthode peut accéder à l'instance,  
-#     et *a fortiori* aux attributs de l'instance
-#   * `self` n'est pas un mot-clé, mais consacré par l'usage
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### déclaration, `self`
-
-# %% [markdown]
-# * lors de la déclaration de la méthode
-#   * il faut prévoir un premier argument
-#   * qui correspond au sujet de la méthode
-#   * et qui s'appelle traditionnellement `self`
-# * ainsi les opérations sur `self` peuvent modifier l’instance
-
-# %%
-class MaClasse:                # une classe
-    def setdata(self, value):  # une méthode
-        self.value = value     # crée l'attribut 'value' dans
-                               # l'espace de nommage de l'instance (self)
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### appel
-
-# %% [markdown]
-# * lorsqu'on appelle une méthode
-#   * on dit aussi qu'on *envoie* une méthode à un objet `x`
-# * pas besoin de passer `self`
-# * python le passe automatiquement
-
-# %% cell_style="split"
-class MaClasse:
-    def setdata(self, value):
-        self.value = value
-
-# on crée 1 instance
-x = MaClasse()
-
-# %% cell_style="split"
-# x est automatiquement passé
-# comme 1er argument - donc lié à self
-x.setdata("alice")
-x.value
-
-# %% cell_style="split"
-# l’appel est équivalent à
-MaClasse.setdata(x, "bob")
-
-x.value
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## un exemple de classe
 
 # %%
@@ -596,11 +418,10 @@ MaClasse.__bases__
 class MaClasse:
     def __init__(self, value):
         self.value = value
-    def square(self):
-        return self.value ** 2
-    # pour anticiper un peu
     def __repr__(self):
         return f"[MC:{self.value}]"
+    def square(self):
+        return self.value ** 2
 
 # avec __repr__ on a modifié
 # la façon de montrer un objet
@@ -948,6 +769,27 @@ D.__mro__
 # %% cell_style="split"
 C.mro()
 
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ### *Method Resolution Order*
+
+# %% [markdown] tags=["level_intermediate"]
+# * l'héritage entre les classes
+# * détermine l'ordre dans lequel sont cherchés les attributs
+# * en sus de l'instance elle-même
+# * en anglais *method resolution order*
+# * ou `mro()` (une méthode de la classe)
+# * surtout utile avec l'héritage multiple
+
+# %% tags=["level_intermediate"]
+C.mro()
+
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# #### attributs non fonctionnels (≠ méthode)
+
+# %% [markdown] tags=["level_intermediate"]
+# * on peut utiliser les même concepts
+# * pour gérer des attributs de donnée (i.e. ≠ méthode)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### pour aller plus loin
@@ -969,6 +811,8 @@ C.mro()
 #   dès qu'on ajoute un attribut de donnée
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
+# sans super()
+
 class C:
     def __init__(self, x):
         print("init x par superclasse")
@@ -1017,6 +861,32 @@ d = D(100, 200)
 # * et d’appeler une méthode dans *une* super classe
 # * sans avoir à spécifier laquelle
 # * c'est l'héritage qui joue
+
+# %% cell_style="split" slideshow={"slide_type": "slide"}
+# la même chose que tout à l'heure
+# mais avec super()
+
+class C:
+    def __init__(self, x):
+        print("init x par superclasse")
+        self.x = x
+
+class D(C):
+
+    def __init__(self, x, y):
+        # c'est qd meme plus simple !
+        super().__init__(x)
+        print("init y par classe")
+        self.y = y
+
+
+
+# %% cell_style="split"
+c = C(10)
+
+# %% cell_style="split"
+d = D(100, 200)
+
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 # super() est souvent rencontrée
