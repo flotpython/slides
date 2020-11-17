@@ -25,7 +25,7 @@
 # %% [markdown] slideshow={"slide_type": "slide"}
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
+# <span>Thierry Parmentelat</span>
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
@@ -51,7 +51,8 @@ from plan import plan; plan("classes", "surcharge")
 # * ce dont il est question, c'est de donner les moyens  
 #   à chaque classe de mieux s'intégrer dans le langage
 #
-# * comment ?  en redéfinissant des méthodes *spéciales:*
+# * comment ?  en redéfinissant des méthodes *spéciales:*  
+#   (encore appelées *dunder methods*)
 #   * qui s'appellent toujours `__X__`
 #   * ou `X` est bien sûr en relation avec l'opération
 #   * e.g. `__add__` a effet sur l'opérateur `+`
@@ -61,7 +62,7 @@ from plan import plan; plan("classes", "surcharge")
 
 # %% [markdown]
 # * la surcharge d’opérateurs est optionnelle
-#   * quoique: `__init__` et `__str__`
+#   * quoique: `__init__` et `__repr__`
 # * toutes les méthodes que l’on peut surcharger sont décrites dans  
 #   https://docs.python.org/3/reference/datamodel.html#special-method-names
 #
@@ -78,7 +79,7 @@ from plan import plan; plan("classes", "surcharge")
 #   * `__str__`: pour redéfinir `str(x)` et `print()`
 
 # %%
-# en l'absence de redéfinition 
+# en l'absence de redéfinition
 # la présentation est aride
 # et identique pour les deux modes repr/str
 
@@ -152,7 +153,7 @@ print(a)
 # * dans l'esprit:
 #   * `__repr__` est censé être non-ambigu
 #   * et `__str__` est censé être joli
-# * mais ce n'est pas toujours facile à suivre 
+# * mais ce n'est pas toujours facile à suivre
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `__str__` et `__repr__`
@@ -190,12 +191,12 @@ print(b)
 # ## surcharge d’opérateurs numériques
 
 # %%
-# pour redéfinir l'addition, sans surprise on surcharge __add__ 
+# pour redéfinir l'addition, sans surprise on surcharge __add__
 # ici on choisit un comportement folklorique
 # qui fait une espèce de concaténation
 
 class C():
-    
+
     def __init__(self, value):
         self.value = value
 
@@ -216,7 +217,7 @@ s.value
 # on ne peut pas additionner C avec un str
 try:
     C('abc') + 'def'
-    
+
 except AttributeError as e:
     print("OOOPS", e)
 
@@ -229,7 +230,7 @@ except AttributeError as e:
 
 try:
     'abc' + C('abc')
-    
+
 except TypeError as e:
     print("OOOPS", e)
 
@@ -238,13 +239,11 @@ except TypeError as e:
 # ### opérateurs binaires
 
 # %% [markdown]
-# pour faire proprement, il faut
+# pour faire proprement, il faut envisager
 #
-# * envisager le mélange avec d'autres types
-#   * polymorphisme :
+# * le mélange **avec d'autres types** (polymorphisme)
 #   * *C + str, C + int, C + float*…
-# * envisager qu'un objet de notre classe peut être
-#   * commutatif :
+# * que notre objet peut aussi être **à gauche** de l'opérateur
 #   * *str + C, int + C, float + C*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -283,16 +282,18 @@ class C1():
 # **c'est beaucoup plus simple si on redéfinit `str()`**
 
 # %%
-# une deuxième amélioration 
+# une deuxième amélioration
 
 class C2():
     def __init__(self, value):
         self.value = value
+
     # ici on redéfinit __str__
     def __str__(self):
         return str(self.value)
+
     def __add__(self, operand):
-        # comme on a redéfini __str__, 
+        # comme on a redéfini __str__,
         # on peut écrire tout simplement :
         return C2(self.value + '-' + str(operand))
 
@@ -309,7 +310,7 @@ C2('alice') + 'bob'
 # **vous voyez pourquoi on redéfinit souvent `__repr__`**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### polymorphisme - v2 
+# ### polymorphisme - v2
 
 # %% cell_style="split"
 # un autre souci avec cette approche
@@ -319,7 +320,7 @@ class Sub2(C2):
 
 
 # %% cell_style="split"
-# si on additionne deux instances 
+# si on additionne deux instances
 # de la sous-classe
 s2 = Sub2('alice') + Sub2('bob')
 
@@ -361,12 +362,13 @@ class C3():
 (C3('alice') + 'bob').value
 
 # %% cell_style="split"
-# et cette fois
+# et cette fois on peut ajouter
+# avec un str
 s = C3('alice') + 'bob'
 s
 
 # %% cell_style="split"
-# on a bien un objet 
+# et on a bien un objet
 # de la classe C3
 type(s)
 
@@ -375,14 +377,14 @@ type(s)
 # ### opérateurs binaires : à droite
 
 # %% [markdown]
-# * quand on fait `C('bob') + 'alice'
+# * quand on fait `C('bob') + 'alice'`
 #   * c'est à l'opérande gauche
 #   * qu'on envoie la méthode `__add__`
 # * si on veut pouvoir ajouter dans l'autre sens
 #   * c'est-à-dire `'bob' + C('alice')`
 # * il suffit de redéfinir `__raddr__`
 #   * le `r` voulant dire *right*
-#   * pour quand le sujet de la méthode est à droite 
+#   * pour quand le sujet de la méthode est à droite
 
 # %% slideshow={"slide_type": "slide"}
 # opérateurs à droite
@@ -397,7 +399,7 @@ class CR():
 
     # dans le cas d'une algèbre commutative on peut juste faire
     # __raddr__ = __addr__
-    # mais ici bien la concaténation n'est pas commutative
+    # mais ici, la concaténation n'est pas commutative
     def __radd__(self, leftop):
         return self.__class__(str(leftop) + '-' + self.value)
 
@@ -451,17 +453,17 @@ type(o1), type(o2)
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * dans le cadre du *duck typing*
-# * il est fréquent de faire référence 
+# * il est fréquent de faire référence
 #   * à des grandes familles d'objet
 #   * comme e.g. séquences, itérables, callables, ...
 # * par exemple une *séquence*
 #   * doit implémenter `x[i]` avec i entier
 #   * et `len(x)`
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### le protocole itérable
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
 # * un objet est itérable
 #   * lorsque qu'on peut écrire `for i in x`
 # * deux moyens
@@ -469,10 +471,10 @@ type(o1), type(o2)
 #   * implémenter `__iter__()`
 #   * qui doit retourner un itérateur
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### le protocole iterator
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # * un objet est un itérateur si
 #   * il implémente `__next__()`
 #   * qui retourne l'objet suivant
@@ -481,10 +483,10 @@ type(o1), type(o2)
 # * un itérateur est donc toujours itérable
 # * une fonction génératrice renvoie un itérateur
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### itérable avec générateur
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_advanced"]
 from itertools import count
 
 class Iterable:
@@ -502,7 +504,7 @@ class Iterable:
             yield square
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_advanced"]
 # équivalent à 
 
 def IterableGenerator(n):
@@ -510,17 +512,17 @@ def IterableGenerator(n):
         square = i ** 2
         if square >= 20:
             return
-        yield square        
+        yield square
 
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # ***
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_advanced"]
 for n in Iterable(20):
     print(n)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_advanced"]
 for n in IterableGenerator(20):
     print(n)
 
@@ -531,7 +533,7 @@ for n in IterableGenerator(20):
 # %% [markdown]
 # * un objet est callable si on peut évaluer `x()`
 # * pas réservé aux fonctions et aux classes
-# * les instances d'une classe 
+# * les instances d'une classe
 #   * qui implémente `__call__`
 #   * sont callables également
 # * confusion fréquente
@@ -545,13 +547,13 @@ for n in IterableGenerator(20):
 class SumOffset:
     """"
     chaque instance possède un offset
-    lorsque l'instance est appelée elle fait la 
+    lorsque l'instance est appelée elle fait la
     somme de ses arguments plus l'offset
     """
     def __init__(self, offset):
         print("init")
         self.offset = offset
-        
+
     def __call__(self, *args):
         print("calling..")
         return sum(args) + self.offset
@@ -579,65 +581,11 @@ additionneur100(1000, 2000)
 #   *resp.* &nbsp; `A<B`, &nbsp; `A>B`, &nbsp; `A<=B`, &nbsp; `A>=B`, &nbsp; `A==B`, &nbsp; `A!=B`
 #
 # * `__bool__` : appelé pour tester si un objet est vrai ou faux
-# * `__len__`: redéfinir `len(x)` 
+# * `__len__`: redéfinir `len(x)`
 # * `__getattr__`, `__slot__`, `__getattribute__`  
 #   impliqués dans le protocole de recherche d'attributs
 #
 # * ... liste très très complète
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## attributs privés
-
-# %% [markdown]
-# **Rappels**
-#
-# * pas de notion d'attributs protégé / privé en Python
-#   * on peut accéder à n’importe quels attributs d’une classe
-# * on représente un attribut privé avec une simple convention de nommage 
-#   * les attributs qui commencent par `_` sont considérés comme privés
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### trois types d’attributs privés réservés
-
-# %% [markdown]
-# * les attributs `_*` ne sont pas importés par `from module import *`
-# * les attributs `__*__` sont les attributs privés définis par Python. On ne doit pas nommer nos propres attributs privés avec cette convention
-# * les attributs `__*` (sans `__` à la fin) définis dans une classe sont automatiquement renommés à la compilation (`__spam` dans la classe Ham devient `_Ham__spam`). On appelle cela *name mangling*
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### name mangling
-
-# %% cell_style="split"
-# utiliser le name mangling pour 
-# un attribut privé qui
-# ne doit pas être modifié
-# par une sous-classe par accident
-class A():
-    def __init__(self):
-        self.__a = "dans A"
-    def __str__(self):
-        return self.__a
-
-class B(A):
-    def __init__(self):
-        A.__init__(self)
-        # on est sûr de n'interférer avec personne
-        self.__a = "dans B" 
-
-
-# %% cell_style="split"
-b = B()
-print(b)
-
-# %% cell_style="split"
-print(b.__dict__)
-
-# %% cell_style="split"
-try:
-    b.__a
-except Exception as exc:
-    print(f"OOPS {type(exc)} {exc}")
-
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## classes imbriquées
@@ -662,114 +610,3 @@ A.B()
 
 # %%
 A().B()
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## quand utiliser la POO en Python ?
-
-# %% [markdown]
-# * utilisation de base
-#   * sans héritage mais avec encapsulation
-#   * bénéfice de grouper le code et les données
-#   * dans des espaces de noms étanches
-# * héritage
-#   * demande en général un peu de conception en amont
-#   * ce n'est **pas forcément le plus gros bénéfice**
-#   * sauf à mon humble avis pour la surcharge des opérateurs
-#   * qui s'avère vite utile - homéopatiquement
-#   * une fois qu'on a passé le barrage d'entrée
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## modules ou classes ?
-
-# %% [markdown]
-# * utiliser une classe dès qu'on a besoin
-#   * de créer des instances multiples
-#   * d'exploiter la notion d’héritage
-# * se contenter d'un module si on veut simplement
-#   * isoler des espaces de nommages
-#   * créer des méthodes statiques
-#   * factoriser du code
-# * opinion personnelle
-#   * ne me souviens pas d'avoir écrit un module sans classe
-#   * ou alors pour grouper quelques helpers → `utils.py` 
-#   * ce qui ne veut pas dire qu'un module ne contient jamais de fonction
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour réutiliser du code en python
-
-# %% [markdown]
-# * fonctions
-#   * pas d'état après exécution
-# * modules
-#   * garde l'état
-#   * une seule instance par programme
-# * **classes**
-#   * **instances multiples**
-#   * **chacune garde l'état**
-#   * **héritage**
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour conclure
-
-# %% [markdown]
-# * *design patterns*
-#   * quelques idées assez génériques éprouvées
-#   * pas de magie ou de théorie complexe dans les design patterns
-#   * liste de recettes empiriques des auteurs
-#   * propices à l'exploitation de l'héritage
-#
-# ![design patterns](media/book-design-patterns.png)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## partie optionnelle
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### utiliser un opérateur ou la méthode `__x__` ?
-
-# %% [markdown]
-# * en version courte: **utilisez les opérateurs**
-# * résultat est équivalent parce que le même code est utilisé, mais la durée d’exécution peut différer à cause d’optimisations de l’interpréteur
-# * l’interpréteur va optimiser l’appel à la fonction lors de utilisation des opérateurs, mais pas lors de l’appel direct à la méthode `__x__`
-#   * spécifique à CPython, il faut donc tester ce comportement pour les autres implémentations de Python
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### un peu de profiling
-
-# %% [markdown]
-# * voyez le module `timeit`
-#   * https://docs.python.org/3/library/timeit.html
-
-# %%
-from timeit import timeit
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### utiliser un opérateur ou la méthode `__x__` ?
-
-# %%
-timeit(setup = "L = range(1000)", number = 100000, stmt = "1000 in L")
-
-# %%
-timeit(setup = "L = range(1000)", number = 100000,
-       stmt = "L.__contains__(1000)")
-
-# %% [markdown]
-# ```
-# timeit(setup = "L = range(1000)", number = 100000000, stmt = "0 in L")
-# 9.534808637050446
-# timeit(setup = "L = range(1000)", number = 100000000, stmt = "L.__contains__(0)")
-# 19.80092801299179
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### profiling et notebooks
-
-# %% [markdown]
-# beaucoup de [fonctionnalités très intéressantes dans les *magic* IPython](https://ipython.readthedocs.io/en/stable/interactive/magics.html), comme `%timeit`
-
-# %%
-L = range(1000)
-# %timeit -n 100000 0 in L
-
-# %%
-L = range(1000)
-# %timeit -n 100000 L.__contains__(0)

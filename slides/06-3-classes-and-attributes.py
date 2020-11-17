@@ -29,7 +29,7 @@
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("classes", "encapsulation")
+from plan import plan; plan("classes", "attributs")
 
 
 # %% [markdown]
@@ -50,27 +50,6 @@ from plan import plan; plan("classes", "encapsulation")
 #   * **héritage**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### rappel: primer
-
-# %% cell_style="split"
-class MyFirstClass:
-
-    def __init__(self, nom, age):
-        self.nom = nom
-        self.age = age
-
-    def __repr__(self):
-        return (f"je suis {self.nom}, "
-                f"j'ai {self.age} ans")
-
-
-# %% cell_style="split"
-person = MyFirstClass(
-    "Jean Dupont", 25)
-person
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### programmation orientée objet  
 #   pourquoi et comment ?
 
@@ -85,6 +64,30 @@ person
 #
 # * espaces de nom
 # * héritage
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### modularité
+
+# %% [markdown]
+# * du code modulaire
+#   * grouper le code dans une classe
+#   * grouper les données dans un objet
+#
+# * plus on découpe en petits morceaux
+#   * plus on a de chances de pouvoir réutiliser
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### réutilisabilité
+
+# %% [markdown]
+# * DRY *don't repeat yourself*
+#   * chaque fonctionnalité écrite une seule fois
+# * maintenance plus simple
+# * du code générique
+#   * ex: un simulateur fait "avancer" une liste d'objets
+#   * dès qu'un objet explique comment il avance
+#   * il peut faire partie de la simulation
+# * c'est là qu'intervient l'héritage
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### avertissement : POO et langage
@@ -107,28 +110,6 @@ person
 #   * c'est le *duck typing*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### modularité
-
-# %% [markdown]
-# * du code modulaire
-#   * grouper le code dans une classe
-#   * grouper les données dans un objet
-# * c'est là qu'interviennent les espaces de nom
-# * (comme avec les notions de module et de package)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### réutilisabilité
-
-# %% [markdown]
-# * DRY: chaque fonctionnalité écrite une seule fois
-# * maintenance plus simple
-# * du code générique
-#   * ex: un simulateur fait "avancer" une liste d'objets
-#   * dès qu'un objet explique comment il avance
-#   * il peut faire partie de la simulation
-# * c'est là qu'intervient l'héritage
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## espaces de nom
 
 # %% [markdown]
@@ -144,10 +125,10 @@ person
 # ### espaces de nom - pourquoi
 
 # %% [markdown]
-# * permet de lever l'ambigüité en cas d'homonymie
-# * cf. exemple du C *old-school*
 # * les espaces de nom sont imbriqués (*nested*)
 #   * ex. `package.module.classe.methode`
+# * permet de lever l'ambigüité en cas d'homonymie
+#   * cf. exemple du C *old-school*
 # * on peut accéder à tous les objets
 #   * dès qu'on sait partir d'une variable
 #   * par exemple un module importé
@@ -155,7 +136,7 @@ person
 #   * i.e. la résolution est faite à *runtime*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### digression - variables et attributs
+# ### espaces de nom - variables et attributs
 
 # %% [markdown] cell_style="split"
 # #### deux mondes étanches
@@ -164,7 +145,10 @@ person
 # * attributs
 
 # %% [markdown] cell_style="split"
-# #### se mélangent
+# #### se mélangent 
+#
+# apparemment seulement  
+# apprenez à bien lire
 
 # %% [markdown]
 # * typiquement dans une expression comme `a.b.c.d`
@@ -195,14 +179,14 @@ person
 #   *i.e.* à *runtime*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## héritage
+# ## résolution d'attribut
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * la **résolution des attributs**
-# * fournit la **mécanique de base**
-#   * sur laquelle on a - très peu - élaboré
-# * pour implémenter l'héritage
-# * on verra ça en détails plus tard
+# * fournit la **mécanique de base** de la POO
+# * sur laquelle d'ailleurs on a - très peu - élaboré
+#   * pour implémenter l'héritage
+#   * on verra ça en détails plus tard
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ex: une classe et une instance
@@ -260,7 +244,22 @@ class Point:
 
 point = Point(2, 3)
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### digression : l'attribut spécial `__dict__`
+#
+# * les (objets qui servent d') espaces de nom ont un attribut spécial
+# * qui s'appelle `__dict__` 
+# * qui permet de voir *en lecture seule* le contenu de l'espace de nom
+
+# %%
+import math
+
+'pi' in math.__dict__
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### deux espaces de nom (classe et instance) - fin
+
+# %% cell_style="split" slideshow={"slide_type": ""}
 # la classe possède
 # l'attribut '__init__'
 '__init__' in Point.__dict__
@@ -329,7 +328,7 @@ vector = Vector(2, 2)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # pour visualiser la même chose à base d'introspection dans le code
 #
-# tous les objets ont un attribut `__dict__`
+# (rappel : tous les espaces de nom ont un attribut `__dict__`)
 
 # %% slideshow={"slide_type": ""}
 # les attributs 'intéressants' de Vector
@@ -354,16 +353,13 @@ list(vector.__dict__)
 #   * cherché dans la classe: oui, on prend ça
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### héritage ?
+# ### exemple avec héritage
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * ce n'est pas encore de l'héritage  
 #   puisque pour l'instant on n'a qu'une classe
-# * mais on verra que l'héritage  
+# * mais l'héritage  
 #   est une simple prolongation de cette logique
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## exemple avec héritage
 
 # %%
 # une classe fille sans aucun contenu
@@ -396,188 +392,67 @@ subvector = SubVector(6, 8)
 #   * dans la super-classe : ok, on prend ça
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### *Method Resolution Order*
-
-# %% [markdown]
-# * l'héritage entre les classes
-# * détermine l'ordre dans lequel sont cherchés les attributs
-# * en sus de l'instance elle-même
-# * en anglais *method resolution order*
-# * ou `mro()` (une méthode de la classe)
-# * concept surtout utile avec l'héritage multiple
-# * mais qui me semble pertinent pour illustrer notre propos
-
-# %%
-SubVector.mro()
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### attributs non fonctionnels (≠ méthode)
-
-# %% [markdown]
-# * on peut utiliser les même concepts
-# * pour gérer des attributs de donnée (i.e. ≠ méthode)
-
-# %% slideshow={"slide_type": "slide"}
-class Factory:
-    # un compteur global à la classe
-    all_labels = []
-
-    def __init__(self, label):
-        self.label = label
-        # ici je pourrais aussi bien écrire
-        # Factory.all_labels.append(label)
-        self.all_labels.append(label)
-
-Factory.all_labels
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-f1 = Factory('premier')
-Factory.all_labels
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-f2 = Factory('second')
-Factory.all_labels
-
-
-# %% cell_style="center" slideshow={"slide_type": "slide"}
-# %%ipythontutor width=1000 height=400
-class Factory:
-    all_labels = []
-    def __init__(self, label):
-        self.label = label
-        # ici je pourrais aussi bien écrire
-        # Factory.all_labels.append(label)
-        self.all_labels.append(label)
-f1 = Factory('premier')
-f2 = Factory('second')
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### **remarque importante** : lecture ≠ écriture
+# ## **remarque importante** : lecture ≠ écriture
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * le mécanisme de recherche d'attribut qu'on vient de voir
 # * ne fonctionne que **pour la lecture des attributs**
-# * donc ici en partant de l'instance
-# * on trouve bien l'attribut de la classe
 
 # %% cell_style="split"
-Factory.all_labels is f1.all_labels
+# quand on évalue un attribut en lecture
+# on recherche en partant de l'objet
+# et donc ici on trouve la méthode 
+# qui est un attribut de la classe
+subvector.length()
 
 # %% cell_style="split"
-f1.all_labels
+# mais quand on écrit un attribut
+# c'est une autre histoire complètement
+# l'attribut est créé directement dans l'objet
+subvector.foo = 12
 
-# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
-# #### **remarque importante** : lecture ≠ écriture
+'foo' in subvector.__dict__
 
-# %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# * mais attention lorsqu'on **écrit** un attribut
-#   * *i.e.* si l'expression `foo.bar` est à gauche d'une affectation
-# * alors l'attribut `bar` est créé/écrit **dans l'objet `foo`**
-# * il n'y a **pas de recherche** dans ce cas !
-
-# %% cell_style="split"
-# ici on va créer un nouvel attribut
-# directement dans l'instance
-f1.all_labels = 'overridden'
-f1.all_labels
-
-# %% cell_style="split"
-f2.all_labels
-
-# %% cell_style="split"
-f1.all_labels
-
-
-# %% slideshow={"slide_type": "slide"}
-# %%ipythontutor width=1000 height=400 curInstr=11
-class Factory:
-    # un compteur global à la classe
-    all_labels = []
-
-    def __init__(self, label):
-        self.label = label
-        Factory.all_labels.append(label)
-
-f1 = Factory('premier')
-f2 = Factory('second')
-
-f1.all_labels = 'overridden'
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### lecture ≠ écriture - discussion
 #
+# * mais attention lorsqu'on **écrit** un attribut
+#   * *i.e.* si l'expression `foo.bar` est à gauche d'une affectation
+# * alors l'attribut `bar` est créé/écrit **dans l'objet `foo`**
+# * il n'y a **pas de recherche** dans ce cas !
+# * c'est le cas notamment à chaque fois qu'un constructeur fait  
+#   `self.name = name`
 # * cela ne se remarque pas avec les méthodes
 #   * car c'est très rare d'écrire `instance.methode = ...`
 # * mais du coup, lire et écrire un attribut ne **sont pas symétriques**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ce phénomène exhibe un très lointain rapport
-# * avec le scope lexical des variables
-# * et le `UnboundLocalError`
+# ## l'encapsulation
 
-# %% cell_style="split"
-foo = 12
-
-def fun():
-    # on peut lire la variable
-    # de scope englobant
-    print(foo)
-fun()
-
-
-# %% cell_style="split"
-def bar():
-    # ou créer une variable
-    # dans ce scope
-    foo = 13
-bar()
-print(foo)
-
-
-# %%
-def tutu():
-    # mais pas les deux
-    try:
-        print(foo)
-        foo = 13
-    except UnboundLocalError as e:
-        print("OOPS", e)
-tutu()
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## résumé
-
-# %% [markdown] slideshow={"slide_type": ""}
-# * le mécanisme d'annotation des objets par les attributs  
-#   et de recherche le long d'un chemin
-# * constitue le coeur de ce qui est à l'oeuvre  
-#   lorsqu'on fait de la Programmation Objet
-# * on va le voir sur des exemples plus pratiques
-# * avec comme avantages
-#   * la modularité / encapsulation
-#   * la factorisation de code / réutilisabilité
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## encapsulation
-
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # * consiste à définir un **ensemble d'opérations**
 # * qui sont **les seules à travers lesquelles**  
 #   on peut manipule ces objets
 # * en préservant de bonnes propriétés / invariants
 # * (que idéalement on peut prouver)
 
+# %% [markdown] cell_style="split"
+# dans cette section :
+#
+# * mécanismes permettant (ou pas) de garantir
+# * que les objets sont exclusivement manipulés
+# * au travers des méthodes et pas autrement
+
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # ### dans d'autres langages
 #
-# * on trouve des mécanismes de protection
+# * on trouve des **mécanismes de protection**
 # * notamment attributs privés ou publics
 # * visant à éviter les erreurs
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
-# ### moins le cas en python
+# ### pas de protection en Python
 #
 # * tradition  
 #   "*we're all consenting adults here*"
@@ -587,38 +462,17 @@ tutu()
 # * on peut arriver à un résultat convaincant
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### applications
+# ### dans le code Python "réel"
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * par exemple `numpy.ndarray`
-#   * qui enforce le type des différents composants
-# * classe d'utilitaires réseau
-#   * qui conservent l'état de la connexion
-#   * pour faire ce qu'il faut au bon moment
-# * ...
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### bénéfices
-
-# %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# c'est un des premiers bénéfices de la POO
-#
-# * que de pouvoir grouper les données
-# * avec les traitements
-# * dans une unité de programmation
-# * facilement réutilisable
-# * pas besoin d'héritage pour tout ça
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### code réel
-
-# %% [markdown] slideshow={"slide_type": ""}
-# * très souvent, pas de protection particulière
+# * très souvent, pas de protection particulière  
+#   notamment, **pas de *getter/setter***
+# * on expose directement les attributs
 # * "we're all consenting adults here"
 # * l'idée étant de pouvoir remplacer plus tard, si nécessaire,  
 #   l'attribut par une `property` qui fasse les contrôles
 
-# %% cell_style="split"
+# %% cell_style="split" slideshow={"slide_type": "slide"}
 # une jauge a une valeur forcément
 # dans un intervalle fixe
 #
@@ -632,55 +486,80 @@ class Gauge:
 # le code utilisateur peut lire
 # et écrire librement l'objet
 
+# on ne devrait pas écrire ceci
+gauge = Gauge(0)
+gauge.value = -100_000
+
 
 # %% [markdown] cell_style="split"
-# En C++ / Java typiquement, on définirait ici
-# * un attribut privé `_value`
-# * deux méthodes *getter/setter*
+# * En C++ / Java typiquement, on définirait ici
+#   * un attribut privé `_value`
+#   * deux méthodes *getter/setter*
 #
-# le code utilisateur accède l'objet uniquement
-# au travers de ces deux méthodes
-#
+# * le code utilisateur accède l'objet
+#   * uniquement au travers de ces deux méthodes
+#   * qui peuvent faire des contrôles
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## mécanismes Python pour l'encapsulation
+# ### deux mécanismes en Python pour l'encapsulation
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * les mécanismes offerts par Python
-#   * visibilité des attributs
-#   * properties
+# Mais Python fournit tout de même deux outils très utiles
+#
+# * conventions de nommage des attributs
+# * properties
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### visibilité des attributs
+# ## conventions de nommage des attributs
 
 # %% [markdown]
 # * pas de vraie notion d'attributs privé/public
-# * **toutefois** des conventions de nommage
+# * **toutefois** des conventions de nommage, dans la PEP008
+#
+# en version courte :
+#
+#
+# * les attributs `_*`  
+#   correspondent en gros aux membres protégés
+# * les attributs `__*` (sans `__` à la fin)  
+#   correspondent en gros aux membres privés
+# * les attributs `__*__` sont réservés;  
+#   on ne doit pas nommer nos propres attributs de cette façon
+#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### PEP8
+# ### *single leading underscore*
 #
 # * `_single_leading_underscore` :
-#   * weak "internal use" indicator. E.g. `from M import *` does not import objects whose name starts with an underscore.
+#   * weak "internal use" indicator.  
+#     e.g. `from M import *` does **not import** objects  
+#     whose name starts with an underscore.
 #   * correspond *en gros* aux champs protégés
 #   * **enforcé** seulement pour les **modules**
 #   * dans les classes, cela est juste une indication
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### PEP8
+# ### *double leading underscore*
 #
 # * `__double_leading_underscore` :
-#   * when naming a class attribute, invokes name mangling  
-#     (inside class `FooBar`, `__boo` becomes `_FooBar__boo` ; see below).
+#   * when naming a class attribute, invokes ***name mangling***  
+#     e.g. inside class `FooBar`,  
+#     `__boo` becomes `_FooBar__boo`
 #
 #   * correspond *en gros* aux champs privés
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### PEP8 ...
+# ### *double leading and trailing underscore*
 #
 # * `__double_leading_and_trailing_underscore__`
-#   *  "magic" objects or attributes that live in user-controlled namespaces. E.g. `__init__` , `__import__` or `__file__` .
+#   *  "magic" objects or attributes that live in user-controlled namespaces.  
+#      e.g. `__init__` , `__import__` or `__file__` .
 #   * **never invent such names**; only use them as documented.
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### *single trailing underscore*
+#
+# et pour être exhaustif (ne s'applique plus aux attributs)
 #
 # * `single_trailing_underscore_` :
 #   * used by convention to avoid conflicts with Python keyword, e.g.
@@ -709,39 +588,53 @@ except AttributeError as e:
     print(f"OOPS {type(e)}: {e}")
 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### nommage des attributs et underscores
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ### name mangling - illustrated
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# * le fait de préfixer les attributs d'une classe
-#   * avec un ou deux underscores
-# * n'est donc pas très significatif pour le langage
-# * mais fait passer aux humains
-#   * le message selon lequel
-#   * il vaut mieux ne pas y accéder directement
+# %% cell_style="split" tags=["level_intermediate"]
+# utiliser le name mangling pour
+# un attribut privé qui
+# ne doit pas être modifié
+# par une sous-classe par accident
+class A():
+    def __init__(self):
+        self.__a = "dans A"
+    def __str__(self):
+        return self.__a
+
+class B(A):
+    def __init__(self):
+        A.__init__(self)
+        # on est sûr de n'interférer avec personne
+        self.__a = "dans B"
+
+
+# %% cell_style="split" tags=["level_intermediate"]
+b = B()
+print(b)
+
+# %% cell_style="split" tags=["level_intermediate"]
+print(b.__dict__)
+
+# %% cell_style="split" tags=["level_intermediate"]
+try:
+    b.__a
+except Exception as exc:
+    print(f"OOPS {type(exc)} {exc}")
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## properties
 
-# %% [markdown] slideshow={"slide_type": ""}
-# * on a vu avec la classe Gauge
-# * la dualité attribut/méthodes d'accès
-#   * un attribut privé
-#   * des méthodes pour lire/écrire
-# * avec les *properties* on a le beurre et l'argent du beurre
-#   * le code utilisateur a l'impression d'accéder directement aux attributs
-#   * sauf qu'en fait grâce à la property on peut insérer une couche de logique
-#   * pour vérifier le bon usage, exactement comme avec des get/set
-
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### properties *vs* getter/setter
 
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # dans un langage avec protection "dure" comme C++ ou Java:
 #
 # * on expose très souvent une API à base de `get/set`
 
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # ce n'est pas du tout le cas en Python:
 #
 # * on commence avec un attribut 'nu'
@@ -749,6 +642,55 @@ except AttributeError as e:
 #   on remplace l'attribut par une property
 #
 # * tout en préservant l'API
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### la classe `Gauge`
+#
+# * revenons à notre classe `Gauge`
+# * dans un premier temps on publie notre première version très 'à l'arrache`  
+#   (aucun contrôle sur la valeur de l'attribut)
+# * si ensuite on se rend compte que c'est un problème  
+#   (les gens utilisent mal la classe)
+# * alors on peut
+#   * ajouter des **contrôles sur les accès** à l'attribut
+#   * tout en **conservant la même interface**  
+#     (c-a-d l'accès direct à l'attribut - pas de get/set)
+#   
+# * c'est la raison d'être des *properties**
+# * le beurre et l'argent du beurre
+#   * le code reste simple à lire (pas de get/set)
+#   * mais on peut insérer une chouche de logique qui contrôle le bon usage
+
+# %% slideshow={"slide_type": "slide"} cell_style="split"
+# avant
+
+#  the value should be 0 <= value <= 100 
+class Gauge:
+    def __init__(self, value):
+        self.value = value
+        
+gauge = Gauge(1000)
+gauge.value
+
+
+# %% slideshow={"slide_type": ""} cell_style="split"
+# après
+
+class Gauge:
+    def __init__(self, value):
+        self.value = value
+        
+    # ces deux méthodes sont privées
+    def __get_value(self):
+        return self._value
+    def __set_value(self, new_value):
+        self._value = min(100, max(0, new_value))
+    value = property(__get_value, __set_value)
+
+# maintenant les accès sont contrôlés    
+gauge = Gauge(1000)        
+gauge.value
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### deux formes pour la même construction
@@ -858,59 +800,19 @@ d2.value
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## exercice
+# ## résumé
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * écrire une variante de `Constrained`
-# * avec des bornes variables
-# * passées au constructeur
+# * le mécanisme d'annotation des objets par les attributs  
+#   et de recherche le long d'un chemin
+#   * constitue le coeur de ce qui est à l'oeuvre  
+#     lorsqu'on fait de la Programmation Objet
 #
-# ```
-# >>> ma_jauge = ConstrainedMinMax(500, min=100, max=200)
-# >>> ma_jauge.value
-#     200
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## dataclasses
-
-# %% [markdown]
-# depuis Python-3.7, ce mécanisme permet
+# et 
 #
-# * de définir plus rapidement
-# * une classe comme une simple juxtaposition de données
-
-# %% [markdown]
-# par contre
-#
-# * nécessite les *type hints*
-# * et parce que dispo depuis 3.7, encore assez peu répandu
-
-# %% slideshow={"slide_type": "slide"}
-from dataclasses import dataclass
-
-
-# %% cell_style="split"
-@dataclass
-class Airport:
-    airport_id: int
-    iata: str
-    latitude: float
-    longitude: float
-
-
-# %% cell_style="split"
-nice = Airport(5879, "NCE", 7, 43)
-
-# %% cell_style="split"
-nice
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## résumé encapsulation
-
-# %% [markdown] slideshow={"slide_type": ""}
 # * deux techniques pour aider à l'encapsulation
-#   * sous-titrer le rôle des attributs de données
+#   * "sous-titrer" le rôle des attributs de données  
+#     grâce aux conventions de nommage
 #   * utiliser les properies pour contrôler les accès
 # * en pratique
 #   * Python est un langage pragmatique

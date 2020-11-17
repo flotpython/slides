@@ -67,9 +67,10 @@ PLAN = {
         ]),
         None,
         ("classes", [                               # 06
-            "encapsulation",
-            "héritage",
+            "intro et exemples",
             "surcharge des opérateurs",
+            "classes et attributs",
+            "héritage",
         ]),
         ("compléments", [                           # 07
             "exceptions",
@@ -77,17 +78,16 @@ PLAN = {
             "outils utiles",
             "type hints",
             "asyncio",
-            # "regexps",          # vide pour l'instant
         ]),
-        ("sujets avancés", [                        # 08
-            "context managers",
-            "méthodes statiques et de classe",
-            "décorateurs",
-            "espaces de nommage",
-            "protocole d'accès aux attributs",
-            "générateurs",
-            "métaclasses",
-        ]),
+#        ("sujets avancés", [                        # 08
+#            "context managers",
+#            "méthodes statiques et de classe",
+#            "décorateurs",
+#            "espaces de nommage",
+#            "protocole d'accès aux attributs",
+#            "générateurs",
+#            "métaclasses",
+#        ]),
     ],
 }
 

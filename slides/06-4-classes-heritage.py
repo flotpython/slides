@@ -67,7 +67,7 @@ from plan import plan; plan("classes", "héritage")
 #   * redéfissant sa propre méthode
 #   * qui appelle la méthode de `Salarié`
 #   * ex. `calcul_revenu()`
-#   * peut ajouter un appel à `bonus()` 
+#   * peut ajouter un appel à `bonus()`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples de conception avec composition
@@ -86,10 +86,10 @@ from plan import plan; plan("classes", "héritage")
 # ### héritage *vs* composition
 
 # %% [markdown] cell_style="center"
-# * héritage: 
+# * héritage:
 #
 # ```python
-# class Circle(Graphic): 
+# class Circle(Graphic):
 #     def __init__(self, graphic_context = None):
 #         Graphic.__init__(self, graphic_context)
 # ```
@@ -132,7 +132,7 @@ from plan import plan; plan("classes", "héritage")
 # %% [markdown]
 # * les classes et les instances sont des **objets mutables**
 #   * on peut donc les modifier après création
-#   * même par exemple ajouter des méthodes ! 
+#   * même par exemple ajouter des méthodes !
 #   * **sauf** pour les classes **`builtin`** !
 # * chaque classe et chaque instance
 #   * constitue un espace de nommage
@@ -144,14 +144,14 @@ from plan import plan; plan("classes", "héritage")
 # ### l'instruction `class`
 
 # %% [markdown]
-# * une classe est définie par le mot clef `class` 
+# * une classe est définie par le mot clef `class`
 #   * une classe définit des attributs
 #   * création à l'évaluation de l'instruction `class`
 
 # %%
 # je définis une classe
 class Foo:
-    def x(self): 
+    def x(self):
         pass
 
 
@@ -213,15 +213,96 @@ foo.x
 # ![arbre de classes](media/classes.png)
 
 # %% cell_style="split"
-class C1: 
+class C1:
     pass
-class C2: 
+class C2:
     pass
 class C(C1, C2):
     def func(self, x):
         self.x = 10
 o1 = C()
 o2 = C()
+
+# %%
+C.mro()
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ### *Method Resolution Order*
+
+# %% [markdown] tags=["level_intermediate"]
+# * l'héritage entre les classes
+# * détermine l'ordre dans lequel sont cherchés les attributs
+# * en sus de l'instance elle-même
+# * en anglais *method resolution order*
+# * ou `mro()` (une méthode de la classe)
+# * concept surtout utile avec l'héritage multiple
+# * mais qui me semble pertinent pour illustrer notre propos
+
+# %% tags=["level_intermediate"]
+C.mro()
+
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# #### attributs non fonctionnels (≠ méthode)
+
+# %% [markdown] tags=["level_intermediate"]
+# * on peut utiliser les même concepts
+# * pour gérer des attributs de donnée (i.e. ≠ méthode)
+
+# %% [markdown]
+# ### attributs de classe
+
+# %% slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+class Factory:
+    # un compteur global à la classe
+    all_labels = []
+
+    def __init__(self, label):
+        self.label = label
+        # ici je pourrais aussi bien écrire
+        # Factory.all_labels.append(label)
+        self.all_labels.append(label)
+
+Factory.all_labels
+
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["level_intermediate"]
+f1 = Factory('premier')
+Factory.all_labels
+
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["level_intermediate"]
+f2 = Factory('second')
+Factory.all_labels
+
+
+# %% cell_style="center" slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %%ipythontutor width=1000 height=400
+class Factory:
+    all_labels = []
+    def __init__(self, label):
+        self.label = label
+        # ici je pourrais aussi bien écrire
+        # Factory.all_labels.append(label)
+        self.all_labels.append(label)
+f1 = Factory('premier')
+f2 = Factory('second')
+
+# %%
+# %load_ext ipythontutor
+
+# %%
+# %%ipythontutor width=1000 height=400 curInstr=11
+class Factory:
+    # un compteur global à la classe
+    all_labels = []
+
+    def __init__(self, label):
+        self.label = label
+        Factory.all_labels.append(label)
+
+f1 = Factory('premier')
+f2 = Factory('second')
+
+f1.all_labels = 'overridden'
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -232,7 +313,7 @@ o2 = C()
 #   * oui pour : packages, modules, classes et instances
 #   * mais **pas les (instances de) types de base**
 # * pour chercher un attribut dans un objet, deux méthodes
-#   * `object.attribut` 
+#   * `object.attribut`
 #   * `getattr()`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -246,7 +327,7 @@ class Bar:
 bar = Bar()
 
 # %%
-# là il faut que je connaisse le nom de l'attribut 
+# là il faut que je connaisse le nom de l'attribut
 # au moment où j'écris le code
 bar.x
 
@@ -281,7 +362,7 @@ getattr(bar, attribut)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### résumé - accès aux attributs 
+# ### résumé - accès aux attributs
 
 # %% [markdown]
 # **en résumé**
@@ -304,15 +385,15 @@ getattr(bar, attribut)
 # %% [markdown] cell_style="split"
 # * il y a écriture si  
 #   et seulement si il y a **affectation**
-# * dans 1. il y a 
+# * dans 1. il y a
 #   * **lecture** de l'attribut `liste`
-#   * même si on modifie l'objet 
+#   * même si on modifie l'objet
 # * dans 2. il y a
-#   * **écriture de l'attribut** 
+#   * **écriture de l'attribut**
 #   * donc écrit dans `obj`
 
 # %% [markdown] cell_style="split"
-# * 1. lecture ! 
+# * 1. lecture !
 # ```python
 # obj.liste.append('foo')
 # ```
@@ -321,7 +402,7 @@ getattr(bar, attribut)
 # ```python
 # obj.liste += ['foo']
 # ```
-#                  
+#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### remarque
@@ -329,7 +410,7 @@ getattr(bar, attribut)
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
 # **comme tous les traits du langage**
 #
-# * le comportement de `.` 
+# * le comportement de `.`
 # * est redéfinissable pour une classe
 # * par surcharge des méthodes spéciales
 # * on en reparlera...
@@ -348,13 +429,13 @@ class MaClasse:
 
 
 # %% cell_style="split"
-x = MaClasse() 
+x = MaClasse()
 
 # l'espace de nommage de x est vide
 x.__dict__
 
 # %%
-# créer un attribut dans l'instance revient 
+# créer un attribut dans l'instance revient
 # à ajouter une clé dans l'espace de nommage de l'instance
 x.value = 18
 x.__dict__
@@ -377,7 +458,7 @@ x.__dict__
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 class SuperClasse:
     pass
-class Classe(SuperClasse): 
+class Classe(SuperClasse):
     pass
 o = Classe()
 o.__dict__
@@ -436,12 +517,12 @@ class MaClasse:                # une classe
 # * python le passe automatiquement
 
 # %% cell_style="split"
-class MaClasse:                
-    def setdata(self, value): 
+class MaClasse:
+    def setdata(self, value):
         self.value = value
-        
+
 # on crée 1 instance
-x = MaClasse()        
+x = MaClasse()
 
 # %% cell_style="split"
 # x est automatiquement passé
@@ -450,7 +531,7 @@ x.setdata("alice")
 x.value
 
 # %% cell_style="split"
-# l’appel est équivalent à 
+# l’appel est équivalent à
 MaClasse.setdata(x, "bob")
 
 x.value
@@ -488,12 +569,12 @@ y.__dict__
 
 # %% slideshow={"slide_type": "slide"}
 x.value = "bob"      # on peut directement changer les
-                     # attributs sans passer par les 
+                     # attributs sans passer par les
                      # méthodes de la classe
 x.display()
 
 # %%
-x.autre = 15         # on peut également définir de 
+x.autre = 15         # on peut également définir de
                      # nouveaux attributs pour
                      # l’instance directement
 x.__dict__
@@ -503,7 +584,7 @@ x.__dict__
 x.__class__
 
 # %% cell_style="split"
-# uniquement object 
+# uniquement object
 # comme super-classe
 MaClasse.__bases__
 
@@ -520,7 +601,7 @@ class MaClasse:
     # pour anticiper un peu
     def __repr__(self):
         return f"[MC:{self.value}]"
-    
+
 # avec __repr__ on a modifié
 # la façon de montrer un objet
 top = MaClasse(10)
@@ -533,9 +614,9 @@ class MaSousClasse(MaClasse):
     # ici je redéfinis une méthode
     def __repr__(self):
         return f"[custom: {self.value*2}]"
-    
+
 # et pour tout le reste, on peut manipuler
-# un objet MaSousClasse exactement 
+# un objet MaSousClasse exactement
 # comme un objet MaClasse
 
 
@@ -547,7 +628,7 @@ bottom = MaSousClasse(100)
 bottom
 
 # %% cell_style="split"
-# on accède à son attribut 
+# on accède à son attribut
 # (toujours dans l'instance)
 bottom.value
 
@@ -619,13 +700,13 @@ isinstance(MaSousClasse, MaClasse)
 # * assez souvent, l'un est dérivé de l'autre
 
 # %% cell_style="split"
-# exemple issu de 
+# exemple issu de
 # la librairie standard
 import argparse
 argparse.ArgumentParser
 
 # %% cell_style="split"
-# un module très utile pour  
+# un module très utile pour
 # l'introspection
 import inspect
 inspect.ismodule(argparse)
@@ -666,7 +747,7 @@ class MyParser(ArgumentParser):
 # * créons une classe vide
 
 # %%
-class Dummy: 
+class Dummy:
     pass # classe vide, espace de nommage vide
 
 
@@ -678,17 +759,17 @@ list(Dummy.__dict__)
 
 # %% cell_style="split"
 # créons deux instances
-x = Dummy() 
+x = Dummy()
 y = Dummy()
 
 # %% cell_style="split"
 
-# on peut ajouter dynamiquement 
+# on peut ajouter dynamiquement
 # un attribut à une classe
-Dummy.name = 'Bob' 
+Dummy.name = 'Bob'
 
 # %% cell_style="split"
-# dès lors on trouve cet attribut 
+# dès lors on trouve cet attribut
 # même en partant de la classe
 Dummy.name
 
@@ -700,7 +781,7 @@ x.name, y.name
 # * `name` est créé après les instances  
 #   mais les instances trouvent `name` dans la classe
 #
-# * la résolution de nom a lieu *à runtime*   
+# * la résolution de nom a lieu *à runtime*  
 #   le long de l’arbre d’héritage
 
 # %% slideshow={"slide_type": "slide"}
@@ -712,7 +793,7 @@ x.name = 'Sue'       # on assigne name à x maintenant
 Dummy.name, x.name, y.name
 
 # %%
-# en résumé, voici les espaces de nommage de `Dummy`, `x`, `y`, 
+# en résumé, voici les espaces de nommage de `Dummy`, `x`, `y`,
 list(Dummy.__dict__)
 
 # %% cell_style="split"
@@ -730,21 +811,21 @@ list(y.__dict__)
 # * comme la résolution de nom est **faite à chaque appel**, chaque instance verra la nouvelle méthode
 
 # %% cell_style="split"
-# on *peut* ajouter des méthodes 
+# on *peut* ajouter des méthodes
 # en dehors d'une instruction 'class:'
 
 # on passe self comme pour une méthode
 # définie dans une 'class:'
 def upperName(self):
-    return self.name.upper()  
+    return self.name.upper()
 
 Dummy.upperName = upperName
 
 # %% cell_style="split"
-x.upperName() 
+x.upperName()
 
 # %% cell_style="split"
-y.upperName() 
+y.upperName()
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### les classes sont des objets mutables
@@ -756,8 +837,8 @@ y.upperName()
 x.upperName()
 
 # %% cell_style="split"
-# qui est donc équivalent à 
-Dummy.upperName(x) 
+# qui est donc équivalent à
+Dummy.upperName(x)
 
 # %% cell_style="split"
 # est-ce valable ?
@@ -807,8 +888,8 @@ except Exception as e:
 # * un `mappingproxy` est un objet qui joue le rôle de proxy  
 #   pour un `dict` de manière à le rendre en lecture seule
 #
-# * les classes sont des objets mutables, mais   
-#   elles utilisent comme dictionnaire   
+# * les classes sont des objets mutables, mais  
+#   elles utilisent comme dictionnaire  
 #   pour l’espace de nommage un `mappingproxy`  
 #   de manière à protéger l’espace de nommage
 
@@ -840,7 +921,7 @@ except Exception as e:
 #   * liste toutes les super-classes en utilisant  
 #     un algorithme DFLR (depth first, left to right)
 #
-#   * si classe dupliquée,   
+#   * si classe dupliquée,  
 #     **ne garder que la dernière** occurrence
 #
 # * chaque classe possède
@@ -896,7 +977,7 @@ class C:
 class D(C):
 
     # comme D hérite de C
-    # il faut initialiser C correctement        
+    # il faut initialiser C correctement
     def __init__(self, x, y):
         # par exemple
         C.__init__(self, x)
@@ -938,18 +1019,18 @@ d = D(100, 200)
 # * c'est l'héritage qui joue
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
-# super() est souvent rencontrée 
-# dans __init__ mais s'applique 
+# super() est souvent rencontrée
+# dans __init__ mais s'applique
 # partout
 class C:
     def f(self):
-        print('spam')        
+        print('spam')
 
 
 # %% cell_style="split" slideshow={"slide_type": ""}
 class D(C):
     def f(self):
-        # remarquez l'absence 
+        # remarquez l'absence
         # de self !
         super().f()
         print('beans')
@@ -974,7 +1055,7 @@ d = D(); d.f()
 #   du coup pas besoin de référence à `self` (erreur fréquente au début)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### `super()` 
+# #### `super()`
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
 # * `super()` présente l'intérêt marginal de ne pas avoir à répéter la super-classe
@@ -994,7 +1075,7 @@ class B:
 
 # %% cell_style="split"
 # comme A apparait en premier
-# c'est A.f() qui est appelé 
+# c'est A.f() qui est appelé
 # par super().f()
 
 class C(A, B):
@@ -1017,7 +1098,7 @@ c.f()
 class A:
     def f(self):
         print('A')
-        
+
 class B:
     def f(self):
         print('B')

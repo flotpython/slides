@@ -570,6 +570,35 @@ person
 # * et éventuellement réutiliser par héritage
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### primer : *type hints*
+
+# %% cell_style="center"
+from typing import Dict
+
+global_index = {}  # type: Dict[name, MyFirstClass]
+
+def index(instance: MyFirstClass) -> None:
+    global_index[instance.nom] = instance
+    
+def find_instance(name: str) -> MyFirstClass:
+    return global_index.get(name, None)
+
+
+# %% cell_style="split"
+index(MyFirstClass("dupont", 25))
+index(MyFirstClass("durand", 52))
+
+print(find_instance("dupont"))
+
+
+# %% [markdown] cell_style="split"
+# les annotations de type 
+# * sont **entièrement optionnelles**
+# * mais aident à utiliser le code
+# * vérifiables par un outil externe  
+#   e.g. [`mypy`](http://mypy-lang.org/)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### primer : module
 
 # %% cell_style="split"
