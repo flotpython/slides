@@ -28,11 +28,44 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
+# %% [markdown] slideshow={"slide_type": ""}
+# # outils externes utiles
+
 # %% slideshow={"slide_type": "slide"}
 from plan import plan; plan("compléments", "outils")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# # outils externes utiles
+# ## git
+
+# %% [markdown] slideshow={"slide_type": ""}
+# * c'est juste indispensable de **toujours** travailler sous un SCM
+# * vous commencez un projet, le réflexe :
+#   * créer un dossier
+#   * `git init`
+#   * et commiter fréquemment
+# * pensez ensuite à dupliquer votr dépôt sur une plateforme distante
+#   * github - gitlab - bitbucket
+#   * ou autre self-hosted
+#   * pour avoir une sauvegarde
+#   * et éventuellement collaborer
+#
+# * **n'attendez pas d'en avoir besoin !**
+#   * c'est utile **tout de suite**
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## intégration continue
+
+# %% [markdown] slideshow={"slide_type": ""}
+# * en aval des grandes plateformes, il est facile de mettre en place un CI
+#   * c'est-à-dire de déclencher des vérifications **à chaque commit**
+#   * ce qui sous-entend que vous avez écrit des test unitaires bien sûr :)
+#   * gratuit pour un usage modeste
+#   
+# * exactement la même logique avec la **documentation continue**
+#   * i.e. recalculer une doc toujours à jour
+#   * avec plusieurs versions si nécessaire
+#   * qu'on peut mettre en place grâce à un *webhook* entre,  
+#     typiquement, `github` (ou autre) et `readthedocs.io`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## vérification: `pylint`
@@ -47,6 +80,9 @@ from plan import plan; plan("compléments", "outils")
 #   * mais ROI très court !
 
 # %%
+# pour installer l'outil
+# tapez ceci DANS LE TERMINAL
+# et en enlevant le ! 
 # !pip3 install pylint
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -65,7 +101,7 @@ from plan import plan; plan("compléments", "outils")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ###  `pylint` intégré dans IDE
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # * idéalement branché sur éditeur en *mode continu* 
 # * pylint lancé à chaque sauvegarde
 # * https://pylint.readthedocs.io/en/latest/user_guide/ide-integration.html
@@ -86,6 +122,7 @@ from plan import plan; plan("compléments", "outils")
 # * de (très / trop) nombreux outils sont disponibles
 
 # %%
+# pareil, à taper dans la terminal et sans le !
 # !pip3 install pep8
 
 # %% slideshow={"slide_type": "slide"}
