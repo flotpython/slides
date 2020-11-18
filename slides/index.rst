@@ -8,7 +8,7 @@ Index
    :numbered:
    :caption: Sommaire:
 
-   01-introduction
+   01-1-introduction
    02-1-nombres
    02-2-sequences-str
    02-3-containers
