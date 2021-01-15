@@ -4,10 +4,10 @@ class Others:
     """
     fetch the status of all other players
     """
-    def __init__(self, redis_server): 
+    def __init__(self, redis_server):
         # a handle to the redis server
         self.redis_server = redis_server
-        
+
     def all_players(self):
         # xxx need to optimize these multiple round trips
         player_names = self.redis_server.keys()

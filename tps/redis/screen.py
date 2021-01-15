@@ -7,7 +7,7 @@ BOARD_SIZE = (20, 20)
 BOARD_WIDTH, BOARD_HEIGHT = BOARD_SIZE
 
 # la taille d'une cellule en nombre de pixels
-CELL_SIZE = (25, 25)
+CELL_SIZE = (15, 15)
 CELL_WIDTH, CELL_HEIGHT = CELL_SIZE
 
 BLACK = (0, 0, 0)
@@ -24,10 +24,10 @@ class Screen:
             pygame.init()
             # pygame.display.set_caption("multi-player")
             Screen.pygame_inited = True
-        
+
         self.screen = pygame.display.set_mode(
             (BOARD_WIDTH*CELL_WIDTH, BOARD_HEIGHT*CELL_HEIGHT))
-        
+
     def size(self):
         return BOARD_WIDTH, BOARD_HEIGHT
 
@@ -48,4 +48,3 @@ class Screen:
             color = player[b'color']
             self.draw_cell(x, y, color)
         pygame.display.update()
-        

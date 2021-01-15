@@ -1,14 +1,16 @@
 ---
 jupyter:
+  celltoolbar: Slideshow
   jupytext:
     cell_metadata_filter: all
+    cell_metadata_json: true
     formats: ipynb,md
     notebook_metadata_filter: all,-language_info
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.1'
-      jupytext_version: 1.2.4
+      format_version: '1.2'
+      jupytext_version: 1.7.1
   kernelspec:
     display_name: Python 3
     language: python
@@ -31,10 +33,11 @@ jupyter:
 # un jeu multi-joueur
 <!-- #endregion -->
 
-<!-- #region {"slideshow": {"slide_type": "slide"}} -->
+<!-- #region {"slideshow": {"slide_type": "-"}} -->
 on se propose de réaliser un petit jeu multi joueur, et pour cela nous aurons besoin de 
 
-* [redis](https://redis.io/), un système de base de données *light* et rapide, où les données sont stockées en mémoire; il ne s'agit pas d'un système traditionnel, ici pas de SQL ni de stockage sur le disque;
+* [redis](https://redis.io/), un système de base de données *light* et rapide, où les données sont stockées en mémoire; il ne s'agit pas d'un système traditionnel, ici pas de SQL ni de stockage sur le disque   
+  **attendez avant de l'installer**, les modalités ne sont pas les mêmes sur tous les OS
 
 * [pygame](www.pygame.org), pour le graphisme et autres interactions avec le jeu
 <!-- #endregion -->
@@ -46,25 +49,27 @@ on se propose de réaliser un petit jeu multi joueur, et pour cela nous aurons b
 
 un jeu multi-joueur pose des défis qui vont au-delà de ce qu'on apprend dans un cours de programmation de base
 
-en effet on apprend pour commencer à programmer dans un monde fini et isolé - l'OS appelle ça un *process* - qui par définition ne partage aucune donnée avec les autres programmes qui tournent dans le même ordinateur
+en effet on apprend pour commencer à programmer dans un monde fini et isolé - l'OS appelle ça un *process* - qui **par définition** ne partage aucune donnée avec les autres programmes qui tournent dans le même ordinateur
 
 typiquement quand vous écrivez un programme Python et que vous le lancez avec `python mon_code.py`, tout le code tourne dans un seul process (sauf si vous faites exprès d'en créer d'autres bien entendu)
 
 
 ## comment partager 
 
-du coup lorsqu'on veut faire jouer ensemble disons deux personnes, on aurait en théorie le choix entre
+du coup lorsqu'on veut faire jouer ensemble, disons deux personnes, on aurait en théorie le choix entre
 
-* faire tourner tout le jeu, c'est-à-dire les deux joueurs, dans un seul process; ce qui pourrait à la limite s'envisager si on accepte la limitation - très forte - où les deux joueurs jouent sur le même ordinateur
-* mais bien sûr ça n'est pas une solution en général, donc c'est beaucoup mieux que chaque joueur lance son propre process, qui pourront même du coup tourner sur des ordinateurs différents pourvu qu'on s'y prenne correctement
+* faire tourner tout le jeu, c'est-à-dire les deux joueurs, dans un seul process; mais ça impose de jouer tous les deux sur le même ordi, pas glop du tout
+* du coup ça n'est pas une solution en général, donc c'est beaucoup mieux que chaque joueur lance son propre process, qui pourront même du coup tourner sur des ordinateurs différents pourvu qu'on s'y prenne correctement
 
-mais avec cette deuxième approche il faut trouver un moyen d'échanger des informations: chaque process a le contrôle sur la position de son joueur, mais a besoin d'obtenir auprès des autres les positions des autres joueurs
+mais avec cette deuxième approche il faut trouver **un moyen d'échanger des informations**: chaque process a le contrôle sur la position de son joueur, mais a besoin d'obtenir les positions des autres joueurs
+
+on va voir comment on peut s'y prendre
 
 
 ## une solution centralisée
 
 
-l'architecture la plus simple pour établir la communication entre tous les joueurs consiste à créer un processus central, auquel les joueurs sont connectés, selon un diagramme dit en étoile :
+l'architecture la plus simple pour établir la communication entre tous les joueurs consiste à créer un **processus serveur**, auquel les joueurs sont connectés, selon un diagramme dit en étoile (terme qui prend tout son sens avec plusieurs joueurs: le serveur est au centre du diagramme) :
 
 
 ![](processes.svg)
@@ -73,42 +78,54 @@ l'architecture la plus simple pour établir la communication entre tous les joue
 # prototype
 
 
-ici se trouve un prototype hyper simple; il est multi-joueur mais sur un seul ordinateur (car il manque la possibilité d'indiquer où trouver le serveur central)
+ici se trouve un **prototype** hyper simple; il est multi-joueur mais sur un seul ordinateur (car il manque la possibilité d'indiquer où trouver le serveur central)
 
 pour le mettre en oeuvre :
 
 <!-- #region -->
 ## serveur
 
-il faut pour commencer lancer un serveur redis 
+il faut pour commencer lancer un serveur redis
+(après avoir installé [l'outil redis](https://redis.io/), bien entendu)
 
 ```bash
-redis-server
+redis-server --protcted-mode no
 ```
 
-bien sûr ce process **ne termine pas**, il faut le laisser tourner pendant tout le temps du jeu; donc ce terminal va être monopolisé pour ça, créez-en un autre pour lancer les autres morceaux
+bien sûr ce process **ne termine pas** (vous remarquez que le shell ne vous affiche pas le *prompt* avec le `$`)
+
+il faut le laisser tourner pendant tout le temps du jeu; donc ce terminal va être monopolisé pour ça, créez-en un autre pour lancer les autres morceaux
 <!-- #endregion -->
 
-<!-- #region -->
 ## jeux
+
+### requirements
+
+```shell
+pip install redis
+```
 
 ### un premier jeu 
 
-```
-main.py pierre
+```shell
+python multi-game.py pierre
 ```
 
 pareil ici, ce process ne se terminera que lorque pierre aura fini de jouer
 
 ### un second
 
-```
-main.py paul
+```shell
+python multi-game.py paul
 ```
 
-Pierre voit Paul apparaitre sur son écran, et Paul également
+Pierre voit Paul apparaitre sur son écran, et Paul également;
 
-<!-- #endregion -->
+### etc...
+
+on peut lancer d'autres jeux en même temps, mais bien sûr l'espace libre sur l'écran devient rapidement 
+
+
 
 ## défauts
 
@@ -155,12 +172,12 @@ et cherchez une adresse parmi les intervalles réservés aux adresses privées
 
 ![](private-ranges.png)
 
-<!-- #region {"slideshow": {"slide_type": "slide"}} -->
+<!-- #region {"slideshow": {"slide_type": "-"}} -->
 ## pour lancer le jeu
 
 dans notre configuration, si Pierre est sur l'adresse disons `192.168.200.20`, il suffit aux autres joueurs qui veulent le rejoindre de lancer par exemple
 
 ```
-main.py --server 192.168.200.20 Jacques
+multi-game.py --server 192.168.200.20 Jacques
 ```
 <!-- #endregion -->

@@ -5,17 +5,17 @@ def random_color():
     return [random.randint(0, 255) for _ in range(3)]
 
 def random_move():
-    moves = [ (x, y) for x in (-1, 0, 1) for y in (-1, 0, 1) if x * y]
+    moves = [(x, y) for x in (-1, 0, 1) for y in (-1, 0, 1) if abs(x+y) == 1]
     return random.choice(moves)
 
 
 
 class Player:
     """
-    manage the local player, and broadcast 
+    manage the local player, and broadcast
     its position to the redis server
     """
-    
+
     def __init__(self, name, width, height, redis_server):
         """
         name is the name of the local player
@@ -35,11 +35,10 @@ class Player:
         add local name to database
         with a random color
         """
-        position = 0, 0
         self.redis_server.hmset(
-            self.name, 
+            self.name,
             {'color' : json.dumps(self.color),
-             'position': json.dumps(position),
+             'position': json.dumps(self.position),
             })
 
 
@@ -48,11 +47,11 @@ class Player:
         remove local name from database
         """
         self.redis_server.delete(self.name)
-        
-    
+
+
     def random_move(self):
         self.move(*random_move())
-    
+
     def move(self, dx, dy):
         self.position[0] += dx
         self.position[0] %= self.width
@@ -60,5 +59,3 @@ class Player:
         self.position[1] %= self.height
         self.redis_server.hset(self.name, 'position',
                                json.dumps(self.position))
-        
-
