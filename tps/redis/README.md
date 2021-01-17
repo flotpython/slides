@@ -34,9 +34,9 @@ jupyter:
 <!-- #endregion -->
 
 <!-- #region {"slideshow": {"slide_type": "-"}} -->
-on se propose de réaliser un petit jeu multi joueur, et pour cela nous aurons besoin de 
+on se propose de réaliser un petit jeu multi joueur, et pour cela nous aurons besoin de
 
-* [redis](https://redis.io/), un système de base de données *light* et rapide, où les données sont stockées en mémoire; il ne s'agit pas d'un système traditionnel, ici pas de SQL ni de stockage sur le disque   
+* [redis](https://redis.io/), un système de base de données *light* et rapide, où les données sont stockées en mémoire; il ne s'agit pas d'un système traditionnel, ici pas de SQL ni de stockage sur le disque
   **attendez avant de l'installer**, les modalités ne sont pas les mêmes sur tous les OS
 
 * [pygame](www.pygame.org), pour le graphisme et autres interactions avec le jeu
@@ -54,7 +54,7 @@ en effet on apprend pour commencer à programmer dans un monde fini et isolé - 
 typiquement quand vous écrivez un programme Python et que vous le lancez avec `python mon_code.py`, tout le code tourne dans un seul process (sauf si vous faites exprès d'en créer d'autres bien entendu)
 
 
-## comment partager 
+## comment partager
 
 du coup lorsqu'on veut faire jouer ensemble, disons deux personnes, on aurait en théorie le choix entre
 
@@ -105,7 +105,7 @@ il faut le laisser tourner pendant tout le temps du jeu; donc ce terminal va êt
 pip install redis
 ```
 
-### un premier jeu 
+### un premier jeu
 
 ```shell
 python multi-game.py pierre
@@ -123,7 +123,7 @@ Pierre voit Paul apparaitre sur son écran, et Paul également;
 
 ### etc...
 
-on peut lancer d'autres jeux en même temps, mais bien sûr l'espace libre sur l'écran devient rapidement 
+on peut lancer d'autres jeux en même temps, mais bien sûr l'espace libre sur l'écran devient rapidement
 
 
 
@@ -181,3 +181,30 @@ dans notre configuration, si Pierre est sur l'adresse disons `192.168.200.20`, i
 multi-game.py --server 192.168.200.20 Jacques
 ```
 <!-- #endregion -->
+
+# Notes
+
+## scope
+
+faut-il simplifier le jeu ?
+
+## Précisions multi-OS
+
+### general
+
+* lancer redis-server --protected-mode no
+* lancer redis-server --bind 0.0.0.0
+* ouvrir le firewall
+
+### Windows
+
+* pas supporté par le site principal, installer redis avec `conda install redis`
+* firewall : compliqué
+
+* autre option: memurai
+* dont l'installation se charge de créer un service microsoft
+
+### linux / fedora
+
+* dnf install redis
+* si firewalld: sudo firewall-cmd --zone=public --permanent --add-port=6379/tcp
