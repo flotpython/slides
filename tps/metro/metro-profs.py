@@ -3,17 +3,30 @@
 # jupyter:
 #   jupytext:
 #     cell_metadata_filter: all
+#     cell_metadata_json: true
 #     notebook_metadata_filter: all,-language_info
 #     text_representation:
 #       extension: .py
 #       format_name: percent
-#       format_version: '1.2'
-#       jupytext_version: 1.2.4
+#       format_version: '1.3'
+#       jupytext_version: 1.7.1
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 #   notebookname: "m\xE9tro parisien"
+#   toc:
+#     base_numbering: 1
+#     nav_menu: {}
+#     number_sections: true
+#     sideBar: true
+#     skip_h1_title: false
+#     title_cell: Table of Contents
+#     title_sidebar: Contents
+#     toc_cell: false
+#     toc_position: {}
+#     toc_section_display: true
+#     toc_window_display: false
 #   version: '1.0'
 # ---
 
@@ -21,9 +34,9 @@
 # # le réseau du métro parisien
 
 # %% [markdown]
-# <img src="metro.png" width="600px" />
+# <img src="metro-map.png" width="600px" />
 
-# %%
+# %% {"trusted": true}
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -37,19 +50,19 @@ import pandas as pd
 # %% [markdown]
 # on vous a préparé deux jeux de données qui décrivent le métro parisien
 
-# %%
+# %% {"trusted": true}
 # a few constants
 DATA = Path("DATA")
 
-# %%
+# %% {"trusted": true}
 # load data
-stations  = pd.read_csv(DATA/"stations.txt", index_col="station_id")
-hops =      pd.read_csv(DATA/"hops.txt")
+stations  = pd.read_csv(DATA / "stations.txt", index_col="station_id")
+hops =      pd.read_csv(DATA / "hops.txt")
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 stations.head()
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 hops.head()
 
 
@@ -86,14 +99,14 @@ hops.head()
 # * DFS (depth-first-scan)
 # * BFS (breadth-first scan)
 #
-# intuitivement :
-# %%
+# intuitivement, en partant de cet échantillon (ici un simple arbre) :
+# %% {"trusted": true}
 from simpletree import tree
 
 tree
 
 # %% [markdown] {"cell_style": "split"}
-# DFS donnerait l'énumération suivante :
+# DFS donnerait l'énumération suivante (les sauts de ligne ne sont pas significatifs) :
 # ```
 # v v1 v11 v111 v112
 # v12 v121 v122
@@ -154,11 +167,11 @@ tree
 # %% [markdown]
 # voici pour commencer le code qu'on **aimerait pouvoir écrire**
 
-# %%
+# %% {"trusted": true}
 # on rappelle que stations et hops sont des dataframes
 # on peut itérer sur les lignes d'une dataframe avec iterrows()
 
-def build_graph(stations, hops):
+def build_graph(stations: pd.DataFrame, hops: pd.DataFrame):
 
     graph = Graph()
 
@@ -187,7 +200,7 @@ def build_graph(stations, hops):
 # pour ce qui est d'afficher le réseau sur une carte, le code qu'on va vouloir écrire ressemble à ceci (on reparlera plus en détail de la librairie `folium` en temps voulu) :
 #
 # ```python
-# def build_map(metro, show_labels=True):
+# def build_map(metro: Graph, show_labels=True):
 #
 #     map = folium.Map(...)
 #
@@ -214,9 +227,9 @@ def build_graph(stations, hops):
 # ### specs (3) : parcours
 
 # %% [markdown]
-# en ce qui concerne les algorithmes de parcours, compte tenu de ce qu'on a vu ci-dessus, le code qu'on va vouloir écrire aura de plus besoin d'itérer sur les voisins d'un noeud, et ressemblera schématiquement à ceci :
+# en ce qui concerne les algorithmes de parcours, compte tenu de ce qu'on a vu plus haut, le code qu'on va vouloir écrire aura besoin aussi d'itérer sur les voisins d'un noeud, et ressemblera schématiquement à ceci :
 
-# %%
+# %% {"trusted": true}
 def scan(start_node, storage):
 
     storage.store(start_node)
@@ -229,7 +242,6 @@ def scan(start_node, storage):
 
         for neighbour, line in current_node.iter_neighbours():
             storage.store(neighbour)
-
 
 # %% [markdown]
 # ### specs : résumé
@@ -284,9 +296,14 @@ def scan(start_node, storage):
 # %% [markdown]
 # pour le type Station on n'a rien à écrire, c'est l'intérêt d'avoir séparé la couche 'données' (dataframe) de la couche 'connectivité' (Graph), un objet de type `Station` est en fait une instance de `pandas.Series`
 #
-# voici comment utiliser les objets de type `Station`
+# et rappelez-vous, pour accéder à une dataframe on peut utiliser:
+#
+# * `df.loc[]` pour les accès par index (notre cas ici)
+# * `df.iloc[]` pour les accès par indice (pas utile ici)
+#
+# du coup, voici comment utiliser les objets de type `Station`
 
-# %%
+# %% {"trusted": true}
 # le type Station correspond à une ligne
 # dans la dataframe chargée à partir de stations.txt
 # ce serait assez redondant d'avoir à se redéfinir un type pour cela
@@ -295,31 +312,35 @@ def scan(start_node, storage):
 # on peut trouver la station correspondant à un station_id
 # par accès direct (comme dans un dictionnaire)
 
+
 # si je cherche par exemple la station dont l'id vaut 2152
 station_sample = stations.loc[2152]
 station_sample
 
-# %%
+# %% {"trusted": true}
 # pour accéder aux positions géographiques c'est simple
-station_sample['latitude']
+station_sample.latitude
 
-# %%
+# %% {"trusted": true}
 # par contre pour accéder au station_id, qui sert d'index,
 # c'est différent
 try:
-    station_sample['station_id']
+    station_sample.station_id
 except Exception as exc:
     print(f"OOPS - {type(exc)} : {exc}")
 
-# %%
+# %% {"trusted": true}
 # il faut utiliser l'attribut name (ça n'est pas très logique d'ailleurs !)
 station_sample.name
 
-# %% {"cell_style": "split"}
+# %% {"trusted": true}
+station_sample.name
+
+# %% {"cell_style": "split", "trusted": true}
 # quel est le type de cet objet
 type(station_sample)
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 # définissons un type pour les type hints
 Station = pd.Series
 
@@ -333,7 +354,7 @@ Station = pd.Series
 #
 # mais il se trouve que dans `hops.txt` on nous donne aussi le numéro de la ligne de métro qui connecte deux stations, on va donc vouloir attacher à chaque lien ce numéro de ligne, et du coup un ensemble n'est sans doute pas ce qu'il y a de mieux...
 
-# %%
+# %% {"trusted": true}
 # version étudiant : à vous de compléter le code
 
 class Node:
@@ -382,7 +403,7 @@ class Node:
         return float(self.station['longitude'])
 
 
-# %%
+# %% {"trusted": true}
 # version étudiant : à vous de compléter le code
 
 # NOTE : vous remarquerez qu'on a choisi de créer les arêtes
@@ -468,12 +489,12 @@ class Graph:
 # %% [markdown]
 # maintenant on devrait pouvoir construire le graphe
 
-# %%
+# %% {"trusted": true}
 metro = build_graph(stations, hops)
 
 print(f"notre graphe a {len(metro)} stations et {metro.nb_edges()} liens")
 
-# %%
+# %% {"trusted": true}
 # exercice: calculer le nombre de lignes
 # xxx nb_lines = ...
 lines = {line for node, neighbour, line in metro.iter_edges()}
@@ -489,7 +510,7 @@ print(nb_lines)
 #
 # pas de code à écrire de votre part dans cette partie, mais vous pouvez prendre le temps de voir comment c'est fait
 
-# %%
+# %% {"trusted": true}
 import folium
 
 STATION_RADIUS = 100
@@ -501,7 +522,7 @@ STATION_COLOR = '#d22'
 # %% [markdown]
 # ### les couleurs des lignes
 
-# %%
+# %% {"trusted": true}
 from nuancier import nuancier
 nuancier
 
@@ -510,23 +531,23 @@ nuancier
 #
 # pour mettre en évidence une station (un peu fastidieux en folium)
 
-# %%
+# %% {"trusted": true}
 from labelicon import label_icon
 
 # %% [markdown]
 # ### Chatelet au centre de la carte
 
-# %%
+# %% {"trusted": true}
 chatelet_station_id = 2221
 chatelet_station = stations.loc[chatelet_station_id]
 
-# %%
+# %% {"trusted": true}
 map_center = [chatelet_station['latitude'], chatelet_station['longitude']]
 
 # %% [markdown]
 # ### ma première carte en folium
 
-# %%
+# %% {"trusted": true}
 autre_station = stations.loc[2122]
 autre_position = [autre_station['latitude'], autre_station['longitude']]
 
@@ -540,7 +561,7 @@ une_couleur = nuancier["7"]
 # * `folium.Circle`
 # * `folium.PolyLine` pour tracer un trait
 
-# %%
+# %% {"trusted": true}
 map = folium.Map(location=map_center, zoom_start=13)
 
 folium.map.Marker(map_center, icon=label_icon('0')).add_to(map)
@@ -563,7 +584,7 @@ map
 # %% [markdown]
 # Nous voulons visualiser les stations, et les lignes. En option (si `show_labels=True`), on affichera aussi l'attribut `label` des objets `Node` lorsqu'il est défini.
 
-# %%
+# %% {"trusted": true}
 def build_map(metro, show_labels=True):
 
     map = folium.Map(location=map_center, zoom_start=13)
@@ -593,7 +614,7 @@ def build_map(metro, show_labels=True):
 # %% [markdown]
 # à ce stade si votre code pour `Node` et `Graph` est correct vous pouvez voir ici la carte du réseau avec la station Chatelet numérotée `0`
 
-# %%
+# %% {"trusted": true}
 # on met au moins un label pour voir l'effet
 metro.find_node_from_station_id(chatelet_station_id).label = '0'
 
@@ -618,7 +639,7 @@ build_map(metro)
 # %% [markdown]
 # ### FIFO / FILO
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 from collections import deque
 class Fifo:
     def __init__(self):
@@ -637,7 +658,7 @@ class Fifo:
         return len(self.line)
 
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 from collections import deque
 class Filo:
     def __init__(self):
@@ -656,7 +677,7 @@ class Filo:
         return len(self.line)
 
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 # pour vérifier
 fifo = Fifo()
 for i in range(1, 4):
@@ -665,7 +686,7 @@ while fifo:
     print(f"retrieve → {fifo.retrieve()}")
 
 
-# %% {"cell_style": "split"}
+# %% {"cell_style": "split", "trusted": true}
 # pour vérifier
 filo = Filo()
 for i in range(1, 4):
@@ -677,7 +698,7 @@ while filo:
 # %% [markdown]
 # ### parcours générique
 
-# %%
+# %% {"trusted": true}
 # avec nos spécifications, on peut écrire le parcours
 # en utilisant principalement
 # for neighbour, line in node.iter_neighbours():
@@ -714,14 +735,14 @@ def scan(start_node, storage):
 # %% [markdown]
 # ### les deux parcours spécifiques
 
-# %%
+# %% {"trusted": true}
 def DFS(metro, station):
     node = metro.find_node_from_station_id(station.name)
     storage = Filo()
     yield from scan(node, storage)
 
 
-# %%
+# %% {"trusted": true}
 def BFS(metro, station):
     node = metro.find_node_from_station_id(station.name)
     storage = Fifo()
@@ -737,7 +758,7 @@ def BFS(metro, station):
 # %% [markdown]
 # #### depth-first scan
 
-# %%
+# %% {"trusted": true}
 # labelling all stations according to a DFS scan
 for index, node in enumerate(DFS(metro, chatelet_station)):
     node.label = str(index)
@@ -747,7 +768,7 @@ build_map(metro)
 # %% [markdown]
 # #### breadth-first scan
 
-# %%
+# %% {"trusted": true}
 # same with a BFS
 for index, node in enumerate(BFS(metro, chatelet_station)):
     node.label = str(index)
