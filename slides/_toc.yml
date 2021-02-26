@@ -1,45 +1,53 @@
-- file: 01-introduction
-- file: 02-0-types-de-base
-  sections:
-    - file: 02-1-nombres
-    - file: 02-2-sequences-str
-    - file: 02-3-containers
-    - file: 02-4-references
-    - file: 02-5-bytes
-    - file: 02-6-files
-    - file: 02-7-regexps
-- file: 03-0-syntaxe
-  sections:
-    - file: 03-1-syntaxe-operateurs
-    - file: 03-2-instructions
-    - file: 03-3-iterations
-    - file: 03-4-pep008
-- file: 04-0-functions
-  sections:
-    - file: 04-1-functions-arguments
-    - file: 04-2-variables-scope
-    - file: 04-3-lambdas
-- file: 05-0-modules-packages
-  sections:
-    - file: 05-1-modules
-    - file: 05-2-packages
-- file: 06-0-classes
-  sections:
-    - file: 06-1-classes-encapsulation
-    - file: 06-2-classes-heritage
-    - file: 06-3-surcharge-operateurs
-- file: 07-0-complements
-  sections:
-    - file: 07-1-exceptions
-    - file: 07-2-useful-libs
-    - file: 07-3-useful-tools
-    - file: 07-4-type-hints
-    - file: 07-5-asyncio
-- file: 08-0-sujets-avances
-  sections:
-    - file: 08-1-context-managers
-    - file: 08-2-methodes-statiques
-    - file: 08-3-decorateurs
-    - file: 08-4-acces-attributs
-    - file: 08-5-generateurs
-#    - file: 08-7-metaclasses-companion
+- file: 01-2-introduction
+- part: "types de base"
+  chapters:
+#  - file: 02-0-types-de-base
+  - file: 02-1-nombres
+  - file: 02-2-sequences-str
+  - file: 02-3-containers
+  - file: 02-4-references
+  - file: 02-5-bytes
+  - file: 02-6-files
+  - file: 02-7-regexps
+- part: "syntaxe & instructions"
+  chapters:
+#  - file: 03-0-syntaxe
+  - file: 03-1-syntaxe-operateurs
+  - file: 03-2-instructions
+  - file: 03-3-iterations
+  - file: 03-4-pep008
+- part: "fonctions"
+  chapters:
+#  - file: 04-0-functions
+  - file: 04-1-functions-arguments
+  - file: 04-2-variables-scope
+  - file: 04-3-lambdas
+- part: "modules & packages"
+  chapters:
+#  - file: 05-0-modules-packages
+  - file: 05-1-modules
+  - file: 05-2-packages
+- part: "classes & programmation objet"
+  chapters: 
+#  - file: 06-0-classes
+  - file: 06-1-intro-exemples
+  - file: 06-2-surcharge-operateurs
+  - file: 06-3-classes-and-attributes
+#  - file: 06-x4-advanced
+- part: "compléments"
+  chapters:
+#  - file: 07-0-complements
+  - file: 07-1-exceptions
+  - file: 07-2-useful-libs
+  - file: 07-3-useful-tools
+  - file: 07-4-type-hints
+  - file: 07-5-asyncio
+- part: "notions avancées"
+  chapters:
+#  - file: 08-0-sujets-avances
+  - file: 08-1-context-managers
+  - file: 08-2-methodes-statiques
+  - file: 08-3-decorateurs
+  - file: 08-4-acces-attributs
+  - file: 08-5-generateurs
+#  - file: 08-7-metaclasses-companion

@@ -1,12 +1,30 @@
 # Book settings
 title: Python slides
 author: Thierry Parmentelat
-logo: ../media/inria-50-alpha.png
+logo: ../media/logo-python.svg
+
+only_build_toc_files: true
 
 execute:
-#  execute_notebooks: cache
   execute_notebooks: force
-  exclude_patterns: 
-    - _book/**
-    - _ipypublish/**
-    - _book/_build/jupyter_execute/*
+#  exclude_patterns:
+#    - _build/**
+#    - _ipypublish/**
+
+# required since we don't use md:myst input
+sphinx:
+  config:
+    nb_custom_formats:
+      .py:
+        - jupytext.reads
+        - fmt: py:percent
+
+repository:
+  url: https://github.com/flotpython/slides
+  branch: jupyter-book
+  path_to_book: slides
+
+html:
+  use_repository_button: yes
+  use_edit_page_button: yes
+  use_issues_button: yes

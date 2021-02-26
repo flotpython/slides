@@ -45,13 +45,13 @@ ipypublish-view:
 
 ### attempt with jupyter book - but giving up for now
 book:
-	jupyter book build --path-output _book .
+	jupyter book build .
 
 book-clean:
-	rm -rf _book
+	rm -rf _build
 
 book-view:
-	open _book/_build/html/index.html
+	open _build/html/index.html
 
 .PHONY: book book-clean book-clean
 
