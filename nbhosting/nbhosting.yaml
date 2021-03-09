@@ -1,0 +1,78 @@
+---
+tracks:
+- description: Python - formation initiale
+  id: slides
+  name: slides
+  sections:
+  - name: introduction
+    notebooks:
+    - "slides/01*.py"
+  - name: types de base
+    notebooks:
+    - "slides/02*.py"
+  - name: syntaxe & instructions
+    notebooks:
+    - "slides/03*.py"
+  - name: fonctions
+    notebooks:
+    - "slides/04*.py"
+  - name: modules & packages
+    notebooks:
+    - "slides/05*.py"
+  - name: classes & programmation objet
+    notebooks:
+    - "slides/06*.py"
+  - name: "compl\xE9ments"
+    notebooks:
+    - "slides/07*.py"
+- description: "Cours: suppl\xE9ments"
+  id: extras
+  name: extras
+  sections:
+  - name: numpy
+    notebooks:
+    - "slides-extras/01*.py"
+  - name: pandas
+    notebooks:
+    - "slides-extras/02*.py"
+  - name: notebooks
+    notebooks:
+    - "slides-extras/03*.py"
+  - name: doc
+    notebooks:
+    - "slides-extras/04*.py"
+- description: "Des exemples de codes plus r\xE9alistes"
+  id: "\xE9chantillons"
+  name: "\xE9chantillons"
+  sections:
+  - name: samples
+    notebooks:
+    - "samples/[0-7]*.py"
+- description: TPs
+  id: TPs
+  name: TPs
+  sections:
+  - name: tps/boxes
+    notebooks:
+    - tps/boxes/unicode-boxes.py
+  - name: tps/redis
+    notebooks:
+    - tps/redis/README.md
+
+# otherwise use this syntax
+static-mappings:
+  - source: data
+    destination: data
+  - source: media
+    destination: media
+  - source: rise.css
+    destination: media/rise.css
+
+builds:
+  - name: handouts
+    script: |
+      pip install jupyter-book
+      jupyter-book build .
+    result-folder: _build/html
+    mount-as: jupyter-book
+    entry-point: index.html
