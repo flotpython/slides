@@ -72,7 +72,8 @@ builds:
   - name: handouts
     script: |
       pip install jupyter-book
+      cd slides
       jupyter-book build .
-    result-folder: _build/html
+    result-folder: slides/_build/html
     mount-as: jupyter-book
     entry-point: index.html
