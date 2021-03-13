@@ -1,17 +1,27 @@
-# Book settings
+# Jupyter Book settings
+
 title: Python slides
 author: Thierry Parmentelat
 logo: ../media/logo-python.svg
 
+repository:
+  url: https://github.com/flotpython/slides
+  branch: master
+  path_to_book: slides
+
+html:
+  use_repository_button: yes
+  use_edit_page_button: yes
+  use_issues_button: yes
+
+###
+
 only_build_toc_files: true
 
 execute:
-  execute_notebooks: force
-#  exclude_patterns:
-#    - _build/**
-#    - _ipypublish/**
+#  execute_notebooks: "force"
+  execute_notebooks: cache
 
-# required since we don't use md:myst input
 sphinx:
   config:
     nb_custom_formats:
@@ -19,12 +29,7 @@ sphinx:
         - jupytext.reads
         - fmt: py:percent
 
-repository:
-  url: https://github.com/flotpython/slides
-  branch: jupyter-book
-  path_to_book: slides
-
-html:
-  use_repository_button: yes
-  use_edit_page_button: yes
-  use_issues_button: yes
+# for raw <img> tags in markdown
+parse:
+  myst_enable_extensions:
+    - html_image
