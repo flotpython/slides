@@ -69,7 +69,9 @@ static-mappings:
     destination: media/rise.css
 
 builds:
-  - name: handouts
+  - id: handouts
+    name: static html
+    description: searchable static html as produced by jupyter-book
     directory: slides
     script: |
       pip install jupyter-book
