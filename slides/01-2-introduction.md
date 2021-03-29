@@ -1,7 +1,7 @@
 ---
 celltoolbar: Slideshow
 jupytext:
-  cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control
+  cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
   encoding: '# -*- coding: utf-8 -*-'
   notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
   text_representation:
@@ -52,7 +52,7 @@ version: '1.0'
 * disponibles aussi en *live* sur (compte nécessaire)
   * https://nbhosting.inria.fr/
 * les sources des notebooks : 
-  * https://github.com/flotpython/slides  
+  * https://github.com/flotpython/slides
 
 ```{code-cell}
 ---
@@ -132,7 +132,7 @@ important: savoir redémarrer son interpréteur
   * une seule façon d’écrire
 * portable
   * Windows, Linux, Mac OS, etc.
-* typage dynamique  
+* typage dynamique
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -384,7 +384,6 @@ slideshow:
 * pour ceux qui aiment les *cheat sheet*
 
   <https://perso.limsi.fr/pointal/python:memento>
- 
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -522,7 +521,7 @@ except Exception as exc:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## comment avoir de l'aide: `dir` 
+## comment avoir de l'aide: `dir`
 
 +++
 
@@ -606,7 +605,7 @@ ArgumentParser??
 
 +++
 
-utiliser `TAB` pour la complétion 
+utiliser `TAB` pour la complétion
 
 ```{code-cell}
 # ditto, il faut avoir chargé le module 
@@ -650,7 +649,7 @@ if x > 3:   # teste la comparaison dans if
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### indentation et syntaxe 
+### indentation et syntaxe
 
 +++
 
@@ -693,7 +692,7 @@ my_first_function(2, 10)
 ```
 
 * brique de base de la réutilisabilité 
-* remarquez la syntaxe orientée *bloc* 
+* remarquez la syntaxe orientée *bloc*
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
