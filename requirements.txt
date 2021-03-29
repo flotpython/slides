@@ -20,23 +20,22 @@ jupyter-contrib-nbextensions
 
 # this part is more for authors
 # 
-jupyterlab
-nbstripout
-nbdime
-nbmerge
+#jupyterlab
+#nbstripout
+#nbdime
+#nbmerge
 
 #
 # this part is for readthedocs or similar
 #
 ipypublish[sphinx]
 # nov 2020: latest panflute 2.0.5 breaks our build
+# pin panflute to avoid this mysterious-looking error in readthedocs build
+# TypeError: ('invalid api version', [1, 17, 0, 5])
 panflute==1.12.5
 sphinx-rtd-theme
 jupytext
 jupyter_client
-# pin panflute to avoid this mysterious-looking error in readthedocs build
-# TypeError: ('invalid api version', [1, 17, 0, 5])
-panflute==1.12
 
 jupyter-book
 smmap<4,>=3.0.1
