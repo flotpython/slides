@@ -41,14 +41,14 @@ version: '1.0'
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## méthode pédagogique
+## les supports
 
 +++
 
 * présentations sur notebooks
-* apprendre par l’exemple et l’expérimentation
 * version statique en ligne
-  * https://flotpython-slides.readthedocs.io/
+  * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
+  * ~~https://flotpython-slides.readthedocs.io/~~ (obsolete)
 * disponibles aussi en *live* sur (compte nécessaire)
   * https://nbhosting.inria.fr/
 * les sources des notebooks : 
