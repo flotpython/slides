@@ -41,16 +41,6 @@ tracks:
   - name: doc
     notebooks:
     - "slides-extras/04*.py"
-- description: TPs
-  id: TPs
-  name: TPs
-  sections:
-  - name: tps/boxes
-    notebooks:
-    - tps/boxes/unicode-boxes.py
-  - name: tps/redis
-    notebooks:
-    - tps/redis/README.md
 
 # otherwise use this syntax
 static-mappings:
