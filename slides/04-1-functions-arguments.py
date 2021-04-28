@@ -12,14 +12,14 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: fonctions
+#   nbhosting:
+#     title: fonctions
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}

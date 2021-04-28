@@ -11,14 +11,14 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
-notebookname: introduction & primer
+nbhosting:
+  title: introduction & primer
 rise:
   autolaunch: true
   slideNumber: c/t
   start_slideshow_at: selected
   theme: sky
   transition: cube
-version: '1.0'
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -39,22 +39,7 @@ version: '1.0'
 
 > version de référence: python-3.7
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## les supports
-
-+++
-
-* présentations sur notebooks
-* version statique en ligne
-  * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
-  * ~~https://flotpython-slides.readthedocs.io/~~ (obsolete)
-* disponibles aussi en *live* sur (compte nécessaire)
-  * https://nbhosting.inria.fr/
-* les sources des notebooks : 
-  * https://github.com/flotpython/slides
-
-```{code-cell}
+```{code-cell} ipython3
 ---
 slideshow:
   slide_type: slide

@@ -12,14 +12,14 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: "syntaxe & op\xE9rateurs"
+#   nbhosting:
+#     title: "syntaxe & op\xE9rateurs"
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown] cell_style="center"

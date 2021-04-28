@@ -12,14 +12,14 @@
 #     display_name: Python 3
 #     language: python
 #     name: python3
-#   notebookname: "port\xE9e d\u2019une variable"
+#   nbhosting:
+#     title: "port\xE9e d\u2019une variable"
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown]
