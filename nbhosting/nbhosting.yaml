@@ -41,13 +41,6 @@ tracks:
   - name: doc
     notebooks:
     - "slides-extras/04*.py"
-- description: "Des exemples de codes plus r\xE9alistes"
-  id: "\xE9chantillons"
-  name: "\xE9chantillons"
-  sections:
-  - name: samples
-    notebooks:
-    - "samples/[0-7]*.py"
 - description: TPs
   id: TPs
   name: TPs
