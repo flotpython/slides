@@ -1,13 +1,13 @@
 # Jupyter Book settings
 
-title: Python Avancé
+title: Python
 author: Thierry Parmentelat
 logo: media/logo-python.svg
 
 repository:
-  url: https://github.com/ue12/python-advanced
+  url: https://github.com/flotpython/slides
   branch: main
-  path_to_book: notebooks
+  path_to_book: slides
 
 html:
   use_repository_button: yes
