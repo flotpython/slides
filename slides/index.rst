@@ -39,6 +39,6 @@ Index
    08-4-acces-attributs
    08-5-generateurs
 
-Licence CC BY-NC-ND - Thierry Parmentelat - Inria 
+Licence CC BY-NC-ND - Thierry Parmentelat - Inria
 
 Created by IPyPublish (version 0.10.10)
