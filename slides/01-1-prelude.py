@@ -42,26 +42,29 @@
 # ##### *Des fondamentaux à l'utilisation du langage*
 
 # %% [markdown] {"cell_style": "split"}
-# ## Thierry Parmentelat
+# Thierry Parmentelat - Inria
+#
+#
 
 # %% [markdown] {"cell_style": "split"}
-# ## Inria
-
-# %% [markdown]
 # <center><code>thierry.parmentelat@inria.fr</code></center>
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# # plateformes
+# ## plateformes
 #
 # * notebooks
 #   * https://nbhosting.inria.fr/auditor/notebook/python-slides
 # * même contenu en version HTML statique
 #   * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
+# * les sources des notebooks : 
+#   * https://github.com/flotpython/slides  
+#   
 # * exercices autocorrigés
 #   * https://nbhosting.inria.fr/auditor/notebook/python-exos
+#
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# # et aussi
+# ### et aussi le MOOC
 #
 # en ligne sur France Université Numérique
 #
@@ -69,7 +72,7 @@
 # * https://www.fun-mooc.fr/courses/course-v1:UCA+107001+session02/about
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# # notebooks
+# ## notebooks
 #
 # * introduction très rapide au fonctionnement de la plateforme
 
@@ -81,7 +84,7 @@
 # ![](media/nbhosting-buttons.png)
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# # notebooks - suite
+# ### notebooks - nav slides
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 # * pour naviguer dans les slides
@@ -93,7 +96,7 @@
 # ![](media/nbhosting-slides.png)
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# # notebooks - suite
+# ### notebooks - nav cells
 
 # %% [markdown] {"slideshow": {"slide_type": ""}, "cell_style": "split"}
 # pour naviguer dans les cellules :
@@ -113,7 +116,7 @@ L = [1, 2]
 len(L)
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# # notebooks - suite
+# ### notebooks - extensions
 
 # %% [markdown]
 # ![](media/nbhosting-plain.png)
