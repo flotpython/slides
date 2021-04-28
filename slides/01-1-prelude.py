@@ -51,38 +51,14 @@
 # <center><code>thierry.parmentelat@inria.fr</code></center>
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# # tour de table
-
-# %% [markdown] {"cell_style": "split"}
-# ### vos connaissances
-#
-# * en programmation ?
-# *  en Python ?
-# * gestionnaire de code (git?)
-# * packaging, tests, documentation
-# * calcul scientifique
-# * programmation asynchrone
-
-# %% [markdown] {"cell_style": "split"}
-# ### vos attentes ?
-#
-# et vos objectifs ?
-
-# %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# # formalités
-#
-# * journal des présences
-# * questionnaire pour évaluer la formation
-# * horaires
-
-# %% [markdown] {"slideshow": {"slide_type": "slide"}}
 # # plateformes
 #
-# * vidéo conférence  
-#   * principal https://rdv4.rendez-vous.renater.fr/python-initial-inrae
-#   * backup https://meet.jit.si/python-initial-inrae
 # * notebooks
-#   * https://nbhosting.inria.fr/auditor/notebook/python-initial
+#   * https://nbhosting.inria.fr/auditor/notebook/python-slides
+# * même contenu en version HTML statique
+#   * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
+# * exercices autocorrigés
+#   * https://nbhosting.inria.fr/auditor/notebook/python-exos
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
 # # et aussi
