@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("types", "séquences")
+#from plan import plan; plan("types", "séquences")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # séquences & chaines

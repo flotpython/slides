@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("avancé", "générateur")
+#from plan import plan; plan("avancé", "générateur")
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}

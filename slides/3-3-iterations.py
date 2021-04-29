@@ -29,7 +29,7 @@
 # </div>
 
 # %% slideshow={"slide_type": "-"}
-#from plan import plan; plan("syntaxe", "itération")
+##from plan import plan; plan("syntaxe", "itération")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # les itérations en Python

@@ -29,7 +29,7 @@
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("compléments", "exceptions") 
+#from plan import plan; plan("compléments", "exceptions") 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # exceptions

@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("types", "bytes")
+#from plan import plan; plan("types", "bytes")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # données brutes : le type `bytes`

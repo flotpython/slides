@@ -32,7 +32,7 @@
 # # outils externes utiles
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("compléments", "outils")
+#from plan import plan; plan("compléments", "outils")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## git

@@ -29,7 +29,7 @@
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("type", "fichier")
+#from plan import plan; plan("type", "fichier")
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # # fichiers

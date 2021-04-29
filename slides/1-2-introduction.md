@@ -39,24 +39,6 @@ rise:
 
 > version de référence: python-3.7
 
-```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
-# le plan : survol
-from plan import plan; plan("intro")
-```
-
-```{code-cell}
----
-slideshow:
-  slide_type: slide
----
-# le plan : un peu plus de détails
-from plan import plan; plan()
-```
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## comment lancer python ?

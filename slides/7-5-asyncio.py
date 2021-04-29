@@ -28,7 +28,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("compléments", "asyncio")
+#from plan import plan; plan("compléments", "asyncio")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # `asyncio`

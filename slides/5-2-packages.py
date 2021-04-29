@@ -32,7 +32,7 @@
 # # packages
 
 # %%
-from plan import plan; plan("modules", "packages")
+#from plan import plan; plan("modules", "packages")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## package = module pour un dossier

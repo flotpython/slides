@@ -29,7 +29,7 @@
 # </div>
 
 # %% slideshow={"slide_type": "slide"}
-from plan import plan; plan("fonctions", "portée")
+#from plan import plan; plan("fonctions", "portée")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # portée d’une variable

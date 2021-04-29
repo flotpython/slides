@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-# from plan import plan; plan("types", "regexps")
+## from plan import plan; plan("types", "regexps")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # expressions régulières

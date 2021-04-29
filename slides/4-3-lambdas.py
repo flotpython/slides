@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("fonctions", "lambda")
+#from plan import plan; plan("fonctions", "lambda")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # fonctions lambda

@@ -32,7 +32,7 @@
 # # les nombres
 
 # %%
-from plan import plan; plan("types", "nombres")
+#from plan import plan; plan("types", "nombres")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## types de base `int`, `float`, `complex`

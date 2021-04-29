@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-from plan import plan; plan("types", "références")
+#from plan import plan; plan("types", "références")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # références partagées

@@ -86,7 +86,7 @@
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 # ### notebooks - nav slides
 
-# %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
+# %% [markdown] {"slideshow": {"slide_type": "-"}, "cell_style": "split"}
 # * pour naviguer dans les slides
 #
 #   * Espace : en avant
@@ -115,8 +115,19 @@
 L = [1, 2]
 len(L)
 
-# %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
+# %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
 # ### notebooks - extensions
 
 # %% [markdown]
 # ![](media/nbhosting-plain.png)
+
+# %% [markdown] {"slideshow": {"slide_type": "slide"}}
+# ## plan du cours
+
+# %%
+# le plan : survol
+from plan import plan; plan("intro")
+
+# %% {"slideshow": {"slide_type": "slide"}}
+# le plan : un peu plus de détails
+from plan import plan; plan()
