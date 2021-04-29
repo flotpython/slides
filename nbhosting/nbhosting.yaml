@@ -6,26 +6,26 @@ tracks:
   sections:
   - name: introduction
     notebooks:
-    - "slides/01*.py"
-    - "slides/01*.md"
+    - "slides/1-[0-9]*.py"
+    - "slides/1*.md"
   - name: types de base
     notebooks:
-    - "slides/02*.py"
+    - "slides/2-[0-9]*.py"
   - name: syntaxe & instructions
     notebooks:
-    - "slides/03*.py"
+    - "slides/3-[0-9]*.py"
   - name: fonctions
     notebooks:
-    - "slides/04*.py"
+    - "slides/4-[0-9]*.py"
   - name: modules & packages
     notebooks:
-    - "slides/05*.py"
+    - "slides/5-[0-9]*.py"
   - name: classes & programmation objet
     notebooks:
-    - "slides/06*.py"
+    - "slides/6-[0-9]*.py"
   - name: "compl\xE9ments"
     notebooks:
-    - "slides/07*.py"
+    - "slides/7-[0-9]*.py"
 - description: "Cours: suppl\xE9ments"
   id: extras
   name: extras

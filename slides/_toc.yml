@@ -1,44 +1,44 @@
-- file: 01-2-introduction
+- file: 1-2-introduction
 - part: "types de base"
   chapters:
-  - file: 02-1-nombres
-  - file: 02-2-sequences-str
-  - file: 02-3-containers
-  - file: 02-4-references
-  - file: 02-5-bytes
-  - file: 02-6-files
-  - file: 02-7-regexps
+  - file: 2-1-nombres
+  - file: 2-2-sequences-str
+  - file: 2-3-containers
+  - file: 2-4-references
+  - file: 2-5-bytes
+  - file: 2-6-files
+  - file: 2-7-regexps
 - part: "syntaxe et instructions"
   chapters:
-  - file: 03-1-syntaxe-operateurs
-  - file: 03-2-instructions
-  - file: 03-3-iterations
-  - file: 03-4-pep008
+  - file: 3-1-syntaxe-operateurs
+  - file: 3-2-instructions
+  - file: 3-3-iterations
+  - file: 3-4-pep008
 - part: "fonctions"
   chapters:
-  - file: 04-1-functions-arguments
-  - file: 04-2-variables-scope
-  - file: 04-3-lambdas
+  - file: 4-1-functions-arguments
+  - file: 4-2-variables-scope
+  - file: 4-3-lambdas
 - part: "modules & packages"
   chapters:
-  - file: 05-1-modules
-  - file: 05-2-packages
+  - file: 5-1-modules
+  - file: 5-2-packages
 - part: classes
   chapters:
-  - file: 06-1-classes-encapsulation
-  - file: 06-2-classes-heritage
-  - file: 06-3-surcharge-operateurs
+  - file: 6-1-classes-encapsulation
+  - file: 6-2-classes-heritage
+  - file: 6-3-surcharge-operateurs
 - part: compléments
   chapters:
-  - file: 07-1-exceptions
-  - file: 07-2-useful-libs
-  - file: 07-3-useful-tools
-  - file: 07-4-type-hints
-  - file: 07-5-asyncio
+  - file: 7-1-exceptions
+  - file: 7-2-useful-libs
+  - file: 7-3-useful-tools
+  - file: 7-4-type-hints
+  - file: 7-5-asyncio
 - part: sujets avancés
   chapters:
-  - file: 08-1-context-managers
-  - file: 08-2-methodes-statiques
-  - file: 08-3-decorateurs
-  - file: 08-4-acces-attributs
-  - file: 08-5-generateurs
+  - file: 8-1-context-managers
+  - file: 8-2-methodes-statiques
+  - file: 8-3-decorateurs
+  - file: 8-4-acces-attributs
+  - file: 8-5-generateurs
