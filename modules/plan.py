@@ -110,6 +110,7 @@ PLAN_EXTRAS = {
             "readthedocs.io",
         ]),
         "packaging",                         # 06
+        "vscode",                            # 07
     ],
 }
 

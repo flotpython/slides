@@ -32,16 +32,25 @@ tracks:
   sections:
   - name: numpy
     notebooks:
-    - "slides-extras/01*.py"
+    - "slides-extras/1*.py"
   - name: pandas
     notebooks:
-    - "slides-extras/02*.py"
+    - "slides-extras/2*.py"
   - name: notebooks
     notebooks:
-    - "slides-extras/03*.py"
+    - "slides-extras/3*.py"
+  - name: tests
+    notebooks:
+    - "slides-extras/4*.py"
   - name: doc
     notebooks:
-    - "slides-extras/04*.py"
+    - "slides-extras/5*.py"
+  - name: packaging
+    notebooks:
+    - "slides-extras/6*.py"
+  - name: vscode
+    notebooks:
+    - "slides-extras/7*.py"
 
 # otherwise use this syntax
 static-mappings:
