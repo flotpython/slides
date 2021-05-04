@@ -60,7 +60,7 @@
 #   * https://github.com/flotpython/slides  
 #   
 # * exercices autocorrigés
-#   * https://nbhosting.inria.fr/auditor/notebook/python-exos
+#   * https://nbhosting.inria.fr/auditor/notebook/exos-mooc
 #
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
