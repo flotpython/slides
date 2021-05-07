@@ -13,7 +13,7 @@
   - file: 3-1-syntaxe-operateurs
   - file: 3-2-instructions
   - file: 3-3-iterations
-  - file: 3-4-pep008
+  - file: 3-4-pep8
 - part: "fonctions"
   chapters:
   - file: 4-1-functions-arguments
@@ -25,9 +25,9 @@
   - file: 5-2-packages
 - part: classes
   chapters:
-  - file: 6-1-classes-encapsulation
-  - file: 6-2-classes-heritage
-  - file: 6-3-surcharge-operateurs
+  - file: 6-1-intro-exemples
+  - file: 6-2-surcharge-operateurs
+  - file: 6-3-classes-and-attributes
 - part: compléments
   chapters:
   - file: 7-1-exceptions
