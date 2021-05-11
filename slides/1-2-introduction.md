@@ -837,7 +837,33 @@ def boom(n):
 try:
     boom(2)
 except Exception as exc:
-    print("BOOM") 
+    print("BOOM", exc) 
+
+print("la vie continue")    
+```
+
+```{code-cell} ipython3
+%load_ext ipythontutor
+```
+
+```{code-cell} ipython3
+---
+cell_style: center
+slideshow:
+  slide_type: slide
+---
+%%ipythontutor height=500 width=850
+
+def boom(n):
+    if n > 0:
+        return boom(n-1)
+    else:
+        return 1/n
+    
+try:
+    boom(2)
+except Exception as exc:
+    print("BOOM", exc) 
 
 print("la vie continue")    
 ```
