@@ -78,7 +78,7 @@ rise:
 
 dans tous les cas, faites un premier test:
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 200 * 300
@@ -105,7 +105,7 @@ important: savoir redémarrer son interpréteur
 
 ### pourquoi Python ?  : lisible
 
-```{code-cell}
+```{code-cell} ipython3
 # le sucre syntaxique réduit au minimum
 # c'est un partis-pris de conception
 # le code est lisible par construction
@@ -113,11 +113,11 @@ def factorielle(n):
     return 1 if n <= 1 else n * factorielle(n-1)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 factorielle(0)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 factorielle(8)
 ```
 
@@ -170,7 +170,7 @@ possède les droits sur Python et assure son développement
 
 ### philosophie python
 
-```{code-cell}
+```{code-cell} ipython3
 import this
 ```
 
@@ -233,7 +233,7 @@ import this
   * `cProfile.run('maFonction()')`
   * `timeit.timeit(stmt='maFonction()', number=10000)`
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 cell_style: split
 slideshow:
@@ -243,17 +243,17 @@ import sys
 sys.getsizeof([10])
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 sys.getsizeof([10, 20])
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 sys.getsizeof([10, 20, 30])
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 slideshow:
   slide_type: slide
@@ -371,11 +371,11 @@ slideshow:
 
 ## modèle mental : tout est objet
 
-```{code-cell}
+```{code-cell} ipython3
 %load_ext ipythontutor
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 slideshow:
   slide_type: slide
@@ -396,7 +396,7 @@ def foo(x):
 
 ### modèle mental : tout objet est typé
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 # tous les objets ont un type
@@ -404,7 +404,7 @@ a = 1
 liste = [1, 10., 10 + 10j]
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 def foo(x):
@@ -412,31 +412,31 @@ def foo(x):
 import math
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: center
 
 type(a)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 type(liste)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 type(liste[2])
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 type(math)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 cell_style: split
 slideshow:
@@ -459,7 +459,7 @@ selon leur type, les objets sont
 
 par exemple une liste est **mutable**...
 
-```{code-cell}
+```{code-cell} ipython3
 ---
 cell_style: center
 slideshow:
@@ -478,7 +478,7 @@ liste1[1] = 100
 
 par contre, une chaine est non **mutable**
 
-```{code-cell}
+```{code-cell} ipython3
 chaine = 'abc'
 try:
     chaine[1] = 'z'
@@ -496,7 +496,7 @@ except Exception as exc:
   * retourne les attributs d'un objet
   * utile notamment sur un module
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: center
 
 import math
@@ -514,13 +514,13 @@ dir(math)
   * utile sur fonctions, méthodes, classes, modules
   * fonctionne dans tous les environnements
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 help(math)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 help(math.factorial)
@@ -536,13 +536,13 @@ help(math.factorial)
 * le symbole doit être connu de python
 * fonctionne aussi dans `ipython`
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 math?
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 math.factorial?
@@ -556,12 +556,12 @@ math.factorial?
 
 avec un double `??` on peut avoir accès au code source
 
-```{code-cell}
+```{code-cell} ipython3
 # bien sûr il faut avoir **évalué** l'import
 from argparse import ArgumentParser
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # avant de pouvoir instrospecter l'objet ArgumentParser
 ArgumentParser??
 ```
@@ -574,7 +574,7 @@ ArgumentParser??
 
 utiliser `TAB` pour la complétion
 
-```{code-cell}
+```{code-cell} ipython3
 # ditto, il faut avoir chargé le module 
 # **avant** de pouvoir utiliser la complétion
 from sklearn import tree
@@ -582,7 +582,7 @@ from sklearn import tree
 
 utiliser le clavier pour sélectionner
 
-```{code-cell}
+```{code-cell} ipython3
 # tree.<taper TAB>
 ```
 
@@ -606,7 +606,7 @@ utiliser le clavier pour sélectionner
 
 tout ce qu’il y a après un `#` est ignoré par l’interpréteur
 
-```{code-cell}
+```{code-cell} ipython3
 # programme de test qui ne fait rien
 L = [1, 2]
 x = 5  
@@ -625,7 +625,7 @@ if x > 3:   # teste la comparaison dans if
   * **fait partie** de la syntaxe
   * ce qui élimine le besoin de `{}` ou `begin`/`end`
 
-```{code-cell}
+```{code-cell} ipython3
 if 2**5 == 32:
     print("pas de sucre syntaxique")
 else:
@@ -636,7 +636,7 @@ else:
 
 ### primer : fonction
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 def my_first_function(a, b):
@@ -646,13 +646,13 @@ def my_first_function(a, b):
         return a + b
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 my_first_function(10, 2)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 my_first_function(2, 10)
@@ -665,7 +665,7 @@ my_first_function(2, 10)
 
 ### primer : classe
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 class MyFirstClass:
@@ -679,14 +679,14 @@ class MyFirstClass:
         return f"{self.nom}, {self.age} ans"
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 person = MyFirstClass(
     "Jean Dupont", 25)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 person
@@ -701,7 +701,7 @@ person
 
 ### primer : *type hints*
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: center
 
 from typing import Dict
@@ -715,7 +715,7 @@ def find_instance(name: str) -> MyFirstClass:
     return global_index.get(name, None)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 index(MyFirstClass("dupont", 25))
@@ -736,20 +736,20 @@ les annotations de type
 
 ### primer : module
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 import math
 type(math)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 pi = "la tour de Pi"
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 math.pi
@@ -770,7 +770,7 @@ math.pi
 
 * notation `objet.methode()`
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 x = "abc"
@@ -792,14 +792,14 @@ l'instruction `for` et les itérateurs permettent de dissocier
 * la logique d'itération
 * du traitement à chaque tour de boucle
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 # partant par exemple d'une liste
 liste = [10, 20, 30]
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 # on itére toujours comme ceci
@@ -807,7 +807,7 @@ for item in liste:
     print(item)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 # et JAMAIS comme ceci
@@ -819,7 +819,7 @@ for i in range(len(liste)):
 
 ### primer : exceptions
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 # une fonction qui fait boom
@@ -831,7 +831,7 @@ def boom(n):
         return 1/n
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 :cell_style: split
 
 try:
