@@ -78,6 +78,7 @@ PLAN = {
             "outils utiles",
             "type hints",
             "asyncio",
+            "nouvelles releases",
         ]),
 #        ("sujets avancés", [                        # 08
 #            "context managers",
