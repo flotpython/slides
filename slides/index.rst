@@ -1,44 +1,10 @@
 ==========
-Index
+Redirector
 ==========
 
-.. toctree::
-   :includehidden:
-   :maxdepth: 2
-   :numbered:
-   :caption: Sommaire:
+This document is now built using jupyter-book, and until it can be
+hosted under readthedocs again, it is available here
 
-   01-1-introduction
-   02-1-nombres
-   02-2-sequences-str
-   02-3-containers
-   02-4-references
-   02-5-bytes
-   02-6-files
-   02-7-regexps
-   03-1-syntaxe-operateurs
-   03-2-instructions
-   03-3-iterations
-   03-4-pep008
-   04-1-functions-arguments
-   04-2-variables-scope
-   04-3-lambdas
-   05-1-modules
-   05-2-packages
-   06-1-classes-encapsulation
-   06-2-classes-heritage
-   06-3-surcharge-operateurs
-   07-1-exceptions
-   07-2-useful-libs
-   07-3-useful-tools
-   07-4-type-hints
-   07-5-asyncio
-   08-1-context-managers
-   08-2-methodes-statiques
-   08-3-decorateurs
-   08-4-acces-attributs
-   08-5-generateurs
+https://nbhosting.inria.fr/builds/python-slides/handouts/latest
 
 Licence CC BY-NC-ND - Thierry Parmentelat - Inria
-
-Created by IPyPublish (version 0.10.10)

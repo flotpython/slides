@@ -22,7 +22,7 @@
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
-BUILDDIR      = _ipypublish
+BUILDDIR      = _sphinx
 
 NOTEBOOKS = $(shell git ls-files 0*nb)
 
@@ -36,10 +36,10 @@ help:
 ipypublish: html
 
 ipypublish-clean: 
-	rm -rf _ipypublish
+	rm -rf _sphinx
 
 ipypublish-view:
-	open _ipypublish/html/index.html
+	open _sphinx/html/index.html
 
 .PHONY: ipypublish ipypublish-clean ipypublish-clean
 

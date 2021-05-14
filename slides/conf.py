@@ -17,12 +17,14 @@ master_doc = "index"
 source_suffix = {
     '.rst': 'restructuredtext',
 #    '.ipynb': 'jupyter_notebook',
-    '.py': 'jupyter_notebook'
+#    '.py': 'jupyter_notebook'
 }
 
 exclude_patterns = ['_build', 'build', '**.ipynb_checkpoints']
 
-extensions = ['ipypublish.sphinx.notebook', 'ipypublish.sphinx.gls', 'sphinx.ext.mathjax', 'sphinxcontrib.bibtex', 'sphinx.ext.todo']
+extensions = [
+#    'ipypublish.sphinx.notebook', 'ipypublish.sphinx.gls', 'sphinx.ext.mathjax', 'sphinxcontrib.bibtex', 'sphinx.ext.todo',
+]
 
 ### where to find our custom material
 # conf file itself
