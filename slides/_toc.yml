@@ -35,6 +35,7 @@
   - file: 7-3-useful-tools
   - file: 7-4-type-hints
   - file: 7-5-asyncio
+  - file: 7-6-releases
 - part: sujets avancés
   chapters:
   - file: 8-1-context-managers
