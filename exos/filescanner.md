@@ -8,9 +8,9 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: jupytext-dev
+  display_name: Python 3
   language: python
-  name: jupytext-dev
+  name: python3
 language_info:
   name: python
   nbconvert_exporter: python
