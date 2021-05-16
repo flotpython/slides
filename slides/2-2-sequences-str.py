@@ -13,7 +13,7 @@
 #     language: python
 #     name: python3
 #   nbhosting:
-#     title: str et bytes
+#     title: séquences et chaines
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t

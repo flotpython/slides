@@ -36,10 +36,12 @@ ip1 = "192.168.0.9"
 On vous demande d'écrire une fonction qui transforme ceci en un entier sur 32 bits; par exemple pour `ip1` on doit obtenir ceci
 
 ```{code-cell} ipython3
+# comme les différents morceaux valent ceci
 hex(192), hex(168), hex(0), hex(9)
 ```
 
 ```{code-cell} ipython3
+# le résultat final doit être ceci
 0xc0a80009
 ```
 
@@ -52,6 +54,7 @@ hex(138), hex(96), hex(19), hex(1)
 ```
 
 ```{code-cell} ipython3
+# d'où on doit obtenir pour ip2 la valeur entière suivante
 0x8a601301
 ```
 

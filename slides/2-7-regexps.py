@@ -29,7 +29,7 @@
 # </div>
 
 # %%
-## from plan import plan; plan("types", "regexps")
+## from plan import plan; plan("types", "régulières")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # # expressions régulières
@@ -260,6 +260,7 @@ match.groups()
 # pour filtrer avec une regexp **ou** une autre :
 
 # %% cell_style="split"
+# 'ab' ou 'cd'
 match_all('ab|cd', ['ab', 'cd', 'abcd'])
 
 # %% cell_style="split"
@@ -285,7 +286,7 @@ match_all('[a-z]?', ['', 'b', 'xy'])
 # * `a{3,}` : au moins 3 occurrences
 # * `a{3,6}` : entre 3 et 6 occurrences
 
-# %% cell_style="split"
+# %% cell_style="center"
 match_all('(ab){1,3}', ['', 'ab', 'abab', 'ababab', 'ababababababab'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
