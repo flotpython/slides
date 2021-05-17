@@ -89,7 +89,7 @@ b = a
 #
 #   * il est impossible qu’une modification sur `b` affecte `a`    
 
-# %% [markdown]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### références partagées vers objet immutable
 
 # %% slideshow={"slide_type": "-"}
@@ -252,7 +252,7 @@ L = [1, 2, 3]
 def foo(x):
     x[1] = 'BOOM'
 
-foo(L)    
+foo(L)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### références entre objets
