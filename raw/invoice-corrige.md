@@ -66,7 +66,7 @@ l'API la plus simple évidemment ce serait tout simplement ceci
 
 ```python
 invoice = generate_invoice(
-    items, company_address, thanks=thanks_message, currency='$')
+    items, company_address, thanks=thanks_message, currency='$', items)
 print(invoice)
 ```
 
@@ -81,8 +81,7 @@ mais on peut aussi imaginer ceci par exemple
 +++
 
 ```python
-generator = InvoiceGenerator(
-    address=company_address, thanks=thanks_message)
+generator = InvoiceGenerator(address=company_address, thanks=thanks_message)
 print(generator.invoice(items))
 ```
 
@@ -117,27 +116,59 @@ ce qui dans les deux cas produirait une sortie dans le genre de la suivante
 
 +++
 
-## v0
+## une solution v1
 
 ```{code-cell} ipython3
-WIDTH = 50
-```
+# let's take advantage of Python 3.9's new
+# type hinting capabilities
 
-```{code-cell} ipython3
-# à vous
-def generate_invoice():
-    ...
-```
+UnitPrice = float
+NumberItems = int
+Item = tuple[str, UnitPrice, NumberItems]
 
-## v1
-
-```{code-cell} ipython3
 class InvoiceGenerator:
     
-    pass
+    width = 50
+    
+    def __init__(self, address, thanks, currency='$'):
+        self.address = address
+        self.thanks = thanks
+        self.currency = currency
+        
+    def invoice(self, items: list[Item]):
+        """
+        items is expected to be a list of tuples of the form
+        (label, unit_price, number_items)
+        """
+        
+        result = self.width * '*' + "\n"
+
+        result += "\n".join(f"{line:^{self.width}}" 
+                            for line in company_address.strip().split("\n"))
+        
+        result += "\n" + self.width * '+' + "\n"
+        width2 = self.width // 2 - 8
+
+        # using litterals inside another litteral 
+        # thanks to the 2 kinds of quotes
+        result += f"{'Product Name':>{width2}}{'#':>6}  {'Item Price':<{width2}}\n"
+        
+        total = 0
+        for (label, unit_price, number_items) in items:
+            total += unit_price * number_items
+            result += f"{label:>{width2}}{number_items:>6}  {unit_price:<{width2}}\n"
+
+        result += self.width * '-' + "\n" 
+        result += f"{'Total':>{width2}}{' ':8}{total:.2f}{self.currency}\n"
+
+        result += self.width * '+' + "\n" 
+        result += f"{self.thanks:^{self.width}}\n"
+
+        result += self.width * '*'
+        return result
 ```
 
-## pour essayer
+### essayons
 
 ```{code-cell} ipython3
 company_address = """Tribeca Inc.,
@@ -150,28 +181,18 @@ thanks_message = "Thanks for shopping with us today!"
 
 currency = '€'
 
+generator = InvoiceGenerator(address=company_address, thanks=thanks_message)
+
 items = [
     ("Books", 25.0, 2),
     ("Monitor", 250.0, 1),
     ("Computer", 500.0, 1),
 ]
-```
-
-### v0
-
-```{code-cell} ipython3
-invoice = generate_invoice(
-    items, company_address, thanks=thanks_message, currency='$', items)
-print(invoice)
-```
-
-### v1
-
-```{code-cell} ipython3
-generator = InvoiceGenerator(address=company_address, thanks=thanks_message)
 
 invoice = generator.invoice(items)
+```
 
+```{code-cell} ipython3
 print(invoice)
 ```
 
