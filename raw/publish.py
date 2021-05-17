@@ -4,6 +4,7 @@ from pathlib import Path
 from argparse import ArgumentParser
 from itertools import chain
 
+import pwd, grp, os
 
 STUDENTS_ROOT = Path("/nbhosting/current/students")
 COURSE = "python-initial-cnrs"
@@ -16,6 +17,10 @@ def ITER_STUDENTS():
         yield student_dir.parent.name
 
 
+def chown(path, student):
+    uid = pwd.getpwnam(student).pw_uid
+    gid = grp.getgrnam(student).gr_gid
+    os.chown(str(path), uid, gid)
 
 def publish(exo, student, dry_run):
     source = SOURCE / 'raw' / exo
@@ -30,6 +35,7 @@ def publish(exo, student, dry_run):
         print(f"DRY-RUN: Would copy {source} into {dest}")
         return
     dest.write_text(source.read_text())
+    chown(dest, student)
 
 
 def list_exos():
