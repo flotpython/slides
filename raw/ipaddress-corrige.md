@@ -58,9 +58,45 @@ hex(138), hex(96), hex(19), hex(1)
 0x8a601301
 ```
 
-```{code-cell} ipython3
-# à vous
+## solution 1
 
-def ipv4_to_int32(ip):
-    ...
++++
+
+un peu poussif, mais qui fonctionne
+
+```{code-cell} ipython3
+def ipv4_to_int32_v1(ip):
+    result = 0
+    # the first byte needs to be shifted by 2**24
+    # the second one will be shifted by only 2**16, ...
+    rank = 24
+    for x in ip.split('.'):
+        result += int(x) * 2**rank
+        rank -= 8
+    return result
+```
+
+```{code-cell} ipython3
+ipv4_to_int32_v1(ip1)
+```
+
+```{code-cell} ipython3
+ipv4_to_int32_v1(ip2)
+```
+
+## solution 2
+
+```{code-cell} ipython3
+def ipv4_to_int32_v2(ip):
+    bytes4 = [int(x) for x in ip.split('.')]
+    shifted = [b<<(8*i) for (i, b) in enumerate(bytes4[::-1])]
+    return sum(shifted)
+```
+
+```{code-cell} ipython3
+ipv4_to_int32_v2(ip1)
+```
+
+```{code-cell} ipython3
+ipv4_to_int32_v2(ip2)
 ```
