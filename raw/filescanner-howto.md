@@ -17,6 +17,10 @@ language_info:
   pygments_lexer: ipython3
 ---
 
+# parcours de fichiers
+
++++
+
 dans le temps les calculs sur les noms et métadonnées des fichiers étaient faits à base de 
 
 * `import os, os.util, glob`
@@ -29,8 +33,8 @@ from pathlib import Path
 
 ## exercice v1
 
-* écrire une fonction qui prend en paramètre un dossier (une str)
-* qui liste tous les fichiers avec une certaine extension dans le dossier
+* écrire une fonction qui prend en paramètre un nom de dossier (une str)
+* qui liste tous les fichiers avec **une** certaine extension dans le dossier
 * afficher pour chacun d'eux
   * le nom complet, sa taille et la date/heure de dernière modification
   * la première ligne
@@ -48,9 +52,14 @@ scanv1("/Users/Jean Dupont/cours-python/", "py")
 
 idem mais
 
-* on peut passer le dossier sous la forme d'une str ou d'un Path
-* l'extension peut être vide (tous les fichiers) ou une chaine simple, ou un itérable d'extensions
-* on peut passer un paramètre optionnel `recursive=False` qui indique si la recherche se fait dans tout le contenu du dossier, ou si au contraire seuls les fichiers placés directement sous le dossier sont concernés
+* on peut passer le dossier sous la forme d'une str **ou** d'un objet Path
+* on a plus de choix pour décrire la ou les extensions qui nous intéressent; le paramètre extension peut maintenant être
+  * vide (tous les fichiers)
+  * ou une chaine simple
+  * ou un itérable d'extensions
+* on peut passer un paramètre optionnel `recursive=False` qui indique
+  * si la recherche se fait dans tout le contenu du dossier,
+  * ou si au contraire seuls les fichiers placés directement sous le dossier sont concernés
 
 ```{code-cell} ipython3
 # exemple d'appel
@@ -61,18 +70,31 @@ scanv2(Path.home() / "cours-python/", ("py", "md", "ipynb", recursive=True)
 
 ---
 
++++
+
+## solution v1
+
 ```{code-cell} ipython3
 def scanv1(folder, extension):
+    # on convertit la chaine en Path
+    # pour pouvoir utiliser la librairie
     path = Path(folder)
+    # on scanne
     for child in path.glob(f"*.{extension}"):
+        # avec resolve() on obtient le chemin canonique
         print(f"File {child.resolve()}")
+        # la taille et l'heure de modification sont accessibles au travers
+        # de la méthode stat()
         print(f"  {child.stat().st_size} B last modified on {child.stat().st_mtime}")
+        # pour lire seulement la première ligne
+        # on pourrait faire un for + break
+        # mais c'est plus élégant comme ceci
         with child.open() as feed:
             print("  first line:", next(feed), end="")
 ```
 
 ```{code-cell} ipython3
-scanv1("../slides", "md")
+# scanv1("../slides", "md")
 ```
 
 ```{code-cell} ipython3
@@ -90,8 +112,10 @@ def scanv1_sorted(folder, extension):
 ```
 
 ```{code-cell} ipython3
-scanv1_sorted("../slides", "md")
+# scanv1_sorted("../slides", "md")
 ```
+
+## solution v2
 
 ```{code-cell} ipython3
 # en fait la v1 accepte déjà les objets de type Path
@@ -100,9 +124,13 @@ def scanv2(folder, extensions=None, recursive=False):
     # optionnel mais si on veut éviter la création
     # d'objets inutiles
     path = folder if isinstance(folder, Path) else Path(folder)
+    # pour faire un parcours récursif, il suffit d'utiliser
+    # le pattern "**"
     pattern = "**/*" if recursive else "*"
+    # la gestion des extensions est du coup sasez différente
     for child in path.glob(pattern):
         ext = child.suffix[1:]
+        # on regarde s'il y a lieu d'ignorer ce fichier
         if extensions is not None:
             if isinstance(extensions, str):
                 if ext != extensions:
@@ -110,23 +138,24 @@ def scanv2(folder, extensions=None, recursive=False):
             else:
                 if ext not in extensions:
                     continue
+        # le reste est comme dans la v1
         print(f"File {child.resolve()}")
         print(f"  {child.stat().st_size} B last modified on {child.stat().st_mtime}")
         with child.open() as feed:
             print("  first line:", next(feed), end="")
 ```
 
-quelques défauts résiduels:
+```{code-cell} ipython3
+# scanv2("..", ('md', 'txt'), recursive=True)
+```
+
+je vous laisse à titre d'exercice corriger quelques défauts résiduels:
 
 * les fichiers de taille nulle posent problème (pour le `next(feed)`)
 * les fichiers binaires posent problème (pareil)
 
-pour arranger ça il faut être un peu plus soigneux....
+pour arranger ça il faut être un peu plus soigneux
 
-```{code-cell} ipython3
-scanv2("..", ('md', 'txt'), recursive=True)
-```
++++
 
-```{code-cell} ipython3
-
-```
+***
