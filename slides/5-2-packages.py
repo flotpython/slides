@@ -175,9 +175,9 @@ pack1.pack2.mod.__name__
 
 # %% [markdown] cell_style="center"
 # * l'import relatif **ne fonctionne pas**  
-#   sur la base de l'arboresence de *fichiers*
+#   sur la base de l'arborescence de *fichiers*
 # * mais au contraire il se base sur  
-#   l'arboresence des *modules*
+#   l'arborescence des *modules*
 #   
 # différence subtile, mais frustration garantie
 
