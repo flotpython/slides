@@ -1,5 +1,7 @@
-- file: 1-2-introduction
-- part: "types de base"
+format: jb-book
+root: 1-2-introduction
+parts:
+- caption: "types de base"
   chapters:
   - file: 2-1-nombres
   - file: 2-2-sequences-str
@@ -8,27 +10,27 @@
   - file: 2-5-bytes
   - file: 2-6-files
   - file: 2-7-regexps
-- part: "syntaxe et instructions"
+- caption: "syntaxe et instructions"
   chapters:
   - file: 3-1-syntaxe-operateurs
   - file: 3-2-instructions
   - file: 3-3-iterations
   - file: 3-4-pep8
-- part: "fonctions"
+- caption: "fonctions"
   chapters:
   - file: 4-1-functions-arguments
   - file: 4-2-variables-scope
   - file: 4-3-lambdas
-- part: "modules & packages"
+- caption: "modules & packages"
   chapters:
   - file: 5-1-modules
   - file: 5-2-packages
-- part: classes
+- caption: classes
   chapters:
   - file: 6-1-intro-exemples
   - file: 6-2-surcharge-operateurs
   - file: 6-3-classes-and-attributes
-- part: compléments
+- caption: compléments
   chapters:
   - file: 7-1-exceptions
   - file: 7-2-useful-libs
@@ -36,7 +38,7 @@
   - file: 7-4-type-hints
   - file: 7-5-asyncio
   - file: 7-6-releases
-- part: sujets avancés
+- caption: sujets avancés
   chapters:
   - file: 8-1-context-managers
   - file: 8-2-methodes-statiques
