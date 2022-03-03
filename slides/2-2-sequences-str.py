@@ -9,11 +9,11 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
-#     title: séquences et chaines
+#     title: "s\xE9quences et chaines"
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t
@@ -73,8 +73,10 @@
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * `x in S`; selon les types:
-#  * `True` si un élément de S est égal à x (e.g. `list`)
-#  * `True` si S contient x (e.g. `str`)
+#  * `True` si un élément de S est égal à x  
+#    (e.g. S est une `list`)
+#  * `True` si S contient x  
+#    (e.g. S est une `str`)
 # * `S.index(a)`
 #   * retourne l’indice de la première occurrence de a dans S
 # * `S.count(a)`
@@ -92,7 +94,7 @@
 #   * prenant tous les éléments de l’indice i à l’indice j-1, par sauts de k éléments
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# <img src="media/egg-bacon.png"/>
+# ![](media/egg-bacon.png)
 
 # %% [markdown] cell_style="split"
 # **slicing**
@@ -122,7 +124,7 @@ s[-3:10]
 s[:]
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# <img src="media/egg-bacon-bornes.png" text-align="center">
+# ![](media/egg-bacon-bornes.png)
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
 # ### les bornes
@@ -143,7 +145,7 @@ s[6:]
 s[0:3] + s[3:6] + s[6:] == s
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# <img src="media/egg-bacon.png" text-align="center">
+# ![](media/egg-bacon.png)
 
 # %% [markdown] cell_style="split"
 # ### le pas
@@ -166,7 +168,7 @@ s[:8:3]
 s[-2::-3]
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# <img src="media/egg-bacon.png" text-align="center">
+# ![](media/egg-bacon.png)
 
 # %% [markdown] cell_style="split"
 # ### pas d'exception
@@ -188,7 +190,7 @@ s[5:100]
 s[100:200]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <img src="media/egg-bacon.png" text-align="center">
+# ![](media/egg-bacon.png)
 
 # %% cell_style="split"
 s[-1]
@@ -232,6 +234,14 @@ s[::-1]
 #   
 # * **ATTENTION**
 #   * un caractère ce **n'est pas** un octet
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# avec l'encodage le plus répandu aujourd'hui (UTF-8), tous les caractères ASCII tiennent sur un octet   
+# mais **ce sont les seuls**: un `é` par exemple occupe 2 octets; un `‰` occupe 3 octets; un `🚀` occupe 4 octets
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaînes de caractères `str`
@@ -298,6 +308,7 @@ s = "l'hôtel"
 print(s)
 
 # %% cell_style="split"
+# 
 s = 'une "bonne" idée'
 print(s)
 
@@ -321,12 +332,13 @@ s = 'C:\Temp\test.txt'
 print(s)
 
 # %% [markdown] cell_style="center"
-# * `\T` n’existe pas, Python interprète correctement `\T`
+# * `\T` n’existe pas comme échappement  
+#   Python interprète correctement `\T`
 # * mais `\t` est compris comme une tabulation !!
 
 # %% [markdown] cell_style="split"
-# * 1$^{ère}$solution : utiliser `\\`
-# * mais pas très élegant
+# * 1$^{ère}$solution : utiliser `\\`  
+#   mais pas très élegant
 
 # %% cell_style="split"
 s = 'C:\\Temp\\test1.bin'
@@ -344,6 +356,13 @@ print(s)
 s = r'C:\Temp\test1.bin'
 print(s)
 
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# **NB** que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un <code>&bsol;</code> dans les chemins de fichiers sous Windows
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *docstrings*
@@ -365,10 +384,19 @@ def double(n):
 # %% cell_style="split"
 help(double)
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# il faut que la chaine littérale soit la première instruction dans le code de la fonction
+#
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérations sur les `str`
 #
 # ### toutes les opérations des séquences
+#
+# que l'on a déjà vues :
 
 # %% cell_style="split"
 s1 = 'abcdéfg'
@@ -424,12 +452,13 @@ except TypeError as e:
 # %% [markdown] cell_style="split"
 # * entre `{` et `}` : **du code** 
 # * embarqué directement dans le format
-# * n'importe quelle expression
+# * n'importe quelle **expression**
 
 # %% cell_style="split"
 import math
 
 # %% cell_style="split"
+#
 nom, age = "Pierre", 42
 
 # %% cell_style="split"
@@ -437,6 +466,13 @@ f"{nom} a {age} ans"
 
 # %% cell_style="split"
 f"360° = {2*math.pi} radians"
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# **NB** qu'entre les `{}`, on peut mettre un **nom de variable** mais aussi, plus généralement, écrire **une expression** (faire un calcul)
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *f-string* : expression et format
@@ -447,28 +483,24 @@ f"360° = {2*math.pi} radians"
 # %%
 print(f"ᴨ arrondi à deux décimales = {math.pi:.2f}")
 
+
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### expression dans le format
+# ### `=` dans une f-string
 
-# %% [markdown] slideshow={"slide_type": ""}
-# * le format peut à son tour contenir des expressions
+# %% [markdown]
+# grâce au `=` optionnel, on peut obtenir en une seule fois un double affichage:
+# * le code de l'expression
+# * et la valeur de l'expression
 
-# %% cell_style="split"
-from decimal import Decimal
-value = Decimal('12.34567')
+# %%
+# et c'est très pratique pour le debugging
+def add(x, y):
+    return x+y
 
-# %% cell_style="split"
-# ici la précision de 4 
-# signifie 4 chiffres
-# significatifs en tout
-f"value = >{value:10.4}<"
+a, b = 10, 30
 
-# %% cell_style="split"
-# ça aurait pu être 
-# un paramètre
-width = 10
-precision = 4
-f"value = >{value:{width}.{precision}}<"
+# c'est ici:      ⬇
+print(f"{add(a, b)=}")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### formats - scientifiques
@@ -501,6 +533,31 @@ f"|{nom:<12}|{nom:^12}|{nom:>12}|"
 # on peut aussi préciser avec quel caractère remplir
 num = 123
 f"|{num:<12}|{num:-^12}|{num:0>12}|"
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### expression dans le format
+
+# %% [markdown] slideshow={"slide_type": ""}
+# * même le format peut, à son tour, contenir des expressions
+
+# %% cell_style="split"
+from decimal import Decimal
+value = Decimal('12.34567')
+
+# %% cell_style="split"
+# ici la précision de 4 
+# signifie 4 chiffres
+# significatifs en tout
+
+f"value = >{value:10.4}<"
+
+# %% cell_style="split"
+# la précision aurait pu être 
+# un paramètre
+
+width = 10
+precision = 4
+f"value = >{value:{width}.{precision}}<"
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## formatage : anciennes méthodes
@@ -635,41 +692,41 @@ s[12]
 # * google les simples mots clés 'python str', vous trouvez
 # * <https://docs.python.org/3/library/stdtypes.html>
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## un peu d'introspection (avancé)
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # disons qu'on voudrait savoir combien de méthodes sont disponibles sur les chaines.
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 type("abc")
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 str
 
-# %%
+# %% tags=["level_intermediate"]
 # 'str' est une variable prédéfinie, qui référence 
 # le type (la classe) de toutes les chaines
 type("abc") is str
 
-# %%
+# %% tags=["level_intermediate"]
 # du coup son type, c'est .. le type <type>
 type(str)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### un peu d'introspection...
 
-# %%
+# %% tags=["level_intermediate"]
 # peu importe... quoi qu'il en soit, dir(str) retourne la liste
 # des noms de méthodes connues sur cette classe; 
 # regardons par exemple les premiers et les derniers
 dir(str)[:2], dir(str)[-2:]
 
-# %%
+# %% tags=["level_intermediate"]
 # avec len() je peux savoir combien il y en a
 len(dir(str))
 
-# %%
+# %% tags=["level_intermediate"]
 # mais en fait, pour un décompte significatif
 # on enlève celles dont le nom contient `__`
 len([method for method in dir(str) if '__' not in method])
