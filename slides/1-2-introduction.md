@@ -8,7 +8,7 @@ jupytext:
     extension: .md
     format_name: myst
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 nbhosting:
@@ -37,7 +37,7 @@ rise:
 
 +++ {"cell_style": "center"}
 
-> version de référence: python-3.7
+> version de référence: python-3.9
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -51,18 +51,21 @@ rise:
   * interpréteur en ligne de commande
 * en option, `ipython` en remplacement
   * nécessite une installation supplémentaire
-  * `pip3 install ipython`
+  * `pip install ipython`
 
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
++++
+
+<div class="rise-footnote">
+
+`pip install mylibrary` est la façon standard d'installer une librairie externe  
+ `python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
+    
+</div>
+
++++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
 
 <img src="../media/python-ipython-in-terminal.png"
      width="600px">
-
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-
-***Note***
-
-*sur des installations un peu anciennes on peut avoir à taper `python3` ou `ipython3`*
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -70,13 +73,16 @@ rise:
 
 +++ {"cell_style": "center"}
 
-* IDLE, basique voire rustique, mais suffisant pour nos besoins
-* celui de votre choix (PyCharm, SublimeText, atom, vscode, eclipse, ... trop de variantes)
+* IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
+  atom, eclipse, ... bcp de variantes)
 * Jupyter notebook
+* IDLE (fourni avec distribution standard): basique voire rustique,  
+mais suffisant pour nos besoins
 
 +++ {"cell_style": "split"}
 
-dans tous les cas, faites un premier test:
+dans tous les cas,  
+faites un premier test:
 
 ```{code-cell} ipython3
 :cell_style: split
@@ -84,7 +90,7 @@ dans tous les cas, faites un premier test:
 200 * 300
 ```
 
-important: savoir redémarrer son interpréteur
+**important**: savoir interrompre/redémarrer son interpréteur
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -93,7 +99,7 @@ important: savoir redémarrer son interpréteur
 +++
 
 * syntaxe simple
-  * pas de délimitations  `; {} () []`
+  * pas de délimitations  `begin end ; {} `
   * uniquement des indentations
   * aucune ambiguïté
   * une seule façon d’écrire
@@ -164,7 +170,7 @@ factorielle(8)
 possède les droits sur Python et assure son développement
 
 * essentiellement aucune restriction sur le code Python et son usage, même commercial
-* https://docs.python.org/3.5/license.html
+* https://docs.python.org/3/license.html
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -182,11 +188,13 @@ import this
 
 * scripts (mais pas **uniquement** ça!)
 * programmation système
-* internet
+* Internet
 * base de données
 * prototypage rapide
-* calcul scientifique
-* exploration dans les données
+* calcul scientifique avec `numpy`
+* exploration dans les données avec `pandas` et `sklearn`
+* backend web avec `Django` / `Flask`
+* …
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -268,47 +276,18 @@ slideshow:
 
 +++
 
-* version 3.x (actuellement 3.7)
+* version 3.x (actuellement disons 3.9)
   * **toutes** les librairies usuelles supportent 3.x
   * **recommandé** pour un nouveau projet
   * compatible ascendant à partir de 3.0
   
 * ~~version 2.7~~
-  * en fin de vie - supporté jusque 1er janvier 2020 
-  * initialement annoncé jusque 2015
-  * certains projets ont déjà cessé de le supporter
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### quelle version de python ?
-
-+++
-
-* 3.x corrige des gros défauts de 2.x
-  * caractère &nbsp;$\neq$&nbsp;&nbsp;octet (`bytes` et `str`)
-  * `print` et `exec` sont des **fonctions**
-  * **itérateurs** plutôt que listes (`range` etc.)
-  * `/` n'est plus la division entière
-  * etc.
-* **attention**
-  * 2.x et 3.x ne sont **pas compatibles**
-  * outil de conversion `2to3`
+  * **surtout ne pas utiliser !**
+  * en fin de vie - supporté jusque 1er janvier 2020
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## documentation
-
-+++
-
-### In english (un peu ancien à présent)
-
-* Learning Python, 5th Edition, Mark Lutz
-  * niveau débutant à confirmé
-* Programming Python, 4th Edition, Mark Lutz
-  * niveau confirmé
-
-<span style="float:left;"><img src="media/book-learning-python.png"></span>
-<span style="float:right;"><img src="media/book-programming-python.png"></span>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -322,26 +301,22 @@ slideshow:
   * google -> `python manuals`
   * google -> `python argparse`
   * (https://www.google.com/search?q=python+argparse)
-  * **vérifier** version (**3.7** plutôt que 2.7)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### en français
 
-* MOOC Python : des fondamentaux à l'utilisation du langage
+* [MOOC Python : des fondamentaux à l'utilisation du langage](https://www.fun-mooc.fr/fr/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/)
   * A. Legout et T. Parmentelat
 * http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
-* le site de sametmax http://sametmax.com/ 
-  * couvre des sujets avancés, très bons articles
-  * avertissement: la devise du site est «du code, du cul»
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 * documentation officielle Python
   * très riche: du tutoriel à la description du langage
-  * http://docs.python.org/3.7/	
+  * http://docs.python.org/3/	
 * FAQ Python
-  * https://docs.python.org/3.7/faq/
+  * https://docs.python.org/3/faq/
 * stackoverflow (SO)
   * https://stackoverflow.com/questions/tagged/python-3.x
   * on peut directement chercher sur Google
@@ -356,16 +331,29 @@ slideshow:
 
 ## les concepts majeurs de python
 
-+++
++++ {"cell_style": "split"}
 
 * **tout est un objet**
-* liaison statique
+* objets mutables ou non
 
-+++
+<div class="rise-footnote">
+
+nous allons illustrer ces 2 points de suite
+
+</div>
+
++++ {"cell_style": "split"}
 
 * références partagées
+* liaison statique
 * itérateurs
 * espaces de nommage
+
+<div class="rise-footnote">
+
+nous verrons ces notions plus en détail dans le reste du cours
+
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -399,8 +387,9 @@ def foo(x):
 ```{code-cell} ipython3
 :cell_style: split
 
-# tous les objets ont un type
+# créons quelques objets
 a = 1
+b = "ma chaine"
 liste = [1, 10., 10 + 10j]
 ```
 
@@ -415,24 +404,29 @@ import math
 ```{code-cell} ipython3
 :cell_style: center
 
-type(a)
+# a désigne un entier, b désigne une chaine
+type(a), type(b)
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
+# une liste
 type(liste)
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
+# les indices commencent à 0
+# un complexe 
 type(liste[2])
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
+# un module
 type(math)
 ```
 
@@ -442,8 +436,16 @@ cell_style: split
 slideshow:
   slide_type: ''
 ---
+# une fonction
 type(foo)
 ```
+
+<div class="rise-footnote">
+    
+attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**  
+ainsi une variable peut désigner par ex. d'abord un entier, puis une liste…
+
+</div>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -607,7 +609,7 @@ utiliser le clavier pour sélectionner
 tout ce qu’il y a après un `#` est ignoré par l’interpréteur
 
 ```{code-cell} ipython3
-# programme de test qui ne fait rien
+# programme de test qui ne fait pas grand-chose
 L = [1, 2]
 x = 5  
 if x > 3:   # teste la comparaison dans if 
@@ -671,7 +673,7 @@ my_first_function(2, 10)
 class MyFirstClass:
     
     def __init__(self, nom, age):
-        print("init")
+        print("init instance", nom)
         self.nom = nom
         self.age = age
         
@@ -704,10 +706,13 @@ person
 ```{code-cell} ipython3
 :cell_style: center
 
-from typing import Dict
+# ici j'utilise un trait qui date de la version 3.9
 
-global_index = {}  # type: Dict[name, MyFirstClass]
+# on peut donner une indication sur le type attendu, avec
+# ce commentaire   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+global_index = {}  # type: dict[name, MyFirstClass]
 
+# ou encore ici:  ↓↓↓↓↓↓↓↓↓↓↓↓ et ↓↓↓↓↓↓↓↓ 
 def index(instance: MyFirstClass) -> None:
     global_index[instance.nom] = instance
     
@@ -728,7 +733,8 @@ print(find_instance("dupont"))
 
 les annotations de type 
 * sont **entièrement optionnelles**
-* mais aident à utiliser le code
+* mais aident à lire, utiliser  
+  et documenter le code
 * vérifiables par un outil externe  
   e.g. [`mypy`](http://mypy-lang.org/)
 
@@ -757,13 +763,14 @@ math.pi
 
 * correspond à un fichier (ou répertoire) de source 
 * fonctionne comme un espace de noms
-* ma variable `pi` coexiste avec celle de `math`
+* ma variable `pi` coexiste avec celle de `math`  
+  mais elles sont différentes - **pas de conflit**
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### primer : attributs
 
-+++ {"cell_style": "split"}
++++ {"cell_style": "center"}
 
 * programmation  
   orientée objet
@@ -773,12 +780,21 @@ math.pi
 ```{code-cell} ipython3
 :cell_style: split
 
+# appeler une méthode
 x = "abc"
 x.upper()
 ```
 
+```{code-cell} ipython3
+:cell_style: split
+
+# accéder à un attribut
+p = MyFirstClass("jean", 43)
+p.age
+```
+
 en fait mécanisme plus général
-dit de recherche d'attributs
+dit de recherche d'attributs  
 comme par exemple `math.pi`
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -854,6 +870,28 @@ slideshow:
 ---
 %%ipythontutor height=500 width=850
 
+# sans exception : le programme crashe
+
+def boom(n):
+    if n > 0:
+        return boom(n-1)
+    else:
+        return 1/n
+    
+boom(2)
+print("la vie ne continue pas !")    
+```
+
+```{code-cell} ipython3
+---
+cell_style: center
+slideshow:
+  slide_type: slide
+---
+%%ipythontutor height=500 width=850 curInstr=12
+
+# avec exception
+
 def boom(n):
     if n > 0:
         return boom(n-1)
@@ -867,3 +905,5 @@ except Exception as exc:
 
 print("la vie continue")    
 ```
+
+***
