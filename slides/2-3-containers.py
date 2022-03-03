@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -401,7 +401,7 @@ except TypeError as e:
 # ### table de hash
 
 # %% [markdown]
-# ![hash](media/hash.png)
+# ![hash](media/hash.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### table de hash
