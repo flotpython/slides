@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -81,6 +81,11 @@
 #   * python3 est d'ailleurs plus exigeant
 # * et attention aux copier/coller
 #   * qui peuvent décaler des lignes
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## affectation
+#
+# xxx
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## if elif else (l'instruction)
