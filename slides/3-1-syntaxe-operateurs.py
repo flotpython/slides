@@ -28,10 +28,6 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %% slideshow={"slide_type": "slide"}
-#from plan import plan; plan("syntaxe", "syntaxe")
-
-
 # %% [markdown]
 # # syntaxe et opérateurs
 

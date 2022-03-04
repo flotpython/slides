@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -28,16 +28,14 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %%
-#from plan import plan; plan("types", "bytes")
-
 # %% [markdown] slideshow={"slide_type": ""}
-# # données brutes : le type `bytes`
+# # données brutes
 
 # %% [markdown] slideshow={"slide_type": ""}
 # ## le type `bytes`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+#
 # ### non mutable
 
 # %% [markdown]

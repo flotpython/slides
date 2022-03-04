@@ -28,18 +28,10 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### pourquoi le tuple ?
-#
-# vous vous demandez 
-
-# %% slideshow={"slide_type": ""}
-#from plan import plan; plan("types", "containers")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # # les containers
 
-# %% [markdown]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## la liste
 
 # %% [markdown]

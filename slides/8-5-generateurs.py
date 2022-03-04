@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -28,12 +28,11 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %%
-#from plan import plan; plan("avancé", "générateur")
-
+# %% [markdown] slideshow={"slide_type": ""}
+# # générateur
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# # générateur
+# ## c'est quoi un générateur ?
 
 # %% [markdown]
 # * une **fonction génératrice**, ou générateur, est une fonction qui retourne un itérateur

@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -31,7 +31,7 @@
 # %% [markdown]
 # # présentation du code
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # ## style de présentation du code
 #
 # * tout le code de la librairie standard obéit à des règles de présentation

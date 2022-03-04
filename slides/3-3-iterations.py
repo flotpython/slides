@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -22,16 +22,13 @@
 #     transition: cube
 # ---
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %% slideshow={"slide_type": "-"}
-##from plan import plan; plan("syntaxe", "itération")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # # les itérations en Python
 
 # %% [markdown]
@@ -42,11 +39,16 @@
 #   * on peut faire un `for` sur n'importe quel itérable
 #   * ce n'est pas le cas pour le `while`
 #   * avec `for` c'est l'itérable qui se charge de la logique
-# * de nombreuses techniques pour itérer de manière optimisée
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# nous verrons dans un deuxième temps de nombreuses techniques  
+# pour itérer de manière optimisée:
 #   * compréhensions
 #   * itérateurs
 #   * expressions génératrices
 #   * générateurs
+#   
+#   
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## la boucle `for`

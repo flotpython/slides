@@ -120,14 +120,3 @@ len(L)
 
 # %% [markdown]
 # ![](media/nbhosting-plain.png)
-
-# %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# ## plan du cours
-
-# %%
-# le plan : survol
-from plan import plan; plan("intro")
-
-# %% {"slideshow": {"slide_type": "slide"}}
-# le plan : un peu plus de détails
-from plan import plan; plan()

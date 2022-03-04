@@ -9,7 +9,7 @@
 #       extension: .py
 #       format_name: percent
 #   kernelspec:
-#     display_name: Python 3
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 #   nbhosting:
@@ -22,17 +22,13 @@
 #     transition: cube
 # ---
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # <div class="licence">
 # <span>Licence CC BY-NC-ND</span>
 # <span>Thierry Parmentelat</span>
 # </div>
 
-# %% slideshow={"slide_type": "slide"}
-#from plan import plan; plan("classes", "exemples")
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # # POO : introduction et exemples
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -288,7 +284,7 @@ a.distance(b)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Circle` (1)
 
-# %% slideshow={"slide_type": ""} tags=[]
+# %% slideshow={"slide_type": ""}
 class Circle1:
 
     def __init__(self, center: Point, radius: float):
@@ -320,7 +316,7 @@ c1.contains(a)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Circle` (2)
 
-# %% slideshow={"slide_type": ""} tags=[]
+# %% slideshow={"slide_type": ""}
 class Circle2:
 
     def __init__(self, center: Point, radius: float):
@@ -409,7 +405,7 @@ three_weeks = 3 * TimeDelta(weeks=1)
 today - three_weeks
 
 
-# %% tags=[]
+# %%
 # pour la suite:
 # une commodité pour afficher une durée
 # sous la forme de <..> ans et <..> mois
@@ -428,7 +424,7 @@ def timedelta_as_year_month(age: TimeDelta):
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Student`
 
-# %% tags=[]
+# %%
 class Student:
 
     def __init__(self, first_name, last_name, 
@@ -566,7 +562,7 @@ a.method2()
 b.method2()
 
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple d'héritage
 #
 # * si on avait voulu se débarrasser de ce vilain `timedelta_as_year_month`

@@ -28,19 +28,16 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
-# %%
-#from plan import plan; plan("types", "séquences")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": ""}
 # # séquences & chaines
 
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # * suite finie et ordonnée d'objets
 # * du coup indexable `seq[n]`
 # * indices **commencent à 0**
 # * peuvent contenir des duplications
 
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # * mutable
 #   * `list`, `bytearray`
 # * immutable
