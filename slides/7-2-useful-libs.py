@@ -41,8 +41,8 @@
 # * le tutorial Python sur ce sujet occupe deux chapitres
 #   * [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et
 #   * [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)
-#   
-# * très très complet, je fais ici un tri arbitraire  
+#
+# * très très complet, je fais ici un tri arbitraire
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -172,14 +172,14 @@ with fichier.open() as feed:
 # ### `collections`
 #
 # * une extension des objets *built-in* `list`, `tuple`, `dict`
-# * [la doc](https://docs.python.org/3.5/library/collections.html)
+# * [la doc](https://docs.python.org/3/library/collections.html)
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ####  `collections.Counter()`
 #
 # * à partir d'un itérable, construit un dictionnaire qui contient 
-# * comme clefs les éléments uniques 
+# * comme clefs les éléments uniques
 # * et comme valeurs le nombre de fois que l’élément apparaît
 # * http://sametmax.com/compter-et-grouper-encore-plus-faineant/
 
@@ -231,9 +231,9 @@ sorted(d.items())
 # %% [markdown]
 # fournit les combinatoires communes
 #
-# * [`produit cartésien`](https://docs.python.org/3.6/library/itertools.html#itertools.product)
-# * [`permutations`](https://docs.python.org/3.6/library/itertools.html#itertools.permutations)
-# * [`combinaisons`](https://docs.python.org/3.6/library/itertools.html#itertools.combinations) *n* parmi *p* 
+# * [`produit cartésien`](https://docs.python.org/3/library/itertools.html#itertools.product)
+# * [`permutations`](https://docs.python.org/3/library/itertools.html#itertools.permutations)
+# * [`combinaisons`](https://docs.python.org/3/library/itertools.html#itertools.combinations) *n* parmi *p* 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `itertools` - produit cartésien

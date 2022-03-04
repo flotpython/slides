@@ -147,7 +147,7 @@ subproperty.x = 30
 # * optionnels, lorsqu'un est manquant
 #   * l'opération correspondante est interdite
 #   
-# voir (https://docs.python.org/3.5/library/functions.html#property)
+# voir (https://docs.python.org/3/library/functions.html#property)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le décorateur `property`
@@ -672,8 +672,8 @@ wsa.name
 #
 # * [un bon résumé de l'algorithme de résolution des attributs](https://blog.ionelmc.ro/2015/02/09/understanding-python-metaclasses/)
 #
-# * [la doc sur les descriptors](https://docs.python.org/3.5/howto/descriptor.html) (qui parle aussi des properties)
-#   
+# * [la doc sur les descriptors](https://docs.python.org/3/howto/descriptor.html) (qui parle aussi des properties)
+#
 # * pour les hard-core: [le code c derrière tout ça](https://github.com/python/cpython/blob/3.6/objects/typeobject.c)
 #
 # * http://sametmax.com/les-descripteurs-en-python/

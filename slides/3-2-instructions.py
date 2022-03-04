@@ -502,13 +502,13 @@ print(1, 'x', True, sep='_', end='\n\n')
 
 # %% [markdown]
 # * pour le logging plus évolué qu’un simple print redirigé dans un fichier, on peut utiliser le module de la librairie standard logging
-# * documentation du module 
-#   * https://docs.python.org/3.5/library/logging.html
-# * tutorial 
-#   * https://docs.python.org/3.5/howto/logging.html#logging-basic-tutorial
-#   
+# * documentation du module
+#   * https://docs.python.org/3/library/logging.html
+# * tutorial
+#   * https://docs.python.org/3/howto/logging.html#logging-basic-tutorial
+#
 # c'est **la bonne façon** de conserver des  
-# traces d'exécutionpour un programme en production 
+# traces d'exécutionpour un programme en production
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## le debugger Python : `pdb`
