@@ -28,6 +28,11 @@
 # <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 # </div>
 
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### pourquoi le tuple ?
+#
+# vous vous demandez 
+
 # %% slideshow={"slide_type": ""}
 #from plan import plan; plan("types", "containers")
 
@@ -54,6 +59,7 @@ L = []
 L = [4, 'bob', 10 + 1j, True]
 
 # %% cell_style="split"
+# on peut mélanger les types
 L
 
 # %% cell_style="split"
@@ -61,24 +67,21 @@ L
 # commencent à 0
 L[2]
 
-# %% cell_style="split"
-L[0] = 10
-
-# %% cell_style="split"
-L
-
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification par index
 
 # %% cell_style="center"
+# les indices commencent à 0
 L
 
 # %% cell_style="split"
-# modifier un élément précis
-L[3] = False
+# pour modifier un élément précis
+L[2] = "BOOM"
 
 # %% cell_style="split"
-# ce que ça donne
+# pas besoin de préserver les types
+# ni rien de ce genre
+
 L
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -136,11 +139,13 @@ liste[2:4] = [10, 20, 30]
 liste[3] = [100, 200]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### méthodes sur les listes
+# ### `.append()` et `.pop()`
 
 # %% [markdown]
 # * les méthodes sur les listes
-# * sont optimisées pour les ajouts **à la fin** de la liste
+# * sont plutôt optimisées pour les ajouts **à la fin** de la liste
+# * les deux méthodes les plus couramment utilisées sont  
+#   `.apppend()` et `.pop()`
 
 # %% cell_style="split"
 L = []
@@ -153,17 +158,22 @@ while L:
     print(L.pop())
 
 # %% [markdown]
-# si nécessaire, envisager la liste **doublement chainée**
-
-# %%
-from collections import deque
+# <div class="rise-footnote">
+#
+# si nécessaire, envisager la liste **doublement chainée**  
+#
+# ```
+# from collections import deque
 # deque?
+# ```
+#
+# </div>    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ajouts et tris
 
 # %% [markdown]
-# * des méthodes spécifiques aux types mutables  
+# * des méthodes qui mutent la liste (mutable)  
 #   (modifications *in-place*)
 #
 #   * `L.append(x)` ajoute `x` à la fin de `L`
@@ -176,24 +186,36 @@ from collections import deque
 # ### retraits
 
 # %% [markdown]
-# * `L.pop(i)` supprime l’élément à la position `i`, si i n’est pas fourni, supprime le dernier élément. La fonction retourne l’élément supprimé
-#   * utilisé pour faire une pile d’éléments
-# * `L.remove(x)` supprime la première occurrence de `x` dans `L`. S’il n’y a pas de `x`, une exception est retournée
-# * `del L[i:j:k]` supprime tous les éléments entre `i` et `j-1` par pas de `k` éléments
-#   * si `i == j` supprime l’élément `i`
+# * toujours des modification en place:
+#   * `L.pop(i)` supprime l’élément à la position `i`  
+#     si `i` n’est pas fourni, supprime le dernier élément  
+#     la fonction retourne l’élément supprimé
+#   * `L.remove(x)` supprime la première occurrence de `x` dans `L`  
+#     s’il n’y a pas de `x`, une exception est retournée
+#   * `del L[i:j:k]` supprime tous les éléments   
+#     entre `i` et `j-1` par pas de `k` éléments  
+#     si `i == j` supprime l’élément `i`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### digression: `range()`
 
 # %% [markdown] cell_style="center"
-# * `range()` est une fonction native (en anglai *builtin*)
-# * qui retourne un objet **itérateur**
+# * `range()` est une fonction native (en anglais *builtin*)
+# * qui retourne un objet **itérable**
 # * c'est-à-dire sur lequel on peut faire un `for`
 # * on y reviendra longuement
 
 # %% cell_style="center"
 for i in range(4):
     print(i, end=" ")
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# le paramètre `end=" "` indique à `print` de ne pas ajouter de fin de ligne, 
+# mais plutôt un espace, à la fin de l'impression
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### digression: `range()`
@@ -267,33 +289,50 @@ L2 = sorted(L1)
 print(L1)
 print(L2)
 
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### tri et renversement de liste
+
 # %% [markdown]
-# * on peut aussi trier selon un critère *ad hoc*
-# * on en reparlera plus tard
-# * voir aussi <https://docs.python.org/3.5/howto/sorting.html>
+# pour conclure - temporairement - sur ce sujet:
+#
+# * on peut aussi trier selon un critère *ad hoc*  
+#   on en reparlera plus tard
+# * on retrouve la même dualité pour le renversement  
+#   `L.reverse()` renverse la liste en place
+#   `reversed(L)` retourne une **copie** renversée
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### avertissements à propos des listes
 
 # %% [markdown] slideshow={"slide_type": ""}
-# #### les itérateurs sont plus forts
+# #### (1) les itérateurs sont plus forts
 #
-# * outil très très pratique
+# * la liste est un outil très très pratique
 # * **mais** parfois (souvent) pas nécessaire
-# * car nécessite de la mémoire
-# * alors qu'on veut juste itérer sur le contenu
+# * car nécessite **de la mémoire**
+# * alors qu'on a souvent **seulement besoin d'itérer** sur le contenu
 # * dans ce cas, techniques + adaptées : itérateurs et autres générateurs
 # * sujet avancé que l’on verra plus tard
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# si on repense par exemple au `range()` vu plus haut, pour itérer sur un entier de 1 à 1 million, 
+# a-t-on vraiment besoin pour cela d'allouer
+# explicitement un million d'entiers, plus la place pour les cellules de la liste ? bien sûr que non....
+#
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### pas efficace pour calculs
+# #### (2) pas efficace pour calcul scientifique
 #
 # * le coté flexible en taille et en type rend la liste **très pratique**
 # * mais attention ça peut devenir **très inefficace** 
 # * notamment pour le calcul scientifique
 # * pas d'équivalent parmi les types Python natifs  
 #   d'un bon vieux tableau C/C++/Fortran
-# * penser absolument aux **tableaux `numpy`** pour ce type d'application
+# * penser absolument aux **tableaux `numpy`**  
+#   pour ce type d'application
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## le tuple
@@ -316,12 +355,15 @@ T2 = 4,
 # %% cell_style="split"
 T1 == T2
 
-# %% [markdown] cell_style="split"
-# * **attention** 
-#   * `(4)` est un **entier**, et
-#   * `(4,)` est un **tuple**
-# * c'est la virgule qui est importante
-# * on peut omettre les `()` - la plupart du temps
+# %% [markdown] cell_style="center"
+# <div class="rise-footnote">
+#
+# **attention**: c'est la virgule qui est importante, on peut omettre les `()` - la plupart du temps
+#
+#  * `(4)` est un **entier**, et
+#  * `(4,)` est un **tuple**
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
@@ -343,25 +385,39 @@ T1 == T3
 # %% [markdown]
 #
 # * un tuple est **non mutable**
-# * les fonctions faisant des modifications *in-place* ne s’appliquent donc pas aux tuples
+# * les fonctions faisant des modifications *in-place*  
+#   ne s’**appliquent** donc **pas aux tuples**
 #
 
 # %%
-try: T1[3] = 5   # python n'est pas content
+try: T1[3] = 5   # Python n'est pas content
 except Exception as e: print("OOPS", e)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### pourquoi le tuple ?
+#
+# * à ce stade, vous vous demandez sans doute:  
+#   *pourquoi créer un tuple ?*  
+#   si c'est juste moins puissant que la liste ?
+# * la réponse est liée aux tables de hachage  
+#   (dictionnaires et ensembles)  
+#   que l'on va voir un peu plus tard  
+#   un peu de patience donc…
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## problèmes avec les séquences
+#
+# de deux ordres principalement
 
 # %% [markdown]
-# ### les recherches sont lentes
+# ### (1) les recherches sont lentes
 
 # %%
 a = range(30000000)
 'x' in a      # c’est long !
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### on ne peut indexer que par un entier
+# ### (2) on ne peut indexer que par un entier
 
 # %%
 a[3]          # on peut utiliser un indice entier
@@ -393,9 +449,9 @@ except TypeError as e:
 
 # %% [markdown]
 # * une table de hash T indexe des valeurs par des clefs
-#   * chaque clef est unique
 #   * T[clef] = valeur
 #   * insertion, effacement, recherche en O(1)
+#   * chaque clef est unique (une seule valeur pour une clé)  
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### table de hash
@@ -436,7 +492,7 @@ except TypeError as e:
 # ## le `set`
 
 # %% [markdown]
-# * collection non ordonnée d’objets uniques et **immutables**
+# * collection non ordonnée(♤) d’objets uniques et **immutables**
 # * utile pour tester l’appartenance
 #   * optimisé, beaucoup + rapide que `list`
 # * et éliminer les entrées doubles d’une liste
@@ -444,21 +500,33 @@ except TypeError as e:
 # * les sets autorisent les opérations sur des ensembles
 #   * union (|), intersection (&), différence (-), etc.
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# (♤) depuis la 3.7 le dictionnaire est une structure ordonnée (il "retient" l'ordre des ajouts); toutefois cela ne s'applique pas à l'ensemble, ce qui peut créer une légère confusion
+#
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
 
 # %% cell_style="split"
 # attention: {} c'est 
-# un DICTIONNAIRE vide 
+# un DICTIONNAIRE vide
+
 set()          # ensemble vide
 
 # %% cell_style="split"
+# ou sinon, on peut comme toujours
+# utiliser le type comme une 
+# usine à objets
+
 L1 = [1, 2, 3, 1, 1, 6, 4]
 S1 = set(L1)
 S1
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### le `set`
+# #### attention pour créer un `set`
 
 # %% cell_style="center"
 # attention: il faut passer 
@@ -469,7 +537,7 @@ except Exception as exc:
     print(f"OOPS {type(exc)}")    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### le `set`
+# ### opérations sur `set`
 
 # %% cell_style="split"
 S1
@@ -517,7 +585,7 @@ S3.remove(11)
 S3
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### le `set`
+# ### le `set` est mutable
 
 # %% [markdown]
 # * un `set` est un objet **mutable**
@@ -536,6 +604,39 @@ except AttributeError as e:
     print("OOPS", e)   
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### éléments acceptables
+
+# %% [markdown]
+# * on a le droit d'y mettre tout ce qui est non-mutable
+# * pour que la fonction de hachage retourne toujours la même chose
+
+# %% cell_style="split"
+S = set()
+S.add(1)
+S.add("abc")
+# je peux y ajouter un tuple !
+S.add((1, 2))
+S
+
+# %% cell_style="split"
+# mais pas une liste !
+try:
+    S.add([1, 2])
+except TypeError as e:
+    print("OOPS", e)   
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# Question: à votre avis, peut-on ajouter dans un ensemble un tuple de 2 listes ?
+#     
+# ```
+# S.add( ([1, 2], [3, 4]) )
+# ```
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### rapide test de performance
 
 # %% [markdown] cell_style="split"
@@ -546,84 +647,75 @@ except AttributeError as e:
 import timeit
 
 # %%
-timeit.timeit(setup= "x = list(range(100000))", stmt = '"c" in x',
-              number = 300)
+x = list(range(100000))
+
+# %timeit -n 300 "c" in x
 
 # %%
-timeit.timeit(setup= "x = set(range(100000))", stmt = '"c" in x',
-              number = 300)
+x = set(range(100000))
+
+# %timeit -n 300 "c" in x
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### rapide test de performance
-
-# %%
-timeit.timeit(setup= "x = list(range(2))", stmt = '"c" in x',
-              number = 6000000)
-
-# %%
-timeit.timeit(setup= "x = set(range(2))", stmt = '"c" in x',
-              number = 6000000)
 
 # %% [markdown]
 # même si la liste est très petite
 
+# %%
+x = list(range(2))
+
+# %timeit -n 300 "c" in x
+
+# %%
+x = set(range(2))
+
+# %timeit -n 300 "c" in x
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### rapide test de performance
-
-# %%
-timeit.timeit(setup= "x = list(range(2))", stmt = '0 in x',
-              number = 6000000)
-
-# %%
-timeit.timeit(setup= "x = set(range(2))", stmt = '0 in x',
-              number = 6000000)
 
 # %% [markdown]
 # * il faut que l’élément cherché soit le premier de la liste pour que les listes soient un peu plus rapides que les sets
 # * donc, toujours utiliser les sets pour les tests d’appartenance
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### remarque 
-
-# %% [markdown]
-# avec `ipython` vous pouvez faire vos benchmarks un peu plus simplement
-
 # %%
-timeit.timeit(setup= "x = set(range(2))", stmt = '0 in x',
-              number = 6000000)
+x = list(range(2))
+
+# %timeit -n 300 0 in x
 
 # %%
 x = set(range(2))
-# %timeit -n 6000000 0 in x
+
+# %timeit -n 300 0 in x
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## les dictionnaires
 
 # %% [markdown]
 # * généralisation d’une table de hash
-# * collection non ordonnée d’objets
-# * techniquement, uniquement les pointeurs sont stockés, mais pas une copie des objets
-# * on accède aux objets à l’aide d’une clef (et non d’un indice comme pour une liste)
-# * une **clef** peut être n’importe quel objet **immutable**: chaîne, nombre, tuple d’objets immutables...
+# * collection **ordonnée** d’objets (depuis la 3.7)
+# * on accède aux objets à l’aide d’une clef  
+#   (et non d’un indice comme pour une liste)
+# * une **clef** peut être n’importe quel objet **immutable**  
+#   chaîne, nombre, tuple d’objets immutables...
 # * c’est une structure de données très puissante
 # * le dictionnaire est un type **mutable**
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### les dictionnaires
-
 # %% [markdown]
-# * on peut voir les dictionnaires comme une collection non ordonnée de couples (clef, valeur)
-# * chaque clef est unique** et permet d’accéder à **une** valeur qui pointe vers un objet
+# <div class="rise-footnote">
+#
+# techniquement, uniquement les références (des clés et valeurs) sont stockées, mais pas une copie des objets
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### les dictionnaires
-
-# %% [markdown]
-# * construction
+# ### création
 
 # %%
 # ATTENTION : {} n'est pas un ensemble
 # les dictionnaires étaient là avant les ensembles !
+
 D = {}
 D
 
@@ -641,9 +733,9 @@ dict( a = 'A', b = 'B')
 dict( [ ('a', 'A'), ('b', 'B') ] )
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### méthodes sur les dictionnaires
+# ### manipulations usuelles
 
-# %% [markdown]
+# %% [markdown] tags=["framed_cell"]
 # * `len(D)` retourne le nombre de clefs dans D
 # * `D[clef]` retourne la valeur pour la clef
 # * `D[clef] = x` change la valeur pour la clef
@@ -657,6 +749,7 @@ d = {'alice': 35, 'bob' : 9, 'charlie': 6}
 d
 
 # %% cell_style="split"
+# combien d'entrées
 
 len(d)
 
@@ -675,7 +768,7 @@ del d['jim']
 d
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### méthodes sur les dictionnaires
+# ### `D.get()`
 
 # %% [markdown]
 # * `D.get(clef)`
@@ -683,84 +776,83 @@ d
 #   * notez bien que `D[clef]` lance une exception si la clé n'est pas présente
 #   * `D.get(clef, un_truc)` retourne `un_truc` quand la clé n'est pas présente
 
-# %% slideshow={"slide_type": "slide"}
-d
-
 # %% cell_style="split"
-# la clé n'est pas présente
+# la clé 'marc' n'est pas présente
 try:
-    d['marc']
+    x = d['marc']
 except KeyError as e:
-    print("OOPS", e)
+    x = "?"
+
+x
 
 # %% cell_style="split"
-# on peut utiliser `get` plutôt si on préfère un retour de fonction
+# c'est quand même plus lisible
+
 d.get('marc', '?')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### méthodes sur les dictionnaires
+# ### itération sur un dictionnaire
 
-# %% [markdown]
-# * `D.setdefault(clef, x)`
-#   * si la clé est présente: retourne `D[clef]`
-#   * sinon fait `D[clef] = x` et retourne `x`
-#   * pour simplifier les ajouts
-# * voir aussi `collections.defaultdict`
-
-# %% cell_style="split" slideshow={"slide_type": "slide"}
-from collections import defaultdict
-
-# les valeurs sont des listes
-dd = defaultdict(list)
-dd[0].append(1)
-dd[0]
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-# sans defaultdict
-# besoin d'alourdir le code
-
-try: 
-    ddb = {}
-    ddb[0].append(1)
-    ddb[0]
-except Exception as exc:
-    print(f"OOPS {type(exc)}")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### méthodes sur les dictionnaires
-
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # * `D.items()` retourne **une vue** sur les (clef, valeur) de `D`
 # * `D.keys()` retourne une vue sur les clefs de `D`
 # * `D.values()` retourne une vue sur les valeurs de `D`
 
+# %% cell_style="split"
+# l'idiome pour itérer sur 
+# un dictionnaire
+
+for k, v in d.items():
+    print(f"{k=} {v=}")
+
 # %%
-len(dir(dict))
+# on peut aussi itérer directement sur le dictionnaire
+# qui est équivalent à itérer sur d.keys()
+
+for k in d:
+    print(k, end=" ")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### qu’est-ce qu’une vue ?
+# #### qu’est-ce qu’une vue ?
 
 # %% [markdown]
 # * c’est un objet qui donne une vue **dynamique** sur un dictionnaire `D`
-#   * permet le test d’appartenance avec `in`
-#   * permet l’itération (une vue est itérable)
-# * si on ne modifie pas `D` en cours d’itération
-#   * on a la garantie d’itérer dans le même ordre sur les clefs et sur les valeurs
-
-# %% cell_style="center" slideshow={"slide_type": "slide"}
-del d['bob']
-d
+# * i.e. qui "suit" les changements futurs
+# * par oppposition à: on calculerait les propriétés de d à cet instant
 
 # %% cell_style="split"
 clefs = d.keys()
+
 clefs
 
 # %% cell_style="split"
-d['bob'] = 20
-d
+# ici clefs est une vue
+del d['bob']
 
-# %% cell_style="split"
 clefs
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### création automatique de valeurs
+
+# %% [markdown]
+# * utile pour alléger votre code  
+#   si vous savez que vos valeurs seront toujours, par exemple une liste
+# * `collections.defaultdict` est une sous-classe de `dict`  
+#   qui ne lève pas d'exception en cas de défaut de la clé  
+#   mais dans ce cas va créer, toujours par exemple, une liste vide
+# * ce qui évite de devoir tester la présence de la clé
+
+# %% cell_style="split" slideshow={"slide_type": "slide"}
+from collections import defaultdict
+
+# ici je décide que les valeurs sont des listes
+dd = defaultdict(list)
+
+# pas d'exception alors que la clé 0 est absente
+# au contraire on appelle list() pour l'initialiser
+dd[0].append(1)
+dd[0].append(2)
+dd[0]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires
@@ -770,34 +862,25 @@ clefs
 
 # %%
 # les clés / valeurs ne sont pas forcément de même type
-d = {'alice': 35, (1, 2): {3: '9', 10 + 1j: 6}}
+d2 = {'alice': 35, (1, 2): {3: '9', 10 + 1j: 6}}
+d2
+
+# %% cell_style="split"
+d2['alice']
+
+# %% cell_style="split"
+# équivalent à d[(1, 2)]
+
+d2[1, 2]
+
+# %% cell_style="split"
+# une sorte d'union
+d2.update(d)
+d2
+
+# %% cell_style="split"
+# d n'est pas modifié
 d
-
-# %% cell_style="split"
-d['alice']
-
-# %% cell_style="split"
-d[1, 2]
-
-# %% cell_style="split"
-# retire une clé au hasard
-d.popitem()
-
-# %% cell_style="split"
-d
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### quel avantage d’un objet vue ?
-
-# %% [markdown]
-# * une vue est compacte - pas de liste temporaire
-#   * Python 3.x utilise uniquement les vues
-# * si on modifie `D`, la modification sera immédiatement reflétée dans la vue
-# * **attention**
-#   * si on itère sur un vue de `D` et que l’on modifie en même temps `D`,  
-#     on peut avoir une exception ou une inconsistance
-#
-#   * dans ce cas, on fait une copie sous forme de liste
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ordre des éléments dans un dictionnaire
