@@ -193,7 +193,7 @@ f(3, 4)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### # l'exemple décortiqué
+# ### l'exemple décortiqué
 
 # %% [markdown] cell_style="split"
 # la **déclaration** de `f`
