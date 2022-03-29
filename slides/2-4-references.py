@@ -42,9 +42,11 @@
 # ## composition des types de base
 
 # %% [markdown]
-# * tous ces containers peuvent être imbriqués
-# * ils peuvent être composés sans limite
-# * uniquement votre faculté à vous y retrouver
+# * tous ces containers peuvent être imbriqués  
+#   liste de dictionnaires de …
+# * donc ils peuvent être composés sans limite
+# * uniquement votre faculté à vous y retrouver  
+#   (enfin, vous et ceux qui vous lisent …)
 
 # %% slideshow={"slide_type": "slide"}
 # %%ipythontutor heapPrimitives=true curInstr=1 width=900 height=850
@@ -65,17 +67,21 @@ L = ['abc', [ { (1, 2) : 1}, ([3], 4)], 5]
 
 # %% slideshow={"slide_type": "slide"}
 # %%ipythontutor heapPrimitives=true width=800 curInstr=1
-a = 3 
+a = 3
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## références partagées
 
 # %% [markdown]
-# du coup on peut facilement avoir plusieurs variables qui référencent le même objet
+# du coup on peut **facilement** avoir  
+# **plusieurs variables**  
+# qui référencent le **même** objet
 
 # %% slideshow={"slide_type": "slide"}
 # %%ipythontutor heapPrimitives=true width=800 curInstr=1
 
+# on aurait pu écrire aussi
+# a = b = 3
 a = 3
 b = a
 
@@ -104,16 +110,18 @@ a = a + 2
 # ### idem avec objet mutable
 
 # %% [markdown]
-# * que se passe-t-il si l’objet est mutable ?
-#   * il peut être changé 
-# * impact sur **toutes** les références vers cet objet  
+# * comme avant, deux références vers le même objet
+# * mais que se passe-t-il si l’objet est mutable ?
+#   * il peut **être changé**
+# * → impact sur **toutes** les références vers cet objet  
 #   * depuis une variable 
 #   * ou depuis l'intérieur d'un autre objet
 
-# %% cell_style="center" slideshow={"slide_type": "-"}
+# %% cell_style="center" slideshow={"slide_type": "slide"}
 # %%ipythontutor heapPrimitives=true width=800 height=300 curInstr=1
 a = [1, 2]
 b = a
+# en changeant a on change b
 a[0] = 'spam'
 
 
@@ -129,6 +137,14 @@ a[0] = 'spam'
 # | *dict* | **mutable**       |
 # | *set* | **mutable**       |
 # | *frozenset* | immutable       |
+
+# %% [markdown] slideshow={"slide_type": ""}
+# <div class="rise-footnote">
+#     
+# les types `tuple` et `frozenset` permettent notamment  
+# de construire des **clés** pour les dictionnaires et autres ensembles
+#     
+# </div>    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## *shallow* et *deep* copies
@@ -161,17 +177,26 @@ a[0] = 'spam'
 #   * évite les boucles infinies
 
 # %% cell_style="center" slideshow={"slide_type": "slide"}
-# %%ipythontutor heapPrimitives=true height=400 width=800 curInstr=1
+# %%ipythontutor heapPrimitives=true height=350 width=800 curInstr=1
 a = [1, 2]
 # cette fois-ci on (shallow) copie d'abord
 b = a[:] 
 a[0] = 'spam'
 
-# %% [markdown] slideshow={"slide_type": ""}
-# les types `tuple` et `frozenset` permettent notamment  
-# de construire des **clés** pour les dictionnaires et autres ensembles
-
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ## *shallow* et *deep*
+
+# %% [markdown] cell_style="split"
+# ### *shallow*
+#
+# ![](../media/copy-1-shallow.svg)
+
+# %% [markdown] cell_style="split"
+# ### *deep*
+#
+# ![](../media/copy-2-deep.svg)
+
+# %% [markdown] slideshow={"slide_type": "slide"} cell_style="center"
 # ## `is` et `==`
 
 # %% [markdown]
@@ -209,11 +234,11 @@ c == a
 # ### copie profonde nécessaire ?
 
 # %% cell_style="center" slideshow={"slide_type": "-"}
-# %%ipythontutor heapPrimitives=true height=600 width=800 curInstr=1
+# %%ipythontutor heapPrimitives=true height=450 width=800 curInstr=1
 a = [1, [2]]
 # on ne fait qu'une copie 'shallow'
 b = a[:]
-a[1][0] = 'spam'
+a[1][0] = 'boom'
 print(a)
 print(b)
 
@@ -221,12 +246,12 @@ print(b)
 # ### avec une copie profonde
 
 # %% cell_style="center" slideshow={}
-# %%ipythontutor heapPrimitives=true height=600 width=900 curInstr=2
+# %%ipythontutor heapPrimitives=true height=500 width=900 curInstr=2
 import copy
 a = [1, [2]]
 # avec une copie profonde on n'a plus de souci
 b = copy.deepcopy(a)
-a[1][0] = 'spam'
+a[1][0] = 'boom'
 print(a)
 print(b)
 
@@ -236,10 +261,10 @@ print(b)
 # %% [markdown]
 # jusqu'ici, références partagées créées par **affectation**  
 #
-# il existe d'autres cas de figure :
+# il existe (plein) d'autres cas de figure :
 # * appel de fonction  
 #   l'objet passé en argument à une fonction  
-#   se retrouve affecté au paramètre dans la fonction
+#   se retrouve affecté au **paramètre** dans la **fonction**
 # * se méfier aussi des références **entre objets**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -247,13 +272,13 @@ print(b)
 
 # %%
 # %%ipythontutor
-
 L = [1, 2, 3]
 
 def foo(x):
     x[1] = 'BOOM'
 
 foo(L)
+print(L)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### références entre objets
@@ -274,12 +299,18 @@ print(f"repete avant {repete}")
 repete[0][0] = 1
 print(f"repete après {repete}")
 
-# %%
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### structures cycliques
+
+# %% [markdown]
+# ainsi on peut aussi créer des structures cycliques
+
+# %% slideshow={"slide_type": ""}
 # %%ipythontutor
 
 L = [None]
 L[0] = L
-L
+print(L)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## gestion de la mémoire
@@ -317,8 +348,3 @@ I is J   # non: partage
 # %% [markdown]
 # * est-ce que ça pose un problème ?
 #   * non ! l’optimisation n’est que pour des types **immutables**
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exercice
-#
-# [filterlist](exos/references-filterlist.ipynb)
