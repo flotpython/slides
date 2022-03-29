@@ -70,6 +70,7 @@ b = b'ABC'
 b
 
 # %% cell_style="split" slideshow={"slide_type": ""}
+
 # sinon en hexa
 b'\x45\xff'
 
@@ -103,7 +104,7 @@ b1 == b2
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# * en interne, le type `bytes` ne stocke que des entiers
+# * en interne, le type `bytes` ne stocke que **des entiers** (uint8)
 # * la représentation sous forme de caractères est uniquement  
 #   pour **faciliter la lecture** de l’ASCII
 
@@ -120,10 +121,12 @@ s[0], s[1]
 # * essentiellement les mêmes méthodes que pour les `str`
 
 # %% [markdown] cell_style="split"
-# méthodes dans `str`, mais pas dans `bytes`
+# méthodes dans `str`  
+# mais pas dans `bytes`
 
 # %% [markdown] cell_style="split"
-# méthodes dans `bytes`, mais pas dans `str`
+# méthodes dans `bytes`  
+# mais pas dans `str`
 
 # %% cell_style="split"
 set(dir(str)) - set(dir(bytes))
@@ -147,7 +150,7 @@ set(dir(bytes)) - set(dir(str))
 #   * stockage (disque dur, clef USB)
 #   * terminal ou GUI, etc..
 # * vous devez traiter des flux **binaires**
-#   * et donc vous êtes confrontés à l'encodage des chaines
+#   * et donc vous êtes confrontés à l'**encodage** des chaines
 #   * et notamment en présence d'accents
 #   * ou autres caractères non-ASCII
 
@@ -179,6 +182,9 @@ set(dir(bytes)) - set(dir(str))
 #   * iso-latin-*
 #   * cp-1252 (Windows)
 # * et plus récemment, Unicode et notamment UTF-8
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### de multiples encodages 
 #
 # aujourd'hui en 2020
 # * **privilégier UTF-8** qui devrait être l'encodage par défaut pour tous vos appareils
@@ -294,14 +300,18 @@ octets.decode(encoding="utf-8")
 #   * pas prévu dans le format
 #   * il faudrait des **métadata**
 
-# %% [markdown] cell_style="center"
+# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # * du coup on utilise le  
 #   plus souvent des heuristiques
 # * comme d'utiliser une  
-#   configuration globale de l'ordi
+#   **configuration globale** de l'ordi
 # * sans parler des polices de caractères..
 
-# %% cell_style="center" slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
+# voyons comment on en arrive par exemple  
+# à recevoir un mail en gloubli-goulba  
+
+# %% cell_style="center" slideshow={"slide_type": ""}
 # Jean écrit un mail
 envoyé = "j'ai été reçu à l'école"
 
@@ -310,8 +320,8 @@ envoyé = "j'ai été reçu à l'école"
 binaire = envoyé.encode(encoding="utf-8")
 
 # %% slideshow={"slide_type": ""}
-# Pierre reçoit le binaire
-# mais se trompe d'encodage
+# Pierre reçoit le binaire mais son ordi
+# est un vieux Windows mal configuré
 reçu = binaire.decode(encoding="cp1252")
 
 # %% slideshow={"slide_type": ""}
@@ -332,8 +342,7 @@ reçu
 # ### comment en est on arrivé là ?
 
 # %% [markdown] cell_style="center"
-# * le standard définit les 128 premières valeurs
-#   * c’est l’ASCII classique
+# * le standard ASCII (1960) définit les 128 premières valeurs
 # * du coup pendant longtemps le modèle mental a été
 #   * ***un char = un octet***
 # * cf. le type `char` en C
@@ -341,8 +350,8 @@ reçu
 # %% [markdown] cell_style="center"
 # * pendant les années 1990 on a introduit un patch
 #   * encodages comme `iso-latin1`, `cp1252`
-#   * préserve l'invariant ***un char = un octet***
-#   * au prix .. d'une multitude d'encodages
+#   * préserve l'invariant *un char = un octet*
+#   * au prix .. d'une **multitude** d'encodages distincts
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### comment faire en pratique ?
@@ -377,7 +386,7 @@ reçu
 #     # -*- coding: utf8 -*-
 # ```
 #
-#   En remplaçant utf8 par l’encodage utilisé par votre éditeur
+#   En remplaçant bien entendu `utf8` par l’encodage utilisé par votre éditeur
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### encodages par défaut
