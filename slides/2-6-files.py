@@ -39,7 +39,7 @@
 #   e.g. pour lire du JSON ou du XML, ou des formats spécialisés
 #   
 # * toutefois il est bon de savoir utiliser les outils de bas niveau  
-#   enfin aussi bas niveau que ce qu'offre Python
+#   (enfin, aussi bas niveau que ce qu'offre Python…)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## `open()`
@@ -57,7 +57,7 @@
 #   d'un moment l'OS ne nous laisse plus ouvrir de fichiers du tout
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### utilisez un `with`
+# ### utilisez toujours un `with`
 
 # %% [markdown]
 # * c'est pourquoi il est **recommandé** 
@@ -70,17 +70,17 @@
 # avec with on n'a pas besoin de fermer le fichier
 with open('temporaire.txt', 'w') as writer:
     for i in 10, 20, 30:
-        writer.write('{} {}\n'.format(i, i**2))
+        writer.write(f'{i} {i**2}\n')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### sans context manager
 
 # %%
-# dans du (très) vieux code, vous pourrez voir
+# dans du vieux code, ou du code de débutant, vous pourrez voir
 
 writer = open('temporaire.txt', 'w')
 for i in 10, 20, 30:
-    writer.write('{} {}\n'.format(i, i**2))
+        writer.write(f'{i} {i**2}\n')
 writer.close()
 
 # %% [markdown]
@@ -179,36 +179,45 @@ with open('temporaire.txt', 'r') as in_file:
 # pour utiliser un fichier ouvert en écriture 
 
 # %% [markdown]
+# * `print("paramètres", "usuels", file=F)`
+#   * redirige `print` dans ce fichier
 # * `F.write('mon texte\n')`
 #   * écrit (ici une ligne) dans le fichier
 # * `F.writelines(sequence)`
 #   * écrit une séquence dans un fichier, le saut de ligne doit être explicite avec `\n` 
 # * `F.flush()`
 #   * force l’écriture dans le fichier en vidant le cache
-# * `print("paramètres", "usuels", file=F)`
-#   * redirige `print` dans ce fichier
+#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### fichiers texte, type `str` et EOL
 
 # %% [markdown] slideshow={"slide_type": ""}
-# un fichier sera en mode texte si le mode ne contient pas `b`:
+# un fichier sera dit **en mode texte** si le mode d'ouverture  
+# passé à `open()` ne contient pas `b`:
 #
-# * le décodage et l’encodage sont automatiques lorsqu’on lit ou écrit dans le fichier
-# * on obtiendra toujours un objet `str` en lecture et on ne pourra écrire qu’un objet `str`
-# * les fins de lignes sont automatiquement converties en '\n' pour être indépendant de l’OS
+# * le décodage et l’encodage sont automatiques  
+#   lorsqu’on lit ou écrit dans le fichier
+# * on obtiendra toujours un objet `str` en lecture  
+#   et on ne pourra écrire qu’un objet `str`
+# * les fins de lignes sont automatiquement  
+#   converties en '\n' (un seul caractère)  
+#   pour être indépendant de l’OS
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## fichiers ouverts en binaire
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} cell_style="split"
 # ### ajouter `b` dans le mode
 #
-# on peut ouvrir un fichier Python **en mode binaire** 
+# avec un fichier Python **en mode binaire** 
 #
 # * en ajoutant `b` au mode d'ouverture,
-# * on obtiendra toujours un objet `bytes` en lecture et on ne pourra écrire qu’un objet `bytes`
-# * il n’y aura aucun encodage, décodate, et aucune conversion de fin de ligne (auberge espagnole)
+# * on obtiendra un objet `bytes`  
+#   en lecture et on ne pourra écrire  
+#   qu’un objet `bytes`
+# * il n’y aura aucun encodage, décodage,  
+#   et aucune conversion de fin de ligne (auberge espagnole)
 
 # %% cell_style="split" slideshow={"slide_type": ""}
 # j'ai besoin d'un objet bytes
@@ -258,10 +267,218 @@ with open('../data/une-charogne.txt', 'rb') as binaire:
    y = binaire.read()
 type (y), len(y)
 
-# %% [markdown]
-# ## notions avancées
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## le module `pathlib`
+
+# %% [markdown] slideshow={"slide_type": ""}
+# ### objectifs
+#
+# * simplifier la gestion des noms de fichier 
+# * pour rendre le code plus concis
+# * et donc plus lisible
+# * sous-titre: *object-oriented filesystem paths*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### présentation du module
+#
+# * **orienté objet**
+# * examiner le contenu du disque
+#   existe ou pas, quel type, *globbing* …
+# * les calculs sur les noms de fichiers  
+#   concaténation, suffixes, remonter dans l'arbre …
+# * métadonnées  
+#   taille, dates de modification, …
+# * permet d'ouvrir les fichiers  
+# * ne gère pas les urls
+# * voir [documentation complète](https://docs.python.org/3/library/pathlib.html)
+#   
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# pour les anciens, remplace les modules `os`, `os.path` et assimilés
+#     
+# </div>    
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### un exemple
+#
+# * **orienté objet**
+# * le sujet devient plus visible
+# * **NB**: un objet `Path` est immutable
+
+# %%
+# avec pathlib
+from pathlib import Path
+
+config_path = Path("/etc/apache2")
+
+if config_path.is_dir():
+    print(f"{config_path} existe et c'est un dossier")
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### les points de départ
+
+# %%
+# un chemin absolu
+prefix = Path("/etc")
+
+# le chemin absolu du directory courant
+dot = Path.cwd()
+
+# ou du homedir
+home = Path.home()
+
+# un chemin relatif (dans le dossier courant donc)
+apache2 = Path("apache2")
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### l'opérateur `/`
+
+# %% cell_style="split"
+# Path / Path -> Path
+# attention ici apache2 est un Path
+type(prefix / apache2)
+
+# %% slideshow={"slide_type": ""} cell_style="split"
+# Path / str -> Path
+# et ici "apache2" est une chaine
+type(prefix / "apache2")
+
+# %%
+# str / Path -> Path
+type("/etc" / Path("apache2"))
+
+# %%
+# On peut chainer le tout sans parenthèse 
+# si le premier (à gauche) est un Path
+
+prefix / "apache2" / "modules.d"
+
+# %%
+# ATTENTION quand même car bien sûr str / str -> TypeError
+try:
+    "/etc" / "apache2"
+except Exception as e:
+    print("OOPS", e)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### calculs sur les chemins
+
+# %% slideshow={"slide_type": ""} cell_style="split"
+# un chemin vers le dossier 'filepath-globbing'
+# dans ce répertoire
+
+here = Path.cwd()
+globbing = here / "filepath-globbing"
+
+# retrouver le string
+str(globbing)
+
+# %% cell_style="split"
+globbing.parts
+
+# %% cell_style="center"
+# basename
+globbing.name
+
+# %% cell_style="split"
+# dirname
+globbing.parent
+
+# %% cell_style="split"
+list(globbing.parents)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### *pattern-matching*
+
+# %% cell_style="split" slideshow={"slide_type": ""}
+# est-ce que le nom de mon objet Path 
+# a une certaine forme ?
+
+globbing.match("**/slides/*")
+
+# %% cell_style="split"
+globbing.match("**/*globbing*")
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### *globbing*
+
+# %% [markdown] cell_style="center"
+# recherche dans un répertoire
+
+# %% [markdown]
+# Voici le contenu du dossier `filepath-globbing`
+#     
+# ```
+# filepath-globbing          dossier
+# filepath-globbing/a1       fichier
+# filepath-globbing/b        dossier
+# filepath-globbing/b/b2     fishier
+# filepath-globbing/c        dossier
+# filepath-globbing/c/cc     dossier
+# filepath-globbing/c/cc/c2  fichier
+# ```
+
+# %% slideshow={"slide_type": "slide"}
+# à présent c'est plus intéressant
+# avec des chemins relatifs
+globbing = Path(".") / "filepath-globbing"
+
+# %% slideshow={"slide_type": "slide"} cell_style="split"
+# les fichiers immédiatement sous globbing
+list(globbing.glob("*"))
+
+# %% cell_style="split"
+# pareil, qui en plus
+# se finissent
+# par un nombre
+list(globbing.glob("*[0-9]"))
+
+# %% cell_style="split"
+# tous les dossiers sous globbing
+list(globbing.glob("**"))
+
+# %% cell_style="split"
+# les fichiers qui sont 
+# dans un sous-dossier
+# donc à n'importe quelle profondeur
+# et qui se terminent par un nombre
+list(globbing.glob("**/*[0-9]"))
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### voir aussi
+#
+# * `exists`, `is_dir`, `is_file` ...
+# * `stat` / `lstat` / `owner` pour les détails comme taille, permissions...
+# * `rename`, `unlink`, `rmdir` 
+# * `iterdir` (`os.listdir`, mais pas `os.walk`)
+# * `glob` - `rglob` 
+# * `open` / `{read,write}_{text_bytes}` / : wrappers 
+# * à nouveau: [documentation complète](https://docs.python.org/3/library/pathlib.html)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### le module `pathlib` remplace :
+#
+# * le plus gros de `os.path`
+# * certaines choses de `os`
+# * `glob.glob`
+# * `fnmatch`
+# * contient un wrapper pour `open()`
+
+# %%
+# on peut faire open() sur un objet Path
+# avec un paramètre en moins que le open() builtin
+# puisque le nom du fichier est dans l'objet Path
+
+with Path("temporaire.txt").open() as reader:
+    for line in reader:
+        print(line, end="")
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## notions avancées
+
+# %% [markdown] slideshow={"slide_type": ""}
 # ### encodages par défaut
 
 # %% [markdown]
@@ -298,213 +515,3 @@ with open('temporaire.txt', 'r', encoding='utf8') as in_file:
 # %%
 import sys
 sys.stdout
-
-# %% [markdown] slideshow={"slide_type": ""}
-# ## le module `pathlib`
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### objectifs
-#
-# * simplifier la gestion des noms de fichier 
-# * pour rendre le code plus concis
-# * et donc plus lisible
-# * sous-titre: *object-oriented filesystem paths*
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### présentation du module
-#
-# * voir [documentation complète](https://docs.python.org/3/library/pathlib.html)
-# * et notamment un diagramme des classes 
-#   * `purepath` : manipulation sans le filesystem
-#   * `path` : par exemple pour globbing (résoudre '*')
-# * dispo dans librairie standard depuis python-3.4
-#   * et aussi dans pypi, donc pour 2.7
-# * ne gère pas
-#   * les objets fichier (s'arrête à `open`)
-#   * les urls
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### un exemple
-#
-# * orienté objet
-# * le sujet devient plus visible
-# * **NB**: un objet `Path` est immutable
-
-# %%
-# avec os.path
-import os.path
-
-config_dir = "/etc/apache2"
-if os.path.isdir(config_dir):
-    print("OUI")
-
-# %%
-# avec pathlib
-from pathlib import Path
-
-config_path = Path("/etc/apache2")
-if config_path.is_dir():
-    print("OUI")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### l'opérateur `/`
-
-# %% [markdown]
-# * la fin de `os.path.join`
-
-# %%
-# un chemin absolu
-prefix = Path("/etc")
-# le chemin absolu du directory courant
-dot = Path.cwd()
-# ou du homedir
-home = Path.home()
-# un nom de ficher
-filename = Path("apache")
-
-# Path / Path -> Path bien sûr
-type(prefix / filename)
-
-# %% slideshow={"slide_type": "slide"}
-# Path / str -> Path
-type(prefix / "apache2")
-
-# %%
-# str / Path -> Path
-type("/etc" / Path("apache2"))
-
-# %%
-# On peut chainer le tout sans parenthèse 
-# si le premier (à gauche) est un Path
-
-type(prefix / "apache2" / "modules.d")
-
-# %%
-# mais bien sûr str / str -> TypeError
-try:
-    "/etc" / "apache2"
-except Exception as e:
-    print("OOPS", e)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### décorticage
-
-# %% [markdown]
-# * remplacement de `basename` et `dirname` et similaires
-
-# %%
-# un chemin vers le directory 'filepath-globbing' dans ce répertoire
-
-absolute = Path.cwd()
-relative = Path(".")
-
-globbing = absolute / "filepath-globbing"
-
-# retrouver le string
-str(globbing)
-
-# %%
-globbing.parts
-
-# %%
-# basename
-globbing.name
-
-# %%
-# dirname
-globbing.parent
-
-# %%
-list(globbing.parents)
-
-# %% slideshow={"slide_type": "slide"}
-# parce qu'on l'a construit à partir de cwd() qui est absolu
-globbing.is_absolute()
-
-# %%
-Path("globbing").is_absolute()
-
-# %%
-# ancien abspath()
-globbing.resolve()
-
-# %%
-list(globbing.parents)[-2]
-
-# %%
-# ancien relpath()
-# juste pour rendre le notebook utilisable partout (windows?)
-level1 = list(globbing.parents)[-2]
-print("level1", level1)
-# chez moi level1 vaut "/Users"
-globbing.relative_to(level1)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### pattern-matching
-
-# %% cell_style="center" slideshow={"slide_type": ""}
-# est-ce que le nom de mon objet Path 
-# a une certaine forme ?
-
-globbing.match("**/slides/*")
-
-# %%
-globbing.match("**/*globbing*")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### pattern-matching
-
-# %% [markdown] cell_style="split"
-# recherche dans un répertoire
-
-# %% cell_style="split"
-# un répertoire qui contient quelques fichiers
-# !ls filepath-globbing/**
-
-# %% slideshow={"slide_type": "slide"}
-# à présent c'est plus intéressant
-# avec des chemins relatifs
-globbing = Path(".") / "filepath-globbing"
-
-list(globbing.glob("*"))
-
-# %%
-list(globbing.glob("*[0-9]"))
-
-# %%
-list(globbing.glob("**"))
-
-# %%
-list(globbing.glob("**/*[0-9]"))
-
-# %%
-str(globbing)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### voir aussi
-#
-# * `exists`, `is_dir`, `is_file` ...
-# * `stat` / `lstat` / `owner` pour les détails comme taille, permissions...
-# * `rename`, `unlink`, `rmdir` 
-# * `iterdir` (`os.listdir`, mais pas `os.walk`)
-# * `glob` - `rglob` 
-# * `open` / `{read,write}_{text_bytes}` / : wrappers 
-# * à nouveau: [documentation complète](https://docs.python.org/3/library/pathlib.html)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### le module `pathlib`remplace :
-#
-# * le plus gros de `os.path`
-# * certaines choses de `os`
-# * `glob.glob`
-# * `fnmatch`
-# * contient un wrapper pour `open()`
-
-# %%
-# on peut faire open() sur un objet Path
-# avec un paramètre en moins que le open() builtin
-# puisque le nom du fichier est dans l'objet Path
-
-with Path("temporaire.txt").open() as reader:
-    for line in reader:
-        print(line, end="")
