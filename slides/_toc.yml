@@ -3,45 +3,22 @@ root: 1-2-introduction
 parts:
 - caption: "types de base"
   chapters:
-  - file: 2-1-nombres
-  - file: 2-2-sequences-str
-  - file: 2-3-containers
-  - file: 2-4-references
-  - file: 2-5-bytes
-  - file: 2-6-files
-  - file: 2-7-regexps
+  - glob: 2-[0-9]*
 - caption: "syntaxe et instructions"
   chapters:
-  - file: 3-1-syntaxe-operateurs
-  - file: 3-2-instructions
-  - file: 3-3-iterations
-  - file: 3-4-pep8
+  - glob: 3-[0-9]*
 - caption: "fonctions"
   chapters:
-  - file: 4-1-functions-arguments
-  - file: 4-2-variables-scope
-  - file: 4-3-lambdas
+  - glob: 4-[0-9]*
 - caption: "modules & packages"
   chapters:
-  - file: 5-1-modules
-  - file: 5-2-packages
+  - glob: 5-[0-9]*
 - caption: classes
   chapters:
-  - file: 6-1-intro-exemples
-  - file: 6-2-surcharge-operateurs
-  - file: 6-3-classes-and-attributes
+  - glob: 6-[0-9]*
 - caption: compléments
   chapters:
-  - file: 7-1-exceptions
-  - file: 7-2-useful-libs
-  - file: 7-3-useful-tools
-  - file: 7-4-type-hints
-  - file: 7-5-asyncio
-  - file: 7-6-releases
+  - glob: 7-[0-9]*
 - caption: sujets avancés
   chapters:
-  - file: 8-1-context-managers
-  - file: 8-2-methodes-statiques
-  - file: 8-3-decorateurs
-  - file: 8-4-acces-attributs
-  - file: 8-5-generateurs
+  - glob: 8-[0-9]*
