@@ -59,7 +59,7 @@
 # %% [markdown] slideshow={"slide_type": ""}
 # en Python, les expressions régulières sont accessibles au travers du module `re`
 
-# %%
+# %% cell_style="split"
 import re
 
 # en anglais on dit pattern
@@ -71,16 +71,19 @@ pattern = "a*"
 re.match(pattern, '')
 
 # %% cell_style="split"
+# OUI
 re.match(pattern, 'a')
 
 # %% cell_style="split"
+# OUI
 re.match(pattern, 'aa')
 
 # %% cell_style="split"
+# OUI
 re.match('(ab)+', 'ab')
 
 # %% cell_style="split"
-# retourne None
+# NON: retourne None
 re.match('(ab)+', 'ba')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -89,26 +92,34 @@ re.match('(ab)+', 'ba')
 # %% [markdown] slideshow={"slide_type": ""}
 # * **ATTENTION** car `re.match()` vérifie si l'expression régulière peut être trouvée **au début** de la chaine
 
-# %% cell_style="center"
+# %% cell_style="split"
 # ici seulement LE DÉBUT du mot est reconnu
 
 match = re.match('(ab)+', 'ababzzz')
 match
 
 # %% cell_style="split"
-# commence au début 
-match.start()
+# le match commence au début 
+# mais pas jusque la fin
+
+match.start(), match.end()
 
 # %% cell_style="split"
-# mais pas jusque la fin
-match.end()
+# il y a bien match de '' au début
+match = re.match('a*', 'zzz')
+match.start(), match.end()
+
+# %% cell_style="split"
+# mais ici le seul match
+# est au milieu, donc NON
+re.match('a+', 'zzzaaa')
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### les objets `Match` 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * le résultat de `re.match()` est de type `Match` 
+# * le résultat de `re.match()` est ... de type `Match` 
 # * pour les détails de ce qui a été trouvé  
 #   (par exemple quelle partie de la chaine)
 #
@@ -120,8 +131,8 @@ match.end()
 # ### autres façons de chercher : `re.search()` et autres 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * `re.search()` pour chercher le pattern n'importe où dans la chaine
-# * `re.findall()` et `re.finditer()` pour trouver toutes les occurences du filtre dans la chaine
+# * `re.search()` pour chercher le pattern **n'importe où** dans la chaine (et plus seulement au début)
+# * `re.findall()` et `re.finditer()` pour trouver **toutes les occurences** du filtre dans la chaine
 # * `re.sub()` pour remplacer …
 #
 # **notre sujet**
@@ -133,7 +144,7 @@ match.end()
 # #### pour visualiser
 
 # %%
-# digression : un utilitaire pour montrer
+# digression : une fonction utilitaire pour montrer
 # le comportement d'un pattern / filtre
 
 def match_all(pattern, strings):
@@ -149,7 +160,7 @@ def match_all(pattern, strings):
             print("NO")
         elif not (match.start() == 0 and match.end() == len(string)):
             # start() is always 0
-            print(f"NO (yes until {match.end()})")
+            print(f"PARTIAL until {match.end()}")
         else:
             print("YES")
 
@@ -161,18 +172,37 @@ match_all('(ab)+', ['ab', 'abab', 'ababzzz', ''])
 # ## construire un pattern
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### un caractère précis
+
+# %%
+# si j'écris dans un pattern un caractère "normal"
+# ça signifie que je veux trouver ça dans la chaine
+match_all("a", ["a", "ab", "bc"])
+
+# %% [markdown]
+# <div class="rise-footnote">
+# pourquoi on dit un caractère "normal" ?  
+# on va voir que certains caractères, comme par exemple le `'.'` que l'on va voir tout de suite, on un sens spécial; on les appelle des méta-caractères
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### n'importe quel caractère : `.`
 
 # %%
-match_all('.', ['', 'a', '.', 'Θ', 'ab'])
+# un '.' dans le pattern signifie
+# exactement un caractère, mais n'importe lequel, 
+# à cet endroit dans la chaine
+
+match_all('.', ['a', 'Θ', '.', 'ab', ''])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### filtrer **un seul** caractère : `[..]`
+# ### **un seul** caractère parmi un ensemble: `[..]`
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * avec les `[]` on peut désigner un **ensemble** de caractères :
 # * `[a-z]` les lettres minuscules
 # * `[a-zA-Z0-9_]` les lettres et chiffres et underscore
+# * ici encore ça va correspondre à *exactement un* caractère dans la chaine
 
 # %% cell_style="split"
 match_all('[a-z]', ['a', '', '0'])
@@ -181,7 +211,7 @@ match_all('[a-z]', ['a', '', '0'])
 match_all('[a-z0-9]', ['a', '9', '-'])
 
 # %% cell_style="center"
-# poubn insérer un '-', le mettre à la fin
+# pour insérer un '-', le mettre à la fin
 match_all('[0-9+-]', ['0', '+', '-', 'A'])
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
@@ -196,7 +226,7 @@ match_all('[0-9+-]', ['0', '+', '-', 'A'])
 match_all('[^a-z]', ['a', '0', '↑', 'Θ'])
 
 # %% cell_style="split"
-match_all('[^a-z0-9]', ['a', '9', '-'])
+match_all('[^a-z0-9]', ['a', '9', '-', 'Θ'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### 0 ou plusieurs occurrences : `..*`
@@ -207,11 +237,24 @@ match_all('[a-z]*', ['', 'cba', 'xyz9'])
 # %% cell_style="split"
 match_all('(ab)*', ['', 'ab', 'abab'])
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown]
+# * le * s'applique au (bout de) pattern juste à gauche
+# * notez bien qu'on peut avoir à utiliser des parenthèses si nécessaire
+
+# %% cell_style="split"
+match_all('ab*', ['a', 'abb', 'abab', 'baba'])
+
+# %% cell_style="center"
+match_all('[ab]*', ['a', 'abb', 'abab', 'baba'])
+
+# %% cell_style="center"
+match_all('(ab)*', ['a', 'abb', 'abab', 'baba'])
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### 1 ou plusieurs occurrences : `..+`
 
 # %% cell_style="split"
-match_all('[a-z]+', ['', 'cba', 'xyz9'])
+match_all('[a-z]+', ['', 'abc', 'xyz9'])
 
 # %% cell_style="split"
 match_all('(ab)+', ['', 'ab', 'abab'])
@@ -233,9 +276,10 @@ match_all('A*B', ['B', 'AB', 'AAB', 'AAAB'])
 
 # %% [markdown]
 # * comme déjà vu avec `(ab)+`
-#   * permet d'appliquer un opérateur sur une regexp
-# * cela définit un **groupe** qui peut être retrouvé dans le match
-#   * grâce à la méthode `groups()` 
+#   * pour appliquer un opérateur sur une regexp
+# * aussi: cela définit un **groupe** qui peut être retrouvé dans le match
+#   * grâce à la méthode `groups()`
+#   * utile pour extraire des morceaux
 
 # %% cell_style="split"
 # groupes anonymes
