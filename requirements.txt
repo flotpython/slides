@@ -16,6 +16,7 @@ requests
 
 # jupyter extensions
 #
+jupytext
 rise
 jupyter-contrib-nbextensions
 
