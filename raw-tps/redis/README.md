@@ -89,7 +89,7 @@ il faut pour commencer lancer un serveur redis
 (après avoir installé [l'outil redis](https://redis.io/), bien entendu)
 
 ```bash
-redis-server --protcted-mode no
+redis-server --protected-mode no
 ```
 
 bien sûr ce process **ne termine pas** (vous remarquez que le shell ne vous affiche pas le *prompt* avec le `$`)
@@ -102,7 +102,7 @@ il faut le laisser tourner pendant tout le temps du jeu; donc ce terminal va êt
 ### requirements
 
 ```shell
-pip install redis
+pip install pygame redis
 ```
 
 ### un premier jeu

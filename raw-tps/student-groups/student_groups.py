@@ -1,3 +1,6 @@
+## read a file
+
+
 def parse(filename):
     result = []
     with open(filename, encoding="utf-8") as f:
@@ -20,7 +23,10 @@ def parse_ter(filename):
         return [line.strip().split() for line in f]
 
 
-###
+
+## indexing
+
+
 # first_name, last_name, email, phone = tup
 # 0           1          2      3
 
@@ -36,7 +42,7 @@ def index_bis(list_of_tuples):
     return {t[2]: t for t in list_of_tuples}
 
 
-###
+# on the initial of first_name
 def initial(list_of_tuples):
     result = {}
     for tup in list_of_tuples:
@@ -62,6 +68,8 @@ def initial_bis(list_of_tuples):
 # ... not easy to write as a comprehension as far as I can see 
 
 
+## dataframe
+
 ###
 import pandas as pd
 
@@ -73,7 +81,7 @@ def dataframe(list_of_tuples):
 
 
 ###
-def groupparse(filename):
+def group_parse(filename):
     persons = []
     groups_by_name = defaultdict(set)
     with open(filename, encoding="utf-8") as feed:
@@ -84,4 +92,3 @@ def groupparse(filename):
             for group in groups:
                 groups_by_name[group].add(person)
     return persons, groups_by_name
-
