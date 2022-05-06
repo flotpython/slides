@@ -16,7 +16,11 @@ works on: `list` `file` `tuple`
   first_name last_name email phone
   ```
 * fields are separated by any number (but at least one) of spaces/tabs
-* write a function `parse(filename)` for parsing this format
+* write a function
+  ```python
+  def parse(filename):
+  ```
+  for parsing this format
 * expected output a list of 4-tuples
 
 ## indexing
@@ -29,7 +33,7 @@ works on hash-based types, comprehensions
 * what is the right data structure to implement that ?
 * write a function
   ```python
-  index(list_of_tuples)
+  def index(list_of_tuples):
   ```
   that builds and returns that data structure
 * write a function
@@ -62,13 +66,23 @@ works on sets
   ```
   so it now returns a 2-tuple with
   * the list of tuples as before
-  * a dictionary of sets; the keys here will be the group names, and the
-    corresponding value is a set of tuples corresponding to the students in that group
+  * a dictionary of sets
+    * the keys here will be the **group names**,
+    * and the corresponding value is **a set of tuples** corresponding to the students in that group
 
 
 ## regexps
 
 * we now want to check the format for the input file:
   * first_name and last_name may contain letters and `-` and `_`
-  * email may contain letters, numbers, dots, and must contain exactly one `@`
+  * email may contain letters, numbers, dots (.), hyphens (-) and must contain exactly one `@`
   * phone numbers may contain 10 digits, or `+33` followed by 9 digits
+* write a function
+  ```python
+  def check_values(L: list[tuple]) -> None:
+  ```
+  that expects as an input the output of `parse` and that outlines ill-formed input
+
+NOTE. in a first approximation, use patterns like `a-z` to check for letters;
+this should outline names with accents and cedillas; then play with '\w` to see if you can overcome this problem; how safe is it ?
+

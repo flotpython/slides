@@ -36,26 +36,26 @@
 
 # %% [markdown] slideshow={"slide_type": ""}
 # ### mots réservés
+#
+# *aka* mots-clés ou *keywords*
 
 # %% [markdown]
-# * ne **peuvent pas être utilisés** comme un nom de variable
-# * en gras : les nouveautés par rapport à python2
-#
+# * ces noms ne peuvent pas être utilisés comme un nom de variable
 #
 # | &nbsp;    |   &nbsp; | &nbsp;  | &nbsp;       | &nbsp; |
 # |----------:|---------:|--------:|-------------:|-------:|
-# | **False** | **await**    | else    | import       | pass   |
-# | **None**  | break    | except  | in           | raise  |
-# | **True**  | class    | finally | is           | return |
+# | False | await    | else    | import       | pass   |
+# | None  | break    | except  | in           | raise  |
+# | True  | class    | finally | is           | return |
 # | and       | continue | for     | lambda       | try    |
-# | as        | def      | from    | **nonlocal** | while  |
+# | as        | def      | from    | nonlocal | while  |
 # | assert    | del      | global  | not          | with   |
-# | **async**     | elif     | if      | or           | yield  |
+# | async     | elif     | if      | or           | yield  |
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### l’indentation comme base de la syntaxe
 
-# %% [markdown]
+# %% [markdown] cell_style="split"
 # * la fin d’une ligne est significative
 #   * pas de `;` nécessaire à la fin de la ligne
 # * un **bloc** d’instructions doit avoir  
@@ -63,8 +63,16 @@
 #   en partant de la gauche
 #
 #   * pas de `{}` délimitant un bloc
-#   * l’indentation peut être un ou plusieurs espaces  
+#   * indentation de un ou plusieurs espaces  
 #     (recommandation : 4 espaces)
+
+# %% cell_style="split"
+def foo():
+    print('début')
+    a = 10*20
+    print('fin, a=', a)
+    
+foo()    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### l’indentation comme base de la syntaxe
@@ -74,14 +82,30 @@
 #
 # * évitez d'utiliser des `Tab`
 #   * le plus simple c'est de ne **jamais** mettre de Tab 
-#   * python3 est d'ailleurs plus exigeant
 # * et attention aux copier/coller
 #   * qui peuvent décaler des lignes
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## affectation
-#
-# xxx
+
+# %% cell_style="split"
+# on a déjà vu ça
+
+variable = 20 * 30
+variable
+
+# %% cell_style="split"
+# on peut aussi faire 
+
+a = b = 20 * 30
+b
+
+# %%
+# ou encore
+
+a, b = 20, 30
+a * b
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## if elif else (l'instruction)
@@ -101,6 +125,7 @@
 # ```
 
 # %% [markdown] cell_style="split"
+# * évaluation dite "paresseuse"
 # * si un test est vrai, 
 #   * l'instruction est exécutée
 #   * le `if` est terminé
@@ -108,7 +133,7 @@
 #   * ssi tous les tests sont faux
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### if elif else
+# ### if elif else - exemple
 
 # %% cell_style="split"
 def appreciation(note):
@@ -144,9 +169,9 @@ print(appreciation(11.5))
 # %% [markdown] cell_style="split"
 # * `note >= 16` est une **expression**
 # * une expression **retourne** un résultat 
-#   * lorsqu'elle est **évaluée**
-# * peuvent être combinées
-#   * ex: `fonction(a == b)`
+#   * après avoir été **évaluée**
+# * peuvent être combinées / imbriquées
+#   * ex: `fonction(a[0] == b)`
 #
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "fragment"}
@@ -242,7 +267,7 @@ def appreciation(note):
 
 # %%
 print(f"avant: counter={counter}")
-print(appreciation(13.5))
+print(appreciation(15))
 print(f"après: counter={counter}")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -260,8 +285,10 @@ print(f"après: counter={counter}")
 
 # %%
 note = 8
-appreciation = "suffisant" if note >= 10 else "insuffisant"
-appreciation
+
+# comme c'est une expression, je peux par exemple
+# la passer à une fonction
+print("suffisant" if note >= 10 else "insuffisant")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérateurs
@@ -285,6 +312,26 @@ appreciation
 4 * [1, 2]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### dépendants du type
+
+# %% [markdown]
+# digression: tous les opérateurs du langage sont dépendants du type des opérandes
+
+# %% cell_style="split"
+10 + 20
+
+# %% cell_style="split"
+"10" + "20"
+
+# %% [markdown]
+# et comme on le verra, chaque type (y compris les classes qui sont des types définis par l'utilisateur) peut redéfinir le comportement des opérateurs
+#
+# par exemple
+# * une classe `Vector` donnera du sens à `v1 + v2`
+# * une classe `Path` donnera du sens à `path / file`
+#
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### quotient et reste `//` et `%`
 
 # %% [markdown]
@@ -295,8 +342,9 @@ appreciation
 19 // 3
 
 # %% cell_style="split"
-
 19 % 3
+
+
 
 # %% cell_style="split"
 # ou des flottants
@@ -318,7 +366,7 @@ pi % e
 # * $x^y$ : `x ** y` 
 
 # %% cell_style="split"
-2 ** 10
+2 ** 100
 
 # %% cell_style="split"
 pi ** e
