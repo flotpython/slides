@@ -53,9 +53,9 @@
 # ## plateformes
 #
 # * notebooks
-#   * https://nbhosting.inria.fr/auditor/notebook/python-initial-cnrs
-# * même contenu en version HTML statique
-#   * https://nbhosting.inria.fr/builds/python-initial-cnrs/handouts/latest/
+#   * https://nbhosting.inria.fr/
+# * contenu de ce cours en version HTML statique
+#   * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
 # * les sources des notebooks : 
 #   * https://github.com/flotpython/slides  
 #   
