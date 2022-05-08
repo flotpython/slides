@@ -46,7 +46,7 @@
 # ### attributs pour naviguer l'arbre
 
 # %% [markdown]
-# * le package est aux directories ce que le module est aux fichiers
+# * le package est aux dossiers ce que le module est aux fichiers
 # * un objet package est **aussi un objet module**
 # * son espace de nommage permet d'accéder à des modules et packages
 # * qui correspondent aux fichiers et répertoires contenus dans son répertoire
@@ -57,6 +57,7 @@
 #     pack1/
 #       pack2/
 #         mod.py
+#           class Foo
 
 # %% [markdown] cell_style="split"
 # équivalence modules
@@ -64,6 +65,7 @@
 #     pack1
 #     pack1.pack2
 #     pack1.pack2.mod
+#     pack1.pack2.mod.Foo
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### import d'un package
@@ -79,6 +81,7 @@ import pack1
 # ou un morceau seulement
 import pack1.pack2.mod
 
+
 # %% [markdown]
 # * cette notation demande d’importer le module dans le répertoire `pack1/pack2/mod.py`
 # * `pack1` est recherché dans `sys.path`
@@ -89,7 +92,7 @@ import pack1.pack2.mod
 
 # %% [markdown]
 # * ce fichier **peut** être présent dans le dossier
-# * si oui il est chargé lorsqu'on charge le package
+# * si oui, il est chargé lorsqu'on charge le package
 #   * définit le contenu (attributs) du package
 # * typiquement utilisé pour définir des raccourcis
 
@@ -145,13 +148,13 @@ import pack1.pack2.mod
 #
 # `from .other import variable`
 #
-# signifie de faire un import depuis le module `other` dans le même package que le module où se trouve ce code
+# signifie de faire un import depuis le module `other` **dans le même package** que le module où se trouve ce code
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple
 
-# %%
-pack1.pack2.mod.__name__
+# %% cell_style="center"
+pack1.pack2.mod.__package__
 
 # %% [markdown] cell_style="split"
 # * si dans `pack1/pack2/mod.py` on écrit  
@@ -182,12 +185,12 @@ pack1.pack2.mod.__name__
 # #### comment ça marche
 #
 # * chaque objet module a un attribut `__name__`
-# * qui est ce qui sert à calculer le chemin absolu de l'import
+# * qui est ce qui sert à calculer le chemin absolu de l'import (en fait l'attribut `__package__`)
 # * on ne regarde pas du tout l'attribut `__file__`
 #
 # ***
 #
-# * et pour rappel le point d'entrée a toujours pour nom `__main__`
+# * et pour rappel le point d'entrée a toujours pour nom `__main__`, et du coup son `_package__` est `None`
 # * **attention** du coup pour les test unitaires
 #
 # * il vaut mieux utiliser un framework de tests `unittest` ou `pytest` ou `nose`
@@ -202,7 +205,7 @@ pack1.pack2.mod.__name__
 # mais boom
 # !python awesome/io/parser.py
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## exemples
 
 # %% [markdown]
@@ -213,8 +216,8 @@ pack1.pack2.mod.__name__
 import sys
 
 def cleanup():
-    to_erase = [x for x in sys.modules.keys()
-                if 'pack1' in x or 'pack2' in x]
+    to_erase = [modname for modname in sys.modules
+                if 'pack1' in modname or 'pack2' in modname]
     for module in to_erase:
         print(f"erasing {module}")
         del sys.modules[module]

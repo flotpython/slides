@@ -33,7 +33,7 @@
 
 # %% [markdown]
 # * `lambda` est une *expression*, pas une *instruction*
-# * qui permet de créer un objet fonction à la volée
+# * qui permet de créer **un objet fonction** anonyme et à la volée
 
 # %% cell_style="split"
 # un objet fonction 
@@ -108,11 +108,11 @@ f(1)
 # %%
 # pour appeler un objet fonction
 # c'est la syntaxe habituelle
-def process(func, a, b):
+def call(func, a, b):
     return(func(a, b))
 
-print(process(lambda a, b: a + b, 3, 5))
-print(process(lambda a, b: a * b, 3, 5))
+print(call(lambda a, b: a + b, 3, 5))
+print(call(lambda a, b: a * b, 3, 5))
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## application au tri
@@ -139,21 +139,32 @@ sample
 # %%
 sorted(sample)
 
-# %%
+# %% cell_style="split"
 sorted(sample, key=str.lower)
 
 
-# %% slideshow={"slide_type": "slide"}
+# %% cell_style="split"
+# pareil que
+sorted(sample,
+
+       key=lambda s: str.lower(s))
+
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ou encore
+
+# %% slideshow={"slide_type": ""}
 student_marks = [('marc', 12), ('eric', 15), ('jean', 12), ('gabriel', 18)]
 
 sorted(student_marks)
 
 # %%
 # pour trier sur la note cette fois
-sorted(student_marks, key=lambda x: x[1])
+sorted(student_marks, key=lambda student_tuple: student_tuple[1])
 
 # %%
-# des utilitaires aussi disponibles
+# remarque:
+# des utilitaires sont disponibles aussi
 # dans le module standard `operator` 
 import operator
 sorted(student_marks, key=operator.itemgetter(1))
@@ -253,8 +264,8 @@ g is iter(g)
 list(g)
 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## introspection
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ## introspection (avancé)
 
 # %% [markdown]
 # * en Python tout est un objet  

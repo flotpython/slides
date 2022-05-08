@@ -171,6 +171,7 @@ help(hyperbolic)
 # le doctring est rangé dans un attribut spécial
 hyperbolic.__doc__
 
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un peu de documentation
 
@@ -206,6 +207,30 @@ hyperbolic.__doc__
 #
 # * tel que publié https://asynciojobs.readthedocs.io/en/latest/API.html#asynciojobs.scheduler.Scheduler
 # * source https://github.com/parmentelat/asynciojobs/blob/master/asynciojobs/scheduler.py
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### les *type hints* sont utiles
+
+# %% [markdown]
+# il est possible de typer les paramètres et le retour de la fonction
+
+# %%
+def type_hints_1(x: int, y: float) -> str:
+    """
+    pour des types simples
+    """
+    ...
+
+
+# %%
+# un peu plus compliqué (attention, nécessite 3.9)
+
+def type_hints_2(x: tuple[int, str, bool], y: dict[str, list[int]]) -> None:
+    ...
+
+
+# %% [markdown]
+# on en reparlera, mais un des principaux intérêts des *type hints* c'est précisément pour améliorer la documentation et faciliter l'usage de la librairie en question
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## digression : conventions de style
@@ -326,7 +351,7 @@ print(L)
 # mais un peu de soin est nécessaire pour bien expliquer le mécanisme général
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### paramètres multiples : use case
+# ### paramètres multiples : use case, un *wrapper*
 
 # %% [markdown]
 # * écrire un wrapper autour de `print()`
@@ -435,7 +460,7 @@ foo(a)
 #   * `def foo(**kwds):`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### (I) paramètres positionnels
+# ### (I) paramètre positionnel
 
 # %% [markdown]
 # * obtiennent un rang de gauche à droite
@@ -452,10 +477,10 @@ def agenda(nom, prenom, tel, age, job):
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (I) paramètres positionnels
+# #### (I) paramètre positionnel
 
 # %% [markdown]
-# * pour appeler la fonction
+# * comment on peut alors appeler la fonction ?
 
 # %%
 # appel usuel, sans nommage
@@ -465,17 +490,17 @@ agenda('doe', 'alice', '0404040404', 35, 'medecin')
 # %%
 # par contre en nommant les arguments lors de l’appel
 # on peut les mettre dans n’importe quel ordre
-agenda(prenom = 'alice', nom = 'doe', age = 35,
+agenda(prenom='alice', nom='doe', age=35,
        tel = '0404040404', job = 'medecin')
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### (II) paramètres nommés / avec valeur par défaut
+# ### (II) paramètre nommé / avec valeur par défaut
 
 # %%
 # ici les 3 premiers paramètres sont obligatoires
 # et les deux suivants optionnels (ils ont une valeur par défaut)
-def agenda(nom , prenom, tel,
+def agenda(nom, prenom, tel,
            age = 35, job = 'medecin'):
     # comme tout à l'heure, pour afficher 
     # ce qui correspond aux paramètres
@@ -485,10 +510,10 @@ def agenda(nom , prenom, tel,
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### déclaration des paramètres - (II) paramètres nommés
+# #### (II) paramètres nommés
 
 # %% [markdown]
-# * pour appeler la fonction
+# * comment on peut alors appeler la fonction ?
 
 # %%
 # appel en suivant la signature
@@ -509,17 +534,17 @@ agenda('Dupont', 'Jean', '123456789', age = 25, job = 'avocat')
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### déclaration des paramètres - (II) paramètres nommés
+# #### (II) paramètres nommés
 
 # %% [markdown]
 # * **attention** à ne pas confondre la forme `name=value` dans une entête de fonction et lors d’un appel
-# * dans un entête c’est une déclaration de paramètre par défaut
-# * lors d’un appel
+# * **dans un entête** c’est une déclaration de paramètre (avec valeur) par défaut
+# * **lors d’un appel**
 #   * c’est une désignation explicite d’arguments par nom (et non par ordre de déclaration)
 #   * l'argument nommé est affecté au paramètre de même nom
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### (III) nombre variable d'arguments, forme `*args`
+# ### (III) paramètre multiple, forme `*args`
 
 # %% [markdown]
 # * Python collecte tous les arguments non nommés restants 
@@ -529,7 +554,7 @@ agenda('Dupont', 'Jean', '123456789', age = 25, job = 'avocat')
 #   * avec un nombre variable d'arguments
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (III) nombre variable d'arguments, forme `*args`
+# #### (III) paramètre multiple, forme `*args`
 
 # %% cell_style="split"
 # définition
@@ -567,7 +592,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (III) nombre variable d'arguments, forme `*args`
+# #### (III) paramètre multiple, forme `*args`
 
 # %% [markdown]
 #   
@@ -585,7 +610,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### (IV) plusieurs arguments nommés, forme `**kwds`
+# ### (IV) paramètre multiple, forme `**kwds`
 
 # %% [markdown]
 # * python collecte tous les arguments nommés restants  
@@ -598,7 +623,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 #   mais avec les arguments nommés
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (IV) plusieurs arguments nommés, forme `**kwds`
+# #### (IV) paramètre multiple, forme `**kwds`
 
 # %% cell_style="split" slideshow={"slide_type": ""}
 # définition
@@ -635,7 +660,7 @@ named_args1(a = 1, b = 2)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (IV) plusieurs arguments nommés, forme `**kwds`
+# #### (IV) paramètre multiple, forme `**kwds`
 
 # %% [markdown]
 # * ici encore cette forme de paramètre **ne peut apparaître qu'une fois**
@@ -661,9 +686,9 @@ named_args1(a = 1, b = 2)
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * on peut utiliser un paramètre de la forme `*x`
-# * où `x` désigne un itérable
+# * où `x` désigne **un itérable**
 # * Python va transformer `*x` en une suite de paramètres à passer à la fonction
-# * dans ce sens par contre on peut utiliser la forme `*x` plusieurs fois dans un appel
+# * dans ce sens par contre on peut utiliser la forme `*x` **plusieurs fois** dans le même appel
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 # une définition classique
@@ -696,8 +721,8 @@ f4(*range(1, 3), *range(10, 12))
 # ### (IV) appel avec la forme `**x`
 
 # %% [markdown]
-# * cette fois `x` est supposé être un dictionnaire
-# * python va transformer ce dictionnaire en une suite de paramètres nommés
+# * cette fois `x` est supposé être **un dictionnaire**
+# * Python va transformer ce dictionnaire en une suite de paramètres nommés
 
 # %%
 def f3(a, b, c):
@@ -796,105 +821,6 @@ f(1)
 f(2)
 f(3)
 
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## fonctions *wrapper*
-
-# %% [markdown]
-# * l’utilisation classique de `*args` et `**kwds` est  
-#   principalement pour créer un *wrapper* (*emballage*)  
-# * c'est quoi un *wrapper* ?  
-#   on a une fonction f  
-#   on veut en créer une autre, g  
-#   qui se comporte **presque** comme f  
-#   sauf pour un détail
-# * exemples :  
-#   g affiche un message avant et après l'exécution de f
-#   rappelez-vous aussi `myprint` ci-dessus  
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### fonctions wrapper et paramètres
-
-# %% [markdown]
-# * il faut donc que g accepte les mêmes arguments que f
-# * pour écrire le code de g à partir de f
-# * on ne veut pas avoir **à mentionner les paramètres** de f  
-# * i.e. ça doit pouvoir marcher avec e.g.
-#   * `fact` qui attend exactement un argument, aussi bien que
-#   * `print` qui attend *n* arguments positionnels et nommés  
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### wrapper - exemple 1
-#
-# * si on devait construire un wrapper "à la main"
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-def double(x):
-   return 2 * x
-
-def wrapped_double(x):
-    print("entering double")
-    result = double(x)
-    print(f"exiting double with {result}")
-    return result  
-
-
-# %% cell_style="split"
-y = wrapped_double(10); y
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### wrapper - exemple 2
-#
-# * pareil mais autour de `print()`
-# * on ne peut plus faire aussi simplement
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-# on peut appeler print()
-# de plein de façons, i.e.
-# avec plusieurs paramètres 
-# positionnels ou nommés
-
-def wrapped_print(*args, **kwds):
-    print("entering print")
-    result = print(*args, **kwds)
-    print(f"exiting double with {result}")
-    return result  
-
-
-# %% cell_style="split"
-wrapped_print(10, 20, sep='+++')
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### wrapper - exemple 3 (avancé)
-
-# %% [markdown]
-# * les deux exemples précédents font "la même chose"
-# * sauriez-vous factoriser ?
-# * intro aux décorateurs
-
-# %% cell_style="center" slideshow={"slide_type": "fragment"}
-def print_in_out(function):
-    def wrapped(*args, **kwds):
-        print(f"entering {function.__name__}")
-        result = function(*args, **kwds)
-        print(f"exiting {function.__name__} "
-              f"with {result}")
-        return result
-    return wrapped
-
-
-# %% cell_style="center"
-deco_double = print_in_out(double)
-deco_print = print_in_out(print)
-
-# %% cell_style="split"
-deco_double(10)
-
-# %% cell_style="split"
-deco_print(10, 20, sep='///')
-
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## ordre des paramètres et arguments
 
@@ -920,26 +846,26 @@ deco_print(10, 20, sep='///')
 
 # %% [markdown] cell_style="split"
 # * dans un appel de fonction
-#   * on recommande l’ordre suivant
+# * on recommande de matérialiser deux groupes
 
 # %% [markdown] cell_style="split"
-# 1. arguments positionnels (`name`), 
-# 1. forme(s) `*name`,
-# 1. arguments nommés (`name=value`),
-# 1. forme(s) `**name`
-
-# %% [markdown] cell_style="split"
-# **remarque**
+# en premier les non-nommés
 #
-# matérialise deux groupes d'arguments  
-# groupe 1 et 2: positionnels  
-# groupe 3 et 4: nommés
+# * arguments positionnels (`name`), 
+# * forme(s) `*name`,
+# * dans l'ordre qui va bien
+#
+# puis ensuite les arguments nommés
+#
+# * arguments nommés (`name=value`),
+# * forme(s) `**name`
+# * pareil, dans le bon ordre
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
-# * contrairement aux paramètres 
-#   * on peut mentionner plusieurs `*` ou `**` 
-#   * mais dans le bon ordre
-#   * et sans conflits dans les noms des dictionnaires
+# %% [markdown] cell_style="center" slideshow={"slide_type": ""}
+# <div class="rise-footnote">
+# contrairement aux paramètres, on peut mentionner plusieurs `*` ou `**`
+# et on les met dans l'ordre où ça fait du sens
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
@@ -980,7 +906,7 @@ d1 = {'a': 1, 'b': 2}
 d2 = {'c': 3, 'd': 4}
 
 # on peut appeler avec plusieurs * et **
-show_any_args(*l1, *l2, **d1, **d2)
+show_any_args(*l1, *l2, 1000, **d1, **d2)
 
 
 # %% [markdown] slideshow={"slide_type": ""}

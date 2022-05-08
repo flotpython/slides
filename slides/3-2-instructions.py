@@ -40,8 +40,8 @@
 #     bloc d_instructions
 #     alignés comme on l_a vu
 # else:
-#     bloc     # exécuté lorsque <test> est 
-#     aligné   # faux s’il n’y a pas de break
+#     bloc     # exécuté à la sortie de la boucle 
+#     aligné   # seulement s’il n’y a pas de break
 # ```
 
 # %% [markdown]
@@ -134,7 +134,7 @@ print(a)
 # * exemples
 #   * `Spam_38`
 #   * `_ma_variable`
-# * en python3 on peut utiliser des caractères Unicode
+# * on peut aussi utiliser des caractères Unicode (accents et autres lettres grecques)
 #   * une pratique à utiliser avec la plus grande modération !
 
 # %%
@@ -332,7 +332,7 @@ with open("../data/hamlet.txt") as feed:
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## libération de variables
+# ## libération de variables: `del`
 
 # %% [markdown]
 # * `del a` 
@@ -369,68 +369,6 @@ del liste[1:3]
 
 # %%
 liste
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## arguments en ligne de commande
-
-# %% [markdown]
-# * un programme Python se lance typiquement depuis le terminal
-# * on a typiquement besoin de lui passer des paramètres :
-#   * nom du fichier d'entrée
-#   * options diverses..
-# * car sinon :
-#   * le programme fait toujours exactement la même chose !
-#   * soit il faut le modifier à chaque lancement
-# * exemple d'école :
-#   * un programme qui calcule la factorielle d'un nombre
-#   
-# on veut pouvoir faire
-# ```console
-# python factorielle.py 56
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `sys.argv`
-#
-# * méthode la plus basique: `sys.argv`
-
-# %% cell_style="center"
-# un code source
-
-# %cat samples/command_line_args1.py
-
-# %% cell_style="center"
-#  quand on le lance
-
-# ! python3 samples/command_line_args1.py --les arguments du shell
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### le module `argparse`
-
-# %% [markdown]
-# * parseur de `sys.argv`
-#   * module `argparse` : la solution préconisée
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### exemple avec `argparse`
-
-# %%
-# !cat samples/command_line_args2.py
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### `argparse` - suite
-
-# %%
-# sans argument, ça coince
-# !python3 samples/command_line_args2.py
-
-# %%
-# si on l'utilise correctement
-# !python3 samples/command_line_args2.py fic1
-
-# %%
-# ou comme ça
-# !python3 samples/command_line_args2.py -v fic1 fic2
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## affichage
@@ -506,6 +444,68 @@ print(1, 'x', True, sep='_', end='\n\n')
 #
 # c'est **la bonne façon** de conserver des  
 # traces d'exécutionpour un programme en production
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ## arguments en ligne de commande
+
+# %% [markdown]
+# * un programme Python se lance typiquement depuis le terminal
+# * on a typiquement besoin de lui passer des paramètres :
+#   * nom du fichier d'entrée
+#   * options diverses..
+# * car sinon :
+#   * le programme fait toujours exactement la même chose !
+#   * soit il faut le modifier à chaque lancement
+# * exemple d'école :
+#   * un programme qui calcule la factorielle d'un nombre
+#   
+# on veut pouvoir faire
+# ```console
+# python factorielle.py 56
+# ```
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### `sys.argv`
+#
+# * méthode la plus basique: `sys.argv`
+
+# %% cell_style="center"
+# un code source
+
+# %cat samples/command_line_args1.py
+
+# %% cell_style="center"
+#  quand on le lance
+
+# !python samples/command_line_args1.py --les arguments du shell
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### le module `argparse`
+
+# %% [markdown]
+# * parseur de `sys.argv`
+#   * module `argparse` : la solution préconisée
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### exemple avec `argparse`
+
+# %%
+# !cat samples/command_line_args2.py
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### `argparse` - suite
+
+# %%
+# sans argument, ça coince
+# !python samples/command_line_args2.py
+
+# %%
+# si on l'utilise correctement
+# !python samples/command_line_args2.py fic1
+
+# %%
+# ou comme ça
+# !python samples/command_line_args2.py -v fic1 fic2
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## le debugger Python : `pdb`

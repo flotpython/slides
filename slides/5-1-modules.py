@@ -31,6 +31,9 @@
 # %% [markdown]
 # # modules
 
+# %% [markdown]
+# et introduction aux attributs
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## pour réutiliser du code en Python
 
@@ -75,14 +78,23 @@
 # ## création d’un module
 
 # %% [markdown]
-# * un module est un objet python 
-#   * correspondant au chargement 
-#   * d'un fichier ou répertoire source
+# * un module est un **objet** Python 
+#   * correspondant au **chargement** (en mémoire donc)
+#   * du code venant d'un fichier ou répertoire source
 # * dans le cas d'un répertoire on parle alors d'un *package*  
 #   on y reviendra
 # * le nom d'un fichier doit finir par `.py`
-# * le préfixe suit les règles des variables
+# * le nom (sans le `.py`) suit les mêmes règles que pour les variables
 #   * i.e. pas de `-` mais des `_`
+#   * `truc_v22.py`: **OK**
+#   * ~~`truc-bidule.py`~~: **KO**
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# comme on va le voir ce nom va effectivement devenir un nom de variable lors de l'import
+#     
+# </div>    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## importation d’un module
@@ -94,10 +106,15 @@
 # je peux l'importer
 import mod
 
-# %%
+# %% cell_style="center"
+# l'instruction 'import' a deux effets
+# elle crée l'objet module
+# et elle affecte la variable - ici mod - 
+# a cet objet module
 mod
 
 # %% cell_style="split"
+
 mod.spam('good')
 
 # %% [markdown]
@@ -117,17 +134,28 @@ mod.spam('good')
 #   * les attributs sont résolus à run-time
 #   * on en reparlera longuement
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# cette association nom → valeur rappelle un peu le dictionnaire  
+# c'est vrai mais pourtant les deux mécanismes (clés dans un dico, attribut dans un objet)  
+# sont implémentés et s'utilisent de manière très différente: `d['key']` *vs* `o.key`  
+# il est donc important de bien les distinguer - surtout pour ceux qui font du JS
+#
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un attribut sur quel objet ?
 
 # %% [markdown]
 # * on peut attacher un attribut à une grande variété d'objets
 #   * modules, packages, classes, instances, fonctions, ..
-# * mais pas attacher aux classes ni instances de classes natives
+# * mais pas aux instances de classes natives (`int`, etc..)
 
 # %%
 # on ne peut pas attacher d'attribut aux classes natives 
 x = 3
+
 try:
     x.foo = 12
 except AttributeError as e:
@@ -159,8 +187,27 @@ foo = Foo()
 # je peux créer l'attribut 'name'
 foo.name = 'Jean'
 
-# %% [markdown]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## plusieurs formes d'`import`
+
+# %% [markdown]
+# ### `import name`
+
+# %% [markdown]
+# définit la variable `name`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### `import modulename as name`
+
+# %% cell_style="split"
+import mod as mymod
+mymod.spam("module renamed")
+
+# %% cell_style="split"
+# un peu comme
+# import mod
+# mymod = mod
+# del mod
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `from module import name`
@@ -175,26 +222,11 @@ spam('direct')
 
 # %% [markdown]
 # * `from mod import spam`
-#   * copie le nom d’attribut `spam`
-#   * du module `mod`
-#   * dans l’espace de nommage local
-#   * plus besoin de la référence au nom du module
+#   * charge le module
+#   * mais définit **seulement** la variable locale `spam` 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `import modulename as name`
-
-# %% cell_style="split"
-import mod as mymod
-mymod.spam("module renamed")
-
-# %% cell_style="split"
-# un peu comme
-# import mod
-# mymod = mod
-# del mod
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `from modulename import name as newname`
+# #### `from modulename import name as newname`
 
 # %% cell_style="split"
 from mod import spam as myspam
@@ -227,7 +259,7 @@ import pack1.pack2.mod as submod
 submod.eggs()
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### autres importations
+# ### importer tout le contenu d'un module
 
 # %% cell_style="split"
 from mod import *
@@ -251,16 +283,48 @@ spam('star')
 # ## que fait une importation ?
 
 # %% [markdown]
-# * trouver le fichier correspondant au module 
-#   * on ne met pas le `.py` du fichier lors d’un import
-# * compiler (si besoin) le module en byte-code
-# * charger le module pour construire les objets qu’il définit
-#   * et les ranger dans les attributs du module
+# * vérifier si le module est déjà chargé, et sinon:
+#   * trouver le fichier correspondant au module 
+#     * *rappel*: on ne met pas le `.py` du fichier lors d’un import
+#   * compiler (si besoin) le module en byte-code
+#   * charger en mémoire le module pour construire les objets qu’il définit
+#     * typiquement fonctions, classes, variables globales au module
+#     * et les ranger dans les attributs du module
 # * affecter la variable locale 
 #   * à l'objet module (`import module`)
-#   * à l'objet dans le module (`from module import variable`)
+#   * ou à l'objet dans le module (`from module import variable`)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### les modules sont en cache
+
+# %% [markdown]
+# * comme l’importation est une opération lourde, un module n’est chargé qu’**une seule fois** 
+#   * les imports suivants retrouvent le module déjà présent en mémoire
+# * pour importer de nouveau un module (avec une réexécution du code)  
+#   il faut utiliser la fonction `importlib` (exemple + bas)
+#   * utile principalement lors de la mise au point
+#   * dans IPython et les notebooks, voyez aussi `%autoreload 2`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### localisation du fichier du module
+
+# %% [markdown]
+# * localisation en parcourant dans l’ordre
+#   * répertoire où se trouve **le point d'entrée** 
+#   * `PYTHONPATH` : variable d’environnement de l’OS
+#   * répertoires des librairies standards  
+#     configurés à l'installation
+# * `sys.path` contient la liste des répertoires parcourus
+#   * on peut modifier `sys.path` à l’exécution
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# je vous recomande de **ne pas utiliser** `PYTHONPATH` dans la vie de tous les jours, c'est vraiment réservé à des usages très spécifiques
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### byte-code
 
 # %% [markdown]
@@ -274,38 +338,32 @@ spam('star')
 # * les `.pyc` sont dans un répertoire `__pycache__`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### localisation du fichier du module
-
-# %% [markdown]
-# * localisation en parcourant dans l’ordre
-#   * répertoire où se trouve le point d'entrée 
-#   * `PYTHONPATH` : variable d’environnement de l’OS
-#   * répertoires des librairies standards
-# * `sys.path` contient la liste des répertoires parcourus
-#   * on peut modifier `sys.path` à l’exécution
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### les modules sont en cache
-
-# %% [markdown]
-# * comme l’importation est une opération lourde, un module n’est chargé qu’**une seule fois** 
-#   * les imports suivants réutilisent le module déjà présent en mémoire
-# * pour importer de nouveau un module (avec une réexécution du code) il faut utiliser la fonction `imp.reload()`
-#   * utile principalement lors de la mise au point
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
 
 # %% cell_style="split"
 # !cat toplevel.py
 
 # %% cell_style="split"
+
+
+
 import toplevel
 toplevel.eggs
 
 # %% cell_style="split"
 toplevel.eggs = 2
+
+# ici l'import ne fait ... rien !
+# en particulier ça ne remet pas toplevel.eggs à 1
+# comme on pourrait l'espérer
 import toplevel
+toplevel.eggs
+
+# %% cell_style="split"
+# là on recharge,
+# donc on réinitialise le module
+import importlib
+importlib.reload(toplevel)
 toplevel.eggs
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -338,7 +396,7 @@ pi = 10
 # !cat egg.py
 
 # %%
-# !python3 egg.py
+# !python egg.py
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exécuter un module comme un script
@@ -363,7 +421,7 @@ print(toplevel.__name__)
 # ### `if __name__ == "__main__"`
 
 # %% [markdown]
-# * si le module est le point d'entrée, (`python3 foo.py`)  
+# * si le module est le point d'entrée, (`python foo.py`)  
 #   son exécution n’est pas le résultat d’un import
 #
 # * alors `__name__` est mis à la chaîne  `__main__`
@@ -385,7 +443,7 @@ print(toplevel.__name__)
 
 # %% cell_style="split"
 # À la ligne de commande on a
-# !python3 samples/fib.py
+# !python samples/fib.py
 
 # %% cell_style="split"
 # mais à l'import il ne se passe rien
@@ -402,7 +460,7 @@ from samples.fib import fib
 # * on peut aussi lancer Python en mode **interactif**
 #
 # ```
-# $ python3 -i fib.py
+# $ python -i fib.py
 # 1 1 2 3 5 8 13 21 34 
 # >>>
 # ```
@@ -450,7 +508,7 @@ def f():
     print(f"foo dans locals ? : {'foo' in locals()}")
 f()
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## recharger un module
 
 # %% [markdown] slideshow={"slide_type": ""}
@@ -522,7 +580,7 @@ del sys.modules['toplevel']
 import toplevel
 toplevel.eggs
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ## notions avancées
 
 # %% [markdown]

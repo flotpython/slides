@@ -164,6 +164,8 @@ for value in agenda.values():
 # ### exemple de boucles
 
 # %%
+# trouver les nombres premiers jusqu'à 10
+
 # boucle (1)
 for n in range(2, 10):
     # boucle (2)
@@ -176,7 +178,7 @@ for n in range(2, 10):
         print(n, 'est un nombre premier')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### opérations sur les itérables
+# ## opérations sur les itérables
 
 # %% [markdown]
 # Python propose des outils pour **créer** et **combiner** les itérables:
@@ -532,6 +534,45 @@ for i in range(len(L)):
 # et en plus, si vous remplacez la compréhension par une expression génératrice, la premiere forme ne marche plus du tout 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ## sous le capot de la boucle `for`
+
+# %% [markdown] cell_style="split"
+# lorsqu'on itère sur un itérable avec itérateur
+
+# %% cell_style="split"
+iterable = [10, 20, 30]
+
+# %% [markdown]
+# sous le capot, la boucle `for` va faire:
+#
+#   * créer un itérateur en appelant `iter(iterable)`
+#   * appeler `next()` sur cet itérateur
+#   * jusqu'à obtenir l'exception `StopIteration`
+
+# %% cell_style="split" slideshow={"slide_type": "slide"}
+for item in iterable:
+    print(item)
+
+# %% cell_style="split" slideshow={"slide_type": ""}
+iterateur = iter(iterable)
+while True:
+    try:
+        item = next(iterateur)
+        print(item)
+    except StopIteration:
+        # print("fin")
+        break
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### sous le capot de la boucle `for`
+
+# %% [markdown]
+# * `next()` et `iter()` sont des fonctions natives
+# * et naturellement:
+#   * `iter(obj)` appelle `obj.__iter__()`
+#   * `next(obj)` appelle `obj.__next__()`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ## compréhensions
 
 # %% [markdown]
@@ -863,7 +904,7 @@ type(generator2)
 # * et même en fait c'est plus fort que ça  
 #   car la fonction génératrice peut en appeler d'autres
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### `yield from`
 
 # %% [markdown]
@@ -903,6 +944,7 @@ def divdivs(n):
 for div in divdivs(30):
     print(div, end=" ")
 
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### fonction génératrice - épilogue
 
@@ -916,46 +958,6 @@ for div in divdivs(30):
 #   * les deux `i` dans l'exemple précédent
 #
 # c'est cette propriété qui est utilisée pour implémenter la librairie asynchrone `asyncio` 
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### sous le capot de la boucle `for`
-
-# %% [markdown] cell_style="split"
-# lorsqu'on itère sur un itérable avec itérateur
-
-# %% cell_style="split"
-iterable = [10, 20, 30]
-
-# %% [markdown]
-# sous le capot, la boucle `for` va faire:
-#
-#   * créer un itérateur en appelant `iter(iterable)`
-#   * appeler `next()` sur cet itérateur
-#   * jusqu'à obtenir l'exception `StopIteration`
-
-# %% cell_style="split" slideshow={"slide_type": "slide"}
-for item in iterable:
-    print(item)
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-iterateur = iter(iterable)
-while True:
-    try:
-        item = next(iterateur)
-        print(item)
-    except StopIteration:
-        # print("fin")
-        break
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### sous le capot de la boucle `for`
-
-# %% [markdown]
-# * `next()` et `iter()` sont des fonctions natives
-# * et naturellement:
-#   * `iter(obj)` appelle `obj.__iter__()`
-#   * `next(obj)` appelle `obj.__next__()`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## itérations et itérables (partie optionnelle)

@@ -100,11 +100,19 @@ variable
 a = b = 20 * 30
 b
 
-# %%
+# %% cell_style="split"
 # ou encore
 
 a, b = 20, 30
 a * b
+
+# %% cell_style="split"
+# idiome
+print(a, b)
+
+a, b = b, a
+
+print(a, b)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -393,6 +401,13 @@ def est_moyenne(note):
 est_moyenne(11)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# ### opérateurs logiques
+
+# %% [markdown]
+# * opérateurs logiques: `and` - `or` - `not`
+# * opérateurs d'appartenance: `in` et `not in`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### opérateurs bitwise
 
 # %% [markdown]
@@ -414,13 +429,6 @@ bin(a & b)
 
 # %% cell_style="split"
 bin(a ^ b)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### opérateurs logiques
-
-# %% [markdown]
-# * opérateurs logiques: `and` - `or` - `not`
-# * opérateurs d'appartenance: `in` et `not in`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### précédence des opérateurs

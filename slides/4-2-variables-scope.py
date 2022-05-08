@@ -347,6 +347,7 @@ import builtins
 dir(builtins)[-5:]
 
 # %%
+# en fait il y en a vraiment beaucoup ! 
 len(dir(__builtins__))
 
 # %% slideshow={"slide_type": "slide"}
