@@ -19,6 +19,6 @@ parts:
 - caption: compléments
   chapters:
   - glob: 7-[0-9]*
-- caption: sujets avancés
-  chapters:
-  - glob: 8-[0-9]*
+#- caption: sujets avancés
+#  chapters:
+#  - glob: 8-[0-9]*
