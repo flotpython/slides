@@ -1,9 +1,6 @@
-from typing import Tuple
-
 Phone = str
 
-from typing import Set
-PhoneSet = Set[Phone]
+PhoneSet = set[Phone]
 
 def foo(x: PhoneSet) -> None:
     pass

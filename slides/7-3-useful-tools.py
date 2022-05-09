@@ -163,18 +163,21 @@
 # * http://pythontutor.com/ 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## détaillés plus loin
+# ## et autres
 #
-# * `numpy` pour le calcul scientifique
+# * pour le calcul scientifique
+#   * `numpy`: tableaux et matrices efficaces
+#   * `pandas`: données tabulaires (type excel/csv)
+#   * `scikit-learn`: machine-learning
+#   * `matplotlib`: visualisation
+#   * plein d'autres libs de visualisation - seaborn, altair, bokeh, plotly
+# * autour des notebooks
+#   * bien sûr `jupyter` (jupyterlab), avec - je recommande - `jupytext`
+#   * mais aussi vs-code,
+#   * ou bien en version hostée sur https://cocalc.com`
+#   * ou encore https://colab.research.google.com/
+#   * pour les notebooks interactifs: `ipywidgets` et `interact()`
 # * `asyncio` pour la programmation asynchrone
 # * `unittest` et autres `pytest` pour les tests et l'intégration continue
 # * `sphinx` et `readthedocs.io` pour la documentation
-# * et bien sûr `git` pour tout
-# * et enfin `jupyter` pour écrire des notebooks
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour aller plus loin
-
-# %% [markdown]
-# * une revue et correction de code publique très instructive faite par sametmax
-#   * http://sametmax.com/revue-de-code-publique/
+#   * pour info ce support est transformé en HTML avec `jupyter-book`

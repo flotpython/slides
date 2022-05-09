@@ -32,13 +32,14 @@
 # # *type hints*
 #
 # * littéralement: ***suggestions*** *de typage*
+# * **avertissement** pour ce notebook il faut **au minimum Python-3.9**
 
 # %% [markdown]
 # ## motivations
 #
 # * *duck typing* : pratique mais a des limitations
 # * introduire un mécanisme **optionnel** pour améliorer la situation
-#   * meilleure documentation / abaisser barrière d'entrée
+#   * meilleure documentation: faciliter l'accès à une nouvelle lib
 #   * analyse statique: trouver les bugs plus tôt
 #   * (performances)
 
@@ -46,19 +47,16 @@
 # ### histoire
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * commencé au travers du projet [mypy](http://mypy.readthedocs.io/en/latest/index.html), par Jukka Lehtosalo
-# * PEPs en vigueur
-#   * [PEP-484](https://www.python.org/dev/peps/pep-0484/) "Type hints"
-#   * [PEP-483](https://www.python.org/dev/peps/pep-0483/) "The theory of type hints"
-# * progressivement intégré à Python
 # * module `typing` disponible depuis 3.5
+# * pas mal de changements (dans le bon sens) jusque dans la 3.9
+# * qui expliquent peut-être pourquoi ça reste semble-t-il encore relativement confidentiel
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## complètement optionnel 
 
 # %% [markdown]
 # * non seulement on n'est pas obligé d'en mettre
-# * même si on en met, **c'est ignoré !** à *run-time*
+# * mais même si on en met, **c'est ignoré !** à *run-time*
 
 # %%
 # les annotations ici indiquent que 
@@ -79,6 +77,9 @@ ajouter('abc', 'def')
 # **vérification statique** en utilisant `mypy` - un outil **externe**
 
 # %%
+# !pip install mypy
+
+# %%
 # !cat samples/types01.py
 
 # %%
@@ -97,26 +98,65 @@ ajouter('abc', 'def')
 # ## comment définir un type
 
 # %% [markdown]
-# * les classes builtin `str`, `dict` etc..
+# * les cas simples: grâce aux classes builtin `str`, `dict` etc..
 # * le module `typing` introduit des concepts additionnels
 #   * qui servent à étendre le spectre
 #   * comme `Iterable`, `Callable`, ...
 #   * mais aussi la notion de type abstrait avec `Generic` et `TypeVar`
-#   * nous allons voir tout ceci sur quelques exemples
+#   * nous allons survoler tout ceci sur quelques exemples
+#   * pour les détails, reportez-vous à https://docs.python.org/3.9/library/typing.html
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### aliases
+# ### aliases et types standard
 
-# %%
-# pour définir un alias pour une classe native
+# %% slideshow={"slide_type": ""}
+# on définit un alias de type avec une simple affectation
 # une affectation suffit
 
-Url = str
+Name = str
+Age = int
+Phone = str
 
-def retrieve_url(url: Url, count: int) -> bool:
-    #
-    return True
 
+# %% slideshow={"slide_type": "slide"}
+# un tuple est non mutable, il semble logique de dire
+# combien il doit avoir de composants et de quels types
+
+# ce type décrit les tuples qui contiennent deux chaines et un entier
+Employee = tuple[Name, Age, Phone]
+
+
+# %% cell_style="split"
+# ce nom peut être utilisé
+# dans les type hints 
+def foo(employee: Employee) -> str:
+    ...
+
+
+# %% cell_style="split"
+# on aurait pu aussi mettre directement
+def foo(employee: tuple[Name, Age, Phone]):
+    ...
+
+# mais avec cette approche il faut
+# répéter tout le temps la même chose...
+
+
+# %% [markdown]
+# #### types standard .. suite
+#
+# comme on vient de le voir, on on utilise les types standard avec des `[]` pour définir des types composites, par exemple
+#
+# * `list[Truc]` : une liste qui ne contient que des trucs
+# * `dict[KeyType, ValueType]` : un dictionnaire dont les clés sont des `KeyType` et les valeurs des `ValueType`
+
+# %% slideshow={"slide_type": "slide"}
+# un exemple avec un set
+
+# !cat samples/types02.py
+
+# %%
+# !mypy samples/types02.py
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### classes
@@ -142,73 +182,6 @@ def link_foos(foo1: Foo, foo2: Foo) -> None:
 # * et ont un nom en `FonteMixte`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `List` et `Tuple`
-#
-# * pour commencer: `List` (et `Tuple`)
-# * qui permet de décrire un type de liste  
-#   où tous les items sont d'un type
-# * remarquer **l'usage des `[]`** - et non pas les **`()`**  
-#   pour la composition de types
-
-# %%
-from typing import List, Tuple
-
-# une liste dont tous les éléments sont des chaines
-phone_numbers: List[str]
-
-# une liste de'objets de type Foo
-all_the_foos: List[Foo]
-
-# %% slideshow={"slide_type": "slide"}
-# un tuple est non mutable, il semble logique de dire
-# combien il doit avoir de composants et de quels types
-
-Name = str
-Age = int
-Phone = str
-
-# ce type décrit les tuples qui contiennent deux chaines et un entier
-Employee = Tuple[Name, Age, Phone]
-
-# %% cell_style="split"
-# Employee peut être mentionné 
-# dans les type hints 
-type(Employee)
-
-# %% cell_style="split"
-# mais ce n'est pas 
-# une usine à objets
-try: 
-    Employee()
-except Exception as exc:
-    print(f"OOPS - {type(exc)}")
-
-# %% slideshow={"slide_type": ""}
-# de manière similaire
-# ne pas confondre tuple et Tuple !
-Tuple is tuple
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `Dict` et `Set`
-
-# %% slideshow={"slide_type": ""}
-# c'est pareil avec `Dict` et `Set`
-from typing import Dict, Set
-
-# Dict est construit avec deux types
-# pour les clés et les valeurs respectivement
-NameHash = Dict[Name, Employee]
-
-# et Set avec un seul type
-PhoneSet = Set[Phone]
-
-# %% slideshow={"slide_type": "slide"}
-# !cat samples/types02.py
-
-# %%
-# !mypy samples/types02.py
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### `Iterable`, `Iterator`, `Sequence`
 #
 # * ça devient intéressant de **formaliser**
@@ -216,37 +189,17 @@ PhoneSet = Set[Phone]
 # * par exemple:
 
 # %%
-from typing import Iterable, Iterator, Sequence
+from typing import Iterable, Iterator, Sequence, Callable
 
 Iterable[int]
-Iterator[Tuple[int, float, str]]
-Sequence[List[float]]
+Iterator[tuple[int, float, str]]
+Sequence[list[float]]
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `NewType`
-#
-# une méthode plus propre pour définir un alias
+Bar = tuple[str, int]
 
-# %%
-from typing import NewType
-
-UserId = NewType('UserId', int)
-some_id = UserId(524313)
-
-
-# %% [markdown]
-# de cette façon on peut être plus strict
-
-# %%
-def get_user_name(user_id: UserId) -> str:
-    ...
-
-# typecheck OK
-user_a = get_user_name(UserId(42351))
-
-# typecheck KO; un entier n'est pas un UserId
-user_b = get_user_name(-1)
-
+# une fonction qui prend deux paramètres de types resp. Foo et Bar 
+# et qui retourne un booléen
+f: Callable[[Foo, Bar], bool]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### autres constructeurs en vrac
@@ -256,57 +209,52 @@ user_b = get_user_name(-1)
 # * `Union` lorsqu'on accepte plusieurs types
 # * `Callable` pour les objets, ahem, callables
 # * `Hashable` ce qui peut être utilisé comme clé d'un dictionnaire
+#
+# et aussi
+#
+# * `NewType` définit un nom pour un type - un peu plus subtil que l'affectation
 # * `TypeVar` pour manipuler des types génériques (à la template C++)
 #   * grâce auxquelles on peut implémenter des classes génériques
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## comment utiliser un type
+
+# %% [markdown]
+# on s'en sert typiquement
+#
+# * dans les déclarations de fonction, comme on l'a déjà vu 
+# * on peut **aussi typer les variables**
+#
+
+# %%
+# type-hint de la globale FOO
+# ↓↓↓↓↓↓
+FOO: str = "type-hints"
+
+
+# ici on type-hint x
+#       ↓↓↓↓↓↓
+def foo(x: int) -> str:
+  # ici on type-hint y
+  # ↓↓↓↓↓↓  
+    y: int = x * x      
+    return f"{FOO} {y=}"
+
+
+# %%
+foo(10)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## conclusion (1)
 
 # %% [markdown] slideshow={"slide_type": ""}
-# * peut-être pas totalement stable encore
-#   * mais gagne petit à petit en popularité
-# * il faut au moins savoir le lire !
-# * et penser à l'utiliser quand les choses
-#     deviennent ambigües
-
-# %%
-# une application comme nbhosting
-class Course:
-    pass
-
-# très confusant comme signature, car ça suggère qu'il faut
-# passer à la fonction un objet Course
-def show_course(course):
-    """
-    display a Course object from its name
-    """
-    course_obj = Course.objects.find(coursename=course)
-    course_obj.show()
-
-
-# %% cell_style="split" slideshow={"slide_type": "slide"}
-# première option
-# on renomme le paramètre 
-# en 'coursename' 
-# par contre ça peut être long
-# et/ou alourdir le code
-def show_course(coursename):
-    course = Course.objects.find(
-        coursename=coursename)
-    course.show()
-
-
-# %% cell_style="split"
-# deuxieme option
-# type hint 
-def show_course(course: str):
-    course_obj = Course.objects.find(
-        coursename=course)
-    course_obj.show()
-
-
-# %% [markdown]
-# et bien sûr on peut aussi faire les deux ;-)
+# * raisonnablement stable en 3.9 amha
+# * va sans doute gagne petit à petit en popularité
+# * c'est important que vous **sachiez le lire** !
+# * et penser à l'utiliser quand les choses deviennent ambigües  
+# * à nouveau surtout pour la lisibilité dans un premier temps
+# * car tant qu'on n'a pas tout typé c'est dur de faire de la  
+#   vérification statique qui apporte vraiment quelque chose
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### conclusion (2)
