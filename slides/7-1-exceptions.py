@@ -47,13 +47,14 @@
 def divide(x, y):
     try:
         res  = x / y
+        print(f"division OK {res=}")
     except ZeroDivisionError:
-        print('division by zero! ')
-    print('continuing... ')
+        print("zero divide !")
+    print("continuing... ")
 
 
 # %% cell_style="split"
-divide(8, 3)
+divide(8, 4)
 
 # %% cell_style="split"
 divide(8, 0)
@@ -66,6 +67,9 @@ divide(8, 0)
 # pour signaler une condition exceptionnelle
 
 # %%
+# on utilise ici une exception prédéfinie
+# car c'est exactement le propos de 'ValueError'
+
 def set_age(person, age):
     if not isinstance(age, int):
         raise ValueError("a person's age must be an integer")
@@ -82,7 +86,8 @@ set_age(person, '10')
 # ## exception et pile d'exécution
 
 # %% [markdown]
-# * en général, le `raise` ne se produit pas dans le même bloc
+# * en général, le `raise` n'apparaît pas  
+#   dans le même bloc que le `try`
 # * mais peut avoir lieu dans une fonction
 # * à n'importe quelle profondeur de la pile
 
@@ -92,6 +97,7 @@ set_age(person, '10')
 # %% cell_style="center"
 # une fonction qui va faire raise
 # mais pas tout de suite
+
 def time_bomb(n):
     if n > 0:
         return time_bomb(n-1)
@@ -100,28 +106,34 @@ def time_bomb(n):
 
 
 # %% cell_style="split" slideshow={"slide_type": "slide"} tags=["raises-exception"]
+# si on essaye de l'exécuter
+# ça se passe mal
+
 def driver():
     time_bomb(1)
+    # 
     print("will never pass here")
 
 driver()     
 
 
 # %% [markdown] cell_style="split"
-# ![uncaught](media/except-stack-uncaught.png)
+# ![uncaught](media/except-stack-uncaught.svg)
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}
 def driver_try():
     try:
         time_bomb(2)
+        print("not here")
     except Exception as exc:
         print(f"OOPS {type(exc)}, {exc}")
+    # et on passera bien ici
     print("will do this")
     
 driver_try()    
 
 # %% [markdown] cell_style="split"
-# ![try](media/except-stack-try.png)
+# ![try](media/except-stack-try.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## clause `except`
@@ -139,6 +151,13 @@ driver_try()
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ![exceptions](media/except-list.png)
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+#     
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### clause `except`
@@ -161,26 +180,31 @@ driver_try()
 
 # %% [markdown]
 # ```python
+# # les différentes formes de except
 # try:
 #     bloc
 #     de code
 # except ExceptionClass:        # les instances de
-#                               # ExceptionClass
+#     bloc                      # ExceptionClass
+#     de rattrapage           
 # except (Class1, .. Classn):   # comme avec isinstance
+#     ...
 # except Class as instance:     # donne un nom à l'objet 
-#                               # levé par raise
-# except:                       # attrape-tout - déconseillé    
+#     ...                       # levé par raise
+# except:                       # attrape-tout - déconseillé
+#     ...
 # ```    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### attrape-tout ?
 
 # %% [markdown]
-# #### capturer **toutes** les exceptions avec `except:` ou `except Exception:` 
+# capturer **toutes** les exceptions   
+# avec `except:` ou `except Exception:` 
 #
-# * est généralement une mauvaise idée
+# * est généralement une **mauvaise idée**
 # * il vaut mieux comprendre ce que l’on capture
-# * on risque de rendre silencieuses des exceptions non prévues
+# * on risque de **rendre silencieuses** des exceptions non prévues
 # * et d’avoir du mal à trouver les erreurs d’exécution
 # * à réserver à une profondeur faible dans la pile
 #   * pour éviter notamment une sortie brutale
@@ -241,13 +265,20 @@ except:
 # ## `try` .. `else` 
 
 # %% [markdown]
-# * avec une instruction `try except`, comment exécuter du code seulement lorsqu’il n’y a pas eu d’exception ?
+# * avec une instruction `try .. except`, comment exécuter du code seulement lorsqu’il n’y a pas eu d’exception ?
 #   * on utilise une clause `else`
 #   * exécutée uniquement s’il n’y a pas eu d’exception
-#   * une exception dans la clause `else` n’est pas capturée par les `except` précédents
 # * inspiré de `while` .. `else` et `for` .. `else`  
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# une exception dans la clause `else` n’est pas capturée par les `except` précédents
+#
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### `try` .. `else` 
 
 # %%
@@ -268,14 +299,60 @@ divide(8, 3)
 divide(8, 0)
 
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# en pratique toutefois, c'est peu utilisé  
+# ici par exemple, on obtient exactement le même comportement
+# si on écrit le `print('continuing...')` à la fin du bloc `try:`
+#     
+# ```python
+# def divide(x,y):
+#     try:
+#         res  = x / y
+#         print('all right, result is', res)
+#     except ZeroDivisionError:
+#         print('zero divide !')
+#     print('continuing... ')
+# ```    
+# </div>    
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ## `try` .. `finally`
+
+# %% [markdown]
+# **une instruction `try` peut avoir une clause `finally`**
+#
+# * cette clause est **toujours** exécutée
+#   * si il n'y a aucune exception
+#   * si il y a une exception attrapée
+#   * si il y a une exception non attrapée
+#   * et même s'il y a un `return` dans le code !
+# * elle sert à faire du nettoyage après l’exécution du bloc try
+#   * par exemple fermer un fichier
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ### `try` .. `finally`
+
+# %%
+def finally_trumps_return(n):
+    try:
+        return n ** 2
+    finally:
+        logging.info("finally is invicible !")
+
+
+# %%
+finally_trumps_return(10)
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## `except` .. `as`
 
 # %% [markdown]
-# * la syntaxe `except Class as instance`
-# * va réaliser une affectation de `instance`
+# * la syntaxe `except Class as truc`
+# * va réaliser une affectation de la variable `truc`
 # * vers l'objet qu'on a donné à `raise`
-# * cette instance peut avoir des arguments stockés dans `instance.args` 
+# * cette instance peut avoir des arguments stockés dans `truc.args` 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `except` .. `as`
@@ -288,7 +365,32 @@ divide(8, 0)
 #
 # * dans tous les cas, cela donne des détails sur l’exception
 
+# %% [markdown]
+# <div class="rise-footnote">
+#     
+# c'est la forme recommandée, de façon à pouvoir afficher plus de détails que juste, par exemple, "IOError"
+#
+# </div>    
+
 # %% [markdown] slideshow={"slide_type": "slide"}
+# #### exemple de `except .. as`
+
+# %%
+# imaginez que l'exception se produise au 4-éme appel dans la pile
+# et que nous on n'a aucune idée du fichier qu'on est en train d'essayer d'ouvrir
+try:
+    with open("inexisting-filename") as f:
+        ...
+except IOError as exc:
+    print(f"le type: {type(exc)}")
+    print(f"l'exception elle-même {exc}")
+    print(f"les arguments {exc.args}")
+    # si on veut aller plus loin on peut faire un peu d'introspection
+    print(f"les attributs {dir(exc)}")
+    print(f"du coup {exc.filename=} et {exc.strerror=}")
+
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## instruction `raise`
 
 # %% [markdown]
@@ -304,94 +406,6 @@ divide(8, 0)
 #
 # * `raise new_instance from original_exc`  
 #   pour **propagation** avec modification
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## exemple de `as name`
-
-# %%
-# anticipons un peu: 
-# je me définis ma propre classe d'exception
-class MyException(Exception):
-    def __str__(self):
-        return f"<my-exception : {self.args}>"
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemple de `as value`
-
-# %%
-try:
-    raise MyException('spam', 'eggs')
-except MyException as exc:
-    # comme on a redéfini __str__
-    logging.info(exc) 
-    # on peut extraire les données dans l'instance
-    x, y = exc.args
-    logging.info(f'x = {x}, y = {y}')
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `try` .. `finally`
-
-# %% [markdown]
-# **une instruction `try` peut avoir une clause `finally`**
-#
-# * cette clause est **toujours** exécutée
-#   * si il n'y a aucune exception
-#   * si il y a une exception attrapée
-#   * si il y a une exception non attrapée
-#   * et même s'il y a un `return` dans le code !
-# * elle sert à faire du nettoyage après l’exécution du bloc try
-#   * par exemple fermer un fichier
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `try` .. `finally`
-
-# %%
-def finally_trumps_return(n):
-    try:
-        return n ** 2
-    finally:
-        logging.info("finally is invicible !")
-
-
-# %%
-finally_trumps_return(10)
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## exemple de `try`
-
-# %% cell_style="split"
-def divide(x, y):
-    try:
-        res  = x / y
-    except ZeroDivisionError:
-        print('division by zero!')
-    else:
-        print('result is', res)
-    finally:
-        print('finally ..')
-    print('continuing...')
-
-
-# %% cell_style="split"
-# pas d'exception
-# try -> else 
-#   -> finally -> continuing
-divide(3, 4) 
-
-# %% cell_style="split"
-# une exception traitée
-# try -> except 
-#   -> finally -> continuing
-divide(3, 0) 
-
-# %% slideshow={"slide_type": "slide"} tags=["raises-exception"]
-# une exception non traitée
-# try -> finally -> BOOM
-divide(3, 'a')
-
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exception personnalisée
