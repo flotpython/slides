@@ -49,10 +49,10 @@
 # * dans du code de production on ne fait jamais `print()`
 # * on utilise à la place `logging`; de cette façon
 # * le code a seulement à choisir un **niveau** de message
-#   * parmi error, warning, info, debug
-# * on pourra plus tard (i.e. par l'équipe Ops) 
-#   * choisir **où** doivent aller les messages
-#   * avec quel niveau de gravité
+#   * parmi `exception`, `error`, `warning`, `info`, `debug`
+# * on pourra **plus tard** (i.e. par l'équipe Ops) 
+#   * choisir **si** on veut les messages (avec quel niveau de gravité)
+#   * choisir **où** doivent aller les messages (`/var/log`, *syslog*, *stdout*, ...)
 #   * et même selon les modules si nécessaire
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -77,11 +77,15 @@ logging.info("Bonjour le monde")
 # #### `import sys`
 #
 # * gestions de variables utilisées par l’interpréteur
+#   * rappelez vous e.g. `syspath`
+#   * et plein plein d'autres dans ce module un peu fourre-tout
 
 # %% [markdown]
 # #### `import os`
 #
 # * accès cross-platform au système d’exploitation
+#   * pas pour les fichiers (voir slide suivant)
+#   * mais encore pertinent e.g. pour lancer des sous-processes
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `from pathlib import Path`  ( ~~`import os.path`~~)
@@ -89,7 +93,7 @@ logging.info("Bonjour le monde")
 # %% [markdown]
 # * historiquement on gérait les noms de fichiers sur disque avec le sous-module `os.path`
 # * depuis la 3.4 une alternative **orientée objet** est disponible
-# * il faut l'utiliser pour du nouveau code 
+# * il **faut utiliser `pathlib.Path`** pour du nouveau code 
 # * on peut tout faire avec
 #   * chercher (`glob`) tous les fichiers en `*.truc`
 #   * calculer les noms de fichier: concaténer, découper en morceaux, trouver le nom canonique
@@ -178,7 +182,6 @@ with fichier.open() as feed:
 # * à partir d'un itérable, construit un dictionnaire qui contient 
 # * comme clefs les éléments uniques
 # * et comme valeurs le nombre de fois que l’élément apparaît
-# * http://sametmax.com/compter-et-grouper-encore-plus-faineant/
 
 # %% slideshow={"slide_type": "slide"}
 from collections import Counter
