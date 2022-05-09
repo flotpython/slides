@@ -69,16 +69,21 @@ if (match := re.match( '[a-z]+(\d+)[a-z]+', 'abc02345defg')):
 # %% cell_style="split"
 x, y = 1, 2
 
+# avant
 print(f"10*x + 20*y**2={10*x+20*y**2}")
 
 # %% cell_style="split"
+
+
+# après
 print(f"{10*x + 20*y**2=}")
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### paramètres dits *positional-only*    
 #
-# permet d'indiquer que certains paramètres **ne peuvent pas être nommés** par l'appelant d'une fonction
+# permet d'indiquer que certains paramètres  
+# **ne peuvent pas être nommés** par l'appelant d'une fonction
 
 # %% cell_style="split"
 def foo(x, y):
@@ -112,13 +117,35 @@ except Exception as exc:
 #
 # * sortie le 5 octobre 2020
 
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### type hinting
+
+# %% [markdown]
+# pour ceux qui s'intéressent aux *type hints*, la version 3.9 vient avec la capacité de définir ses propres types en utilisant les types *builtin* comme `list` et `dict`, i.e. en n'ayant plus besoin de passer par des artefacts dans le module `typing` comme ceux qui s'appelaient `List` et `Dict`
+
+# %% cell_style="split"
+# avant
+
+from typing import List
+
+def foo(names: List[str]):
+    pass
+
+
+# %% cell_style="split"
+# en 3.9
+
+def foo(names: list[str]):
+    pass
+
+
 # %% [markdown] slideshow={"slide_type": ""}
 # ### opérations sur les dictionnaires
 
 # %% [markdown]
 # la fusion de deux dictionnaires se fait traditionnellement avec `dict.update()`; depuis la 3.9 on peut aussi utiliser l'opérateur `|` et son dérivé `|=` pour faire cette opération
 
-# %%
+# %% slideshow={"slide_type": "slide"}
 x = {"key1": "1 from x", "key2": "2 from x"}
 y = {"key2": "2 from y", "key3": "3 from y"}
 
@@ -152,29 +179,89 @@ x |= y
 x
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### type hinting
-
-# %% [markdown]
-# pour ceux qui s'intéressent aux *type hints*, la version 3.9 vient avec la capacité de définir ses propres types en utilisant les types *builtin* comme `list` et `dict`, i.e. en n'ayant plus besoin de passer par des artefacts dans le module `typing` qui s'appellent `List` et `Dict`
-
-# %% cell_style="split"
-# avant
-
-from typing import List
-
-def foo(names: List[str]):
-    pass
-
-
-# %% cell_style="split"
-# en 3.9
-
-def foo(names: list[str]):
-    pass
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### liste complète 
 #
 # des changements dans la 3.9
 #
 # https://docs.python.org/3/whatsnew/3.9.html
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## 3.10
+#
+# sortie le 4 octobre 2021
+
+# %% [markdown]
+# ### `match`
+
+# %% [markdown]
+# une toute nouvelle instruction `match` permet de faire des choses comme
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ```python
+# In [1]: def http_error(status):
+#    ...:     match status:
+#    ...:         case 400:
+#    ...:             return "Bad request"
+#    ...:         case 404:
+#    ...:             return "Not found"
+#    ...:         case 418:
+#    ...:             return "I'm a teapot"
+#    ...:         case 401 | 403 :
+#    ...:             return "Not allowed"
+#    ...:         case _:
+#    ...:             return "Something's wrong with the internet"
+#    ...:
+#    ...: print(http_error(404))
+#    ...:
+# Not found
+# ```
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# ce code est dans `samples/match01.py`
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ou encore (parmi plein d'autres possibilités)  
+# [voir la release note complète ici](https://docs.python.org/3/whatsnew/3.10.html#pep-634-structural-pattern-matching)
+
+# %% [markdown] slideshow={"slide_type": ""}
+# ```python
+# In [1]: def pretty_point(point: tuple[float, float]):
+#    ...:     match point:
+#    ...:         case (0, 0):
+#    ...:             return "Origin"
+#    ...:         case (0, y):
+#    ...:             return f"Y={y}"
+#    ...:         case (x, 0):
+#    ...:             return f"X={x}"
+#    ...:         case (x, y):
+#    ...:             return f"X={x}, Y={y}"
+#    ...:         case _:
+#    ...:             raise ValueError("Not a point")
+#    ...:
+#    ...: P = (0, 20)
+#    ...: print(pretty_point(P))
+# Y=20
+# ```
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# ce code est dans `samples/match02.py`
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### *better error messages*
+#
+# https://docs.python.org/3/whatsnew/3.10.html#better-error-messages
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### liste complète 
+#
+# des changements dans la 3.10
+#
+# https://docs.python.org/3/whatsnew/3.10.html
