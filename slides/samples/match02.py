@@ -11,4 +11,5 @@ def pretty_point(point: tuple[float, float]):
         case _:
             raise ValueError("Not a point")
 
-print(pretty_point(0, 20))
+P = (0, 20)
+print(pretty_point(P))

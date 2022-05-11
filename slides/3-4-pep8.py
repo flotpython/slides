@@ -13,7 +13,7 @@
 #     language: python
 #     name: python3
 #   nbhosting:
-#     title: "Pr\xE9sentation du code"
+#     title: "pr\xE9sentation du code"
 #   rise:
 #     autolaunch: true
 #     slideNumber: c/t
