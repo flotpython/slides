@@ -8,7 +8,6 @@ FROM nbhosting/minimal-notebook
 # because we provide our own nbconfig/notebook.json
 # and that is where is stored the enabled/disabled extensions
 RUN true \
- && jupyter nbextension enable hide_input/main \
  && pip install -U nb-courselevels \
  && pip install -U nbautoeval \
  && pip install -U ipythontutor \
