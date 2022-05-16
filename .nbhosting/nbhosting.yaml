@@ -8,6 +8,9 @@ tracks:
     notebooks:
     - "slides/1-[0-9]*.py"
     - "slides/1*.md"
+  - name: premiers pas
+    notebooks:
+    - 101/0*.md
   - name: types de base
     notebooks:
     - "slides/2-[0-9]*.py"
