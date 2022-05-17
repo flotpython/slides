@@ -59,6 +59,13 @@
 # division entière (quotient)
 8.5 // 3
 
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# à bookmarker: [une cheat sheet avec la list des opérateurs en Python](https://cheatography.com/nouha-thabet/cheat-sheets/python-operators-and-booleans/)
+#     
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : opérateurs
 
