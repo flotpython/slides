@@ -39,26 +39,29 @@ pour commencer voyons **comment créer un fichier** depuis un programme
 ```{code-cell} ipython3
 # c'est comme ça qu'on crée un fichier pour écrire dedans
 #            le mode:  ↓↓↓
-with open("names.txt", 'w') as writer:
+with open("tmp-names.txt", 'w') as writer:
     print("Achille", file=writer)
     print("Bob", file=writer)
     print("Charlie", file=writer)
 ```
 
-si vous faites tourner ça sur votre ordi, vous devez constater la présence d'un nouveau fichier `names.txt` dans votre explorateur de fichier; et dedans nous avons écrit trois lignes avec les 3 noms
+si vous faites tourner ça sur votre ordi, vous devez constater la présence d'un nouveau fichier `tmp-names.txt` dans votre explorateur de fichier; et dedans nous avons écrit trois lignes avec les 3 noms
 
 +++
 
 depuis le notebook vous pouvez aussi faire
 
 ```{code-cell} ipython3
-!cat names.txt
+# ça c'est juste pour vérifier le contenu
+# du fichier qu'on vient de créer
+
+!cat tmp-names.txt
 ```
 
 qui signifie:
 * lancer dans le terminal (c'est le propos du `!` en début de ligne)
-* la commande `cat names.txt` (sans le `!` donc)
-* c'est-à-dire tout simplement, afficher le contenu du fichier `names.txt`
+* la commande `cat tmp-names.txt` (sans le `!` donc)
+* c'est-à-dire tout simplement, afficher le contenu du fichier `tmp-names.txt`
 
 et on y trouve bien ce à quoi on s'attendait
 
@@ -100,7 +103,7 @@ Mais peu importe comment on l'a créé, maintenant voyons comment on peut le rel
 C'est la même idée exactement, mais on va cette fois passer à open un mode d'ouverture qui est `r` - pour, *wait for it...* **`read`** eh oui !
 
 ```{code-cell} ipython3
-with open("names.txt", 'r') as reader:
+with open("tmp-names.txt", 'r') as reader:
     for line in reader:
         line = line.strip()
         print(f"hello {line}")
