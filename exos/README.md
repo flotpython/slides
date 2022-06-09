@@ -1,1 +1,3 @@
-une zone de travail, qui démarre avec un dossier quasiment vide
+this repo has been emptied of all the practising activities
+
+see instead https://github.com/flotpython/exos
