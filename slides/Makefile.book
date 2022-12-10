@@ -1,0 +1,13 @@
+book:
+	jupyter-book build .
+
+book-requirements:
+	pip install jupyter-book pyppeteer
+
+view:
+	open _build/html/index.html
+
+pdf:
+	jupyter-book build ./ --builder pdfhtml
+
+.PHONY: book book-requirements pdf

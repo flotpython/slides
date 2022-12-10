@@ -1,32 +1,15 @@
-# targets
-# make html			(for html)
-# make html-clean
-# make pdf			(for pdf)
-# make pdf-clean
+all: book
 
-###
-html:
-	jupyter-book build .
+include Makefile.book
 
-html-clean:
-	rm -rf _build/html
+include Makefile.style
 
-html-view:
-	open _build/html/index.html
-
-.PHONY: html html-clean html-clean
-
-
+# not used yet, but well
+include Makefile.norm
 
 ### NOTE
 # requires
 # pip install pyppeteer
-
-requirements:
-	pip install pyppeteer
-
-pdf:
-	jupyter-book build ./ --builder pdfhtml
 
 pdf-clean:
 	rm -rf _build/pdf
