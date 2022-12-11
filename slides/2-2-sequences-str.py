@@ -91,7 +91,7 @@
 #   * prenant tous les éléments de l’indice i à l’indice j-1, par sauts de k éléments
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# ![](media/egg-bacon.png)
+# ![](media/egg-bacon.svg)
 
 # %% [markdown] cell_style="split"
 # **slicing**
@@ -121,7 +121,7 @@ s[-3:10]
 s[:]
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# ![](media/egg-bacon-bornes.png)
+# ![](media/egg-bacon-bornes.svg)
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": ""}
 # ### les bornes
@@ -142,7 +142,7 @@ s[6:]
 s[0:3] + s[3:6] + s[6:] == s
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# ![](media/egg-bacon.png)
+# ![](media/egg-bacon.svg)
 
 # %% [markdown] cell_style="split"
 # ### le pas
@@ -165,7 +165,7 @@ s[:8:3]
 s[-2::-3]
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# ![](media/egg-bacon.png)
+# ![](media/egg-bacon.svg)
 
 # %% [markdown] cell_style="split"
 # ### pas d'exception
@@ -187,7 +187,7 @@ s[5:100]
 s[100:200]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![](media/egg-bacon.png)
+# ![](media/egg-bacon.svg)
 
 # %% cell_style="split"
 s[-1]
@@ -475,7 +475,7 @@ f"360° = {2*math.pi} radians"
 # ### *f-string* : expression et format
 
 # %% [markdown] slideshow={"slide_type": ""}
-# ![](media/f-string.png)
+# ![](media/f-string.svg)
 
 # %%
 print(f"ᴨ arrondi à deux décimales = {math.pi:.2f}")
