@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # ---
 # jupyter:
-#   celltoolbar: Slideshow
 #   jupytext:
 #     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
@@ -31,14 +30,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat</span>
-# </div>
-#
-# <style>
-# .smaller {font-size: smaller}
-# </style>
+# Licence CC BY-NC-ND, Thierry Parmentelat
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # POO & héritage
@@ -166,6 +162,7 @@
 # * la variable `a` est identifiée lexicalement  
 #   (variable locale, paramètre de fonction,  
 #    voir par exemple le cas des clôtures)
+#
 # * la variable référence un objet  
 #   et `b` est cherché comme un attribut à partir de cet objet
 
@@ -183,9 +180,11 @@
 
 # %% [markdown] cell_style="center"
 # on distingue deux cas
+#
 # * attribut en écriture  
 #    `obj.attribute = ...`  
 #    (i.e. à gauche d'une affectation)
+#
 # * résolution des attributs en lecture  
 #     `obj.attribute` 
 
@@ -259,33 +258,34 @@ class Vector:
 vector = Vector(2, 2)
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### digression : l'attribut spécial `__dict__`
+# ### digression : la fonction `vars()`
 
-# %% [markdown] slideshow={"slide_type": ""} cell_style="split" tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
 # pour visualiser la même chose sans ipythontutor  
-# sachez que les (objets qui sont des) espaces de nom
+# sachez que l'on peut inspecter le contenu d'un espace de noms
+# avec la fonction `vars(obj)`
 #
-# * ont un **attribut spécial**
-# * qui s'appelle `__dict__`
-# * qui permet d'inspecter un espace de nom
-#
-# ce n'est pas une notion à retenir,  
-# mais on va s'en servir dans la suite  
+# <div class=note>
+#     
+# ce n'est pas forcément une notion à retenir, mais on va s'en servir dans la suite  
 # pour regarder le contenu des espaces de nom
+#     
+# </div>    
 
 # %% tags=["level_intermediate"]
 # dans l'instance
-list(vector.__dict__)
+vars(vector)
 
 # %% slideshow={"slide_type": ""} tags=["level_intermediate"]
 # les attributs 'intéressants' de Vector
-[att for att in Vector.__dict__ if '__' not in att or att == '__init__']
+[att for att in vars(Vector) if '__' not in att or att == '__init__']
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### la  fonction `dir()`
 #
 # * avec la fonction *builtin* `dir(x)`, on peut accéder  
 #   à l'ensemble des attributs qui sont disponibles sur `x`
+#
 # * c'est donc la somme des attributs trouvés:
 #   * dans l'espace de nom de `x`
 #   * dans l'espace de nom de sa classe
@@ -307,6 +307,7 @@ list(vector.__dict__)
 # ### conclusion
 #
 # dans ce cas simple de la classe `Vector` et de l'instance `vector`:
+#
 # * `vector.x` fait référence à l'attribut posé **directement sur l'instance**
 # * `vector.length` fait référence à la méthode qui est **dans la classe**
 
@@ -316,6 +317,7 @@ list(vector.__dict__)
 # %% [markdown] slideshow={"slide_type": ""}
 # * jusqu'ici on n'a pas d'héritage  
 #   puisque pour l'instant on n'a qu'une classe
+#
 # * mais l'héritage  
 #   est une **simple prolongation** de cette logique
 
@@ -347,6 +349,7 @@ subvector = SubVector(6, 8)
 # * c'est exactement le même mécanisme qui est à l'oeuvre :
 # * quand on va vouloir appeler `subvector.length()`  
 #   on cherche l'attribut `length` 
+#
 #   * dans l'instance `subvector` : non
 #   * dans sa classe `SubVector` : non
 #   * dans la super-classe `Vector` : ok, on prend ça
@@ -357,11 +360,14 @@ subvector = SubVector(6, 8)
 # %% [markdown] slideshow={"slide_type": ""}
 # * le mécanisme de résolution d'attribut qu'on vient de voir  
 #   ne fonctionne que **pour la lecture des attributs**
+#
 # * quand on **écrit** un attribut dans un objet,  
 #   le mécanisme est beaucoup plus simple:  
 #   on écrit **directement dans l'espace de nom** de l'objet
+#
 # * on considère que c'est une écriture  
 #   si le terme `obj.attribute` est **à gauche** d'une affectation  
+#
 # * typiquement `self.name = name` dans le constructeur
 
 # %% cell_style="split"
@@ -377,7 +383,7 @@ subvector.length()
 # l'attribut est créé directement dans l'objet
 subvector.foo = 12
 
-'foo' in subvector.__dict__
+'foo' in vars(subvector)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
@@ -386,6 +392,7 @@ subvector.foo = 12
 # %% [markdown] cell_style="split" tags=["level_intermediate"]
 # * il y a écriture si  
 #   et seulement si il y a **affectation**
+#
 # * dans 1. il y a
 #   * **lecture** de l'attribut `liste`
 #   * même si on modifie l'objet
@@ -407,7 +414,7 @@ subvector.foo = 12
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## héritage
+# ## héritage - syntaxe
 
 # %% [markdown] slideshow={"slide_type": ""} cell_style="split"
 # une classe peut hériter d’une  
@@ -431,6 +438,7 @@ subvector.foo = 12
 #   * la sous-classe hérite  
 #     (des attributs)  
 #     de sa (ses) super-classe(s)
+#
 #   * l’instance hérite de la  
 #     classe qui la crée
 
@@ -440,6 +448,7 @@ subvector.foo = 12
 # %% [markdown]
 # * `isinstance(x, class1)` retourne `True` si   
 #   `x` est une instance de `class1` **ou d’une super classe**
+#
 # * `issubclass(class1, class2)` retourne `True` si  
 #   `class1` est une sous-classe de `class2`
 
