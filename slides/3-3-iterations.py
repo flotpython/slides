@@ -266,7 +266,7 @@ for i, item in enumerate(L):
     print(f"{i}: {item}")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![](media/iter-enumerate.png)
+# ![](../media/iter-enumerate.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `enumerate`
@@ -287,7 +287,7 @@ with open("../data/une-charogne.txt") as feed:
 # %% [markdown]
 # `zip` fonctionne un peu comme `enumerate` mais entre deux itérables:
 #
-# ![](media/iter-zip.png)
+# ![](../media/iter-zip.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `zip`
@@ -336,7 +336,7 @@ for index, item in zip(count(), L):
     print(f"{index} {item}")
 
 # %% [markdown] cell_style="split"
-# ![](../media/iter-zip-count.png)
+# ![](../media/iter-zip-count.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `chain()`, `cycle()` et `repeat()`
@@ -416,7 +416,7 @@ for i, d in zip_longest(
     print(f"{i} {d}")
 
 # %% [markdown] cell_style="split"
-# ![](../media/iter-zip-longest.png)
+# ![](../media/iter-zip-longest.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le module `itertools` - combinatoires
@@ -581,12 +581,12 @@ while True:
 # %% [markdown] cell_style="split"
 # * appliquer une fonction à un ensemble de valeurs: `map`
 #
-# ![](media/iter-map.png)
+# ![](../media/iter-map.svg)
 
 # %% [markdown] cell_style="split"
 # * idem en excluant certaines entrées: `map` + `filter`
 #
-# ![](media/iter-map-filter.png)
+# ![](../media/iter-map-filter.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### compréhension de liste
