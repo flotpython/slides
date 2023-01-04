@@ -121,7 +121,7 @@ s1.name, s2.name
 # sujet lié au précédent, mais d'utilisation (beaucoup) plus rare
 
 # %% tags=["level_intermediate"]
-class Student(RecordInstances):
+class Student:
 
     all_instances = []
 
