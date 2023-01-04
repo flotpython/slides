@@ -31,11 +31,12 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat</span>
-# <span><img src="media/inria-25-alpha.png" /></span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # classes : exemples
@@ -197,6 +198,7 @@ stack
 # * définir vos propres types de données
 # * grouper les données qui vont ensemble dans un  
 #   objet unique, facile à passer à d'autres fonctions
+#
 # * **invariants**: garantir de bonnes propriétés  
 #   si on utilise les objets au travers des méthodes 
 
@@ -208,6 +210,7 @@ stack
 #
 # * intégrer les objets dans le langage  
 #   i.e. donner un sens à des constructions comme  
+#
 #   * `x in obj`
 #   * `obj[x]`
 #   * `if obj:`
@@ -233,6 +236,7 @@ stack
 # et **pas directement** `stack._frames` (d'où le `_` au début de l'attribut)
 #
 # cette technique permet de séparer :
+#
 # * l'**interface** (ici `push()` et `pop()`)
 # * de l'**implémentation** (ici une liste pour `_frames`)
 #
@@ -442,6 +446,7 @@ print(f"{achille} a {achille.repr_age()}")
 #
 # * bien sûr on peut combiner nos types (les classes)  
 #   avec les types de base
+#
 # * et ainsi créer e.g. des listes de `Student`
 
 # %%
@@ -498,9 +503,11 @@ timedelta_as_year_month(cls.average_age())
 #   
 # * pas de différence entre un type prédéfini et une classe :  
 #   un objet créé par une classe s'utilise *normalement*
+#
 #   * une variable peut désigner un objet
 #   * un objet peut être dans une liste (ou autre type) *builtin*  
 #     (attention pour les clés de `dict` qui doivent être hashables)
+#
 #   * ou passé en paramètre à une fonction,
 #   * etc, etc...
 
@@ -509,9 +516,11 @@ timedelta_as_year_month(cls.average_age())
 #   
 # * généralement une instance contient  
 #   des données rangées dans des **attributs**
+#
 # * une classe peut définir aussi des **méthodes**
 #   * qui travaillent sur un objet (souvent appelé `self`)
 #   * souvent on ne modifie les objets  
 #     qu'au travers des méthodes fournies par la classe
+#
 #   * ce qui permet de garantir certains invariants
 #

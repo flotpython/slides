@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # séquences & chaines
@@ -72,8 +73,10 @@
 # * `x in S`; selon les types:
 #  * `True` si un élément de S est égal à x  
 #    (e.g. S est une `list`)
+#
 #  * `True` si S contient x  
 #    (e.g. S est une `str`)
+#
 # * `S.index(a)`
 #   * retourne l’indice de la première occurrence de a dans S
 # * `S.count(a)`
@@ -331,6 +334,7 @@ print(s)
 # %% [markdown] cell_style="center"
 # * `\T` n’existe pas comme échappement  
 #   Python interprète correctement `\T`
+#
 # * mais `\t` est compris comme une tabulation !!
 
 # %% [markdown] cell_style="split"
@@ -486,6 +490,7 @@ print(f"ᴨ arrondi à deux décimales = {math.pi:.2f}")
 
 # %% [markdown]
 # grâce au `=` optionnel, on peut obtenir en une seule fois un double affichage:
+#
 # * le code de l'expression
 # * et la valeur de l'expression
 

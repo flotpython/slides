@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # portée d’une variable

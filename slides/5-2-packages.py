@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # packages
@@ -176,6 +177,7 @@ pack1.pack2.mod.__package__
 # %% [markdown] cell_style="center"
 # * l'import relatif **ne fonctionne pas**  
 #   sur la base de l'arborescence de *fichiers*
+#
 # * mais au contraire il se base sur  
 #   l'arborescence des *modules*
 #   

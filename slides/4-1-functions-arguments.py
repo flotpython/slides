@@ -23,10 +23,12 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # déclaration et passage de paramètres
@@ -183,6 +185,7 @@ hyperbolic.__doc__
 # %% [markdown]
 # * pas utile de répéter le nom de l’objet,  
 #   qui est extrait automatiquement (DRY) 
+#
 # * la première ligne décrit brièvement ce que fait l’objet
 # * la deuxième ligne est vide
 # * les lignes suivantes décrivent l’objet avec plus de détails
@@ -205,8 +208,11 @@ hyperbolic.__doc__
 # %% [markdown]
 # **exemple**
 #
-# * tel que publié https://asynciojobs.readthedocs.io/en/latest/API.html#asynciojobs.scheduler.Scheduler
-# * source https://github.com/parmentelat/asynciojobs/blob/master/asynciojobs/scheduler.py
+# * tel que publié  
+#   https://asynciojobs.readthedocs.io/en/main/API.html#asynciojobs.purescheduler.PureScheduler
+#
+# * source  
+# https://github.com/parmentelat/asynciojobs/blob/main/asynciojobs/purescheduler.py#L44
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### les *type hints* sont utiles
@@ -225,7 +231,8 @@ def type_hints_1(x: int, y: float) -> str:
 # %%
 # un peu plus compliqué (attention, nécessite 3.9)
 
-def type_hints_2(x: tuple[int, str, bool], y: dict[str, list[int]]) -> None:
+def type_hints_2(x: tuple[int, str, bool],
+                 y: dict[str, list[int]]) -> None:
     ...
 
 
@@ -240,6 +247,7 @@ def type_hints_2(x: tuple[int, str, bool], y: dict[str, list[int]]) -> None:
 # * utiliser une (ou plusieurs) ligne(s) vide(s)  
 #   pour séparer les fonctions, classes  
 #   et les grands blocs d’instructions
+#
 # * espace autour des opérateurs et après les virgules
 #
 # ```python
@@ -266,13 +274,17 @@ def type_hints_2(x: tuple[int, str, bool], y: dict[str, list[int]]) -> None:
 # module en minuscule, classe en chasse mixte
 from argparse import ArgumentParser
 
-# %%
+# %% cell_style="split"
 # un contrexemple
 # bien que ceci appartienne à la librairie standard
 # ici le premier 'datetime' est un nom de classe
 # et devrait s'appeler 'DateTime'
 # trop tard pour rectifier !
 from datetime import datetime
+
+# %% cell_style="split"
+# du coup on recommande
+from datetime import datetime as DateTime
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## reprenons : l'instuction `return`
@@ -282,18 +294,27 @@ from datetime import datetime
 # * le **résultat** de cette expression est spécifié  
 #   dans le corps de la fonction par l'instruction `return`
 #
-# * qui provoque **la fin** de l'exécution de la fonction
-# * si la fonction se termine sans rencontrer un `return`
+# * le **premier** `return` rencontré provoque   
+#   **la fin** de l'exécution de la fonction (￮)
+#
+# * si la fonction se termine **sans rencontrer** un `return`
 #   * on retourne `None`
 #   * `None` est un mot-clé de Python,  
 #     qui désigne un objet unique (singleton)
+#     
+# <div class=note>
+#
+# (￮) sauf en cas de `finally` comme on va le voir tout de suite
+#     
+# </div>    
+#     
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### `return` et `finally``
 
 # %% [markdown]
-# * si l’expression `return` est définie  
-#   dans une déclaration `try` avec une clause `finally`
+# * si l’expression `return` se trouve à l'intérieur  
+#   d'un `try` avec une clause `finally`
 #
 #   * la clause `finally` est exécutée avant de quitter la fonction
 #   * voir la section sur les exceptions 
@@ -329,15 +350,15 @@ print(liste)
 # %% slideshow={"slide_type": "slide"}
 # %%ipythontutor width=800 height=450 heapPrimitives=true
 def mess_with2(a, b):
-    a = 3 
-    b[0] = 'spam'
+    a = 3          # ceci n'aura pas de conséquence sur A
+    b[0] = 'boom'  # ceci va changer B
 
-X = 1      # immutable ne peut pas être modifiée
-L = [1, 2] # mutable, l'objet liste est modifié par
+A = 1      # immutable ne peut pas être modifiée
+B = [10, 20] # mutable, l'objet liste est modifié par
            # changer() par une modification in-place
-mess_with2(X, L)
-print(X)
-print(L)
+mess_with2(A, B)
+print(A)
+print(B)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -359,6 +380,7 @@ print(L)
 # * qui ajoute `HELLO` au début de chaque impression
 # * mais sinon l'interface de `myprint()`  
 #   est exactement celle de `print()`, i.e.  
+#
 #   * nb. variable de paramètres
 #   * réglages inchangés - e.g. `myprint(..., file=f)`
 #   
@@ -444,6 +466,7 @@ foo(a)
 #
 # * le sujet que nous abordons ici est celui qui consiste  
 #   à **lier les arguments à des paramètres**
+#
 # * de façon à ce que tous les arguments soient exposés à la fonction
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -454,10 +477,12 @@ foo(a)
 #  * `def foo(x):`
 # * paramètre nommé ou avec valeur par défaut
 #   * `def foo(x=10):`
-# * paramètre de liste ou de forme `*args`
+# * paramètre de forme `*args`
 #   * `def foo(*args):`
-# * paramètre de dictionnaires ou de forme `**kwds`
+#   * correspond aux arguments non nommés "en plus"
+# * paramètre de forme `**kwds`
 #   * `def foo(**kwds):`
+#   * correspond aux arguments nommés "en plus"
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### (I) paramètre positionnel
@@ -549,6 +574,7 @@ agenda('Dupont', 'Jean', '123456789', age = 25, job = 'avocat')
 # %% [markdown]
 # * Python collecte tous les arguments non nommés restants 
 #   (non liés à un paramètre) sous forme d’un tuple
+#
 # * et assigne le paramètre `args` à ce tuple
 # * du coup avec cette forme, la fonction peut être appelée 
 #   * avec un nombre variable d'arguments
@@ -599,6 +625,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 # * `args` est un nom de paramètre quelconque,  
 #   même si c'est souvent `args` (comme `self` est souvent appelé `self`)  
 #   lorsqu'on se contente de passer cela à une autre fonction
+#
 # * `*args` **ne peut apparaître qu'une fois**   
 #   bien sûr, car sinon il y aurait ambiguïté
 #   
@@ -615,6 +642,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 # %% [markdown]
 # * python collecte tous les arguments nommés restants  
 #   i.e. non liés à un paramètre
+#
 # * et les met dans **un dictionnaire**
 # * dont les clés sont les noms et les valeurs les arguments
 # * qui est affecté au paramètre `kwds`
@@ -755,10 +783,12 @@ f()
 # * les valeurs par défaut de f ne sont évaluées **qu’une fois** à la création de l’objet fonction et mises dans **f.__defaults__**
 #   * si la **valeur par défaut est mutable**  
 #     elle pourra être modifiée dans la fonction
+#
 #   * et dans ce cas, la valeur par défaut  
 #     **est modifiée pour l'appel suivant**
 #
 # du coup
+#
 # * ➔ **ne jamais utiliser un mutable comme valeur par défaut !!!**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -831,6 +861,7 @@ f(3)
 # * dans un `def` 
 #   * on peut combiner les différentes  
 #     formes de déclarations de paramètres
+#
 #   * tous les ordres ne sont pas autorisés
 #   * on recommande *l’ordre suivant*  
 #     (voir aussi plus loin…)
@@ -941,8 +972,10 @@ show_any_args(*l1, *l2, 1000, **d1, **d2)
 # * ce qui est assez logique si on se souvient que
 #   * `*args` concerne les arguments non nommés  
 #     qui vont dans un tuple
+#
 #   * et `**kwds` concerne les arguments nommés  
 #     qui vont dans un dictionnaire
+#
 # * voyons ça sur un exemple
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -968,6 +1001,7 @@ except TypeError as exc:
 # %% [markdown]
 # * l’argument nommé `b` est mis à `2`,  
 #   mais le tuple `*(3,)` assigne également `3` à `b`
+#
 # * pour comprendre, regardons l’exemple suivant
 
 # %% [markdown] slideshow={"slide_type": "slide"}

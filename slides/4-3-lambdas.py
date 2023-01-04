@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # fonctions lambda
@@ -270,9 +271,11 @@ list(g)
 # %% [markdown]
 # * en Python tout est un objet  
 #   on peut accéder à tous les attributs d’un objet
+#
 # * en particulier donc pour les objets de type fonction
 # * modifier directement les attributs n’est pas recommandé,  
 #   sauf si on comprend vraiment ce que l’on fait
+#
 # * par contre c’est intéressant en lecture  
 #   pour comprendre les détails d’implémentation
 

@@ -23,10 +23,12 @@
 # ---
 
 # %% [markdown] cell_style="center"
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+
 
 # %% [markdown]
 # # syntaxe et opérateurs
@@ -335,6 +337,7 @@ print("suffisant" if note >= 10 else "insuffisant")
 # et comme on le verra, chaque type (y compris les classes qui sont des types définis par l'utilisateur) peut redéfinir le comportement des opérateurs
 #
 # par exemple
+#
 # * une classe `Vector` donnera du sens à `v1 + v2`
 # * une classe `Path` donnera du sens à `path / file`
 #

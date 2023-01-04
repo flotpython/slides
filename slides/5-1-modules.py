@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown]
 # # modules
@@ -83,6 +84,7 @@
 #   * du code venant d'un fichier ou répertoire source
 # * dans le cas d'un répertoire on parle alors d'un *package*  
 #   on y reviendra
+#
 # * le nom d'un fichier doit finir par `.py`
 # * le nom (sans le `.py`) suit les mêmes règles que pour les variables
 #   * i.e. pas de `-` mais des `_`
@@ -302,6 +304,7 @@ spam('star')
 #   * les imports suivants retrouvent le module déjà présent en mémoire
 # * pour importer de nouveau un module (avec une réexécution du code)  
 #   il faut utiliser la fonction `importlib` (exemple + bas)
+#
 #   * utile principalement lors de la mise au point
 #   * dans IPython et les notebooks, voyez aussi `%autoreload 2`
 
@@ -314,6 +317,7 @@ spam('star')
 #   * `PYTHONPATH` : variable d’environnement de l’OS
 #   * répertoires des librairies standards  
 #     configurés à l'installation
+#
 # * `sys.path` contient la liste des répertoires parcourus
 #   * on peut modifier `sys.path` à l’exécution
 
@@ -405,8 +409,10 @@ pi = 10
 # * un module peut avoir deux rôles
 #   * un module classique qui doit être importé  
 #     `import module`
+#
 #   * un script exécutable  
 #     `$ python module.py`
+#
 # * tous les modules ont un nom qui est défini par la variable `__name__`
 # * le nom d’un module est défini par l’import
 
@@ -472,6 +478,7 @@ from samples.fib import fib
 # * on accède à tous les attributs d’un module en utilisant
 #   * `vars(module)` retourne l’espace de nommage de module  
 #     (équivalent à `module.__dict__`, voir plus bas)
+#
 #   * `dir(module)` liste les attributs
 #   * `globals()` retourne l’espace de nommage du module courant  
 #

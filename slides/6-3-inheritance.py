@@ -30,7 +30,7 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# Licence CC BY-NC-ND, Thierry Parmentelat
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 # %%
 from IPython.display import HTML

@@ -31,11 +31,12 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat</span>
-# <span><img src="media/inria-25-alpha.png" /></span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # classes : méthodes spéciales
@@ -80,6 +81,7 @@ len(classe)
 
 # %% [markdown]
 # de manière similaire : 
+#
 # * `__int__(self)` pour redéfinir `int(obj)` et similaires
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -250,6 +252,7 @@ line(1)
 # * souvent un afficheur pour `print()`
 # * optionnellement d'autres pour donner du sens à  
 #   des constructions du langage sur ces objets
+#
 # * ces méthodes ont toutes un nom en `__truc__` (*dunder methods*)
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]

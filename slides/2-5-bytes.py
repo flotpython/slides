@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # données brutes
@@ -41,6 +42,7 @@
 # %% [markdown]
 # * le type `bytes` correspond, comme son nom l'indique,  
 #   à une séquence d'**octets**
+#
 # * le type `bytes` est donc un autre exemple de **séquence** (comme `str`) 
 # * c'est également un type **non mutable**
 
@@ -187,6 +189,7 @@ set(dir(bytes)) - set(dir(str))
 # #### de multiples encodages 
 #
 # aujourd'hui en 2020
+#
 # * **privilégier UTF-8** qui devrait être l'encodage par défaut pour tous vos appareils
 # * mais le choix de l'encodage revient toujours en fin de compte au programmeur  
 #   même lorsqu'il fait le choix de s'en remettre au paramétrage de l'OS
@@ -303,8 +306,10 @@ octets.decode(encoding="utf-8")
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # * du coup on utilise le  
 #   plus souvent des heuristiques
+#
 # * comme d'utiliser une  
 #   **configuration globale** de l'ordi
+#
 # * sans parler des polices de caractères..
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}

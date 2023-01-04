@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # les nombres
@@ -335,6 +336,7 @@ if 0 <= a <= b:
 
 # %% [markdown]
 # le `not` permet des syntaxes plutôt lisibles
+#
 # * `x is not y`
 # * `x not in y`
 #
@@ -352,6 +354,7 @@ c = [1, 2]
 
 # %% [markdown]
 # à ce stade on a créé deux objets liste distincts
+#
 # * le premier désigné par a et b
 # * le second désigné par c
 #

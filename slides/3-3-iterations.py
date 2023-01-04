@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": ""}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # les itérations en Python
@@ -43,6 +44,7 @@
 # %% [markdown] slideshow={"slide_type": "slide"}
 # nous verrons dans un deuxième temps de nombreuses techniques  
 # pour itérer de manière optimisée:
+#
 #   * compréhensions
 #   * itérateurs
 #   * expressions génératrices
@@ -849,6 +851,7 @@ sum(maths for maths, *_ in classe) / len(eleves)
 # * une dernière forme très commune d'itérateurs
 # * décrite sous la forme d'une fonction  
 #   qui fait `yield` au lieu de `return`
+#
 # * souvent appelé simplement *générateur* (par abus de langage car techniquement l'expression génératrice
 #   est un générateur aussi)
 #

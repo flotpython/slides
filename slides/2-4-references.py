@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # références partagées
@@ -44,6 +45,7 @@
 # %% [markdown]
 # * tous ces containers peuvent être imbriqués  
 #   liste de dictionnaires de …
+#
 # * donc ils peuvent être composés sans limite
 # * uniquement votre faculté à vous y retrouver  
 #   (enfin, vous et ceux qui vous lisent …)
@@ -262,9 +264,11 @@ print(b)
 # jusqu'ici, références partagées créées par **affectation**  
 #
 # il existe (plein) d'autres cas de figure :
+#
 # * appel de fonction  
 #   l'objet passé en argument à une fonction  
 #   se retrouve affecté au **paramètre** dans la **fonction**
+#
 # * se méfier aussi des références **entre objets**
 
 # %% [markdown] slideshow={"slide_type": "slide"}

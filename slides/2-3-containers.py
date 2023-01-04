@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # les containers
@@ -182,8 +183,10 @@ while L:
 #   * `L.pop(i)` supprime l’élément à la position `i`  
 #     si `i` n’est pas fourni, supprime le dernier élément  
 #     la fonction retourne l’élément supprimé
+#
 #   * `L.remove(x)` supprime la première occurrence de `x` dans `L`  
 #     s’il n’y a pas de `x`, une exception est retournée
+#
 #   * `del L[i:j:k]` supprime tous les éléments   
 #     entre `i` et `j-1` par pas de `k` éléments  
 #     si `i == j` supprime l’élément `i`
@@ -289,6 +292,7 @@ print(L2)
 #
 # * on peut aussi trier selon un critère *ad hoc*  
 #   on en reparlera plus tard
+#
 # * on retrouve la même dualité pour le renversement  
 #   `L.reverse()` renverse la liste en place
 #   `reversed(L)` retourne une **copie** renversée
@@ -323,6 +327,7 @@ print(L2)
 # * notamment pour le calcul scientifique
 # * pas d'équivalent parmi les types Python natifs  
 #   d'un bon vieux tableau C/C++/Fortran
+#
 # * penser absolument aux **tableaux `numpy`**  
 #   pour ce type d'application
 
@@ -391,6 +396,7 @@ except Exception as e: print("OOPS", e)
 # * à ce stade, vous vous demandez sans doute:  
 #   *pourquoi créer un tuple ?*  
 #   si c'est juste moins puissant que la liste ?
+#
 # * la réponse est liée aux tables de hachage  
 #   (dictionnaires et ensembles)  
 #   que l'on va voir un peu plus tard  
@@ -689,8 +695,10 @@ x = set(range(2))
 # * collection **ordonnée** d’objets (depuis la 3.7)
 # * on accède aux objets à l’aide d’une clef  
 #   (et non d’un indice comme pour une liste)
+#
 # * une **clef** peut être n’importe quel objet **immutable**  
 #   chaîne, nombre, tuple d’objets immutables...
+#
 # * c’est une structure de données très puissante
 # * le dictionnaire est un type **mutable**
 
@@ -829,9 +837,11 @@ clefs
 # %% [markdown]
 # * utile pour alléger votre code  
 #   si vous savez que vos valeurs seront toujours, par exemple une liste
+#
 # * `collections.defaultdict` est une sous-classe de `dict`  
 #   qui ne lève pas d'exception en cas de défaut de la clé  
 #   mais dans ce cas va créer, toujours par exemple, une liste vide
+#
 # * ce qui évite de devoir tester la présence de la clé
 
 # %% cell_style="split" slideshow={"slide_type": "slide"}

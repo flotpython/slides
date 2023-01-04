@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
 # # fichiers
@@ -198,8 +199,10 @@ with open('temporaire.txt', 'r') as in_file:
 #
 # * le décodage et l’encodage sont automatiques  
 #   lorsqu’on lit ou écrit dans le fichier
+#
 # * on obtiendra toujours un objet `str` en lecture  
 #   et on ne pourra écrire qu’un objet `str`
+#
 # * les fins de lignes sont automatiquement  
 #   converties en '\n' (un seul caractère)  
 #   pour être indépendant de l’OS
@@ -216,6 +219,7 @@ with open('temporaire.txt', 'r') as in_file:
 # * on obtiendra un objet `bytes`  
 #   en lecture et on ne pourra écrire  
 #   qu’un objet `bytes`
+#
 # * il n’y aura aucun encodage, décodage,  
 #   et aucune conversion de fin de ligne (auberge espagnole)
 
@@ -284,10 +288,13 @@ type (y), len(y)
 # * **orienté objet**
 # * examiner le contenu du disque
 #   existe ou pas, quel type, *globbing* …
+#
 # * les calculs sur les noms de fichiers  
 #   concaténation, suffixes, remonter dans l'arbre …
+#
 # * métadonnées  
 #   taille, dates de modification, …
+#
 # * permet d'ouvrir les fichiers  
 # * ne gère pas les urls
 # * voir [documentation complète](https://docs.python.org/3/library/pathlib.html)

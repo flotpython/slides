@@ -4,7 +4,9 @@ include Makefile.book
 
 include Makefile.style
 
-# not used yet, but well
+# should work now
+NOTEBOOKS = [0-9]*.py
+NBNORMFLAGS = -l1 -L Licence -s2 -S 'IPython.display' -t h1
 include Makefile.norm
 
 ### NOTE

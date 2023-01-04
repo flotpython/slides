@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": ""}
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # librairies utiles
@@ -377,8 +378,10 @@ l[-7:]
 # * capable de gérer les setups complexes  
 #   y compris lorsque du code binaire est nécessaire
 #   (cf *wheels*) 
+#
 # * n'affranchit pas de bien lire la doc d'installation  
 #   lorsqu'une approche naïve écohue
+#
 # * à signaler aussi :
 #   utilisez `python -m pip` à la place de `pip`  
 #   en cas de multiples installations + ou - stables  
@@ -395,6 +398,7 @@ l[-7:]
 # * une unique installation Python sur votre machine ne suffit plus
 #
 # les environnements virtuels répondent à ce besoin
+#
 # * facile à créer (et vide)
 # * facile à détruire
 # * facile à passer de l'un à l'autre

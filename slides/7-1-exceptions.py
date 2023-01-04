@@ -23,10 +23,11 @@
 # ---
 
 # %% [markdown] tags=["raises-exception"]
-# <div class="licence">
-# <span>Licence CC BY-NC-ND</span>
-# <span>Thierry Parmentelat &amp; Arnaud Legout</span>
-# </div>
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+# %%
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # exceptions
@@ -88,6 +89,7 @@ set_age(person, '10')
 # %% [markdown]
 # * en général, le `raise` n'apparaît pas  
 #   dans le même bloc que le `try`
+#
 # * mais peut avoir lieu dans une fonction
 # * à n'importe quelle profondeur de la pile
 
