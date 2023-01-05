@@ -29,7 +29,10 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": "-"}
+# %load_ext ipythontutor
+
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # portée d’une variable
 
 # %% [markdown]
@@ -47,70 +50,320 @@ HTML(filename="_static/style.html")
 # ## portée lexicale
 
 # %% [markdown]
-# * python utilise la **portée lexicale**,  
-#   c’est-à-dire que la portée des variables  
-#   est déterminée exclusivement  
-#   en fonction de leur place dans le code source
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## règle LEGB
+# Python utilise la **portée lexicale**,  
+# c’est-à-dire que la portée des variables  
+# est déterminée exclusivement  
+#  en fonction de leur place dans le code source
 
 # %% [markdown]
-# * python cherche les affectations des variables  
-#   suivant la règle **LEGB** qui suis l’ordre 
+# <div class=note>
 #
-#   * **L**ocal
-#   * fonctions **E**nglobantes
-#   * **G**lobal
-#   * **B**uilt-in
+# la liaison lexicale est faite à *compile-time*  
+# le terme *lexical* signifie qu'on n'a que besoin de **lire** le programme, et pas de l'exécuter  
+# a contrario, la résolution des attributs ne peut se faire que à *run-time*    
+#     
+# </div>    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### règle LEGB
+# ## déclaration ?
 
 # %% [markdown]
-# * **L**: local
-#   * nom affecté localement à la fonction où il est référencé 
-# * **E**: fonctions englobantes
-#   * nom affecté dans les fonctions englobant la fonction où il est référencé (de l’intérieur vers l’extérieur) 
-# * **G**: global 
-#   * nom affecté dans le fichier hors d’une fonction 
-# * **B**: built-in 
-#   * nom déclaré dans le module builtins 
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `global` et `nonlocal`
-
-# %% [markdown]
-# * on peut donc utiliser (lire) dans une fonction  
-#   une variable définie au dehors / au dessus 
+# * dans d'autres langages, il y a nécessité de **déclarer** une variable  
+#   avant de s'en servir (typiquement les langages compilés)
+# * ce n'est pas le cas en Python
 #
-# * mais on ne peut **pas la modifier** (écrire) 
-#   sauf si elle est déclarée avec les mots clefs  
-#   `global` ou `nonlocal`
+# toutefois:
+# * **le fait d'affecter** une variable joue ce rôle-là
+# * et il y a aussi bien sûr **les paramètres** de la fonction
+
+# %% [markdown] cell_style="split"
+# ```python
+# # ici la variable `y` n'est pas considérée 
+# # comme déclarée puisqu'on se contente
+# # de la lire, et qu'on ne l'affecte pas
+# # (pas de code avec `y = ...`
+#
+# def foo(x):
+#     print(x)  # <-- une variable locale
+#               #     (paramètre)
+#     print(y)  # <-- PAS une variable locale
+#               #     (et donc ici BOOM)
+# ```
+
+# %% [markdown] cell_style="split"
+# ```python
+# # ici au contraire la variable y
+# # est locale à la fonction
+# # comme le paramètre x
+#
+# def foo(x):
+#     y = 10    # <-- on "déclare" y
+#     print(x)  # <-- une variable locale
+#               #     (paramètre)
+#     print(y)  # <-- aussi (car affectée
+#               #     plus haut dans foo)
+# ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## variable locale à une fonction
+# ## règle **LEGB**
 
 # %% [markdown]
-# * pas de déclaration dans le sens par exemple des langages compilés
-# * les **paramètres** d’une fonction, ainsi que toutes 
-# * les **variables affectées** dans la fonction 
-# * sont locaux à cette fonction
-# * les variables locales sont créées à chaque appel
-# * il y a deux exceptions:
-#   * si la variable `X` est déclarée `global`, l’affectation va modifier la variable `X` du module
-#   * si la variable `X` est déclarée `nonlocal`, l’affectation va modifier la variable `X` dans la fonction englobante la plus proche ayant déjà défini `X`
+# une variable est cherchée dans cet ordre **LEGB**
+#
+# * **L** comme **L**ocal
+#   * nom déclaré dans la fonction où il est référencé 
+# * **E** comme fonctions **E**nglobantes
+#   * nom déclaré dans les fonctions englobant la fonction où il est référencé (de l’intérieur vers l’extérieur) 
+# * **G** comme **G**lobal 
+#   * nom déclaré dans le fichier hors d’une fonction 
+# * **B** comme **B**uilt-in 
+#   * nom provenant du module *builtins*
+
+# %% [markdown]
+# <div class=note>
+#
+# l'unité de base est la **fonction** - il **n'y pas de visibilité de bloc**  
+# (comme on la trouve dans d'autres langages)
+#     
+# </div>    
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## variable globale
 
 # %% [markdown]
-# * toutes les variables affectées à l’extérieur d’une classe ou fonction sont globales (*sous-entendu* au module)
-# * leur portée est limitée au fichier dans lequel elles sont déclarées
-# * on dira un **module** dans la suite
+# du coup toutes les variables affectées **à l’extérieur** d’une classe ou fonction sont globales
+#
+# i.e. susceptibles d'être lues depuis tout le code dans le fichier (on dit un **module**)
+
+# %%
+GLOBALE = 10
+
+def foo():
+    print("from foo:", GLOBALE)
+    
+    def bar():
+        print("from bar:", GLOBALE)
+    bar()
+     
+foo()
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### spécificités de `global`
+# ## exemple de visibilité (1)
+
+# %%
+def foo():
+    
+    level1 = 10
+    
+    def bar():
+        level2 = 20
+        
+        def tutu():
+            level3 = 30
+            
+            print("from tutu:", level1, level2, level3)
+        
+        print("from bar: ", level1, level2) # level3 NOT visible
+        tutu()
+    
+    print("from foo: ", level1) # level2 or level3 NOT visible here
+    bar()
+
+
+# %%
+foo()
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## exemple de visibilité (2) cassé
+
+# %% [markdown]
+# une variable ne peut pas être à la fois globale et locale !
+
+# %% slideshow={"slide_type": ""} tags=["raises-exception"]
+L = [1, 2]
+
+def f():
+    # ici on pourrait penser utiliser la globale 
+    L.append(3) 
+    # mais en fait non, ici on dit que L est locale !
+    L = 1
+
+try:
+    f()
+except UnboundLocalError:
+    print("OOPS")
+
+# %% [markdown]
+# <div class=note>
+#     
+# `UnboundLocalError` signifie textuellement qu'on évalue une variable locale  
+# qui n'a pas encore été initialisée
+#     
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## exemple de visibilité (2) revu
+
+# %% [markdown]
+# pour réparer, on peut:
+#
+# 1. enlever le `L = 1` qui ne sert à rien :)
+# 1. ou encore passer la globale en paramètre
+#
+
+# %% slideshow={"slide_type": ""}
+L = [1, 2]
+ 
+def f(L):
+    # ici L est le paramètre donc une locale
+    L.append(3) 
+    # 
+    L = 1
+f(L)
+print(L)
+
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## attention aux classes
+
+# %% [markdown]
+# **attention** que ce système ne s'étend pas aux classes
+#
+# en effet les symboles définis au premier niveau dans une instruction `class`  
+# sont rangés **comme des attributs de la classe**
+#
+# et à ce titre ils ne sont **pas accessibles lexicalement**
+
+# %%
+class Foo:
+    
+    class_variable = 10
+    
+    def method(self):
+        # in this scope the symbols
+        # 'class_variable' and `method`
+        # ARE NOT lexically visible !!
+        pass
+
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## `global` et `nonlocal`
+
+# %% [markdown]
+# mais revenons à nos fonctions:
+#
+# * on peut donc utiliser (lire) dans une fonction  
+#   une variable définie au dehors / au dessus 
+#
+# * mais du coup on ne peut **pas la modifier** (affecter)  
+#   puisque si on essaie de l'affecter cela est considéré   
+#   comme une déclaration de variable locale
+#
+# * c'est à cela que servent les mots clefs  
+#   `global` ou `nonlocal`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## exemple avec `global` (1)
+
+# %% cell_style="split"
+# écrire une globale depuis une fonction
+
+G = 10
+
+def modify_G(x):
+    # une fois la variable déclarée
+    global G
+    # je peux l'affecter
+    G = x
+    
+modify_G(1000)
+
+# combien vaut G ?
+G
+
+# %% cell_style="split"
+# à votre avis 
+# que se passe-t-il si on n'utilise
+# pas global
+
+G = 10
+
+def does_not_modify_G(x):
+    G = x
+    
+does_not_modify_G(1000)
+
+# combien vaut G ?
+G
+
+# %% [markdown]
+# <div class=note>
+#
+# dans la deuxième forme, on a juste créé une **deuxième variable G** qui est locale à la fonction, et "cache" la globale, qui donc n'est pas modifiée
+#     
+# </div>    
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## exemple avec `global` (2)
+
+# %% cell_style="split"
+# un exemple un peu plus tordu
+# car ici dans la fonction
+# on lit et on écrit G
+
+G = 10
+
+def increment_G():
+    global G
+    G = G + 10
+
+increment_G()
+
+# combien vaut G ?
+G
+
+# %% cell_style="split" tags=["raises-exception"]
+# que se passe-t-il ici 
+# d'après vous ?
+
+G = 10
+
+def increment_G():
+    # pas de 'global'
+    G = G + 10
+
+try:
+    increment_G()
+except UnboundLocalError:
+    print("OOPS !!")
+
+# combien vaut G ?
+G
+
+
+# %% [markdown]
+# <div class=note>
+#
+# ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affectée dans `increment_G`, c'est une variable *locale* à la fonction (et donc pas la globale); mais elle n'a pas encore de valeur ! d'où l'erreur `UnboundLocalError`
+#     
+# </div>    
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ## faut-il utiliser `global` ?
+
+# %% [markdown]
+# * utiliser des variables globales est - presque toujours - une mauvaise idée
+# * car cela gêne la réutilisabilité
+# * la bonne manière est de
+#   * ne pas utiliser de variable globale
+#   * penser aux classes
+# * exemple archi-classique
+#   * la configuration d'une application
+#   * est souvent implémentée comme un singleton
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# ## spécificités de `global`
 
 # %% [markdown]
 # * la déclaration `global` 
@@ -122,236 +375,74 @@ HTML(filename="_static/style.html")
 #   * même si elle n’existait pas avant
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### spécificités de `global`
-
-# %% cell_style="split"
-# juste pour s'assurer que 'x' est indéfini
-try:      del x
-except:   pass
-
-y, z = 1, 2  # variables globales
-
-# déclare une variable globale x
-# y, z sont globales (en lecture)
-
-def f():
-    global x   
-    print("dans f", y, z)
-    x = y + z       
-
-# %% cell_style="split"
-
-
-
-
-# à ce stade, f() n'a pas 
-# encore été appelée 
-# et x n’est pas
-# encore définie
-try: 
-    print(x)
-except Exception as exc: 
-    print(f"{type(exc)}: {exc}")
-
-# %% cell_style="split"
-f()
-
-# %% cell_style="split"
-# en appelant f(), on a défini la variable x
-print(x)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## faut-il utiliser `global` ?
-
-# %% [markdown]
-# * utiliser des variables globales est - presque toujours - une mauvaise idée
-# * car cela crée les dépendances difficiles à détecter
-# * la bonne manière est de
-#   * ne pas utiliser de variable globale
-#   * penser aux classes
-# * exemple archi-classique
-#   * la configuration d'une application
-#   * est souvent implémentée comme un singleton
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### faut-il utiliser `global` ?
-
-# %% cell_style="split"
-# v1: utilisation de global 
-
-x = 10
-
-def func():
-    global x
-    x = x + 10
-
-func()
-
-# %% cell_style="split"
-# v2: modification explicite
-x = 10
-
-def func():
-    return x + 10
-
-x = func()
+# ## exemple avec `nonlocal`
 
 # %%
-# v3: Accès et modifications explicites
-x = 10
+# nonlocal est très utile pour implémenter une cloture 
 
-def func(x):
-    return x + 10
+def make_counter():
+    # cette variable est capturée dans la cloture
+    counter = 0
+    def increment():
+        nonlocal counter
+        counter += 1
+        return counter
+    # on retourne la fonction, qui a "capturé" le compteur
+    return increment
 
-x = func(x)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `nonlocal`
+# %% cell_style="split"
+c1 = make_counter()
 
-# %% [markdown]
-# * une variable `nonlocal` référence la variable locale  
-#   de la fonction englobante la plus proche
-#
-# * une variable déclarée `nonlocal` 
-#   * doit obligatoirement avoir été affectée  
-#     dans une fonction englobante
-#
-#   * en particulier, ne pourra être résolue dans le module  
-#     au niveau global ou dans les built-ins
-#
-#   * si ça n’est pas le cas, erreur de syntaxe
-#   * ne doit pas être un paramètre de la fonction
+c1()
+c1()
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### spécificités de `nonlocal`
+# %% cell_style="split"
+c2 = make_counter()
 
-# %% [markdown] tags=["raises-exception"]
-# ```python
-# # ce code produit une erreur de syntaxe
-# x = 1
-# def f():
-#     def g():
-#         # il FAUT mettre 'global' ici
-#         nonlocal x
-#         x = x + 1
-#         print("dans g", x)
-#     g()
-#     print("dans f", x)
-#
-# f()
-# ```
+c2()
+c2()
+c2()
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### spécificités de `nonlocal`
+# %% cell_style="split"
+c1()
 
-# %%
-# ici le code est correct
-x = 1
-def f():
-    x = 2
-    def g():
-        nonlocal x
-        x = x + 1
-        print("dans g", x)
-    g()
-    print("dans f", x)
-f()
-print("module:", x)
+# %% cell_style="split"
+c2()
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### spécificités de `nonlocal`
-
-# %% [markdown]
-# ```python
-# # ce code produit une erreur de syntaxe
-# x = 1
-# def f():
-#     x = 2
-#     # le paramètre x empêche 
-#     # de référencer le nonlocal
-#     def g(x):
-#         nonlocal x
-#         x = x + 1
-#         print("dans g", x)
-#     g(x)
-#     print("dans f", x)
-# f()
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### faut-il utiliser `nonlocal` ?
-
-# %% [markdown]
-# * c’est très utile lorsqu’on utilise la notion de clôture 
-# * c’est un concept de programmation avancé,  
-#   on a parlera lorsqu’on verra les décorateurs
-
-# %%
-# %load_ext ipythontutor
-
-# %% slideshow={"slide_type": "slide"}
-# %%ipythontutor cumulative=false heapPrimitives=false
-L = [1, 2]
-def func():
-    L = [3, 4]
-    return L
-x = func()
-print(x)
-print(L)
-
-# %% slideshow={"slide_type": "slide"}
-# %%ipythontutor cumulative=false heapPrimitives=false
-L = [1, 2]
-def func():
-    global L
-    L = [3, 4]
-    return L
-x = func()
-print(x)
-print(L)
-
-# %% slideshow={"slide_type": "slide"}
-# %%ipythontutor cumulative=false heapPrimitives=false
-L = [1, 2]
-def f(L):
-    L.append(3) 
-    L = 1
-f(L)
-print(L)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## les noms de builtins
 
-# %% [markdown]
-# * les  noms prédéfinis, comme `list` ou `enumerate` ou `OSError`
+# %% [markdown] tags=["level_intermediate"]
+# * ce sont les  noms prédéfinis, comme `list` ou `enumerate` ou `OSError`
 # * grâce à la règle LEGB, pas besoin de les importer
 # * par contre, on peut redéfinir un nom de `builtins` dans son programme
 #   * c’est une mauvaise idée et une source de bug
 #   * python ne donne aucun warning dans ce cas
-#  * dans ce cas à nouveau, `pylint` est un outil très utile
+#  * dans ce cas - comme toujours - `pylint` est un outil très utile
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### les noms de builtins
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 # on peut accéder à la variable `__builtins__` 
 # qui est .. une variable *builtin* 
 __builtins__
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 # ou encore on peut
 # importer le module `builtins`
 import builtins
 
-# %%
+# %% tags=["level_intermediate"]
 # je n'en montre que 5 pour garder de la place
 dir(builtins)[-5:]
 
-# %%
+# %% tags=["level_intermediate"]
 # en fait il y en a vraiment beaucoup ! 
 len(dir(__builtins__))
 
-# %% slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 errors = (x for x in dir(builtins) if 'Error' in x or 'Warning' in x)
 
 columns, width = 4, 18
@@ -360,11 +451,11 @@ for i, error in enumerate(errors, 1):
     if i % columns == 0:
         print()
 
-# %% slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["level_intermediate"] cell_style="center"
 others = (x for x in dir(builtins) 
           if not ('Error' in x or 'Warning' in x or '__' in x))
 
-columns, width = 5, 12
+columns, width = 6, 16
 for i, other in enumerate(others, 1):
     print(f"{other:^{width}}", end=" ")
     if i % columns == 0:

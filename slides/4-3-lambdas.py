@@ -147,7 +147,6 @@ sorted(sample, key=str.lower)
 # %% cell_style="split"
 # pareil que
 sorted(sample,
-
        key=lambda s: str.lower(s))
 
 
@@ -170,11 +169,12 @@ sorted(student_marks, key=lambda student_tuple: student_tuple[1])
 import operator
 sorted(student_marks, key=operator.itemgetter(1))
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### pour aller plus loin
-
-# %% [markdown]
-# * https://docs.python.org/3/howto/sorting.html
+# %% [markdown] slideshow={"slide_type": ""}
+# <div class=note>
+#
+# pour aller plus loin sur le tri, voir <https://docs.python.org/3/howto/sorting.html>
+#     
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `reverse()` et `reversed()`
@@ -229,8 +229,7 @@ list(m)
 
 # %% cell_style="center"
 # si on essaie une deuxième fois
-# il ne se passe plus rien car 
-# on a déjà itéré sur m
+# il ne se passe plus rien car on a déjà itéré sur m
 list(m)          
 
 # %% cell_style="split"
@@ -251,7 +250,7 @@ f is iter(f)
 # %% cell_style="split"
 list(f)
 
-# %% [markdown] cell_style="split"
+# %% [markdown] cell_style="center"
 # cette forme est toutefois passée de mode au profit des expressions génératrices
 
 # %% cell_style="split"
@@ -263,7 +262,6 @@ g is iter(g)
 
 # %% cell_style="split"
 list(g)
-
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## introspection (avancé)
@@ -282,8 +280,8 @@ list(g)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### lecture d'attributs
 
-# %% cell_style="split"
-def f(name="jean"):
+ # %% cell_style="split"
+ def f(name="jean"):
     """le docstring"""
     pass
 f.__name__
