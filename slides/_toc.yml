@@ -1,5 +1,5 @@
 format: jb-book
-root: 1-2-introduction
+root: 1-2-introduction-nb
 parts:
 - caption: "types de base"
   chapters:
