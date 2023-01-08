@@ -1,6 +1,6 @@
 ---
 tracks:
-- description: Python - formation initiale
+- description: programmer en Python
   id: slides
   name: slides
   sections:
@@ -29,6 +29,9 @@ tracks:
   - name: "compl\xE9ments"
     notebooks:
     - "slides/7-[0-9]*-nb.py"
+  - name: "sujets avanc\xE9s"
+    notebooks:
+    - "slides/8-[0-9]*-nb.py"
 #- description: "Cours: suppl\xE9ments"
 #  id: extras
 #  name: extras

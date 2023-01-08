@@ -9,6 +9,10 @@ NOTEBOOKS = [0-9]*.py
 NBNORMFLAGS = -l1 -L Licence -s2 -S 'IPython.display' -t h1
 include Makefile.norm
 
+# derive jb toc from nbhosting
+TOCDIR = slides
+include Makefile.toc
+
 ### NOTE
 # requires
 # pip install pyppeteer

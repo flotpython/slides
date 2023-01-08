@@ -1,24 +1,31 @@
 format: jb-book
-root: 1-2-introduction-nb
 parts:
-- caption: "types de base"
+- caption: introduction
   chapters:
-  - glob: 2-[0-9]*
-- caption: "syntaxe et instructions"
+  - glob: 1-[0-9]*-nb
+  - glob: 1*
+- caption: premiers pas
   chapters:
-  - glob: 3-[0-9]*
-- caption: "fonctions"
+  - glob: 101/0*
+- caption: types de base
   chapters:
-  - glob: 4-[0-9]*
-- caption: "modules & packages"
+  - glob: 2-[0-9]*-nb
+- caption: syntaxe & instructions
   chapters:
-  - glob: 5-[0-9]*
-- caption: classes
+  - glob: 3-[0-9]*-nb
+- caption: fonctions
   chapters:
-  - glob: 6-[0-9]*
-- caption: compléments
+  - glob: 4-[0-9]*-nb
+- caption: modules & packages
   chapters:
-  - glob: 7-[0-9]*
-#- caption: sujets avancés
-#  chapters:
-#  - glob: 8-[0-9]*
+  - glob: 5-[0-9]*-nb
+- caption: classes & programmation objet
+  chapters:
+  - glob: 6-[0-9]*-nb
+- caption: "compl\xE9ments"
+  chapters:
+  - glob: 7-[0-9]*-nb
+- caption: "sujets avanc\xE9s"
+  chapters:
+  - glob: 8-[0-9]*-nb
+root: 1-2-introduction-nb
