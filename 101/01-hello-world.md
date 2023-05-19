@@ -212,7 +212,7 @@ maintenant on décide que la fonction `hello_name` est tellement intéressante q
 * du coup dans `hello.py` il ne me reste plus que 
   ```python
   for name in ["Alice", "Bob", "Charlie"]:
-    hello_name(name)
+      hello_name(name)
   ```
   
 question:
@@ -243,9 +243,11 @@ et cette foi ça fonctionne
 
 ### que retenir ?
 
-* il y a des fonction prédéfinies (comme `print`)
-* on peut aussi utiliser des fonctions qui sont écrites dans d'autres fichiers, il faut alors les **importer** en indiquant dans quel fichier (on parle de module) elles se trouvent
-* lorsqu'on écrit `import
+* il y a des fonctions prédéfinies (comme `print`)
+* on peut aussi utiliser des fonctions qui sont écrites dans d'autres fichiers, il faut alors les **importer** 
+  * en indiquant dans quel fichier (on parle de module) elles se trouvent
+* lorsqu'on écrit `import separate` cela a pour effet de définir une variable `separate`
+  * ensuite on peut aller "piocher" dans le module en faisant `separate.hello_name`
 
 +++
 
@@ -270,7 +272,12 @@ que pensez-vous que va faire maintenant notre programme ?
 
 ### que retenir ?
 
-* avec `import` on peut importer du code venant d'un fichier dans le dossier courant, **ou aussi** un module qui n'est pas à moi (ici un module qui "vient avec" Python, mais ce serait pareil avec du code installé depuis Internet
+* avec `import` on peut importer du code venant d'un fichier dans le dossier courant
+* **ou aussi** un module qui n'est pas à moi 
+  * ici le module `math` fait partie de la *librairie standard* (il "vient avec" Python)
+  * mais ce serait pareil avec du code installé depuis Internet
+* remarquez aussi (pour les geeks) qu'on peut passer à `hello_name` 
+  un peu ce qu'on veut (une chaine, un nombre...)
 
 +++
 
@@ -313,8 +320,6 @@ for name in ["Alice", "Bob", "Charlie"]:
 * sur lesquels on peut ensuite appeler une méthode `hello()`
 
 * l'intérêt étant que l'instance `person` a capturé le nom, on n'a plus besoin de le repasser à `hello()`  
-* imaginez que l'on ajoute aussi d'autres détails dans la classe (le prénom, l'^age...)  
-  le type `Person` va nous permettre de manipuler des groupes de données (nom, prenom, age) qui vont ensemble, mais qu'on va passer en paramètre à toutes les fonction comme *un seul paramètre* compposite qui contient tout cela
 
 +++
 
@@ -344,9 +349,9 @@ class Person:
 
 persons = []
 
-person.append(Person("Alice", 25))
-person.append(Person("Bob", 22))
-person.append(Person("Charlie", 20))
+persons.append(Person("Alice", 25))
+persons.append(Person("Bob", 22))
+persons.append(Person("Charlie", 20))
 
 for person in persons:
     person.hello()

@@ -38,7 +38,7 @@ pour commencer voyons **comment créer un fichier** depuis un programme
 
 ```{code-cell} ipython3
 # c'est comme ça qu'on crée un fichier pour écrire dedans
-#            le mode:  ↓↓↓
+#                le mode:  ↓↓↓
 with open("tmp-names.txt", 'w') as writer:
     print("Achille", file=writer)
     print("Bob", file=writer)
@@ -74,7 +74,7 @@ et on y trouve bien ce à quoi on s'attendait
 * le mode permet de dire si on veut lire ou écrire le fichier
   * en lecture, il faut que le fichier soit déjà présent
   * en écriture par contre, il est créé dans tous les cas - qu'il existe déjà ou pas
-* le with définit une variable (ici `writer`)  
+* le `with` définit une variable (ici `writer`)  
   comme pour toutes les variables, on aurait pu choisir n'importe quoi
 * en appelant `print()` avec `file=writer`, on a provoqué l'écriture dans le fichier et non plus dans le terminal
 
@@ -100,12 +100,12 @@ Bien sûr ce fichier, on aurait pu l'écrire avec un éditeur de texte
 
 Mais peu importe comment on l'a créé, maintenant voyons comment on peut le relire par programme
 
-C'est la même idée exactement, mais on va cette fois passer à open un mode d'ouverture qui est `r` - pour, *wait for it...* **`read`** eh oui !
+C'est la même idée exactement, mais on va cette fois passer à `open` un mode d'ouverture qui est `r` - pour, *wait for it...* **`read`** eh oui !
 
 ```{code-cell} ipython3
 with open("tmp-names.txt", 'r') as reader:
     for line in reader:
-        line = line.strip()
+#        line = line.strip()
         print(f"hello {line}")
 ```
 

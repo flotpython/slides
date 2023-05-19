@@ -64,7 +64,7 @@ en fait ce qui se passe avec Python c'est que
 
 * **toutes** les données que vous manipulez dans la mémoire en Python sont **des objets**
 * et chaque objet de la mémoire
-  * **possède un type** (on peut y accéder avec `type(object)` - dont le retour .. est un objet ;)
+  * **possède un type** - on peut y accéder avec `type(object)`
   * ce type ne changera plus jamais durant la durée de vie l'objet
 
 ```{code-cell} ipython3
@@ -98,7 +98,13 @@ class Person:
     def __init__(self, name):
         self.name = name
 
+# le type d'une classe, c'est quoi donc ?
 type(Person)
+```
+
+```{code-cell} ipython3
+# (très) avancé: à un moment ça s'arrête bien sûr
+type(type) is type
 ```
 
 ## objets mutables ou pas

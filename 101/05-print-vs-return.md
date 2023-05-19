@@ -47,7 +47,9 @@ dans un programme qu'on lance "normalement" c'est-à-dire depuis un terminal ave
 `$ python truc.py`  
 eh bien dans ce cas les seules choses qui sont imprimées sont quand on appelle `print(..)`
   
-toutes les autres étapes de calcul sont simplement passées sous silence; on les calcule biens sûr, mais on les affiche **que si** on appelle `print()`; l'idée c'est que si on devait montrer toutes les valeurs intermédiaires on serait complètement noyé !
+toutes les autres étapes de calcul sont simplement passées sous silence;  
+on les calcule bien sûr, mais on ne les affiche **que si** on appelle `print()`  
+l'idée c'est que si on devait montrer toutes les valeurs intermédiaires on serait complètement noyé !
 
 +++
 
@@ -65,16 +67,17 @@ par contre, quand on utilise un mode *interactif*, c'est-à-dire soit
   In [1]:
   ```
 * ou encore comme ici **dans un notebook**
-  
+
++++
+
 alors dans tous ces modes de fonctionnement, Python se comporte **comme un REPL**
   
 c'est quoi un REPL ? ça signifie *Read Eval Print Loop*  
 dit autrement, la logique de Python dans ce mode c'est
 * on lit le code que vous avez tapé
 * on l'évalue / exécute
-* et **si ça retourne quelque chose**, alors **on l'imprime
+* et si ça retourne quelque chose, alors **on l'imprime**
 * et on recommence comme ça jusqu'à la fin des temps...
-    
 
 +++
 
@@ -127,9 +130,9 @@ double("truc")
 ```
 
 vous voyez que là on a beaucoup plus de texte affiché:
-* à chaque cellule, le résultat de la **dernière expression** est affiché
+* à chaque cellule, le résultat de la **dernière expression** est affiché  
   enfin seulement s'il y en a un, par exemple on n'a rien d'intéressant à montrer dans la cellule 2
-* par contre le print() lui se fait toujours
+* par contre le `print()` lui se fait toujours
 * enfin vous remarquez une subtile différence entre la façon d'afficher
   * `au beau milieu`
   * `'tructruc'`
@@ -142,13 +145,9 @@ et ici par exemple la cellule 4 a pour résultat la valeur retournée par `doubl
 
 plusieurs remarques
 
-* les chaines peuvent être créées indifféremment avec des simple quote `'` ou des double quotes, pourvu que ce soit le même style de quote des deux cotés - au début et à la fin - de la chaine
+* les chaines peuvent être créées indifféremment avec des simple quote `'` ou des double quotes, pourvu que ce soit le même style de quote au début et à la fin
 * on peut ajouter deux chaines, ca crée (une nouvelle chaine qui est) la *concaténation* des deux chaines  
-  question: pourquoi on ne modifie pas plutôt la première des deux chaines ?
-
-+++
-
-on veut montrer que ce qu'on affiche il s'agit d'une chaine
+  **question**: pourquoi on ne modifie pas plutôt la première des deux chaines ?
 
 +++
 
@@ -196,7 +195,7 @@ alors effectivement on a imprimé 1000, **mais attention**
 print(c)
 ```
 
-question: il se passerait quoi si dans la cellule du dessus j'avais mis juste `c` au lieu de `print(c)`
+**question**: il se passerait quoi si dans la cellule du dessus j'avais mis juste `c` au lieu de `print(c)`
 
 +++
 
@@ -218,4 +217,4 @@ print(c)
 * en mode normal, les seules impressions sont celles qu'on fait avec un `print()`
 * en mode interactif, pour nous simplifier la vie, Python nous affiche les résultats intermédiaires (typiquement le dernier calcul de chaque cellule)
 * mais à partir de maintenant, on ne fera plus que des fonctions qui font `return` - et pas `print()`
-* il sera toujorus temps pour l'appelant d'afficher le résultat si ça fait du sens
+* il sera toujours temps pour l'appelant d'afficher le résultat - si ça fait du sens pour lui
