@@ -70,7 +70,7 @@ HTML(filename="_static/style.html")
 # en ligne sur France Université Numérique
 #
 # * le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"
-# * https://www.fun-mooc.fr/courses/course-v1:UCA+107001+session02/about
+# * https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 # ## notebooks
