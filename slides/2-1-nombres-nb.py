@@ -35,7 +35,6 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## types de base `int`, `float`, `complex`
 #
-# * conversion automatique si nécessaire
 # * les `int` ont une précision illimitée
 #   * Python peut calculer nativement
 
@@ -43,53 +42,67 @@ HTML(filename="_static/style.html")
 92857234957203457234572203957 * 948572349572039457029347529347
 
 # %% [markdown]
-# * ceux qui ont eu à faire ça en C apprécieront
+# ceux qui ont eu à faire ça en C apprécieront
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : division
 
 # %%
 # division exacte/flottante
-5 / 2
+8 / 5
 
 # %% cell_style="split" slideshow={"slide_type": ""}
 # division entière (quotient)
-8 // 3
+8 // 5
 
-# %% cell_style="split" slideshow={"slide_type": ""}
-# division entière (quotient)
-8.5 // 3
-
-# %% [markdown]
-# <div class="rise-footnote">
-#
-# à bookmarker: [une cheat sheet avec la list des opérateurs en Python](https://cheatography.com/nouha-thabet/cheat-sheets/python-operators-and-booleans/)
-#     
-# </div>
+# %% cell_style="split"
+# reste div. entière
+8 % 5
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : opérateurs
 
-# %% cell_style="split"
-# reste div. entière
-5 % 3
+# %% cell_style="split" slideshow={"slide_type": ""}
+# la division entière (quotient)
+# fonctionne aussi avec les flottants
+
+8.5 // 4.5
 
 # %% cell_style="split" slideshow={"slide_type": ""}
-# reste div. entière
-5 % 1.5
+# pareil pour le reste / modulo
+
+8.5 % 4.5
 
 # %% slideshow={"slide_type": ""}
+# plein d'autres opérations disponibles
+# et notamment:
+
 2 ** 32         # puissance
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# à bookmarker: [une cheat sheet avec la liste des opérateurs en Python](https://cheatography.com/nouha-thabet/cheat-sheets/python-operators-and-booleans/)
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### conversions
 
 # %% slideshow={"slide_type": ""}
 int(234.5)      # cast float ➔ int
 
 # %% [markdown]
+# un **type** en Python est aussi une **usine à objets**,  
+# il peut être utilisé comme une fonction  
+# ici l'appel `int(234.5)` consiste à appeler le type `int`  
+# pour fabriquer un objet,  de type `int` donc, à partir de la valeur `234.5`
+
+# %% [markdown]
 # <div class="rise-footnote">
 #
-# un **type** en Python est aussi une **usine à objets**,
-# il peut être utilisé comme une fonction      
-# ici l'appel `int(234.5)` consiste à appeler le type `int` pour fabriquer un objet,  de type `int` donc, à partir de la valeur `234.5`
+# il existe aussi des fonctions `floor()` et `ceil()` dans le module `math`  
+# toutefois la méthode ci-dessus est plus générale, elle s'applique à tous les types en Python
 #
 # </div>
 
@@ -134,33 +147,42 @@ a.imag          # partie imaginaire
 # dans l'autre sens, trouver la représentation en base *n*  
 # sous forme de chaine de caractères du coup
 
-# %%
+# %% cell_style="center"
 hex(255)    # traduire en hexa (-> str)
 
-# %%
+# %% cell_style="center"
 bin(255)    # traduire en binaire (-> str)
 
-# %%
+# %% cell_style="center"
 oct(255)    # traduire en octal (-> str)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown]
+# <div class=rise-footnote>
+#
+# remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`;
+# ce sont des fonctions *prédéfinies*, connues de Python dès le lancement  
+# le terme anglais pour désigner de telles fonctions est *builtin*
+#
+# </div>
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### décalages
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 x = 3
 y = x << 10 # décalage à gauche
 y
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 2**11 + 2**10
 
-# %%
+# %% tags=["level_intermediate"]
 x          # l'argument n'est pas modifié
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 y >> 3     # décalage à droite
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 2**8 + 2**7
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -177,11 +199,12 @@ y & 2      # bitwise AND de 0100 (4) et 0010 (2)
 y & 15     # bitwise AND de 0100 (4) et 1111 (15)
 
 # %%
-y ^ 15     # bitwise   de 0100 (4) et 1111 (15)
+~ y        # bitwise NOT - en pratique ~x == -(x+1)
 
 # %% [markdown]
-# * rarement utile d’utiliser les opérations bitwise en Python
-# * mieux vaut utiliser les structures de données fournies
+# * rarement utile d’utiliser les opérations bitwise en Python usuel
+# * mais par contre **très utile** avec numpy et pandas  
+#   pour manipuler notamment les masques
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le module `math`
@@ -202,14 +225,14 @@ math.tau
 math.sin(math.pi)
 
 # %% [markdown]
-# **Important**: Entraînez vous aussi à trouver la doc dans google:  
+# **Important**: entraînez vous aussi à trouver la doc dans google:  
 # https://www.google.com/search?q=python+module+math
 
 # %% [markdown]
 # <div class="rise-footnote">
 #
 # pour décortiquer un peu:  
-# après l'import, la variable `math` désigne donc un objet de type `module`      
+# après l'import, la variable `math` désigne donc un objet de type `module`  
 # et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` dans cet objet module  
 # et pareil exactement pour `math.sin`, qui désigne … un objet fonction
 #
@@ -276,7 +299,7 @@ if bool(a):
 # %% [markdown]
 # <div class="rise-footnote">
 #
-# on en reparlera, mais les valeurs "fausses" correspondent à un nombre nul, ou à un container (liste, chaine, ..) vide
+# on en reparlera, mais les valeurs "fausses" correspondent à un **nombre nul**, ou à un **container vide** (liste, chaine, ..)
 #
 # </div>
 
@@ -284,7 +307,7 @@ if bool(a):
 # ## conversions
 
 # %% [markdown]
-# * c'est la **mécanique générale** pour convertir entre types de données:
+# * à nouveau, c'est la **mécanique générale** pour convertir entre types de données:
 
 # %% cell_style="split"
 # si on appelle int() on convertit en entier
@@ -339,25 +362,15 @@ if 0 <= a <= b:
 #
 # * `x is not y`
 # * `x not in y`
-#
-# <div class="rise-footnote">
-#
+
+# %% [markdown]
 # et pour l'illustrer commençons par créer ceci
-#     
-# </div>    
 
 # %% cell_style="split"
 a = b = [1, 2]
 
 # %% cell_style="split"
 c = [1, 2]
-
-# %% [markdown]
-# à ce stade on a créé deux objets liste distincts
-#
-# * le premier désigné par a et b
-# * le second désigné par c
-#
 
 # %% slideshow={"slide_type": "slide"}
 # %load_ext ipythontutor
@@ -367,6 +380,16 @@ c = [1, 2]
 
 a = b = [1, 2]
 c = [1, 2]
+
+# %% [markdown]
+# <div class="rise-footnote">
+#
+# à ce stade on a créé deux objets liste distincts
+#
+# * le premier désigné par a et b
+# * le second désigné par c
+#
+# </div>
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # du coup on peut écrire des choses comme
@@ -401,28 +424,28 @@ a != c
 1 not in a
 
 # %% cell_style="split"
-3 not in a 
+3 not in a
 
 # %% cell_style="split"
 # possible aussi mais vilain
 # et jamais employé en pratique
 not 3 in a
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### booléens - avertissement
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # * attention à ne pas confondre
 # * les opérations bit à bit avec les opérations booléennes
 
-# %% slideshow={"slide_type": "-"}
+# %% slideshow={"slide_type": "-"} tags=["level_intermediate"]
 # calculons le XOR de deux booléens
 
 a, b = True, True
 
 print("a", bool(a), "b", bool(b), "a^b", bool(a^b))
 
-# %% slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["level_intermediate"]
 a, b = 1, 2
 
 # on pourrait penser, puisque a et b sont 'vrais'
@@ -536,11 +559,5 @@ x == Fraction(3, 10)
 # %% cell_style="split"
 x == 0.3
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour aller plus loin
-
 # %% [markdown]
-# * Tutoriel Python
-#   * https://docs.python.org/3/tutorial/floatingpoint.html
-# * The Perils of Floating Point by Bruce M. Bush
-#   * http://www.lahey.com/float.htm
+# ****

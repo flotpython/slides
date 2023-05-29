@@ -30,7 +30,7 @@ rise:
 
 +++
 
-# survol du langage 
+# survol du langage
 
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
@@ -80,7 +80,7 @@ slideshow:
 a = 1
 b = "ma chaine"
 
-liste = [1, 10., 10 + 10j]   
+liste = [1, 10., 10 + 10j]
 
 import math
 
@@ -127,7 +127,7 @@ type(liste)
 :cell_style: split
 
 # les indices commencent à 0
-# un complexe 
+# un complexe
 type(liste[2])
 ```
 
@@ -149,9 +149,9 @@ type(foo)
 ```
 
 <div class="rise-footnote">
-    
-attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**  
-ainsi une variable peut désigner par ex. d'abord un entier, puis une liste…
+
+attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**
+ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste…
 
 </div>
 
@@ -161,7 +161,7 @@ ainsi une variable peut désigner par ex. d'abord un entier, puis une liste…
 
 +++ {"cell_style": "center"}
 
-selon leur type, les objets sont  
+selon leur type, les objets sont
 
 * modifiables : **mutables**
 * ou pas : **immutables**  
@@ -177,7 +177,7 @@ slideshow:
 ---
 %%ipythontutor heapPrimitives=true
 liste1 = [1, 2, 3]
-liste1[1] = 100 
+liste1[1] = 100
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -210,7 +210,7 @@ except Exception as exc:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### les commentaires
+### primer : les commentaires
 
 +++
 
@@ -219,14 +219,17 @@ tout ce qu’il y a après un `#` est ignoré par l’interpréteur
 ```{code-cell} ipython3
 # programme de test qui ne fait pas grand-chose
 L = [1, 2]
-x = 5  
-if x > 3:   # teste la comparaison dans if 
+x = 5
+if x > 3:   # on peut commenter où on veut
+    # mais en pratique c'est mieux de prendre
+    # toute la ligne comme ceci car on s'efforce
+    # de garder la largeur de page < 80 caractères
     print(L)
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### indentation et syntaxe
+### primer : indentation et syntaxe
 
 +++
 
@@ -237,10 +240,27 @@ if x > 3:   # teste la comparaison dans if
 
 ```{code-cell} ipython3
 if 2**5 == 32:
-    print("pas de sucre syntaxique")
+    print("c'est l'alignement des lignes")
+    print("qui produit les blocs")
+    print("pas de sucre syntaxique superflu")
 else:
     print("du genre if (exp) {do_this()} else {do_that()}")
 ```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### primer : types "fournis"
+
++++
+
+avec le langage (*batteries included*) sont fournis des types de base
+
+* nombres:
+  * entiers, flottants, complexes, booléens
+* containers:
+  * listes, dictionnaires, ensembles, tuples
+
+qui permettent de traiter rapidement pas mal de sujets
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -268,7 +288,7 @@ my_first_function(10, 2)
 my_first_function(2, 10)
 ```
 
-* brique de base de la réutilisabilité 
+* brique de base de la réutilisabilité
 * remarquez la syntaxe orientée *bloc*
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -279,12 +299,12 @@ my_first_function(2, 10)
 :cell_style: split
 
 class MyFirstClass:
-    
+
     def __init__(self, nom, age):
         print("init instance", nom)
         self.nom = nom
         self.age = age
-        
+
     def __repr__(self):
         return f"{self.nom}, {self.age} ans"
 ```
@@ -312,18 +332,18 @@ person
 ### primer : *type hints*
 
 ```{code-cell} ipython3
-:cell_style: center
+:cell_style: split
 
 # ici j'utilise un trait qui date de la version 3.9
 
-# on peut donner une indication sur le type attendu, avec
-# ce commentaire   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+# on peut donner une indication sur le type attendu,
+# comme ceci :     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 global_index = {}  # type: dict[name, MyFirstClass]
 
-# ou encore ici:  ↓↓↓↓↓↓↓↓↓↓↓↓ et ↓↓↓↓↓↓↓↓ 
+# ou encore ici:  ↓↓↓↓↓↓↓↓↓↓↓↓ et ↓↓↓↓↓↓↓↓
 def index(instance: MyFirstClass) -> None:
     global_index[instance.nom] = instance
-    
+
 def find_instance(name: str) -> MyFirstClass:
     return global_index.get(name, None)
 ```
@@ -339,7 +359,7 @@ print(find_instance("dupont"))
 
 +++ {"cell_style": "split"}
 
-les annotations de type 
+les annotations de type
 * sont **entièrement optionnelles**
 * mais aident à lire, utiliser  
   et documenter le code
@@ -369,7 +389,8 @@ pi = "la tour de Pi"
 math.pi
 ```
 
-* correspond à un fichier (ou répertoire) de source 
+* brique de base de la **réutilisabilité**
+* correspond à un fichier (ou répertoire) de source
 * fonctionne comme un espace de noms
 * ma variable `pi` coexiste avec celle de `math`  
   mais elles sont différentes - **pas de conflit**
@@ -380,8 +401,7 @@ math.pi
 
 +++ {"cell_style": "center"}
 
-* programmation  
-  orientée objet
+* programmation orientée objet
 
 * notation `objet.methode()`
 
@@ -411,7 +431,7 @@ comme par exemple `math.pi`
 
 +++
 
-l'instruction `for` et les itérateurs permettent de dissocier 
+l'instruction `for` et les itérateurs permettent de dissocier
 
 * la logique d'itération
 * du traitement à chaque tour de boucle
@@ -461,9 +481,9 @@ def boom(n):
 try:
     boom(2)
 except Exception as exc:
-    print("BOOM", exc) 
+    print("BOOM", exc)
 
-print("la vie continue")    
+print("la vie continue")
 ```
 
 ```{code-cell} ipython3
@@ -485,9 +505,9 @@ def boom(n):
         return boom(n-1)
     else:
         return 1/n
-    
+
 boom(2)
-print("la vie ne continue pas !")    
+print("la vie ne continue pas !")
 ```
 
 ```{code-cell} ipython3
@@ -505,13 +525,13 @@ def boom(n):
         return boom(n-1)
     else:
         return 1/n
-    
+
 try:
     boom(2)
 except Exception as exc:
-    print("BOOM", exc) 
+    print("BOOM", exc)
 
-print("la vie continue")    
+print("la vie continue")
 ```
 
 ***

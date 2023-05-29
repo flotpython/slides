@@ -90,7 +90,7 @@ on le fait tourner:
 
 +++
 
-essayons maintenant ceci 
+essayons maintenant ceci
 
 ```python
 name = "Alice"
@@ -114,7 +114,7 @@ qu'est-ce que ça va faire d'après vous ?
   la chaine commence avec `f"`  (ou `f'` si on préfère)  
   se termine avec un `"` (ou `'` si on préfère, vous avez compris l'idée générale..)  
   et peut contenir **entre `{}`** un nom de variable  
-  du coup les `{}` sont remplacés par la valeur de la variable
+  du coup les **`{}`** sont remplacés par la valeur de la variable
 * on verra d'ailleurs qu'on peut mettre du code plus compliqué que juste une variable entre les `{}` - mais n'anticipons pas
 
 +++
@@ -130,7 +130,7 @@ comme on a plusieurs fois la même phrase, on va essayer de *factoriser* le code
 ```python
 def hello_name(name):
     print(f"hello {name}")
-    
+
 hello_name("Alice")
 hello_name("Bob")
 hello_name("Charlie")
@@ -148,8 +148,8 @@ hello_name("Charlie")
   qui sont passés à la fonction dans le même ordre  
   (en fait c'est bcp + compliqué que ça mais pour l'instant...)
 * un paramètre c'est en fait une **variable**  
-  qui est **visible** dans tout le corps de la fonction  
-* donc la chaine `"Alice"` est **passée en paramètre** à `hello_name` 
+  qui est **visible** dans tout le corps de la fonction
+* donc la chaine `"Alice"` est **passée en paramètre** à `hello_name`
   qui "voit" cette chaine au travers de la variable `name`
 * de cette façon on peut **réutiliser**: refaire plusieurs fois le même traitement,
   sur des valeurs différentes, sans avoir à répéter le code
@@ -167,7 +167,7 @@ continuons à factoriser, on va maintenant écrire ceci qui fait toujours la mê
 ```python
 def hello_name(name):
     print(f"hello {name}")
-    
+
 for name in ["Alice", "Bob", "Charlie"]:
     hello_name(name)
 ```
@@ -178,8 +178,9 @@ for name in ["Alice", "Bob", "Charlie"]:
 
 * en Python on peut fabriquer des **listes** (entre `[]`)
 * une liste peut contenir autant de valeurs qu'on veut, des types qu'on veut (même pas besoin que ce soit homogène)
-* on peut **itérer** sur une liste en faisant simplement  
-  ```
+* on peut **itérer** sur une liste en faisant simplement
+
+  ```python
   for item in une_liste:
      du code
      qui travaille sur item
@@ -200,36 +201,42 @@ for name in ["Alice", "Bob", "Charlie"]:
 
 ## on coupe en deux fichiers
 
-### naívement
+### naïvement
 
 maintenant on décide que la fonction `hello_name` est tellement intéressante qu'elle pourrait être utile à d'autres projets ou applications; si on la laisse dans ce morceau de programme, on ne pourra pas s'en reservir ailleurs, du coup on coupe notre code en deux
 
 * dans le fichier `separate.py` je mets le corps de la fonction
+
   ```python
   def hello_name(name):
       print(f"hello {name}")
   ```
-* du coup dans `hello.py` il ne me reste plus que 
+
+* du coup dans `hello.py` il ne me reste plus que
+
   ```python
   for name in ["Alice", "Bob", "Charlie"]:
       hello_name(name)
   ```
-  
+
 question:
+
 * si j'essaie de faire tourner le programme `hello.py` comme ça, à votre avis il va se passer quoi ?
 
 +++
 
 ### la bonne façon: avec `import`
 
-eh oui vous avez trouvé, ce code-là ne fonctionne pas, car Python ne "voit" que `hello.py` et il ne sait pas ce que signifie `hello_name`; il ne va quand même regarder dans tous les fichiers `.py` de l'ordinateur pour trouver la définition de cette fonction
+eh oui vous avez trouvé, ce code-là ne fonctionne pas, car Python ne "voit" que `hello.py` et il ne sait pas ce que signifie `hello_name`
+
+il ne va quand même pas regarder dans tous les fichiers `.py` de l'ordinateur pour trouver la définition de cette fonction !
 
 du coup il faut l'aider un peu, et pour ça nous avons l'instruction `import`
 
 modifions `hello.py` pour y mettre
 
 ```python
-# rappel, on a mis le code de hello_name 
+# rappel, on a mis le code de hello_name
 # dans le fichier separate.py
 import separate
 
@@ -244,7 +251,7 @@ et cette foi ça fonctionne
 ### que retenir ?
 
 * il y a des fonctions prédéfinies (comme `print`)
-* on peut aussi utiliser des fonctions qui sont écrites dans d'autres fichiers, il faut alors les **importer** 
+* on peut aussi utiliser des fonctions qui sont écrites dans d'autres fichiers, il faut alors les **importer**
   * en indiquant dans quel fichier (on parle de module) elles se trouvent
 * lorsqu'on écrit `import separate` cela a pour effet de définir une variable `separate`
   * ensuite on peut aller "piocher" dans le module en faisant `separate.hello_name`
@@ -273,10 +280,10 @@ que pensez-vous que va faire maintenant notre programme ?
 ### que retenir ?
 
 * avec `import` on peut importer du code venant d'un fichier dans le dossier courant
-* **ou aussi** un module qui n'est pas à moi 
+* **ou aussi** un module qui n'est pas à moi
   * ici le module `math` fait partie de la *librairie standard* (il "vient avec" Python)
   * mais ce serait pareil avec du code installé depuis Internet
-* remarquez aussi (pour les geeks) qu'on peut passer à `hello_name` 
+* remarquez aussi (pour les geeks) qu'on peut passer à `hello_name`
   un peu ce qu'on veut (une chaine, un nombre...)
 
 +++
@@ -291,7 +298,7 @@ on change complètement de paradigme et maintenant on écrit ceci
 # dans separate.py
 
 class Person:
-    
+
     def __init__(self, name):
         self.name = name
     def hello(self):
@@ -319,16 +326,16 @@ for name in ["Alice", "Bob", "Charlie"]:
   lorsqu'on appelle `Person(name)` en fait on appelle `__init__(self, name)`  (le constructeur)
 * sur lesquels on peut ensuite appeler une méthode `hello()`
 
-* l'intérêt étant que l'instance `person` a capturé le nom, on n'a plus besoin de le repasser à `hello()`  
+* l'intérêt étant que l'instance `person` a capturé le nom, on n'a plus besoin de le repasser à `hello()`
 
 +++
 
 ## une classe un peu plus riche
 
 dans l'exemple précédent, on a utilisé une classe pour ranger une donnée (le nom)  
-du coup l'intérêt n'est peut-être pas très manifeste  
+du coup l'intérêt n'est peut-être pas très manifeste
 
-mais on peut aussi bien sûr utiliser cela pour "grouper" plusieurs données qui "vont ensemble"  
+mais on peut aussi bien sûr utiliser cela pour "grouper" plusieurs données qui "vont ensemble"
 
 ```python
 # dans separate.py
@@ -339,7 +346,7 @@ class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-        
+
     def hello(self):
        print(f"Hello {self.name}, tu as {self.age} ans")
 ```
@@ -355,8 +362,8 @@ persons.append(Person("Charlie", 20))
 
 for person in persons:
     person.hello()
-    
-# et ensuite si on voulait par exemple calculer 
+
+# et ensuite si on voulait par exemple calculer
 # la moyenne d'âge de cette micro-classe
 
 total = 0
@@ -394,11 +401,13 @@ on a aussi vu des exemples de
   * des listes de chaines
   * des listes mélangées (chaines et nombres); les listes en Python peuvent être complètement hétérogènes
   * des objets
-  * dans tous les cas on a écrit nos boucles comme faisant  
-    ```
+  * dans tous les cas on a écrit nos boucles comme faisant
+
+    ```python
     for item in iterable:
        bla
        bla
     ```
+
     et c'est comme ça comme fait la plupart du temps  
     (plutôt que d'itérer sur un index qui ensuite sert à aller chercher dans la liste)

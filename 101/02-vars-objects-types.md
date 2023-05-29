@@ -40,21 +40,23 @@ ce qu'on a pu remarquer d'après le notebook précédent
 
 en fait ce qui se passe avec Python c'est que
 
-* le simple fait d'affecter une variable, si elle est inconnue à cet endroit-là, constitue une déclaration  
-* à partir de là, la variable est connue dans toute la fonction - ou tout le module si elle est définie au *toplevel* du module
+* le simple fait d'affecter une variable, si elle est inconnue à cet endroit-là, constitue une déclaration
+* la variable est alors connue dans toute la fonction - ou tout le module si elle est définie au *toplevel* du module
 
 +++
 
 ## variables non typées
 
 * les **variables** ne sont **pas typées**; on peut parfaitement écrire par exemple
+
   ```python
   a = "100"  # à ce stade a désigne une chaine
   a = int(a) # maintenant a désigne un entier !
   ```
 
 * bien sûr ce **n'est pas** forcément une pratique **recommandée**, mais c'est tout à fait possible en Python  
-  en tous cas c'est un exemple pédagogique pour les gens habitués aux **langages compilés**; il faut retenir que **les variables ne sont pas typées**
+  en tous cas c'est un exemple pédagogique pour les gens habitués aux **langages compilés**:  
+  il faut retenir que **les variables ne sont pas typées**
 
 +++
 
@@ -69,9 +71,6 @@ en fait ce qui se passe avec Python c'est que
 
 ```{code-cell} ipython3
 # illustration
-# je tape ça dans mon notebook
-# ceux qui veulent utiliser leur installation locale peuvent faire
-# ça dans ipython
 
 a = 10
 type(a)
@@ -103,6 +102,8 @@ type(Person)
 ```
 
 ```{code-cell} ipython3
+:tags: [level_advanced]
+
 # (très) avancé: à un moment ça s'arrête bien sûr
 type(type) is type
 ```
@@ -119,23 +120,25 @@ type(type) is type
 
 le type `int` n'est **pas mutable** (immutable donc)  
 qu'est-ce que ça signifie ?  
-une foix l'objet créé, on ne **peut plus le modifier**
+une fois l'objet créé, on ne **peut plus le modifier**
 
 ```{code-cell} ipython3
 %%ipythontutor heapPrimitives=true
 
 a = b = 1
-
 a += 1
+# le même objet ?
+print(a is b)
 ```
 
 que se passe-t-il sur cet exemple ?
 
 * on crée un entier '1', et les deux variables le désignent  
   on dit aussi:
-  * `a` "pointe vers" l'objet 1, ou encore 
+  * `a` "pointe vers" l'objet 1, ou encore
   * `a` référence l'objet 1
-* si je change a, en fait je ne **peux pas changer** l'objet 1, car il se trouve que les entiers ne sont **pas mutables**
+* si je change `a`, en fait je ne **peux pas changer** l'objet 1  
+  car il se trouve que les entiers ne sont **pas mutables**
 * du coup, Python va créer un **autre objet** 2  
   et `a` va désigner ce nouvel objet  
   alors que `b` continue de désigner l'objet initial 1
@@ -146,7 +149,7 @@ que se passe-t-il sur cet exemple ?
 
 +++
 
-le type `list` par contre est mutable; ça veut dire, on peut par exemple ajouter une entrée à la fin d'une liste avec la méthode `append`
+le type `list` par contre est mutable; ça veut dire que, par exemple, on peut ajouter une entrée à la fin d'une liste avec la méthode `append`
 
 du coup on peut faire ceci
 
@@ -154,10 +157,27 @@ du coup on peut faire ceci
 %%ipythontutor heapPrimitives=true
 
 a = b = [1]
-
 a.append(2)
-
 print(b)
+print(a is b)
+```
+
++++ {"tags": ["level_intermediate"]}
+
+intermédiaire: remarquez qu'on n'est pas obligé de faire comme ça, dans la version ci-dessous `a` est bien allongée, mais on ne modifie pas `b`
+
+```{code-cell} ipython3
+:tags: [level_intermediate]
+
+%%ipythontutor heapPrimitives=true height=380
+
+# remarquez la différence
+# avec l'exemple précédent
+
+a = b = [1]
+a = a + [2]
+print(b)
+print(a is b)
 ```
 
 ## les *type hints*
@@ -178,9 +198,9 @@ print(b)
 #     ↓↓↓↓↓↓↓↓↓↓↓
 names : list[str] = ["Alice", "Bob", "Charlie"]
 
-# et ici           ↓↓↓↓↓  ↓↓↓↓↓↓↓  
+# et ici           ↓↓↓↓↓  ↓↓↓↓↓↓↓
 def hello_name(name: str) -> None:
-    print(f"hello {name}")    
+    print(f"hello {name}")
 ```
 
 ```{code-cell} ipython3

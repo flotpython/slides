@@ -38,7 +38,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown]
-# # Python 
+# # Python
 #
 # ##### *Des fondamentaux à l'utilisation du langage*
 
@@ -57,9 +57,9 @@ HTML(filename="_static/style.html")
 #   * https://nbhosting.inria.fr/
 # * contenu de ce cours en version HTML statique
 #   * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
-# * les sources des notebooks : 
-#   * https://github.com/flotpython/slides  
-#   
+# * les sources des notebooks :
+#   * https://github.com/flotpython/slides
+#
 # * exercices autocorrigés
 #   * https://nbhosting.inria.fr/auditor/notebook/exos-mooc
 #
@@ -108,7 +108,7 @@ HTML(filename="_static/style.html")
 #
 #   * pour évaluer la cellule courante (le dernier résultat s'affiche)
 #   * et passer à la cellule suivante
-#   
+#
 
 # %% {"cell_style": "split"}
 10 * 30

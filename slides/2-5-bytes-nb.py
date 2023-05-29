@@ -42,8 +42,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # * le type `bytes` correspond, comme son nom l'indique,  
 #   à une séquence d'**octets**
-#
-# * le type `bytes` est donc un autre exemple de **séquence** (comme `str`) 
+# * le type `bytes` est donc un autre exemple de **séquence** (comme `str`)
 # * c'est également un type **non mutable**
 
 # %% cell_style="split"
@@ -51,7 +50,7 @@ b = bytes([65, 66, 67])
 b
 
 # %% cell_style="split"
-try: 
+try:
     b[1] = 68
 except Exception as exc:
     print(f"OOPS - {type(exc)}\n{exc}")
@@ -68,19 +67,19 @@ except Exception as exc:
 
 # %% cell_style="split"
 # caractère -> code ASCII
-b = b'ABC'
+b = b'AB\n'
 b
 
 # %% cell_style="split" slideshow={"slide_type": ""}
 
 # sinon en hexa
-b'\x45\xff'
+b'\x41\x42\x0a'
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### affichage comme des caractères
 
 # %% [markdown]
-# * comme on le voit dans `b'ABC'` , les octets d'un `bytes`  
+# * comme on le voit dans `b'AB\n'` , les octets d'un `bytes`  
 #   sont parfois **représentés par des caractères ASCII**
 #
 # * c'est un usage répandu
@@ -98,7 +97,7 @@ b2 = bytes(
 b1 == b2
 
 # %% [markdown]
-# * par exemple ceci ne **marcherait pas**
+# * car par exemple ceci ne **marcherait pas**
 # ```
 # >>> b'été'
 #          ^
@@ -141,7 +140,7 @@ set(dir(bytes)) - set(dir(str))
 
 # %% [markdown]
 # * choisir entre `str` et `bytes`
-# * quand et comment convertir 
+# * quand et comment convertir
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le problème
@@ -186,7 +185,7 @@ set(dir(bytes)) - set(dir(str))
 # * et plus récemment, Unicode et notamment UTF-8
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### de multiples encodages 
+# #### de multiples encodages
 #
 # aujourd'hui en 2020
 #
@@ -198,7 +197,7 @@ set(dir(bytes)) - set(dir(str))
 # ## Unicode
 
 # %% [markdown]
-# * ***une*** liste des caractères 
+# * ***une*** liste des caractères
 #   * avec **chacun un *codepoint*** - un nombre entier unique
 #   * de l'ordre de 137.000 + en Juin 2018 (*and counting*)
 #   * limite théorique 1,114,112 caractères
@@ -220,7 +219,7 @@ set(dir(bytes)) - set(dir(str))
 # %% [markdown]
 # * le nombre d'octets utilisé pour encoder un caractère dépend
 #   * du caractère et de l'encodage
-#   * texte ASCII : identique en UTF-8    
+#   * texte ASCII : identique en UTF-8
 #   * en particulier, ne prennent qu'un octet
 
 # %% [markdown] slideshow={"slide_type": ""}
@@ -251,8 +250,8 @@ text = 'été\n'
 type(text)
 
 # %% cell_style="split"
-# on compte les 
-# caractères 
+# on compte les
+# caractères
 
 len(text)
 
@@ -337,7 +336,7 @@ reçu
 # ### mais le plus souvent ça marche !
 
 # %% [markdown]
-# * lorsqu’on travaille toujours sur la même machine, 
+# * lorsqu’on travaille toujours sur la même machine,
 #   * si toutes les applications utilisent l'encodage de l'OS
 #   * tout le monde parle le même encodage
 # * le problème se corse
@@ -403,7 +402,7 @@ sys.stdin.encoding
 
 # %% cell_style="split"
 # et dans l'autre sens
-# 
+#
 sys.stdout.encoding
 
 # %% cell_style="split"
@@ -513,7 +512,6 @@ s.encode('ascii', errors='replace')
 # %% [markdown] slideshow={"slide_type": "slide"}
 # le BOM consiste à ajouter un header pour utf-16 et utf-32  
 # qui crée une inflation artificielle
-#   
 #
 
 # %% cell_style="split"
@@ -522,7 +520,7 @@ s.encode('ascii', errors='replace')
 len("a".encode('utf32'))
 
 # %% cell_style="split"
-# les 4 premiers octets correspondent 
+# les 4 premiers octets correspondent
 # à la constante 'UTF32-LE'
 b = "a".encode('utf32')
 b[:4]
@@ -533,7 +531,7 @@ s1000 = 1000*'x'
 len(s1000.encode('utf32'))
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## petit retour sur le type `str`  
+# ## petit retour sur le type `str`
 
 # %% [markdown] slideshow={"slide_type": ""}
 # ### les chaines littérales
@@ -558,7 +556,7 @@ warn
 '\xe9'
 
 # %% cell_style="split"
-# si plus grand, utiliser \u 
+# si plus grand, utiliser \u
 # pour les codepoints sur 2 octets
 "\u26A0"
 
@@ -580,7 +578,7 @@ print(s)
 print('\x0a')
 
 # %% tags=["raises-exception"]
-# je ne peux pas faire l'économie du 0 
+# je ne peux pas faire l'économie du 0
 try:
     print('\xa') # python n'est pas content
 except:
@@ -611,11 +609,11 @@ for char in buff:
 # ### méthodes sur `bytearray`
 
 # %% cell_style="split"
-# méthode dans bytes 
+# méthode dans bytes
 # mais pas dans bytearray
 set(dir(bytes)) - set(dir(bytearray))
 
 # %% cell_style="split"
-# méthode dans bytearray 
+# méthode dans bytearray
 # mais pas dans bytes
 set(dir(bytearray)) - set(dir(bytes))

@@ -32,6 +32,9 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # # séquences & chaines
 
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ## c'est quoi une séquence ?
+
 # %% [markdown] cell_style="split"
 # * suite finie et ordonnée d'objets
 # * du coup indexable `seq[n]`
@@ -44,6 +47,14 @@ HTML(filename="_static/style.html")
 # * immutable
 #   * `str`, `bytes`, `tuple`, `range`
 
+# %% [markdown]
+# <div class=rise-footnote>
+#
+# nous allons voir pour commencer des choses valables **sur toutes les séquences**,
+# et donc en particulier sur les chaines, puisque les chaines sont des séquences
+#
+# </div>
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## fonctions sur toutes les séquences
 
@@ -52,7 +63,7 @@ HTML(filename="_static/style.html")
 #
 # * `S[i]`
 #   * retourne l’élément d'indice i
-# * `len(S)` 
+# * `len(S)`
 #   * donne la taille en nombre d’éléments
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -63,8 +74,17 @@ HTML(filename="_static/style.html")
 #  * retourne une nouvelle séquence qui est la concaténation de S et T
 # * `S*n` ou `n*S`
 #   * retourne une nouvelle séquence qui est la concaténation de n *shallow* copies de S
-# * `min(S)` (resp. `max(S)`)
-#   * retourne le plus petit (resp. le plus grand) élément de S
+# * `sum(S)` (resp. `min(S)` et `max(S)`)
+#   * retourne la somme des éléments de S (resp. le plus petit, le plus grand)
+
+# %% [markdown] tags=["level_intermediate"]
+# <div class=rise-footnote>
+#
+# en fait les fonctions `sum`, `min` et `max` s'appliquent à n'importe quel itérable  
+# toutes les séquences sont des itérables, mais tous les itérables ne sont pas des séquences  
+# la famille des itérables est donc plus large que les séquences
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### appartenance, recherches
@@ -77,21 +97,34 @@ HTML(filename="_static/style.html")
 #  * `True` si S contient x  
 #    (e.g. S est une `str`)
 #
-# * `S.index(a)`
-#   * retourne l’indice de la première occurrence de a dans S
-# * `S.count(a)`
-#   * retourne le nombre d’occurrences de a dans S
+# * diverses méthodes (voir docs):
+#   * `S.count(a)`
+#     * retourne le nombre d’occurrences de a dans S
+#   * `S.index(a)`, `S.find(a)`  
+#     retourne l’indice de la première occurrence de a dans S
+#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## slicing
 
 # %% [markdown]
-# * `S[i:j]` retourne 
+# * `S[i:j]` retourne
 #   * une nouvelle séquence de même type
 #   * contenant tous les éléments de l’indice i à l’indice j-1
 # * `S[i:j:k]` retourne
 #   * une nouvelle séquence de même type
-#   * prenant tous les éléments de l’indice i à l’indice j-1, par sauts de k éléments
+#   * prenant tous les éléments de l’indice i à l’indice j-1,
+#   * par sauts de k éléments
+# * les indices `i`, `j` et `k` peuvent être négatifs
+#
+# voyons des exemples de tout ceci
+
+# %% [markdown]
+# <div class=rise-footnote>
+#
+# la notion de slicing est **très massivement utilisée** dans les outils numériques, notamment en `numpy`
+#
+# </div>
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # ![](media/egg-bacon.svg)
@@ -99,15 +132,16 @@ HTML(filename="_static/style.html")
 # %% [markdown] cell_style="split"
 # **slicing**
 #
-# * on peut compter du début ou de la fin
 # * on peut omettre les bornes
+# * on peut compter depuis la fin  
+#   avec un indice négatif
 
 # %% cell_style="split"
 s = "egg, bacon"
 s[0:3]
 
 # %% cell_style="split"
-# si on omet une borne 
+# si on omet une borne
 # ce sera le début ..
 s[:3]
 
@@ -231,14 +265,14 @@ s[::-1]
 # * deux cas particuliers de **séquences**
 #   * `str` pour manipuler **du texte**
 #   * `bytes` pour manipuler **de la donnée brute**
-#   
+#
 # * **ATTENTION**
 #   * un caractère ce **n'est pas** un octet
 
 # %% [markdown]
 # <div class="rise-footnote">
 #
-# avec l'encodage le plus répandu aujourd'hui (UTF-8), tous les caractères ASCII tiennent sur un octet   
+# avec l'encodage le plus répandu aujourd'hui (UTF-8), tous les caractères ASCII tiennent sur un octet  
 # mais **ce sont les seuls**: un `é` par exemple occupe 2 octets; un `‰` occupe 3 octets; un `🚀` occupe 4 octets
 #
 # </div>
@@ -253,7 +287,7 @@ s[::-1]
 
 # %% cell_style="split"
 # une chaine entre double quotes
-# pas de souci pour les accents 
+# pas de souci pour les accents
 print("c'est l'été")
 
 # %% cell_style="split"
@@ -267,9 +301,11 @@ print('on se dit "pourquoi pas"')
 # * pour écrire une chaîne sur plusieurs lignes on utilise `"""` ou `'''`
 
 # %% cell_style="center"
-print("""et pour entrer plusieurs 
-lignes avec des " et/ou des ' 
-c'est facile""")
+# bien sûr ici vous pouvez remplacer les """ par '''
+
+print("""et pour entrer plusieurs lignes,
+ou bien des chaines avec des " et des '
+c'est facile aussi""")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaînes de caractères accolées
@@ -288,16 +324,20 @@ s = ("une chaine trop longue"
 print(s)
 
 # %% [markdown]
-# dans ce deuxième exemple, notez les parenthèses (sinon c'est une erreur de syntaxe)
+# <div class=rise-footnote>
+#
+# notez bien les parenthèses dans ce deuxième exemple, car sinon c'est une erreur de syntaxe
+#
+# </div>
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### échappements dans les chaines
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # * on écrit un retour chariot avec un `\n`
 # * autres caractères utilisant un backslash
 #   * `\\`  `\'` `\"` `\t`
-#   * `\x` `\u` `\U` 
+#   * `\x` `\u` `\U`
 #   …
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -308,17 +348,17 @@ s = "l'hôtel"
 print(s)
 
 # %% cell_style="split"
-# 
+#
 s = 'une "bonne" idée'
 print(s)
 
 # %% cell_style="split"
 s = """une très longue phrase
-avec saut de ligne"""
+avec un saut de ligne"""
 print(s)
 
 # %% cell_style="split"
-s = '  un backslash \\ un quote \' ' 
+s = '  un backslash \\ un quote \' '
 print(s)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -349,11 +389,12 @@ print(s)
 # #### *raw-strings* (suite)
 
 # %% [markdown]
-# * la bonne solution : "raw string" 
+# * la bonne solution : "raw string"
 # * chaîne de caractères dans laquelle les backslash ne sont *pas interprétés*
 
 # %%
 # pour créer une raw-string, simplement faire précéder le string d'un 'r'
+
 s = r'C:\Temp\test1.bin'
 print(s)
 
@@ -376,7 +417,7 @@ print(s)
 def double(n):
     """
     Returns the double of its input parameter
-    
+
     The help message usually spans several lines
     """
     return 2*n
@@ -388,7 +429,9 @@ help(double)
 # %% [markdown]
 # <div class="rise-footnote">
 #
-# il faut que la chaine littérale soit la première instruction dans le code de la fonction
+# on peut attacher une docstring à une fonction, une classe, ou un module
+#
+# il faut que la chaine littérale soit **la première instruction** dans le code de la fonction (ou classe ou module)
 #
 # </div>
 
@@ -410,6 +453,7 @@ s1 + s2
 'abcdefbob'
 
 # %% cell_style="split"
+# slicing
 s1[-1::-2]
 
 # %% cell_style="split"
@@ -422,12 +466,11 @@ s1[-1::-2]
 s1
 
 # %% cell_style="split"
-'x' in s1
-
-# %% cell_style="split"
+# est-ce une sous-chaine ?
 'cdé' in s1
 
 # %% cell_style="split"
+# à quelle position ?
 s1.index('cdé')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -437,10 +480,10 @@ s1.index('cdé')
 # * par contre **ATTENTION** un `str` n'est **pas mutable**
 
 # %%
-try: 
+try:
     s1[2] = 'x'
 except TypeError as e:
-    print("OOPS", e, type(e))    
+    print("OOPS", e, type(e))
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## formatage des chaînes : f-strings
@@ -451,7 +494,7 @@ except TypeError as e:
 # * qui évitent les répétitions fastidieuses
 
 # %% [markdown] cell_style="split"
-# * entre `{` et `}` : **du code** 
+# * entre `{` et `}` : **du code**
 # * embarqué directement dans le format
 # * n'importe quelle **expression**
 
@@ -536,25 +579,25 @@ f"|{nom:<12}|{nom:^12}|{nom:>12}|"
 num = 123
 f"|{num:<12}|{num:-^12}|{num:0>12}|"
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### expression dans le format
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
 # * même le format peut, à son tour, contenir des expressions
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_intermediate"]
 from decimal import Decimal
 value = Decimal('12.34567')
 
-# %% cell_style="split"
-# ici la précision de 4 
+# %% cell_style="split" tags=["level_intermediate"]
+# ici la précision de 4
 # signifie 4 chiffres
 # significatifs en tout
 
 f"value = >{value:10.4}<"
 
-# %% cell_style="split"
-# la précision aurait pu être 
+# %% cell_style="split" tags=["level_intermediate"]
+# la précision aurait pu être
 # un paramètre
 
 width = 10
@@ -608,21 +651,21 @@ d = 3
 "%(food)s is %(adjective)s" % {'food' : 'bacon',
                                'adjective' : 'delicious' }
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # * on peut être parfois tenté d’utiliser la concaténation `+`
 
-# %%
-'abc' + 'def' 
+# %% tags=["level_intermediate"]
+'abc' + 'def'
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # * par contre **attention**, on ne peut concaténer que des `str`, il faut convertir explicitement avec `str()`
 
-# %%
+# %% tags=["level_intermediate"]
 age = 35
 try: 'alice a ' + age + ' ans'
 except Exception as e: print ("OOPS", e)
 
-# %%
+# %% tags=["level_intermediate"]
 'alice a ' + str(age) + ' ans'
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
@@ -642,6 +685,14 @@ dirty
 # %%
 # c'est la méthode la plus simple pour nettoyer
 dirty.strip()
+
+# %% [markdown]
+# <div class=rise-footnote>
+#
+# lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
+# d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `split()` et `join()`
@@ -694,41 +745,47 @@ s[12]
 # * google les simples mots clés 'python str', vous trouvez
 # * <https://docs.python.org/3/library/stdtypes.html>
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ## un peu d'introspection (avancé)
 
-# %% [markdown] tags=["level_intermediate"]
+# %% [markdown] tags=["level_advanced"]
 # disons qu'on voudrait savoir combien de méthodes sont disponibles sur les chaines.
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% cell_style="split" tags=["level_advanced"]
 type("abc")
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% cell_style="split" tags=["level_advanced"]
 str
 
-# %% tags=["level_intermediate"]
-# 'str' est une variable prédéfinie, qui référence 
+# %% tags=["level_advanced"]
+# 'str' est une variable prédéfinie, qui référence
 # le type (la classe) de toutes les chaines
 type("abc") is str
 
-# %% tags=["level_intermediate"]
+# %% tags=["level_advanced"]
 # du coup son type, c'est .. le type <type>
 type(str)
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### un peu d'introspection...
 
-# %% tags=["level_intermediate"]
+# %% tags=["level_advanced"]
 # peu importe... quoi qu'il en soit, dir(str) retourne la liste
-# des noms de méthodes connues sur cette classe; 
+# des noms de méthodes connues sur cette classe;
 # regardons par exemple les premiers et les derniers
 dir(str)[:2], dir(str)[-2:]
 
-# %% tags=["level_intermediate"]
+# %% tags=["level_advanced"] cell_style="split"
 # avec len() je peux savoir combien il y en a
 len(dir(str))
 
-# %% tags=["level_intermediate"]
+# %% tags=["level_advanced"] cell_style="split"
 # mais en fait, pour un décompte significatif
 # on enlève celles dont le nom contient `__`
-len([method for method in dir(str) if '__' not in method])
+methods = [method for method in dir(str)
+           if '__' not in method]
+len(methods)
+
+# %% tags=["level_advanced"]
+# est-ce que les chaines ont une méthode 'split' ?
+'split' in methods

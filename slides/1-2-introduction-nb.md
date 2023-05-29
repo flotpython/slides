@@ -30,14 +30,14 @@ rise:
 
 +++
 
-# généralités 
+# généralités
 
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
 
 +++ {"cell_style": "center"}
 
-> version de référence: python-3.9
+> version de référence: python-3.10
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -58,8 +58,8 @@ rise:
 <div class="rise-footnote">
 
 `pip install mylibrary` est la façon standard d'installer une librairie externe  
- `python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
-    
+`python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
+
 </div>
 
 +++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
@@ -73,11 +73,9 @@ rise:
 
 +++ {"cell_style": "center"}
 
+* **Jupyter notebook**
 * IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
   atom, eclipse, ... bcp de variantes)
-* Jupyter notebook
-* IDLE (fourni avec distribution standard): basique voire rustique,  
-mais suffisant pour nos besoins
 
 +++ {"cell_style": "split"}
 
@@ -87,7 +85,7 @@ faites un premier test:
 ```{code-cell} ipython3
 :cell_style: split
 
-200 * 300
+100 * 100
 ```
 
 **important**: savoir interrompre/redémarrer son interpréteur
@@ -106,6 +104,7 @@ faites un premier test:
 * portable
   * Windows, Linux, Mac OS, etc.
 * typage dynamique
+  * pas de perte de temps à l'écriture des programmes
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -127,6 +126,20 @@ factorielle(0)
 factorielle(8)
 ```
 
+<div class="rise-footnote">
+
+bien sûr on peut aussi écrire de façon plus bavarde si on préfère, comme par ex.
+
+```python
+def factorielle(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factorielle(n-1)
+```
+
+</div>
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### pourquoi Python ? : puissant
@@ -134,12 +147,13 @@ factorielle(8)
 +++
 
 * types disponibles très puissants et flexibles
-  * entiers non bornés, complexes
-  * listes, strings
-  * tables de hash pour dictionnaires et ensembles 
-  * langage orienté objet : définir ses propres types
-* énorme base de librairies 
+  * entiers non bornés, nombres complexes
+  * listes, strings Unicode
+  * tables de hash: dictionnaires et ensembles
+  * langage orienté objet: définir ses propres types
+* énorme base de librairies
   * et s’interface facilement avec C et C++
+  * et donc du code **efficace**
 * gestion de la mémoire automatique
   * GC
 
@@ -150,14 +164,12 @@ factorielle(8)
 +++
 
 * langage interprété
+* script direct en ligne de commande
+* REPL: usage interactif (ipython / notebook)
 * pré-compilation en byte-code des programmes (.pyc)
-  * portable
-  * jamais à s'en soucier
-  * interprété dans la Python Virtual Machine (PVM)
+  * totalement transparent
   * mais pas optimisé comme du code machine  
     compilé à partir de C
-
-* script direct en ligne de commande
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -206,7 +218,7 @@ import this
   * tout est objet ➔ surcoût partout
   * exemples sur une machine 64 bits
 
-|      objet     |   octets  | natif C |  
+|      objet     |   octets  | natif C |
 |----------------|-----------|---------|
 | petit entier   | 28 octets |8 octets|
 | chaine 'a'     | 50 octets |1 octet|
@@ -232,42 +244,52 @@ import this
 
 ### comment tester la performance ?
 
-+++
+```{code-cell} ipython3
+---
+slideshow:
+  slide_type: ''
+---
+%%timeit
 
-* taille
-  * `sys.getsizeof(object)`
+# on construit la liste des premiers carrés
+[x**2 for x in range(10000)]
+```
 
-* vitesse
-  * `cProfile.run('maFonction()')`
-  * `timeit.timeit(stmt='maFonction()', number=10000)`
+<div class=rise-footnote>
+
+cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython, disponible du coup dans `ipython` et les notebooks
+
+</div>
+
++++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
+
+### comment tester la place mémoire ?
 
 ```{code-cell} ipython3
 ---
 cell_style: split
 slideshow:
-  slide_type: slide
+  slide_type: ''
+tags: [level_intermediate]
 ---
+# retourne le nombre d'octets
+# utilisés pour stoker un objet
+
 import sys
 sys.getsizeof([10])
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [level_intermediate]
 
 sys.getsizeof([10, 20])
 ```
 
 ```{code-cell} ipython3
-sys.getsizeof([10, 20, 30])
-```
+:tags: [level_intermediate]
 
-```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
-%%timeit
-[x**2 for x in range(10000)]
+sys.getsizeof([10, 20, 30])
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -276,56 +298,67 @@ slideshow:
 
 +++
 
-* version 3.x (actuellement disons 3.9)
-  * **toutes** les librairies usuelles supportent 3.x
-  * **recommandé** pour un nouveau projet
-  * compatible ascendant à partir de 3.0
-  
+* version 3.x
+  * conseil: ne pas utiliser un trait spécifique à la toute dernière version pour du code à large diffusion
+  * minimum recommandé 3.8
+
 * ~~version 2.7~~
   * **surtout ne pas utiliser !**
   * en fin de vie - supporté jusque 1er janvier 2020
+  * de moins en moins problématique (mais attention sur MacOS)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## documentation
 
++++
+
+personnellement, pour un accès rapide à la documentation, je fais très facilement une recherche google genre
+
+> python module datetime
+
++++
+
+<div class=rise-footnote>
+
+que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python+module+datetime>
+
+</div>
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### in english
+### fourni avec Python
 
-* Python tutorial, https://docs.python.org/3/tutorial/
+* site officielle de la doc Python
+  * <https://docs.python.org/>
+  * aussi en français ici <https://docs.python.org/fr/3/>
+  * très riche: du tutoriel à la description du langage
+* contient notamment le Python tutorial
+  * <https://docs.python.org/3/tutorial/>
   * initialement Guido van Rossum
   * niveau débutant à moyen
-  * fourni avec Python (donc gratuit)
-* Python Manuals
-  * google -> `python manuals`
-  * google -> `python argparse`
-  * (https://www.google.com/search?q=python+argparse)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### en français
+### des cours
 
 * [MOOC Python : des fondamentaux à l'utilisation du langage](https://www.fun-mooc.fr/fr/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/)
   * A. Legout et T. Parmentelat
+* [MOOC : apprendre à coder en Python](https://www.fun-mooc.fr/en/cours/apprendre-a-coder-avec-python/)
+  un peu plus simple
 * http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
+* et sans doute des dizaines d'autres
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-* documentation officielle Python
-  * très riche: du tutoriel à la description du langage
-  * http://docs.python.org/3/	
-* FAQ Python
-  * https://docs.python.org/3/faq/
-* stackoverflow (SO)
-  * https://stackoverflow.com/questions/tagged/python-3.x
+### et aussi
+
+* l'incontournable stackoverflow (SO)
+  * <https://stackoverflow.com/questions/tagged/python+python-3.x>
   * on peut directement chercher sur Google
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-* pour ceux qui aiment les *cheat sheet*
-
-  <https://perso.limsi.fr/pointal/python:memento>
+* enfin pour ceux qui aiment les *cheat sheet*
+  * <https://perso.limsi.fr/pointal/python:memento>
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -395,28 +428,10 @@ math.factorial?
 
 +++
 
-avec un double `??` on peut avoir accès au code source
-
-```{code-cell} ipython3
-# bien sûr il faut avoir **évalué** l'import
-from argparse import ArgumentParser
-```
-
-```{code-cell} ipython3
-# avant de pouvoir instrospecter l'objet ArgumentParser
-ArgumentParser??
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### aide IPython (et notebooks) (3)
-
-+++
-
 utiliser `TAB` pour la complétion
 
 ```{code-cell} ipython3
-# ditto, il faut avoir chargé le module 
+# ditto, il faut avoir chargé le module
 # **avant** de pouvoir utiliser la complétion
 from sklearn import tree
 ```
@@ -425,4 +440,26 @@ utiliser le clavier pour sélectionner
 
 ```{code-cell} ipython3
 # tree.<taper TAB>
+```
+
++++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
+
+### aide IPython (et notebooks) (3)
+
++++ {"tags": ["level_intermediate"]}
+
+avec un double `??` on peut avoir accès au code source
+
+```{code-cell} ipython3
+:tags: [level_intermediate]
+
+# bien sûr il faut avoir **évalué** l'import
+from argparse import ArgumentParser
+```
+
+```{code-cell} ipython3
+:tags: [level_intermediate]
+
+# avant de pouvoir instrospecter l'objet ArgumentParser
+ArgumentParser??
 ```

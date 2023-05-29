@@ -38,7 +38,7 @@ HTML(filename="_static/style.html")
 #
 # * pour la lecture en pratique on utilise parfois des librairies  
 #   e.g. pour lire du JSON ou du XML, ou des formats spécialisés
-#   
+#
 # * toutefois il est bon de savoir utiliser les outils de bas niveau  
 #   (enfin, aussi bas niveau que ce qu'offre Python…)
 
@@ -52,7 +52,7 @@ HTML(filename="_static/style.html")
 #   * `'r'` ouvre le fichier en lecture (défaut),
 #   * `‘w’` en écriture,
 #   * `‘a’` en écriture à la suite (*append*),
-# * `open()` retourne un objet de type fichier  
+# * `open()` retourne un objet de type fichier
 # * qu'il faut **bien penser à refermer**  
 #   sans quoi on provoque des fuites de *file descriptors*, et au bout  
 #   d'un moment l'OS ne nous laisse plus ouvrir de fichiers du tout
@@ -61,8 +61,8 @@ HTML(filename="_static/style.html")
 # ### utilisez toujours un `with`
 
 # %% [markdown]
-# * c'est pourquoi il est **recommandé** 
-# * de prendre l'habitude de **toujours utiliser un context manager** 
+# * c'est pourquoi il est **recommandé**
+# * de prendre l'habitude de **toujours utiliser un context manager**
 
 # %%
 # on n'a pas encore étudié l'instruction with
@@ -85,7 +85,7 @@ for i in 10, 20, 30:
 writer.close()
 
 # %% [markdown]
-# avantage du `with`: 
+# avantage du `with`:
 #
 # * pas besoin de fermer
 # * même en cas de gros souci (exception)
@@ -95,11 +95,11 @@ writer.close()
 
 # %% [markdown]
 # * l'objet fichier est un **itérable** lui-même
-# * donc on peut l'utiliser dans un `for` 
+# * donc on peut l'utiliser dans un `for`
 
 # %% slideshow={"slide_type": ""}
 # pour inspecter ce qu'on vient d'écrire
-# dans le fichier qui s'appelle "temporaire.txt" 
+# dans le fichier qui s'appelle "temporaire.txt"
 # dans le répertoire courant
 
 # lire un fichier texte ligne par ligne
@@ -124,7 +124,7 @@ with open("temporaire.txt") as reader:
 # * (on en reparlera au sujet des itérations)
 
 # %%
-# ne défigurez pas votre code juste pour 
+# ne défigurez pas votre code juste pour
 # avoir un indice de boucle, utilisez enumerate
 
 with open('temporaire.txt') as reader:
@@ -137,12 +137,12 @@ with open('temporaire.txt') as reader:
 # %% [markdown]
 # * `F.readlines()`
 #   * retourne un itérateur sur les lignes
-#   * équivalent à itérer sur F directement 
+#   * équivalent à itérer sur F directement
 #   * mais moins performant (charge tout le fichier !)
 #   * et moins pythonique
 
 # %%
-# fonctionne, mais à éviter 
+# fonctionne, mais à éviter
 
 with open('temporaire.txt', 'r') as in_file:
     for line in in_file.readlines():
@@ -166,18 +166,18 @@ with open('temporaire.txt', 'r') as in_file:
 #
 # * `open()` prend en premier paramètre le nom du fichier
 # * en second vient **le mode** d'ouverture
-# * qui est typiquement 
+# * qui est typiquement
 #   * soit absent complètement (ouverture en lecture)
 #   * soit la chaine 'r' (pour *read* bien sûr)
 #   * soit la chaine 'w' (pour *write*)
-#  
-# on peut aussi créer des modes composites (plusieurs caractères), on y reviendra  
+#
+# on peut aussi créer des modes composites (plusieurs caractères), on y reviendra
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur fichiers en écriture
 
 # %% [markdown] slideshow={"slide_type": ""}
-# pour utiliser un fichier ouvert en écriture 
+# pour utiliser un fichier ouvert en écriture
 
 # %% [markdown]
 # * `print("paramètres", "usuels", file=F)`
@@ -185,7 +185,7 @@ with open('temporaire.txt', 'r') as in_file:
 # * `F.write('mon texte\n')`
 #   * écrit (ici une ligne) dans le fichier
 # * `F.writelines(sequence)`
-#   * écrit une séquence dans un fichier, le saut de ligne doit être explicite avec `\n` 
+#   * écrit une séquence dans un fichier, le saut de ligne doit être explicite avec `\n`
 # * `F.flush()`
 #   * force l’écriture dans le fichier en vidant le cache
 #
@@ -213,7 +213,7 @@ with open('temporaire.txt', 'r') as in_file:
 # %% [markdown] slideshow={"slide_type": ""} cell_style="split"
 # ### ajouter `b` dans le mode
 #
-# avec un fichier Python **en mode binaire** 
+# avec un fichier Python **en mode binaire**
 #
 # * en ajoutant `b` au mode d'ouverture,
 # * on obtiendra un objet `bytes`  
@@ -256,9 +256,9 @@ binaire2 == binaire
 # ### un autre exemple
 
 # %% [markdown]
-# dans l'autre sens, si on part d'un fichier texte  
-# qui n'est pas purement ASCII, on obtient des objets  
-# de taille différente selon qu'on lit en binaire ou pas  
+# dans l'autre sens, si on part d'un fichier texte
+# qui n'est pas purement ASCII, on obtient des objets
+# de taille différente selon qu'on lit en binaire ou pas
 # car **un caractère n'est pas un octet**
 
 # %%
@@ -277,7 +277,7 @@ type (y), len(y)
 # %% [markdown] slideshow={"slide_type": ""}
 # ### objectifs
 #
-# * simplifier la gestion des noms de fichier 
+# * simplifier la gestion des noms de fichier
 # * pour rendre le code plus concis
 # * et donc plus lisible
 # * sous-titre: *object-oriented filesystem paths*
@@ -295,17 +295,17 @@ type (y), len(y)
 # * métadonnées  
 #   taille, dates de modification, …
 #
-# * permet d'ouvrir les fichiers  
+# * permet d'ouvrir les fichiers
 # * ne gère pas les urls
 # * voir [documentation complète](https://docs.python.org/3/library/pathlib.html)
-#   
+#
 
 # %% [markdown]
 # <div class="rise-footnote">
 #
-# pour les anciens, remplace les modules `os`, `os.path` et assimilés
-#     
-# </div>    
+# pour les anciens, le module `pathlib` remplace les modules `os`, `os.path` et assimilés
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un exemple
@@ -326,41 +326,39 @@ if config_path.is_dir():
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### les points de départ
 
-# %%
+# %% cell_style="split"
 # un chemin absolu
-prefix = Path("/etc")
+etc = Path("/etc")
+etc
 
+# %% cell_style="split"
 # le chemin absolu du directory courant
 dot = Path.cwd()
+dot
 
+# %% cell_style="split"
 # ou du homedir
 home = Path.home()
-
-# un chemin relatif (dans le dossier courant donc)
-apache2 = Path("apache2")
+home
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### l'opérateur `/`
 
+# %% [markdown]
+# pour "naviguer" dans les dossiers et construire des chemins, on utilise l'opérateur `/`
+
+# %%
+# par exemple pour désigner /etc/apache2 on peut aussi faire
+
+etc / "apache2"
+
 # %% cell_style="split"
-# Path / Path -> Path
-# attention ici apache2 est un Path
-type(prefix / apache2)
+# ou encore: le dossier 'bidule' directement dans mon homedir
+home / "bidule"
 
-# %% slideshow={"slide_type": ""} cell_style="split"
-# Path / str -> Path
-# et ici "apache2" est une chaine
-type(prefix / "apache2")
-
-# %%
-# str / Path -> Path
-type("/etc" / Path("apache2"))
-
-# %%
-# On peut chainer le tout sans parenthèse 
-# si le premier (à gauche) est un Path
-
-prefix / "apache2" / "modules.d"
+# %% slideshow={"slide_type": ""} cell_style="center"
+# le dossier "machin" dans le dossier courant
+dot / "machin"
 
 # %%
 # ATTENTION quand même car bien sûr str / str -> TypeError
@@ -400,7 +398,7 @@ list(globbing.parents)
 # ### *pattern-matching*
 
 # %% cell_style="split" slideshow={"slide_type": ""}
-# est-ce que le nom de mon objet Path 
+# est-ce que le nom de mon objet Path
 # a une certaine forme ?
 
 globbing.match("**/slides/*")
@@ -416,7 +414,7 @@ globbing.match("**/*globbing*")
 
 # %% [markdown]
 # Voici le contenu du dossier `filepath-globbing`
-#     
+#
 # ```
 # filepath-globbing          dossier
 # filepath-globbing/a1       fichier
@@ -428,9 +426,9 @@ globbing.match("**/*globbing*")
 # ```
 
 # %% slideshow={"slide_type": "slide"}
-# à présent c'est plus intéressant
-# avec des chemins relatifs
+# j'utilise un chemin relatif, la sortie sera plus claire
 globbing = Path(".") / "filepath-globbing"
+globbing
 
 # %% slideshow={"slide_type": "slide"} cell_style="split"
 # les fichiers immédiatement sous globbing
@@ -447,7 +445,7 @@ list(globbing.glob("*[0-9]"))
 list(globbing.glob("**"))
 
 # %% cell_style="split"
-# les fichiers qui sont 
+# les fichiers qui sont
 # dans un sous-dossier
 # donc à n'importe quelle profondeur
 # et qui se terminent par un nombre
@@ -458,10 +456,10 @@ list(globbing.glob("**/*[0-9]"))
 #
 # * `exists`, `is_dir`, `is_file` ...
 # * `stat` / `lstat` / `owner` pour les détails comme taille, permissions...
-# * `rename`, `unlink`, `rmdir` 
+# * `rename`, `unlink`, `rmdir`
 # * `iterdir` (`os.listdir`, mais pas `os.walk`)
-# * `glob` - `rglob` 
-# * `open` / `{read,write}_{text_bytes}` / : wrappers 
+# * `glob` - `rglob`
+# * `open` / `{read,write}_{text_bytes}` / : wrappers
 # * à nouveau: [documentation complète](https://docs.python.org/3/library/pathlib.html)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -482,43 +480,43 @@ with Path("temporaire.txt").open() as reader:
     for line in reader:
         print(line, end="")
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ## notions avancées
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["level_advanced"]
 # ### encodages par défaut
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # * vous remarquez qu'on a souvent appelé `open()` sans préciser l'encodage
-# * l’encodage par défaut pour un fichier ouvert en mode texte est celui retourné par: 
+# * l’encodage par défaut pour un fichier ouvert en mode texte est celui retourné par:
 
-# %%
-import locale 
+# %% tags=["level_advanced"]
+import locale
 locale.getpreferredencoding(False)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # * appeler `open()` sans préciser l'encodage peut être risqué
 #   * dépend des réglages sur la machine cible
 # * il vaut mieux toujours être **explicite** et préciser l'encodage
 
-# %%
+# %% tags=["level_advanced"]
 with open('temporaire.txt', 'r', encoding='utf8') as in_file:
     print(in_file.read())
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # * le problème est toutefois de moins en moins aigü
 #   * Windows, MacOS et Linux à présent configurés par défaut pour UTF-8
 # * si vous avez encore du `cp1252` (vieux Windows) ou des ISO-latin15 (Unix)
 #   * je vous recommande de transcoder tout ça !
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### fichiers système
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # * `sys.stdout`, `sys.stdin`, `sys.stderr`
-#   * sortie, entrée et erreur standard 
+#   * sortie, entrée et erreur standard
 #   * accessibles donc au travers du module `sys`
 
-# %%
+# %% tags=["level_advanced"]
 import sys
 sys.stdout

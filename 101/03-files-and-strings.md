@@ -31,7 +31,8 @@ c'est important de savoir utiliser les fichiers depuis un programme
 
 +++
 
-pour commencer voyons **comment créer un fichier** depuis un programme  
+pour commencer voyons **comment créer un fichier** depuis un programme
+
 * pour cela on utilise **la fonction `open()`** en lui passant le mode `'w'` qui signifie ***write***
 * on l'utilise **toujours** dans une instruction `with`  
   cela nous permet d'être totalement sûr que le fichier sera bien refermé à la fin du `with`
@@ -49,7 +50,7 @@ si vous faites tourner ça sur votre ordi, vous devez constater la présence d'u
 
 +++
 
-depuis le notebook vous pouvez aussi faire
+sur MacOS et linux, depuis le notebook vous pouvez aussi faire
 
 ```{code-cell} ipython3
 # ça c'est juste pour vérifier le contenu
@@ -100,20 +101,20 @@ Bien sûr ce fichier, on aurait pu l'écrire avec un éditeur de texte
 
 Mais peu importe comment on l'a créé, maintenant voyons comment on peut le relire par programme
 
-C'est la même idée exactement, mais on va cette fois passer à `open` un mode d'ouverture qui est `r` - pour, *wait for it...* **`read`** eh oui !
+C'est la même idée exactement, mais on va cette fois passer à `open` un mode d'ouverture qui est `'r'` - pour, *wait for it...* **`read`** eh oui !
 
 ```{code-cell} ipython3
 with open("tmp-names.txt", 'r') as reader:
     for line in reader:
-#        line = line.strip()
+        line = line.strip()
         print(f"hello {line}")
 ```
 
 à essayer:
 
 * supprimez la ligne avec `line.strip()`
-  que remarquez-vous ?  
-  
+  que remarquez-vous ?
+
 * ce qui se passe ici, c'est que
   * entre deux lignes, on trouve dans le fichier un caractère **NEWLINE** qui matérialise la fin de ligne
   * et ce caractère est laissé dans `line` lorsqu'on fait le parcours avec `for line in reader`
@@ -121,20 +122,20 @@ with open("tmp-names.txt", 'r') as reader:
   * et ensuite c'est `print()` qui en rajoute encore un - parce que par défaut `print()` ajoute un NEWLINE une fois qu'il a fini son travail
   * du coup on a 2 NEWLINE au lieu d'un, et ça crée cette ligne vide en trop dans la sortie
   * le travail de `strip()` est justement de nettoyer une chaine de caractères
-  
+
 petit TP:
 
 * trouvez la documentation de la méthode `strip()` sur les chaines
 * indice: le site officiel de la doc Python est `docs.python.org`
 * réponse: https://docs.python.org/3/library/stdtypes.html#str.strip
-* pourquoi dit-on dans la doc que la méthode strip() renvoie une copie de la chaine ?
+* pourquoi dit-on dans la doc que la méthode `strip()` renvoie une copie de la chaine ?
 
 +++
 
 ### que retenir ?
 
 * on ouvre un fichier en lecture avec le mode `'r'`
-* une fois ouvert on peut parcourir toutes les lignes du fichier avec une simple instruction `for` sur le fichier
+* une fois ouvert on peut parcourir toutes les lignes du fichier avec une simple instruction `for` sur le fichier  
   on dit que l'objet fichier est **itérable** (et ça signifie juste qu'on peut, justement, faire une boucle dessus)
 * il est utile de 'nettoyer' les chaines lues dans un fichier avant toute chose
 * il y a plein de méthodes disponibles sur les chaines
@@ -154,7 +155,7 @@ notamment voici `split()` et `join()` en action
 ### `split(c)`
 
 ```{code-cell} ipython3
-# une chaine 
+# une chaine
 
 s = "nom;prénom;date de naissance"
 ```
@@ -214,11 +215,11 @@ L
 
 ### que retenir ?
 
-* le type `str` vient avec un très grand nombre de méthodes, par ex.  
+* le type `str` vient avec un très grand nombre de méthodes, par ex.
   * chercher ou remplacer une sous-chaine
   * mettre en majuscule, minuscule
   * ...
-* on a fréquemment besoin notamment de 
+* on a fréquemment besoin notamment de
   * `.strip()` pour nettoyer les lignes d'un fichier
   * `.split()` pour découper une chaine en morceaux
   * `.join()` pour recoller les morceaux

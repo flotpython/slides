@@ -96,7 +96,7 @@ b = a
 #   * il n’y a **pas d’effet de bord** possible  
 #     sur un objet immutable
 #
-#   * il est impossible qu’une modification sur `b` affecte `a`    
+#   * il est impossible qu’une modification sur `b` affecte `a`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### références partagées vers objet immutable
@@ -115,8 +115,8 @@ a = a + 2
 # * comme avant, deux références vers le même objet
 # * mais que se passe-t-il si l’objet est mutable ?
 #   * il peut **être changé**
-# * → impact sur **toutes** les références vers cet objet  
-#   * depuis une variable 
+# * → impact sur **toutes** les références vers cet objet
+#   * depuis une variable
 #   * ou depuis l'intérieur d'un autre objet
 
 # %% cell_style="center" slideshow={"slide_type": "slide"}
@@ -132,28 +132,29 @@ a[0] = 'spam'
 
 # %% [markdown] slideshow={"slide_type": ""}
 # | type  | mutable ? |
-# |-------|-----------|
-# | *int* et autres nombres | immutable       |
-# | *list* | **mutable**       |
-# | *tuple* | immutable       |
-# | *dict* | **mutable**       |
-# | *set* | **mutable**       |
-# | *frozenset* | immutable       |
+# |-------:|:-----------|
+# | **`int`** et autres nombres | non       |
+# | **`str`** | non |
+# | **`list`** | **mutable** |
+# | **`tuple`** | non |
+# | **`dict`** | **mutable** |
+# | **`set`** | **mutable** |
+# | **`frozenset`** | non |
 
 # %% [markdown] slideshow={"slide_type": ""}
 # <div class="rise-footnote">
-#     
+#
 # les types `tuple` et `frozenset` permettent notamment  
 # de construire des **clés** pour les dictionnaires et autres ensembles
-#     
-# </div>    
+#
+# </div>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## *shallow* et *deep* copies
 
 # %% [markdown]
-# * pour ne pas modifier `b`, faire une **copie** de `a`
-# * il y a deux types de copies en Python
+# * pour ne pas modifier `b`, faire une **copie** de `a`  
+#   il y a deux types de copies en Python:
 # * la *shallow copy* (superficielle)
 #   * pour les toutes les séquences, utiliser simplement `a[:]`
 #   * pour les dictionnaires utiliser `D.copy()`
@@ -179,10 +180,15 @@ a[0] = 'spam'
 #   * évite les boucles infinies
 
 # %% cell_style="center" slideshow={"slide_type": "slide"}
-# %%ipythontutor heapPrimitives=true height=350 width=800 curInstr=1
+# %%ipythontutor heapPrimitives=true height=400 width=800 curInstr=1
+
+# comme ci-dessus
 a = [1, 2]
-# cette fois-ci on (shallow) copie d'abord
-b = a[:] 
+
+# mais cette fois-ci on (shallow) copie d'abord
+b = a[:]
+
+# b n'est pas modifié
 a[0] = 'spam'
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -237,10 +243,14 @@ c == a
 
 # %% cell_style="center" slideshow={"slide_type": "-"}
 # %%ipythontutor heapPrimitives=true height=450 width=800 curInstr=1
+
+# cette fois a est un peu plus profond
 a = [1, [2]]
 # on ne fait qu'une copie 'shallow'
 b = a[:]
+# on peut toujours modifier b à travers a
 a[1][0] = 'boom'
+
 print(a)
 print(b)
 
@@ -251,7 +261,7 @@ print(b)
 # %%ipythontutor heapPrimitives=true height=500 width=900 curInstr=2
 import copy
 a = [1, [2]]
-# avec une copie profonde on n'a plus de souci
+# maintenant avec une copie profonde: on n'a plus de souci
 b = copy.deepcopy(a)
 a[1][0] = 'boom'
 print(a)
@@ -261,7 +271,7 @@ print(b)
 # ## autres types de références partagées
 
 # %% [markdown]
-# jusqu'ici, références partagées créées par **affectation**  
+# jusqu'ici, références partagées créées par **affectation**
 #
 # il existe (plein) d'autres cas de figure :
 #
@@ -284,17 +294,17 @@ def foo(x):
 foo(L)
 print(L)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### références entre objets
 
-# %% [markdown]
+# %% [markdown] tags=["level_intermediate"]
 # toutes les parties d'objet qui sont atteignables à partir d'autres objets peuvent devenir des références partagées
 #
 # pas besoin qu'il y ait nécessairement plusieurs variables dans le paysage
 #
 # on peut le voir sur l'exemple pathologique suivant
 
-# %% cell_style="center" slideshow={"slide_type": "slide"}
+# %% cell_style="center" slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # %%ipythontutor heapPrimitives=true height=400 width=900 curInstr=1
 
 repete = 4 * [[0]]
@@ -303,23 +313,23 @@ print(f"repete avant {repete}")
 repete[0][0] = 1
 print(f"repete après {repete}")
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### structures cycliques
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # ainsi on peut aussi créer des structures cycliques
 
-# %% slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["level_advanced"]
 # %%ipythontutor
 
 L = [None]
 L[0] = L
 print(L)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ## gestion de la mémoire
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # * Python sait réutiliser les objets  
 #   *e.g.* les petits entiers - slide suivant
 #
@@ -329,19 +339,19 @@ print(L)
 # * chaque objet contient deux champs dans l’entête
 #   * un champ désignant le typage - cf `type(obj)`
 #   * un champ contenant un compteur de références  
-#     voir `sys.getrefcount(obj)`      
+#     voir `sys.getrefcount(obj)`
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### optimisation interne à Python
 
-# %% cell_style="split"
-# avec cette forme 
+# %% cell_style="split" tags=["level_advanced"]
+# avec cette forme
 # on crée deux objets liste
 L = [1, 2]
 M = [1, 2] # nouvel objet liste
 L is M
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["level_advanced"]
 # ici aussi on pourrait penser
 # créer deux objets int
 I = 18
@@ -349,6 +359,6 @@ J = 18   # nouvel objet entier ?
 I is J   # non: partage
          # (optimisation)
 
-# %% [markdown]
+# %% [markdown] tags=["level_advanced"]
 # * est-ce que ça pose un problème ?
 #   * non ! l’optimisation n’est que pour des types **immutables**
