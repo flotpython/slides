@@ -51,7 +51,7 @@ hello world
 
 * ici le mot `print` désigne une **fonction** - prédéfinie dans Python
 * on **appelle** cette fonction - avec la syntaxe `print()`  
-  en lui passant un **paramètre** - ici la chaine de caractères `"hello world"
+  en lui passant un **paramètre** - ici la chaine de caractères `"hello world"`
 * on peut construire une chaine de caractères entre deux `"`  
   (et aussi d'ailleurs entre deux `'` si on préfère)
 
