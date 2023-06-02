@@ -204,7 +204,7 @@ import this
 * base de données
 * prototypage rapide
 * calcul scientifique avec `numpy`
-* exploration dans les données avec `pandas` et `sklearn`
+* exploration dans les données avec `pandas` et `scikit-learn`
 * backend web avec `Django` / `Flask`
 * …
 

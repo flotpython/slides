@@ -16,5 +16,5 @@ RUN true \
  && pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy autograd k3d \
  && apt-get install -y graphviz && pip install graphviz \
  && pip install geopandas keplergl \
- && pip install sklearn \
+ && pip install scikit-learn \
  && true

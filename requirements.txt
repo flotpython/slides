@@ -10,7 +10,7 @@ ipywidgets
 numpy
 pandas
 matplotlib
-sklearn
+scikit-learn
 aiohttp
 requests
 
