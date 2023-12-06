@@ -2,11 +2,6 @@
 # i.e. libraries used for running
 # code in the notebooks per se
 #
-ipykernel
-ipythontutor
-nbautoeval
-nb-courselevels
-ipywidgets
 numpy
 pandas
 matplotlib
@@ -14,12 +9,33 @@ scikit-learn
 aiohttp
 requests
 
+mpld3
+bokeh
+jupyter-bokeh
+plotly
+folium
+vispy
+seaborn
+pygal
+networkx
+mypy
+autograd
+k3d
+geopandas
+keplergl
+graphviz
+scikit-learn
+
+nbautoeval
+ipythontutor
+ipywidgets
+ipympl
+
 # jupyter extensions
 #
+jupyter
 jupytext
-rise
-jupyter-contrib-nbextensions
-
-# for authoring
-#jupyter-book
-#smmap<4,>=3.0.1
+jupyterlab-myst
+jupyterlab-courselevels
+jupyterlab-gridwidth
+jupyterlab-rise

@@ -13,7 +13,8 @@ RUN true \
  && pip install -U ipythontutor \
  && pip install rise --pre \
  && pip install numpy pandas matplotlib ipywidgets \
- && pip install mpld3 bokeh plotly folium vispy seaborn pygal networkx mypy autograd k3d \
+ && pip install mpld3 bokeh jupyter-bokeh plotly folium \
+ && pip install vispy seaborn pygal networkx mypy autograd k3d \
  && apt-get install -y graphviz && pip install graphviz \
  && pip install geopandas keplergl \
  && pip install scikit-learn \
