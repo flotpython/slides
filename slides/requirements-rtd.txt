@@ -1,0 +1,4 @@
+# generic deps
+# sphinx
+# sphinx-rtd-theme
+jupyter-book
