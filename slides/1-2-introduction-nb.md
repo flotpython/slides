@@ -44,57 +44,6 @@ rise:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## comment lancer python ?
-
-+++
-
-### depuis un terminal ...
-
-* taper `python` dans le terminal
-  * interpréteur en ligne de commande
-* en option, `ipython` en remplacement
-  * nécessite une installation supplémentaire
-  * `pip install ipython`
-
-+++
-
-````{admonition} xxx
-
-`pip install mylibrary` est la façon standard d'installer une librairie externe  
-`python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
-
-````
-
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
-
-<img src="../media/python-ipython-in-terminal.png"
-     width="600px">
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### ... ou dans un environnement graphique
-
-+++ {"cell_style": "center"}
-
-* **Jupyter notebook**
-* IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
-  atom, eclipse, ... bcp de variantes)
-
-+++ {"cell_style": "split"}
-
-dans tous les cas,  
-faites un premier test:
-
-```{code-cell} ipython3
-:cell_style: split
-
-100 * 100
-```
-
-**important**: savoir interrompre/redémarrer son interpréteur
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## pourquoi Python ?
 
 +++
@@ -129,7 +78,8 @@ factorielle(0)
 factorielle(8)
 ```
 
-````{admonition} xxx
+````{admonition} trop court ?
+:class: seealso
 
 bien sûr on peut aussi écrire de façon plus bavarde si on préfère, comme par ex.
 
@@ -258,10 +208,11 @@ slideshow:
 [x**2 for x in range(10000)]
 ```
 
-````{admonition} xxx
+````{admonition} attention
+:class: attention
 
-cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython, disponible du coup dans `ipython` et les notebooks
-
+cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython  
+on ne peut l'utiliser que dans `ipython` ou dans les notebooks
 ````
 
 +++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
@@ -322,7 +273,8 @@ personnellement, pour un accès rapide à la documentation, je fais très facile
 
 +++
 
-````{admonition} xxx
+````{admonition} le plus simple: chercher sur google
+:class: tip
 
 que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python+module+datetime>
 
@@ -365,6 +317,68 @@ que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## comment lancer python ?
+
++++
+
+### depuis un terminal ...
+
+* taper `python` dans le terminal
+  * interpréteur en ligne de commande
+* en option, `ipython` en remplacement
+  * nécessite une installation supplémentaire
+  * `pip install ipython`
+
++++
+
+````{admonition} pour installer des librairies depuis le web (pypi.org)
+:class: tip
+
+dans le terminal toujours:
+
+* `pip install mylibrary` est la façon standard d'installer une librairie externe  
+* `python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
+
+````
+
++++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
+
+```{image} ../media/python-ipython-in-terminal.png
+:width: 600px
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### ... ou dans un environnement graphique
+
++++ {"cell_style": "center"}
+
+* **Jupyter notebooks**
+  * `pip install jupyterlab`
+  * `jupyter lab`
+* IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
+  atom, eclipse, ... bcp de variantes)
+
++++ {"cell_style": "split"}
+
+dans tous les cas,  
+faites un premier test:
+
+```{code-cell} ipython3
+:cell_style: split
+
+100 * 100
+```
+
+````{admonition} important
+:class: important 
+
+il faut savoir interrompre/redémarrer son interpréteur !  
+par exemple dans `jupyter lab` voyez le menu `Kernel`
+````
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## comment avoir de l'aide: `dir`
 
 +++
@@ -394,12 +408,14 @@ dir(math)
 ```{code-cell} ipython3
 :cell_style: split
 
+# sur tout un module
 help(math)
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
+# ou juste une fonction
 help(math.factorial)
 ```
 
@@ -411,7 +427,13 @@ help(math.factorial)
 
 * pour obtenir de l'aide dans une fenêtre dédiée avec `?`
 * le symbole doit être connu de python
-* fonctionne aussi dans `ipython`
+
+````{admonition} ne marche que avec ipython et les notebooks
+:class: attention
+
+comme pour les `%` qu'on a vus un peu plus haut, cette notation avec le `?` ne fonctionne pas dans le python "de base"  
+il faut être soit dans IPython, soit dans un notebook
+````
 
 ```{code-cell} ipython3
 :cell_style: split

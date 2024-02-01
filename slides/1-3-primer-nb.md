@@ -11,6 +11,10 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: 'primer: un rapide survol'
 rise:
@@ -43,11 +47,12 @@ rise:
 * **tout est un objet**
 * objets mutables ou non
 
-````{admonition} xxx
+  ````{admonition} c'est l'objet de ce notebook
+  :class: note
 
-nous allons illustrer ces 2 points de suite
+  nous allons illustrer ces 2 points de suite
 
-````
+  ````
 
 +++ {"cell_style": "split"}
 
@@ -56,11 +61,12 @@ nous allons illustrer ces 2 points de suite
 * itérateurs
 * espaces de nommage
 
-````{admonition} xxx
+  ````{admonition} ce sera abordé plus loin dans le cours
+  :class: note
 
-nous verrons ces notions plus en détail dans le reste du cours
+  nous verrons ces notions plus en détail dans le reste du cours
 
-````
+  ````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -147,11 +153,11 @@ slideshow:
 type(foo)
 ```
 
-````{admonition} xxx
+````{admonition} objets typés, variables non typées
+:class: warning
 
-attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**
+attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**  
 ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste…
-
 ````
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -250,9 +256,7 @@ else:
 
 ### primer : types "fournis"
 
-+++
-
-avec le langage (*batteries included*) sont fournis des types de base
+avec le langage sont fournis des types de base (*batteries included*) 
 
 * nombres:
   * entiers, flottants, complexes, booléens
@@ -260,6 +264,26 @@ avec le langage (*batteries included*) sont fournis des types de base
   * listes, dictionnaires, ensembles, tuples
 
 qui permettent de traiter rapidement pas mal de sujets
+
++++
+
+### primer: librairie standard et écosystème
+
+il y a aussi la "librairie standard" qui vient avec plein d'utilitaires:
+
+- `path`: gestion des fichiers, et calculs de chemins 
+- `datetime`: date et heure
+- `random`: générateur de nombres aléatoires
+- `itertools`: itérations comme permutations, combinaisons, produit cartésien, ...
+- `queue`: priority queues
+- la liste est très très longue...
+
+là encore cela signifie qu'on a rapidement accès à des fonctionnalités puissantes, et bien optimisées
+
+et si ce dont on a besoin n'est pas dans la librairie standard,  
+il y a ... des centaines de milliers de librairies  
+de toutes les sortes et de toutes les façons disponibles sur <https://pypi.org>  
+y compris notamment `numpy`, `pandas`, `scikit-learn`, et énormément d'autres...
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

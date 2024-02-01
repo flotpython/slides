@@ -3,11 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version, -language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode, -language_info.file_extension, -language_info.mimetype,
-#       -toc
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -26,7 +26,6 @@
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown]
@@ -101,8 +100,9 @@ user1
 # %% [markdown] cell_style="split"
 # sans quoi on obtient ceci
 #
-# <img src="media/class-without-repr.png"
-#      width=500px>
+# ```{image} media/class-without-repr.png
+# :width: 500px
+# ```
 
 # %% cell_style="center"
 print(f"je viens de voir {user1}")
