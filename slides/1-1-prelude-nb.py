@@ -9,10 +9,13 @@
 #       toggle_output: true
 #       toggle_output_all: true
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     cell_metadata_json: true
 #     formats: py:percent
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -20,10 +23,13 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: "pr\xE9lude"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -43,34 +49,30 @@ HTML(filename="_static/style.html")
 # ##### *Des fondamentaux à l'utilisation du langage*
 
 # %% [markdown] {"cell_style": "split"}
-# Thierry Parmentelat - Inria
+# Thierry Parmentelat - Inria  
 #
-#
-
-# %% [markdown] {"cell_style": "split"}
-# <center><code>thierry.parmentelat@inria.fr</code></center>
+# `thierry.parmentelat@inria.fr`
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
-# ## plateformes
+# ## plateformes et liens
 #
 # * notebooks
-#   * https://nbhosting.inria.fr/
+#   * <https://nbhosting.inria.fr/>
 # * contenu de ce cours en version HTML statique
-#   * https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
+#   * <https://flotpython-slides.readthedocs.io/>
 # * les sources des notebooks :
-#   * https://github.com/flotpython/slides
+#   * <https://github.com/flotpython/slides>
 #
 # * exercices autocorrigés
-#   * https://nbhosting.inria.fr/auditor/notebook/exos-mooc
-#
+#   * <https://nbhosting.inria.fr/auditor/notebook/exos-mooc>
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}}
 # ### et aussi le MOOC
 #
 # en ligne sur France Université Numérique
 #
-# * le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"
-# * https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/
+# * le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"  
+#   <https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/>
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 # ## notebooks
@@ -85,40 +87,40 @@ HTML(filename="_static/style.html")
 # ![](media/nbhosting-buttons.png)
 
 # %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# ### notebooks - nav slides
-
-# %% [markdown] {"slideshow": {"slide_type": "-"}, "cell_style": "split"}
-# * pour naviguer dans les slides
-#
-#   * Espace : en avant
-#   * Shift-Espace : en arrière
-
-# %% [markdown] {"cell_style": "split"}
-# ![](media/nbhosting-slides.png)
-
-# %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
-# ### notebooks - nav cells
+# ### notebooks - naviguer dans les cellules
 
 # %% [markdown] {"slideshow": {"slide_type": ""}, "cell_style": "split"}
 # pour naviguer dans les cellules :
 #
-# si nécessaire au début : sélectionner avec la souris
+# si nécessaire au début : sélectionner avec la souris, puis
 #
-# puis utiliser ***Maj-Entrée* / *Shift-Enter***
+# ````{admonition} utiliser ***Maj-Entrée* / *Shift-Enter***
+# :class: tip
 #
-#   * pour évaluer la cellule courante (le dernier résultat s'affiche)
-#   * et passer à la cellule suivante
+# pour
 #
+# * **évaluer la cellule courante** (le dernier résultat s'affiche)
+# * et **passer à la cellule suivante**
+# ````
+#
+# on peut aussi utiliser la flêche triangulaire dans la menubar, mais c'est beaucoup moins pratique, car en fait on passe son temps à faire essentiellement ça !
+#
+# à vous d'essayer; bien sûr vous pouvez revenir en arrière et modifier une cellule, mais il faut bien penser à toujours l'évaluer
 
 # %% {"cell_style": "split"}
-10 * 30
+X = 10 * 30
+X
 
 # %% {"cell_style": "split"}
-L = [1, 2]
-len(L)
-
-# %% [markdown] {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
-# ### notebooks - extensions
+L = [1, X]
+L
 
 # %% [markdown]
-# ![](media/nbhosting-plain.png)
+# ````{admonition} exercice
+# :class: seealso
+#
+# * modifiez la première cellule ci-dessus pour faire en sorte que X vaille 400
+# * regardez maintenant la valeur de `L`
+# * et évaluez la seconde cellule, vérifiez que la valeur de `L` a bien changé
+#
+# ````
