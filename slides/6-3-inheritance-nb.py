@@ -265,7 +265,7 @@ vector = Vector(2, 2)
 # sachez que l'on peut inspecter le contenu d'un espace de noms
 # avec la fonction `vars(obj)`
 #
-# <div class=note>
+# <div class=mynote>
 #     
 # ce n'est pas forcément une notion à retenir, mais on va s'en servir dans la suite  
 # pour regarder le contenu des espaces de nom
@@ -476,7 +476,7 @@ isinstance(a, (A, B))
 
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #    
 # * on peut aussi passer à `isinstance` un tuple de classes/types
 # * ces fonctions *builtin* sont à privilégier par rapport à l'utilisation de `type()`

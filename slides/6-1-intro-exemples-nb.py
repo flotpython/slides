@@ -47,7 +47,7 @@ HTML(filename="_static/style.html")
 # * en sus des types prédéfinis `str`, `list`, `set`, `dict`, ...
 # * plus adaptés à l'application
 #
-# <div class="note">cette section contient surtout des rappels    
+# <div class=mynote>cette section contient surtout des rappels    
 # </div>    
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
@@ -203,10 +203,10 @@ stack
 #   si on utilise les objets au travers des méthodes 
 
 # %% [markdown]
-# <div class="note">et aussi (sera vu ultérieurement) :</div>
+# <div class=mynote>et aussi (sera vu ultérieurement) :</div>
 
 # %% [markdown] cell_style="split"
-# <div class="note">
+# <div class=mynote>
 #
 # * intégrer les objets dans le langage  
 #   i.e. donner un sens à des constructions comme  
@@ -220,7 +220,7 @@ stack
 #  </div>
 
 # %% [markdown] cell_style="split"
-# <div class="note">
+# <div class=mynote>
 #    
 # * héritage 
 #   * réutiliser une classe en modifiant  
@@ -244,7 +244,7 @@ stack
 # et ainsi e.g. améliorer le comportement **sans changer le code utilisateur**
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #
 # cette séparation n'est pas toujours sous-titrée de manière explicite   
 # comme ici où nous avons mis un `_` au début du nom de l'attribut  
@@ -390,7 +390,7 @@ def timedelta_as_year_month(age: TimeDelta) -> str:
 
 
 # %% [markdown] tags=["level_advanced"]
-# <div class=note>
+# <div class=mynote>
 #
 # en pratique on irait même jusqu'à spécialiser `TimeDelta`  
 # de façon à redéfinir son `repr()` avec ce format `year+month`  

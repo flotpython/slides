@@ -56,7 +56,7 @@ HTML(filename="_static/style.html")
 #  en fonction de leur place dans le code source
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #
 # la liaison lexicale est faite à *compile-time*  
 # le terme *lexical* signifie qu'on n'a que besoin de **lire** le programme, et pas de l'exécuter  
@@ -120,7 +120,7 @@ HTML(filename="_static/style.html")
 #   * nom provenant du module *builtins*
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #
 # l'unité de base est la **fonction** - il **n'y pas de visibilité de bloc**  
 # (comme on la trouve dans d'autres langages)
@@ -195,7 +195,7 @@ except UnboundLocalError:
     print("OOPS")
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #     
 # `UnboundLocalError` signifie textuellement qu'on évalue une variable locale  
 # qui n'a pas encore été initialisée
@@ -298,7 +298,7 @@ does_not_modify_G(1000)
 G
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #
 # dans la deuxième forme, on a juste créé une **deuxième variable G** qui est locale à la fonction, et "cache" la globale, qui donc n'est pas modifiée
 #     
@@ -343,7 +343,7 @@ G
 
 
 # %% [markdown]
-# <div class=note>
+# <div class=mynote>
 #
 # ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affectée dans `increment_G`, c'est une variable *locale* à la fonction (et donc pas la globale); mais elle n'a pas encore de valeur ! d'où l'erreur `UnboundLocalError`
 #     

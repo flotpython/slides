@@ -170,7 +170,7 @@ import operator
 sorted(student_marks, key=operator.itemgetter(1))
 
 # %% [markdown] slideshow={"slide_type": ""}
-# <div class=note>
+# <div class=mynote>
 #
 # pour aller plus loin sur le tri, voir <https://docs.python.org/3/howto/sorting.html>
 #     
