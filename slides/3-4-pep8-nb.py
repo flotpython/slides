@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "pr\xE9sentation du code"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

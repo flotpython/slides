@@ -14,7 +14,6 @@
 #     name: python3
 #   notebookname: "outils de g\xE9n\xE9ration de doc"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

@@ -13,7 +13,6 @@
 #     name: python3
 #   notebookname: packaging & software distribution
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

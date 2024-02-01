@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: fichiers
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -301,11 +300,11 @@ type (y), len(y)
 #
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # pour les anciens, le module `pathlib` remplace les modules `os`, `os.path` et assimilés
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un exemple

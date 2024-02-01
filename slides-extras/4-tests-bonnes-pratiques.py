@@ -13,7 +13,6 @@
 #     name: python3
 #   notebookname: bonnes pratiques de test
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

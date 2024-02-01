@@ -14,7 +14,6 @@
 #     name: python3
 #   notebookname: exemple broadcasting (optionnel)
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

@@ -14,7 +14,6 @@
 #     name: python3
 #   notebookname: introduction aux notebooks
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

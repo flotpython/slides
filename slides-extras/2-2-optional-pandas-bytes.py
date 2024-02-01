@@ -13,7 +13,6 @@
 #     name: python3
 #   notebookname: pandas & bytes (optionnel)
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

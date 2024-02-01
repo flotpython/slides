@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "fonction g\xE9n\xE9ratrice et it\xE9rateur"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

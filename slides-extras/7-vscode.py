@@ -14,7 +14,6 @@
 #     name: python3
 #   notebookname: Visual Studio Code
 #   rise:
-#     autolaunch: true
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}

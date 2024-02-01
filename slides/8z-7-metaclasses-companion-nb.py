@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "m\xE9taclasses (incomplet)"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

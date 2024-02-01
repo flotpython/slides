@@ -13,7 +13,6 @@
 #     name: python3
 #   notebookname: readthedocs.io
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

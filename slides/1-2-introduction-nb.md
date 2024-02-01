@@ -11,10 +11,13 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
 nbhosting:
   title: "g\xE9n\xE9ralit\xE9s"
 rise:
-  autolaunch: true
   slideNumber: c/t
   start_slideshow_at: selected
   theme: sky
@@ -55,12 +58,12 @@ rise:
 
 +++
 
-<div class="rise-footnote">
+````{admonition} xxx
 
 `pip install mylibrary` est la façon standard d'installer une librairie externe  
 `python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
 
@@ -126,7 +129,7 @@ factorielle(0)
 factorielle(8)
 ```
 
-<div class="rise-footnote">
+````{admonition} xxx
 
 bien sûr on peut aussi écrire de façon plus bavarde si on préfère, comme par ex.
 
@@ -138,7 +141,7 @@ def factorielle(n):
         return n * factorielle(n-1)
 ```
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -255,11 +258,11 @@ slideshow:
 [x**2 for x in range(10000)]
 ```
 
-<div class=rise-footnote>
+````{admonition} xxx
 
 cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython, disponible du coup dans `ipython` et les notebooks
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
 
@@ -319,11 +322,11 @@ personnellement, pour un accès rapide à la documentation, je fais très facile
 
 +++
 
-<div class=rise-footnote>
+````{admonition} xxx
 
 que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python+module+datetime>
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

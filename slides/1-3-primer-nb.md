@@ -14,7 +14,6 @@ kernelspec:
 nbhosting:
   title: 'primer: un rapide survol'
 rise:
-  autolaunch: true
   slideNumber: c/t
   start_slideshow_at: selected
   theme: sky
@@ -44,11 +43,11 @@ rise:
 * **tout est un objet**
 * objets mutables ou non
 
-<div class="rise-footnote">
+````{admonition} xxx
 
 nous allons illustrer ces 2 points de suite
 
-</div>
+````
 
 +++ {"cell_style": "split"}
 
@@ -57,11 +56,11 @@ nous allons illustrer ces 2 points de suite
 * itérateurs
 * espaces de nommage
 
-<div class="rise-footnote">
+````{admonition} xxx
 
 nous verrons ces notions plus en détail dans le reste du cours
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -148,12 +147,12 @@ slideshow:
 type(foo)
 ```
 
-<div class="rise-footnote">
+````{admonition} xxx
 
 attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**
 ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste…
 
-</div>
+````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

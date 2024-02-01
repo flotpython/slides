@@ -22,7 +22,6 @@
 #   nbhosting:
 #     title: nouvelles releases
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -218,11 +217,11 @@ x
 # ```
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # ce code est dans `samples/match01.py`
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ou encore (parmi plein d'autres possibilités)  
@@ -249,11 +248,11 @@ x
 # ```
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # ce code est dans `samples/match02.py`
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *better error messages*

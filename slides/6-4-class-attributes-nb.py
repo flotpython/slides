@@ -22,7 +22,6 @@
 #   nbhosting:
 #     title: attributs de classe
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

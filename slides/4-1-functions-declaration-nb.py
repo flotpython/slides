@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: fonctions
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -302,11 +301,11 @@ from datetime import datetime as DateTime
 #   * `None` est un mot-clé de Python,  
 #     qui désigne un objet unique (singleton)
 #     
-# <div class=note>
+# ````{admonition} xxx
 #
 # (￮) sauf en cas de `finally` comme on va le voir tout de suite
 #     
-# </div>    
+# ````
 #     
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]

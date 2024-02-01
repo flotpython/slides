@@ -14,7 +14,6 @@
 #     name: python3
 #   notebookname: 'numpy - slicing & broadcasting '
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: nombres
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -80,11 +79,11 @@ HTML(filename="_static/style.html")
 2 ** 32         # puissance
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # à bookmarker: [une cheat sheet avec la liste des opérateurs en Python](https://cheatography.com/nouha-thabet/cheat-sheets/python-operators-and-booleans/)
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### conversions
@@ -99,12 +98,12 @@ int(234.5)      # cast float ➔ int
 # pour fabriquer un objet,  de type `int` donc, à partir de la valeur `234.5`
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # il existe aussi des fonctions `floor()` et `ceil()` dans le module `math`  
 # toutefois la méthode ci-dessus est plus générale, elle s'applique à tous les types en Python
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres complexes
@@ -120,10 +119,10 @@ a.real          # partie réelle
 a.imag          # partie imaginaire
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # remarquez qu'ici le terme `a.real` consiste à rechercher l'**attribut** `real` dans l'objet (désigné par) `a`
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### en hexa, binaire, octal
@@ -157,13 +156,13 @@ bin(255)    # traduire en binaire (-> str)
 oct(255)    # traduire en octal (-> str)
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`;
 # ce sont des fonctions *prédéfinies*, connues de Python dès le lancement  
 # le terme anglais pour désigner de telles fonctions est *builtin*
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### décalages
@@ -229,14 +228,14 @@ math.sin(math.pi)
 # https://www.google.com/search?q=python+module+math
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # pour décortiquer un peu:  
 # après l'import, la variable `math` désigne donc un objet de type `module`  
 # et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` dans cet objet module  
 # et pareil exactement pour `math.sin`, qui désigne … un objet fonction
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## booléens
@@ -297,11 +296,11 @@ if bool(a):
     print("pas faux")
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # on en reparlera, mais les valeurs "fausses" correspondent à un **nombre nul**, ou à un **container vide** (liste, chaine, ..)
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## conversions
@@ -382,14 +381,14 @@ a = b = [1, 2]
 c = [1, 2]
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # à ce stade on a créé deux objets liste distincts
 #
 # * le premier désigné par a et b
 # * le second désigné par c
 #
-# </div>
+# ````
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # du coup on peut écrire des choses comme

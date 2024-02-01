@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: modules
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -92,11 +91,11 @@ HTML(filename="_static/style.html")
 #   * ~~`truc-bidule.py`~~: **KO**
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # comme on va le voir ce nom va effectivement devenir un nom de variable lors de l'import
 #     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## importation d’un module
@@ -137,14 +136,14 @@ mod.spam('good')
 #   * on en reparlera longuement
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # cette association nom → valeur rappelle un peu le dictionnaire  
 # c'est vrai mais pourtant les deux mécanismes (clés dans un dico, attribut dans un objet)  
 # sont implémentés et s'utilisent de manière très différente: `d['key']` *vs* `o.key`  
 # il est donc important de bien les distinguer - surtout pour ceux qui font du JS
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un attribut sur quel objet ?
@@ -322,11 +321,11 @@ spam('star')
 #   * on peut modifier `sys.path` à l’exécution
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # je vous recomande de **ne pas utiliser** `PYTHONPATH` dans la vie de tous les jours, c'est vraiment réservé à des usages très spécifiques
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### byte-code

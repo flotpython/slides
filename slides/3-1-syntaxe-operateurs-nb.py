@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "syntaxe & op\xE9rateurs"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

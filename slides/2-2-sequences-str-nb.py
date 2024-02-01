@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "s\xE9quences et chaines"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -48,12 +47,12 @@ HTML(filename="_static/style.html")
 #   * `str`, `bytes`, `tuple`, `range`
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # nous allons voir pour commencer des choses valables **sur toutes les séquences**,
 # et donc en particulier sur les chaines, puisque les chaines sont des séquences
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## fonctions sur toutes les séquences
@@ -78,13 +77,13 @@ HTML(filename="_static/style.html")
 #   * retourne la somme des éléments de S (resp. le plus petit, le plus grand)
 
 # %% [markdown] tags=["level_intermediate"]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # en fait les fonctions `sum`, `min` et `max` s'appliquent à n'importe quel itérable  
 # toutes les séquences sont des itérables, mais tous les itérables ne sont pas des séquences  
 # la famille des itérables est donc plus large que les séquences
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### appartenance, recherches
@@ -120,11 +119,11 @@ HTML(filename="_static/style.html")
 # voyons des exemples de tout ceci
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # la notion de slicing est **très massivement utilisée** dans les outils numériques, notamment en `numpy`
 #
-# </div>
+# ````
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # ![](media/egg-bacon.svg)
@@ -270,12 +269,12 @@ s[::-1]
 #   * un caractère ce **n'est pas** un octet
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # avec l'encodage le plus répandu aujourd'hui (UTF-8), tous les caractères ASCII tiennent sur un octet  
 # mais **ce sont les seuls**: un `é` par exemple occupe 2 octets; un `‰` occupe 3 octets; un `🚀` occupe 4 octets
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### chaînes de caractères `str`
@@ -324,11 +323,11 @@ s = ("une chaine trop longue"
 print(s)
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # notez bien les parenthèses dans ce deuxième exemple, car sinon c'est une erreur de syntaxe
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### échappements dans les chaines
@@ -400,11 +399,11 @@ print(s)
 
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # **NB** que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un <code>&bsol;</code> dans les chemins de fichiers sous Windows
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *docstrings*
@@ -427,13 +426,13 @@ def double(n):
 help(double)
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # on peut attacher une docstring à une fonction, une classe, ou un module
 #
 # il faut que la chaine littérale soit **la première instruction** dans le code de la fonction (ou classe ou module)
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérations sur les `str`
@@ -512,11 +511,11 @@ f"{nom} a {age} ans"
 f"360° = {2*math.pi} radians"
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # **NB** qu'entre les `{}`, on peut mettre un **nom de variable** mais aussi, plus généralement, écrire **une expression** (faire un calcul)
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *f-string* : expression et format
@@ -687,12 +686,12 @@ dirty
 dirty.strip()
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
 # d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `split()` et `join()`

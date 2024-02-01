@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: str et bytes
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

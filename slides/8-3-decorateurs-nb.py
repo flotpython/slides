@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "d\xE9corateurs"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky

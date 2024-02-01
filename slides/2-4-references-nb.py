@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: "r\xE9f\xE9rences partag\xE9es"
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -142,12 +141,12 @@ a[0] = 'spam'
 # | **`frozenset`** | non |
 
 # %% [markdown] slideshow={"slide_type": ""}
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # les types `tuple` et `frozenset` permettent notamment  
 # de construire des **clés** pour les dictionnaires et autres ensembles
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## *shallow* et *deep* copies

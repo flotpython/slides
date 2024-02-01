@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: exceptions
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -155,11 +154,11 @@ driver_try()
 # ![exceptions](media/except-list.png)
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # https://docs.python.org/3/library/exceptions.html#exception-hierarchy
 #     
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### clause `except`
@@ -273,12 +272,12 @@ except:
 # * inspiré de `while` .. `else` et `for` .. `else`  
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # une exception dans la clause `else` n’est pas capturée par les `except` précédents
 #
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### `try` .. `else` 
@@ -302,7 +301,7 @@ divide(8, 0)
 
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # en pratique toutefois, c'est peu utilisé  
 # ici par exemple, on obtient exactement le même comportement
@@ -317,7 +316,7 @@ divide(8, 0)
 #         print('zero divide !')
 #     print('continuing... ')
 # ```    
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## `try` .. `finally`
@@ -368,11 +367,11 @@ finally_trumps_return(10)
 # * dans tous les cas, cela donne des détails sur l’exception
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #     
 # c'est la forme recommandée, de façon à pouvoir afficher plus de détails que juste, par exemple, "IOError"
 #
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### exemple de `except .. as`

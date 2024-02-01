@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: regexps
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -181,10 +180,10 @@ match_all('(ab)+', ['ab', 'abab', 'ababzzz', ''])
 match_all("a", ["a", "ab", "bc"])
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 # pourquoi on dit un caractère "normal" ?  
 # on va voir que certains caractères, comme par exemple le `'.'` que l'on va voir tout de suite, on un sens spécial; on les appelle des méta-caractères
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### n'importe quel caractère : `.`

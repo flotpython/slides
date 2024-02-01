@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: containers
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -157,7 +156,7 @@ while L:
     print(L.pop())
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # si nécessaire, envisager la liste **doublement chainée**
 #
@@ -166,7 +165,7 @@ while L:
 # deque?
 # ```
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ajouts et tris
@@ -209,12 +208,12 @@ for i in range(4):
     print(i, end=" ")
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # le paramètre `end=" "` indique à `print` de ne pas ajouter de fin de ligne, 
 # mais plutôt un espace, à la fin de l'impression
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### digression: `range()`
@@ -290,11 +289,11 @@ print(L1)
 print(L2)
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # dans l'exemple de gauche, le retour de la méthode `sort` est `None`; cela pour bien manifester le fait qu'il n'y a pas eu de copie
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### tri et renversement de liste
@@ -324,13 +323,13 @@ print(L2)
 # sujet avancé que l’on verra plus tard
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # si on repense par exemple au `range()` vu plus haut, pour itérer sur un entier de 1 à 1 million, 
 # a-t-on vraiment besoin pour cela d'allouer
 # explicitement un million d'entiers, plus la place pour les cellules de la liste ? bien sûr que non....
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### (2) pas efficace pour calcul scientifique
@@ -367,14 +366,14 @@ T2 = 4,
 T1 == T2
 
 # %% [markdown] cell_style="center"
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # **attention**: c'est la virgule qui est importante, on peut omettre les `()` - la plupart du temps
 #
 #  * `(4)` est un **entier**, et
 #  * `(4,)` est un **tuple**
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
@@ -514,12 +513,12 @@ except TypeError as e:
 #   * union (|), intersection (&), différence (-), etc.
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # (♤) depuis la 3.7 le dictionnaire est une structure ordonnée (il "retient" l'ordre des ajouts)  
 # toutefois cela ne s'applique pas à l'ensemble, ce qui peut créer une légère confusion
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le `set`
@@ -628,11 +627,11 @@ except AttributeError as e:
     print("OOPS", e)
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # (♤) du coup on peut dire que, en quelque sort, le `frozenset` est au `set` ce que le `tuple` est à la `list`
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### éléments acceptables
@@ -657,7 +656,7 @@ except TypeError as e:
     print("OOPS", e)
 
 # %% [markdown]
-# <div class="rise-footnote">
+# ````{admonition} xxx
 #
 # **Question**: à votre avis, peut-on ajouter dans un ensemble un tuple de 2 listes ?
 #
@@ -665,7 +664,7 @@ except TypeError as e:
 # S.add( ([1, 2], [3, 4]) )
 # ```
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### rapide test de performance
@@ -829,7 +828,7 @@ for k, v in d.items():
     print(f"{k=} {v=}")
 
 # %% [markdown]
-# <div class=rise-footnote>
+# ````{admonition} xxx
 #
 # on peut aussi itérer directement sur le dictionnaire, qui est équivalent à itérer sur `d.keys()`
 #
@@ -839,7 +838,7 @@ for k, v in d.items():
 #     print(k, d[k])
 # ```
 #
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes sur les dictionnaires

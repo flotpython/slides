@@ -15,7 +15,6 @@
 #   nbhosting:
 #     title: fonctions
 #   rise:
-#     autolaunch: true
 #     slideNumber: c/t
 #     start_slideshow_at: selected
 #     theme: sky
@@ -565,10 +564,10 @@ f(3)
 # * pareil, dans le bon ordre
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# <div class="rise-footnote">
+# ````{admonition} xxx
 # contrairement aux paramètres, on peut mentionner plusieurs `*` ou `**`
 # et on les met dans l'ordre où ça fait du sens
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
