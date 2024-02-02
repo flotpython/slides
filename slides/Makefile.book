@@ -1,13 +1,9 @@
 book:
 	jupyter-book build .
 
-book-requirements:
-	pip install jupyter-book pyppeteer
+book-clean:
+	rm -rf _build
 
-view:
-	open _build/html/index.html
+.PHONY: book book-clean
 
-pdf:
-	jupyter-book build ./ --builder pdfhtml
 
-.PHONY: book book-requirements pdf
