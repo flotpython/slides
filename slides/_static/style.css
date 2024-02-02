@@ -15,7 +15,7 @@
   * and it is also easier to check for proper execution
   */
 div.cell div.cell_output .output pre {
-    background-color: #fee;
+    background-color: #f0f0ff;
 }
 
 
