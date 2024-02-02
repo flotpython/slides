@@ -3,7 +3,6 @@ parts:
 - caption: introduction
   chapters:
   - glob: 1-[0-9]*-nb
-  - glob: 1*
 - caption: premiers pas
   chapters:
   - glob: 101/0*
@@ -28,4 +27,4 @@ parts:
 - caption: "sujets avanc\xE9s"
   chapters:
   - glob: 8-[0-9]*-nb
-root: 1-2-introduction-nb
+root: 0-0-prelude-nb

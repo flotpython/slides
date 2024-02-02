@@ -6,8 +6,7 @@ tracks:
   sections:
   - name: introduction
     notebooks:
-    - "slides/1-[0-9]*-nb.py"
-    - "slides/1*.md"
+    - "slides/1-[0-9]*-nb.md"
   - name: premiers pas
     notebooks:
     - 101/0*.md
