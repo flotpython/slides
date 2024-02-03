@@ -99,6 +99,7 @@ def foo(x):
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [gridwidth-1-2]
 
 # créons quelques objets
 a = 1
@@ -108,21 +109,29 @@ liste = [1, 10., 10 + 10j]
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [gridwidth-1-2]
 
+# et définissons une fonction
+# en fait c'est un objet aussi !
 def foo(x):
     return x * 2
+
+# et le module aussi !
 import math
 ```
 
 ```{code-cell} ipython3
 :cell_style: center
+:tags: [gridwidth-1-3]
 
-# a désigne un entier, b désigne une chaine
+# a désigne un entier
+# b désigne une chaine
 type(a), type(b)
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [gridwidth-1-3]
 
 # une liste
 type(liste)
@@ -130,6 +139,7 @@ type(liste)
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [gridwidth-1-3]
 
 # les indices commencent à 0
 # un complexe
@@ -138,6 +148,7 @@ type(liste[2])
 
 ```{code-cell} ipython3
 :cell_style: split
+:tags: [gridwidth-1-3]
 
 # un module
 type(math)
@@ -148,6 +159,7 @@ type(math)
 cell_style: split
 slideshow:
   slide_type: ''
+tags: [gridwidth-1-3]
 ---
 # une fonction
 type(foo)
@@ -158,11 +170,13 @@ type(foo)
 
 attention toutefois que ce sont les **objets** qui sont typés et **pas les variables**  
 ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste…
+
+(en fait les variables sont seulement **des références** aux objets)
 ````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### modèle mental : objets mutables ou non
+### modèle mental : objets mutables
 
 +++ {"cell_style": "center"}
 
@@ -181,19 +195,24 @@ slideshow:
   slide_type: slide
 ---
 %%ipythontutor heapPrimitives=true
+
+# je peux MODIFIER la liste
+
 liste1 = [1, 2, 3]
 liste1[1] = 100
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### modèle mental : objets mutables ou non
+### modèle mental : objets non mutables
 
 +++
 
-par contre, une chaine est non **mutable**
+par contre, une chaine est **non mutable** ou **immutable**
 
 ```{code-cell} ipython3
+# je ne PEUX PAS modifier la chaine !
+
 chaine = 'abc'
 try:
     chaine[1] = 'z'
@@ -248,8 +267,9 @@ if 2**5 == 32:
     print("c'est l'alignement des lignes")
     print("qui produit les blocs")
     print("pas de sucre syntaxique superflu")
+    print("genre begin/end ou {}")
 else:
-    print("du genre if (exp) {do_this()} else {do_that()}")
+    print("on ne passe pas ici")
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -281,8 +301,7 @@ il y a aussi la "librairie standard" qui vient avec plein d'utilitaires:
 là encore cela signifie qu'on a rapidement accès à des fonctionnalités puissantes, et bien optimisées
 
 et si ce dont on a besoin n'est pas dans la librairie standard,  
-il y a ... des centaines de milliers de librairies  
-de toutes les sortes et de toutes les façons disponibles sur <https://pypi.org>  
+il y a ... des centaines de milliers de librairies disponibles sur <https://pypi.org>  
 y compris notamment `numpy`, `pandas`, `scikit-learn`, et énormément d'autres...
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -345,6 +364,8 @@ person = MyFirstClass(
 person
 ```
 
+à quoi ça sert ?
+
 * étendre les types de base fournis par le langage
 * avec des types spécifiques à votre application
 * pour pouvoir passer des objets 'composites' (encapsulation)
@@ -359,33 +380,35 @@ person
 
 # ici j'utilise un trait qui date de la version 3.9
 
-# on peut donner une indication sur le type attendu,
+# on peut donner une indication sur le type attendu de la variable
+
 # comme ceci :     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-global_index = {}  # type: dict[name, MyFirstClass]
+persons = []       # type: list[MyFirstClass]
 
-# ou encore ici:  ↓↓↓↓↓↓↓↓↓↓↓↓ et ↓↓↓↓↓↓↓↓
-def index(instance: MyFirstClass) -> None:
-    global_index[instance.nom] = instance
-
-def find_instance(name: str) -> MyFirstClass:
-    return global_index.get(name, None)
+# ou encore ici:    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓   et  ↓↓↓  et ↓↓↓↓↓↓↓↓↓↓↓↓
+def search(persons: list[MyFirstClass], nom: str) -> MyFirstClass:
+    for p in persons:
+        if p.nom == nom:
+            return p
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
-index(MyFirstClass("dupont", 25))
-index(MyFirstClass("durand", 52))
+group = [
+    MyFirstClass("Jean Dupont", 25),
+    MyFirstClass("Pierre Durand", 42),
+]
 
-print(find_instance("dupont"))
+search(group, "Jean Dupont")
 ```
 
 +++ {"cell_style": "split"}
 
-les annotations de type
+les *type hints*, traduites en "annotations de type"
+
 * sont **entièrement optionnelles**
-* mais aident à lire, utiliser  
-  et documenter le code
+* mais aident à lire, à utiliser, et à documenter le code
 * vérifiables par un outil externe  
   e.g. [`mypy`](http://mypy-lang.org/)
 
@@ -396,18 +419,24 @@ les annotations de type
 ```{code-cell} ipython3
 :cell_style: split
 
+# le module standard math s'importe comme ceci
 import math
+
 type(math)
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
 
+# je peux me définir une variable 'pi'
+
 pi = "la tour de Pi"
 ```
 
 ```{code-cell} ipython3
 :cell_style: split
+
+# qui n'interfère pas avec celle définie dans le module
 
 math.pi
 ```
@@ -444,9 +473,13 @@ p = MyFirstClass("jean", 43)
 p.age
 ```
 
-en fait mécanisme plus général
-dit de recherche d'attributs  
-comme par exemple `math.pi`
+en fait le `.` correpond à un mécanisme général, dit de **recherche d'attributs**, dont on reparlera bien sûr
+
+```{admonition} remarque
+:class: note
+
+on a dit plus haut par abus de langage "la variable `pi` du module `math`"; en réalité ça correspond en effet à une variable globale au module, mais techniquement lorsqu'on écrit `math.pi` on fait référence à un **attribut** du module `pi`
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -463,6 +496,7 @@ l'instruction `for` et les itérateurs permettent de dissocier
 :cell_style: split
 
 # partant par exemple d'une liste
+
 liste = [10, 20, 30]
 ```
 
@@ -470,6 +504,7 @@ liste = [10, 20, 30]
 :cell_style: split
 
 # on itére toujours comme ceci
+
 for item in liste:
     print(item)
 ```
@@ -478,9 +513,16 @@ for item in liste:
 :cell_style: split
 
 # et JAMAIS comme ceci
+
 for i in range(len(liste)):
     print(liste[i])
 ```
+
+````{admonition} et si on a besoin de l'index ?
+:class: note
+
+on verra qu'avec la fonction `enumerate()` on peut toujours éviter ce vilain `for i in range(len(truc))` même si dans la boucle on a besoin de `i`
+````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
