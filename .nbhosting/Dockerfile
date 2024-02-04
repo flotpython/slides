@@ -4,21 +4,18 @@
 FROM nbhosting/minimal-notebook
 
 # NOTE
-# oddly enough the version of ipywidgets that comes with the
-# upstream image is not compatible is lagging behind
-# for ipythontutor at least - and IIRC some other interactive
-# widgets as well, version 8 is required
-# hence the -U flag below
+# removing pip install keplergl because it forces a downgrade of
+# ipywidgets to 7.x, which is not compatible with ipythontutor
 # also I am removing jupyterlab-rise from the mix for now -
 # and probably for good...
 RUN true \
  && pip install jupyterlab notebook jupytext jupyterlab-myst \
  && pip install jupyterlab-courselevels jupyterlab-gridwidth \
  && pip install nbautoeval ipythontutor \
- && pip install -U numpy pandas matplotlib ipywidgets \
+ && pip install numpy pandas matplotlib ipywidgets \
  && pip install mpld3 bokeh jupyter-bokeh plotly folium \
  && pip install vispy seaborn pygal networkx mypy autograd k3d \
  && apt-get install -y graphviz && pip install graphviz \
- && pip install geopandas keplergl \
+ && pip install geopandas \
  && pip install scikit-learn \
  && true
