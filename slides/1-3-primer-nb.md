@@ -93,6 +93,14 @@ def foo(x):
     return 2 * x
 ```
 
+````{admonition} par rapport à un langage compilé
+:class: warning smaller-admonition
+
+si vous connaissez un langage compilé, vous pouvez avoir cette idée que  
+*une variable = une case mémoire*  
+en Python la réalité est donc subtilement différente; c'est l'objet qui occupe la mémoire (en fait toujours dans la mémoire dynamique et jamais dans la pile), et la variable est toujours une référence (pensez en gros: pointeur) vers l'objet.
+````
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### modèle mental : tout objet est typé
@@ -202,11 +210,7 @@ liste1 = [1, 2, 3]
 liste1[1] = 100
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### modèle mental : objets non mutables
-
-+++
 
 par contre, une chaine est **non mutable** ou **immutable**
 
@@ -218,6 +222,69 @@ try:
     chaine[1] = 'z'
 except Exception as exc:
     print("BOOM !", exc)
+```
+
+### modèle mental: objets égaux, mêmes objets ?
+
+c'est super important de bien comprendre 
+
+- quand on crée un nouvel objet
+- et quand on se contente de retrouver un objet déjà créé
+
+on en reparlera longuement, mais voyons cet exemple pour bien illustrer le concept
+
+```{code-cell} ipython3
+---
+slideshow:
+  slide_type: slide
+---
+%load_ext ipythontutor
+```
+
+```{code-cell} ipython3
+:cell_style: center
+
+%%ipythontutor curInstr=2
+
+a = b = [1, 2]
+c = [1, 2]
+```
+
+dans ce cas de figure, on a 
+
+- deux objets de type liste différents - chacune des deux lignes crée un objet liste
+- et trois variables, dont les deux premières désignent (on dit aussi réfèrent, ou pointent vers) le même objet liste
+
+en Python on a deux opérateurs qui permettent de savoir
+
+- avec `==` si deux objets sont **égaux** - si leurs contenus sont identiques
+- avec `is` si les deux objets sont en fait **le même objet** - c'est-à-dire si ils sont rangés au même endroit dans la mémoire, si on veut
+
+```{code-cell} ipython3
+a = b = [1, 2]
+c = [1, 2]
+```
+
+```{code-cell} ipython3
+:tags: [gridwidth-1-2]
+
+# les deux premières variables 
+# réfèrent bien le même objet
+a is b
+```
+
+```{code-cell} ipython3
+:tags: [gridwidth-1-2]
+
+# ce n'est pas le cas pour a et c
+a is c
+```
+
+```{code-cell} ipython3
+# par contre les trois variables sont égales
+# au sens de == car dans les deux listes on a 
+# les mêmes valeurs
+a == b == c
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

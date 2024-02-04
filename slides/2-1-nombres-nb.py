@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: nombres
 #   rise:
@@ -46,40 +53,41 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : division
 
-# %%
+# %% tags=["gridwidth-1-3"]
 # division exacte/flottante
 8 / 5
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
 # division entière (quotient)
 8 // 5
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-3"]
 # reste div. entière
 8 % 5
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : opérateurs
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
 # la division entière (quotient)
-# fonctionne aussi avec les flottants
+# fonctionne aussi 
+# avec les flottants
 
 8.5 // 4.5
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
 # pareil pour le reste / modulo
 
 8.5 % 4.5
 
-# %% slideshow={"slide_type": ""}
-# plein d'autres opérations disponibles
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
+# bcp d'autres opérations disponibles
 # et notamment:
 
 2 ** 32         # puissance
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} une cheatsheet
 #
 # à bookmarker: [une cheat sheet avec la liste des opérateurs en Python](https://cheatography.com/nouha-thabet/cheat-sheets/python-operators-and-booleans/)
 #
@@ -92,118 +100,46 @@ HTML(filename="_static/style.html")
 int(234.5)      # cast float ➔ int
 
 # %% [markdown]
+# ````{admonition} à retenir !
+#
 # un **type** en Python est aussi une **usine à objets**,  
 # il peut être utilisé comme une fonction  
 # ici l'appel `int(234.5)` consiste à appeler le type `int`  
 # pour fabriquer un objet,  de type `int` donc, à partir de la valeur `234.5`
+# ````
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} moins crucial
+# :class: tip small-admonition
 #
 # il existe aussi des fonctions `floor()` et `ceil()` dans le module `math`  
 # toutefois la méthode ci-dessus est plus générale, elle s'applique à tous les types en Python
-#
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres complexes
 
-# %%
-1j * 1j         # nombres complexes
+# %% tags=["gridwidth-1-3"]
+# pour écrire un complexe
+# il faut utiliser j et non pas i
 
-# %%
+1j * 1j
+
+# %% tags=["gridwidth-1-3"]
 a = 3 + 4j
-a.real          # partie réelle
 
-# %%
-a.imag          # partie imaginaire
+# partie réelle
+a.real
+
+# %% tags=["gridwidth-1-3"]
+# partie imaginaire
+a.imag          
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} les attributs, encore..
 #
-# remarquez qu'ici le terme `a.real` consiste à rechercher l'**attribut** `real` dans l'objet (désigné par) `a`
+# remarquez qu'ici à nouveau, le terme `a.real` consiste à rechercher l'**attribut** `real` dans l'objet (désigné par) `a`
 # ````
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### en hexa, binaire, octal
-
-# %% [markdown]
-# pour créer des entiers sous forme littérale, dans d'autres bases
-
-# %%
-0xff            # hexadécimal
-
-# %%
-0b11111111      # binaire
-
-# %%
-0o377           # octal
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### sous forme hexa, binaire, octale
-
-# %% [markdown]
-# dans l'autre sens, trouver la représentation en base *n*  
-# sous forme de chaine de caractères du coup
-
-# %% cell_style="center"
-hex(255)    # traduire en hexa (-> str)
-
-# %% cell_style="center"
-bin(255)    # traduire en binaire (-> str)
-
-# %% cell_style="center"
-oct(255)    # traduire en octal (-> str)
-
-# %% [markdown]
-# ````{admonition} xxx
-#
-# remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`;
-# ce sont des fonctions *prédéfinies*, connues de Python dès le lancement  
-# le terme anglais pour désigner de telles fonctions est *builtin*
-#
-# ````
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### décalages
-
-# %% cell_style="split" tags=["level_intermediate"]
-x = 3
-y = x << 10 # décalage à gauche
-y
-
-# %% cell_style="split" tags=["level_intermediate"]
-2**11 + 2**10
-
-# %% tags=["level_intermediate"]
-x          # l'argument n'est pas modifié
-
-# %% cell_style="split" tags=["level_intermediate"]
-y >> 3     # décalage à droite
-
-# %% cell_style="split" tags=["level_intermediate"]
-2**8 + 2**7
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### opérations *bitwise*
-
-# %%
-y = 4
-y | 2      # bitwise OR de 0100 (4) et 0010 (2)
-
-# %%
-y & 2      # bitwise AND de 0100 (4) et 0010 (2)
-
-# %%
-y & 15     # bitwise AND de 0100 (4) et 1111 (15)
-
-# %%
-~ y        # bitwise NOT - en pratique ~x == -(x+1)
-
-# %% [markdown]
-# * rarement utile d’utiliser les opérations bitwise en Python usuel
-# * mais par contre **très utile** avec numpy et pandas  
-#   pour manipuler notamment les masques
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le module `math`
@@ -211,7 +147,7 @@ y & 15     # bitwise AND de 0100 (4) et 1111 (15)
 # %% cell_style="split"
 # pour anticiper un peu
 # sur les listes...
-# ici on cherche les 6 derniers
+# ici on veut les 6 derniers
 # symboles dans le module math
 
 import math
@@ -224,16 +160,61 @@ math.tau
 math.sin(math.pi)
 
 # %% [markdown]
-# **Important**: entraînez vous aussi à trouver la doc dans google:  
-# https://www.google.com/search?q=python+module+math
+# ````{admonition} exo: entrainez-vous à chercher dans google
+#
+# entraînez vous à trouver rapidement la doc de ce module dans google en cherchant par exemple "`python module math`"
+#
+# <https://www.google.com/search?q=python+module+math>
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} décortiquons un peu
+# :class: small-admonition
 #
-# pour décortiquer un peu:  
 # après l'import, la variable `math` désigne donc un objet de type `module`  
 # et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` dans cet objet module  
 # et pareil exactement pour `math.sin`, qui désigne … un objet fonction
+# ````
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### en hexa, binaire, octal
+
+# %% [markdown]
+# pour créer des entiers sous forme littérale, dans d'autres bases
+
+# %% tags=["gridwidth-1-3"]
+# hexadécimal
+0xff
+
+# %% tags=["gridwidth-1-3"]
+# binaire
+0b11111111
+
+# %% tags=["gridwidth-1-3"]
+# octal
+0o377
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### sous forme hexa, binaire, octale
+
+# %% [markdown]
+# dans l'autre sens, trouver la représentation en base *n*  
+# sous forme de chaine de caractères du coup
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+hex(255)    # traduire en hexa (-> str)`
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+bin(255)    # traduire en binaire (-> str)
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+oct(255)    # traduire en octal (-> str)
+
+# %% [markdown]
+# ````{admonition} fonctions prédéfinies ou *builtin*
+#
+# remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`  
+# ce sont des fonctions *prédéfinies*, connues de Python **dès le lancement**  
+# le terme anglais pour désigner de telles fonctions est *builtin*
 #
 # ````
 
@@ -557,6 +538,50 @@ x == Fraction(3, 10)
 
 # %% cell_style="split"
 x == 0.3
+
+# %% [markdown]
+# ## plus exotique
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# ### opérations *bitwise*
+
+# %%
+y = 4
+y | 2      # bitwise OR de 0100 (4) et 0010 (2)
+
+# %%
+y & 2      # bitwise AND de 0100 (4) et 0010 (2)
+
+# %%
+y & 15     # bitwise AND de 0100 (4) et 1111 (15)
+
+# %%
+~ y        # bitwise NOT - en pratique ~x == -(x+1)
+
+# %% [markdown]
+# * rarement utile d’utiliser les opérations bitwise en Python usuel
+# * mais par contre **très utile** avec numpy et pandas  
+#   pour manipuler notamment les masques
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# ### décalages
+
+# %% cell_style="split" tags=[]
+x = 3
+y = x << 10 # décalage à gauche
+y
+
+# %% cell_style="split" tags=[]
+2**11 + 2**10
+
+# %% tags=[]
+x          # l'argument n'est pas modifié
+
+# %% cell_style="split" tags=[]
+y >> 3     # décalage à droite
+
+# %% cell_style="split" tags=[]
+2**8 + 2**7
 
 # %% [markdown]
 # ****

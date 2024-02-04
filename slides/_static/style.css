@@ -104,11 +104,13 @@ div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h4:first-child {
 }
 
 
-/*
- * ----------- specific to this course
- * used in the.mynotebook on memory layout
- */
-.memory {
-    font-size: 180%;
+/* custom sizes for admonitions */
+.smaller-admonition {
+    font-size: smaller;
+    line-height: 1.2;
+}
+
+.small-admonition {
+    font-size: small;
     line-height: 1.2;
 }
