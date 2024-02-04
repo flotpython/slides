@@ -12,9 +12,10 @@ FROM nbhosting/minimal-notebook
 # for ipythontutor at least - and IIRC some other interactive
 # widgets as well, version 8 is required
 # hence the -U flag below
+# also I am removing jupyterlab-rise from the mix for now -
+# and probably for good...
 RUN true \
  && pip install jupyterlab notebook jupytext jupyterlab-myst \
- && pip install jupyterlab-rise \
  && pip install jupyterlab-courselevels jupyterlab-gridwidth \
  && pip install nbautoeval ipythontutor \
  && pip install -U numpy pandas matplotlib ipywidgets \
