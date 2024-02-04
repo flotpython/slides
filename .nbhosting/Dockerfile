@@ -4,9 +4,6 @@
 FROM nbhosting/minimal-notebook
 
 # NOTE
-# we cannot use jupyter nbextension enable/disable
-# because we provide our own nbconfig/notebook.json
-# and that is where is stored the enabled/disabled extensions
 # oddly enough the version of ipywidgets that comes with the
 # upstream image is not compatible is lagging behind
 # for ipythontutor at least - and IIRC some other interactive
