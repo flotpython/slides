@@ -47,7 +47,7 @@ rise:
 * **tout est un objet**
 * objets mutables ou non
 
-  ````{admonition} c'est l'objet de ce notebook
+  ````{admonition} c'est le sujet de ce notebook
   :class: note
 
   nous allons illustrer ces 2 points de suite

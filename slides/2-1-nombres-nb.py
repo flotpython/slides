@@ -35,11 +35,13 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": "slide"}
 # # les nombres
+#
+# les types de base pour les nombres sont:`int`, `float`, `complex`, `bool`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## types de base `int`, `float`, `complex`
+# ## les entiers
 #
 # * les `int` ont une précision illimitée
 #   * Python peut calculer nativement
@@ -52,6 +54,9 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : division
+#
+# les opérations usuelles ne posent pas de souci, c'est bien sûr `+` `-` `*` avec `(` et `)`  
+# mais la division mérite quelques mots:
 
 # %% tags=["gridwidth-1-3"]
 # division exacte/flottante
@@ -68,23 +73,19 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : opérateurs
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
-# la division entière (quotient)
-# fonctionne aussi 
-# avec les flottants
-
-8.5 // 4.5
-
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
-# pareil pour le reste / modulo
-
-8.5 % 4.5
-
-# %% slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # bcp d'autres opérations disponibles
 # et notamment:
 
 2 ** 32         # puissance
+
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# tous les opérateurs peuvent être utilisés
+# pour faire un effet de bord comme ceci
+
+x = 10
+x += 2
+x
 
 # %% [markdown]
 # ````{admonition} une cheatsheet
@@ -151,6 +152,7 @@ a.imag
 # symboles dans le module math
 
 import math
+
 dir(math)[-6:]
 
 # %% cell_style="split"
@@ -168,7 +170,7 @@ math.sin(math.pi)
 
 # %% [markdown]
 # ````{admonition} décortiquons un peu
-# :class: small-admonition
+# :class: small-admonition seealso
 #
 # après l'import, la variable `math` désigne donc un objet de type `module`  
 # et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` dans cet objet module  
@@ -176,180 +178,84 @@ math.sin(math.pi)
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### en hexa, binaire, octal
-
-# %% [markdown]
-# pour créer des entiers sous forme littérale, dans d'autres bases
-
-# %% tags=["gridwidth-1-3"]
-# hexadécimal
-0xff
-
-# %% tags=["gridwidth-1-3"]
-# binaire
-0b11111111
-
-# %% tags=["gridwidth-1-3"]
-# octal
-0o377
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### sous forme hexa, binaire, octale
-
-# %% [markdown]
-# dans l'autre sens, trouver la représentation en base *n*  
-# sous forme de chaine de caractères du coup
-
-# %% cell_style="center" tags=["gridwidth-1-3"]
-hex(255)    # traduire en hexa (-> str)`
-
-# %% cell_style="center" tags=["gridwidth-1-3"]
-bin(255)    # traduire en binaire (-> str)
-
-# %% cell_style="center" tags=["gridwidth-1-3"]
-oct(255)    # traduire en octal (-> str)
-
-# %% [markdown]
-# ````{admonition} fonctions prédéfinies ou *builtin*
-#
-# remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`  
-# ce sont des fonctions *prédéfinies*, connues de Python **dès le lancement**  
-# le terme anglais pour désigner de telles fonctions est *builtin*
-#
-# ````
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## booléens
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"]
+# il y a aussi le type booléen
+
+10 <= 12
+
+# %% tags=["gridwidth-1-2"]
+# avec comme valeurs True et False
+
+10 >= 12
+
+# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # True c'est presque exactement 1
+
 True == 1
 
-# %% cell_style="split"
-# et False presque 0
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# et False presque exactement 0
+
 False == 0
 
-# %% cell_style="split" slideshow={"slide_type": ""}
-3 + True
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# mais pas tout à fait quand même
 
-# %% cell_style="split"
-3 + False
-
-# %% cell_style="split"
-# presque..
 type(True)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# alors que
+
 type(1)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### booléens et tests (1)
+# %% [markdown]
+# ### opérateurs sur les booléens
 
-# %% cell_style="split"
-# on peut - bien sûr - faire un `if`
-# (ou un while) sur un booléen
-a = 3
-b = 4
+# %% tags=["gridwidth-1-2"]
+# tout simplement avec les mots-clé and, or, et not
 
-type(a == b)
+x = 10
 
-# %% cell_style="split"
-# sujet du if = booléen
+(8 <= x) and (x <= 12)
 
-if a == b:
-    print("pareils")
-else:
-    print("différents")
+# %% tags=["gridwidth-1-2"]
+# cela dit dans ce cas-là on peut écrire
+# de manière plus simple
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### booléens et tests (2)
+8 <= x <= 12
 
-# %% cell_style="split"
-# mais aussi : avec n'importe quoi d'autre
+# %% tags=["gridwidth-1-2"]
+# pour tester l'égalité (on en a déjà parlé)
 
-if a:
-    print("pas faux")
+x == 10
 
-# %% cell_style="split"
-# en fait équivalent à ceci:
+# %% tags=["gridwidth-1-2"]
+# pour tester l'inégalité
 
-if bool(a):
-    print("pas faux")
+x != 10
 
 # %% [markdown]
-# ````{admonition} xxx
+# ### opérateurs `is` et `in`
 #
-# on en reparlera, mais les valeurs "fausses" correspondent à un **nombre nul**, ou à un **container vide** (liste, chaine, ..)
+# * `is` permet de savoir si deux objets sont **le même objet** - c'est-à-dire correspondent à la même adresse en mémoire
+# * `in` permet de savoir si un objet **fait partie** d'un autre objet
 #
-# ````
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## conversions
-
-# %% [markdown]
-# * à nouveau, c'est la **mécanique générale** pour convertir entre types de données:
-
-# %% cell_style="split"
-# si on appelle int() on convertit en entier
-int(3.4)
-
-# %% cell_style="split"
-# si on appelle bool() on convertit en booléen
-
-bool(3.4)
-
-# %% cell_style="split"
-# un nombre nul est "faux"
-bool(0)
-
-# %% cell_style="split"
-# une chaine vide est "fausse"
-bool("")
-
-# %% cell_style="split"
-# un nombre non nul est "vrai"
-bool(1)
-
-
-# %% cell_style="split"
-# une chaine non vide - même avec 
-# un seul espace - est "vraie"
-bool(" ")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### opérateurs usuels `and` `or` et `not` (1)
-
-# %% [markdown]
-# * 99% du temps on utilise tout simplement les opérateurs `and`, `or` et `not`
-
-# %% cell_style="split"
-a, b = 1, 2
-
-if 0 <= a and a <= b:
-    print("YES")
-
-# %% cell_style="split"
-# on peut même parfois s'en passer
-# complètement
-if 0 <= a <= b:
-    print("YES")
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### opérateurs usuels `and` `or` et `not` (2)
-
-# %% [markdown]
-# le `not` permet des syntaxes plutôt lisibles
+# avec ces deux opérateurs, le `not` permet des syntaxes plutôt lisibles
 #
 # * `x is not y`
 # * `x not in y`
+#
+# voyons cela sur un exemple
+# vous vous souvenez de l'exemple avec les deux objets liste ?
 
-# %% [markdown]
-# et pour l'illustrer commençons par créer ceci
+# %% slideshow={"slide_type": "slide"} tags=[]
+# ici on crée deux objets liste distincts
 
-# %% cell_style="split"
+# le premier (avec deux références)
 a = b = [1, 2]
-
-# %% cell_style="split"
+# le deuxième
 c = [1, 2]
 
 # %% slideshow={"slide_type": "slide"}
@@ -361,78 +267,109 @@ c = [1, 2]
 a = b = [1, 2]
 c = [1, 2]
 
-# %% [markdown]
-# ````{admonition} xxx
-#
-# à ce stade on a créé deux objets liste distincts
-#
-# * le premier désigné par a et b
-# * le second désigné par c
-#
-# ````
-
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # du coup on peut écrire des choses comme
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 a is b
 
-# %% cell_style="split"
-# la syntaxe est OK
-a is not b
-
-# %% cell_style="split"
-a is c
-
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# plus lisible que   not (a is c)
 a is not c
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 a == c
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 a != c
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ou encore comme
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 1 in a
 
-# %% cell_style="split"
-# la syntaxe est OK
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# plus lisible que   not (1 in a)
 1 not in a
 
-# %% cell_style="split"
-3 not in a
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### test sur un booléen
 
-# %% cell_style="split"
-# possible aussi mais vilain
-# et jamais employé en pratique
-not 3 in a
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# on peut - bien sûr - faire un `if`
+# (ou un while) sur un booléen
+a = 3
+b = 4
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### booléens - avertissement
+type(a == b)
 
-# %% [markdown] tags=["level_intermediate"]
-# * attention à ne pas confondre
-# * les opérations bit à bit avec les opérations booléennes
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# ici le sujet du if est bien booléen
 
-# %% slideshow={"slide_type": "-"} tags=["level_intermediate"]
-# calculons le XOR de deux booléens
+if a == b:
+    print("pareils")
+else:
+    print("différents")
 
-a, b = True, True
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### test sur un non-booléen
 
-print("a", bool(a), "b", bool(b), "a^b", bool(a^b))
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# mais aussi : avec n'importe quoi d'autre
+# ici le sujet du if est un nombre
 
-# %% slideshow={"slide_type": ""} tags=["level_intermediate"]
-a, b = 1, 2
+if a:
+    print("pas faux")
 
-# on pourrait penser, puisque a et b sont 'vrais'
-# qu'on devrait obtenir le même résultat que ci-dessus
-# mais 1 ^ 2 -> 3
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# en fait équivalent à ceci:
 
-print("a", bool(a), "b", bool(b), "a^b", bool(a^b))
+if bool(a):
+    print("pas faux")
+
+# %% [markdown]
+# ````{admonition} valeurs "fausses" ?
+#
+# les valeurs "fausses" correspondent à un **nombre nul**, ou à un **container vide** (liste, chaine, ..)
+# ````
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### tests sur une valeur non booléenne & conversion
+
+# %% [markdown]
+# en fait ce qui est à l'oeuvre ici, c'est la **mécanique générale** pour convertir entre types de données:
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# si on appelle int() on convertit en entier
+
+int(3.4)
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# eh bien de la même manière
+# si on appelle bool() on convertit en booléen
+
+bool(3.4)
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# un nombre nul est "faux"
+
+bool(0)
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# une chaine vide est "fausse"
+
+bool("")
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# un nombre non nul est "vrai"
+bool(1)
+
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# une chaine non vide - même avec 
+# un seul espace - est "vraie"
+bool(" ")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## l'encodage des flottants
@@ -446,6 +383,7 @@ print("a", bool(a), "b", bool(b), "a^b", bool(a^b))
 
 # %% slideshow={"slide_type": "-"}
 # flottant = imprécision structurelle !
+
 0.1 + 0.2
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -458,31 +396,17 @@ print("a", bool(a), "b", bool(b), "a^b", bool(a^b))
 #   * 52 bits pour représenter la mantisse
 
 # %% cell_style="split"
+# pour obtenir des infos sur la précision des flottants
+
 import sys
 sys.float_info
 
 # %% [markdown] cell_style="split"
-# **à retenir**: sur 64 bits  
-# l' erreur relative est de l'ordre de  
-# $10^{-15}$ / $10^{-16}$
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### arrondis
-
-# %% [markdown]
-# * Python arrondit les floats pour les encoder ([convertisseur](http://www.binaryconvert.com/convert_double.html))
-# * ce qui provoque des erreurs d'arrondi
-# * de plus, l'affichage **aussi** fait des arrondis
-# * ce que l’on voit n’est pas forcément la représentation réelle
-
-# %% cell_style="split"
-0.1, 0.2
-
-# %% cell_style="split"
-0.3
-
-# %%
-0.1 + 0.2
+# ````{admonition} à retenir
+# :class: info
+#
+# sur 64 bits, l'erreur relative est de l'ordre de $10^{-15}$ / $10^{-16}$
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### pas spécifique à Python
@@ -496,7 +420,7 @@ sys.float_info
 #   * mais plutôt avec un *presque égal* : utiliser `math.isclose`
 
 # %% cell_style="split"
-0.3 == 0.1+0.2
+0.3 == 0.1 + 0.2
 
 
 # %% cell_style="split"
@@ -541,6 +465,49 @@ x == 0.3
 
 # %% [markdown]
 # ## plus exotique
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### entrer un entier en hexa, binaire, octal
+
+# %% [markdown]
+# pour créer des entiers sous forme littérale, dans d'autres bases
+
+# %% tags=["gridwidth-1-3"]
+# hexadécimal
+0xff
+
+# %% tags=["gridwidth-1-3"]
+# binaire
+0b11111111
+
+# %% tags=["gridwidth-1-3"]
+# octal
+0o377
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### afficher un entier sous forme hexa, binaire, octale
+
+# %% [markdown]
+# dans l'autre sens, trouver la représentation en base *n*  
+# sous forme de chaine de caractères du coup
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+hex(255)    # traduire en hexa (-> str)`
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+bin(255)    # traduire en binaire (-> str)
+
+# %% cell_style="center" tags=["gridwidth-1-3"]
+oct(255)    # traduire en octal (-> str)
+
+# %% [markdown]
+# ````{admonition} fonctions prédéfinies ou *builtin*
+#
+# remarquez que nous n'avons pas défini les variables `hex`, `bin` et `oct`  
+# ce sont des fonctions *prédéfinies*, connues de Python **dès le lancement**  
+# le terme anglais pour désigner de telles fonctions est *builtin*
+#
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # ### opérations *bitwise*
