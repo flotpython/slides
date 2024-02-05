@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: "s\xE9quences et chaines"
 #   rise:
@@ -36,22 +43,24 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] cell_style="split"
 # * suite finie et ordonnée d'objets
-# * du coup indexable `seq[n]`
-# * indices **commencent à 0**
+# * du coup indexable, on peut écrire `S[n]`
+#   * en Python, les **indices commencent à 0**
 # * peuvent contenir des duplications
 
 # %% [markdown] cell_style="split"
+# les séquences dans le langage Python (entre autres):
+#
 # * mutable
 #   * `list`, `bytearray`
 # * immutable
 #   * `str`, `bytes`, `tuple`, `range`
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} les chaines (str) sont des séquences
+# :class: info
 #
 # nous allons voir pour commencer des choses valables **sur toutes les séquences**,
-# et donc en particulier sur les chaines, puisque les chaines sont des séquences
-#
+# et donc en particulier sur les chaines de caractères, puisque les chaines sont des séquences
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -76,13 +85,14 @@ HTML(filename="_static/style.html")
 # * `sum(S)` (resp. `min(S)` et `max(S)`)
 #   * retourne la somme des éléments de S (resp. le plus petit, le plus grand)
 
-# %% [markdown] tags=["level_intermediate"]
-# ````{admonition} xxx
+# %% [markdown] tags=[]
+# ````{admonition} les séquences sont des itérables
+#
+# un itérable en Python, c'est un objet sur lequel on peut faire un `for`
 #
 # en fait les fonctions `sum`, `min` et `max` s'appliquent à n'importe quel itérable  
 # toutes les séquences sont des itérables, mais tous les itérables ne sont pas des séquences  
 # la famille des itérables est donc plus large que les séquences
-#
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -90,11 +100,11 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # * `x in S`; selon les types:
-#  * `True` si un élément de S est égal à x  
-#    (e.g. S est une `list`)
+#   * `True` si un élément de S est égal à x  
+#     (e.g. S est une `list`)
 #
-#  * `True` si S contient x  
-#    (e.g. S est une `str`)
+#   * `True` si S contient x  
+#     (e.g. S est une `str`)
 #
 # * diverses méthodes (voir docs):
 #   * `S.count(a)`
@@ -119,36 +129,35 @@ HTML(filename="_static/style.html")
 # voyons des exemples de tout ceci
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} slicing et numpy
+# :class: info
 #
-# la notion de slicing est **très massivement utilisée** dans les outils numériques, notamment en `numpy`
-#
+# la notion de slicing est **très massivement utilisée** dans toutes les librairies numériques, notamment en `numpy`
 # ````
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
 # ![](media/egg-bacon.svg)
 
 # %% [markdown] cell_style="split"
-# **slicing**
+# avec le slicing, on peut
 #
-# * on peut omettre les bornes
-# * on peut compter depuis la fin  
-#   avec un indice négatif
+# * omettre les bornes
+# * compter depuis la fin, avec un indice négatif
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s = "egg, bacon"
 s[0:3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # si on omet une borne
 # ce sera le début ..
 s[:3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # ... ou la fin:
 s[5:]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # les indices peuvent être négatifs
 s[-3:10]
 
@@ -163,18 +172,18 @@ s[:]
 # ### les bornes
 
 # %% [markdown] cell_style="split"
-# La convention est choisie pour pouvoir facilement encastrer les slices:
+# La convention est choisie pour pouvoir facilement "encastrer" les slices:
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[0:3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[3:6]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[6:]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[0:3] + s[3:6] + s[6:] == s
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
@@ -185,19 +194,19 @@ s[0:3] + s[3:6] + s[6:] == s
 
 # %% [markdown] cell_style="split"
 # * on peut préciser un pas
-# * peut aussi être négatif
+# * qui peut aussi être négatif
 # * ou omis (défaut 1)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[0:10:2]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[::2]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[:8:3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[-2::-3]
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
@@ -214,87 +223,84 @@ s[-2::-3]
 try: s[100]
 except Exception as e: print("OOPS", e)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # par contre avec un slice, pas de souci
 s[5:100]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # vraiment..
 s[100:200]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ![](media/egg-bacon.svg)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[-1]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[-3:-1]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[:-3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[::-1]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[2:0:-1]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s[2::-1]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### formes idiomatiques
 
-# %%
-s = [1, 2, 3]
+# %% [markdown] tags=[]
+# s = [1, 2, 3]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # une copie simple
 s[:]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # copie renversée
 s[::-1]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## `str` et `bytes`
+# ## `str` pour manipuler du texte
 
 # %% [markdown]
-# * deux cas particuliers de **séquences**
-#   * `str` pour manipuler **du texte**
-#   * `bytes` pour manipuler **de la donnée brute**
-#
-# * **ATTENTION**
-#   * un caractère ce **n'est pas** un octet
+# * le type `str` est un cas particuliers de **séquence**
+# * qui permet de manipuler **du texte**
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} un caractère ce **n'est pas** un octet
+# :class: warning
 #
-# avec l'encodage le plus répandu aujourd'hui (UTF-8), tous les caractères ASCII tiennent sur un octet  
+# avec l'encodage le plus répandu aujourd'hui (UTF-8), les caractères ASCII tiennent sur un octet  
 # mais **ce sont les seuls**: un `é` par exemple occupe 2 octets; un `‰` occupe 3 octets; un `🚀` occupe 4 octets
 #
+# si vous avez besoin de manipuler des données brutes - typiquement si vous lisez un fichier binaire - il vous faut utiliser le type `bytes` que nous verrons plus tard
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### chaînes de caractères `str`
+# ### écrire une str de manière littérale
 
 # %% [markdown]
-# * un cas particulier de séquence
 # * une chaîne de caractères est définie de manière équivalente par des simples ou doubles guillemets (`'` ou `"`)
 # * on peut ainsi facilement inclure un guillemet
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # une chaine entre double quotes
 # pas de souci pour les accents
 print("c'est l'été")
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # entre simple quotes
 print('on se dit "pourquoi pas"')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### chaîne de caractères sur plusieurs lignes
+# ### sur plusieurs lignes
 
 # %% [markdown]
 # * pour écrire une chaîne sur plusieurs lignes on utilise `"""` ou `'''`
@@ -313,51 +319,48 @@ c'est facile aussi""")
 # * lorsque vous voulez entrer une chaine un peu longue
 # * vous pouvez **simplement accoler** deux chaines dans votre source:
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s = "le début" " et la fin"
 print(s)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s = ("une chaine trop longue"
      " pour tenir sur une ligne")
 print(s)
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} les parenthèses sont importantes
+# :class: warning
 #
 # notez bien les parenthèses dans ce deuxième exemple, car sinon c'est une erreur de syntaxe
-#
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] tags=[]
 # ### échappements dans les chaines
-
-# %% [markdown] tags=["level_intermediate"]
-# * on écrit un retour chariot avec un `\n`
-# * autres caractères utilisant un backslash
-#   * `\\`  `\'` `\"` `\t`
-#   * `\x` `\u` `\U`
-#   …
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemples
-
-# %% cell_style="split"
-s = "l'hôtel"
-print(s)
-
-# %% cell_style="split"
 #
-s = 'une "bonne" idée'
+# * le caractère `\` a un sens particulier dans les chaines écrites de manière littérale dans le programme
+# * on écrit un retour chariot avec un `\n`
+# * une tabulation avec `\t`
+# * les guillemets peuvent être échappés (e.g. pour entrer un `'` dans une chaine délimitée avec un `'`)
+# * un backslash avec `\\`
+# * enfin on peut aussi entrer des caractères exotiques par leur codepoint avec 
+#   * `\x` `\u` `\U`
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+s = "deux\nlignes"
 print(s)
 
-# %% cell_style="split"
-s = """une très longue phrase
-avec un saut de ligne"""
+# %% cell_style="split" tags=["gridwidth-1-2"]
+s = 'des\ttrucs\tespacés'
 print(s)
 
-# %% cell_style="split"
-s = '  un backslash \\ un quote \' '
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# imaginons qu'on ait les deux sortes de guillemets
+s = "simple' double\""
+print(s)
+
+# %% cell_style="split" tags=["gridwidth-1-2"]
+s = 'backslash \\\tquote \''
 print(s)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -371,46 +374,37 @@ s = 'C:\Temp\test.txt'
 print(s)
 
 # %% [markdown] cell_style="center"
-# * `\T` n’existe pas comme échappement  
-#   Python interprète correctement `\T`
+# * `\T` n’existe pas comme échappement; Python interprète correctement `\T`
 #
 # * mais `\t` est compris comme une tabulation !!
 
-# %% [markdown] cell_style="split"
-# * 1$^{ère}$solution : utiliser `\\`  
-#   mais pas très élegant
-
-# %% cell_style="split"
-s = 'C:\\Temp\\test1.bin'
-print(s)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *raw-strings* (suite)
-
 # %% [markdown]
-# * la bonne solution : "raw string"
-# * chaîne de caractères dans laquelle les backslash ne sont *pas interprétés*
+# pour résoudre ce problème, on peut utiliser des double-backslash `\\`, mais ce n'est vraiment pas élégant 
+#
+# la bonne solution consiste à utiliser une "raw string", dans laquelle les backslash ne sont *pas interprétés*
 
 # %%
 # pour créer une raw-string, simplement faire précéder le string d'un 'r'
 
 s = r'C:\Temp\test1.bin'
+
 print(s)
 
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} préférez le / pour les chemins de fichier
 #
-# **NB** que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un <code>&bsol;</code> dans les chemins de fichiers sous Windows
+# notez que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un <code>&bsol;</code> dans les chemins de fichiers sous Windows, ce qui résoud tous les problèmes d'échappement
 #
+# les *raw-strings* restent une feature bien pratique dans d'autres contextes, notamment avec les expressions régulières, que nous n'avons pas pu utiliser comme exemple ici puisqu'on n'en a pas encore parlé..
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *docstrings*
 
 # %% [markdown]
-# * les triples guillemets sont souvent utilisé pour les *docstrings*  
-#   (aides des fonctions)
+# une *docstring* est une chaine littérale insérée **au tout début** du code d'une fonction (ou classe ou module) et qui sert à la documenter  
+# on utilise souvent les triples guillemets pour cela
 
 # %% cell_style="split"
 def double(n):
@@ -425,15 +419,6 @@ def double(n):
 # %% cell_style="split"
 help(double)
 
-# %% [markdown]
-# ````{admonition} xxx
-#
-# on peut attacher une docstring à une fonction, une classe, ou un module
-#
-# il faut que la chaine littérale soit **la première instruction** dans le code de la fonction (ou classe ou module)
-#
-# ````
-
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérations sur les `str`
 #
@@ -441,34 +426,28 @@ help(double)
 #
 # que l'on a déjà vues :
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 s1 = 'abcdéfg'
 s2 = 'bob'
 len(s1)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # concaténation
 s1 + s2
 'abcdefbob'
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # slicing
 s1[-1::-2]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 '=' * 30
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### une chaine est une séquence (suite)
-
-# %% cell_style="split"
-s1
-
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # est-ce une sous-chaine ?
 'cdé' in s1
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # à quelle position ?
 s1.index('cdé')
 
@@ -476,7 +455,7 @@ s1.index('cdé')
 # ### objet `str` non mutable
 
 # %% [markdown]
-# * par contre **ATTENTION** un `str` n'est **pas mutable**
+# par contre **ATTENTION** un `str` n'est **pas mutable**
 
 # %%
 try:
@@ -488,32 +467,32 @@ except TypeError as e:
 # ## formatage des chaînes : f-strings
 
 # %% [markdown] cell_style="split"
-# * depuis Python-3.6
-# * utilisez les ***f-strings***
-# * qui évitent les répétitions fastidieuses
+# pour le formatage des chaines: utilisez les ***f-strings***, qui évitent les répétitions fastidieuses
 
 # %% [markdown] cell_style="split"
-# * entre `{` et `}` : **du code**
-# * embarqué directement dans le format
-# * n'importe quelle **expression**
+# l'idée consiste à
+# * faire précéder la chaine par un `f`
+# * et embarquer directement dans la chaine des `{}`
+# * qui peut contenir une expression Python (un nom de variable, ou plus élaboré)
+# * et toute la partie dans le `{}` sera remplacé par le résultat de l'expression
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 import math
 
-# %% cell_style="split"
-#
+# %% cell_style="split" tags=["gridwidth-1-2"]
 nom, age = "Pierre", 42
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 f"{nom} a {age} ans"
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 f"360° = {2*math.pi} radians"
 
 # %% [markdown]
-# ````{admonition} xxx
+# ````{admonition} n'importe quelle expression entre {}
+# :class: info
 #
-# **NB** qu'entre les `{}`, on peut mettre un **nom de variable** mais aussi, plus généralement, écrire **une expression** (faire un calcul)
+# notez qu'entre les `{}`, on peut mettre un **nom de variable** mais aussi, plus généralement, écrire **une expression** (faire un calcul)
 #
 # ````
 
@@ -562,13 +541,13 @@ f'{x:e} | {y:f} | {x:g} | {y:010.2f} | {x:.2f}'
 
 # %% [markdown]
 # Voir aussi pour plus de détails:  
-# https://mkaz.blog/code/python-string-format-cookbook/
+# <https://mkaz.blog/code/python-string-format-cookbook/>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### formats pour f-string : justification
+# ### justification
 
 # %% [markdown]
-# justification: formats `<` `ˆ` et `>`
+# pour faire de la justification, on dispose des formats `<` `ˆ` et `>`
 
 # %%
 f"|{nom:<12}|{nom:^12}|{nom:>12}|"
@@ -578,30 +557,107 @@ f"|{nom:<12}|{nom:^12}|{nom:>12}|"
 num = 123
 f"|{num:<12}|{num:-^12}|{num:0>12}|"
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # ### expression dans le format
 
-# %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
-# * même le format peut, à son tour, contenir des expressions
+# %% [markdown] slideshow={"slide_type": ""} tags=[]
+# un peu plus avancé, mais notez qu'on peut également utiliser des expressions dans le format
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% cell_style="split" tags=[]
 from decimal import Decimal
 value = Decimal('12.34567')
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # ici la précision de 4
 # signifie 4 chiffres
 # significatifs en tout
 
 f"value = >{value:10.4}<"
 
-# %% cell_style="split" tags=["level_intermediate"]
-# la précision aurait pu être
-# un paramètre
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# si nécessaire la précision 
+# peut aussi être un paramètre !
 
 width = 10
 precision = 4
 f"value = >{value:{width}.{precision}}<"
+
+# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
+# ## méthodes sur les `str`
+
+# %% [markdown]
+# ### `strip()`
+
+# %%
+# j'ai lu une chaine dans un fichier
+# je ne sais pas trop s'il y a des espaces à la fin
+# et si la chaine contient un newline
+
+dirty = "  des blancs au début et à la fin et un newline  \n"
+dirty
+
+# %%
+# c'est la méthode la plus simple pour nettoyer
+dirty.strip()
+
+# %% [markdown]
+# ````{admonition} utilisez rstrip() pour nettoyer les lignes lues dans un fichier
+# :class: info smaller-admonition
+#
+# lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
+# d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE
+# ````
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### `split()` et `join()`
+
+# %% cell_style="split"
+# une chaine à découper
+s = "une phrase\nsur deux lignes"
+s
+
+# %% cell_style="split"
+# sans argument, split
+# découpe selon les espaces
+# et tabulations et newline
+liste = s.split()
+liste
+
+# %% cell_style="split"
+# recoller les morceaux
+"".join(liste)
+
+# %% cell_style="split"
+# le plus souvent
+" ".join(liste)
+
+# %%
+# ou n'importe quel autre séparateur
+"+++".join(liste)
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### remplacements, recherches
+
+# %%
+s = "une petite phrase"
+s.replace('petite', 'grande')
+
+# %% cell_style="split"
+# l'index du premier caractère
+s.find('hra')
+
+# %% cell_style="split"
+s[12]
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### et plein d'autres..
+
+# %% [markdown]
+# * de nombreuses méthodes disponibles
+# * personne ne retient l'intégralité des méthodes sur les types de base
+# * le bon réflexe : chercher dans la dos Python qui est très bien faite
+# * google les simples mots clés 'python str', vous trouvez
+# * <https://docs.python.org/3/library/stdtypes.html>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## formatage : anciennes méthodes
@@ -666,83 +722,6 @@ except Exception as e: print ("OOPS", e)
 
 # %% tags=["level_intermediate"]
 'alice a ' + str(age) + ' ans'
-
-# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
-# ## méthodes sur les `str`
-
-# %% [markdown]
-# ### `strip()`
-
-# %%
-# j'ai lu une chaine dans un fichier
-# je ne sais pas trop s'il y a des espaces à la fin
-# et si la chaine contient un newline
-
-dirty = "  des blancs au début et à la fin et un newline  \n"
-dirty
-
-# %%
-# c'est la méthode la plus simple pour nettoyer
-dirty.strip()
-
-# %% [markdown]
-# ````{admonition} xxx
-#
-# lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
-# d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE
-#
-# ````
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `split()` et `join()`
-
-# %% cell_style="split"
-# une chaine à découper
-s = "une phrase\nsur deux lignes"
-s
-
-# %% cell_style="split"
-# sans argument, split
-# découpe selon les espaces
-# et tabulations et newline
-liste = s.split()
-liste
-
-# %% cell_style="split"
-# recoller les morceaux
-"".join(liste)
-
-# %% cell_style="split"
-# le plus souvent
-" ".join(liste)
-
-# %%
-# ou n'importe quel autre séparateur
-"+++".join(liste)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### remplacements, recherches
-
-# %%
-s = "une petite phrase"
-s.replace('petite', 'grande')
-
-# %% cell_style="split"
-# l'index du premier caractère
-s.find('hra')
-
-# %% cell_style="split"
-s[12]
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### et plein d'autres..
-
-# %% [markdown]
-# * de nombreuses méthodes disponibles
-# * personne ne retient l'intégralité des méthodes sur les types de base
-# * le bon réflexe : chercher dans la dos Python qui est très bien faite
-# * google les simples mots clés 'python str', vous trouvez
-# * <https://docs.python.org/3/library/stdtypes.html>
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ## un peu d'introspection (avancé)
