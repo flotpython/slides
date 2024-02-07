@@ -3,11 +3,14 @@
  * which, let's just say, is not optimal
  * let's cancel that
  */
- .rendered_html * + ol,
- .rendered_html * + ul {
+ .myst * + ol,
+ .myst * + ul {
      margin-top: initial !important;
  }
 
+ .myst :where(p):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    margin-bottom: 0.5em !important
+ }
 
  /*
   * jupyter-book: outline cell outputs
@@ -93,10 +96,10 @@ div.cell div.cell_output .output pre {
  * if it's a (sub)title, gets outlined
  */
 
-div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h1:first-child,
-div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h2:first-child,
-div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h3:first-child,
-div.cell[data-tag-frame=true]>div.inner_cell>div.rendered_html>h4:first-child {
+div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h1:first-child,
+div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h2:first-child,
+div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h3:first-child,
+div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h4:first-child {
         color: purple;
         text-decoration-line: underline;
         text-decoration-color: rgb(227, 129, 227);
