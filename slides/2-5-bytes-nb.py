@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: str et bytes
 #   rise:
@@ -34,13 +41,10 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # ## le type `bytes`
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-#
-# ### non mutable
-
 # %% [markdown]
-# * le type `bytes` correspond, comme son nom l'indique,  
-#   à une séquence d'**octets**
+# ### non mutable
+#
+# * le type `bytes` correspond, comme son nom l'indique, à une séquence d'**octets**
 # * le type `bytes` est donc un autre exemple de **séquence** (comme `str`)
 # * c'est également un type **non mutable**
 
@@ -49,15 +53,15 @@ b = bytes([65, 66, 67])
 b
 
 # %% cell_style="split"
+# non mutable !
 try:
     b[1] = 68
 except Exception as exc:
     print(f"OOPS - {type(exc)}\n{exc}")
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### littéral
-
 # %% [markdown] cell_style="center"
+# ### littéral
+#
 # pour construire un `bytes` on peut soit
 #
 # * utiliser le constructeur `bytes()` - comme slide précédent
@@ -70,19 +74,16 @@ b = b'AB\n'
 b
 
 # %% cell_style="split" slideshow={"slide_type": ""}
-
 # sinon en hexa
 b'\x41\x42\x0a'
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### affichage comme des caractères
-
 # %% [markdown]
-# * comme on le voit dans `b'AB\n'` , les octets d'un `bytes`  
-#   sont parfois **représentés par des caractères ASCII**
+# ````{admonition} les détail sordides
+# :class: dropdown
 #
-# * c'est un usage répandu
-# * mais ça peut être **source de confusion**
+# ### affichage comme des caractères
+#
+# comme on le voit dans `b'AB\n'` , les octets d'un `bytes` sont parfois **représentés par des caractères ASCII**
 
 # %% cell_style="split"
 # on peut écrire ceci
@@ -95,22 +96,23 @@ b2 = bytes(
 )
 b1 == b2
 
-# %% [markdown]
-# * car par exemple ceci ne **marcherait pas**
+# %% [markdown] slideshow={"slide_type": "slide"}
+# c'est pratique, mais ça peut être **source de confusion**  
+# car par exemple ceci ne **marcherait pas**
 # ```
 # >>> b'été'
 #          ^
 # SyntaxError: bytes can only contain ASCII literal characters.
 # ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# * en interne, le type `bytes` ne stocke que **des entiers** (uint8)
-# * la représentation sous forme de caractères est uniquement  
-#   pour **faciliter la lecture** de l’ASCII
+#
+# * en interne, le type `bytes` ne stocke que **des entiers** (*uint8*) [0..255]
+# * la représentation sous forme de caractères est uniquement pour **faciliter la lecture** de l’ASCII
 
 # %%
+# on peut mettre 
 s = b'a\xff'
-s[0], s[1]
+s
+# s[0], s[1]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un `bytes` est une séquence
