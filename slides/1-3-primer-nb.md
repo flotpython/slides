@@ -94,7 +94,7 @@ def foo(x):
 ```
 
 ````{admonition} par rapport à un langage compilé
-:class: warning smaller-admonition
+:class: warning admonition-smaller
 
 si vous connaissez un langage compilé, vous pouvez avoir cette idée que  
 *une variable = une case mémoire*  

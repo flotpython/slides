@@ -74,6 +74,16 @@ HTML(filename="_static/style.html")
 # * `len(S)`
 #   * donne la taille en nombre d’éléments
 
+# %% [markdown] tags=[]
+# ### les séquences sont des itérables
+#
+# un itérable en Python, c'est un objet sur lequel on peut faire un `for`
+#
+# ```python
+# for item in S:
+#     # do something with item
+# ```
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### concaténation, comparaisons
 
@@ -84,16 +94,14 @@ HTML(filename="_static/style.html")
 #   * retourne une nouvelle séquence qui est la concaténation de n *shallow* copies de S
 # * `sum(S)` (resp. `min(S)` et `max(S)`)
 #   * retourne la somme des éléments de S (resp. le plus petit, le plus grand)
-
-# %% [markdown] tags=[]
-# ````{admonition} les séquences sont des itérables
 #
-# un itérable en Python, c'est un objet sur lequel on peut faire un `for`
-#
-# en fait les fonctions `sum`, `min` et `max` s'appliquent à n'importe quel itérable  
-# toutes les séquences sont des itérables, mais tous les itérables ne sont pas des séquences  
-# la famille des itérables est donc plus large que les séquences
-# ````
+#   ````{admonition} en fait sur tous les itérables
+#   :class: admonition-small
+#     
+#   en fait les fonctions `sum`, `min` et `max` s'appliquent à n'importe quel itérable  
+#   toutes les séquences sont des itérables, mais tous les itérables ne sont pas des séquences  
+#   la famille des itérables est donc plus large que les séquences
+#   ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### appartenance, recherches
@@ -602,7 +610,7 @@ dirty.strip()
 
 # %% [markdown]
 # ````{admonition} utilisez rstrip() pour nettoyer les lignes lues dans un fichier
-# :class: info smaller-admonition
+# :class: info admonition-smaller
 #
 # lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
 # d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE

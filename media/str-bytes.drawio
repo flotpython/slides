@@ -1,0 +1,46 @@
+<mxfile host="65bd71144e">
+    <diagram id="6e-KuGFo-os6nksj4uUL" name="Page-1">
+        <mxGraphModel dx="1071" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font color=&quot;#3333ff&quot; face=&quot;Verdana&quot; style=&quot;font-size: 23px;&quot;&gt;opaque&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000099;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="180" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font color=&quot;#333333&quot; face=&quot;Verdana&quot; style=&quot;font-size: 23px;&quot;&gt;lisible&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="180" width="120" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font face=&quot;Courier New&quot;&gt;bytes&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=23;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="140" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font face=&quot;Courier New&quot;&gt;str&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=23;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="140" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="curved=1;endArrow=classic;html=1;fontFamily=Courier New;fontSize=23;fontColor=#333333;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="210" y="220" as="sourcePoint"/>
+                        <mxPoint x="350" y="220" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="280" y="170"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="&lt;font face=&quot;Courier New&quot;&gt;decode&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=23;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="160" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="curved=1;endArrow=classic;html=1;fontFamily=Courier New;fontSize=23;fontColor=#333333;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="231" as="sourcePoint"/>
+                        <mxPoint x="210" y="231" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="280" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="&lt;font face=&quot;Courier New&quot;&gt;encode&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=23;fontColor=#333333;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="260" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

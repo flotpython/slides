@@ -111,7 +111,7 @@ int(234.5)      # cast float ➔ int
 
 # %% [markdown]
 # ````{admonition} moins crucial
-# :class: tip small-admonition
+# :class: tip admonition-small
 #
 # il existe aussi des fonctions `floor()` et `ceil()` dans le module `math`  
 # toutefois la méthode ci-dessus est plus générale, elle s'applique à tous les types en Python
@@ -170,7 +170,7 @@ math.sin(math.pi)
 
 # %% [markdown]
 # ````{admonition} décortiquons un peu
-# :class: small-admonition seealso
+# :class: admonition-small seealso
 #
 # après l'import, la variable `math` désigne donc un objet de type `module`  
 # et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` dans cet objet module  

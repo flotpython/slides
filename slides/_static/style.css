@@ -109,12 +109,12 @@ div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h4:first-child {
 
 
 /* custom sizes for admonitions */
-.smaller-admonition {
+.admonition-smaller {
     font-size: smaller;
     line-height: 1.2;
 }
 
-.small-admonition {
+.admonition-small {
     font-size: small;
     line-height: 1.2;
 }
