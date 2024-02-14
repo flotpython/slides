@@ -17,8 +17,9 @@
   * for a more legible book
   * and it is also easier to check for proper execution
   */
+.jp-OutputArea-output,
 div.cell div.cell_output .output pre {
-    background-color: #f0f0ff;
+    background-color: #f8f8ff;
 }
 
 
