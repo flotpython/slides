@@ -41,15 +41,23 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # * on a très souvent besoin de lire ou d'écrire un fichier par programme  
 #   notamment bien sûr pour lire les entrées ou sauver les résultats
-#
-# * pour la lecture en pratique on utilise parfois des librairies  
-#   e.g. pour lire du JSON ou du XML, ou des formats spécialisés
-#
+# * pour la lecture en pratique on utilise souvent des librairies  
+#   e.g. pour lire du ***json*** ou du ***yaml***, ou des formats spécialisés
 # * toutefois il est bon de savoir utiliser les outils de bas niveau  
 #   (enfin, aussi bas niveau que ce qu'offre Python…)
 
+# %% [markdown]
+# ## formats et librairies 
+#
+# si vous devez lire des formats communs, faites-le avec:
+#
+# - le module standard `json` pour du JSON
+# - la librairie externe `PyYAML` pour du YAML
+# - `pandas.read_csv()` pour du csv
+# - etc...
+
 # %% [markdown] slideshow={"slide_type": ""}
-# ## `open()`
+# ## mais sinon: `open()` est le point d'entrée
 #
 # * lire et écrire un fichier est très facile en Python
 # * ouvrir un fichier pour créer un objet "fichier"
@@ -252,9 +260,9 @@ text2 == text
 # ### objectifs
 #
 # * simplifier la gestion des noms de fichier
-# * pour rendre le code plus concis
-# * et donc plus lisible
-# * sous-titre: *object-oriented filesystem paths*
+#   * pour rendre le code plus concis, et donc plus lisible
+# * notamment, en remplacement de `os.path` qui est *old-school* (et super vilain)
+# * le sous-titre pour `pathlib`: *object-oriented filesystem paths*
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### présentation du module
