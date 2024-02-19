@@ -35,6 +35,10 @@ rise:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+```{image} media/inria-50-alpha.png
+:align: right
+:width: 100px
+```
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
