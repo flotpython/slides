@@ -12,18 +12,15 @@ parts:
 - caption: syntaxe & instructions
   chapters:
   - glob: 3-[0-9]*-nb
-- caption: fonctions
+- caption: classes
   chapters:
   - glob: 4-[0-9]*-nb
-- caption: modules & packages
+- caption: fonctions
   chapters:
   - glob: 5-[0-9]*-nb
-- caption: classes & programmation objet
+- caption: divers
   chapters:
   - glob: 6-[0-9]*-nb
-- caption: "compl\xE9ments"
-  chapters:
-  - glob: 7-[0-9]*-nb
 - caption: "sujets avanc\xE9s"
   chapters:
   - glob: 8-[0-9]*-nb

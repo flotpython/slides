@@ -16,18 +16,18 @@ tracks:
   - name: syntaxe & instructions
     notebooks:
     - "slides/3-[0-9]*-nb.py"
-  - name: fonctions
+  - name: classes
     notebooks:
     - "slides/4-[0-9]*-nb.py"
-  - name: modules & packages
+  - name: fonctions
     notebooks:
     - "slides/5-[0-9]*-nb.py"
-  - name: classes & programmation objet
+  - name: divers
     notebooks:
     - "slides/6-[0-9]*-nb.py"
-  - name: "compl\xE9ments"
-    notebooks:
-    - "slides/7-[0-9]*-nb.py"
+  # - name: "compl\xE9ments"
+  #   notebooks:
+  #   - "slides/7-[0-9]*-nb.py"
   - name: "sujets avanc\xE9s"
     notebooks:
     - "slides/8-[0-9]*-nb.py"
