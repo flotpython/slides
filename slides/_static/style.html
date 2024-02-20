@@ -2,16 +2,25 @@
 <style>
 
 
- .myst * + ol,
- .myst * + ul {
-     margin-top: initial !important;
- }
 
- .myst :where(p):not(:where([class~=not-prose],[class~=not-prose] *)) {
+
+
+.myst :where(p):not(:where([class~=not-prose], [class~=not-prose] *)) {
     margin-bottom: 0.5em !important
- }
+}
 
- 
+.myst p+ul, .myst p+ol{
+    margin-top: 0px !important;
+}
+.myst p:has(+ul), .myst p:has(+ol) {}
+    margin-top: 0px !important;
+}
+
+.myst div.admonition>.admonition-title+* {
+    margin-top: 0px !important;
+}
+
+
 
 .jp-OutputArea-output,
 div.cell div.cell_output .output pre {
@@ -23,9 +32,11 @@ div.cell div.cell_output .output pre {
     display: flex;
     flex-direction: column;
 }
+
 .column.center {
     align-items: center;
 }
+
 .row {
     display: flex;
     flex-direction: row;
@@ -35,12 +46,15 @@ div.cell div.cell_output .output pre {
 .grey {
     background-color: #eee;
 }
+
 .blue {
     background-color: rgb(223, 235, 251);
 }
+
 .red {
     background-color: rgb(234, 125, 110);
 }
+
 .pink {
     background-color: pink;
 }
@@ -52,24 +66,26 @@ div.cell div.cell_output .output pre {
     border-radius: 5px;
     padding: 5px 0px 0px 10px;
 }
+
 .mynote p {
     line-height: 1.3;
 }
+
 .mynote>p:first-child::before {
-    content: .mynote : ";
-    font-weight: 900;
+    content: .mynote: ";
+font-weight: 900;
 }
 
 .outline {
-    background-color:#ddd;
+    background-color: #ddd;
     border-radius: 6px;
-    margin:12px;
+    margin: 12px;
     padding: 12px;
 }
 
 .red-pill {
-    background-color:red;
-    padding:4px;
+    background-color: red;
+    padding: 4px;
     border-radius: 4px;
 }
 
@@ -79,7 +95,7 @@ div.cell div.cell_output .output pre {
 .frame {
     border: 1px solid blue;
     padding: 5px;
-    border-radius:5px
+    border-radius: 5px
 }
 
 
@@ -90,10 +106,10 @@ div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h1:first-child,
 div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h2:first-child,
 div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h3:first-child,
 div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h4:first-child {
-        color: purple;
-        text-decoration-line: underline;
-        text-decoration-color: rgb(227, 129, 227);
-        text-decoration-style: double;
+    color: purple;
+    text-decoration-line: underline;
+    text-decoration-color: rgb(227, 129, 227);
+    text-decoration-style: double;
 }
 
 
@@ -101,12 +117,13 @@ div.cell[data-tag-frame=true]>div.inner_cell>div.myst>h4:first-child {
     font-size: smaller;
     line-height: 1.2;
 }
+
 .admonition-small {
     font-size: small;
     line-height: 1.2;
 }
+
 .admonition-x-small {
     font-size: x-small;
     line-height: 1.2;
-}
-</style>
+}</style>
