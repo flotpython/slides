@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: instructions
 #   rise:
@@ -106,230 +113,6 @@ def ma_fonction():
 class Foo:
     pass
 
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## les multiples formes d'affectation
-
-# %% [markdown]
-# ### affectation simple
-
-# %% [markdown]
-# Affectation - 1ère forme
-
-# %%
-a = 'alice'
-print(a)
-
-# %% [markdown]
-# * affectation se dit en anglais *assignment*
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### digression : noms de variable
-
-# %% [markdown]
-# * suite illimitée de lettres, chiffres, underscores
-# * doit commencer par une lettre ou un underscore
-# * sensible à la casse
-#   * `Spam` différent de `spam`
-# * exemples
-#   * `Spam_38`
-#   * `_ma_variable`
-# * on peut aussi utiliser des caractères Unicode (accents et autres lettres grecques)
-#   * une pratique à utiliser avec la plus grande modération !
-
-# %%
-"σ" == "𝜎"
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### affectation multiple
-
-# %% [markdown]
-# * affectation - 2ème forme
-#   * les variables pointent vers le même objet !
-#   * on crée donc une référence partagée
-
-# %%
-a = b = c = [1, 2, 3]
-a is b
-
-# %%
-a = [1, 2, 3]
-A = [1, 2, 3]
-a is A
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### affectation par *unpacking*
-
-# %% [markdown]
-# * troisième forme d'affectation
-
-# %%
-a, b, c = 'alice', 'bob', 'charlie'
-print(b)
-
-# %% [markdown]
-#   * il faut la même forme à grauche et à droite
-#   * mais les types sont indifférents
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *unpacking*
-
-# %% cell_style="split"
-# on peut utiliser:
-# à droite un tuple, ou une liste
-a, b, c = [1, 2, 3]
-b
-
-# %% cell_style="split"
-# et même une chaîne
-# tant que c'est un type ordonné
-a, b, c = '123'
-c
-
-# %%
-# mais il faut le bon nombre de variables
-try:
-    a, b, c = 'xy'
-except Exception as e:
-    print("exception :", e)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *unpacking* - permutation de variables
-
-# %% [markdown]
-# * pour permuter deux variables, on peut simplement utiliser
-#   * `a, b = b, a`
-# * ça marche parce que Python va
-#   * créer un tuple temporaire 
-#   * avec les valeurs des variables de droite `(b, a)`
-#   * et **ensuite** faire pointer les variables de gauche
-#   * sur les valeurs du tuple
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *unpacking* - ignorer des valeurs avec `_`
-
-# %% [markdown]
-# * lorsqu’on n'est pas intéressé par certaines valeurs
-# * il est d'usage d'utiliser comme nom de variable `_`
-
-# %%
-# je ne garde pas les valeurs à la 2e et 4e position
-debut, _, milieu, _, fin = [1, 2, 3, 4, 5] 
-print(debut, fin)
-
-# %% [markdown]
-# * juste un usage (`_` est un nom de variable valide)
-# * certains vont mettre `ignore`
-# * ne pas penser que ça induit une égalité entre la 2ème et la 4ème valeur
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *unpacking* et imbrications
-
-# %% [markdown]
-# * Le terme de gauche peut être imbriqué autant que nécessaire
-# * Il faut que les deux termes aient la même *forme* (pattern-matching)
-# * on peut utiliser indifféremment un tuple ou une liste
-# * en général un tuple, sauf si un seul élément car `[a]` est plus lisible que `(a,)`
-
-# %% cell_style="split"
-# je ne peux pas aligner le `a` avec le `1`
-obj = \
-1, ( (2, 3), (4, [5, 6])), 6
-a, ( _,      [b, c     ]), d = obj
-print(c)
-
-# %% cell_style="split"
-_
-
-# %% cell_style="split"
-b
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### *extended unpacking*
-
-# %% [markdown]
-# * on peut utiliser une notation `*` devant une (seule) variable
-# * cette variable va référencer une *liste* qui regroupe  
-#   tout ce qui n’est pas *unpacké* dans les autres variables
-#
-# * il ne peut y avoir qu’une seule variable de ce type (sinon plusieurs solutions possibles)
-
-# %% cell_style="split" slideshow={"slide_type": "slide"}
-l = [1, 2, 3, 4, 5]
-a, *b, c = l
-print(a, "-",  b, "-",  c)
-
-# %% cell_style="split" slideshow={"slide_type": "fragment"}
-
-a, *b = l
-print(a, "-",  b)
-
-# %% cell_style="split" slideshow={"slide_type": "fragment"}
-*a, b = l
-print(a, "-",  b)
-
-# %% cell_style="split" slideshow={"slide_type": "fragment"}
-a, b, c, d, e, *f = l
-print(a, "-",  b, "--",  e, "-",  f)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### affectation et boucle `for`
-
-# %% [markdown]
-# * pour anticiper un peu sur les boucles `for`
-# * l'affectation a lieu aussi à chaque itération de boucle
-
-# %% cell_style="split"
-liste = [1, 10, 100]
-for item in liste:
-    print(item, end=" ")
-
-# %% cell_style="split"
-liste = ([1, 2], [10, 20], [100, 200])
-for a, b in liste:
-    print(f"{a}x{b}", end=" ")
-
-# %% slideshow={"slide_type": ""}
-liste = [(1, 2), ('a', 'b', 'c', 'd')]
-for a, *b in liste:
-    print(a, "-",  b)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### expression d'affectation (*walrus*)
-
-# %% [markdown] cell_style="center"
-# * disponible dans la 3.8 seulement
-# * une **expression** d'affectation
-# * https://www.python.org/dev/peps/pep-0572/
-
-# %% [markdown] cell_style="center"
-# * `variable := expression`
-# * beaucoup plus limitée que la forme **instruction**
-#   * pas de *unpacking*
-#   * pas de `seq[i] := expression`
-#   * ni de `var.attribut := expression`
-#
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### expression d'affectation
-
-# %% cell_style="center"
-CHUNK = 20 * 1024
-with open("../data/hamlet.txt") as feed:
-    chunk = feed.read(CHUNK)
-    while chunk:
-        print(".", end='')
-        chunk = feed.read(CHUNK)
-
-# %% [markdown] cell_style="center"
-# je n'ai pas 3.8 encore..
-#
-# ```python
-# CHUNK = 20 * 1024
-# with open("../data/hamlet.txt") as feed:
-#     while chunk := feed.read(CHUNK)
-#         print(".", end='')
-# ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## libération de variables: `del`
