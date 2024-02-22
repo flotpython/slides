@@ -148,6 +148,8 @@ print("insuffisant" if note < 10 else "ouf !")
 #
 # * `continue`: abandonner ce tour de boucle, passer au suivant
 # * `break`: sortir complètement de la boucle courante
+#
+# on parle toujours de la boucle **la plus imbriquée**
 
 # %% cell_style="split"
 # exemple avec continue
