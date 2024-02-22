@@ -35,41 +35,12 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
+
 # %% [markdown]
 # # syntaxe et opérateurs
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## syntaxe
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## affectation
-
-# %% cell_style="split"
-# on a déjà vu ça
-
-variable = 20 * 30
-variable
-
-# %% cell_style="split"
-# on peut aussi faire 
-
-a = b = 20 * 30
-b
-
-# %% cell_style="split"
-# ou encore
-
-a, b = 20, 30
-a * b
-
-# %% cell_style="split"
-# idiome
-print(a, b)
-
-a, b = b, a
-
-print(a, b)
-
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## if elif else (l'instruction)
