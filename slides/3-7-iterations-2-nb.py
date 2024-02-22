@@ -2,11 +2,11 @@
 # ---
 # jupyter:
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -rise, -version
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -32,34 +32,37 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # # les itérations (2/2)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] cell_style="split"
 # ## compréhensions
-
-# %% [markdown]
+#
 # très fréquemment on veut construire un mapping
+#
+# ### `map`
+#
+# pour appliquer une fonction à un ensemble de valeurs
+#
+# ```{image} media/iter-map.svg
+# :align: center
+# ```
 
 # %% [markdown] cell_style="split"
-# * appliquer une fonction à un ensemble de valeurs: `map`
+# ### `map` + `filter`
 #
-# ![](media/iter-map.svg)
+# idem en excluant certaines entrées
+#
+# ```{image} media/iter-map-filter.svg
+# :align: center
+# ```
 
 # %% [markdown] cell_style="split"
-# * idem en excluant certaines entrées: `map` + `filter`
-#
-# ![](media/iter-map-filter.svg)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### compréhension de liste
-
-# %% [markdown] cell_style="split"
-# c'est le propos de la  
-# compréhension (de liste):
+#
+# c'est le propos de la compréhension (de liste):
 #
 # ```python
 # [expr(x) for x in iterable]
 # ```
-
-# %% [markdown] cell_style="split"
+#
 # qui est  
 # équivalent à 
 #
@@ -69,10 +72,9 @@ HTML(filename="_static/style.html")
 #     result.append(expr(x))
 # ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### compréhension de liste avec filtre
-
 # %% [markdown] cell_style="split"
+# ### compréhension de liste avec filtre
+#
 # si nécessaire on peut
 # ajouter un test de filtre:
 #
@@ -80,8 +82,7 @@ HTML(filename="_static/style.html")
 # [expr(x) for x in iterable 
 #      if condition(x)]
 # ```
-
-# %% [markdown] cell_style="split"
+#
 # qui est  
 # équivalent à 
 #
@@ -92,10 +93,9 @@ HTML(filename="_static/style.html")
 #         result.append(expr(x))
 # ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### compréhensions de liste - exemple 1
-
 # %% [markdown]
+# #### compréhensions de liste - exemple 1
+#
 # sans filtre
 
 # %% cell_style="split"
@@ -114,10 +114,9 @@ for x in range(6):
 
 result
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### compréhensions de liste - exemple 2
-
 # %% [markdown]
+# #### compréhensions de liste - exemple 2
+#
 # avec filtre
 
 # %% cell_style="split"
@@ -137,10 +136,9 @@ for x in range(6):
 
 result
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### compréhension de liste - imbrications
-
 # %% [markdown]
+# ### compréhension de liste - imbrications
+#
 # * on peut **imbriquer plusieurs niveaux** de boucle
 # * la profondeur du résultat dépend **du nombre de `[`**  
 #   et **pas du nombre de `for`**
@@ -150,10 +148,9 @@ result
 # malgré deux boucles for imbriquées
 [10*x + y for x in (1, 2) for y in (1, 2)]
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### compréhensions imbriquées - exemple
-
 # %% [markdown] cell_style="center"
+# #### compréhensions imbriquées - exemple
+#
 # l'ordre dans lequel se lisent les compréhensions imbriquées:  
 # il faut imaginer des for imbriqués **dans le même ordre**
 
@@ -174,10 +171,9 @@ for x in range(1, 5):
                 L.append(10*x + y)
 L
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### compréhension d'ensemble
-
 # %% [markdown]
+# ### compréhension d'ensemble
+#
 # même principe exactement, mais avec des `{}` au lieu des `[]`
 
 # %% cell_style="split"
@@ -197,10 +193,9 @@ for x in range(-6, 7):
         
 result
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### compréhension de dictionnaire
-
 # %% [markdown]
+# ### compréhension de dictionnaire
+#
 # syntaxe voisine, avec un `:` pour associer clé et valeur
 
 # %% cell_style="split"
@@ -213,10 +208,9 @@ result
 
 {x : x**2 for x in range(4) if x%2 == 0}
 
-# %% [markdown] slideshow={"slide_type": "slide"} cell_style="center"
-# #### exemple : créer un index par une compréhension
-
 # %% [markdown]
+# #### exemple : créer un index par une compréhension
+#
 # un idiome classique :
 #
 # * on a une liste d'éléments - beaucoup, genre $10^6$
@@ -242,10 +236,9 @@ index
 # en termes d'accès rapide à partir du nom qui jour le rôle d'id
 index['Martin']
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown]
 # ## expression génératrice
-
-# %% [markdown] slideshow={"slide_type": ""}
+#
 # ### performance des compréhensions
 #
 # la compréhension **n'est pas l'arme absolue**  
@@ -255,14 +248,12 @@ index['Martin']
 # * et **allouer** de la mémoire   
 # * au moment où on évalue la compréhension,  
 #   i.e. **avant même** de faire quoi que ce soit d'autre
-
-# %% [markdown]
-# <div class=note>
+#
+# ````{admonition} note
 #
 # finalement c'est **exactement** la même discussion que itérateur *vs* itérable  
 # ou quand on avait comparé `range()` avec une liste
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### expression génératrice
@@ -291,10 +282,9 @@ G = (10*x + y for x in data for y in data)
 for y in G:
     print(y)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### les genexprs sont des itérateurs
-
 # %% [markdown]
+# ### les genexprs sont des itérateurs
+#
 # * même "contenu" que la compréhension
 # * mais pas la même implémentation: les genexps sont de  
 #   type `generator` (en particulier ce sont des **itérateurs**)
@@ -335,17 +325,14 @@ sys.getsizeof(G2)
 # * les compréhensions de *dictionnaire* et d'*ensemble* sont souvent justifiées
 # * par contre, pour les *listes*: **toujours bien se demander**  
 #   si on a vraiment besoin de **construire la liste**
-#
 # * ou si au contraire on a juste **besoin d'itérer** dessus  
 #   (souvent une seule fois d'ailleurs)
 
 # %% [markdown]
 # * si on a vraiment besoin de cette liste  
 #   alors la compréhension est OK
-#
 # * mais dans le cas contraire il faut **préférer un itérateur**   
 #   c'est le propos de l'**expression génératrice**
-#
 # * qui souvent revient à remplacer `[]` par `()`  
 #   (ou même juste enlever les `[]`)
 

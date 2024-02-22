@@ -41,8 +41,6 @@ HTML(filename="_static/style.html")
 #   * avec `for` c'est l'itérable qui se charge de la logique
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# **les itérations en Python (suite)**
-#
 # * **et aussi** de nombreuses techniques  
 #   pour itérer **de manière optimisée**
 #
