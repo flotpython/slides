@@ -37,7 +37,7 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # instructions
+# # leftovers
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## arguments en ligne de commande
