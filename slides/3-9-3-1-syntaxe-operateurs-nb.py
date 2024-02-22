@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: "syntaxe & op\xE9rateurs"
 #   rise:
@@ -28,63 +35,11 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-
 # %% [markdown]
 # # syntaxe et opérateurs
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## syntaxe
-
-# %% [markdown] slideshow={"slide_type": ""}
-# ### mots réservés
-#
-# *aka* mots-clés ou *keywords*
-
-# %% [markdown]
-# * ces noms ne peuvent pas être utilisés comme un nom de variable
-#
-# | &nbsp;    |   &nbsp; | &nbsp;  | &nbsp;       | &nbsp; |
-# |----------:|---------:|--------:|-------------:|-------:|
-# | False | await    | else    | import       | pass   |
-# | None  | break    | except  | in           | raise  |
-# | True  | class    | finally | is           | return |
-# | and       | continue | for     | lambda       | try    |
-# | as        | def      | from    | nonlocal | while  |
-# | assert    | del      | global  | not          | with   |
-# | async     | elif     | if      | or           | yield  |
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### l’indentation comme base de la syntaxe
-
-# %% [markdown] cell_style="split"
-# * la fin d’une ligne est significative
-#   * pas de `;` nécessaire à la fin de la ligne
-# * un **bloc** d’instructions doit avoir  
-#   la **même indentation**  
-#   en partant de la gauche
-#
-#   * pas de `{}` délimitant un bloc
-#   * indentation de un ou plusieurs espaces  
-#     (recommandation : 4 espaces)
-
-# %% cell_style="split"
-def foo():
-    print('début')
-    a = 10*20
-    print('fin, a=', a)
-    
-foo()    
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### l’indentation comme base de la syntaxe
-
-# %% [markdown]
-# les principaux pièges pour les débutants
-#
-# * évitez d'utiliser des `Tab`
-#   * le plus simple c'est de ne **jamais** mettre de Tab 
-# * et attention aux copier/coller
-#   * qui peuvent décaler des lignes
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## affectation
