@@ -177,6 +177,73 @@ while L:
 
 
 # %% [markdown]
+# ## `match`
+#
+# une toute nouvelle instruction `match` permet de définir des alternatives selon:
+# - la taille d'une objet
+# - la valeur dans un objet
+# - et en fait pas mal d'autres choses...
+
+# %% slideshow={"slide_type": "slide"}
+# dans une version à-la switch
+
+def http_error(status):
+    match status:
+        case 400:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case 401 | 403 :
+            return "Not allowed"
+        case _:
+            return "Something's wrong with the internet"
+
+print(http_error(404))
+
+
+# %%
+# mais on peut faire aussi plus complexe
+# avec du pattern-matching, ici sur la valeur
+# dans un tuple
+
+def on_values(point: tuple[float, float]):
+    match point:
+        case (0, 0):
+            return "Origin"
+        case (0, y):
+            return f"null-x Y={y}"
+        case (x, 0):
+            return f"null-y X={x}"
+        case (x, y):
+            return f"regular X={x}, Y={y}"
+        case _:
+            raise ValueError("Not a point")
+
+P = (0, 20)
+print(on_values(P))
+
+
+# %%
+# ou encore ici sur la taille d'un objet
+
+def on_size(string):
+    match string.split():
+        case []:
+            return "no word"
+        case [w]:
+            return f"one word {w}"
+        case first, *rest:
+            return f"multi words starting with `{first}`"
+
+print(on_size(""))
+print(on_size("a b c"))
+
+# %% [markdown]
+# pour une introduction plus complète, voyez ceci <https://peps.python.org/pep-0636/>
+
+# %% [markdown]
 # ## `return`
 #
 # `return` sert tout simplement à indiquer la fin d'une fonction, et ce qu'elle doit renvoyer  
@@ -213,6 +280,8 @@ while L:
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exécuter du code
+#
+# (avancé)
 #
 # nous allons voir à présent deux **fonctions**, donc tehcniquement ce ne sont pas des instructions, mais bon ce n'est pas important
 

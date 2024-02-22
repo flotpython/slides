@@ -3,11 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version, -language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode, -language_info.file_extension, -language_info.mimetype,
-#       -toc
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -35,6 +35,7 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
+
 # %% [markdown] slideshow={"slide_type": ""}
 # # `releases récentes`
 
@@ -46,38 +47,6 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## version 3.8
-
-# %% [markdown] slideshow={"slide_type": ""}
-# ### "assignment expression" *aka* *walrus operator*
-#
-#   `x := expression` peut maintenant être utilisé comme **une expression** c'est-à-dire dans un test ou dans un appel de fonction
-#   
-#   limité à **une variable** (et pas par exemple pour affecter `liste[0]`)  
-
-# %%
-import re
-
-if (match := re.match( '[a-z]+(\d+)[a-z]+', 'abc02345defg')):
-    print(match.group(1))
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### f-string & auto-description
-
-# %% [markdown]
-# dans une f-string, on peut ajouter un `=` à la fin de l'expression entre `{}`; de cette façon le **texte de l'expression** est affiché aussi (en plus de sa valeur)
-
-# %% cell_style="split"
-x, y = 1, 2
-
-# avant
-print(f"10*x + 20*y**2={10*x+20*y**2}")
-
-# %% cell_style="split"
-
-
-# après
-print(f"{10*x + 20*y**2=}")
-
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### paramètres dits *positional-only*    
@@ -191,68 +160,7 @@ x
 # sortie le 4 octobre 2021
 
 # %% [markdown]
-# ### `match`
-
-# %% [markdown]
-# une toute nouvelle instruction `match` permet de faire des choses comme
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ```python
-# In [1]: def http_error(status):
-#    ...:     match status:
-#    ...:         case 400:
-#    ...:             return "Bad request"
-#    ...:         case 404:
-#    ...:             return "Not found"
-#    ...:         case 418:
-#    ...:             return "I'm a teapot"
-#    ...:         case 401 | 403 :
-#    ...:             return "Not allowed"
-#    ...:         case _:
-#    ...:             return "Something's wrong with the internet"
-#    ...:
-#    ...: print(http_error(404))
-#    ...:
-# Not found
-# ```
-
-# %% [markdown]
-# ````{admonition} xxx
-#
-# ce code est dans `samples/match01.py`
-#
-# ````
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ou encore (parmi plein d'autres possibilités)  
-# [voir la release note complète ici](https://docs.python.org/3/whatsnew/3.10.html#pep-634-structural-pattern-matching)
-
-# %% [markdown] slideshow={"slide_type": ""}
-# ```python
-# In [1]: def pretty_point(point: tuple[float, float]):
-#    ...:     match point:
-#    ...:         case (0, 0):
-#    ...:             return "Origin"
-#    ...:         case (0, y):
-#    ...:             return f"Y={y}"
-#    ...:         case (x, 0):
-#    ...:             return f"X={x}"
-#    ...:         case (x, y):
-#    ...:             return f"X={x}, Y={y}"
-#    ...:         case _:
-#    ...:             raise ValueError("Not a point")
-#    ...:
-#    ...: P = (0, 20)
-#    ...: print(pretty_point(P))
-# Y=20
-# ```
-
-# %% [markdown]
-# ````{admonition} xxx
-#
-# ce code est dans `samples/match02.py`
-#
-# ````
+# `match`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### *better error messages*
