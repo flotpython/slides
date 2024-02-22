@@ -81,8 +81,11 @@ print(foo())
 # ## expressions *vs* instructions
 #
 # dans tous les langages on distingue entre
-# * expression: une construction **qui renvoie quelque chose**
-# * instruction: une construction qui fait un effet de bord, qui change l'environnement, mais **qui ne renvoie rien**
+#
+# * instruction: une construction qui fait un effet de bord, qui change l'environnement  
+#   mais **qui ne renvoie rien**
+# * expression: une construction **qui renvoie quelque chose**  
+#   du coup, les expressions peuvent être combinées à l'infini
 #
 # quelques exemples parmi ce qu'on a déjà vu:
 
