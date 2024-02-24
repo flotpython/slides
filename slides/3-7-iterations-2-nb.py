@@ -63,8 +63,7 @@ HTML(filename="_static/style.html")
 # [expr(x) for x in iterable]
 # ```
 #
-# qui est  
-# équivalent à 
+# qui est équivalent à 
 #
 # ```python
 # result = []
@@ -83,8 +82,7 @@ HTML(filename="_static/style.html")
 #      if condition(x)]
 # ```
 #
-# qui est  
-# équivalent à 
+# qui est équivalent à 
 #
 # ```python
 # result = []
@@ -216,7 +214,6 @@ result
 # * on a une liste d'éléments - beaucoup, genre $10^6$
 # * on veut pouvoir accéder **en temps constant**  
 #   à un élément à partir d'un id
-#
 # * solution: créer un dictionnaire - qu'on appelle un *index*  
 #   (comme dans les bases de données)
 
@@ -241,8 +238,7 @@ index['Martin']
 #
 # ### performance des compréhensions
 #
-# la compréhension **n'est pas l'arme absolue**  
-# elle a un **gros défaut**, c'est qu'on va toujours :
+# la compréhension **n'est pas l'arme absolue** ! elle a un **gros défaut**, c'est qu'on va toujours :
 #
 # * parcourir **tout** le domaine
 # * et **allouer** de la mémoire   
@@ -286,8 +282,7 @@ for y in G:
 # ### les genexprs sont des itérateurs
 #
 # * même "contenu" que la compréhension
-# * mais pas la même implémentation: les genexps sont de  
-#   type `generator` (en particulier ce sont des **itérateurs**)
+# * mais pas la même implémentation: les genexps sont de type `generator` (en particulier ce sont des **itérateurs**)
 
 # %% cell_style="split"
 # compréhension
@@ -329,17 +324,12 @@ sys.getsizeof(G2)
 #   (souvent une seule fois d'ailleurs)
 
 # %% [markdown]
-# * si on a vraiment besoin de cette liste  
-#   alors la compréhension est OK
-# * mais dans le cas contraire il faut **préférer un itérateur**   
-#   c'est le propos de l'**expression génératrice**
-# * qui souvent revient à remplacer `[]` par `()`  
-#   (ou même juste enlever les `[]`)
+# * si on a vraiment besoin de cette liste, alors la compréhension est OK
+# * mais dans le cas contraire il faut **préférer un itérateur**, c'est le propos de l'**expression génératrice**
+# * qui souvent revient à remplacer `[]` par `()` - ou même juste enlever les `[]`
 
 # %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
-# apprenez à bien choisir entre  
-# compréhension et genexpr  
-# (les deux sont utiles)
+# apprenez à bien choisir entre compréhension et genexpr (les deux sont utiles)
 
 # %% cell_style="split"
 # remplissons une classe imaginaire
@@ -369,7 +359,7 @@ sum((notes_eleve['maths'] for notes_eleve in notes_classe)) / len(notes_classe)
 # (remarquez une seul niveau de parenthèses, et l'absence de [])
 sum(notes_eleve['maths'] for notes_eleve in notes_classe) / len(notes_classe)
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # # épilogue
 #
 # pour terminer le tour des concepts Python qui contribuent aux itérations,

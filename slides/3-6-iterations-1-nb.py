@@ -32,18 +32,14 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # # les itérations (1/2)
 #
-# * la boucle `for` est la méthode **préférée**   
-#   pour itérer sur un ensemble de valeurs
-#
+# * la boucle `for` est la méthode **préférée** pour itérer sur un ensemble de valeurs
 # * en général préférable au `while` en Python
 #   * on peut faire un `for` sur n'importe quel itérable
 #   * ce n'est pas le cas pour le `while`
 #   * avec `for` c'est l'itérable qui se charge de la logique
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# * **et aussi** de nombreuses techniques  
-#   pour itérer **de manière optimisée**
-#
+# * **et aussi** de nombreuses techniques pour itérer **de manière optimisée**
 #   * compréhensions
 #   * itérateurs
 #   * expressions génératrices
@@ -118,10 +114,10 @@ for i in range(len(liste)):
 # ### boucle `for` sur un dictionnaire
 #
 # * *rappel*: on peut facilement itérer sur un dictionnaire
-# * mais il faut choisir si on veut le faire 
-#   * sur les clés: simplement `for k in d:`
-#   * sur les valeurs: `for v in d.values():`
-#   * ou sur les deux: `for k, v in d.items():`
+# * la plupart du temps, sur à la fois clés et valeurs
+#   `for k, v in d.items():`
+# * pour itérer sur les clés, restons simple: `for k in d:`
+# * enfin sur les valeurs `for v in d.values():`
 #
 # ````{admonition} remarque
 # :class: admonition-small
@@ -246,7 +242,6 @@ list(map(lambda x: x**2, L))
 # * qui présentent la particularité de **consommer peu de mémoire**
 # * en fait un objet itérateur capture uniquement  
 #   **la logique de l'itération**, mais pas les données
-#
 # * c'est-à-dire où on en est, et comment passer au suivant
 
 # %% cell_style="split" slideshow={"slide_type": ""}
@@ -280,12 +275,8 @@ sys.getsizeof(I)
 # ```
 
 # %% [markdown] slideshow={"slide_type": ""}
-# ce qui montre qu'on peut s'en sortir  
-# avec **seulement un entier** comme mémoire
-#
-# et donc on ne veut **pas devoir allouer**  
-# une liste de 100.000 éléments  
-# juste pour pouvoir faire cette boucle !
+# ce qui montre qu'on peut s'en sortir avec **seulement un entier** comme mémoire  
+# et donc on ne veut **pas devoir allouer** une liste de 100.000 éléments juste pour pouvoir faire cette boucle !
 
 # %% [markdown]
 # ### combinaisons d'itérations
@@ -339,7 +330,7 @@ for item in iterator:
 # %% [markdown]
 # ````{admonition} je chipote, mais...
 #
-# (*) en réalité un `range()` n'est pas techniquement un itérateur; mais bon ça y ressemble beaucoup...
+# en réalité un `range()` n'est pas techniquement un itérateur; mais bon ça y ressemble beaucoup...
 # ````
 
 # %% [markdown] slideshow={"slide_type": "fragment"}
@@ -475,14 +466,14 @@ for a, b in zip(liste1, liste2):
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un itérateur s'épuise
 #
-# **ATTENTION** il y a toutefois une limite lorsqu'on utilise un itérateur 
+# **ATTENTION** il y a toutefois une limite lorsqu'on utilise un itérateur
 #
 # * une fois que l'itérateur est arrivé à sa fin
 # * il est "épuisé" et on ne peut plus boucler dessus
 #
 # ````{admonition} note
 #     
-# (*) à cet égard, les `range()` sont spéciaux
+# à cet égard, les `range()` sont spéciaux
 # ````
 
 # %% cell_style="split"
@@ -514,35 +505,7 @@ for i in R:
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # du coup par exemple,  
-# **ne pas essayer d'itérer deux fois** sur un `zip()` ou un `enumerate()`
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-Z = zip(range(3), range(4, 7))
-
-print('pass 1')
-for a, b in Z:
-    print(a, b)
-    
-print('pass 2')
-for a, b in Z:
-    print(a, b)    
-
-# %% cell_style="split" slideshow={"slide_type": ""}
-E = enumerate(L)
-
-print('pass 1')
-for a, b in E:
-    print(a, b)
-    
-print('pass 2')
-for a, b in E:
-    print(a, b)    
-
-# %% [markdown]
-# ````{admonition} comment faire alors ?
-#     
-# il suffit bien sûr de faire e.g. `for a, b in enumerate(L)` pour se débarrasser du problème
-# ````
+# **ne pas essayer d'itérer deux fois** sur un `zip()` ou un `enumerate()`, vous observeriez le même phénomène  
 
 # %% [markdown]
 # ## le module `itertools` - assemblage d'itérables
@@ -694,9 +657,11 @@ for i, (d1, d2) in enumerate(product(dim1, dim2), 1):
     print(f"i={i}, d1={d1} d2={d2}")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# **exercice** (voir notebook séparé)
+# ````{admonition} exercice
+# :class: seeaso
 #
-# * vigenere
+# le code de Vigenere se prête particulièrement bien à ces outils d'assembage d'itérabes (voir notebook séparé)
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## sous le capot
@@ -807,6 +772,7 @@ Z = zip(L, L)
 print(f"{is_iterator(Z)=}")
 
 # %% [markdown]
-# * bien se souvenir : **un itérateur s'épuise**  
-#   de manière générale, un objet qui est un itérateur  
-#   ne peut être itéré qu'une seule fois
+# ````{admonition} bien se souvenir
+#
+# **un itérateur s'épuise**, et donc un objet qui est un itérateur ne peut être itéré qu'une seule fois
+# ````
