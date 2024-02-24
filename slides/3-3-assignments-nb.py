@@ -87,6 +87,58 @@ print(a)
 #   - non
 # ````  
 
+# %% [markdown]
+# ## portée des variables (intermédiaire)
+#
+# pour faire court, la portée d'une variable est **la fonction** - et non pas, comme dans les langages à la C++, le bloc (c'est d'ailleurs assez cohérent avec le fait qu'il n'y a pas de `{}` en Python, si on veut)
+#
+# à savoir également, l'affectation sert aussi de **déclaration**: si vous affectez une variable dans une fonction, cela signifie que la variable est **locale à la fonction**
+#
+# `````{admonition} UnboudLocalError
+# :class: attention admonition-small
+#
+# du coup dans le programme suivant, on observe une erreur; pouvez-vous expliquer pourquoi ?
+#
+# ```python
+# variable = 1
+#
+# def foo():
+#     print(f"{variable=}")
+#     variable = 2
+#
+# foo()
+# ```
+#
+# ````{admonition} réponse
+# :class: seealso dropdown
+#
+# à la première ligne de `foo` on référence `variable`; mais comme elle est écrite en ligne 2, elle est considérée comme **locale à `foo`**; aussi cela signifie qu'elle n'a pas encore été initialisée, sa valeur est inconnue - et donc en particulier elle ne vaut pas 1 comme on pourrait le penser
+# ````
+#
+# `````
+
+# %% [markdown]
+# ### `global` et `nonlocal`
+#
+# ces deux mots-clé permettent d'affecter une variable qui justement n'est pas locale à la fonction:  
+# `global` pour référencer une variable globale au module,  
+# `nonlocal` pour référencer une variable dans une fonction imbriquée entre le module et la fonction courante
+
+# %%
+# exemple avec global
+variable = 1
+
+def foo():
+    global variable
+    # no worries this time
+    print(f"inside {variable=}")
+    variable = 2
+
+print(f"before {variable=}")
+foo()
+# variable is 2
+print(f"outside {variable=}")
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## affectation par *unpacking*
 #
@@ -202,10 +254,10 @@ for item in liste:
 liste = ([1, 2], [10, 20], [100, 200])
 
 for a, b in liste:
-    print(f"{a}x{b}", end=" ")
+    print(f"{a=}x{b=}", end=" ")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### expression d'affectation (*walrus*)
+# ## expression d'affectation (*walrus*)
 #
 # enfin depuis la 3.8 on dispose aussi d'une **expression** qui fait de l'affectation  
 # bon c'est un peu plus limité que l'instruction (pas de unpacking, pas de `seq[i]` ou de `var.attribut` dans la partie gauche)  
