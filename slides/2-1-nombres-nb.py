@@ -62,7 +62,7 @@ HTML(filename="_static/style.html")
 # division exacte/flottante
 8 / 5
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-3"]
+# %% cell_style="split" tags=["gridwidth-1-3"]
 # division entière (quotient)
 8 // 5
 
@@ -73,13 +73,13 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### nombres : opérateurs
 
-# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # bcp d'autres opérations disponibles
 # et notamment:
 
 2 ** 32         # puissance
 
-# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # tous les opérateurs peuvent être utilisés
 # pour faire un effet de bord comme ceci
 
@@ -97,7 +97,7 @@ x
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### conversions
 
-# %% slideshow={"slide_type": ""}
+# %%
 int(234.5)      # cast float ➔ int
 
 # %% [markdown]
@@ -155,10 +155,10 @@ import math
 
 dir(math)[-6:]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 math.tau
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 math.sin(math.pi)
 
 # %% [markdown]
@@ -190,7 +190,7 @@ math.sin(math.pi)
 
 10 >= 12
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # True c'est presque exactement 1
 
 True == 1
@@ -250,7 +250,7 @@ x != 10
 # voyons cela sur un exemple
 # vous vous souvenez de l'exemple avec les deux objets liste ?
 
-# %% slideshow={"slide_type": "slide"} tags=[]
+# %% slideshow={"slide_type": "slide"}
 # ici on crée deux objets liste distincts
 
 # le premier (avec deux références)
@@ -509,7 +509,7 @@ oct(255)    # traduire en octal (-> str)
 #
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### opérations *bitwise*
 
 # %%
@@ -530,24 +530,24 @@ y & 15     # bitwise AND de 0100 (4) et 1111 (15)
 # * mais par contre **très utile** avec numpy et pandas  
 #   pour manipuler notamment les masques
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# %% [markdown] slideshow={"slide_type": "slide"}
 # ### décalages
 
-# %% cell_style="split" tags=[]
+# %% cell_style="split"
 x = 3
 y = x << 10 # décalage à gauche
 y
 
-# %% cell_style="split" tags=[]
+# %% cell_style="split"
 2**11 + 2**10
 
-# %% tags=[]
+# %%
 x          # l'argument n'est pas modifié
 
-# %% cell_style="split" tags=[]
+# %% cell_style="split"
 y >> 3     # décalage à droite
 
-# %% cell_style="split" tags=[]
+# %% cell_style="split"
 2**8 + 2**7
 
 # %% [markdown]
