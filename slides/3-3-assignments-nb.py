@@ -112,7 +112,8 @@ print(a)
 # ````{admonition} réponse
 # :class: seealso dropdown
 #
-# à la première ligne de `foo` on référence `variable`; mais comme elle est écrite en ligne 2, elle est considérée comme **locale à `foo`**; aussi cela signifie qu'elle n'a pas encore été initialisée, sa valeur est inconnue - et donc en particulier elle ne vaut pas 1 comme on pourrait le penser
+# à la première ligne de `foo` on référence `variable`; mais comme elle est **affectée** en ligne 2, elle est considérée comme **locale à `foo`**; aussi cela signifie qu'elle n'a pas encore été initialisée !  
+# sa valeur est inconnue - et donc en particulier elle ne vaut pas 1 comme on pourrait le penser
 # ````
 #
 # `````
