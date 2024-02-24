@@ -1,4 +1,4 @@
-# first we have the core requirements
+
 # i.e. libraries used for running
 # code in the notebooks per se
 #
@@ -22,7 +22,7 @@ mypy
 autograd
 k3d
 geopandas
-keplergl
+# keplergl
 graphviz
 scikit-learn
 
