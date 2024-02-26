@@ -45,15 +45,12 @@ HTML(filename="_static/style.html")
 # * en sus des types prédéfinis `str`, `list`, `set`, `dict`, ...
 # * plus adaptés à l'application
 #
-# <div class=mynote>cette section contient surtout des rappels    
-# </div>    
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # ## `class` 
 #
 # * avec le mot-clé `class` on définit **un nouveau type**  
-# * une classe définit des **méthodes spéciales**  
-#   ici **`__init__`** et **`__repr__`**
+# * une classe définit des **méthodes spéciales**; ici **`__init__`** et **`__repr__`**
 
 # %% cell_style="split"
 class User:
@@ -84,25 +81,27 @@ user1
 # * comme tous les types, la classe est une **usine à objets**  
 #   * `user = User("Dupont", 59)`  
 #   * à rapprocher de `s = set()` ou `n = int('32')`
-#   
 # * chaque objet (on dit instance) contient des données 
 #   * rangées dans des **attributs** de l'objet
 #   * ici `name` et `age`
 
-# %% [markdown] slideshow={"slide_type": "slide"} cell_style="split"
+# %% [markdown] cell_style="split"
 # ## affichage
 #
 # * la méthode spéciale `__repr__(self)` doit renvoyer une chaine  
 # * elle est utilisée pour
 #   * imprimer l'objet avec `print()`
 #   * convertir un objet en chaine
-
-# %% [markdown] cell_style="split"
-# sans quoi on obtient ceci
+#
+# ````{admonition} si on ne définit pas __repr__
+# :class: dropdown
+#
+# alors on obtient ceci
 #
 # ```{image} media/class-without-repr.png
 # :width: 500px
 # ```
+# ````
 
 # %% cell_style="center"
 print(f"je viens de voir {user1}")
@@ -111,39 +110,39 @@ print(f"je viens de voir {user1}")
 str(user1)
 
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### affichage et conversion en chaine
-
-# %% [markdown] tags=["level_intermediate"]
-# en fait il est possible d'être plus fin, et de définir **deux** méthodes spéciales qui sont
+# %% [markdown] tags=[]
+# ````{admonition} deux méthodes spéciales pour l'affichage
+# :class: attention dropdown
 #
-# * `__repr__(self)` et
-# * `__str__(self)` 
+# en fait il est possible d'être plus fin, et de définir **deux** méthodes spéciales, qui sont
 #
-# cela dit, pour commencer on peut se contenter  
-# de définir seulement `__repr__()`   
-# qui est alors utilisée pour tous les usages
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## méthodes
+# * `__repr__(self)` - utilisée par exemple pour `print`
+# * `__str__(self)`  - utilisée par exemple pour `str`
+#
+# cela dit, pour commencer on peut se contenter de définir seulement `__repr__()`, qui est alors utilisée pour tous les usages
+# ````
 
 # %% [markdown]
+# ## méthodes
+#
 # * une classe peut définir **des méthodes**
 # * qui sont des fonctions qui s'appliquent sur un objet (de cette classe)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # une implémentation très simple
 # d'une file FILO
 # premier entré dernier sorti
 
 class Stack:
-    
+
+    ## méthodes spéciales
     def __init__(self):
         self._frames = [] 
         
     def __repr__(self):
         return " > ".join(self._frames)            
-    
+
+    ## méthodes (usuelles)
     def push(self, item):
         self._frames.append(item)
         
@@ -151,7 +150,7 @@ class Stack:
         return self._frames.pop()
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # instance
 stack = Stack()
 
@@ -161,76 +160,40 @@ stack.push('fact(1)')
 
 stack
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 stack.pop()
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 stack
 
-# %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
-# ## méthodes et paramètres
-
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
+# ## méthodes et paramètres
+#
 # remarquez qu'ici 
 #
-# * on a **défini** la méthode `push` avec **2 paramètres**  
-# ```
-# def push(self, item):
-# ```
-#
-# * ce qui fait qu'on peut l'**appeler** sur un objet avec **1 paramètre** 
-# ```
-# stack.push(some_item)
-# ```
-#
-# * car le premier paramètre `self` est lié  
-#   à **l'objet sur lequel on envoie** la méthode
-#
-# * et la phrase `stack.push(some_item)`  
-#   est en fait équivalente à 
-#   `Stack.push(stack, some_item)`
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## intérêts de cette approche
-
-# %% [markdown]
-# * définir vos propres types de données
-# * grouper les données qui vont ensemble dans un  
-#   objet unique, facile à passer à d'autres fonctions
-#
-# * **invariants**: garantir de bonnes propriétés  
-#   si on utilise les objets au travers des méthodes 
-
-# %% [markdown]
-# <div class=mynote>et aussi (sera vu ultérieurement) :</div>
+# * on a **défini** la méthode `push` avec **2 paramètres** `def push(self, item):`
+# * ce qui fait qu'on peut l'**appeler** sur un objet avec **1 paramètre** `stack.push(some_item)`
+# * car le premier paramètre `self` est lié à **l'objet sur lequel on envoie** la méthode
+# * et la phrase `stack.push(some_item)` est en fait équivalente à `Stack.push(stack, some_item)`
 
 # %% [markdown] cell_style="split"
-# <div class=mynote>
+# ## intérêts de cette approche
 #
-# * intégrer les objets dans le langage  
+# * définir vos propres types de données
+# * grouper les données qui vont ensemble dans un objet unique, facile à passer à d'autres fonctions
+# * **invariants**: garantir de bonnes propriétés si on utilise les objets au travers des méthodes (encapsulation)
+# * et aussi (sera vu ultérieurement): intégrer **vos objets dans le langage**  
 #   i.e. donner un sens à des constructions comme  
-#
 #   * `x in obj`
 #   * `obj[x]`
 #   * `if obj:`
 #   * `for item in obj:`
 #   * ...
-#     
-#  </div>
-
-# %% [markdown] cell_style="split"
-# <div class=mynote>
-#    
-# * héritage 
-#   * réutiliser une classe en modifiant  
-#     seulement quelques aspects
-#     
-# </div>
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## méthodes et encapsulation
+# * enfin **héritage**: réutiliser une classe en modifiant seulement quelques aspects
 
 # %% [markdown]
+# ## méthodes et encapsulation
+#
 # avec la `Stack`, on est censé utiliser **seulement** `stack.push()` et `stack.pop()`  
 # et **pas directement** `stack._frames` (d'où le `_` au début de l'attribut)
 #
@@ -241,15 +204,12 @@ stack
 #
 # de façon à pouvoir changer l'implémentation **sans changer l'interface**  
 # et ainsi e.g. améliorer le comportement **sans changer le code utilisateur**
-
-# %% [markdown]
-# <div class=mynote>
 #
-# cette séparation n'est pas toujours sous-titrée de manière explicite   
-# comme ici où nous avons mis un `_` au début du nom de l'attribut  
+# ````{admonition} conventions de nommage
+# :class: attention admonition-small
+# cette séparation n'est pas toujours sous-titrée de manière explicite - comme ici où nous avons mis un `_` au début du nom de l'attribut  
 # il faut parfois faire appel à son bon sens
-#
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exemples de classes
@@ -257,7 +217,7 @@ stack
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `np.ndarray`
 #
-# * c'est une classe que vous utilisez tous les jours !
+# * la classe de base de `numpy`: c'est une classe que vous utilisez tous les jours !
 # * en fait il n'y a pas de différence de fond 
 #   * entre les types prédéfinis (`str`, ...)
 #   * et les classes créées avec `class`
@@ -265,7 +225,7 @@ stack
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Point`
 
-# %% slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=[]
 import math
 
 class Point:
@@ -280,19 +240,23 @@ class Point:
         return math.sqrt((self.x-other.x)**2 + (self.y-other.y)**2)
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# on crée deux instances
+
 a = Point(4, 3)
 b = Point(7, 7)
 a, b
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
+# on appelle la méthode distance
+
 a.distance(b)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Circle` (1)
 
-# %% slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=[]
 class Circle1:
 
     def __init__(self, center: Point, radius: float):
@@ -310,16 +274,18 @@ class Circle1:
         return math.isclose(self.center.distance(point), self.radius)
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 c1 = Circle1(Point(0, 0), 5)
 c1
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 c1.contains(a)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Circle` (2)
+#
+# la même chose exactement, mais en utilisant une méthode spéciale
 
 # %% slideshow={"slide_type": ""}
 class Circle2:
@@ -340,24 +306,30 @@ class Circle2:
         return math.isclose(self.center.distance(point), self.radius)
 
 
-# %%
+# %% tags=["gridwidth-1-2"]
 c2 = Circle2(Point(0, 0), 5)
 
 # alors on peut faire le même calcul, mais
 # l'écrire comme un test d'appartenance habituel 'x in y'
 a in c2
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemple : `class datetime.date` etc..
+# %% tags=["gridwidth-1-2"]
+# techniquement, on a aussi le droit d'écrire ceci
+# mais IL NE FAUT PAS LE FAIRE ce n'est pas du tout l'esprit..
+
+c2.__contains__(a)
 
 # %% [markdown]
+# ### exemple : `class datetime.date` etc..
+#
 # * bien sûr il y a des classes dans la bibliothèque standard
 # * voyez par exemple [le module `datetime`](https://docs.python.org/3/library/datetime.html)
 # * et notamment `datetime.date` (une date)  
 #   et `datetime.timedelta` (une durée)
 
 # %% slideshow={"slide_type": "slide"}
-# normalement la classe date aurait dû s'appeler Date
+# normalement si on avait appliqué la PEP008 à l'époque,
+# la classe date aurait dû s'appeler Date
 from datetime import date as Date
 # pareil
 from datetime import timedelta as TimeDelta
@@ -365,13 +337,20 @@ from datetime import timedelta as TimeDelta
 Date.today()
 
 # %% cell_style="split"
+# ici je crée un objet 'durée' 
+
 TimeDelta(weeks=2)
 
 # %% cell_style="split" slideshow={"slide_type": ""}
-# il y a 3 semaines nous étions le
+# et je peux faire de l'arithmétique; par exemple:
+
 today = Date.today()
+
+# multiplier une durée
 three_weeks = 3 * TimeDelta(weeks=1)
 
+# ajouter ou retrancher une durée à une date
+# il y a 3 semaines nous étions le
 today - three_weeks
 
 
@@ -388,20 +367,21 @@ def timedelta_as_year_month(age: TimeDelta) -> str:
     return f"{years} ans, {months} mois"
 
 
-# %% [markdown] tags=["level_advanced"]
-# <div class=mynote>
+# %% [markdown] tags=[]
+# ````{admonition} si on allait jusqu'au bout de la logique
+# :class: dropdown
 #
-# en pratique on irait même jusqu'à spécialiser `TimeDelta`  
-# de façon à redéfinir son `repr()` avec ce format `year+month`  
+# en pratique on irait même jusqu'à spécialiser `TimeDelta`, de façon à redéfinir son `repr()` avec ce format  
 # toutefois c'est un peu scabreux à faire...
-#    
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Student`
 
 # %%
+# une classe plus orientée "gestion"
+# i.e. juste une collection de données
+
 class Student:
     
     def __init__(self, first_name, last_name, 
@@ -420,6 +400,16 @@ class Student:
     def repr_age(self) -> str:
         return timedelta_as_year_month(self.age())
 
+
+# %% [markdown]
+# ````{admonition} remarque
+# :class: admonition-small
+#
+# on rencontre assez souvent le pattern selon lequel le constructeur a autant de paramètres que les attributs de la classe;  
+# par exemple la classe a 2 attributs truc et bidule, et le constructeur qui accepte deux paramètres truc et bidule  
+#
+# mais comme le montre l'exemple ci-dessus, ce n'est pas obligatoire !
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `class Student` - utilisation
@@ -445,7 +435,6 @@ print(f"{achille} a {achille.repr_age()}")
 #
 # * bien sûr on peut combiner nos types (les classes)  
 #   avec les types de base
-#
 # * et ainsi créer e.g. des listes de `Student`
 
 # %%
@@ -499,27 +488,22 @@ timedelta_as_year_month(cls.average_age())
 #   * qui nous permet de **créer des objets**
 #   * qui représentent, mieux que les types de base,  
 #     les données de notre application
-#   
 # * pas de différence entre un type prédéfini et une classe :  
 #   un objet créé par une classe s'utilise *normalement*
-#
 #   * une variable peut désigner un objet
 #   * un objet peut être dans une liste (ou autre type) *builtin*  
 #     (attention pour les clés de `dict` qui doivent être hashables)
-#
 #   * ou passé en paramètre à une fonction,
 #   * etc, etc...
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### résumé (2/2)
+# ## résumé (2/2)
 #   
 # * généralement une instance contient  
 #   des données rangées dans des **attributs**
-#
 # * une classe peut définir aussi des **méthodes**
 #   * qui travaillent sur un objet (souvent appelé `self`)
 #   * souvent on ne modifie les objets  
 #     qu'au travers des méthodes fournies par la classe
-#
 #   * ce qui permet de garantir certains invariants
 #
