@@ -78,13 +78,12 @@ print(f"after step 1 we have {len(Student.all_students)} students")
 
 
 # %% [markdown]
-# <div class="micro-note">
+# ````{admonition} quiz
+# :class: seealso
 #     
-#     notez que dans la définition de `__init__` on aurait pu aussi 
-#     écrire `self.all_students.append(self)`   
-#     pourquoi ?
-#     
-# </div>    
+# notez que dans la définition de `__init__` on aurait pu aussi écrire `self.all_students.append(self)`  
+# pourquoi ?
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## méthodes statiques

@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: lambdas
 #   rise:
@@ -169,11 +176,10 @@ import operator
 sorted(student_marks, key=operator.itemgetter(1))
 
 # %% [markdown] slideshow={"slide_type": ""}
-# <div class=mynote>
+# ````{admonition} pour en savoir plus
 #
 # pour aller plus loin sur le tri, voir <https://docs.python.org/3/howto/sorting.html>
-#     
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `reverse()` et `reversed()`

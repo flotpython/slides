@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: "port\xE9e d\u2019une variable"
 #   rise:
@@ -55,13 +62,13 @@ HTML(filename="_static/style.html")
 #  en fonction de leur place dans le code source
 
 # %% [markdown]
-# <div class=mynote>
+# ````{admonition} pourquoi lexicale ?
+# :class: admonition-small tip
 #
 # la liaison lexicale est faite à *compile-time*  
 # le terme *lexical* signifie qu'on n'a que besoin de **lire** le programme, et pas de l'exécuter  
 # a contrario, la résolution des attributs ne peut se faire que à *run-time*    
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## déclaration ?
@@ -119,12 +126,12 @@ HTML(filename="_static/style.html")
 #   * nom provenant du module *builtins*
 
 # %% [markdown]
-# <div class=mynote>
+# ````{admonition} pas de portée de bloc
+# :class: attention
 #
 # l'unité de base est la **fonction** - il **n'y pas de visibilité de bloc**  
 # (comme on la trouve dans d'autres langages)
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## variable globale
@@ -194,12 +201,11 @@ except UnboundLocalError:
     print("OOPS")
 
 # %% [markdown]
-# <div class=mynote>
+# ````{admonition} pourquoi UnboundLocalError ?
 #     
 # `UnboundLocalError` signifie textuellement qu'on évalue une variable locale  
 # qui n'a pas encore été initialisée
-#     
-# </div>
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exemple de visibilité (2) revu
@@ -297,11 +303,11 @@ does_not_modify_G(1000)
 G
 
 # %% [markdown]
-# <div class=mynote>
+# ````{admonition} pourquoi ?
+# :class: tip dropdown
 #
 # dans la deuxième forme, on a juste créé une **deuxième variable G** qui est locale à la fonction, et "cache" la globale, qui donc n'est pas modifiée
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exemple avec `global` (2)
@@ -342,11 +348,11 @@ G
 
 
 # %% [markdown]
-# <div class=mynote>
+# ````{admonition} pourquoi ?
+# :class: tip dropdown
 #
 # ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affectée dans `increment_G`, c'est une variable *locale* à la fonction (et donc pas la globale); mais elle n'a pas encore de valeur ! d'où l'erreur `UnboundLocalError`
-#     
-# </div>    
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ## faut-il utiliser `global` ?

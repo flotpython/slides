@@ -256,12 +256,12 @@ vector = Vector(2, 2)
 # sachez que l'on peut inspecter le contenu d'un espace de noms
 # avec la fonction `vars(obj)`
 #
-# <div class=mynote>
-#     
+# ````{admonition} surtout utile pour le cours    
+# :class: admonition-x-small
+#
 # ce n'est pas forcément une notion à retenir, mais on va s'en servir dans la suite  
 # pour regarder le contenu des espaces de nom
-#     
-# </div>    
+# ````
 
 # %% tags=["level_intermediate"]
 # dans l'instance
@@ -463,14 +463,12 @@ isinstance(a, (A, B))
 
 
 # %% [markdown]
-# <div class=mynote>
-#    
+# ````{admonition} mieux que type()
+# :class: attention
+#
 # * on peut aussi passer à `isinstance` un tuple de classes/types
 # * ces fonctions *builtin* sont à privilégier par rapport à l'utilisation de `type()`
-#     
-#
-# </div>
-#     
+# ````
 
 # %% [markdown]
 # ## `super()`
