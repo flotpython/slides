@@ -49,11 +49,11 @@ HTML(filename="_static/style.html")
 # * le type `bytes` est donc un autre exemple de **séquence** (comme `str`)
 # * c'est également un type **non mutable**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 b = bytes([65, 66, 67])
 b
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # non mutable !
 try:
     b[1] = 68
@@ -69,12 +69,12 @@ except Exception as exc:
 # * lire un fichier ouvert en mode binaire - vu plus tard
 # * de manière littérale, mettre un `b` devant une chaîne de caractères
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # caractère -> code ASCII
 b = b'AB\n'
 b
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou sinon en hexa
 b'\x41\x42\x0a'
 
@@ -104,28 +104,26 @@ b'\x41\x42\x0a'
 # ```
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### un `bytes` est une séquence
-
 # %% [markdown]
+# ### un `bytes` est une séquence
+#
 # * on manipule des objets `bytes` presque comme des objets `str`
 # * les bytes sont des séquences (donc indexation, slicing, ...)
 # * essentiellement les mêmes méthodes que pour les `str`
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # les méthodes dans `str` mais pas dans `bytes`
 
 set(dir(str)) - set(dir(bytes))
 
-# %% cell_style="split" tags=[]
+# %% tags=["gridwidth-1-2"]
 # les méthodes dans `bytes` mais pas dans `str`
 
 set(dir(bytes)) - set(dir(str))
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## texte, binaire et encodage
-
 # %% [markdown]
+# ## texte, binaire et encodage
+#
 # * choisir entre `str` et `bytes`
 # * quand et comment convertir
 
@@ -136,10 +134,9 @@ set(dir(bytes)) - set(dir(str))
 # :align: center
 # ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### le problème
-
 # %% [markdown]
+# ### le problème
+#
 # * dès que vous échangez avec l'extérieur, i.e.
 #   * Internet (Web, mail, etc.)
 #   * stockage (disque dur, clef USB)
@@ -196,11 +193,11 @@ set(dir(bytes)) - set(dir(str))
 # :width: 600px
 # ```
 
-# %%
+# %% tags=["gridwidth-1-2"]
 # an int, entered in hexa, printed in decimal
 i1 = 0xe8; i1
 
-# %%
+# %% tags=["gridwidth-1-2"]
 # or printed in binary
 bin(i1)
 
@@ -236,29 +233,31 @@ i1 == i2
 # :width: 600px
 # ```
 
-# %% [markdown] cell_style="split" tags=["gridwidth-1-2"]
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### Unicode et Python: `chr` et `ord`
 #
 # ```{image} media/unicode-e-accent.png
 # :align: center
 # ```
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # le codepoint du é accent aigu
 codepoint = 0xe9
 codepoint
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 chr(codepoint)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 ord('é')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## Martine Ã©crit en UTF-8
 
-# %% [markdown] cell_style="split"
-# ![](../media/martine-ecrit-en-utf8.png)
+# %% [markdown] tags=["gridwidth-1-2"]
+# ```{image} ../media/martine-ecrit-en-utf8.png
+# :align: center
+# ```
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # ### pourquoi l’encodage c’est souvent un souci ?
@@ -322,21 +321,21 @@ reçu
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### encodages par défaut
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on connait l’encodage du terminal avec
 import sys
 sys.stdin.encoding
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et dans l'autre sens
 #
 sys.stdout.encoding
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on connait l’encodage du système de fichier avec
 sys.getfilesystemencoding()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et le réglage système par défaut
 sys.getdefaultencoding()
 
@@ -355,11 +354,11 @@ sys.getdefaultencoding()
 #   * `"ignore"` (jette le caractère non supporté)
 #   * `"replace"` (remplace le caractère non supporté)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 octets = 'un été, à noël'.encode(encoding='utf-8')
 octets.decode('ascii', errors='ignore')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 octets.decode('ascii', errors='replace')
 
 # %% [markdown]
@@ -371,11 +370,11 @@ octets.decode('ascii', errors='replace')
 #   * `"ignore"` (jette le caractère non supporté)
 #   * `"replace"` (remplace le caractère non supporté)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 s = 'un été, à noël'
 s.encode('ascii', errors='ignore')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 s.encode('ascii', errors='replace')
 
 # %% [markdown]
@@ -405,7 +404,6 @@ s.encode('ascii', errors='replace')
 # * le [`BOM` (byte order mark)](https://en.wikipedia.org/wiki/Byte_order_mark)  
 #   est un mécanisme permettant de disambigüer  
 #   entre les 3 encodages utf-8, utf-16 et utf-32
-#
 # * du coup si vous savez qu'un document est en Unicode  
 #   mais sans savoir quel encodage au juste  
 #   le BOM permet de le trouver
@@ -415,12 +413,12 @@ s.encode('ascii', errors='replace')
 # qui crée une inflation artificielle
 #
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # en UTF-32:  1 char = 4 bytes
 # donc on devrait voir 4
 len("a".encode('utf32'))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # les 4 premiers octets correspondent
 # à la constante 'UTF32-LE'
 b = "a".encode('utf32')
@@ -436,27 +434,26 @@ len(s1000.encode('utf32'))
 
 # %% [markdown]
 # #### les chaines littérales
-
-# %% [markdown]
+#
 # lorsqu'on veut écrire directement dans le programme  
 # une chaine avec des caractères exotiques
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # entré directement au clavier
 accent = 'é'
 accent
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # copié collé
 warn = '⚠'
 warn
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # défini à partir de son codepoint
 # si petit (un octet), format hexadécimal
 '\xe9'
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si plus grand, utiliser \u
 # pour les codepoints sur 2 octets
 "\u26A0"
@@ -491,12 +488,12 @@ except:
 # * c’est un objet similaire au type `bytes`, mais qui est **mutable**
 # * on l’utilise lorsque l’on a besoin de modifier un objets `bytes`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 source = b'spam'
 buff = bytearray(source)
 buff
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # remplacer 'a' bar 'e'
 buff[2] = ord('e')
 buff
@@ -508,12 +505,12 @@ for char in buff:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### méthodes sur `bytearray`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # méthode dans bytes
 # mais pas dans bytearray
 set(dir(bytes)) - set(dir(bytearray))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # méthode dans bytearray
 # mais pas dans bytes
 set(dir(bytearray)) - set(dir(bytes))

@@ -31,22 +31,18 @@ rise:
 <span>Thierry Parmentelat &amp; Arnaud Legout</span>
 </div>
 
-+++
++++ {"cell_style": "center"}
 
 # généralités
 
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
 
-+++ {"cell_style": "center"}
-
 > version de référence: python-3.10
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## pourquoi Python ?
-
-+++
 
 * syntaxe simple
   * pas de délimitations  `begin end ; {} `
@@ -93,11 +89,9 @@ def factorielle(n):
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### pourquoi Python ? : puissant
-
-+++
 
 * types disponibles très puissants et flexibles
   * entiers non bornés, nombres complexes
@@ -110,11 +104,9 @@ def factorielle(n):
 * gestion de la mémoire automatique
   * GC
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### pourquoi Python ? : pas de compilation
-
-+++
 
 * langage interprété
 * script direct en ligne de commande
@@ -145,11 +137,7 @@ possède les droits sur Python et assure son développement
 import this
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## quand utiliser python ?
-
-+++
 
 * scripts (mais pas **uniquement** ça!)
 * programmation système
@@ -161,11 +149,9 @@ import this
 * backend web avec `Django` / `Flask`
 * …
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### quand ne pas utiliser Python ?
-
-+++
 
 * Python est **plutôt gourmand en mémoire**
   * tout est objet ➔ surcoût partout
@@ -182,11 +168,9 @@ import this
   * PyPy très rapide par rapport à CPython
   * pensez à utiliser `numpy`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### quand ne pas utiliser python ?
-
-+++
 
 **comment prendre la décision d’utiliser Python ?**
 
@@ -221,10 +205,9 @@ on ne peut l'utiliser que dans `ipython` ou dans les notebooks
 
 ```{code-cell} ipython3
 ---
-cell_style: split
 slideshow:
   slide_type: ''
-tags: [level_intermediate]
+tags: [level_intermediate, gridwidth-1-2]
 ---
 # retourne le nombre d'octets
 # utilisés pour stoker un objet
@@ -234,8 +217,7 @@ sys.getsizeof([10])
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
-:tags: [level_intermediate]
+:tags: [level_intermediate, gridwidth-1-2]
 
 sys.getsizeof([10, 20])
 ```
@@ -246,11 +228,7 @@ sys.getsizeof([10, 20])
 sys.getsizeof([10, 20, 30])
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## quelle version de python ?
-
-+++
 
 * version 3.x
   * conseil: ne pas utiliser un trait spécifique à la toute dernière version pour du code à large diffusion
@@ -261,17 +239,13 @@ sys.getsizeof([10, 20, 30])
   * en fin de vie - supporté jusque 1er janvier 2020
   * de moins en moins problématique (mais attention sur MacOS)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## documentation
-
-+++
 
 personnellement, pour un accès rapide à la documentation, je fais très facilement une recherche google genre
 
 > python module datetime
-
-+++
 
 ````{admonition} le plus simple: chercher sur google
 :class: tip
@@ -319,7 +293,7 @@ que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python
 
 ## comment lancer python ?
 
-+++
++++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
 
 ### depuis un terminal ...
 
@@ -328,8 +302,6 @@ que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python
 * en option, `ipython` en remplacement
   * nécessite une installation supplémentaire
   * `pip install ipython`
-
-+++
 
 ````{admonition} pour installer des librairies depuis le web (pypi.org)
 :class: tip
@@ -340,8 +312,6 @@ dans le terminal toujours:
 * `python -m pip install mylibrary` est équivalent, et parfois plus approprié, notamment en cas d'installation biscornue
 
 ````
-
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
 
 ```{image} ../media/python-ipython-in-terminal.png
 :width: 600px
@@ -359,13 +329,13 @@ dans le terminal toujours:
 * IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
   atom, eclipse, ... bcp de variantes)
 
-+++ {"cell_style": "split"}
++++ {"tags": ["gridwidth-1-2"]}
 
 dans tous les cas,  
 faites un premier test:
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 100 * 100
 ```
@@ -406,14 +376,14 @@ dir(math)
   * fonctionne dans tous les environnements
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # sur tout un module
 help(math)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # ou juste une fonction
 help(math.factorial)
@@ -436,13 +406,13 @@ il faut être soit dans IPython, soit dans un notebook
 ````
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 math?
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 math.factorial?
 ```
@@ -451,39 +421,43 @@ math.factorial?
 
 ### aide IPython (et notebooks) (2)
 
-+++
++++ {"tags": []}
 
 utiliser `TAB` pour la complétion
 
 ```{code-cell} ipython3
+:tags: []
+
 # ditto, il faut avoir chargé le module
 # **avant** de pouvoir utiliser la complétion
 from sklearn import tree
 ```
 
++++ {"tags": []}
+
 utiliser le clavier pour sélectionner
 
 ```{code-cell} ipython3
+:tags: []
+
 # tree.<taper TAB>
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": []}
 
 ### aide IPython (et notebooks) (3)
-
-+++ {"tags": ["level_intermediate"]}
 
 avec un double `??` on peut avoir accès au code source
 
 ```{code-cell} ipython3
-:tags: [level_intermediate]
+:tags: []
 
 # bien sûr il faut avoir **évalué** l'import
 from argparse import ArgumentParser
 ```
 
 ```{code-cell} ipython3
-:tags: [level_intermediate]
+:tags: []
 
 # avant de pouvoir instrospecter l'objet ArgumentParser
 ArgumentParser??

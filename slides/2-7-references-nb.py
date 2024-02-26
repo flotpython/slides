@@ -130,10 +130,9 @@ b = a
 a[0] = 'spam'
 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### types mutables / immutables
-
 # %% [markdown] slideshow={"slide_type": ""}
+# ### types mutables / immutables
+#
 # | type  | mutable ? |
 # |-------:|:-----------|
 # | **`int`** et autres nombres | non       |
@@ -195,7 +194,7 @@ a[0] = 'spam'
 # dans ce cas de figure, la donnée de départ n'est pas assez profonde pour qu'il puisse y avoir une différence entre les deux modes de copie
 # ````
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### illustration *shallow*
 #
 # ```{image} ../media/copy-1-shallow.svg
@@ -203,7 +202,7 @@ a[0] = 'spam'
 # :width: 500px
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### illustration *deep*
 #
 # ```{image} ../media/copy-2-deep.svg
@@ -224,19 +223,19 @@ a[0] = 'spam'
 #   * ssi **les valeurs des objets sont égales**
 #   * forme inverse `obj1 != obj2`
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 a = [0, 1, 2]
 b = a[:]
 a is b
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 a == b
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 c = d = [0, 1, 2]
 c is d
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 c == a
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -267,10 +266,9 @@ a[1][0] = 'boom'
 print(a)
 print(b)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## autres types de références partagées (avancé)
-
 # %% [markdown]
+# ## autres types de références partagées (avancé)
+#
 # on n'a parlé jusqu'ici que de références partagées créées par **affectation**  
 # **mais** il existe (plein) d'autres cas de figure :
 # * appel de fonction: l'objet passé en argument à une fonction  
@@ -334,14 +332,14 @@ print(L)
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_advanced"]
 # ### optimisation interne à Python
 
-# %% cell_style="split" tags=["level_advanced"]
+# %% tags=["level_advanced", "gridwidth-1-2"]
 # avec cette forme
 # on crée deux objets liste
 L = [1, 2]
 M = [1, 2] # nouvel objet liste
 L is M
 
-# %% cell_style="split" tags=["level_advanced"]
+# %% tags=["level_advanced", "gridwidth-1-2"]
 # ici aussi on pourrait penser
 # créer deux objets int
 I = 18

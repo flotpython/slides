@@ -35,10 +35,9 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# # fichiers
-
 # %% [markdown]
+# # fichiers
+#
 # * on a très souvent besoin de lire ou d'écrire un fichier par programme  
 #   notamment bien sûr pour lire les entrées ou sauver les résultats
 # * pour la lecture en pratique on utilise souvent des librairies  
@@ -192,7 +191,7 @@ with open("temporaire.txt") as reader:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## fichiers ouverts en binaire
 
-# %% [markdown] slideshow={"slide_type": ""} cell_style="split"
+# %% [markdown] slideshow={"slide_type": ""} tags=[]
 # ### ajouter `b` dans le mode
 #
 # tous les fichiers ne sont pas des fichiers texte  
@@ -207,7 +206,7 @@ with open("temporaire.txt") as reader:
 # * il n’y a aucun encodage, décodage,  
 #   et aucune conversion de fin de ligne (auberge espagnole)
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # pour fabriquer un objet bytes, je peux par exemple 
 # encoder un texte qui comporte des accents
 # (on reparlera des encodages plus tard)
@@ -217,32 +216,32 @@ binaire = text.encode(encoding="utf-8")
 
 binaire
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # j'ai bien un objet bytes, 
 # et sa taille correspond au nombre d'octets 
 # et non pas au nombre de caractères
 
 type(binaire), len(binaire), len(text)
 
-# %% cell_style="center" slideshow={"slide_type": "slide"}
+# %% cell_style="center" slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # remarquez le 'b' dans le mode d'ouverture
 
 with open('temporaire.bin', 'wb') as out_file:
     # je peux du coup écrire un objet bytes
     out_file.write(binaire)
 
-# %% cell_style="center" slideshow={"slide_type": ""}
+# %% cell_style="center" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # pareil en lecture, le mode avec un 'b'
 # va faire que read() retourne un objet bytes
 
 with open('temporaire.bin', 'rb') as in_file:
     binaire2 = in_file.read()
 
-# %% slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # et donc on retombe bien sur nos pieds
 binaire2 == binaire
 
-# %%
+# %% tags=["gridwidth-1-2"]
 # ça aurait été pareil 
 # si on avait ouvert le fichier en mode texte
 # puisque ce qu'on a écrit dans le fichier binaire,
@@ -355,9 +354,7 @@ dot
 # %% [markdown]
 # ### l'opérateur `/`
 #
-# un exemple intéressant de surcharge d'opérateur - ici `/`  
-# selon le type de ses opérandes, `/` fait .. ce qu'il faut  
-# par exemple ici on ne fait pas une division !
+# un exemple intéressant de surcharge d'opérateur: selon le type de ses opérandes, `/` fait .. ce qu'il faut ! par exemple ici on ne fait pas une division !
 
 # %%
 # Path / Path -> Path bien sûr
@@ -478,7 +475,7 @@ list(root.glob("**/*[0-9]"))
 # ### encodages par défaut
 #
 # * vous remarquez qu'on a souvent appelé `open()` sans préciser l'encodage
-# * l’encodage par défaut pour un fichier ouvert en mode texte est celui retourné par:
+# * l’encodage par défaut pour un fichier ouvert en mode texte est celui retourné par
 
 # %% tags=["level_advanced"]
 import locale

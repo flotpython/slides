@@ -42,7 +42,7 @@ rise:
 
 ## les concepts majeurs de python
 
-+++ {"cell_style": "split"}
++++ {"tags": ["gridwidth-1-2"]}
 
 * **tout est un objet**
 * objets mutables ou non
@@ -54,7 +54,7 @@ rise:
 
   ````
 
-+++ {"cell_style": "split"}
++++ {"tags": ["gridwidth-1-2"]}
 
 * références partagées
 * liaison statique
@@ -106,7 +106,6 @@ en Python la réalité est donc subtilement différente; c'est l'objet qui occup
 ### modèle mental : tout objet est typé
 
 ```{code-cell} ipython3
-:cell_style: split
 :tags: [gridwidth-1-2]
 
 # créons quelques objets
@@ -116,7 +115,6 @@ liste = [1, 10., 10 + 10j]
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
 :tags: [gridwidth-1-2]
 
 # et définissons une fonction
@@ -138,16 +136,14 @@ type(a), type(b)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
-:tags: [gridwidth-1-3]
+:tags: [gridwidth-1-3, gridwidth-1-2]
 
 # une liste
 type(liste)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
-:tags: [gridwidth-1-3]
+:tags: [gridwidth-1-3, gridwidth-1-2]
 
 # les indices commencent à 0
 # un complexe
@@ -155,8 +151,7 @@ type(liste[2])
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
-:tags: [gridwidth-1-3]
+:tags: [gridwidth-1-3, gridwidth-1-2]
 
 # un module
 type(math)
@@ -164,10 +159,9 @@ type(math)
 
 ```{code-cell} ipython3
 ---
-cell_style: split
 slideshow:
   slide_type: ''
-tags: [gridwidth-1-3]
+tags: [gridwidth-1-3, gridwidth-1-2]
 ---
 # une fonction
 type(foo)
@@ -322,7 +316,7 @@ if x > 3:   # on peut commenter où on veut
 
 ### primer : indentation et syntaxe
 
-+++
++++ {"tags": ["gridwidth-1-2"]}
 
 * contrairement à beaucoup d'autres langages
   * la mise en page (sauts de ligne et indentations)
@@ -330,6 +324,8 @@ if x > 3:   # on peut commenter où on veut
   * ce qui élimine le besoin de `{}` ou `begin`/`end`
 
 ```{code-cell} ipython3
+:tags: [gridwidth-1-2]
+
 if 2**5 == 32:
     print("c'est l'alignement des lignes")
     print("qui produit les blocs")
@@ -376,7 +372,7 @@ y compris notamment `numpy`, `pandas`, `scikit-learn`, et énormément d'autres.
 ### primer : fonction
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 def my_first_function(a, b):
     if a <= b:
@@ -386,13 +382,13 @@ def my_first_function(a, b):
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 my_first_function(10, 2)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 my_first_function(2, 10)
 ```
@@ -405,7 +401,7 @@ my_first_function(2, 10)
 ### primer : classe
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 class MyFirstClass:
 
@@ -419,14 +415,14 @@ class MyFirstClass:
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 person = MyFirstClass(
     "Jean Dupont", 25)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 person
 ```
@@ -443,7 +439,7 @@ person
 ### primer : *type hints*
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # ici j'utilise un trait qui date de la version 3.9
 
@@ -460,7 +456,7 @@ def search(persons: list[MyFirstClass], nom: str) -> MyFirstClass:
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 group = [
     MyFirstClass("Jean Dupont", 25),
@@ -470,7 +466,7 @@ group = [
 search(group, "Jean Dupont")
 ```
 
-+++ {"cell_style": "split"}
++++ {"tags": ["gridwidth-1-2"]}
 
 les *type hints*, traduites en "annotations de type"
 
@@ -484,7 +480,7 @@ les *type hints*, traduites en "annotations de type"
 ### primer : module
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # le module standard math s'importe comme ceci
 import math
@@ -493,7 +489,7 @@ type(math)
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # je peux me définir une variable 'pi'
 
@@ -501,7 +497,7 @@ pi = "la tour de Pi"
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # qui n'interfère pas avec celle définie dans le module
 
@@ -525,7 +521,7 @@ math.pi
 * notation `objet.methode()`
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # appeler une méthode
 x = "abc"
@@ -533,7 +529,7 @@ x.upper()
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # accéder à un attribut
 p = MyFirstClass("jean", 43)
@@ -560,7 +556,7 @@ l'instruction `for` et les itérateurs permettent de dissocier
 * du traitement à chaque tour de boucle
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # partant par exemple d'une liste
 
@@ -568,7 +564,7 @@ liste = [10, 20, 30]
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # on itére toujours comme ceci
 
@@ -577,7 +573,7 @@ for item in liste:
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # et JAMAIS comme ceci
 
@@ -596,7 +592,7 @@ on verra qu'avec la fonction `enumerate()` on peut toujours éviter ce vilain `f
 ### primer : exceptions
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 # une fonction qui fait boom
 # mais pas immédiatement
@@ -608,7 +604,7 @@ def boom(n):
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
+:tags: [gridwidth-1-2]
 
 try:
     boom(2)

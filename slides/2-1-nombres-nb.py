@@ -62,11 +62,11 @@ HTML(filename="_static/style.html")
 # division exacte/flottante
 8 / 5
 
-# %% cell_style="split" tags=["gridwidth-1-3"]
+# %% tags=["gridwidth-1-3", "gridwidth-1-2"]
 # division entière (quotient)
 8 // 5
 
-# %% cell_style="split" tags=["gridwidth-1-3"]
+# %% tags=["gridwidth-1-3", "gridwidth-1-2"]
 # reste div. entière
 8 % 5
 
@@ -145,7 +145,7 @@ a.imag
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### le module `math`
 
-# %% cell_style="split"
+# %% tags=[]
 # pour anticiper un peu
 # sur les listes...
 # ici on veut les 6 derniers
@@ -155,10 +155,10 @@ import math
 
 dir(math)[-6:]
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 math.tau
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 math.sin(math.pi)
 
 # %% [markdown]
@@ -190,22 +190,22 @@ math.sin(math.pi)
 
 10 >= 12
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # True c'est presque exactement 1
 
 True == 1
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # et False presque exactement 0
 
 False == 0
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # mais pas tout à fait quand même
 
 type(True)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # alors que
 
 type(1)
@@ -270,33 +270,33 @@ c = [1, 2]
 # %% [markdown] cell_style="center" slideshow={"slide_type": "slide"}
 # du coup on peut écrire des choses comme
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 a is b
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # plus lisible que   not (a is c)
 a is not c
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 a == c
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 a != c
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ou encore comme
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 1 in a
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # plus lisible que   not (1 in a)
 1 not in a
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### test sur un booléen
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # on peut - bien sûr - faire un `if`
 # (ou un while) sur un booléen
 a = 3
@@ -304,7 +304,7 @@ b = 4
 
 type(a == b)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # ici le sujet du if est bien booléen
 
 if a == b:
@@ -315,14 +315,14 @@ else:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### test sur un non-booléen
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # mais aussi : avec n'importe quoi d'autre
 # ici le sujet du if est un nombre
 
 if a:
     print("pas faux")
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # en fait équivalent à ceci:
 
 if bool(a):
@@ -340,33 +340,33 @@ if bool(a):
 # %% [markdown]
 # en fait ce qui est à l'oeuvre ici, c'est la **mécanique générale** pour convertir entre types de données:
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # si on appelle int() on convertit en entier
 
 int(3.4)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # eh bien de la même manière
 # si on appelle bool() on convertit en booléen
 
 bool(3.4)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # un nombre nul est "faux"
 
 bool(0)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # une chaine vide est "fausse"
 
 bool("")
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # un nombre non nul est "vrai"
 bool(1)
 
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # une chaine non vide - même avec 
 # un seul espace - est "vraie"
 bool(" ")
@@ -395,13 +395,13 @@ bool(" ")
 #   * 11 bits pour représenter l'exposant
 #   * 52 bits pour représenter la mantisse
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour obtenir des infos sur la précision des flottants
 
 import sys
 sys.float_info
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ````{admonition} à retenir
 # :class: info
 #
@@ -419,11 +419,11 @@ sys.float_info
 #   * et vous savez notamment qu'il ne faut pas tester avec une égalité stricte
 #   * mais plutôt avec un *presque égal* : utiliser `math.isclose`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 0.3 == 0.1 + 0.2
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import math
 
 math.isclose(0.3, 0.1+0.2)
@@ -442,11 +442,11 @@ math.isclose(0.3, 0.1+0.2)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples - `decimal`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 from decimal import Decimal
 x = Decimal('0.1') + Decimal('0.2')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 x == Decimal('0.3')
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -457,10 +457,10 @@ from fractions import Fraction
 x = Fraction(1, 10) + Fraction(2, 10)
 x
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 x == Fraction(3, 10)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 x == 0.3
 
 # %% [markdown]
@@ -533,22 +533,19 @@ y & 15     # bitwise AND de 0100 (4) et 1111 (15)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### décalages
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 x = 3
 y = x << 10 # décalage à gauche
 y
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 2**11 + 2**10
 
 # %%
 x          # l'argument n'est pas modifié
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 y >> 3     # décalage à droite
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 2**8 + 2**7
-
-# %% [markdown]
-# ****

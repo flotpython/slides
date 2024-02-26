@@ -69,10 +69,9 @@ try:
 except TypeError as e:
     print("OOPS", e)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### récapitulons
-
 # %% [markdown]
+# ### récapitulons
+#
 # * une séquence est une liste ordonnée d’éléments  
 #   indexés par des entiers
 #
@@ -83,10 +82,9 @@ except TypeError as e:
 #   * une insertion, effacement et recherche en *O(1)*
 #   * une indexation par clef quelconque
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## la solution : les tables de hash
-
 # %% [markdown]
+# ## la solution : les tables de hash
+#
 # * une table de hash T indexe des valeurs par des clefs
 #   * T[clef] = valeur
 #   * insertion, effacement, recherche en O(1)
@@ -126,10 +124,9 @@ except TypeError as e:
 #
 #   il fournit donc une association clé → valeur
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## le `set`
-
 # %% [markdown]
+# ## le `set`
+#
 # * collection non ordonnée(♤) d’objets uniques et **immutables**
 # * utile pour tester l’appartenance
 #   * optimisé, beaucoup + rapide que `list`
@@ -148,13 +145,13 @@ except TypeError as e:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### création
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ATTENTION : les dictionnaires étaient là avant les ensembles !
 # du coup {} n'est pas un ensemble, mais un dict !
 
 set()          # ensemble vide
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou sinon, on peut comme toujours
 # utiliser le type comme une
 # usine à objets
@@ -166,25 +163,25 @@ S1
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### opérations sur `set`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 S1
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L2 = [3, 4, 1]
 S2 = set(L2)
 S2
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 4 in S2
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 S1 - S2            # différence
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 S1 | S2            # union
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 S1 & S2            # intersection
 
 # %%
@@ -197,39 +194,38 @@ S1 & S2            # intersection
 #
 # les plus utiles sont `add()` et `.remove()` (et là encore il y en a toute un paquet...)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ensemble littéral
 S3 = {1, 2, 3, 4}
 S3
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ajout d'un élément
 
 S3.add('spam')
 S3
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas de duplication
 # et pas d'ordre particulier
 S3.update([10, 11, 10, 11])
 S3
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 S3.remove(11)
 S3
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### le `set` est mutable
-
 # %% [markdown]
+# ### le `set` est mutable
+#
 # * un `set` est un objet **mutable**
 # * le `frozenset` est équivalent mais **non mutable**(♤)
 # * par exemple pour servir de clé dans un hash
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 fs = frozenset([1, 2, 3, 4])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # frozenset pas mutable
 try:
     fs.add(5)
@@ -243,14 +239,13 @@ except AttributeError as e:
 # (♤) du coup on peut dire, en quelque sorte, que le `frozenset` est au `set` ce que le `tuple` est à la `list`
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### éléments acceptables
-
 # %% [markdown]
+# ### éléments acceptables
+#
 # * on a le droit d'y mettre tout ce qui est **non-mutable**
 # * pour que la fonction de hachage retourne toujours la même chose
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 S = set()
 S.add(1)
 S.add("abc")
@@ -258,7 +253,7 @@ S.add("abc")
 S.add((1, 2))
 S
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais pas une liste !
 try:
     S.add([1, 2])
@@ -283,10 +278,9 @@ except TypeError as e:
 #
 # `````
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### rapide test de performance
-
 # %% [markdown] cell_style="center"
+# ### rapide test de performance
+#
 # pour la recherche d’un élément, le set est **beaucoup plus rapide**
 
 # %%
@@ -299,10 +293,9 @@ x = set(range(100000))
 
 # %timeit -n 300 "c" in x
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### le set est beaucoup plus rapide
-
 # %% [markdown]
+# #### le set est beaucoup plus rapide
+#
 # et cela même si la liste est très petite
 
 # %%
@@ -333,10 +326,9 @@ x = set(range(2))
 
 # %timeit -n 300 0 in x
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## le dictionnaire
-
 # %% [markdown]
+# ## le dictionnaire
+#
 # * généralisation d’une table de hash
 # * collection **ordonnée** (depuis la 3.7)  
 #   d'associations *clé → valeur*
@@ -377,21 +369,20 @@ D
 
 { 'douze' : 12, 1: 'un', 'liste' : [1, 2, 3] }
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une autre façon, quand les clés sont des chaînes
 
 dict( a = 'A', b = 'B')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou aussi, plus rare, mais à partir d'une liste de couples...
 # juste pour montrer qu'il y a souvent plein de façons de faire...
 
 dict( [ ('a', 'A'), ('b', 'B') ] )
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### manipulations usuelles
-
 # %% [markdown]
+# ### manipulations usuelles
+#
 # * `len(D)` retourne le nombre de clefs dans `D`
 # * `D[clef]` retourne la valeur pour la clef
 # * `D[clef] = x` change la valeur pour la clef
@@ -400,43 +391,42 @@ dict( [ ('a', 'A'), ('b', 'B') ] )
 # * `clef not in D` teste la non existence
 # * `D.copy()` *shallow copy* de `D`
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 D = {'alice': 35, 'bob' : 9, 'charlie': 6}
 D
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # combien d'entrées
 
 len(D)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 D['alice']
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # appartenance = est-ce une clé ?
 'bob' in D
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 D['jim'] = 32
 D
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on n'avait pas encore vu cet opérateur..
 
 del D['jim']
 D
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `D.get()`
-
 # %% [markdown]
+# ### `D.get()`
+#
 # notez bien que `D[clef]` lance **une exception** si la clé n'est pas présente  
-# une alternative - sans exception - est d'utiliser la méthode `get()`:
+# une alternative - sans exception - est d'utiliser la méthode `get()`
 #
 # * `D.get(cle)` retourne la valeur associée à la clé si elle est présente, `None` sinon
 # * `D.get(clef, un_truc)` retourne `un_truc` quand la clé n'est pas présente
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la clé 'marc' n'est pas présente
 
 # plutôt que cette vilaine circonlocution...
@@ -448,20 +438,19 @@ except KeyError as e:
 
 x
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # c'est quand même plus lisible comme ça:
 
 D.get('marc', '?')
 
-# %% [markdown] slideshow={"slide_type": "slide"}
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### itération sur un dictionnaire
-
-# %% [markdown] cell_style="split"
+#
 # * `D.items()` retourne **une vue** sur les (clef, valeur) de `D`
 # * `D.keys()` retourne une vue sur les clefs de `D`
 # * `D.values()` retourne une vue sur les valeurs de `D`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # l'idiome pour itérer sur
 # un dictionnaire
 
@@ -489,12 +478,12 @@ for k, v in D.items():
 # * i.e. qui "suit" les changements futurs
 # * par oppposition à: on calculerait les propriétés de D à cet instant
 
-# %% cell_style="split" tags=["level_advanced"]
+# %% tags=["level_advanced", "gridwidth-1-2"]
 clefs = D.keys()
 
 clefs
 
-# %% cell_style="split" tags=["level_advanced"]
+# %% tags=["level_advanced", "gridwidth-1-2"]
 # ici clefs est une vue
 del D['bob']
 

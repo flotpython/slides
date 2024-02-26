@@ -43,10 +43,9 @@ HTML(filename="_static/style.html")
 # * liste et tuple: ce notebook
 # * dictionnaire, ensemble: un peu plus tard
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## la liste
-
 # %% [markdown]
+# ## la liste
+#
 # * permet de créer une liste de n’importe quels objets
 # * les listes sont dynamiques, de **taille variable**
 # * une liste peut être **hétérogène** (avoir des composants de types différents)
@@ -59,15 +58,15 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L = []
 L = [4, 'bob', 10 + 1j, True]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut mélanger les types
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # les indices en python
 # commencent à 0
 L[2]
@@ -79,11 +78,11 @@ L[2]
 # les indices commencent à 0
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour modifier un élément précis
 L[2] = "BOOM"
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas besoin de préserver les types
 # ni rien de ce genre
 
@@ -92,29 +91,28 @@ L
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification par slice
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 liste = [1, 2, 4, 8, 16, 32]
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # le slicing est disponible
 # sur les listes
 liste[2:]
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # on peut aussi modifier
 # toute une slice
 liste[2:4] = [10, 20, 30]
 liste
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # ```{image} media/writing-a-list-slice.png
 # :align: center
 # ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### attention
-
 # %% [markdown] slideshow={"slide_type": ""}
+# ### attention
+#
 # * `L[i] = L2`
 #   * **remplace** le i-ème élément de `L` par la liste `L2`
 # * `L[i:j] = L2`
@@ -124,11 +122,11 @@ liste
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### modification sous pythontutor
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 liste = [1, 2, 4, 8, 16, 32]
 liste
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 liste[2:4] = [10, 20, 30]
 liste
 
@@ -145,22 +143,21 @@ liste = [1, 2, 4, 8, 16, 32]
 liste[2:4] = [10, 20, 30]
 liste[3] = [100, 200]
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `.append()` et `.pop()`
-
 # %% [markdown]
+# ### `.append()` et `.pop()`
+#
 # * les méthodes sur les listes
 # * sont plutôt optimisées pour les ajouts **à la fin** de la liste
 # * les deux méthodes les plus couramment utilisées sont  
 #   `.apppend()` et `.pop()`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L = []
 for i in range(4):
     L.append(i)
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 while L:
     print(L.pop())
 
@@ -205,10 +202,9 @@ while L:
 # et notammment cette section: <https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types>
 # ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### digression: `range()`
-
 # %% [markdown] cell_style="center"
+# ### digression: `range()`
+#
 # * `range()` est une fonction native (en anglais *builtin*)
 # * qui retourne un objet **itérable**
 # * c'est-à-dire sur lequel on peut faire un `for`
@@ -226,33 +222,32 @@ for i in range(4):
 #
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### les paramètres de `range()`
-
 # %% [markdown]
+# #### les paramètres de `range()`
+#
 # * essentiellement, **même logique que le slicing**
 # * `range(j)` balaie de `0` à `j-1`
 # * `range(i, j)` balaie de `i` à `j-1`
 # * `range(i, j, k)` balaie de `i` à `j-1` par pas de `k`
 # * pour obtenir une liste on transforme (*cast*) en liste en appelant `list()`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 for i in range(1, 21, 5):
     print(i, end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 list(range(1, 21, 5))
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples de listes
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la fonction list() permet
 # de convertir en liste
 L = list(range(5))
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un par un
 L.append(100)
 
@@ -260,29 +255,28 @@ L.append(100)
 L.extend([10, 20])
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # très souvent utilisé
 # rappel: optimisé pour ça
 L.pop()
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour trier c'est simple
 # on va creuser ça tout de suite
 L.sort()
 L
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### tri sur les listes
-
 # %% [markdown]
+# ### tri sur les listes
+#
 # * le tri des listes est très puissant en Python
 #   * tri **en place** méthode `list.sort()`
 # * il y a aussi la fonction built-in `sorted()`  
 #   qui trie toutes les séquences  
 #   et retourne **une nouvelle liste**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L = [10, -5, 3, 100]
 
 # tri en place: attention cela retourne None !
@@ -290,7 +284,7 @@ this_is_none = L.sort()
 # par contre L est modifiée
 L
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L1 = [10, -5, 3, 100]
 
 # crée une copie
@@ -306,10 +300,9 @@ print(L2)
 # dans le premier exemple, le retour de la méthode `sort` est `None`; cela pour bien manifester le fait qu'il n'y a pas eu de copie
 # ````
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### tri et renversement de liste
-
 # %% [markdown]
+# #### tri et renversement de liste
+#
 # pour conclure - temporairement - sur ce sujet:
 #
 # * on peut aussi trier selon un critère *ad hoc*  
@@ -338,7 +331,7 @@ print(L2)
 # :class: seealso admonition-smaller
 #
 # vous devez calculer la somme des carrés des n premiers entiers  
-# pour cela le fait de construire d'abord une liste avec tous ces entiers est **inutile** et **contreproductif**,   
+# pour cela le fait de construire d'abord une liste avec tous ces entiers est **inutile** et **contreproductif**,  
 # car cela signifie allouer tout un tas de mémoire dont on n'a pas besoin !
 #
 # c'est pourquoi `range()` **ne renvoie pas une liste** mais un itérateur  
@@ -354,26 +347,25 @@ print(L2)
 # * pas d'équivalent parmi les types Python natifs d'un bon vieux tableau C/C++/Fortran
 # * penser absolument aux **tableaux `numpy`** pour ce type d'application !
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## le tuple
-
 # %% [markdown]
+# ## le tuple
+#
 # * comme des listes, mais **immutables**
 # * syntaxe: `()` au lieu de `[]`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # syntaxe pour un tuple vide
 T = ()
 T
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # syntaxe pour un singleton
 T1 = (4,)
 
 # ou encore
 T2 = 4,
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 T1 == T2
 
 # %% [markdown] cell_style="center"
@@ -389,7 +381,7 @@ T1 == T2
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### basique
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # syntaxe pour plusieurs éléments
 T1 = (3, 5, 'alice', 10+1j)
 # ou encore
@@ -397,21 +389,18 @@ T2 =  3, 5, 'alice', 10+1j
 # ou encore
 T3 =  3, 5, 'alice', 10+1j,
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 T1 == T2
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 T1 == T3
 
 # %% [markdown]
 # ### le tuple est non mutable
-
-# %% [markdown]
 #
 # * un tuple est **non mutable**
 # * les fonctions faisant des modifications *in-place*  
 #   ne s’**appliquent** donc **pas aux tuples**
-#
 
 # %%
 # Python n'est pas content
@@ -426,7 +415,6 @@ except Exception as e:
 # * à ce stade, vous vous demandez sans doute:  
 #   *pourquoi créer un tuple ?*  
 #   si c'est juste moins puissant que la liste ?
-#
 # * la réponse est liée aux tables de hachage  
 #   (dictionnaires et ensembles)  
 #   que l'on va voir un peu plus tard  
