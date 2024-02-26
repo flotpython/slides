@@ -110,7 +110,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # depuis la version 3.7, pour mettre un point d'arrêt dans un programme on peut utiliser `breakpoint()`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def fact(n):
     if n<=1:
         breakpoint()
@@ -119,7 +119,7 @@ def fact(n):
         return n * fact(n-1)
 
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # **raccourcis**
 #
 # | clavier | quoi |

@@ -44,13 +44,13 @@ HTML(filename="_static/style.html")
 # * supposons que l'on veuille contrôler/intercepter
 # * les accès à un ou des attributs
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class A: 
     pass
 
 a = A()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # accès en écriture
 a.value = 10
 
@@ -114,10 +114,10 @@ class Property:
 prop = Property()
 prop.x = 10
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(prop.x)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 del prop.x
 
 
@@ -156,7 +156,7 @@ subproperty.x = 30
 #   * avec `@value.setter` et `@value.deleter`
 # * question de goût...  
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 class DecoratedProperty:
     def __init__(self):
         self._value = None
@@ -177,7 +177,7 @@ class DecoratedProperty:
         del self._value
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 decorated = DecoratedProperty()
 decorated.value = 10
 
@@ -237,10 +237,10 @@ class PersonBroken:
 user = PersonBroken()
 user.name = 'john smith'
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 user.name
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 del user.name
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -267,14 +267,14 @@ del user.name
 #   
 # C'est ce qui ne va pas avec notre premier essai...
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # ça ne va pas du tout, si je modifie pb
 # ça modifie **aussi** qb
 pb = PersonBroken()
 qb = PersonBroken()
 pb.name = 'John'
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 qb.name
 
 
@@ -312,7 +312,7 @@ class Person:
     name = Descriptor()
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # maintenant ça va mieux, 
 # on peut toucher à p sans modifier q
 p = Person()
@@ -321,7 +321,7 @@ p.name = 'John'
 q.name = 'Bill'
 p.name
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 q.name
 
 
@@ -403,7 +403,7 @@ qo = PersonOverride()
 #   * orienté pour les méthodes
 #   * il n'**est pas prioritaire** sur `__dict__`
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 class DescriptorData:
 
     def __get__(self, instance, owner):
@@ -424,19 +424,19 @@ class PersonData:
     name = DescriptorData()
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 pd = PersonData()
 pd.name
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pd.name
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pd.name = 'john'
 pd.name
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 class DescriptorNonData:
 
     # sans __set__ on parle 
@@ -452,12 +452,12 @@ class PersonNonData:
     name = DescriptorNonData()
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 pnd = PersonNonData()
 pnd.name = 'bill'
 pnd.name
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 del pnd.name
 pnd.name
 
@@ -472,7 +472,7 @@ pnd.name
 # * il faut que `__set__`
 #   * lève l'exception `AttributeError`
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 class DescriptorReadOnly:
 
     def __get__(self, instance, owner):
@@ -489,7 +489,7 @@ class PersonReadOnly:
     name = DescriptorReadOnly()
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 pro = PersonReadOnly()
 try:
     pro.name = 'john'
@@ -551,7 +551,7 @@ gwa.y = 20
 print(gwa.y)
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # vous pouvez toujours écrire ce 
 # que vous voulez dans __dict__ 
 # ou autre, avec ce code
@@ -579,15 +579,15 @@ class WithGetAttribute:
 wgu = WithGetAttribute()
 wgu.foo
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas la peine d'essayer
 wgu.bar = 100
 wgu.bar
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # ##### ça va très loin
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # même __dict__ !
 wgu.__dict__
 

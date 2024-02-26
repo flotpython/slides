@@ -74,14 +74,14 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # nous allons expliquer tout ceci, mais pour l'instant voyons comment se comporterait une fonction `myprint()`idéale :
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # la première variante
 def myprint(*args, **kwds):
     print("HELLO", end=" ")
     print(*args, **kwds)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ajout automatique de 'HELLO'
 # et on peut utiliser tous
 # les paramètres spéciaux 
@@ -89,7 +89,7 @@ def myprint(*args, **kwds):
 myprint(1, 2, 3, sep='+')
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la seconde avec le premier
 # paramètre obligatoire
 def myprint2(obligatoire, 
@@ -98,7 +98,7 @@ def myprint2(obligatoire,
     print(*args, **kwds)    
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # le premier paramètre
 # sert à remplacer 'HELLO'
 myprint2('HEY', 1, 2, 3, sep='==')
@@ -114,13 +114,13 @@ myprint2('HEY', 1, 2, 3, sep='==')
 # * `paramètre`: le nom qui apparaît dans le `def`
 # * `argument`: l'objet réellement passé à la fonction
 
-# %% cell_style="split" slideshow={}
+# %% slideshow={} tags=["gridwidth-1-2"]
 # ici x est un PARAMÈTRE
 def foo(x):
     print(x)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et ici a est un ARGUMENT
 a = 134 + 245
 foo(a)
@@ -253,7 +253,7 @@ agenda('Dupont', 'Jean', '123456789', age = 25, job = 'avocat')
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### (III) paramètre multiple, forme `*args`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # définition
 def variable(*args):
     print(f"args={args}")
@@ -261,18 +261,18 @@ def variable(*args):
 # utilisation
 variable()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # appel
 variable(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 variable(1, 2, 3, 4, 5, [2,3])
 
 
 # %% [markdown]
 # ****
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # définition
 def variable2(one, two, *args):
     print(f"one={one}, two={two}, args={args}")
@@ -280,11 +280,11 @@ def variable2(one, two, *args):
 # utilisation
 variable2(1, 2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # appel
 variable2(1, 2, 3)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 variable2(1, 2, 3, 4, 5, [2,3])
 
 
@@ -324,7 +324,7 @@ variable2(1, 2, 3, 4, 5, [2,3])
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### (IV) paramètre multiple, forme `**kwds`
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # définition
 def named_args(**kwds):
     print(f"kwds={kwds}")
@@ -332,10 +332,10 @@ def named_args(**kwds):
 # var_named
 named_args()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 named_args(a = 1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 named_args(a = 1, b = 2)
 
 
@@ -343,7 +343,7 @@ named_args(a = 1, b = 2)
 # ****
 #
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # définition
 def named_args1(a=0, **kwds):
     print(f"a={a} kwds={kwds}")
@@ -351,10 +351,10 @@ def named_args1(a=0, **kwds):
 # var_named
 named_args1(a=1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 named_args1(1, b=2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 named_args1(a = 1, b = 2)
 
 
@@ -389,29 +389,29 @@ named_args1(a = 1, b = 2)
 # * Python va transformer `*x` en une suite de paramètres à passer à la fonction
 # * dans ce sens par contre on peut utiliser la forme `*x` **plusieurs fois** dans le même appel
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # une définition classique
 def f4(a, b, c, d):
     print(a, b, c, d)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # appel avec la forme *x
 L = [1, 2, 3, 4]
 f4(*L)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # n'importe quel itérable
 f4(*"abcd")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L1, L2 = (1, 2), (3, 4)
 
 # 2 *params dans le même appel
 # ne posent pas problème
 f4(*L1, *L2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut utiliser * avec une expression
 f4(*range(1, 3), *range(10, 12))
 
@@ -465,7 +465,7 @@ f()
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### piège fréquent avec les arguments par défaut
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on pourrait penser en lisant ceci 
 # que sans préciser L on devrait 
 # toujours retourner une liste [a]
@@ -474,18 +474,18 @@ def f(a, L = []):
     return L
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la valeur par défaut est
 # évaluée par l'instruction def:
 f.__defaults__
 
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # OK ici ça fait ce qu'on attend
 f(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sauf que ATTENTION
 # on a modifié ceci
 f.__defaults__
@@ -501,7 +501,7 @@ f(2)
 # %% [markdown]
 # * solution 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def f(a, L=None):
     if L is None:
         L = []
@@ -512,7 +512,7 @@ f(2)
 f(3)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou si on préfère
 def f(a, L=None):
     L = L if L is not None else []
@@ -528,7 +528,7 @@ f(3)
 # %% [markdown] slideshow={"slide_type": ""}
 # ### paramètres
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * dans un `def` 
 #   * on peut combiner les différentes  
 #     formes de déclarations de paramètres
@@ -537,7 +537,7 @@ f(3)
 #   * on recommande *l’ordre suivant*  
 #     (voir aussi plus loin…)
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # 1. paramètres positionnels (`name`),
 # 1. paramètres par défaut (`name=value`),
 # 1. forme `*name` (une au maximum)
@@ -546,11 +546,11 @@ f(3)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### arguments
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * dans un appel de fonction
 # * on recommande de matérialiser deux groupes
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # en premier les non-nommés
 #
 # * arguments positionnels (`name`), 
@@ -584,10 +584,10 @@ def show_any_args(*args, **kwds):
     print(f"args={args} - kwds={kwds}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 show_any_args(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 show_any_args(x=1)
 
 # %% slideshow={"slide_type": "slide"}
@@ -652,14 +652,14 @@ show_any_args(*l1, *l2, 1000, **d1, **d2)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### associer les arguments aux paramètres
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def show_abcd(a, b, c, d):
     print(dict(a=a, b=b, c=c, d=d))
 
 # pas de souci ici
 show_abcd(1, c = 3, *(2,), **{'d':4})
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # par contre ici on dit en fait 
 # b=2 mais aussi b=3 
 # à cause du *(3,)
@@ -707,16 +707,16 @@ def ab_etc(a, b=100, *args, **kwds):
     print(f"a={a}, b={b}, args={args}, kwds={kwds}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ab_etc(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ab_etc(1, 2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ab_etc(1, 2, 3)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ab_etc(1, 2, 3, bar=1000)
 
 # %%
@@ -750,11 +750,11 @@ def a_etc_b(a, *args, b=100, **kwds):
 # %% [markdown]
 # avec cette déclaration, je **dois nommer** le paramètre `b`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # je peux toujours faire ceci
 a_etc_b(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais si je fais ceci l'argument 2 
 # va aller dans args
 a_etc_b(1, 2)
@@ -767,7 +767,7 @@ a_etc_b(1, b=2)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### arguments *positional-only*
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # en général on peut toujours nommer
 # des arguments même si le paramètre 
 # est positionnel
@@ -776,7 +776,7 @@ def f(a, b, c, d):
     
 f(a=1, b=2, c=3, d=4)
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # ```python
 # # un exemple de paramètre *positional-only* 
 # # introduit dans Python-3.8
@@ -803,13 +803,13 @@ f(a=1, b=2, c=3, d=4)
 a, *b, c = [1, 2, 3, 4, 5, 6]
 print(dict(a=a, b=b, c=c))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # construire une liste avec *args
 l1 = [3, 4]
 l2 = [5, 6]
 [1, 2, *l1, *l2]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pareil avec un dictionnaire
 d1 = {3: 'c', 4: 'd'}
 d2 = {5: 'e', 6: 'f'}

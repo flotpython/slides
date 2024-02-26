@@ -88,7 +88,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### comment définir une fonction ?
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas de typage statique en Python
 # on ne sait pas de quel type 
 # doivent être x et y
@@ -98,11 +98,11 @@ def times(x, y):
     return x * y
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # deux entiers
 times(2, 3)         
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # deux floats
 times(1.6, 9)       
 
@@ -110,11 +110,11 @@ times(1.6, 9)
 # la magie du duck typing
 times('-spam-', 4)
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # la fonction est un objet 
 times   
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas forcément recommandé mais:
 # on peut affecter cet objet à
 # une autre variable
@@ -122,7 +122,7 @@ foo = times
 foo(3, 14)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et redéfinir `times` pour faire
 # + à la place de * !
 def times(x, y):
@@ -130,7 +130,7 @@ def times(x, y):
     return x + y
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # maintenant times fait une addition !
 times(3, 4)
 
@@ -273,7 +273,7 @@ def type_hints_2(x: tuple[int, str, bool],
 # module en minuscule, classe en chasse mixte
 from argparse import ArgumentParser
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un contrexemple
 # bien que ceci appartienne à la librairie standard
 # ici le premier 'datetime' est un nom de classe
@@ -281,7 +281,7 @@ from argparse import ArgumentParser
 # trop tard pour rectifier !
 from datetime import datetime
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # du coup on recommande
 from datetime import datetime as DateTime
 

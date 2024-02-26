@@ -108,13 +108,13 @@ f()
 for i in f():
     print(i)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on veut le manipuler directement
 # on peut l'appeler une fois
 it = f()
 next(it)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais pas la seconde dans ce cas précis
 try:
     next(it)
@@ -210,7 +210,7 @@ except StopIteration as e:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## `return` et `yield`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def f():
     yield 1
     yield 2
@@ -218,7 +218,7 @@ def f():
     yield 4
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 for i in f():
     print(i)
 
@@ -244,7 +244,7 @@ for i in f():
 # * que d'implémenter sa spéciale `__iter__` 
 # * comme une fonction génératrice
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une version avec classe 
 # du parcours précédent
 class IterSquares:
@@ -258,7 +258,7 @@ class IterSquares:
             i += 1
 
 
-# %% cell_style="split" slideshow={}
+# %% slideshow={} tags=["gridwidth-1-2"]
 for i in IterSquares(3):
     print(i)
 
@@ -347,11 +347,11 @@ class IterMots():
         return self.phrase[self.count - 1]
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 m = Mots("une grande phrase")
 [x for x in m]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # maintenant plus de problème
 [x.upper() for x in m] 
 
@@ -371,7 +371,7 @@ m = Mots("une grande phrase")
 # * chaque itération sur une instance crée une nouvelle fonction génératrice, donc un nouvel itérateur
 # * c’est la solution la plus compacte à écrire
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 class Mots():
     def __init__(self, phrase):
         self.phrase = phrase.split()
@@ -381,14 +381,14 @@ class Mots():
             yield i
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 m = Mots("une grande phrase")
 [x for x in m]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 [x for x in m]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 [x.upper() for x in m if 'a' in x]
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -437,7 +437,7 @@ for lineno, file, line in generator("."):
     print(f"{lineno}:{file}:{line}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # dans un autre generateur
 def generator2():
     for (_, filename, _) in generator('.'):
@@ -446,7 +446,7 @@ def generator2():
 list(generator2())
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou une expression génératrice :)
 
 gen_exp = (filename for (_, filename, _) 
@@ -606,11 +606,11 @@ all_functions = get_func_headers(all_lines_no_comment)
 # %% [markdown]
 # * remarquez bien qu'à ce stade on n'a toujours pas ouvert le fichier !
 
-# %% cell_style="split" slideshow={"slide_type": "-"}
+# %% slideshow={"slide_type": "-"} tags=["gridwidth-1-2"]
 for i in all_functions:
     print(i)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on recommence il ne se passe plus rien
 for i in all_functions:
     print(i)

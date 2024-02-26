@@ -75,7 +75,7 @@ HTML(filename="_static/style.html")
 # * **le fait d'affecter** une variable joue ce rôle-là
 # * et il y a aussi bien sûr **les paramètres** de la fonction
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ```python
 # # ici la variable `y` n'est pas considérée 
 # # comme déclarée puisqu'on se contente
@@ -89,7 +89,7 @@ HTML(filename="_static/style.html")
 #               #     (et donc ici BOOM)
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ```python
 # # ici au contraire la variable y
 # # est locale à la fonction
@@ -265,7 +265,7 @@ class Foo:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exemple avec `global` (1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # écrire une globale depuis une fonction
 
 G = 10
@@ -281,7 +281,7 @@ modify_G(1000)
 # combien vaut G ?
 G
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # à votre avis 
 # que se passe-t-il si on n'utilise
 # pas global
@@ -306,7 +306,7 @@ G
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## exemple avec `global` (2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un exemple un peu plus tordu
 # car ici dans la fonction
 # on lit et on écrit G
@@ -322,7 +322,7 @@ increment_G()
 # combien vaut G ?
 G
 
-# %% cell_style="split" tags=["raises-exception"]
+# %% tags=["raises-exception", "gridwidth-1-2"]
 # que se passe-t-il ici 
 # d'après vous ?
 
@@ -390,23 +390,23 @@ def make_counter():
     return increment
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c1 = make_counter()
 
 c1()
 c1()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c2 = make_counter()
 
 c2()
 c2()
 c2()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c1()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c2()
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
@@ -423,12 +423,12 @@ c2()
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### les noms de builtins
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% tags=["level_intermediate", "gridwidth-1-2"]
 # on peut accéder à la variable `__builtins__` 
 # qui est .. une variable *builtin* 
 __builtins__
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% tags=["level_intermediate", "gridwidth-1-2"]
 # ou encore on peut
 # importer le module `builtins`
 import builtins

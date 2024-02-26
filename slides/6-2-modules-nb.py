@@ -100,10 +100,10 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## importation d’un module
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat mod.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # je peux l'importer
 import mod
 
@@ -114,7 +114,7 @@ import mod
 # a cet objet module
 mod
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 
 mod.spam('good')
 
@@ -200,11 +200,11 @@ foo.name = 'Jean'
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `import modulename as name`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import mod as mymod
 mymod.spam("module renamed")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un peu comme
 # import mod
 # mymod = mod
@@ -213,11 +213,11 @@ mymod.spam("module renamed")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `from module import name`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 from mod import spam
 spam('direct') 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un peu comme
 # spam = mod.spam
 
@@ -229,11 +229,11 @@ spam('direct')
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `from modulename import name as newname`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 from mod import spam as myspam
 myspam('renamed function')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un peu comme
 # import mod
 # myspam = mod.spam
@@ -242,10 +242,10 @@ myspam('renamed function')
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `import dir.dir2.modulename`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat pack1/pack2/mod.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import pack1.pack2.mod
 pack1.pack2.mod.FOO
 
@@ -262,11 +262,11 @@ submod.eggs()
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### importer tout le contenu d'un module
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 from mod import *
 spam('star')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un peu comme
 # mod.spam = spam
 # mod.GLOBALE = GLOBALE
@@ -343,17 +343,17 @@ spam('star')
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemples
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat toplevel.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 
 
 
 import toplevel
 toplevel.eggs
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 toplevel.eggs = 2
 
 # ici l'import ne fait ... rien !
@@ -362,7 +362,7 @@ toplevel.eggs = 2
 import toplevel
 toplevel.eggs
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # là on recharge,
 # donc on réinitialise le module
 import importlib
@@ -392,10 +392,10 @@ from math import pi
 pi = 10
 # les autres modules ne sont pas impactés
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # !cat spam.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat egg.py
 
 # %%
@@ -415,10 +415,10 @@ pi = 10
 # * tous les modules ont un nom qui est défini par la variable `__name__`
 # * le nom d’un module est défini par l’import
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat toplevel.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import toplevel
 print(toplevel.__name__) 
 
@@ -443,14 +443,14 @@ print(toplevel.__name__)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `if __name__ == "__main__"`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat samples/fib.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # À la ligne de commande on a
 # !python samples/fib.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais à l'import il ne se passe rien
 from samples.fib import fib
 
@@ -486,13 +486,13 @@ from samples.fib import fib
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `globals()`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 foo = 10
 g = globals()
 type(g)
 'foo' in g and 'g' in g
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 g['foo']
 
 # %% cell_style="center"
@@ -559,11 +559,11 @@ toplevel.eggs
 # * `sys.modules[__name__].__dict__` 
 #   est l’espace de nommage du module courant
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import sys
 sys.modules[__name__].__dict__ == globals()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour les geeks
 sys.modules[__name__].foo is foo
 
@@ -574,12 +574,12 @@ sys.modules[__name__].foo is foo
 # * on peut en tirer parti pour recharger un module  
 # * (juste pour illustration - préférer `importlib.reload`)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import toplevel
 toplevel.eggs = 10
 toplevel.eggs
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # enlever du cache
 del sys.modules['toplevel']
 # force le rechargement
@@ -638,13 +638,13 @@ except:
     import traceback; traceback.print_exc()
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # une fois qu'on la déclare
 def func2():
     print("in func2")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut appeler func1
 func1()
 

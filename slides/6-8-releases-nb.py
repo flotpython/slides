@@ -54,21 +54,21 @@ HTML(filename="_static/style.html")
 # permet d'indiquer que certains paramètres  
 # **ne peuvent pas être nommés** par l'appelant d'une fonction
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def foo(x, y):
     print(f"{x=} {y=}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 foo(y=2, x=1)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def bar(x, /, y):
     print(f"{x=} {y=}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 try:
     bar(y=2, x=1)
 except Exception as exc:
@@ -92,7 +92,7 @@ except Exception as exc:
 # %% [markdown]
 # pour ceux qui s'intéressent aux *type hints*, la version 3.9 vient avec la capacité de définir ses propres types en utilisant les types *builtin* comme `list` et `dict`, i.e. en n'ayant plus besoin de passer par des artefacts dans le module `typing` comme ceux qui s'appelaient `List` et `Dict`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avant
 
 from typing import List
@@ -101,7 +101,7 @@ def foo(names: List[str]):
     pass
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # en 3.9
 
 def foo(names: list[str]):
@@ -118,33 +118,33 @@ def foo(names: list[str]):
 x = {"key1": "1 from x", "key2": "2 from x"}
 y = {"key2": "2 from y", "key3": "3 from y"}
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avant la 3.9
 z = x.copy()
 z.update(y)
 z
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou encore
 
 
 {**x, **y}
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # en 3.9
 # résultat = nouveau dict
 x | y
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 
 
 y | x
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec modification
 x |= y
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 x
 
 # %% [markdown] slideshow={"slide_type": "slide"}

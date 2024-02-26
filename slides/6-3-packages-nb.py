@@ -51,7 +51,7 @@ HTML(filename="_static/style.html")
 # * son espace de nommage permet d'accéder à des modules et packages
 # * qui correspondent aux fichiers et répertoires contenus dans son répertoire
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # arborescence fichiers
 #
 #     pack1/
@@ -59,7 +59,7 @@ HTML(filename="_static/style.html")
 #         mod.py
 #           class Foo
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # équivalence modules
 #
 #     pack1
@@ -99,7 +99,7 @@ import pack1.pack2.mod
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### raccourcis
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # sans raccourci
 #
 # ```
@@ -108,7 +108,7 @@ import pack1.pack2.mod
 #     square.py   -> classe Square
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 #
 # il faut connaitre le détail  
 # des internes du package
@@ -118,7 +118,7 @@ import pack1.pack2.mod
 # from graphobj.square import Square
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # avec raccourci
 #
 # ```
@@ -127,7 +127,7 @@ import pack1.pack2.mod
 # from .square import Square
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # c'est plus simple
 #
 # ```python
@@ -156,14 +156,14 @@ import pack1.pack2.mod
 # %% cell_style="center"
 pack1.pack2.mod.__package__
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * si dans `pack1/pack2/mod.py` on écrit  
 #     `from .aux import foo`
 #
 # * on va chercher un module dont le nom est  
 #     `pack1.pack2.aux`    
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * si dans `pack1/pack2/mod.py` on écrivait  
 #     `from ..aux import foo`
 #
@@ -196,13 +196,13 @@ pack1.pack2.mod.__package__
 #
 # * il vaut mieux utiliser un framework de tests `unittest` ou `pytest` ou `nose`
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # !cat awesome/io/parser.py
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # !cat awesome/io/token.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais boom
 # !python awesome/io/parser.py
 
@@ -228,22 +228,22 @@ cleanup()
 # %% [markdown]
 # ### exemple 1
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # !cat pack1/__init__.py
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # du coup à l'import:
 import pack1.pack2.mod
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple 2
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # les imports suivant 
 # ne ré-éxécutent pas __init__.py
 import pack1.pack2.mod
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on recharge pack1:
 import importlib
 importlib.reload(pack1);
@@ -264,16 +264,16 @@ pack1.pack2
 # %%
 pack1.pack2.mod
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pack1.x
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pack1.pack2.y
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pack1.pack2.mod.FOO
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 pack1.FOO is pack1.pack2.mod.FOO
 
 # %% [markdown] slideshow={"slide_type": "slide"}

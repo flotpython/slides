@@ -47,7 +47,7 @@ HTML(filename="_static/style.html")
 #
 # sont des décorateurs
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # plutôt que d'écrire ceci
 
 class C:
@@ -62,7 +62,7 @@ class C:
 
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on aurait aussi bien pu écrire ceci
 # mais en moins lisible
 
@@ -78,7 +78,7 @@ class C:
     g = staticmethod(g)
 
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # Le fragment
 #
 # ```
@@ -87,7 +87,7 @@ class C:
 #     pass
 # ```
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # est en fait équivalent à
 #
 # ```
@@ -186,17 +186,17 @@ def f(a, b):
     print(f"dans l'appel à f({a}, {b})")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f(1, 2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f(3, 4)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### l'exemple décortiqué
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # la **déclaration** de `f`
 # ```python
 # @NumberCalls
@@ -204,7 +204,7 @@ f(3, 4)
 #     print(blabla)
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * devient
 #   * `f = NumberCalls(f)`
 # * qui déclenche
@@ -212,7 +212,7 @@ f(3, 4)
 #   * avec `f` non décoré comme arg
 #   
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * `f` décoré est une instance de `NumberCalls`
 # * qui est callable via `__call__`
 # * un **appel** à `f` décoré
@@ -220,7 +220,7 @@ f(3, 4)
 # f(1, 2)
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * provoque maintenant 
 #   * un appel à **`__call__`** sur `f`
 #   * et avec arguments `(1, 2)`
@@ -233,14 +233,14 @@ f(3, 4)
 # * fonctionne bien sur des fonctions
 # * mais ça se passe moins bien avec des méthodes de classe
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class C:
     @NumberCalls
     def ma_methode(self, x):
         self.x = x
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c = C()
 try:
     c.ma_methode(10)
@@ -427,16 +427,16 @@ def ma_fonction(a, b):
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### garder les métadonnées de la fonction décorée
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(ma_fonction.__doc__)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ma_fonction.__name__
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ma_fonction(1, 2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 help(ma_fonction)
 
 
@@ -467,7 +467,7 @@ f = runtime(counter(f))
 #
 #   * de garder un accès aux arguments par une clôture
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 def nb_appel(label=''):
     class NumberCalls:
         def __init__(self, f):
@@ -482,7 +482,7 @@ def nb_appel(label=''):
     return NumberCalls
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 @nb_appel("-->")
 def f(a, b):
     print(a, b)
@@ -490,7 +490,7 @@ def f(a, b):
 f(1, 2)
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 def caller_builder(label=''):
     def caller(f):
         def wrapper(*args, **dargs):
@@ -503,7 +503,7 @@ def caller_builder(label=''):
     return caller
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 class C:
     @caller_builder('method')
     def ma_methode(self, x):
@@ -517,10 +517,10 @@ def ma_fonction():
 # %% cell_style="center"
 C().ma_methode(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 C().ma_methode(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 ma_fonction()
 
 # %% slideshow={"slide_type": "slide"}

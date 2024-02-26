@@ -127,14 +127,14 @@ Phone = str
 Employee = tuple[Name, Age, Phone]
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ce nom peut être utilisé
 # dans les type hints 
 def foo(employee: Employee) -> str:
     ...
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on aurait pu aussi mettre directement
 def foo(employee: tuple[Name, Age, Phone]):
     ...

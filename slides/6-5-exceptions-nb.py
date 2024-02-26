@@ -53,10 +53,10 @@ def divide(x, y):
     print("continuing... ")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 divide(8, 4)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 divide(8, 0)
 
 
@@ -106,7 +106,7 @@ def time_bomb(n):
         raise OverflowError("BOOM")
 
 
-# %% cell_style="split" slideshow={"slide_type": "slide"} tags=["raises-exception"]
+# %% slideshow={"slide_type": "slide"} tags=["raises-exception", "gridwidth-1-2"]
 # si on essaye de l'exécuter
 # ça se passe mal
 
@@ -118,10 +118,10 @@ def driver():
 driver()     
 
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ![uncaught](media/except-stack-uncaught.svg)
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 def driver_try():
     try:
         time_bomb(2)
@@ -133,7 +133,7 @@ def driver_try():
     
 driver_try()    
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ![try](media/except-stack-try.svg)
 
 # %% [markdown] slideshow={"slide_type": "slide"}

@@ -35,17 +35,17 @@ HTML(filename="_static/style.html")
 # * `lambda` est une *expression*, pas une *instruction*
 # * qui permet de créer **un objet fonction** anonyme et à la volée
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un objet fonction 
 # qui n'a pas de nom
 lambda x: x**2
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais que je peux appeler
 (lambda x: x**2)(10)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # comme si j'avait fait
 def anonymous(x):
     return x**2
@@ -69,12 +69,12 @@ anonymous(10)
 #
 # * les deux formes suivantes sont donc équivalentes
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def foo(x):
     return x*x
 foo
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 foo = lambda x: x*x
 foo
 
@@ -94,11 +94,11 @@ foo
 # lambda arg1, arg2, … argN : expression using args
 # ```
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f = lambda x: x+1
 f(1)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 (lambda x: x+1)(12)
 
 
@@ -139,11 +139,11 @@ sample
 # %%
 sorted(sample)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 sorted(sample, key=str.lower)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pareil que
 sorted(sample,
        key=lambda s: str.lower(s))
@@ -188,17 +188,17 @@ sorted(student_marks, key=operator.itemgetter(1))
 # * `reversed()` comme fonction *builtin* qui renvoie  
 #   un itérateur pour parcourir à l'envers
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 source = [1, 10, 100, 1000]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 source.reverse()
 source
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 reversed(source)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 list(reversed(source))
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -214,13 +214,13 @@ list(reversed(source))
 #   * similaire à `map`, mais retourne seulement les valeurs  
 #     qui sont vraies (techniquement, telles que `bool(val) == True`)
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 L = [1, 2, 3, 4]
 m = map(lambda x: x**2, L)
 # le résultat est un itérateur
 m
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour voir le résultat la liste on
 # peut par exemple transformer
 # explicitement en list()
@@ -231,14 +231,14 @@ list(m)
 # il ne se passe plus rien car on a déjà itéré sur m
 list(m)          
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 m = map(lambda x: x**2, L) 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 for i in m: 
     print(i, end=' ')
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 source = range(1, 5)
 f = filter(lambda x: x%2 == 0, 
            map(lambda x:x**2, source))
@@ -246,20 +246,20 @@ f = filter(lambda x: x%2 == 0,
 # f est bien un itérateur
 f is iter(f)   
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 list(f)
 
 # %% [markdown] cell_style="center"
 # cette forme est toutefois passée de mode au profit des expressions génératrices
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ceci est vraiment équivalent 
 g = (x**2 for x in source
      if x%2 == 0)
 
 g is iter(g)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 list(g)
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
@@ -279,22 +279,22 @@ list(g)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### lecture d'attributs
 
- # %% cell_style="split"
+ # %% tags=["gridwidth-1-2"]
  def f(name="jean"):
     """le docstring"""
     pass
 f.__name__
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f.__doc__
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f.__code__
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f.__module__
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 f.__defaults__
 
 # %% [markdown] slideshow={"slide_type": "slide"}

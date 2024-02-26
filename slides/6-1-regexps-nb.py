@@ -59,7 +59,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # en Python, les expressions régulières sont accessibles au travers du module `re`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 import re
 
 # en anglais on dit pattern
@@ -70,19 +70,19 @@ pattern = "a*"
 # la fonction `match` 
 re.match(pattern, '')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # OUI
 re.match(pattern, 'a')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # OUI
 re.match(pattern, 'aa')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # OUI
 re.match('(ab)+', 'ab')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # NON: retourne None
 re.match('(ab)+', 'ba')
 
@@ -92,24 +92,24 @@ re.match('(ab)+', 'ba')
 # %% [markdown] slideshow={"slide_type": ""}
 # * **ATTENTION** car `re.match()` vérifie si l'expression régulière peut être trouvée **au début** de la chaine
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ici seulement LE DÉBUT du mot est reconnu
 
 match = re.match('(ab)+', 'ababzzz')
 match
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # le match commence au début 
 # mais pas jusque la fin
 
 match.start(), match.end()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # il y a bien match de '' au début
 match = re.match('a*', 'zzz')
 match.start(), match.end()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais ici le seul match
 # est au milieu, donc NON
 re.match('a+', 'zzzaaa')
@@ -204,44 +204,44 @@ match_all('.', ['a', 'Θ', '.', 'ab', ''])
 # * `[a-zA-Z0-9_]` les lettres et chiffres et underscore
 # * ici encore ça va correspondre à *exactement un* caractère dans la chaine
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('[a-z]', ['a', '', '0'])
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 match_all('[a-z0-9]', ['a', '9', '-'])
 
 # %% cell_style="center"
 # pour insérer un '-', le mettre à la fin
 match_all('[0-9+-]', ['0', '+', '-', 'A'])
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # ### idem mais à l'envers : `[^..]`
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * si l'ensemble de caractères entre `[]` commence par un `^`
 # * cela désigne le **complémentaire** dans l'espace des caractères
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # complémentaires
 match_all('[^a-z]', ['a', '0', '↑', 'Θ'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('[^a-z0-9]', ['a', '9', '-', 'Θ'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### 0 ou plusieurs occurrences : `..*`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('[a-z]*', ['', 'cba', 'xyz9'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('(ab)*', ['', 'ab', 'abab'])
 
 # %% [markdown]
 # * le * s'applique au (bout de) pattern juste à gauche
 # * notez bien qu'on peut avoir à utiliser des parenthèses si nécessaire
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('ab*', ['a', 'abb', 'abab', 'baba'])
 
 # %% cell_style="center"
@@ -253,10 +253,10 @@ match_all('(ab)*', ['a', 'abb', 'abab', 'baba'])
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### 1 ou plusieurs occurrences : `..+`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('[a-z]+', ['', 'abc', 'xyz9'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('(ab)+', ['', 'ab', 'abab'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -264,11 +264,11 @@ match_all('(ab)+', ['', 'ab', 'abab'])
 #
 # quand on concatène deux filtres, la chaine doit matcher l'un puis l'autre
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # c'est le seul mot qui matche
 match_all('ABC', ['ABC']) 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('A*B', ['B', 'AB', 'AAB', 'AAAB']) 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -281,7 +281,7 @@ match_all('A*B', ['B', 'AB', 'AAB', 'AAAB'])
 #   * grâce à la méthode `groups()`
 #   * utile pour extraire des morceaux
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # groupes anonymes
 pattern = "([a-z]+)=([a-z0-9]+)"
 
@@ -290,7 +290,7 @@ string = "foo=barbar99"
 match = re.match(pattern, string)
 match
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # dans l'ordre où ils apparaissent
 match.groups()
 
@@ -300,23 +300,23 @@ match.groups()
 # %% [markdown]
 # pour filtrer avec une regexp **ou** une autre :
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # 'ab' ou 'cd'
 match_all('ab|cd', ['ab', 'cd', 'abcd'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('ab|cd*', ['ab', 'c', 'cd', 'cdd'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('ab|(cd)*', ['ab', 'c', 'cd', 'cdd'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('(ab|cd)*', ['ab', 'c', 'cd', 'cdd', 'abcd'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### 0 ou 1 occurrences : `..?`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('[a-z]?', ['', 'b', 'xy'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -342,10 +342,10 @@ match_all('(ab){1,3}', ['', 'ab', 'abab', 'ababab', 'ababababababab'])
 # * `\d` (pour Digit) : un chiffre
 # * `\S`, `\W` et `\D` : les complémentaires
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('\w+', ['eFç0', 'été', ' ta98'])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match_all('\s?\w+', ['eFç0', 'été', ' ta98'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -366,10 +366,10 @@ string = "foo=barbar99"
 match = re.match(pattern, string)
 match
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match.group('variable')
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 match.group('valeur')
 
 # %% [markdown] slideshow={"slide_type": "slide"}

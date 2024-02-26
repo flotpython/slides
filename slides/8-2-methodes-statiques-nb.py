@@ -100,7 +100,7 @@ i.f
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### cas 1 : méthode sans argument
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class C:
     
     numInstances = 0
@@ -115,12 +115,12 @@ class C:
               .format((C.numInstances)))
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # je peux envoyer la méthode
 # à la classe elle-même
 C.printNumInstances() 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais pas sur une instance
 i = C()
 
@@ -133,7 +133,7 @@ except TypeError as e:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### cas 2 : méthode avec `self` comme argument
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class C:
 
     numInstances = 0                         
@@ -147,14 +147,14 @@ class C:
               .format((C.numInstances)))
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # cette fois-ci c'est l'inverse, 
 # je peux envoyer 
 # la méthode à une instance
 i = C()
 i.printNumInstances() 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # mais pas sur la classe
 try:
     C.printNumInstances()
@@ -226,7 +226,7 @@ printNumInstances()
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes statiques
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class C:
 
     numInstances = 0                         
@@ -244,16 +244,16 @@ class C:
         printNumInstances)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sur la classe
 C.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou sur l'instance
 i = C()
 i.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 C().printNumInstances()
 
 
@@ -309,7 +309,7 @@ class SousC(C):
 # on se retrouve avec le problème initial
 i = SousC()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et du coup on ne peut pas
 # appeler la méthode sur une instance
 try:     
@@ -317,18 +317,18 @@ try:
 except TypeError as e:
     print("OOPS", e)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ça marche avec les classes par contre
 SousC.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 C.printNumInstances()
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### méthodes statiques et surcharge
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si au contraire je redéclare la méthode 
 # de la sous-classe comme statique
 # en utilisant cette fois-ci un décorateur
@@ -342,30 +342,30 @@ class SousC(C):
 
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # maintenant ça marche 
 # avec instances et classes
 i = SousC()            
 i.printNumInstances()  
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 SousC.printNumInstances()
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### méthodes statiques et surcharge
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une autre sous-classe de C 
 # qui ne redéfinit pas la méthode
 class AutreSousC(C):
     pass
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 AutreSousC.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 j = AutreSousC()
 j.printNumInstances()
 
@@ -376,7 +376,7 @@ j.printNumInstances()
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### méthodes de classe
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # imaginons maintenant qu'on veuille toujours
 # compter les instances mais classe par classe
 class C:
@@ -392,13 +392,13 @@ class C:
               f"{cls.numInstances}")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c = C()
 
 # sur l'instance
 c.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sur la classe
 C.printNumInstances()
 
@@ -412,28 +412,28 @@ C.printNumInstances()
 #   * et non **pas à une instance**, comme d'habitude
 #   * du coup la convention est de l'appeler `cls` et non pas `self`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class SousC(C):
     pass
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on crée un objet C et un SousC
 # -> 2 instances de plus comptabilisées
 c, sousC = C(), SousC()
 C.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 SousC.printNumInstances()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 sousC.printNumInstances()
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## ex: nombre d’instances par sous classe
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class C:
     
     numInstances= 0
@@ -457,13 +457,13 @@ class SousC(C):
 
 
 
-# %% cell_style="split" slideshow={"slide_type": "fragment"}
+# %% slideshow={"slide_type": "fragment"} tags=["gridwidth-1-2"]
 c = C()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 sous1, sous2 = SousC(), SousC()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c.printNumInstances()
 sous1.printNumInstances()
 sous2.printNumInstances()

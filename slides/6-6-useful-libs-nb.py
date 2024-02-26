@@ -62,11 +62,11 @@ HTML(filename="_static/style.html")
 import logging
 logging.basicConfig(level=logging.INFO)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # au lieu de faire 
 print(f"Bonjour le monde") 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on fera plutôt
 logging.info("Bonjour le monde")
 
