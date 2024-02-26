@@ -409,7 +409,7 @@ print(s)
 # %% [markdown]
 # ````{admonition} préférez le / pour les chemins de fichier
 #
-# notez que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un <code>&bsol;</code> dans les chemins de fichiers sous Windows, ce qui résoud tous les problèmes d'échappement
+# notez que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un `\` dans les chemins de fichiers sous Windows, ce qui résoud tous les problèmes d'échappement
 #
 # les *raw-strings* restent une feature bien pratique dans d'autres contextes, notamment avec les expressions régulières, que nous n'avons pas pu utiliser comme exemple ici puisqu'on n'en a pas encore parlé..
 # ````
