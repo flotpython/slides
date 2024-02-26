@@ -52,47 +52,40 @@ HTML(filename="_static/style.html")
 
 +++ {"cell_style": "split"}
 
-Thierry Parmentelat - Inria  
+Thierry Parmentelat - Arnaud Legout - Inria  
 
-`thierry.parmentelat@inria.fr`
+`thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## plateformes et liens
 
-* notebooks
-  * <https://nbhosting.inria.fr/>
-* contenu de ce cours en version HTML statique
-  * <https://flotpython-slides.readthedocs.io/>
-* les sources des notebooks :
-  * <https://github.com/flotpython/slides>
-
-* exercices autocorrigés
-  * <https://nbhosting.inria.fr/auditor/notebook/exos-mooc>
+| contenu | url |
+|-:|:-|
+| notebooks | <https://nbhosting.inria.fr/> |
+| HTML statique | <https://flotpython-slides.readthedocs.io/> |
+| sources des notebooks | <https://github.com/flotpython/slides> |
+| exercices autocorrigés | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### et aussi le MOOC
 
-en ligne sur France Université Numérique
+en ligne sur France Université Numérique:  
+le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"  
+<https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/>
 
-* le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"  
-  <https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/>
-
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
++++ {"cell_style": "split"}
 
 ## notebooks
 
 * introduction très rapide au fonctionnement de la plateforme
+* utilisez les boutons pour cacher / afficher la structure du cours
 
-+++ {"slideshow": {"slide_type": ""}, "cell_style": "split"}
-
-  * utilisez les boutons pour cacher / afficher  
-    la structure du cours
-
-+++ {"cell_style": "split"}
-
-![](media/nbhosting-buttons.png)
+```{image} media/nbhosting-buttons.png
+:align: center
+:width: 500px
+```
 
 +++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
 
