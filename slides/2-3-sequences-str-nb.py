@@ -393,6 +393,12 @@ print(s)
 # %% [markdown] cell_style="center"
 # * `\T` n’existe pas comme échappement; Python interprète correctement `\T`
 # * mais `\t` est compris comme une tabulation !!
+#
+# ````{admonition} Python-3.12
+# :class: note admonition-small
+#
+# il semble même qu'en 3.12, un `\T` dans une chaine provoque carrément une erreur de syntaxe - ce qui est sans doute mieux au sens où au moins on détecte l'erreur plus tôt...
+# ````
 
 # %% [markdown]
 # pour résoudre ce problème, on peut utiliser des double-backslash `\\`, mais ce n'est vraiment pas élégant  
