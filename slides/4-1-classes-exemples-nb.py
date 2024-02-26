@@ -52,7 +52,7 @@ HTML(filename="_static/style.html")
 # * avec le mot-clé `class` on définit **un nouveau type**  
 # * une classe définit des **méthodes spéciales**; ici **`__init__`** et **`__repr__`**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 class User:
 
     # le constructeur
@@ -66,7 +66,7 @@ class User:
     def __repr__(self):
         return f"{self.name}, {self.age} ans"
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une fois qu'on a défini une classe, 
 # on peut s'en servir pour créer
 # des objets - on dit des instances 
@@ -85,7 +85,7 @@ user1
 #   * rangées dans des **attributs** de l'objet
 #   * ici `name` et `age`
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=[]
 # ## affichage
 #
 # * la méthode spéciale `__repr__(self)` doit renvoyer une chaine  
@@ -103,10 +103,10 @@ user1
 # ```
 # ````
 
-# %% cell_style="center"
+# %% cell_style="center" tags=["gridwidth-1-2"]
 print(f"je viens de voir {user1}")
 
-# %% cell_style="center"
+# %% cell_style="center" tags=["gridwidth-1-2"]
 str(user1)
 
 
@@ -128,7 +128,7 @@ str(user1)
 # * une classe peut définir **des méthodes**
 # * qui sont des fonctions qui s'appliquent sur un objet (de cette classe)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # une implémentation très simple
 # d'une file FILO
 # premier entré dernier sorti
@@ -150,7 +150,7 @@ class Stack:
         return self._frames.pop()
 
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # instance
 stack = Stack()
 
@@ -160,10 +160,10 @@ stack.push('fact(1)')
 
 stack
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 stack.pop()
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 stack
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
@@ -176,7 +176,7 @@ stack
 # * car le premier paramètre `self` est lié à **l'objet sur lequel on envoie** la méthode
 # * et la phrase `stack.push(some_item)` est en fait équivalente à `Stack.push(stack, some_item)`
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=[]
 # ## intérêts de cette approche
 #
 # * définir vos propres types de données
@@ -240,14 +240,14 @@ class Point:
         return math.sqrt((self.x-other.x)**2 + (self.y-other.y)**2)
 
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # on crée deux instances
 
 a = Point(4, 3)
 b = Point(7, 7)
 a, b
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 # on appelle la méthode distance
 
 a.distance(b)
@@ -274,11 +274,11 @@ class Circle1:
         return math.isclose(self.center.distance(point), self.radius)
 
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 c1 = Circle1(Point(0, 0), 5)
 c1
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 c1.contains(a)
 
 
@@ -336,12 +336,12 @@ from datetime import timedelta as TimeDelta
 
 Date.today()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ici je crée un objet 'durée' 
 
 TimeDelta(weeks=2)
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # et je peux faire de l'arithmétique; par exemple:
 
 today = Date.today()
@@ -418,10 +418,10 @@ class Student:
 achille = Student("Achille", "Talon", 2001, 7, 14)
 achille
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 achille.age()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 type(achille.age())
 
 # %% slideshow={"slide_type": ""}
