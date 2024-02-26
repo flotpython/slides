@@ -26,10 +26,7 @@ rise:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-<div class="licence">
-<span>Licence CC BY-NC-ND</span>
-<span>Thierry Parmentelat &amp; Arnaud Legout</span>
-</div>
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 +++ {"cell_style": "center"}
 
