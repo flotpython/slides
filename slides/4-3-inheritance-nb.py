@@ -2,11 +2,11 @@
 # ---
 # jupyter:
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version, -language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode, -language_info.file_extension, -language_info.mimetype,
-#       -toc
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -25,7 +25,6 @@
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -38,10 +37,9 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # # POO & héritage
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour réutiliser du code en python
-
 # %% [markdown]
+# ## pour réutiliser du code en python
+#
 # * fonctions
 #   * pas d'état après exécution
 # * modules
@@ -57,13 +55,13 @@ HTML(filename="_static/style.html")
 #
 # pourquoi et comment ?
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # #### deux objectifs
 #
 # * modularité
 # * réutilisabilité
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # #### deux moyens
 #
 # * espaces de nom
@@ -72,7 +70,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### modularité & réutilisabilité
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * du code modulaire
 #   * grouper le code dans une classe
 #   * grouper les données dans un objet
@@ -80,7 +78,7 @@ HTML(filename="_static/style.html")
 # * plus on découpe en petits morceaux
 #   * plus on a de chances de pouvoir réutiliser
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * DRY *don't repeat yourself*
 #   * *cut'n paste is evil*
 # * code générique
@@ -89,10 +87,9 @@ HTML(filename="_static/style.html")
 #   * il peut faire partie de la simulation
 # * c'est là qu'intervient l'héritage
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## espaces de nom
-
 # %% [markdown]
+# ## espaces de nom
+#
 # * tous les objets qui sont
 #   * un module
 #   * une classe
@@ -100,10 +97,9 @@ HTML(filename="_static/style.html")
 # * constituent chacun **un espace de nom**
 #   * i.e. une association *attribut* → *objet*
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### espaces de nom - pourquoi
-
 # %% [markdown]
+# ### espaces de nom - pourquoi
+#
 # * permet de lever l'ambigüité en cas d'homonymie
 #   * si 2 modules utilisent tous les 2 une globale `truc`
 #   * elles peuvent coexister sans souci
@@ -118,13 +114,13 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### espaces de nom - variables et attributs
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # #### deux mondes étanches
 #
 # * variables
 # * attributs
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # #### se mélangent
 #
 # * apparemment seulement
@@ -133,13 +129,13 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # typiquement dans une expression comme `a.b.c`
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * `a` est une **variable**
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # * `b`, et `c` sont des **attributs**
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # ##### résolution des **variables** : statique
 #
 # * entièrement **lexical**
@@ -147,7 +143,7 @@ HTML(filename="_static/style.html")
 # * avec les règles LEGB  
 #   local, englobant, global, *builtin*
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # ##### résolution des **attributs** : dynamique
 #
 # * dans le monde des **objets**
@@ -165,19 +161,17 @@ HTML(filename="_static/style.html")
 # * la variable référence un objet  
 #   et `b` est cherché comme un attribut à partir de cet objet
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## résolution d'attribut pour la lecture
-
 # %% [markdown] slideshow={"slide_type": ""} cell_style="center"
+# ## résolution d'attribut pour la lecture
+#
 # * la **résolution des attributs**
 # * fournit la **mécanique de base** de la POO
 # * et sous-tend notamment (mais pas que)  
 #   la mécanique de l'héritage
 
-# %% [markdown]
-# ### lecture ou écriture des attributs
-
 # %% [markdown] cell_style="center"
+# ### lecture ou écriture des attributs
+#
 # on distingue deux cas
 #
 # * attribut en écriture  
@@ -187,10 +181,9 @@ HTML(filename="_static/style.html")
 # * résolution des attributs en lecture  
 #     `obj.attribute` 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### lecture: recherche de bas en haut
-
 # %% [markdown]
+# ### lecture: recherche de bas en haut
+#
 # **pour la lecture :**  
 # la règle pour chercher un attribut en partant d'un objet consiste à
 #
@@ -202,7 +195,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## ex1. de résolution d'attribut
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # cas simple sans héritage
 # appel d'une méthode
 import math
@@ -217,7 +210,7 @@ class Vector:
             self.x**2 + self.y**2)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # quand on cherche vector.length
 # on cherche
 # 1. dans vector - pas trouvé
@@ -226,7 +219,7 @@ class Vector:
 vector = Vector(3, 4)
 vector.length()
 
-# %% cell_style="split"
+# %% tags=[]
 # on va voir ça en détail 
 # dans pythontutor
 # %load_ext ipythontutor
@@ -234,12 +227,12 @@ vector.length()
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### 2 espaces de nom distincts
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # * la classe `Vector` a les attributs
 #   * `__init__`
 #   * `length`
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # * l'objet `vector` a les attributs
 #   * `x` et `y`,
 #   * mais pas `length` !
@@ -256,10 +249,9 @@ class Vector:
 
 vector = Vector(2, 2)
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### digression : la fonction `vars()`
-
 # %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
+# ### digression : la fonction `vars()`
+#
 # pour visualiser la même chose sans ipythontutor  
 # sachez que l'on peut inspecter le contenu d'un espace de noms
 # avec la fonction `vars(obj)`
@@ -290,13 +282,13 @@ vars(vector)
 #   * dans l'espace de nom de sa classe
 #   * et de ses super-classes
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sur l'instance
 
 # (on enlève le bruit)
 [x for x in dir(vector) if '__' not in x]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sur la classe
 
 [x for x in dir(Vector) if '__' not in x]
@@ -310,10 +302,9 @@ vars(vector)
 # * `vector.x` fait référence à l'attribut posé **directement sur l'instance**
 # * `vector.length` fait référence à la méthode qui est **dans la classe**
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## ex2. résolution d'attribut avec héritage
-
 # %% [markdown] slideshow={"slide_type": ""}
+# ## ex2. résolution d'attribut avec héritage
+#
 # * jusqu'ici on n'a pas d'héritage  
 #   puisque pour l'instant on n'a qu'une classe
 #
@@ -348,15 +339,13 @@ subvector = SubVector(6, 8)
 # * c'est exactement le même mécanisme qui est à l'oeuvre :
 # * quand on va vouloir appeler `subvector.length()`  
 #   on cherche l'attribut `length` 
-#
 #   * dans l'instance `subvector` : non
 #   * dans sa classe `SubVector` : non
 #   * dans la super-classe `Vector` : ok, on prend ça
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## écriture d'attribut: pas de recherche
-
 # %% [markdown] slideshow={"slide_type": ""}
+# ## écriture d'attribut: pas de recherche
+#
 # * le mécanisme de résolution d'attribut qu'on vient de voir  
 #   ne fonctionne que **pour la lecture des attributs**
 #
@@ -369,14 +358,14 @@ subvector = SubVector(6, 8)
 #
 # * typiquement `self.name = name` dans le constructeur
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # quand on évalue un attribut en lecture
 # on recherche en partant de l'objet
 # et donc ici on trouve la méthode
 # dans l'espace de noms de la super-classe
 subvector.length()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # mais quand on écrit un attribut
 # c'est une autre histoire complètement
 # l'attribut est créé directement dans l'objet
@@ -388,7 +377,7 @@ subvector.foo = 12
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### lecture *vs* écriture - cas limites
 
-# %% [markdown] cell_style="split" tags=["level_intermediate"]
+# %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
 # * il y a écriture si  
 #   et seulement si il y a **affectation**
 #
@@ -399,7 +388,7 @@ subvector.foo = 12
 #   * **écriture de l'attribut**
 #   * donc écrit dans (l'espace de nom) `obj`
 
-# %% [markdown] cell_style="split" tags=["level_intermediate"]
+# %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
 # * 1. lecture !
 #
 # ```python
@@ -415,7 +404,7 @@ subvector.foo = 12
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## héritage - syntaxe
 
-# %% [markdown] slideshow={"slide_type": ""} cell_style="split"
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # une classe peut hériter d’une  
 #   (ou plusieurs) autre classes
 #   
@@ -429,7 +418,7 @@ subvector.foo = 12
 #     pass
 # ```
 
-# %% [markdown] slideshow={"slide_type": ""} cell_style="split"
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # * si A hérite de B, ont dit que
 #   * A est une **sous-classe** de B
 #   * et B est la **super-classe** de A
@@ -441,17 +430,16 @@ subvector.foo = 12
 #   * l’instance hérite de la  
 #     classe qui la crée
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `isinstance()` et `issubclass()`
-
 # %% [markdown]
+# ## `isinstance()` et `issubclass()`
+#
 # * `isinstance(x, class1)` retourne `True` si   
 #   `x` est une instance de `class1` **ou d’une super classe**
 #
 # * `issubclass(class1, class2)` retourne `True` si  
 #   `class1` est une sous-classe de `class2`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # A est la super-classe
 class A:
     pass
@@ -463,13 +451,13 @@ class B(A):
 
 a, b = A(), B()
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 isinstance(a, A), issubclass(B, A)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 isinstance(b, A), isinstance(a, B)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # accepte plusieurs types/classes
 isinstance(a, (A, B))
 
@@ -484,10 +472,9 @@ isinstance(a, (A, B))
 # </div>
 #     
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `super()`
-
 # %% [markdown]
+# ## `super()`
+#
 # * utile lorsque la spécialisation  
 #   consiste à ajouter ou modifier  
 #   par rapport à la classe mère
@@ -501,7 +488,7 @@ isinstance(a, (A, B))
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `super()` dans le constructeur
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # illustration de super() 
 # dans le constructeur
 
@@ -518,17 +505,17 @@ class D(C):
         self.y = y
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c = C(10)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 d = D(100, 200)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `super()` dans une méthode standard
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # super() est souvent rencontrée
 # dans __init__ mais s'applique
 # partout
@@ -537,7 +524,7 @@ class C:
         print('f dans C')
 
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 class D(C):
     def f(self):
         # remarquez l'absence
@@ -546,10 +533,10 @@ class D(C):
         print('f dans D')
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 c = C(); c.f()
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 d = D(); d.f()
 
 
@@ -576,10 +563,10 @@ d = D(); d.f()
 # * on peut donc construire un graphe d’héritage
 # * allant des super-classes aux instances
 
-# %% [markdown] cell_style="split" tags=["level_intermediate"]
+# %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
 # ![arbre de classes](media/classes.png)
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% tags=["level_intermediate", "gridwidth-1-2"]
 class C1:
     pass
 class C2:
@@ -591,10 +578,9 @@ o1 = C()
 o2 = C()
 
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### MRO: *method resolution order*
-
 # %% [markdown] tags=["level_intermediate"]
+# ### MRO: *method resolution order*
+#
 # * MRO : method resolution order
 # * l’algorithme est le suivant
 #   * liste toutes les super-classes en utilisant  
@@ -603,10 +589,10 @@ o2 = C()
 #   * si classe dupliquée,  
 #     **ne garder que la dernière** occurrence
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate", "gridwidth-1-2"]
 # ![MRO](media/mro.png)
 
-# %% cell_style="split" tags=["level_intermediate"]
+# %% tags=["level_intermediate", "gridwidth-1-2"]
 class A: pass
 class B(A): pass
 class C(A): pass
@@ -617,10 +603,9 @@ class D(B, C): pass
 # * parcours DFLR: `D`, `B`, `A`, `object`, `C`, `A`, `object`
 # * suppressions : `D`, `B`, ~~`A`~~, ~~`object`~~, `C`, `A`, `object`
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ## anx2: attributs de classe
-
 # %% [markdown] tags=["level_intermediate"]
+# ## anx2: attributs de classe
+#
 # dans (l'espace de nom d')une classe, on peut mettre 
 #
 # * des méthodes (on le savait) 
@@ -633,7 +618,7 @@ class D(B, C): pass
 #
 # voyons cela sur un exemple
 
-# %% cell_style="split" slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% slideshow={"slide_type": "slide"} tags=["level_intermediate", "gridwidth-1-2"]
 class Factory:
     # un compteur global à la classe
     # dans lequel on va pouvoir mémoriser 
@@ -649,11 +634,11 @@ class Factory:
 
 Factory.all_labels
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["level_intermediate"]
+# %% slideshow={"slide_type": ""} tags=["level_intermediate", "gridwidth-1-2"]
 f1 = Factory('premier')
 Factory.all_labels
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["level_intermediate"]
+# %% slideshow={"slide_type": ""} tags=["level_intermediate", "gridwidth-1-2"]
 f2 = Factory('second')
 Factory.all_labels
 
