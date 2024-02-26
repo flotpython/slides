@@ -3,11 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version, -language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode, -language_info.file_extension, -language_info.mimetype,
-#       -toc
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -26,7 +26,6 @@
 #     start_slideshow_at: selected
 #     theme: sky
 #     transition: cube
-#   version: '1.0'
 # ---
 
 # %% [markdown]
@@ -62,7 +61,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## `len(obj)`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Classe:
     
     def __init__(self, students):
@@ -72,7 +71,7 @@ class Classe:
         return len(self.students)
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe = Classe(['jean', 'laurent', 'benoit'])
 
 len(classe)
@@ -86,7 +85,7 @@ len(classe)
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## `bool(obj)`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Classe:
     
     def __init__(self, students: list):
@@ -96,7 +95,7 @@ class Classe:
         return self.students != []
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe1 = Classe([])
 classe2 = Classe(['jean', 'laurent', 'benoit'])
 
@@ -109,7 +108,7 @@ if classe2:
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérateurs: `obj1 + obj2`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Classe:
     
     def __init__(self, students):
@@ -122,7 +121,7 @@ class Classe:
         return f"[{len(self.students)} students]"
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe1 = Classe(['marie', 'claire'])
 classe2 = Classe(['jean', 'laurent'])
 
@@ -145,13 +144,13 @@ class Classe:
         return iter(self.students)
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe = Classe(['jean', 'laurent', 'benoit'])
 
 for s in classe:
     print(s)
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # et même d'ailleurs
 x, y, z = classe
 y
@@ -160,7 +159,7 @@ y
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## appartenance: `x in obj`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Classe:
 
     def __init__(self, students):
@@ -170,7 +169,7 @@ class Classe:
         return student in self.students
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe = Classe(['jean', 'laurent', 'benoit'])
 
 'jean' in classe
@@ -179,7 +178,7 @@ classe = Classe(['jean', 'laurent', 'benoit'])
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## indexations: `obj[x]`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Classe:
 
     def __init__(self, students):
@@ -195,15 +194,15 @@ class Classe:
                 return None
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe = Classe(['jean', 'laurent', 'benoit'])
 
 classe[1]
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe['jean']
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 classe['pierre'] is None
 
 
@@ -212,7 +211,7 @@ classe['pierre'] is None
 #
 # on peut même donner du sens à `obj(x)`
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 class Line:
     """
     the line of equation
@@ -230,7 +229,7 @@ class Line:
         return self.a * x + self.b
 
 
-# %% cell_style="split"
+# %% cell_style="split" tags=["gridwidth-1-2"]
 # cet objet se comporte
 # comme une fonction
 
@@ -251,13 +250,11 @@ line(1)
 # * souvent un afficheur pour `print()`
 # * optionnellement d'autres pour donner du sens à  
 #   des constructions du langage sur ces objets
-#
 # * ces méthodes ont toutes un nom en `__truc__` (*dunder methods*)
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # ## pour en savoir plus
 #
-# la (longue) liste exhaustive des méthodes spéciales  
-# est donnée dans la documentation officielle ici
+# la (longue) liste exhaustive des méthodes spéciales est donnée dans la documentation officielle ici
 #
-# https://docs.python.org/3/reference/datamodel.html#special-method-names
+# <https://docs.python.org/3/reference/datamodel.html#special-method-names>
