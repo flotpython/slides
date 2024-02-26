@@ -94,7 +94,7 @@ HTML(filename="_static/style.html")
 #
 # dès que vous voyez ~~`for i in range(len(truc))`~~ vous devez vous dire qu'il y a mieux à faire:
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 liste = [10, 20, 40, 80, 120]
 
 # la bonne façon de faire un for
@@ -102,7 +102,7 @@ liste = [10, 20, 40, 80, 120]
 for item in liste:
     print(item, end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # et **non pas** cette
 # horrible périphrase !
 
@@ -125,14 +125,14 @@ for i in range(len(liste)):
 # on peut aussi itérer sur les clés avec `for k in d.keys()`, mais c'est moche..
 # ````
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 agenda = {
     'paul': 12, 
     'pierre': 14,
     'jean': 16,
 }
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # l'unpacking permet d'écrire 
 # un code élégant
 for key, value in agenda.items():
@@ -175,16 +175,16 @@ s
 #
 # rappelez-vous qu'on peut *unpack* dans un for; ça permet souvent d'utiliser des noms de variables explicites
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 D = {'alice': 35, 'bob': 9, 'charlie': 6}
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pas pythonique (implicite)
 
 for t in D.items():
     print(t[0], t[1])
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pythonique (explicite)
 
 for nom, age in D.items():
@@ -199,21 +199,21 @@ for nom, age in D.items():
 # * notamment avec les séquences natives : chaînes, listes, tuples, ensembles
 # * et aussi dictionnaires, et des tas d'autres objets, mais patience
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une chaine est un itérable
 
 chaine = "un été"
 for char in chaine:
     print(char, end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un ensemble aussi
 
 ensemble = {10, 40, 80} 
 for element in ensemble:
     print(element, end=" ")
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### la boucle `for`, mais pas que
 #
 # * on a défini les itérables par rapport à la boucle `for` 
@@ -222,16 +222,16 @@ for element in ensemble:
 # * `map`, `filter`
 # * etc...
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L = [20, 34, 57, 2, 25]
 
 min(L), sum(L)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ceci retourne un itérateur
 map(lambda x: x**2, L)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour voir "ce qu'il y a dedans"
 list(map(lambda x: x**2, L))
 
@@ -244,27 +244,27 @@ list(map(lambda x: x**2, L))
 #   **la logique de l'itération**, mais pas les données
 # * c'est-à-dire où on en est, et comment passer au suivant
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 import sys
 
 L = list(range(1000))
 sys.getsizeof(L)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec iter() on fabrique 
 # un itérateur
 I = iter(L)
 
 sys.getsizeof(I)
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # cette boucle Python
 # ```python
 # for i in range(100_000):
 #     # do stuff
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # est comparable à ceci en C
 # ```C
 # for (int i=0; 
@@ -296,12 +296,12 @@ sys.getsizeof(I)
 #   * début (inclus), fin (exclus), pas
 #   * **sauf** (curiosité) : si un seul argument, c'est **la fin**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # les nombres pairs de 10 à 20
 for i in range(10, 21, 2):
     print(i, end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # le début par défaut est 0
 for i in range(5):
     print(i, end=" ")
@@ -314,14 +314,14 @@ for i in range(5):
 # * qui contient seulement la logique de l'itération
 # * la preuve:
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # 10**20 c'est 100 millions de Tera
 
 # un range est presque un iterateur
 iterator = range(10**20)
 iterator
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 for item in iterator:
     if item >= 5:
         break
@@ -361,7 +361,7 @@ for item in iterator:
 from itertools import count
 # count?
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on n'arrête pas la boucle nous mêmes
 # ce fragment va boucler sans fin
 
@@ -370,7 +370,7 @@ for i in count():
     if i >= 10:
         break
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut changer les réglages
 
 for i in count(2, 5):
@@ -378,7 +378,7 @@ for i in count(2, 5):
     if i >= 32:
         break
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### `enumerate`
 #
 # on a dit qu'on ne faisait jamais
@@ -392,7 +392,7 @@ for i in count(2, 5):
 # mais comment faire alors si on a vraiment besoin de l'index `i` ?  
 # → il suffit d'utiliser la *builtin* `enumerate()`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 L = [1, 10, 100]
 
 for i, item in enumerate(L):
@@ -407,7 +407,7 @@ for i, item in enumerate(L):
 # `enumerate` est typiquement utile sur un fichier, pour avoir le numéro de ligne  
 # remarquez le deuxième argument de `enumerate`, ici pour commencer à 1
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut aussi commencer 
 # à autre chose que 0
 
@@ -425,22 +425,22 @@ with open("some-file.txt") as f:
 # :align: center
 # ```
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 liste1 = [10, 20, 30]
 liste2 = [100, 200, 300]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 for a, b in zip(liste1, liste2):
     print(f"{a}x{b}", end=" ")
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ````{admonition} les arguments 
 #
 # * `zip` fonctionne avec autant d'arguments qu'on veut
 # * elle s'arrête dès que l'entrée **la plus courte** est épuisée
 # ````
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # `````{admonition} exercice: enumerate = zip + count
 # :class: seealso admonition-small
 #
@@ -476,7 +476,7 @@ for a, b in zip(liste1, liste2):
 # à cet égard, les `range()` sont spéciaux
 # ````
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec une liste, pas de souci
 L = [100, 200]
 
@@ -489,7 +489,7 @@ for i in L:
     print(i)
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # iter() permet de construire
 # un itérateur sur un itérable
 
@@ -579,7 +579,7 @@ for i, d in enumerate(chain(data1, padding, data2)):
 #
 # fonctionne comme le slicing, mais sur n'importe quel itérable
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec islice on peut par exemple 
 # sauter une ligne sur deux dans un fichier
 from pathlib import Path
@@ -589,7 +589,7 @@ with Path('islice.txt').open('w') as f:
     for i in range(6):
         f.write(f"{i}**2 = {i**2}\n")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # pour ne relire qu'une ligne sur deux
 
 from itertools import islice
@@ -599,7 +599,7 @@ with Path('islice.txt').open() as f:
         print(line, end="")
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou zapper les 3 premières
 
 from itertools import islice
@@ -608,7 +608,7 @@ with Path('islice.txt').open() as f:
     for line in islice(f, 3, None):
         print(line, end="")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ou ne garder que les 3 premières
 
 from itertools import islice
@@ -623,13 +623,13 @@ with Path('islice.txt').open() as f:
 # comme `zip`, mais s'arrête à l'entrée la plus longue  
 # du coup il faut dire par quoi remplacer les données manquantes
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 from itertools import zip_longest
 for i, d in zip_longest(
         range(6), L, fillvalue='X'):
     print(f"{i} {d}")
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ```{image} media/iter-zip-longest.svg
 # ```
 
@@ -668,15 +668,15 @@ for i, (d1, d2) in enumerate(product(dim1, dim2), 1):
 #
 # pour les curieux..
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### comment marche la boucle `for` ?
 #
 # lorsqu'on itère sur un itérable
+# ```python
+# iterable = [10, 20, 30]
+# ```
 
-# %% cell_style="split"
-iterable = [10, 20, 30]
-
-# %% [markdown]
+# %% [markdown] tags=["gridwidth-1-2"]
 # sous le capot, la boucle `for` va faire:
 #
 #   * créer un itérateur en appelant `iter(iterable)`
@@ -688,13 +688,15 @@ iterable = [10, 20, 30]
 #
 # voici un équivalent approximatif
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"]
+iterable = [10, 20, 30]
+
 # cette boucle for 
 
 for item in iterable:
     print(item)
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # est en gros équivalente
 # à ce fragment
 
@@ -729,12 +731,12 @@ while True:
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
 # ### quel objet est un itérateur ? (avancé)
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # pour savoir si un objet est un itérateur  
 # tester si  
 #   `iter(obj) is obj`
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 def is_iterator(obj):
     return iter(obj) is obj
 
@@ -745,7 +747,7 @@ def is_iterator(obj):
 # * une liste **n'est pas** son propre itérateur
 # * un fichier **est** son propre itérateur
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # créons un fichier
 with open("tmp.txt", 'w') as F:
     for i in range(6):
@@ -756,17 +758,17 @@ with open("tmp.txt", 'w') as F:
 with open("tmp.txt") as F:
     print(f"{is_iterator(F)=}")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la liste non
 L = list(range(5))
 print(f"{is_iterator(L)=}")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # cycle en est un
 C = cycle(L)
 print(f"{is_iterator(C)=}")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # un zip() est un itérateur
 Z = zip(L, L)
 print(f"{is_iterator(Z)=}")

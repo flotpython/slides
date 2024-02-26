@@ -174,14 +174,14 @@ print(b)
 #
 # * il ne peut y avoir qu’une seule variable de ce type (sinon ce srait ambigu)
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 L = [1, 2, 3, 4, 5]
 
-# %% cell_style="split" slideshow={"slide_type": "fragment"}
+# %% slideshow={"slide_type": "fragment"} tags=["gridwidth-1-2"]
 a, *b = L
 print(f"{a=} {b=}")
 
-# %% cell_style="split" slideshow={"slide_type": "slide"}
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 a, *b, c, d = L
 print(f"{a=} {b=} {c=} {d=}")
 
@@ -205,13 +205,13 @@ print(f"{debut=} {fin=} {_=}")
 # * il faut que les deux termes aient la même *forme* (pattern-matching)
 # * on peut utiliser indifféremment un tuple ou une liste
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # le \ c'est juste pour aligner les deux morceaux
 obj = \
 1, ( (2, 3), (4, [5, 6])), 6
 a, ( _,      [b,  c    ]), d = obj
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(f"{a=} {b=} {c=} {d=}")
 
 # %% [markdown]
@@ -243,13 +243,13 @@ print(f"{L=} {car=} {cdr=}")
 #
 # pour anticiper un peu sur les boucles `for`, l'affectation a lieu aussi à chaque itération de boucle
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 liste = [1, 10, 100]
 
 for item in liste:
     print(f"{item=}", end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # du coup dans un for on peut aussi faire du unpacking
 
 liste = ([1, 2], [10, 20], [100, 200])

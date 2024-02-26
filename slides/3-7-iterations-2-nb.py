@@ -32,7 +32,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # # les itérations (2/2)
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=[]
 # ## compréhensions
 #
 # très fréquemment on veut construire un mapping
@@ -45,7 +45,7 @@ HTML(filename="_static/style.html")
 # :align: center
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=[]
 # ### `map` + `filter`
 #
 # idem en excluant certaines entrées
@@ -54,7 +54,7 @@ HTML(filename="_static/style.html")
 # :align: center
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### compréhension de liste
 #
 # c'est le propos de la compréhension (de liste):
@@ -71,7 +71,7 @@ HTML(filename="_static/style.html")
 #     result.append(expr(x))
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### compréhension de liste avec filtre
 #
 # si nécessaire on peut
@@ -96,13 +96,13 @@ HTML(filename="_static/style.html")
 #
 # sans filtre
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la liste des carrés 
 # des entiers entre 0 et 5
 
 [x**2 for x in range(6)]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on décortique
 
 result = []
@@ -117,13 +117,13 @@ result
 #
 # avec filtre
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # la liste des cubes
 # des entiers pairs entre 0 et 5
 
 [x**2 for x in range(6) if x % 2 == 0]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # si on décortique
 
 result = []
@@ -152,13 +152,13 @@ result
 # l'ordre dans lequel se lisent les compréhensions imbriquées:  
 # il faut imaginer des for imbriqués **dans le même ordre**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 [10*x + y for x in range(1, 5) 
      if x % 2 == 0 
          for y in range(1, 5)
              if y % 2 == 1]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # est équivalent à
 # (dans le même ordre)
 L = []
@@ -174,14 +174,14 @@ L
 #
 # même principe exactement, mais avec des `{}` au lieu des `[]`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # en délimitant avec des {} 
 # on construit une
 # compréhension d'ensemble
 {x**2 for x in range(-6, 7) 
     if x % 2 == 0}
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # rappelez-vous que {} est un dict
 result = set()
 
@@ -196,12 +196,12 @@ result
 #
 # syntaxe voisine, avec un `:` pour associer clé et valeur
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # sans filtre
  
 {x : x**2 for x in range(4)}
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec filtre
 
 {x : x**2 for x in range(4) if x%2 == 0}
@@ -262,7 +262,7 @@ index['Martin']
 # %%
 data = [0, 1]
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # compréhension
 
 C = [10*x + y for x in data for y in data]
@@ -270,7 +270,7 @@ C = [10*x + y for x in data for y in data]
 for y in C:
     print(y)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # genexpr
 
 G = (10*x + y for x in data for y in data)
@@ -284,21 +284,21 @@ for y in G:
 # * même "contenu" que la compréhension
 # * mais pas la même implémentation: les genexps sont de type `generator` (en particulier ce sont des **itérateurs**)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # compréhension
 
 C = [x**2 for x in range(4)]
 
 type(C), C
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # genexpr
 
 G = (x**2 for x in range(4))
 
 type(G), G
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # une compréhension est une vraie liste
 
 C2 = [x**2 for x in range(100_000)]
@@ -306,7 +306,7 @@ C2 = [x**2 for x in range(100_000)]
 import sys
 sys.getsizeof(C2)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # les genexprs sont des itérateurs
 # et donc sont tout petits
 
@@ -328,10 +328,10 @@ sys.getsizeof(G2)
 # * mais dans le cas contraire il faut **préférer un itérateur**, c'est le propos de l'**expression génératrice**
 # * qui souvent revient à remplacer `[]` par `()` - ou même juste enlever les `[]`
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": "slide"}
+# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # apprenez à bien choisir entre compréhension et genexpr (les deux sont utiles)
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # remplissons une classe imaginaire
 from random import randint
 

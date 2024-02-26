@@ -32,7 +32,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # # syntaxe
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### l’indentation, base de la syntaxe
 #
 # * la fin d’une ligne est significative  
@@ -41,7 +41,7 @@ HTML(filename="_static/style.html")
 #   → pas besoin de `{}` pour délimiter un bloc  
 # * indentation recommandée : 4 espaces
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def foo():
     print('début')
     a = 10*20

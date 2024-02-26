@@ -33,13 +33,11 @@ HTML(filename="_static/style.html")
 # # opérateurs
 #
 # un survol des opérateurs pour construire les expressions
-
-# %% [markdown]
+#
 # ````{admonition} précédence des opérateurs
 # :class: attention
 #
-# comme pour tous les langages, les opérateurs ont une précédence  
-# dans le doute: mettez des parenthèses !
+# comme pour tous les langages, les opérateurs ont une précédence; dans le doute: mettez des parenthèses !
 # ````
 
 # %% [markdown]
@@ -55,19 +53,19 @@ HTML(filename="_static/style.html")
 # * arithmétiques:  `+` | `-` | `*` | `/`
 #   * pas que sur les nombres
 
-# %% cell_style="split" tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 'on peut juste juxtaposer' ' deux chaines'
 
 # %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 'ou les' + ' additioner'
 
-# %% cell_style="split" tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 ['et', 'les'] + ['listes', 'aussi']
 
-# %% cell_style="split" tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 4 * '-00-'
 
-# %% cell_style="split" tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
+# %% tags=["gridwidth-1-2"] slideshow={"slide_type": ""}
 4 * [1, 2]
 
 # %% [markdown]
@@ -75,10 +73,10 @@ HTML(filename="_static/style.html")
 #
 # digression: tous les opérateurs du langage sont dépendants du type des opérandes
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 10 + 20
 
-# %% cell_style="split" slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 "10" + "20"
 
 # %% [markdown]
@@ -95,11 +93,11 @@ HTML(filename="_static/style.html")
 #
 # * rappel division entière: quotient et reste: `//`  et `%`
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # avec des entiers
 19 // 3
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 19 % 3
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -108,7 +106,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # * $x^y$ : `x ** y` 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 2 ** 100
 
 
@@ -128,15 +126,15 @@ HTML(filename="_static/style.html")
 #   * `>=`, `>`, `<=`, `<`
 #   * curiosité: on peut les chainer
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 def est_moyenne(note):
     return 10 <= note <= 12
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 est_moyenne(11)
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ### évaluation paresseuse (avancé)
 #
 # * `and` et `or` sont opérateurs *short-circuit*
@@ -151,7 +149,7 @@ est_moyenne(11)
 #   * Si A est `True`,  
 #     B ne sera pas évalué
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # une fonction avec side-effect
 counter = 0
 
@@ -161,7 +159,7 @@ def greater(a, b):
     return a >= b
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ceci n'imprime rien
 note = 11.5
 
@@ -169,7 +167,7 @@ if (greater(note, 10) and greater(note, 12)
     and greater(note, 14) and greater(note, 16)):
     print("excellent")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # ce qui intéressant, c'est 
 # combien de fois on a appelé greater
 counter
@@ -189,14 +187,14 @@ counter
 # ça semble anecdotique, mais ces opérateurs sont **super utilisés** notamment en pandas !
 # ````
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 a = 0b111100 
 b = 0b110011
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 bin(a | b)
 
-# %% cell_style="split" tags=["gridwidth-1-2"]
+# %% tags=["gridwidth-1-2"]
 bin(a & b)
 
 # %% [markdown]

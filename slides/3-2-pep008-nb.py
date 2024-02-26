@@ -88,7 +88,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## les noms de variables
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # | type d'objet | catégorie |
 # |------------------|---------------|
 # | variable usuelle | 1 | 
@@ -96,7 +96,7 @@ HTML(filename="_static/style.html")
 # | module | 1 | 
 # | classe | 2 |
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # | catégorie |  OUI  |  NON  |
 # |------|------------------|---------------|
 # | 1    | `minuscule` | ~~`MAJUSCULE`~~ |
@@ -188,7 +188,7 @@ def longue_chaine(nom, prenom):
 #
 # lorsqu'on écrit une fonction (ou une classe, ou un module) on la documente comme ceci
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 def gcd(a, b):
     """
     returns the greatest common divisor
@@ -199,7 +199,7 @@ def gcd(a, b):
     return a
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 help(gcd)
 
 
@@ -213,7 +213,7 @@ help(gcd)
 #
 # de manière optionnelle, on peut indiquer les types des arguments et le type de retour
 
-# %% cell_style="split" slideshow={"slide_type": ""}
+# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 def gcd2(a: int, b: int) -> int:
     """
     returns the greatest common divisor
@@ -224,7 +224,7 @@ def gcd2(a: int, b: int) -> int:
     return a
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 help(gcd2)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -253,7 +253,7 @@ help(gcd2)
 # * `flake8`
 # * `pylint` (affiche les erreurs pep8, et bien d'autres d'ailleurs)
 
-# %% [markdown] cell_style="split" slideshow={"slide_type": ""}
+# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # ### vs-code
 #
 # ```{image} media/vscode-problems.png
@@ -261,7 +261,7 @@ help(gcd2)
 # :width: 500px
 # ```
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # et pour naviguer entre les erreurs, via la *palette* (ctrl-shift p ou cmd-shift-p)
 #
 # ```{image} media/vscode-next-problem.png

@@ -35,7 +35,7 @@ HTML(filename="_static/style.html")
 # principalement les structures de contrôle, et quelques-unes plus anecdotiques  
 # nous laissons intentionnellement de coté le `for` pour le moment, ainsi que le `try..except`
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=["gridwidth-1-2"]
 # ## l'instruction `if`
 #
 # L'instruction conditionnelle en Python:
@@ -52,7 +52,9 @@ HTML(filename="_static/style.html")
 #
 # repose sur une évaluation dite ***paresseuse***, c'est-à-dire que l'instruction s'arrête **au premier test qui est vrai** (on n'évalue pas les tests suivants)  
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
+# par exemple
+
 def appreciation(note):
     if note >= 16:
         return "félicitations"
@@ -66,10 +68,10 @@ def appreciation(note):
         return "insuffisant" 
 
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(appreciation(15.5))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(appreciation(11.5))
 
 # %% [markdown]
@@ -151,7 +153,7 @@ print("insuffisant" if note < 10 else "ouf !")
 #
 # on parle toujours de la boucle **la plus imbriquée**
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # exemple avec continue
 # on veut zapper les nombres pairs
 
@@ -164,7 +166,7 @@ while L:
     # ... faire des trucs compliqués avec n
     print(f"{n=}", end=" ")
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # exemple avec break
 # dès qu'on trouve un nombre pair on s'arrête
 
@@ -257,7 +259,7 @@ print(on_size("a b c"))
 # il y a des instructions, notamment `try` et `with`, qui peuvent entrainer un peu de nettoyage avant qu'on sorte vraiment de la fonction
 # ````
 
-# %% [markdown] cell_style="split"
+# %% [markdown] tags=[]
 # ## `pass`
 #
 # l'instruction `pass` ne fait rien; elle est en général utilisée lorsque la syntaxe demande une instruction, mais qu’on ne l’a pas encore implémentée
@@ -300,14 +302,14 @@ print(on_size("a b c"))
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### `exec()` pour une instruction
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # instructions
 i1 = """def fact(n):
     return 1 if n <= 1 else n * fact(n-1)"""
 i2 = """if fact(2) > 1:
     print('OUI')"""
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # on peut les exécuter
 # ceci ne fait rien que de définir une fonction
 print(exec(i1))
@@ -315,13 +317,13 @@ print(exec(i1))
 # %% cell_style="center"
 fact
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # qu'on peut maintenant utiliser au travers de i2
 # l'impression ici est faire dans le code de i2
 # et puis None est le retour de exec
 print(exec(i2))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # par contre exec() ne renvoie rien d'utile
 print(exec("fact(3)"))
 
@@ -338,11 +340,11 @@ e2 = "{'alice' : 35, 'bob' : 8}"
 # mais le retour est None ce qui perd de son intérêt
 print(exec(e1))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 # c'est mieux de les évaluer
 print(eval(e1))
 
-# %% cell_style="split"
+# %% tags=["gridwidth-1-2"]
 print(eval(e2)['alice'])
 
 # %% [markdown] slideshow={"slide_type": "slide"}
