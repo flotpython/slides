@@ -96,11 +96,23 @@ user1
 # ````{admonition} si on ne définit pas __repr__
 # :class: dropdown
 #
-# alors on obtient ceci
+# alors on obtient ce genre d'affichage, pas du tout pratique...
 #
-# ```{image} media/class-without-repr.png
-# :width: 500px
-# ```
+# ```python
+# In [1]: class User:
+#    ...:
+#    ...:     # le constructeur
+#    ...:     def __init__(self, name, age):
+#    ...:         # un objet User a deux attributs
+#    ...:         # name et age
+#    ...:         self.name = name
+#    ...:         self.age = age
+#    ...:
+#
+# In [2]: user1 = User("Lambert", 25)
+#
+# In [3]: user1
+# Out[3]: <__main__.User at 0x111f33ad0>
 # ````
 
 # %% cell_style="center" tags=["gridwidth-1-2"]
@@ -179,8 +191,8 @@ stack
 # %% [markdown] tags=[]
 # ## intérêts de cette approche
 #
-# * définir vos propres types de données
-# * grouper les données qui vont ensemble dans un objet unique, facile à passer à d'autres fonctions
+# * on peut se définir ses propres types de données
+# * par exemple grouper les données qui vont ensemble dans un objet unique, facile à passer à d'autres fonctions
 # * **invariants**: garantir de bonnes propriétés si on utilise les objets au travers des méthodes (encapsulation)
 # * et aussi (sera vu ultérieurement): intégrer **vos objets dans le langage**  
 #   i.e. donner un sens à des constructions comme  
@@ -207,7 +219,7 @@ stack
 #
 # ````{admonition} conventions de nommage
 # :class: attention admonition-small
-# cette séparation n'est pas toujours sous-titrée de manière explicite - comme ici où nous avons mis un `_` au début du nom de l'attribut  
+# cette séparation n'est pas toujours sous-titrée de manière explicite - comme ici où nous avons mis un `_` au début du nom de l'attribut; 
 # il faut parfois faire appel à son bon sens
 # ````
 
@@ -215,15 +227,35 @@ stack
 # ## exemples de classes
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemple : `np.ndarray`
+# ### exemple : `np.ndarray` et `pd.DataFrame`
 #
-# * la classe de base de `numpy`: c'est une classe que vous utilisez tous les jours !
+# * les classes de base de `numpy` et `pandas`
 # * en fait il n'y a pas de différence de fond 
 #   * entre les types prédéfinis (`str`, ...)
 #   * et les classes créées avec `class`
 
+# %%
+import pandas as pd
+
+# on crée typiquement une dataframe à partir d'un csv
+df = pd.read_csv("../data/Worldwide-Earthquake-database.csv")
+
+# et on obtient .. un objet de la classe pd.DataFrame
+# (c'est plus pratique que une liste de distionnaires ou autres)
+# et sur lequel on a des méthodes comme ici .head()
+
+df.head(4)
+
+# %%
+# mais aussi on peut faire plein d'autres choses 
+# avec les opérateurs Python, comme faire des recherches:
+
+df[df.TOTAL_INJURIES > 300_000]
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Point`
+#
+# un grand classique: on groupe les coordonnées x et y dans un objet
 
 # %% slideshow={"slide_type": ""} tags=[]
 import math
@@ -322,16 +354,22 @@ c2.__contains__(a)
 # %% [markdown]
 # ### exemple : `class datetime.date` etc..
 #
-# * bien sûr il y a des classes dans la bibliothèque standard
-# * voyez par exemple [le module `datetime`](https://docs.python.org/3/library/datetime.html)
-# * et notamment `datetime.date` (une date)  
-#   et `datetime.timedelta` (une durée)
+# * bien sûr il y a des classes dans la bibliothèque standard; par exemple [le module `datetime`](https://docs.python.org/3/library/datetime.html)
+# * et notamment les classes `datetime.date` (une date) et `datetime.timedelta` (une durée)
+#
+# ````{admonition} pas casher !
+# :class: dropdown
+#
+# si vous avez bien suivi la partie sur la présentation du code, vous remarquerez que ces deux noms de classe ne suivent pas la PEP-008; c'est là qu'on voit qu'elles sont très vieilles !
+#
+# ````
 
 # %% slideshow={"slide_type": "slide"}
 # normalement si on avait appliqué la PEP008 à l'époque,
 # la classe date aurait dû s'appeler Date
 from datetime import date as Date
-# pareil
+
+# et pareil
 from datetime import timedelta as TimeDelta
 
 Date.today()
@@ -356,6 +394,8 @@ today - three_weeks
 
 # %%
 # pour afficher une durée avec un format qui nous convient
+# on s'en servira plus tard...
+
 def timedelta_as_year_month(age: TimeDelta) -> str:
     """
     convert a duration in years and months (as a str)
@@ -371,17 +411,15 @@ def timedelta_as_year_month(age: TimeDelta) -> str:
 # ````{admonition} si on allait jusqu'au bout de la logique
 # :class: dropdown
 #
-# en pratique on irait même jusqu'à spécialiser `TimeDelta`, de façon à redéfinir son `repr()` avec ce format  
-# toutefois c'est un peu scabreux à faire...
+# en pratique on irait même jusqu'à spécialiser `TimeDelta`, de façon à redéfinir son `repr()` avec ce format; toutefois c'est un peu scabreux à faire...
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : `class Student`
+#
+# voyons maintenant une classe plus orientée "gestion", i.e. juste une collection de données
 
 # %%
-# une classe plus orientée "gestion"
-# i.e. juste une collection de données
-
 class Student:
     
     def __init__(self, first_name, last_name, 
@@ -402,40 +440,44 @@ class Student:
 
 
 # %% [markdown]
-# ````{admonition} remarque
+# ````{admonition} paramètres du constructeur et attributs
 # :class: admonition-small
 #
-# on rencontre assez souvent le pattern selon lequel le constructeur a autant de paramètres que les attributs de la classe;  
-# par exemple la classe a 2 attributs truc et bidule, et le constructeur qui accepte deux paramètres truc et bidule  
+# on rencontre assez souvent le pattern selon lequel le constructeur a **les mêmes paramètres**  
+# que les attributs de la classe (comme `Point` et `Circle` ci-dessus)  
 #
-# mais comme le montre l'exemple ci-dessus, ce n'est pas obligatoire !
+# mais comme on le voit avec la classe `Student`, ce n'est **pas du tout obligatoire** !
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `class Student` - utilisation
 
 # %% slideshow={"slide_type": ""}
+# création d'une instance
+
 achille = Student("Achille", "Talon", 2001, 7, 14)
+
+# affichage
 achille
 
 # %% tags=["gridwidth-1-2"]
+# une méthode ordinaire
+
 achille.age()
 
-# %% tags=["gridwidth-1-2"]
-type(achille.age())
-
 # %% slideshow={"slide_type": ""}
+# si on voulait une présentation plus ad hoc
+
 print(f"{achille} a {achille.repr_age()}")
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple : class `Class` 
 #
-# (dans le sens: groupe de `Student`s)
+# dans le sens: groupe de `Student`s - rien à voir avec le mot-clé `class` !
 #
-# * bien sûr on peut combiner nos types (les classes)  
-#   avec les types de base
-# * et ainsi créer e.g. des listes de `Student`
+# * bien sûr on peut combiner nos types (les classes) avec les types de base
+# * et ainsi créer quelque chose qui s'apparente à une liste de `Student`
 
 # %%
 class Class:
@@ -448,18 +490,23 @@ class Class:
         return f"{self.classname} with {len(self.students)} students"
         
     def average_age(self):
-        # on aimerait pouvoir écrire simplement ceci
-        # return ((sum(student.age() for student in self.students)
-        #          / len(self.students))
-        # mais ça ne fonctionne pas, il faut passer à sum 
-        # l'élément neutre de l'addition - ici TimeDelta(0)
-        # car '0' ne peut pas s'additionner à un TimeDelta
         return (sum((student.age() for student in self.students), TimeDelta(0)) 
                 / len(self.students))
 
 
+# %% [markdown]
+# ````{admonition} un détail: pourquoi TimeDelta(0) ?
+# :class: dropdown admonition-x-small
+#
+# dans le code de `average_age`, on doit passer à `sum()` 
+# comme 2ème paramètre l'élément neutre de l'addition dans notre espace (ici les durées)  
+# parce qu'on ne peut pas ajouter 0 et un objet `TimeDelta`
+# ````
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # #### `class Class` - utilisation
+#
+# on peut alors utiliser cette nouvelle classe comme ceci
 
 # %%
 hilarion = Student("Hilarion", "Lefuneste", 1998, 10, 15)
@@ -481,29 +528,92 @@ cls.average_age()
 # la moyenne d'âge de la classe, pour les humains
 timedelta_as_year_month(cls.average_age())
 
+# %% [markdown]
+# ## héritage
+#
+# voici un dernier exemple, où on utilise cette fois massivement l'**héritage**  
+# en effet ce programme s'appuie sur la lib `arcade` (on fait comment pour l'installer déjà ?) qui expose une API très fortement influencée par l'héritage entre classes  
+# en principe il est complet (à copier-coller dans un fichier) et il affiche un boid (avec une petit flêche) qui avance tout seul
+#
+# bon en soi ça n'est pas très impressionnant; mais regardez bien c'est intéressant quand même !
+#
+# * la classe `Boid` **hérite** de la classe `arcade.Sprite`; de cette façon elle sait faire plein de choses, comme afficher une image (le png) à l'endroit où se trouve le boid (`self.center_x` et `self.center_y`)
+# * du coup pour déplacer le boid, on n'a besoin que d'écrire la méthode `on_update()`
+# * qui elle-même n'a besoin que de mettre à jour les attributs `center_x` et `center_y`
+# * de la même façon la classe `Window` **hérite** de `arcade.Window`, et de cette façon on n'a pas besoin d'écrire la mainloop du jeu :)
+#
+# ````{admonition} keep it simple
+# :class: admonition-small
+#
+# pour bien illustrer les avantages de l'approche, il faudrait qu'on voie comment faire un jeu avec une lib plus rustique, comme `pygame`, mais bon il s'agit juste de donner un aperçu..
+# ````
+
+# %% [markdown]
+# ```python
+# import math
+#
+# # arcade offers an OO API based on inheritance
+# import arcade
+#
+# # the image for the boid
+# IMAGE = "../media/arrow-resized.png"
+#
+# WIDTH, HEIGHT = 200, 200
+#
+# # this is inheritance
+# class Boid(arcade.Sprite):
+#
+#     def __init__(self):
+#         super().__init__(IMAGE)
+#         self.center_x, self.center_y = 100, 100
+#         self.angle = 30
+#
+#     def on_update(self, delta_time):
+#         self.center_x += 100 * delta_time * math.cos(math.radians(self.angle))
+#         self.center_y += 100 * delta_time * math.sin(math.radians(self.angle))
+#
+#         self.center_x %= WIDTH
+#         self.center_y %= HEIGHT
+#
+#
+# # and again
+# class Window(arcade.Window):
+#
+#     def __init__(self):
+#         super().__init__(WIDTH, HEIGHT, "My first boid")
+#         self.boid = Boid()
+#
+#     def on_draw(self):
+#         arcade.start_render()
+#         self.boid.draw()
+#
+#     def on_update(self, delta_time):
+#         self.boid.on_update(delta_time)
+#
+# window = Window()
+#
+# # observe that we don't need to write the mainloop !
+# arcade.run()
+# ```
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## résumé (1/2)
 #
 # * avec `class` on peut définir un **nouveau type** 
 #   * qui nous permet de **créer des objets**
-#   * qui représentent, mieux que les types de base,  
-#     les données de notre application
-# * pas de différence entre un type prédéfini et une classe :  
-#   un objet créé par une classe s'utilise *normalement*
+#   * qui représentent, mieux que les types de base, les données de notre application
+# * pas de différence entre un type prédéfini et une classe: un objet s'utilise *normalement*
 #   * une variable peut désigner un objet
 #   * un objet peut être dans une liste (ou autre type) *builtin*  
-#     (attention pour les clés de `dict` qui doivent être hashables)
 #   * ou passé en paramètre à une fonction,
 #   * etc, etc...
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## résumé (2/2)
 #   
-# * généralement une instance contient  
-#   des données rangées dans des **attributs**
+# * généralement une instance contient des données rangées dans des **attributs**
 # * une classe peut définir aussi des **méthodes**
-#   * qui travaillent sur un objet (souvent appelé `self`)
-#   * souvent on ne modifie les objets  
-#     qu'au travers des méthodes fournies par la classe
-#   * ce qui permet de garantir certains invariants
+#   * qui travaillent sur un objet  -- souvent appelé `self`
+# * souvent on ne modifie les objets qu'au travers des méthodes fournies par la classe  
+#   ce qui permet de garantir certains invariants
 #
