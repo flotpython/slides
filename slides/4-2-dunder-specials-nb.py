@@ -48,14 +48,14 @@ HTML(filename="_static/style.html")
 # * pour bien intégrer les objets dans le langage  
 # * c'est-à-dire donner du sens à des constructions du langage
 #
-# e.g. que peuvent vouloir dire :
+# c'est-à-dire donner un sens à des phrases commme:
 #
-# * avec les fonctions *builtin*, e.g. `len(obj)`, `int(obj)`
-# * opérateurs comme `obj + x`  
-# * itération `for item in obj`
-# * test d'appartenance `x in obj` 
-# * indexation `obj[x]` 
-# * même appel! `obj(x)`
+# * appeler les fonctions *builtin*: `len(obj)`, `int(obj)`
+# * opérateurs: e.g. `obj + x`  
+# * itération: `for item in obj`
+# * test d'appartenance: `x in obj` 
+# * indexation: `obj[x]` 
+# * et même appel! `obj(x)`
 # * etc...
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -83,29 +83,6 @@ len(classe)
 # * `__int__(self)` pour redéfinir `int(obj)` et similaires
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## `bool(obj)`
-
-# %% tags=["gridwidth-1-2"]
-class Classe:
-    
-    def __init__(self, students: list):
-        self.students = students
-        
-    def __bool__(self):
-        return self.students != []
-
-
-# %% tags=["gridwidth-1-2"]
-classe1 = Classe([])
-classe2 = Classe(['jean', 'laurent', 'benoit'])
-
-if not classe1:
-    print("classe1 est fausse")
-if classe2:
-    print("classe2 est vraie")
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## opérateurs: `obj1 + obj2`
 
 # %% tags=["gridwidth-1-2"]
@@ -127,6 +104,13 @@ classe2 = Classe(['jean', 'laurent'])
 
 classe1 + classe2
 
+
+# %% [markdown]
+# ````{admonition} en réalité c'est un peu plus subtil
+# :class: admonition-small dropdown
+#
+# dans la pratique, on peut aussi avoir à définir `__radd__` de façon à redéfinir le cas où on pourrait s'additionner avec des objets d'un autre type, comme des types *builtin* de nombres par exemple; mais ne nous égarons pas..
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## itérations: `for item in obj:`
@@ -158,6 +142,8 @@ y
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## appartenance: `x in obj`
+#
+# on l'a vu déjà avec la classe `Circle`:
 
 # %% tags=["gridwidth-1-2"]
 class Classe:
@@ -248,8 +234,7 @@ line(1)
 #
 # * notamment le constructeur pour l'initialisation,
 # * souvent un afficheur pour `print()`
-# * optionnellement d'autres pour donner du sens à  
-#   des constructions du langage sur ces objets
+# * optionnellement d'autres pour donner du sens à des constructions du langage sur ces objets
 # * ces méthodes ont toutes un nom en `__truc__` (*dunder methods*)
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=[]
