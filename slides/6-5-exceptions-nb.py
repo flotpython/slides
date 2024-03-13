@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: exceptions
 #   rise:
@@ -21,14 +28,14 @@
 #     transition: cube
 # ---
 
-# %% [markdown] tags=["raises-exception"]
+# %% [markdown]
 # Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 # %%
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
+# %% [markdown]
 # # exceptions
 
 # %% [markdown]
@@ -119,7 +126,10 @@ driver()
 
 
 # %% [markdown] tags=["gridwidth-1-2"]
-# ![uncaught](media/except-stack-uncaught.svg)
+# ```{image} media/except-stack-uncaught.svg
+# :align: center
+# :width: 250px
+# ```
 
 # %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 def driver_try():
@@ -134,7 +144,10 @@ def driver_try():
 driver_try()    
 
 # %% [markdown] tags=["gridwidth-1-2"]
-# ![try](media/except-stack-try.svg)
+# ```{image} media/except-stack-try.svg
+# :align: center
+# :width: 250px
+# ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## clause `except`
@@ -151,7 +164,10 @@ driver_try()
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ![exceptions](media/except-list.png)
+# ```{image} media/except-list.png
+# :align: center
+# :width: 500px
+# ```
 
 # %% [markdown]
 # ````{admonition} xxx
