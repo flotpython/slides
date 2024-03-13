@@ -3,8 +3,11 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
-#     notebook_metadata_filter: all,-language_info,-toc,-jupytext.text_representation.jupytext_version,-jupytext.text_representation.format_version
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
+#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
+#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
+#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -12,6 +15,10 @@
 #     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
+#   language_info:
+#     name: python
+#     nbconvert_exporter: python
+#     pygments_lexer: ipython3
 #   nbhosting:
 #     title: fonctions
 #   rise:
@@ -32,49 +39,47 @@ HTML(filename="_static/style.html")
 # %% [markdown] slideshow={"slide_type": ""}
 # # fonctions: généralités
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## pour réutiliser du code en Python
+# %% [markdown]
+# ## pour réutiliser du code en python
+#
+# **DRY = *don't repeat yourself*** : *cut'n paste is evil*
+#
+# ```{list-table}
+#
+# * - **fonctions**
+#   - **pas d'état après exécution**
+# * - modules
+#   - garde l'état, une seule instance par programme
+# * - classes
+#   - instances multiples, chacune garde l'état, héritage
+# ```
 
 # %% [markdown]
-# * **fonctions**
-#   * **pas d'état après exécution**
-# * modules
-#   * garde l'état
-#   * une seule instance par programme
-# * classes
-#   * instances multiples
-#   * chacune garde l'état
-#   * héritage
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## comment définir une fonction ?
 
 # %% [markdown]
+# ### syntaxe
+#
 # ```
 # def name(arg1, arg2, .. argN):
 #     <statement>
 #     return <value>   # peut apparaitre n’importe où
 # ```
 #
-# * `def` crée un objet fonction, l'assigne dans la variable `name`
-#   * tout est objet en Python
+# * `def` crée un objet fonction, et l'**assigne** dans la variable `name`
 #   * assimilable à une simple affectation `name = ..`
-# * les arguments sont passés **par référence**
-#   * donc crée des **références partagées**
-#   * attention aux types mutables
-#   * on en reparlera
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### comment définir une fonction ?
+#   * tout est objet en Python, la fonction aussi !
+# * bien entendu, le code n’est évalué que quand la fonction est appelée
+#
+# ````{admonition} une fonction peut modifier ses paramètres !
+# les arguments sont passés **par référence**
+# * donc crée des **références partagées**
+# * attention aux types mutables, ils peuvent être modifiés par la fonction
+# ````
 
 # %% [markdown]
-# * une fonction dans Python est un **objet fonctionnel**
-#   * auquel on donne un nom
-# * un `def` peut apparaitre n’importe où
-#   * et se comporte donc **comme une affectation**
-# * le code n’est évalué que quand la fonction est appelée 
-#
 # ```
+# # pas du tout usuel, mais pour bien comprendre :
 # # on peut parfaitement écrire ceci
 # if test:
 #     def func():
@@ -86,51 +91,103 @@ HTML(filename="_static/style.html")
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### comment définir une fonction ?
+# ### *duck typing*
+#
+# il n'y a **pas de typage statique** en Python: on ne sait pas de quel type doivent être x et y, et tant que ça fait du sens au moment de l'exécution, le code est correct ! on appelle ça aussi le *duck typing*
 
 # %% tags=["gridwidth-1-2"]
-# pas de typage statique en Python
-# on ne sait pas de quel type 
-# doivent être x et y
-# tant que ça fait du sens,
-# le code est correct
+# on va pouvoir appeler cette fonction ...
 def times(x, y):
     return x * y
 
 
 # %% tags=["gridwidth-1-2"]
-# deux entiers
+# ... aveec deux entiers
 times(2, 3)         
 
 # %% tags=["gridwidth-1-2"]
-# deux floats
+# ou avec deux floats
 times(1.6, 9)       
 
-# %% cell_style="center"
-# la magie du duck typing
+# %% cell_style="center" tags=["gridwidth-1-2"]
+#  ... et même comme ceci !
 times('-spam-', 4)
 
-# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### *type hints*
+#
+# si on le souhaite, on **peut** indiquer le type des paramètres attendus et du résultat  
+#
+
+# %% tags=["gridwidth-1-2"]
+def type_hints_1(x: int, y: float) -> str:
+    """
+    pour des types simples
+    """
+    ...
+
+
+# %% tags=["gridwidth-1-2"]
+# un peu plus compliqué (depuis la nécessite 3.9)
+
+def type_hints_2(x: tuple[int, str, bool],
+                 y: dict[str, list[int]]) -> None:
+    ...
+
+
+# %% [markdown]
+# il faut savoir que c'est **totalement optionnel** et que ça **ne modifie pas** le comportement du code
+#
+# à quoi ça sert du coup, me direz-vous ? eh bien surtout à deux choses
+#
+# - d'abord et surtout à **améliorer la documentation** et faciliter l'usage de la librairie en question
+# - ensuite et de manière plus optionnelle, on peut utiliser un outil externe appelé *type checker* [comme par exemple mypy](https://mypy.readthedocs.io/en/stable/) qui, lui, va utiliser cette information pour **détecter les incohérences** entre types attendus et appels effectifs; par contre pour que cette approche soit effective il faut en général que les *type hints* soient généralisés dans le code...
+
+# %% [markdown]
+# ````{admonition} note historique
+# :class: admonition-small
+#
+# les *type hints* sont disponibles depuis la version 3.5, mais étaient à l'époque peu utilisables - notamment pour définir les types composites  
+# bref, elles sont vraiment utilisables depuis disons la 3.9 - on peut maintenant écrire `dict[str, int]` pour désigner un dictionnaire dont les clés sont des chaines et les valeurs des entiers
+#
+# du coup il faut les voir comme un trait relativement récent, et une énorme proportion du code Python en reste dépourvu  
+# ce n'est pas une raison pour ne pas les utiliser, on peut le faire avec discernement: pas besoin de forcément en mettre partout !
+# ````
+
+# %% [markdown]
+# ### un objet comme un autre
+#
+# ````{admonition} pour résumer: des objets normaux
+#
+# - les noms de fonction sont des variables normales
+# - les objets fonction sont des objets comme les autres
+# ````
+#
+# voici à nouveau un exemple biscornu; ce n'est évidemment pas recommandé, mais pour bien comprendre, sachez que c'est légal de faire ceci:
+#
+
+# %% slideshow={"slide_type": "slide"} tags=[]
 # la fonction est un objet 
 times   
 
-# %% tags=["gridwidth-1-2"]
-# pas forcément recommandé mais:
-# on peut affecter cet objet à
-# une autre variable
-foo = times  
+# %% tags=[]
+# pas du tout recommandé, mais 
+# on peut affecter cet objet à une autre variable !
+foo = times
+
+# et donc maintenant foo désigne une fonction, je peux donc l'appeler
 foo(3, 14)
 
 
-# %% tags=["gridwidth-1-2"]
-# et redéfinir `times` pour faire
-# + à la place de * !
+# %% tags=[]
+# et redéfinir `times` pour faire + à la place de * !
 def times(x, y):
     # ne vraiment pas faire ça en vrai !!
     return x + y
 
 
-# %% tags=["gridwidth-1-2"]
+# %% tags=[]
 # maintenant times fait une addition !
 times(3, 4)
 
@@ -140,18 +197,32 @@ foo(3, 4)
 
 
 # %% [markdown]
-# bref : les noms de fonction sont des variables normales
+# ### l'instuction `return`
+#
+# * un appel de fonction est **une expression**
+# * le **résultat** de cette expression est spécifié dans le corps de la fonction par l'instruction `return`
+# * le **premier** `return` rencontré provoque **la fin** de l'exécution de la fonction
+# * si la fonction se termine **sans rencontrer** un `return`
+#   * on retourne `None` - `None` est un mot-clé de Python, qui désigne un objet unique (singleton)
+#     
+# ````{admonition} return et finally (avancé)
+# :class: admonition-small
+#
+# `return` termine l'exécution de la fonction, sauf si l’expression `return` se trouve à l'intérieur d'un `try` avec une clause `finally`  
+# dans ce cas la clause `finally` est exécutée avant de quitter la fonction  
+# voir la section sur les exceptions pour comprendre la sémantique de l'instruction `try .. finally`
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## digression : docstrings
+# ## les docstrings
 
 # %% [markdown]
-# ### documentation automatique
+# ### où documenter ?
 #
-# * si dans un objet de type fonction, classe ou module
-# * la première instruction est une chaîne de caractères
-# * c'est le ***docstring*** de cet objet
-# * qui constitue la documentation de l’objet
+# si, dans un objet de type *fonction*, *classe* ou *module*, la **première instruction** est une chaîne de caractères  
+# alors c'est le ***docstring*** de cet objet, qui constitue sa documentation
+#
+# l'idée étant naturellement de pouvoir maintenir en même temps le code et la doc, plutôt que d'avoir la doc dans un système séparé qui du coup n'est jamais à jour
 
 # %%
 def hyperbolic(x, y):
@@ -162,169 +233,68 @@ def hyperbolic(x, y):
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# * les docstrings sont retournés par `help(objet)`
-# * ils sont rangés dans `objet.__doc__`
+# c'est ce qui est utilisé pour afficher la doc avec `help(objet)`
 
 # %%
 help(hyperbolic)
 
-# %%
-# le doctring est rangé dans un attribut spécial
-hyperbolic.__doc__
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### un peu de documentation
-
 # %% [markdown]
-# * c’est une bonne habitude de toujours documenter
-# * on peut utiliser une simple chaîne,  
-#   ou le plus souvent multiligne (avec `"""`)
-
-# %% [markdown]
-# * pas utile de répéter le nom de l’objet,  
-#   qui est extrait automatiquement (DRY) 
+# ````{admonition} l'attribut spécial __doc__
+# :class: info admonition-small
 #
+# pour information, cette chaine est rangée dans l'espace de nom de l'objet dans un attribut spécial `hyperbolic.__doc__`
+# ````
+
+# %% [markdown]
+# ### comment documenter ?
+#
+# c’est une bonne habitude de toujours documenter ! 
+#
+# * le plus souvent multiligne - avec `"""` comme dans `hyperbolic`
+# * pas utile de répéter le nom de l’objet, qui est extrait automatiquement de la signature (DRY)
 # * la première ligne décrit brièvement ce que fait l’objet
 # * la deuxième ligne est vide
-# * les lignes suivantes décrivent l’objet avec plus de détails
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### format des *docstrings*
+# * les lignes suivantes décrivent l’objet avec plus de détails - notamment les paramètres, etc...
 
 # %% [markdown]
-# * historiquement basé sur ReST, mais jugé peu lisible
-# * il y a plusieurs conventions pour le contenu du docstring
-# * voir principalement `sphinx` pour l'extraction automatique et la mise en forme
+# ### format et exemple
+#
+# * historiquement le contenu du docstring était basé sur ReST, mais jugé peu lisible
+# * du coup pas forcément hyper-bien standardisé - plusieurs conventions existent dans le code disponible
 # * recommande personnellement:
 #   * styles `google` et/ou `numpy` [voir doc ici](https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html)
-#   * exemples slide suivant
-#   
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemple de *docstrings*
-
-# %% [markdown]
-# **exemple**
 #
-# * tel que publié  
-#   https://asynciojobs.readthedocs.io/en/main/API.html#asynciojobs.purescheduler.PureScheduler
+# ````{admonition} un exemple réaliste
 #
-# * source  
-# https://github.com/parmentelat/asynciojobs/blob/main/asynciojobs/purescheduler.py#L44
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### les *type hints* sont utiles
-
-# %% [markdown]
-# il est possible de typer les paramètres et le retour de la fonction
-
-# %%
-def type_hints_1(x: int, y: float) -> str:
-    """
-    pour des types simples
-    """
-    ...
-
-
-# %%
-# un peu plus compliqué (attention, nécessite 3.9)
-
-def type_hints_2(x: tuple[int, str, bool],
-                 y: dict[str, list[int]]) -> None:
-    ...
-
-
-# %% [markdown]
-# on en reparlera, mais un des principaux intérêts des *type hints* c'est précisément pour améliorer la documentation et faciliter l'usage de la librairie en question
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## digression : conventions de style
-
-# %% [markdown]
-# * d'après PEP8
-# * utiliser une (ou plusieurs) ligne(s) vide(s)  
-#   pour séparer les fonctions, classes  
-#   et les grands blocs d’instructions
+# voici un exemple sur une librairie réelle, et qui suit un *workflow* assez commun:
 #
-# * espace autour des opérateurs et après les virgules
-#
-# ```python
-# a = f(1, 2) + g(3, 4)
-# ```
-#
-# * des espaces autour de l'`=`, et **pas** après la fonction  
-#   ~~`f (1, 2)`~~ un espace en trop `f(1, 2)`  
-#   ~~`a=f(1, 2)`~~ manque des espaces `a = f(1, 2)`
-#
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### chasses de caractères
-
-# %% [markdown]
-# * chasses de caractères 
-#   * une classe s'écrira `MaClasse`
-#   * une instance s'écrira `ma_classe` ou `maclasse`
-#   * une fonction ou méthode ressemblera à `ma_fonction()`
-#   * les packages et modules sont aussi en minuscules
-#   * une globale à un module devrait être `EN_MAJUSCULES`
-
-# %%
-# module en minuscule, classe en chasse mixte
-from argparse import ArgumentParser
-
-# %% tags=["gridwidth-1-2"]
-# un contrexemple
-# bien que ceci appartienne à la librairie standard
-# ici le premier 'datetime' est un nom de classe
-# et devrait s'appeler 'DateTime'
-# trop tard pour rectifier !
-from datetime import datetime
-
-# %% tags=["gridwidth-1-2"]
-# du coup on recommande
-from datetime import datetime as DateTime
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## reprenons : l'instuction `return`
-
-# %% [markdown]
-# * un appel de fonction est **une expression**
-# * le **résultat** de cette expression est spécifié  
-#   dans le corps de la fonction par l'instruction `return`
-#
-# * le **premier** `return` rencontré provoque   
-#   **la fin** de l'exécution de la fonction (￮)
-#
-# * si la fonction se termine **sans rencontrer** un `return`
-#   * on retourne `None`
-#   * `None` est un mot-clé de Python,  
-#     qui désigne un objet unique (singleton)
-#     
-# ````{admonition} xxx
-#
-# (￮) sauf en cas de `finally` comme on va le voir tout de suite
-#     
+# - le source est posté sur `github.com`
+# - à chaque commit, un *webhook* informe `readthedocs.io` et la doc est recalculée
+# - le moteur pour recalculer cette doc est l'outil `Sphinx`
+# - voici la doc telle que publiée sur `readthedocs.io`  
+#   <https://asynciojobs.readthedocs.io/en/main/API.html#asynciojobs.purescheduler.PureScheduler>
+# - et le code source correspondant sur github
+#   <https://github.com/parmentelat/asynciojobs/blob/main/asynciojobs/purescheduler.py#L44>
 # ````
-#     
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### `return` et `finally``
 
 # %% [markdown]
-# * si l’expression `return` se trouve à l'intérieur  
-#   d'un `try` avec une clause `finally`
+# ## PEP8
 #
-#   * la clause `finally` est exécutée avant de quitter la fonction
-#   * voir la section sur les exceptions 
-#     pour comprendre la sémantique de l'instruction `try .. finally`
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## passage d’arguments et références partagées
+# d'après la PEP8, on doit
+# * utiliser une (ou plusieurs) ligne(s) vide(s) pour séparer les fonctions, classes et les grands blocs d’instructions
+# * rappel: les noms de fonctions sont en minuscules
+# * rappel: espace autour des opérateurs et après les virgules  
+#   `a = f(1, 2) + g(3, 4)`
+# * rappel: des espaces autour de l'`=`, et **pas** après la fonction  
+#   `f(1, 2)` et non pas ~~`f (1, 2)`~~ car un espace en trop   
+#   `a = f(1, 2)` et non pas ~~`a=f(1, 2)`~~ car manque des espaces 
 
 # %% [markdown]
+# ## passage d’arguments et références partagées
+#
 # * le passage de paramètres se fait par référence
 # * ce qui crée donc des références partagées
+# * et donc une fonction peut modifier les objets qu'on lui passe
 
 # %% slideshow={"slide_type": "slide"}
 # nous allons illustrer ce mécanisme de 

@@ -104,6 +104,36 @@ HTML(filename="_static/style.html")
 # | 2    | `Mixte`     | ~~`minuscule`~~ (sauf types prédéfinis) |
 # | 2    | `DeuxMots`  | ~~`MAJUSCULE`~~ |
 
+# %% [markdown]
+# ````{admonition} exemples
+#
+# ```python
+# # module en minuscule, classe en chasse mixte
+# from argparse import ArgumentParser
+#
+# # fonction en minuscule, variable en minuscule
+# def init(config):
+#     ...
+#
+# ```
+# ````
+
+# %% [markdown] tags=[]
+# ````{admonition} un contrexemple
+# :class: warning admonition-small
+#
+# en théorie toute la librairie standard suit la PEP8  
+# sauf que certains très vieux modules n'étaient pas dans les clous - et pour ne pas casser le code c'est resté comme ça...
+#
+# ```python
+# # ici le second 'datetime' est un nom de classe, et devrait donc s'appeler 'DateTime'
+# from datetime import datetime
+#
+# # du coup on recommande de l'importer comme ceci
+# from datetime import datetime as DateTime
+# ```
+# ````
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## largeur de la page
 #
