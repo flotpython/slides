@@ -46,6 +46,18 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## attributs de classe
+#
+# dans (l'espace de nom d')une classe, on peut mettre 
+#
+# * des méthodes (on le savait) 
+# * et aussi attributs *normaux* - qui référencent des données
+#
+# rien de nouveau point de vue syntaxe : 
+#
+# * on écrit juste la déclaration dans la classe,
+# * au même niveau d'imbrication que les méthodes
+#
+# voyons cela sur un exemple
 
 # %% cell_style="center"
 class Student:

@@ -35,151 +35,169 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # POO & héritage
+# # attributs & héritage
 
 # %% [markdown]
 # ## pour réutiliser du code en python
 #
-# * fonctions
-#   * pas d'état après exécution
-# * modules
-#   * garde l'état
-#   * une seule instance par programme
-# * **classes**
-#   * **instances multiples**
-#   * **chacune garde l'état**
-#   * **héritage**
+# **DRY = *don't repeat yourself*** : *cut'n paste is evil*
+#
+# ```{list-table}
+#
+# * - fonctions
+#   - pas d'état après exécution
+# * - modules
+#   - garde l'état, une seule instance par programme
+# * - **classes**
+#   - **instances multiples**, **chacune garde l'état**, **héritage**
+# ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### programmation orientée objet
+# %% [markdown] tags=[]
+# ## programmation orientée objet
 #
 # pourquoi et comment ?
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# #### deux objectifs
 #
-# * modularité
-# * réutilisabilité
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# #### deux moyens
+# ```{list-table}
 #
-# * espaces de nom
-# * héritage
+# * - objectif
+#   - réutilisabilité, donc
+# * - comment
+#   - modularité & héritage (a.k.a. espaces de nom et recherche d'attribut)
+# ```
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### modularité & réutilisabilité
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# * du code modulaire
-#   * grouper le code dans une classe
-#   * grouper les données dans un objet
+# %% [markdown] tags=[]
+# ### réutilisabilité & modularité
 #
-# * plus on découpe en petits morceaux
-#   * plus on a de chances de pouvoir réutiliser
+# une façon d'écrire du code **modulaire**:  
+#
+# * regrouper *le code* dans une classe et *les données* dans un objet  
+# * de cette façon, la classe constitue *un tout cohérent* (**modularité**)
+# * l'*encapsulation* consiste à séparer l'*interface* (les méthodes) et l'*implémentation*
+# * le code qu utilise la classe n'utilise que l'*interface*
+# * ce qui permet de garantir certains invariants
+# * et de cette façon on se réserve le droit de changer l'implémentation,  
+#   sans avoir avoir à modifier le code qui utilise la classe
+#
+# ````{admonition} remarques
+#
+# - plus on découpe en petits morceaux, plus on a de chances de pouvoir réutiliser
+# - en Python, l'encapsulation est moins contraignante que des langages plus dogmatiques comme C++; 
+#   ici pas de public/protected/private, on se base sur des conventions de nommage
+# ````
 
-# %% [markdown] tags=["gridwidth-1-2"]
-# * DRY *don't repeat yourself*
-#   * *cut'n paste is evil*
-# * code générique
-#   * ex: un jeu fait "avancer" une collection d'objets
-#   * dès qu'un objet explique comment il avance
-#   * il peut faire partie de la simulation
-# * c'est là qu'intervient l'héritage
+# %% [markdown] tags=[]
+# ### réutilisabilité & héritage
+#
+# une autre approche consiste à écrire du code **générique**
+#
+# * par exemple, un moteur de jeu fait "avancer" une collection d'objets
+# * et fournit quelques objets de base, facilement extensibles (grâce à l'**héritage**)
+# * dès qu'un objet explique comment il avance, il peut faire partie du jeu
+#
+# ````{admonition} un exemple intéressant
+#
+# un exemple de librairie qui utilise massivement ce trait est [la librairie arcade](https://api.arcade.academy/en/latest/)  
+# et par exemple [ce petit programme de démo](https://api.arcade.academy/en/latest/examples/sprite_move_keyboard.html#sprite-move-keyboard)
+#
+# pour écrire un jeu on n'a pas besoin d'écrire la boucle d'événements (*mainloop*), c'est du code générique  
+# on se contente d'hériter des classes fournies par la librairie
+# ````
+#
+# dans les deux cas, pour bien comprendre les classes en Python, il faut comprendre deux mécanismes fondamentaux, qui sont
+#
+# - la notion d'espace de nom
+# - et la recherche d'attributs
 
 # %% [markdown]
 # ## espaces de nom
 #
-# * tous les objets qui sont
-#   * un module
-#   * une classe
-#   * une instance (sauf des classes *builtin*)
-# * constituent chacun **un espace de nom**
-#   * i.e. une association *attribut* → *objet*
+# et pour commencer parlons des espaces de nom:
+#
+# * tous les objets qui sont **un module**, **une classe** ou **une instance**
+# * constituent chacun **un espace de nom**, *i.e.* une association *attribut* → *objet*
+#
+# ````{admonition} enfin presque
+# :class: dropdown
+#
+# ce n'est pas le cas pour les instances des types natifs, mais bon..
+# ````
 
 # %% [markdown]
 # ### espaces de nom - pourquoi
 #
 # * permet de lever l'ambigüité en cas d'homonymie
-#   * si 2 modules utilisent tous les 2 une globale `truc`
-#   * elles peuvent coexister sans souci
-# * les espaces de nom sont imbriqués (*nested*)
-#   * ex. `package.module.classe.methode`
-# * on peut accéder à tous les objets
-#   * dès qu'on sait le faire à partir d'une variable
-#   * par exemple un module importé
-# * l'héritage rend cela dynamique
-#   * i.e. la résolution des attributs **est faite à *runtime***
+#   * par ex. si 2 modules utilisent tous les 2 une globale `truc`, elles peuvent coexister sans souci
+# * les espaces de nom sont imbriqués (*nested*) - par ex. `package.module.classe.methode`
+# * l'héritage rend cela dynamique, *i.e.* la résolution des attributs **est faite à *runtime***
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### espaces de nom - variables et attributs
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# #### deux mondes étanches
+# ### variables et attributs
 #
-# * variables
-# * attributs
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# #### se mélangent
+# ce qui nous donne l'occasion d'insister sur ceci; c'est assez basique mais ça va mieux en le disant:  
+# ```{image} ../media/variable-attribut.svg
+# :align: center
+# :width: 300px
+# ```
 #
-# * apparemment seulement
-# * apprenez à bien lire
-
-# %% [markdown]
-# typiquement dans une expression comme `a.b.c`
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# * `a` est une **variable**
-
-# %% [markdown] tags=["gridwidth-1-2"]
-# * `b`, et `c` sont des **attributs**
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
-# ##### résolution des **variables** : statique
+# dans l'expression `foo.bar.tutu()`, il y a une différence fondamentale dans la nature de la variable et des attributs:
 #
-# * entièrement **lexical**
-# * en remontant dans le code
-# * avec les règles LEGB  
-#   local, englobant, global, *builtin*
-
-# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
-# ##### résolution des **attributs** : dynamique
+# - la *variable* est recherchée **dans le code du programme**; on parlera un peu plus tard de la notion de **portée des variables**, mais pour faire court on va chercher la variable `foo` d'abord dans la fonction où se trouve ce code (y compris les paramètres), puis si on ne trouve pas dans la fonction englobante, etc..
+#   on parle de **liaison lexicale**, un terme bien savant qui veut juste dire qu'on peut savoir avec certitude à quoi correspond la variable **rien qu'en lisant le programme**
+# - par contre, et c'est le point qui nous importe, pour calculer `bar` à partir de (l'objet référencé par) `foo`, le calcul est fait **à *run-time***, c'est-à-dire à l'exécution - on parle de **liaison dynamique**: il faut que l'objet `foo` soit un espace de nom, et disons, pour faire simple à ce stade, qu'il contienne l'attribut `bar`; bien entendu le processus est répété pour trouver `tutu` à partir de (l'objet référencé par) `foo.bar`
 #
-# * dans le monde des **objets**
-# * en remontant les espaces de nom
-# * essentiellement **dynamique**  
-#   *i.e.* à *runtime*
-
-# %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# *par ex* dans `a.b.c`
+# ````{admonition} c'est simplifié
+# :class: admonition-smaller
 #
-# * la variable `a` est identifiée lexicalement  
-#   (variable locale, paramètre de fonction,  
-#    voir par exemple le cas des clôtures)
+# on va voir justement que la recherche d'attributs est plus compliquée que ça, mais l'important est de bien comprendre la différence entre les deux types de liaison:
 #
-# * la variable référence un objet  
-#   et `b` est cherché comme un attribut à partir de cet objet
-
-# %% [markdown] slideshow={"slide_type": ""} cell_style="center"
-# ## résolution d'attribut pour la lecture
+# ```{list-table}
 #
-# * la **résolution des attributs**
-# * fournit la **mécanique de base** de la POO
-# * et sous-tend notamment (mais pas que)  
-#   la mécanique de l'héritage
+# * - variable
+#   - liaison lexicale, en remontant dans le code
+# * - attribut
+#   - liaison dynamique, en remontant dans les espaces de nom
+# ```
+# ````
 
 # %% [markdown] cell_style="center"
 # ### lecture ou écriture des attributs
 #
-# on distingue deux cas
+# nous allons voir cela en détail tout de suite, et pour cela il nous faut distinguer deux cas
 #
-# * attribut en écriture  
-#    `obj.attribute = ...`  
-#    (i.e. à gauche d'une affectation)
+# ```{list-table}
 #
-# * résolution des attributs en lecture  
-#     `obj.attribute` 
+# * - attribut en **écriture**  
+#   - `obj.attribute = ...`  
+#   - i.e. à gauche d'une affectation
+# * - attributs en **lecture** 
+#   - `obj.attribute` 
+#   - les autres cas
+# ```
+
+# %% [markdown] slideshow={"slide_type": ""}
+# ## écriture d'attribut: pas de recherche
+#
+# quand on **écrit** un attribut dans un objet, le mécanisme est simple:  
+# on écrit **directement dans l'espace de nom** de l'objet
+#
+# ````{admonition} exemple typique
+#
+# en entrant dans le constructeur, l'objet `self` n'a pas encore l'attribut `name`  
+# et quand on écrit `self.name = name`, on le crée
+# ````
+#
+# ````{admonition} lecture ou écriture ?
+# :class: admonition-small seealso
+#
+# on considère que c'est une écriture si le terme `obj.attribute` est **à gauche** d'une affectation
+# ````
+
+# %% [markdown] slideshow={"slide_type": ""} cell_style="center"
+# ## résolution d'attribut pour la lecture
+#
+# pour la lecture par contre, le mécanisme de résolution des attributs est plus élaboré
+# * fil ournit la **mécanique de base** de la POO
+# * et sous-tend notamment (mais pas que) la mécanique de l'héritage
 
 # %% [markdown]
 # ### lecture: recherche de bas en haut
@@ -189,11 +207,10 @@ HTML(filename="_static/style.html")
 #
 # * le chercher dans l'espace de nom de l'objet lui-même
 # * sinon dans l'espace de nom de sa classe
-# * sinon dans les super-classes  
-#   (on verra les détails plus loin)
+# * sinon dans les super-classes (on verra les détails plus loin)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## ex1. de résolution d'attribut
+# ### ex1. de résolution d'attribut
 
 # %% tags=["gridwidth-1-2"]
 # cas simple sans héritage
@@ -206,8 +223,7 @@ class Vector:
         self.y = y
 
     def length(self):
-        return math.sqrt(
-            self.x**2 + self.y**2)
+        return math.sqrt(self.x**2 + self.y**2)
 
 
 # %% tags=["gridwidth-1-2"]
@@ -225,7 +241,7 @@ vector.length()
 # %load_ext ipythontutor
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### 2 espaces de nom distincts
+# #### 2 espaces de nom distincts
 
 # %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # * la classe `Vector` a les attributs
@@ -249,77 +265,53 @@ class Vector:
 
 vector = Vector(2, 2)
 
-# %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
-# ### digression : la fonction `vars()`
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ````{admonition} les fonctions vars() et dirs()
+# :class: admonition-small
 #
-# pour visualiser la même chose sans ipythontutor  
-# sachez que l'on peut inspecter le contenu d'un espace de noms
-# avec la fonction `vars(obj)`
+# ce n'est pas forcément à retenir, mais c'est utile si on essaie d'inspecter les espaces de nom sans ipythontutor:
 #
-# ````{admonition} surtout utile pour le cours    
-# :class: admonition-x-small
+# - avec la fonction *builtin* `vars(obj)`, on peut inspecter le contenu d'un espace de noms (et **seulement lui**) 
+# - avec la *builtin* `dirs(obj)` on peut cette fois accéder à **l'ensemble des attributs** qui sont disponibles sur `x`, c'est donc la somme des attributs trouvés:
+#     * dans l'espace de nom de `x`
+#     * dans l'espace de nom de sa classe
+#     * et de ses super-classes
 #
-# ce n'est pas forcément une notion à retenir, mais on va s'en servir dans la suite  
-# pour regarder le contenu des espaces de nom
+# enfin notez que, quand on se livre à ce genre d'introspection, on enlève souvent, pour clarifier, les attributs qui contiennent `__`
 # ````
 
-# %% tags=["level_intermediate"]
-# dans l'instance
-vars(vector)
-
-# %% slideshow={"slide_type": ""} tags=["level_intermediate"]
-# les attributs 'intéressants' de Vector
-[att for att in vars(Vector) if '__' not in att or att == '__init__']
-
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### la  fonction `dir()`
+# #### résumé
 #
-# * avec la fonction *builtin* `dir(x)`, on peut accéder  
-#   à l'ensemble des attributs qui sont disponibles sur `x`
-#
-# * c'est donc la somme des attributs trouvés:
-#   * dans l'espace de nom de `x`
-#   * dans l'espace de nom de sa classe
-#   * et de ses super-classes
-
-# %% tags=["gridwidth-1-2"]
-# sur l'instance
-
-# (on enlève le bruit)
-[x for x in dir(vector) if '__' not in x]
-
-# %% tags=["gridwidth-1-2"]
-# sur la classe
-
-[x for x in dir(Vector) if '__' not in x]
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### conclusion
-#
-# dans ce cas simple de la classe `Vector` et de l'instance `vector`:
+# donc dans ce cas simple de la classe `Vector` et de l'instance `vector`:
 #
 # * `vector.x` fait référence à l'attribut posé **directement sur l'instance**
 # * `vector.length` fait référence à la méthode qui est **dans la classe**
 
 # %% [markdown] slideshow={"slide_type": ""}
-# ## ex2. résolution d'attribut avec héritage
+# ### ex2. résolution d'attribut avec héritage
 #
-# * jusqu'ici on n'a pas d'héritage  
-#   puisque pour l'instant on n'a qu'une classe
+# jusqu'ici on n'a pas d'héritage puisque pour l'instant on n'a qu'une classe  
+# mais l'héritage est une **simple prolongation** de cette logique
 #
-# * mais l'héritage  
-#   est une **simple prolongation** de cette logique
+# on verra un peu plus loin la syntaxe pour créer une sous-classe, mais voici déjà un premier exemple simplissime (et un peu bidon du coup)
 
 # %%
-# une classe fille sans aucun contenu
+# ici pour l'instant, une classe fille sans aucun contenu
 class SubVector(Vector):
     pass
 
 subvector = SubVector(6, 8)
 
-# comment fait-on pour trouver subvector.length ?
+# grâce à l'héritage on peut tout à fait écrire ceci
 subvector.length()
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# comment fait-on pour trouver `subvector.length` ? c'est exactement le même mécanisme qui est à l'oeuvre ! pour évaluer `subvector.length()`, on cherche l'attribut `length` 
+# * dans l'instance `subvector` : non
+# * dans sa classe `SubVector` : non
+# * dans la super-classe `Vector` : ok, on prend ça
 
 # %% slideshow={"slide_type": "slide"}
 # %%ipythontutor width=1000 height=400 curInstr=8
@@ -335,78 +327,32 @@ class SubVector(Vector):
 
 subvector = SubVector(6, 8)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# * c'est exactement le même mécanisme qui est à l'oeuvre :
-# * quand on va vouloir appeler `subvector.length()`  
-#   on cherche l'attribut `length` 
-#   * dans l'instance `subvector` : non
-#   * dans sa classe `SubVector` : non
-#   * dans la super-classe `Vector` : ok, on prend ça
 
-# %% [markdown] slideshow={"slide_type": ""}
-# ## écriture d'attribut: pas de recherche
+# %% [markdown] tags=["level_intermediate"]
+# ## lecture *vs* écriture - cas limites 
 #
-# * le mécanisme de résolution d'attribut qu'on vient de voir  
-#   ne fonctionne que **pour la lecture des attributs**
+# (avancé)
 #
-# * quand on **écrit** un attribut dans un objet,  
-#   le mécanisme est beaucoup plus simple:  
-#   on écrit **directement dans l'espace de nom** de l'objet
+# il faut se méfier parfois: il y a écriture si  et seulement si il y a **affectation**; du coup dans les deux phrases suivantes, qui semblent pourtant faire la même chose, en réalité la mécanique est **totalement différente** !
 #
-# * on considère que c'est une écriture  
-#   si le terme `obj.attribute` est **à gauche** d'une affectation  
+# ```{list-table}
 #
-# * typiquement `self.name = name` dans le constructeur
-
-# %% tags=["gridwidth-1-2"]
-# quand on évalue un attribut en lecture
-# on recherche en partant de l'objet
-# et donc ici on trouve la méthode
-# dans l'espace de noms de la super-classe
-subvector.length()
-
-# %% tags=["gridwidth-1-2"]
-# mais quand on écrit un attribut
-# c'est une autre histoire complètement
-# l'attribut est créé directement dans l'objet
-subvector.foo = 12
-
-'foo' in vars(subvector)
-
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ### lecture *vs* écriture - cas limites
-
-# %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
-# * il y a écriture si  
-#   et seulement si il y a **affectation**
-#
-# * dans 1. il y a
-#   * **lecture** de l'attribut `liste`
-#   * même si on modifie l'objet
-# * dans 2. il y a
-#   * **écriture de l'attribut**
-#   * donc écrit dans (l'espace de nom) `obj`
-
-# %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
-# * 1. lecture !
-#
-# ```python
-# obj.liste.append('foo')
+# * - `obj.liste += ['foo']`
+#   - **écriture**
+# * - `obj.liste.append('foo')`
+#   - **lecture** !
 # ```
 #
-# * 2. écriture
-#
-# ```python
-# obj.liste += ['foo']
-# ```
+# alors même que dans les deux cas il y a bien modification des données, évidemment
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## héritage - syntaxe
+# ## héritage
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### syntaxe
 
 # %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
-# une classe peut hériter d’une  
-#   (ou plusieurs) autre classes
+# une classe peut hériter d’une (ou plusieurs) autre classes
 #   
 # ```python
 # # la syntaxe est
@@ -423,21 +369,24 @@ subvector.foo = 12
 #   * A est une **sous-classe** de B
 #   * et B est la **super-classe** de A
 # * de ce qui précède:
-#   * la sous-classe hérite  
-#     (des attributs)  
-#     de sa (ses) super-classe(s)
-#
-#   * l’instance hérite de la  
-#     classe qui la crée
+#   * la sous-classe hérite (des attributs) de sa (ses) super-classe(s)
+#   * l’instance hérite de la classe qui la crée
 
 # %% [markdown]
-# ## `isinstance()` et `issubclass()`
+# ### `isinstance()` et `issubclass()`
 #
-# * `isinstance(x, class1)` retourne `True` si   
-#   `x` est une instance de `class1` **ou d’une super classe**
+# * `isinstance(x, class1)` retourne `True` si `x` est une instance de `class1` **ou d’une super classe**
+# * `issubclass(class1, class2)` retourne `True` si `class1` est une sous-classe de `class2`
 #
-# * `issubclass(class1, class2)` retourne `True` si  
-#   `class1` est une sous-classe de `class2`
+# ````{admonition} préférez isinstance() plutôt que type()
+# :class: attention
+#
+# pour savoir si un objet est d'un certain type, on peut aussi penser à utiliser `type(obj) is Class`  
+# toutefois il est **de beaucoup préférable** le plus souvent de faire `isinstance(obj, Class)` et cela pour deux raisons
+#
+# - d'abord parce `isinstance()` vérifie aussi les super-classes de `Class`
+# - ensuite, mais c'est de la commodité, on peut passer plusieurs types à isinstance, comme e.g. `isinstance(x, (int, float)`
+# ````
 
 # %% tags=["gridwidth-1-2"]
 # A est la super-classe
@@ -463,15 +412,7 @@ isinstance(a, (A, B))
 
 
 # %% [markdown]
-# ````{admonition} mieux que type()
-# :class: attention
-#
-# * on peut aussi passer à `isinstance` un tuple de classes/types
-# * ces fonctions *builtin* sont à privilégier par rapport à l'utilisation de `type()`
-# ````
-
-# %% [markdown]
-# ## `super()`
+# ### `super()`
 #
 # * utile lorsque la spécialisation  
 #   consiste à ajouter ou modifier  
@@ -484,7 +425,7 @@ isinstance(a, (A, B))
 #   le nom de la classe mère (code + générique)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `super()` dans le constructeur
+# #### `super()` dans le constructeur
 
 # %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # illustration de super() 
@@ -511,7 +452,7 @@ d = D(100, 200)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `super()` dans une méthode standard
+# #### `super()` dans une méthode standard
 
 # %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # super() est souvent rencontrée
@@ -542,18 +483,20 @@ d = D(); d.f()
 # ## résumé
 #
 # * les instances et classes sont des objets mutables (sauf classes *builtin*)
-# * on utilise `isinstance()` pour tester le type d'un objet
 # * chaque instance et chaque classe est un espace de nom
 # * lorsqu'on écrit un attribut, on écrit directement dans l'espace de nom de cet objet
 # * en lecture, on résoud la référence d'un attribut de bas en haut
+# * on utilise `isinstance()` pour tester le type d'un objet
 # * une méthode peut faire référence à la super-classe avec `super()`
 # * en général
 #   * les classes ont des attributs de type méthode
 #   * les objets ont des attributs de type donnée
-#   * mais le modèle est flexible
+#   * mais le modèle est flexible, dans le notebook suivant on va voir quelques exceptions notables
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ## anx1: MRO & graphe d’héritage
+# ## annexe: MRO & graphe d’héritage
+#
+# (très avancé)
 
 # %% [markdown] slideshow={"slide_type": ""} tags=["level_intermediate"]
 # ### graphe d'héritage
@@ -562,7 +505,10 @@ d = D(); d.f()
 # * allant des super-classes aux instances
 
 # %% [markdown] tags=["level_intermediate", "gridwidth-1-2"]
-# ![arbre de classes](media/classes.png)
+# ```{image} media/classes.png
+# :align: center
+# :width: 300px
+# ```
 
 # %% tags=["level_intermediate", "gridwidth-1-2"]
 class C1:
@@ -579,16 +525,16 @@ o2 = C()
 # %% [markdown] tags=["level_intermediate"]
 # ### MRO: *method resolution order*
 #
-# * MRO : method resolution order
-# * l’algorithme est le suivant
-#   * liste toutes les super-classes en utilisant  
-#     un algorithme DFLR (depth first, left to right)
+# lors de la recherche, si on ne trouve pas dans l'objet ni dans sa classe, il faut décider dans quel ordre on recherche dans les super-classes - pour le cas pathologique où l'attribut serait présent dans plusieurs d'entre elles
 #
-#   * si classe dupliquée,  
-#     **ne garder que la dernière** occurrence
+# on utilise pour cela le *MRO : method resolution order*; l’algorithme est le suivant
+# * liste toutes les super-classes en utilisant un algorithme DFLR (depth first, left to right)
+# * si classe dupliquée, **ne garder que la dernière** occurrence
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate", "gridwidth-1-2"]
-# ![MRO](media/mro.png)
+# ```{image} media/mro.png
+# :align: center
+# ```
 
 # %% tags=["level_intermediate", "gridwidth-1-2"]
 class A: pass
@@ -596,50 +542,6 @@ class B(A): pass
 class C(A): pass
 class D(B, C): pass
 
-
 # %% [markdown] tags=["level_intermediate"]
 # * parcours DFLR: `D`, `B`, `A`, `object`, `C`, `A`, `object`
 # * suppressions : `D`, `B`, ~~`A`~~, ~~`object`~~, `C`, `A`, `object`
-
-# %% [markdown] tags=["level_intermediate"]
-# ## anx2: attributs de classe
-#
-# dans (l'espace de nom d')une classe, on peut mettre 
-#
-# * des méthodes (on le savait) 
-# * et aussi attributs *normaux* - qui référencent des données
-#
-# rien de nouveau point de vue syntaxe : 
-#
-# * on écrit juste la déclaration dans la classe,
-# * au même niveau d'imbrication que les méthodes
-#
-# voyons cela sur un exemple
-
-# %% slideshow={"slide_type": "slide"} tags=["level_intermediate", "gridwidth-1-2"]
-class Factory:
-    # un compteur global à la classe
-    # dans lequel on va pouvoir mémoriser 
-    # tous les labels de toutes les instances
-    all_labels = []
-
-    def __init__(self, label):
-        self.label = label
-        Factory.all_labels.append(label)
-        # on aurait pu écrire
-        # self.all_labels.append(label)
-        # mais c'est dangereux !
-
-Factory.all_labels
-
-# %% slideshow={"slide_type": ""} tags=["level_intermediate", "gridwidth-1-2"]
-f1 = Factory('premier')
-Factory.all_labels
-
-# %% slideshow={"slide_type": ""} tags=["level_intermediate", "gridwidth-1-2"]
-f2 = Factory('second')
-Factory.all_labels
-
-# %% tags=["level_intermediate"]
-# on trouve le même objet quel que soit l'endroit d'où on part
-f1.all_labels is f2.all_labels is Factory.all_labels
