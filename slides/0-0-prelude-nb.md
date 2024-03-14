@@ -107,15 +107,11 @@ on peut aussi utiliser la flêche triangulaire dans la menubar, mais c'est beauc
 à vous d'essayer; bien sûr vous pouvez revenir en arrière et modifier une cellule, mais il faut bien penser à toujours l'évaluer
 
 ```{code-cell} ipython3
-:cell_style: split
-
 X = 10 * 30
 X
 ```
 
 ```{code-cell} ipython3
-:cell_style: split
-
 L = [1, X]
 L
 ```
