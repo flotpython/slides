@@ -3,11 +3,11 @@
 # jupyter:
 #   celltoolbar: Edit Metadata
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted
+#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -rise, -version
+#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -27,26 +27,19 @@
 # Licence CC BY-NC-ND, Thierry Parmentelat & Aurélien Noce
 
 # %% [markdown]
-# # fonctions : intro en 4 vidéos
+# # fonctions : sommaire vidéos
 
 # %%
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown]
-# ## objectifs
-#
-# le programme pour cette partie
-#
-# * étudier les objets de type fonction, et notamment
-#   * le passage de paramètre
-#   * les fonctions comme citoyen de niveau 1
-#   * la visibilité des variables  
-
-# %% [markdown]
 # ## vidéos
 
-# %% hide_input=false
+# %% [markdown]
+# ***évaluez la cellule suivante*** pour faire apparaitre le sommaire des vidéos, en 4 parties
+
+# %% hide_input=false tags=["remove-input"]
 # les vidéos sur youtube
 parts = (
     ("le passage des arguments", "8hLlyUbXZ3U", "12:53"),
@@ -55,10 +48,6 @@ parts = (
     ("les générateurs", "DqYM_XMVtKw", "7:22"),
 )
 
-# %% [markdown]
-# ***évaluez la cellule suivante*** pour faire apparaitre le sommaire des vidéos, en 4 parties
-
-# %% hide_input=false scrolled=false
 from IPython.display import display, HTML, IFrame
 
 def index_as_embedded():

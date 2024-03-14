@@ -37,7 +37,18 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # fonctions: généralités
+# # fonctions: rappels
+
+# %% [markdown]
+# ## objectifs de cette section
+#
+# dans cette partir consacrée aux fonctions, nous allons approfondir le sujet, et notamment creuser
+#
+# * le passage de paramètres
+# * les fonctions comme citoyen de niveau 1
+# * la visibilité des variables
+#
+# mais pour commencer, voici quelques rappels et généralités sur ce thème
 
 # %% [markdown]
 # ## pour réutiliser du code en python
@@ -129,7 +140,7 @@ def type_hints_1(x: int, y: float) -> str:
 
 
 # %% tags=["gridwidth-1-2"]
-# un peu plus compliqué (depuis la nécessite 3.9)
+# un peu plus compliqué (depuis la 3.9)
 
 def type_hints_2(x: tuple[int, str, bool],
                  y: dict[str, list[int]]) -> None:
