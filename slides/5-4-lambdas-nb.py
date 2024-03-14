@@ -35,12 +35,11 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
-# # fonctions lambda
-
 # %% [markdown]
-# * `lambda` est une *expression*, pas une *instruction*
-# * qui permet de créer **un objet fonction** anonyme et à la volée
+# # fonctions lambda
+#
+# `lambda` est une ***expression***, pas une ***instruction***  
+# qui permet de créer un objet **fonction anonyme** et à la volée
 
 # %% tags=["gridwidth-1-2"]
 # un objet fonction 
@@ -60,13 +59,11 @@ def anonymous(x):
 anonymous(10)
 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## `lambda` : une expression
-
 # %% [markdown]
+# ## `lambda` : une expression
+#
 # * elle peut donc apparaître  
 #   là où une fonction classique ne peut pas
-#
 # * typiquement à l'intérieur d'une expression
 # * par contre pas trop adapté pour du code compliqué 
 #   * doit pouvoir être écrit sous forme d'une seule expression
@@ -85,13 +82,11 @@ foo
 foo = lambda x: x*x
 foo
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## limitation de `lambda`
-
 # %% [markdown]
+# ## limitation de `lambda`
+#
 # * le corps d’une fonction lambda  
 #   doit tenir sur **une seule expression**
-#
 #   * uniquement applicable à des fonctions simples
 #   * pas de déclaration de variable locale
 #   * pas d'impact sur la portée des variables
@@ -118,23 +113,23 @@ f(1)
 def call(func, a, b):
     return(func(a, b))
 
-print(call(lambda a, b: a + b, 3, 5))
-print(call(lambda a, b: a * b, 3, 5))
+# j'appelle l'addition sur ces deux nombres
+call(lambda a, b: a + b, 3, 5)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## application au tri
+# %%
+# pareil avec la multiplication
+call(lambda a, b: a * b, 3, 5)
 
 # %% [markdown]
+# ## application au tri
+#
 # **Rappel :**
 #
 # * `sort()` est une **méthode** qui trie les listes en place
 # * `sorted()` est une **fonction** *built-in* qui trie n’importe quel itérable et retourne un **nouvel** itérateur
-
-# %% [markdown]
 # * argument `key`:  
 #   une fonction pour spécifier le critère de tri  
 #   typiquement une fonction lambda
-#
 # * argument `reverse`:  
 #   booléen qui définit l’ordre de tri  
 #   par défaut `reverse=False`: tri ascendant
@@ -144,24 +139,26 @@ sample = "This is a test string from Andrew".split()
 sample
 
 # %%
+# une copie triée de sample
 sorted(sample)
 
 # %% tags=["gridwidth-1-2"]
+# avec un autre critère
 sorted(sample, key=str.lower)
 
 
 # %% tags=["gridwidth-1-2"]
 # pareil que
-sorted(sample,
-       key=lambda s: str.lower(s))
+sorted(sample, key=lambda s: str.lower(s))
 
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ou encore
+# %% [markdown] slideshow={"slide_type": ""}
+# ou encore avec une autree donnée
 
 # %% slideshow={"slide_type": ""}
 student_marks = [('marc', 12), ('eric', 15), ('jean', 12), ('gabriel', 18)]
 
+# on n'indique pas comment trier : c'est l'ordre "naturel" des tuples
 sorted(student_marks)
 
 # %%
