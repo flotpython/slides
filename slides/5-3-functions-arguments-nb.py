@@ -185,9 +185,6 @@ foo(a)
 # ````{admonition} et deux variantes
 # :class: admonition-small
 #
-# on va faire abstraction de (C) et (D) pour l'instant, et [on verra plus bas](label-args-unpacking) comment ça fonctionne  
-# (et d'ailleurs c'est très simple...)
-#
 # ```{list-table}
 # * - (C)
 #   - `def foo(*args):`
@@ -196,7 +193,18 @@ foo(a)
 #   - `def foo(**kwds):`
 #   - les objets dans `kwds` (un dictionnaire) sont passés comme des arguments (B) nommés
 # ```
+# on va faire abstraction de (C) et (D) pour l'instant, et [on verra plus bas](label-args-unpacking) comment ça fonctionne  
+# (et d'ailleurs c'est très simple...)
+#
 # ````
+#
+# ````{admonition} ça devient vite incompréhensible !
+#
+# si on reste raisonnamble, cela fonctionne de bon sens  
+# mais attention aux mélanges trop hardis, cela devient vite inextricable
+# en cas de doute n'hésitez pas à tout nommer, ou en tous cas plus que strictement nécessaire
+# ````
+#
 
 # %% [markdown]
 # ## les paramètres
@@ -441,6 +449,7 @@ named_args1(a = 1, b = 2)
 # %% tags=[]
 named_args1(b = 2, c=3)
 
+
 # %% [markdown]
 # #### un seul `**kwds`
 #
@@ -453,13 +462,16 @@ named_args1(b = 2, c=3)
 # %% [markdown] tags=[]
 # ### paramètres
 #
-# dans un `def`, on peut combiner les différentes formes de déclarations de paramètres, mais **tous les ordres ne sont pas autorisés**  
-# on recommande *l’ordre suivant*
+# l'ordre dans lequel sont déclarés les différents types de paramètres est imposé par le langage  
+# historiquement à l'origine, on **devait déclarer dans cet ordre** :  
 #
-# 1. paramètres positionnels (`name`),
-# 1. paramètres par défaut (`name=value`),
-# 1. forme `*args` (une au maximum)
-# 1. forme `**kwds` (une au maximum
+# ```{list-table}
+#
+# * - positionnels,
+#   - avec défaut,
+#   - forme `*` (1 max),
+#   - forme `**` (1 max)
+# ```
 #
 # ````{admonition} une petite exception
 # :class: warning
@@ -473,11 +485,11 @@ named_args1(b = 2, c=3)
 # dans un appel de fonction, on recommande de matérialiser deux groupes
 #
 # 1. en premier les non-nommés:
-#   * argument(s) positionnels (`name`), 
-#   * forme(s) `*name`
+#    * argument(s) positionnels (`name`), 
+#    * forme(s) `*name`
 # 2. puis ensuite les arguments nommés
-#   * argument(s) nommés (`name=value`),
-#   * forme(s) `**name`
+#    * argument(s) nommés (`name=value`),
+#    * forme(s) `**name`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### exemple: appel
@@ -486,38 +498,163 @@ named_args1(b = 2, c=3)
 # une fonction passe-partout qui affiche juste ses paramètres 
 # pour nous permettre d'illustrer les appels 
 
-
-# pour rappel également
-# dans la définition de la fonction
-# on ne peut pas mentionner plusieurs * ou **
 def show_any_args(*args, **kwds):
     print(f"args={args} - kwds={kwds}")
 
 
 # %% tags=["gridwidth-1-2"]
+# les cas simples pour la voir marcher
+
 show_any_args(1)
 
 # %% tags=["gridwidth-1-2"]
+# et 
+
 show_any_args(x=1)
 
 # %% slideshow={"slide_type": "slide"}
 # on recommande de mettre les arguments non-nommés en premier
+
 show_any_args(1, 4, 5, 3, x = 1, y = 2)
 
 # %% slideshow={"slide_type": ""} tags=["raises-exception"]
 # car ceci est illégal et déclenche une SyntaxError
 
-foo(1, x=1, 4, 5, 3, y = 2)
+foo(1, x=1, 4, 5, 3, y=2)
 
 
 # %% [markdown]
 # ### exemple: définition
 
-# %%
-# même punition ici: SyntaxError, on n'a pas respecté le bon ordre
+# %% tags=["raises-exception"]
+# même punition ici: SyntaxError, on n'a pas respecté le bon ordre !
 
 def foo(b=10, a):
     pass
+
+
+# %% [markdown] slideshow={"slide_type": ""}
+# ## *keyword-only* / *positional-only* 
+#
+# (avancé)
+#
+# l'ordre dans lequel on devait déclarer les paramètres 
+#
+# ```{list-table}
+#
+# * - positionnels,
+#   - avec défaut,
+#   - forme `*` (1 max),
+#   - forme `**` (1 max)
+# ```
+#
+# reste une bonne approximation, mais:
+#
+# * en Python-3 on a introduit [les paramètres *keyword-only*](https://www.python.org/dev/peps/pep-3102/)
+#   * on peut ainsi définir un paramètre qu'il **faut impérativement** nommer lors de l'appel
+# * et également en 3.8 [les paramètres *positional-only*](https://docs.python.org/3/whatsnew/3.8.html#positional-only-parameters)
+#   * qui introduit des paramètres usuels qu'on **ne peut pas nommer** lors de l'appel
+#  
+# voyons comment marchent ces deux mécanismes
+
+# %% [markdown]
+# (label-keyword-only-argument)=
+# ### paramètre *keyword-only*
+#
+# on va prendre une fonction qui combine un peu tous les types de paramètres, et pour commencer on va les mettre dans l'ordre standard
+
+# %% slideshow={"slide_type": "slide"}
+# une fonction qui combine les différents types de paramètres
+
+def normal(a, b=100, *args, **kwds):
+    print(f"a={a}, b={b}, args={args}, kwds={kwds}")
+
+
+# %% [markdown]
+# et profitons-en pour voir comment on peut l'appeler et ce que ça donne:
+
+# %% tags=["gridwidth-1-2"]
+normal(1)
+
+# %% tags=["gridwidth-1-2"]
+normal(1, 2)
+
+# %% tags=["gridwidth-1-2"]
+normal(1, 2, 3)
+
+# %% tags=["gridwidth-1-2"]
+normal(1, 2, 3, bar=1000)
+
+# %%
+normal(1, 2, 3, bar=1000)
+
+
+# %% [markdown]
+# imaginons maintenant que je veuille **imposer à l'appelant de nommer `b`**  
+# pour cela il me suffit de déplacer **l'attrape-tout avant le paramètre `b`** comme ceci
+
+# %% slideshow={"slide_type": "slide"}
+# on peut déclarer un paramètre nommé **après** l'attrape-tout *args
+# du coup ici le paramètre nommé `b` devient un *keyword-only* parameter
+
+def must_name_b(a, *args, b=100, **kwds):
+    print(f"a={a}, b={b}, args={args}, kwds={kwds}")
+
+
+# %% [markdown]
+# avec cette déclaration, je **dois nommer** le paramètre `b`
+
+# %% tags=["gridwidth-1-2"]
+# je peux toujours faire ceci
+must_name_b(1)
+
+# %% tags=["gridwidth-1-2"]
+# mais si je fais ceci l'argument 2 
+# va aller dans args
+must_name_b(1, 2)
+
+# %%
+# pour passer b=2, je **dois** nommer mon argument
+must_name_b(1, b=2)
+
+
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
+# ### paramètre *positional-only*
+#
+# en général on peut toujours nommer, des arguments même si le paramètre, est positionnel
+
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
+# on peut nommer un paramètre positionnel
+
+def normal(a, b, c):
+    print(f"{a=} {b=} {c=}")
+
+
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
+# la preuve    
+normal(b=2, a=1, c=3)
+
+
+# %% [markdown]
+# imaginons que je veuille maintenant, au contraire **empêcher l'appelant de nommer `a`**  
+# pour cela je vais insérer artificiellement un `/` dans les paramètres; tous ceux qui sont déclarés **avant le `/`** seront dits *positional-only*, ce qui signifie qu'on ne pourra plus les nommer
+
+# %%
+# avec cette déclaration, on ne pourra plus nommer a
+
+def cannot_name_a(a, /, b, c):
+    print(f"{a=} {b=} {c=}")
+
+
+# %% slideshow={"slide_type": ""} tags=["raises-exception"]
+# la preuve
+
+cannot_name_a(b=2, a=1, c=3)
+
+# %%
+# par contre on peut toujours nommer les deux autres
+
+cannot_name_a(1, c=3, b=2)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -593,6 +730,23 @@ D = {'a': 1, 'c': 3, 'b': 2}
 
 # équivalent à func(a=1, b=2, c=3)
 f3(**D)
+
+# %% [markdown]
+# ### retombées sur la syntaxe de base
+#
+# sachez qu'on peut également faire ceci - qui n'a plus rien à voir avec les appels de fonction, mais qui utilise le même principe
+
+# %% tags=["gridwidth-1-2"]
+# construire une liste avec *args
+l1 = [2, 3]
+l2 = [4, 5]
+[1, *l1, *l2, 6]
+
+# %% tags=["gridwidth-1-2"]
+# pareil avec un dictionnaire
+d1 = {2: 'b', 3: 'c'}
+d2 = {4: 'd', 5: 'e'}
+{1: 'a', **d1, **d2, 6: 'f' }
 
 # %% [markdown]
 # ## piège fréquent avec les arguments par défaut
@@ -681,184 +835,26 @@ f(1)
 f(2)
 f(3)
 
-
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## associer arguments et paramètres (avancé)
-#
-# lorsque les arguments sont complexes, il faut un mécanisme pour associer paramètres et arguments  
-# dans le reste de cette section, on va tenter de voir cela le cas général
-#
-# ````{admonition} ça devient vite incompréhensible !
-#
-# si on reste raisonnamble, cela fonctionne de bon sens  
-# mais attention aux mélanges trop hardis, cela devient vite inextricable
-# en cas de doute n'hésitez pas à tout nommer, ou en tous cas plus que strictement nécessaire
-# ````
+# ## pour résumer
 
 # %% [markdown] slideshow={"slide_type": ""}
-# ### 2 groupes : positionnels et nommés
+# ### 2 groupes d'arguments : positionnels et nommés
 #
 # **attention**: les arguments ne sont pas pris dans l’ordre de l’appel !
 #
 # 1. en premier on résoud les arguments positionnels et `*args`
 # 2. puis les arguments nommés et `**kwds`
-#
-# ce qui est assez logique si on se souvient que  
-#
-# - `*args` concerne les arguments non nommés qui vont dans un tuple, et
-# - `**kwds` concerne les arguments nommés qui vont dans un dictionnaire
-#
-# voyons ça sur un exemple
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### associer les arguments aux paramètres
-
-# %% tags=["gridwidth-1-2"]
-def show_abcd(a, b, c, d):
-    print(dict(a=a, b=b, c=c, d=d))
-
-# pas de souci ici
-show_abcd(1, c = 3, *(2,), **{'d':4})
-
-# %% tags=["gridwidth-1-2"]
-# par contre ici on dit en fait 
-# b=2 mais aussi b=3 
-# à cause du *(3,)
-try:
-    show_abcd(1, b = 2, *(3,), 
-              **{'d':4})
-except TypeError as exc:
-    print("OOPS", exc)
 
 # %% [markdown]
-# l’argument nommé `b` est mis à `2`,  mais le tuple `*(3,)` assigne également `3` à `b`  
+# ### le bon ordre pour les paramètres
 #
-# pour comprendre, regardons l’exemple suivant
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### associer les arguments aux paramètres
-
-# %%
-show_any_args(1, b = 3, *(2,), **{'d':4})
-
-
-# %% [markdown]
-# * l’intérêt des arguments nommés est de ne pas avoir à se souvenir de l’ordre de la déclaration
-# * combiner des arguments nommés et une forme `*args` supprime ce bénéfice 
-# * puisqu’il faut se souvenir de l’ordre pour éviter des collisions
-# * comme dans l’exemple précédent; **c’est à éviter !**
-
-# %% [markdown]
-# (label-keyword-only-argument)=
-# ### arguments *keyword-only*
+# l'ordre dans lequel il est conseillé de déclarer sa fonction reste toujours
 #
-# **rappel** les 4 familles de paramètres qu'on peut déclarer dans une fonction :
+# ```{list-table}
 #
-# 1. paramètres positionnels (usuels)
-# 1. paramètres nommés (forme *name=default*)
-# 1. paramètre **args* qui attrape dans un tuple le reliquat des arguments positionnels 
-# 1. paramètre ***kwds* qui attrape dans un dictionnaire le reliquat des arguments nommés
-#
-
-# %% slideshow={"slide_type": "slide"}
-# une fonction qui combine les différents 
-# types de paramètres
-def ab_etc(a, b=100, *args, **kwds):
-    print(f"a={a}, b={b}, args={args}, kwds={kwds}")
-
-
-# %% tags=["gridwidth-1-2"]
-ab_etc(1)
-
-# %% tags=["gridwidth-1-2"]
-ab_etc(1, 2)
-
-# %% tags=["gridwidth-1-2"]
-ab_etc(1, 2, 3)
-
-# %% tags=["gridwidth-1-2"]
-ab_etc(1, 2, 3, bar=1000)
-
-# %%
-ab_etc(1, 2, 3, bar=1000)
-
-
-# %% [markdown] slideshow={"slide_type": ""}
-# #### argument *keyword-only*
-#
-# * l'ordre dans lequel sont déclarés les différents types de paramètres est imposé par le langage
-# * historiquement à l'origine, on **devait déclarer dans cet ordre** :
-#
-# > positionnels, nommés, forme `*`, forme `**`
-#
-#
-# * ça reste une bonne approximation
-# * mais en Python-3 on a introduit [les paramètres *keyword-only*](https://www.python.org/dev/peps/pep-3102/)
-# * on peut ainsi définir un paramètre qu'il **faut impérativement** nommer lors de l'appel
-# * et également en 3.8 [les paramètres *positional-only*](https://docs.python.org/3/whatsnew/3.8.html#positional-only-parameters)
-# * qui introduit des paramètres usuels qu'on **ne peut pas nommer** lors de l'appel
-
-# %% slideshow={"slide_type": "slide"}
-# on peut déclarer un paramètre nommé **après** l'attrape-tout *args
-# du coup ici le paramètre nommé `b` devient un *keyword-only* parametter
-def a_etc_b(a, *args, b=100, **kwds):
-    print(f"a={a}, b={b}, args={args}, kwds={kwds}")
-
-
-# %% [markdown]
-# avec cette déclaration, je **dois nommer** le paramètre `b`
-
-# %% tags=["gridwidth-1-2"]
-# je peux toujours faire ceci
-a_etc_b(1)
-
-# %% tags=["gridwidth-1-2"]
-# mais si je fais ceci l'argument 2 
-# va aller dans args
-a_etc_b(1, 2)
-
-# %%
-# pour passer b=2, je **dois** nommer mon argument
-a_etc_b(1, b=2)
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### argument *positional-only*
-
-# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
-# en général on peut toujours nommer
-# des arguments même si le paramètre 
-# est positionnel
-def f(a, b, c, d):
-    print(dict(a=a, b=b, c=c, d=d))
-    
-f(a=1, b=2, c=3, d=4)
-
-# %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
-# ```python
-# # un exemple de paramètre *positional-only* 
-# # introduit dans Python-3.8
-# def f(a, b, /, c, d):
-#     print(a, b, c, d, e, f)
-#
-# # ceci cause un exception 
-# # car on ne PEUT PAS nommer a ni b
-# f(a=1, b=2, c=3, d=4)
+# * - positionnels,
+#   - avec défaut,
+#   - forme `*` (1 max),
+#   - forme `**` (1 max)
 # ```
-
-# %% [markdown]
-# ### retombées sur la syntaxe de base
-#
-# sachez qu'on peut également faire ceci - qui n'a plus rien à voir avec les appels de fonction, mais qui utilise le même principe
-
-# %% tags=["gridwidth-1-2"]
-# construire une liste avec *args
-l1 = [2, 3]
-l2 = [4, 5]
-[1, *l1, *l2, 6]
-
-# %% tags=["gridwidth-1-2"]
-# pareil avec un dictionnaire
-d1 = {2: 'b', 3: 'c'}
-d2 = {4: 'd', 5: 'e'}
-{1: 'a', **d1, **d2, 6: 'f' }
