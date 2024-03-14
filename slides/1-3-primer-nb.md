@@ -658,5 +658,3 @@ except Exception as exc:
 
 print("la vie continue")
 ```
-
-***
