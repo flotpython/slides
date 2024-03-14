@@ -1,8 +1,5 @@
 # slides
-Notebooks pour animer un cours présentiel - sous formes de slides RISE
 
-* version statique en ligne  
-  https://nbhosting.inria.fr/builds/python-slides/handouts/latest/
+Notebooks pour animer un cours présentiel
 
-* version exécutable (compte nécessaire)  
-  https://nbhosting.inria.fr/
+version statique en ligne : <https://flotpython-slides.readthedocs.io/>
