@@ -124,7 +124,7 @@ import math
 ```
 
 ```{code-cell} ipython3
-:cell_style: center
+
 :tags: [gridwidth-1-3]
 
 # a désigne un entier
@@ -177,7 +177,7 @@ ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste
 
 ### modèle mental : objets mutables
 
-+++ {"cell_style": "center"}
++++
 
 selon leur type, les objets sont
 
@@ -189,7 +189,7 @@ par exemple une liste est **mutable**...
 
 ```{code-cell} ipython3
 ---
-cell_style: center
+
 slideshow:
   slide_type: slide
 ---
@@ -233,7 +233,7 @@ slideshow:
 ```
 
 ```{code-cell} ipython3
-:cell_style: center
+
 
 %%ipythontutor curInstr=2
 
@@ -511,7 +511,7 @@ math.pi
 
 ### primer : attributs
 
-+++ {"cell_style": "center"}
++++
 
 * programmation orientée objet
 
@@ -617,7 +617,7 @@ print("la vie continue")
 
 ```{code-cell} ipython3
 ---
-cell_style: center
+
 slideshow:
   slide_type: slide
 ---
@@ -637,7 +637,7 @@ print("la vie ne continue pas !")
 
 ```{code-cell} ipython3
 ---
-cell_style: center
+
 slideshow:
   slide_type: slide
 ---

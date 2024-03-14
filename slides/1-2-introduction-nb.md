@@ -28,7 +28,7 @@ rise:
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
-+++ {"cell_style": "center"}
++++
 
 # généralités
 
@@ -290,7 +290,7 @@ que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python
 
 ## comment lancer python ?
 
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
++++
 
 ### depuis un terminal ...
 
@@ -318,7 +318,7 @@ dans le terminal toujours:
 
 ### ... ou dans un environnement graphique
 
-+++ {"cell_style": "center"}
++++
 
 * **Jupyter notebooks**
   * `pip install jupyterlab`
@@ -355,7 +355,6 @@ par exemple dans `jupyter lab` voyez le menu `Kernel`
   * utile notamment sur un module
 
 ```{code-cell} ipython3
-:cell_style: center
 
 import math
 dir(math)
