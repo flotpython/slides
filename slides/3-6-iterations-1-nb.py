@@ -645,7 +645,7 @@ for i, d in zip_longest(
 # * <https://docs.python.org/3/library/itertools.html>
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### exemple avec `product`
+# ### exemple avec `product`
 
 # %%
 from itertools import product

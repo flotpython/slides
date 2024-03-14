@@ -166,7 +166,7 @@ print(b)
 # ````
 
 # %% [markdown]
-# #### *extended unpacking*
+# ### *extended unpacking*
 #
 # * on peut utiliser une notation `*` devant une (seule) variable
 # * cette variable va référencer une *liste* qui regroupe  
