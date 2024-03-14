@@ -8,6 +8,10 @@
     margin-top: initial !important;
 } */
 
+p {
+    margin-bottom: 0.5em !important;
+}
+
 .myst :where(p):not(:where([class~=not-prose], [class~=not-prose] *)) {
     margin-bottom: 0.5em !important
 }
