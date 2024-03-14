@@ -42,60 +42,65 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # ## paramètres multiples
 #
-# pour **définir** aussi bien que pour **appeler** une fonction,  
-# Python propose une large gamme de mécanismes pour le passage de paramètres
+# Python propose une large gamme de mécanismes pour le passage de paramètres,  
+# pour **définir** aussi bien que pour **appeler** une fonction  
 #
-# chacun de ces mécanismes est assez simple pris individuellement,
+# chacun de ces mécanismes est assez simple pris individuellement,  
 # mais un peu de soin est nécessaire pour bien expliquer le mécanisme général
 
 # %% [markdown]
-# ### paramètres multiples : use case, un *wrapper*
+# ### *use case*: un *wrapper*
 #
-# * écrire un wrapper autour de `print()`
-# * c'est-à-dire une fonction `myprint()`
-# * qui ajoute `HELLO` au début de chaque impression
-# * mais sinon l'interface de `myprint()`  
-#   est exactement celle de `print()`, i.e.  
+# * on veut écrire un *wrapper* autour de `print()`, c'est-à-dire
+# * une fonction `myprint()` qui ajoute `HELLO` au début de chaque impression
+# * mais sinon l'interface de `myprint()` doit être exactement celle de `print()`, i.e.  
 #
-#   * nb. variable de paramètres
+#   * nombre variable de paramètres
 #   * réglages inchangés - e.g. `myprint(..., file=f)`
 #   
 # ```python
+# # on doit pouvoir faire ceci
+#
 # >>> myprint(1, 2, 3, sep='+')
 # HELLO 1+2+3
 # ```
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### *use case : variante* 
+# ### et une variante 
 #
-# * dans une variante de `myprint`, 
-# * on veut imposer un premier argument obligatoire pour remplacer `HELLO`,…
+# * ou encore, on veut pouvoir écrire une variante de `myprint`, 
+# * qui attend un premier argument obligatoire, le texte pour pour remplacer `HELLO`,…
 #
 # ```python
+# # on doit pouvoir faire ceci
+#
 # >>> myprint2('HEY', 1, 2, 3, sep='==')
 # HEY 1==2==3
 # ```
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### implémentation
 #
-# nous allons expliquer tout ceci, mais pour l'instant voyons comment se comporterait une fonction `myprint()`idéale :
+# et pour commencer voyons comment on ferait ça en Python
 
 # %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # la première variante
+
 def myprint(*args, **kwds):
     print("HELLO", end=" ")
     print(*args, **kwds)
 
 
 # %% tags=["gridwidth-1-2"]
-# ajout automatique de 'HELLO'
-# et on peut utiliser tous
-# les paramètres spéciaux 
-# de print()
+# ajout automatique de 'HELLO', et on peut utiliser tous
+# les paramètres spéciaux de print()
+
 myprint(1, 2, 3, sep='+')
 
 
 # %% tags=["gridwidth-1-2"]
-# la seconde avec le premier
-# paramètre obligatoire
+# la deuxième variante, avec le premier paramètre obligatoire
+
 def myprint2(obligatoire, 
              *args, **kwds):
     print(obligatoire, end=" ")
@@ -103,13 +108,16 @@ def myprint2(obligatoire,
 
 
 # %% tags=["gridwidth-1-2"]
-# le premier paramètre
-# sert à remplacer 'HELLO'
+# le premier paramètre sert à remplacer 'HELLO'
+
 myprint2('HEY', 1, 2, 3, sep='==')
 
 
 # %% [markdown]
-# ## paramètres et arguments
+# ## vocabulaire
+
+# %% [markdown]
+# ### paramètres et arguments
 #
 # précisons le vocabulaire  
 # lorsqu'il peut y avoir ambiguïté :
@@ -119,204 +127,280 @@ myprint2('HEY', 1, 2, 3, sep='==')
 
 # %% slideshow={} tags=["gridwidth-1-2"]
 # ici x est un PARAMÈTRE
+
 def foo(x):
     print(x)
 
 
 # %% tags=["gridwidth-1-2"]
 # et ici a est un ARGUMENT
+
 a = 134 + 245
 foo(a)
 
 
 # %% [markdown]
-# ### typologie
+# le sujet que nous abordons ici, ce sont les règles qui permettent de **lier les arguments aux paramètres**  
+# de façon à ce que tous les arguments soient exposés à la fonction
 #
-# * il y a 4 manières de déclarer des paramètres 
-# * et 4 manières d’appeler une fonction avec des arguments
-# * les deux familles se ressemblent un peu
-# * mais il y a tout de même des différences
-#
-# * le sujet que nous abordons ici est celui qui consiste  
-#   à **lier les arguments à des paramètres**
-#
-# * de façon à ce que tous les arguments soient exposés à la fonction
+# * il y a 4 manières de **déclarer un paramètre** 
+# * et 2 manières **de passer un argument** à une fonction (en fait 2+2)
+# * les deux familles se ressemblent un peu, mais il y a tout de même des différences
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## déclaration des paramètres
+# ### les 4 sortes de paramètres
 #
-# * paramètre positionnel ou ordonné ou usuel/normal
-#  * `def foo(x):`
-# * paramètre nommé ou avec valeur par défaut
-#   * `def foo(x=10):`
-# * paramètre de forme `*args`
-#   * `def foo(*args):`
-#   * correspond aux arguments non nommés "en plus"
-# * paramètre de forme `**kwds`
-#   * `def foo(**kwds):`
-#   * correspond aux arguments nommés "en plus"
+# ```{list-table}
+#
+# * - (I)
+#   - `def foo(x):`
+#   - paramètre **positionnel** ou ordonné ou usuel/normal
+# * - (II)
+#   - `def foo(x=10):`
+#   - paramètre avec **valeur par défaut**
+# * - (III)
+#   - `def foo(*args):`
+#   - correspond aux arguments non nommés "en plus"
+# * - (IV)
+#   - `def foo(**kwds):`
+#   - correspond aux arguments nommés "en plus"
+# ```
+#
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# ### les 2+2 sortes d'arguments
+#
+# la différence fondamentale est à faire entre
+#
+# ```{list-table}
+#
+# * - (A)
+#   - `foo(argument)`
+#   - argument non nommé
+# * - (B)
+#   - `foo(parametre=argument):`
+#   - argument nommé
+# ```
+#
+# ````{admonition} et deux variantes
+# :class: admonition-small
+#
+# on va faire abstraction de (C) et (D) pour l'instant, et [on verra plus bas](label-args-unpacking) comment ça fonctionne  
+# (et d'ailleurs c'est très simple...)
+#
+# ```{list-table}
+# * - (C)
+#   - `def foo(*args):`
+#   - les objets dans `args` (itérable) sont passés comme des arguments (A) non nommés
+# * - (D)
+#   - `def foo(**kwds):`
+#   - les objets dans `kwds` (un dictionnaire) sont passés comme des arguments (B) nommés
+# ```
+# ````
+
+# %% [markdown]
+# ## les paramètres
 
 # %% [markdown]
 # ### (I) paramètre positionnel
 #
-# * obtiennent un rang de gauche à droite
-# * le mécanisme le plus simple et le plus répandu
+# * c'est le mécanisme le plus simple et le plus répandu  
+# * les paramètres obtiennent un rang de gauche à droite  
+#   par exemple ci-dessous le paramètre `prenom` est le deuxième paramètre positionnel
+#
 
 # %%
-# on s'intéresse ici à la déclaration des paramètres
+# pour afficher quel argument est attaché à quel paramètre
+
 def agenda(nom, prenom, tel, age, job):
-    # pour afficher quel argument est attaché
-    # à quel paramètre
-    D = dict(nom=nom, prenom=prenom, tel=tel,
-             age=age, job=job)
-    print(D)
+    
+    print(f"{nom=}, {prenom=}, {tel=}, {age=}, {job=}")
+
 
 
 # %% [markdown]
-# #### (I) paramètre positionnel
+# #### appel
 #
-# * comment on peut alors appeler la fonction ?
+# comment peut-on alors appeler la fonction ?
 
 # %%
 # appel usuel, sans nommage
 # c'est l'ordre des arguments qui compte
+
 agenda('doe', 'alice', '0404040404', 35, 'medecin')
 
 # %%
-# par contre en nommant les arguments lors de l’appel
+# et aussi, en nommant les arguments lors de l’appel
 # on peut les mettre dans n’importe quel ordre
-agenda(prenom='alice', nom='doe', age=35,
-       tel = '0404040404', job = 'medecin')
+
+agenda(prenom='alice', nom='doe', age=35, tel='0404040404', job='medecin')
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### (II) paramètre nommé / avec valeur par défaut
+# ### (II) paramètre avec valeur par défaut
+#
+# dans le code précédent, qu'on les mette dans l'ordre ou pas, on **doit** passer à la fonction 5 arguments
+#
+# parfois on veut dire "si on ne passe pas d'argument pour `job`, alors on prendra par défaut `"medecin`"
+#
+# ````{admonition} c'est très utilisé
+# :class: admonition-small
+#
+# pour la clarté de l'exposé on va garder notre exemple avec `agenda`; en pratique, cet usage est **très répandue**, par exemple avec les librairies graphiques où on ne veut pas avoir à passer à chaque appel tous les paramètres comme la couleur, la fonte, ... et dans plein d'autres cas de figure aussi
+# ````
 
 # %%
-# ici les 3 premiers paramètres sont obligatoires
-# et les deux suivants optionnels (ils ont une valeur par défaut)
-def agenda(nom, prenom, tel,
-           age = 35, job = 'medecin'):
-    # comme tout à l'heure, pour afficher 
-    # ce qui correspond aux paramètres
-    D = dict(nom=nom, prenom=prenom, tel=tel,
-             age=age, job=job)
-    print(D)
+#           ┌──────┬─────┬──────────────────  positionnels 
+#           │      │     │    ┌─────────┬───  avec valeurs par défaut
+#           ↓      ↓     ↓    ↓         ↓     
+def agenda(nom, prenom, tel, age = 35, job = 'medecin'):
+    
+    print(f"{nom=}, {prenom=}, {tel=}, {age=}, {job=}")
 
 
 # %% [markdown]
-# #### (II) paramètres nommés
+# #### appels
 #
 # * comment on peut alors appeler la fonction ?
 
 # %%
 # appel en suivant la signature
 # il manque deux arguments, on utilise les valeurs par défaut
+
 agenda('Dupont', 'Jean', '123456789')
 
 # %%
 # on peut aussi nommer les arguments, et à nouveau 
 # ça permet de mélanger l'ordre des paramètres imposés
 # ici aussi job est manquant, on utilise la valeur par défaut
-agenda(prenom = 'alice', nom = 'doe',
-       age = 25, tel = '0404040404')
+
+agenda(prenom = 'alice', nom = 'doe', age = 25, tel = '0404040404')
 
 # %%
 # on peut mixer les deux approches
 # ici les trois premiers sont liés dans l'ordre
+
 agenda('Dupont', 'Jean', '123456789', age = 25, job = 'avocat')
 
 
 # %% [markdown]
-# #### (II) paramètres nommés
+# ````{admonition} le = a deux sens vraiment différents
+# :class: attention admonition-small
 #
-# * **attention** à ne pas confondre la forme `name=value` dans une entête de fonction et lors d’un appel
-# * **dans un entête** c’est une déclaration de paramètre (avec valeur) par défaut
-# * **lors d’un appel**
-#   * c’est une désignation explicite d’arguments par nom (et non par ordre de déclaration)
-#   * l'argument nommé est affecté au paramètre de même nom
+# **attention** à ne pas confondre la forme `name=value` dans une entête de fonction et lors d’un appel:
+#
+# * **dans un entête** c’est une **déclaration de paramètre (avec valeur) par défaut**
+# * **lors d’un appel**, cela signifie que l'argument doit être lié au paramètre de ce nom
+# ````
 
 # %% [markdown]
-# ### (III) paramètre multiple, forme `*args`
+# ### (III) paramètre multiple `*args`
 #
-# * Python collecte tous les arguments non nommés restants 
-#   (non liés à un paramètre) sous forme d’un tuple
+# jusqu'ici c'est assez simple, c'est maintenant que ça devient un peu plus inhabituel
 #
-# * et assigne le paramètre `args` à ce tuple
-# * du coup avec cette forme, la fonction peut être appelée 
-#   * avec un nombre variable d'arguments
+# le paramètre `*args` s'appelle aussi parfois *attrape-tout*; lorsqu'on en met un, (et on n'a droit d'en mettre qu'un seul):
+#
+# * alors Python collecte **tous les arguments non nommés restants** - i.e. non liés à un paramètre
+# * il les range dans un tuple
+# * qu'il lie au paramètre `args`
+#
+# de cette façon on peut donc créer très simplement une fonction qui accepte un nombre variable d'arguments (non nommés)  
+# et pour les exploiter la fonction n'a qu'à, par exemple, itérer sur le paramètre `args`
+#
+# ````{admonition} le nom args n'est pas un mot clé
+# :class: admonition-small
+#
+# un peu comme avec `self` dans les méthodes de classe, le nom de paramètre `args` correspond à un usage assez fréquent, mais en réalité c'est un paramètre usuel et on peut lui donner n'importe quel nom
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (III) paramètre multiple, forme `*args`
+# #### ex. avec 0 ou plus arguments
 
-# %% tags=["gridwidth-1-2"]
+# %% tags=[]
 # définition
+
 def variable(*args):
     print(f"args={args}")
 
-# utilisation
+
+# %% tags=[]
+# 0 argument
+
 variable()
 
-# %% tags=["gridwidth-1-2"]
-# appel
+# %% tags=[]
+# 1 argument
+
 variable(1)
 
-# %% tags=["gridwidth-1-2"]
-variable(1, 2, 3, 4, 5, [2,3])
+# %% tags=[]
+# 5 arguments 
+
+variable(1, 2, 3, 4, "cinq")
 
 
-# %% [markdown]
-# ****
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### ex. avec au moins 2 arguments 
+#
+# on peut aussi très simplement créer une fonction qui attend au moins deux arguments, le reste étant optionnel
 
-# %% tags=["gridwidth-1-2"]
-# définition
+# %% tags=[]
+# au moins deux arguments
+
 def variable2(one, two, *args):
     print(f"one={one}, two={two}, args={args}")
 
-# utilisation
+
+# %% tags=[]
+# 2 arguments
+
 variable2(1, 2)
 
-# %% tags=["gridwidth-1-2"]
-# appel
+# %% tags=[]
+# 3 arguments
 variable2(1, 2, 3)
 
-# %% tags=["gridwidth-1-2"]
-variable2(1, 2, 3, 4, 5, [2,3])
+# %% tags=[]
+# 5 arguments 
+
+variable2(1, 2, 3, 4, "cinq")
+
+# %% tags=["raises-exception"]
+# 1 seul argument -> TypeError
+
+variable2(1)
 
 
 # %% [markdown]
-# #### (III) paramètre multiple, forme `*args`
+# #### un seul `*args`
 #
-# * `args` est un nom de paramètre quelconque,  
-#   même si c'est souvent `args` (comme `self` est souvent appelé `self`)  
-#   lorsqu'on se contente de passer cela à une autre fonction
-# * `*args` **ne peut apparaître qu'une fois**   
-#   bien sûr, car sinon il y aurait ambiguïté
-#   
-# ```python
-# def variable(*args1, *args2):
-#     pass
-# # où finit args1 et où commence args2 ?
-# variable(1, 2, 3, 4)
-# ```
+# redisons-le: `*args` **ne peut apparaître qu'une fois**  (car sinon il y aurait ambiguïté)
+
+# %% tags=["raises-exception"]
+# si on met plusieurs paramètres *args, python n'est pas content
+
+def variable(*args1, *args2):
+    pass
+```
+
 
 # %% [markdown]
-# ### (IV) paramètre multiple, forme `**kwds`
+# ### (IV) paramètre multiple `**kwds`
 #
-# * python collecte tous les arguments nommés restants  
-#   i.e. non liés à un paramètre
-# * et les met dans **un dictionnaire**
-# * dont les clés sont les noms et les valeurs les arguments
-# * qui est affecté au paramètre `kwds`
-# * ici encore le nombre d’arguments peut être quelconque
-# * c'est le même mécanisme d'*attrape-tout* que pour `*args`  
-#   mais avec les arguments nommés
+# le mécanismes est exactement le même, mais avec les **arguments nommés**:
+# * on regarde tous ceux qui n'ont pas encore été liés à un paramètre,
+# * au lieu de créer un tuple, on crée cette fois un **un dictionnaire**, de façon à mémoriser les noms en plus des valeurs  
+# * et c'est ce dictionnaire qui est affecté au paramètre `kwds`
+#
+# ici encore le nombre d’arguments nommés peut être quelconque
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### (IV) paramètre multiple, forme `**kwds`
+# #### ex. 1
 
-# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
-# définition
+# %% slideshow={"slide_type": ""} tags=[]
+# cette fonction peut être appelée avec autant d'arguments
+# qu'on veut, mais il doivent tous être nommés
+
 def named_args(**kwds):
     print(f"kwds={kwds}")
     
@@ -329,13 +413,19 @@ named_args(a = 1)
 # %% tags=["gridwidth-1-2"]
 named_args(a = 1, b = 2)
 
+# %% tags=["raises-exception"]
+# si on essaie de lui passer un argument non nommé, python n'est pas content !
+
+named_args(10)
+
 
 # %% [markdown]
-# ****
-#
+# #### ex. 2
 
-# %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
-# définition
+# %% slideshow={"slide_type": ""} tags=[]
+# pareil ici, autant d'arguments nommés qu'on veut
+# et cette fois on peut aussi lui passer un argument nommé
+
 def named_args1(a=0, **kwds):
     print(f"a={a} kwds={kwds}")
     
@@ -348,163 +438,14 @@ named_args1(1, b=2)
 # %% tags=["gridwidth-1-2"]
 named_args1(a = 1, b = 2)
 
+# %% tags=[]
+named_args1(b = 2, c=3)
 
 # %% [markdown]
-# #### (IV) paramètre multiple, forme `**kwds`
+# #### un seul `**kwds`
 #
 # * ici encore cette forme de paramètre **ne peut apparaître qu'une fois**
 # * car sinon, comme avec `*args`, la liaison serait ambigüe
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## *unpacking* des arguments
-
-# %% [markdown]
-# ### **dans l'autre sens**
-#
-# * c'est-à-dire à l'**appel** d'une fonction
-# * nous avons déjà vu deux formes d'appel
-#   * `func(x)`
-#   * `func(x=10)`
-# * python propose également deux formes spéciales
-#   * `func(*x)`
-#   * `func(**x)`
-
-# %% [markdown] slideshow={"slide_type": ""}
-# ### (III) appel avec la forme `*x`
-#
-# * on peut utiliser un paramètre de la forme `*x`
-# * où `x` désigne **un itérable**
-# * Python va transformer `*x` en une suite de paramètres à passer à la fonction
-# * dans ce sens par contre on peut utiliser la forme `*x` **plusieurs fois** dans le même appel
-
-# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
-# une définition classique
-def f4(a, b, c, d):
-    print(a, b, c, d)
-
-
-# %% tags=["gridwidth-1-2"]
-# appel avec la forme *x
-L = [1, 2, 3, 4]
-f4(*L)
-
-# %% tags=["gridwidth-1-2"]
-# n'importe quel itérable
-f4(*"abcd")
-
-# %% tags=["gridwidth-1-2"]
-L1, L2 = (1, 2), (3, 4)
-
-# 2 *params dans le même appel
-# ne posent pas problème
-f4(*L1, *L2)
-
-# %% tags=["gridwidth-1-2"]
-# on peut utiliser * avec une expression
-f4(*range(1, 3), *range(10, 12))
-
-
-# %% [markdown]
-# ### (IV) appel avec la forme `**x`
-#
-# * cette fois `x` est supposé être **un dictionnaire**
-# * Python va transformer ce dictionnaire en une suite de paramètres nommés
-
-# %%
-def f3(a, b, c):
-    print(a, b, c)
-
-D = {'a':1, 'c':3, 'b':2}
-
-# équivalent à func(a=1, b=2, c=3)
-f3(**D)
-
-# %% [markdown]
-# ## piège fréquent avec les arguments par défaut
-#
-# * les valeurs par défaut sont évaluées à l’endroit de la déclaration de la fonction
-
-# %%
-i = 5
-def f(arg = i):  # i vaut 5 au moment de la déclaration
-    print(arg)
-i = 6            # i est mis à 6 après la déclaration, ça
-                 # n’est pas pris en compte
-f()
-
-
-# %% [markdown]
-# ### piège fréquent avec les arguments par défaut
-#
-# * les valeurs par défaut de f ne sont évaluées **qu’une fois** à la création de l’objet fonction et mises dans **f.__defaults__**
-#   * si la **valeur par défaut est mutable**  
-#     elle pourra être modifiée dans la fonction
-#   * et dans ce cas, la valeur par défaut  
-#     **est modifiée pour l'appel suivant**
-#
-# du coup
-#
-# * ➔ **ne jamais utiliser un mutable comme valeur par défaut !!!**
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### piège fréquent avec les arguments par défaut
-
-# %% tags=["gridwidth-1-2"]
-# on pourrait penser en lisant ceci 
-# que sans préciser L on devrait 
-# toujours retourner une liste [a]
-def f(a, L = []):
-    L.append(a)
-    return L
-
-
-# %% tags=["gridwidth-1-2"]
-# la valeur par défaut est
-# évaluée par l'instruction def:
-f.__defaults__
-
-
-
-# %% tags=["gridwidth-1-2"]
-# OK ici ça fait ce qu'on attend
-f(1)
-
-# %% tags=["gridwidth-1-2"]
-# sauf que ATTENTION
-# on a modifié ceci
-f.__defaults__
-
-# %%
-# si bien qu'à l'appel suivant il se passe ceci !
-f(2)
-
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### piège fréquent avec les arguments par défaut
-
-# %% [markdown]
-# * solution 
-
-# %% tags=["gridwidth-1-2"]
-def f(a, L=None):
-    if L is None:
-        L = []
-    L.append(a)
-    print(L)
-f(1)
-f(2)
-f(3)
-
-
-# %% tags=["gridwidth-1-2"]
-# ou si on préfère
-def f(a, L=None):
-    L = L if L is not None else []
-    L.append(a)
-    print(L)
-f(1)
-f(2)
-f(3)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## ordre des paramètres et arguments
@@ -512,34 +453,34 @@ f(3)
 # %% [markdown] tags=[]
 # ### paramètres
 #
-# * dans un `def` 
-#   * on peut combiner les différentes formes de déclarations de paramètres
-#   * tous les ordres ne sont pas autorisés
-#   * on recommande *l’ordre suivant* (voir aussi plus loin…)
+# dans un `def`, on peut combiner les différentes formes de déclarations de paramètres, mais **tous les ordres ne sont pas autorisés**  
+# on recommande *l’ordre suivant*
 #
 # 1. paramètres positionnels (`name`),
 # 1. paramètres par défaut (`name=value`),
 # 1. forme `*args` (une au maximum)
-# 1. forme `**kwds` (une au maximum)
+# 1. forme `**kwds` (une au maximum
+#
+# ````{admonition} une petite exception
+# :class: warning
+#
+# nous verrons [un peu plus loin](label-keyword-only-argument) que le paramètre attrape-tout `*args` peut aussi être mis un peu plus tôt que cela dans la liste des paramètres
+# ````
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
 # ### arguments
 #
 # dans un appel de fonction, on recommande de matérialiser deux groupes
 #
-# 1. en premier les non-nommés
+# 1. en premier les non-nommés:
 #   * argument(s) positionnels (`name`), 
 #   * forme(s) `*name`
 # 2. puis ensuite les arguments nommés
 #   * argument(s) nommés (`name=value`),
 #   * forme(s) `**name`
-#
-# ````{admonition} pas de limite ici
-# contrairement aux paramètres, on peut mentionner plusieurs `*` ou `**`, et on les met dans l'ordre où ça fait du sens
-# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### exemples
+# ### exemple: appel
 
 # %% slideshow={"slide_type": ""}
 # une fonction passe-partout qui affiche juste ses paramètres 
@@ -560,24 +501,185 @@ show_any_args(1)
 show_any_args(x=1)
 
 # %% slideshow={"slide_type": "slide"}
-# exemple 1
 # on recommande de mettre les arguments non-nommés en premier
 show_any_args(1, 4, 5, 3, x = 1, y = 2)
 
 # %% slideshow={"slide_type": ""} tags=["raises-exception"]
-# exemple 1 (suite)
 # car ceci est illégal et déclenche une SyntaxError
+
 foo(1, x=1, 4, 5, 3, y = 2)
 
-# %%
-# exemple 2
-l1 = [1, 2]
-l2 = [3, 4]
-d1 = {'a': 1, 'b': 2}
-d2 = {'c': 3, 'd': 4}
 
-# on peut appeler avec plusieurs * et **
-show_any_args(*l1, *l2, 1000, **d1, **d2)
+# %% [markdown]
+# ### exemple: définition
+
+# %%
+# même punition ici: SyntaxError, on n'a pas respecté le bon ordre
+
+def foo(b=10, a):
+    pass
+
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# (label-args-unpacking)=
+# ## *unpacking* des arguments
+#
+# où on voit comment sont traités les formes `*L` et `**D`, mais **dans les arguments de la fonction** cette fois - on avait appelé ça (C) et (D)
+#
+# cette fois le mécanisme est plutôt simple: cela revient à "déballer" le contenu de L (qui doit être itérable) ou `D` (qui doit être un dictionnaire)
+#
+# voici un exemple: admettons que l'on ait calculé ces deux trucs
+#
+# ```python
+# L = [10, 20]
+# D = ['a': 1, 'b': 2]
+# ```
+#
+# alors l'appel `foo(100,  *L, 1000, *L, x=0,  **D1)` sera *récrit* comme ceci par Python
+#
+# ```{image} media/star-args.svg
+# :align: center
+# :width: 500px
+# ```
+#
+# comme on le voit, cela revient à insérer les contenus en place dans les arguments
+# * les éléments de `L` comme des arguments non nommés
+# * et ceux de `D` comme des arguments nommés
+#
+# ````{admonition} autant de fois qu'on veut
+#
+# du coup on peut utiliser **autant de fois qu'on veut** ces deux formes dans un appel de fonction, cette fois-ci il n'y a pas d'ambigüité !
+# ````
+
+# %% [markdown]
+# ### ex. (C) avec *
+
+# %% slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
+def f4(a, b, c, d):
+    print(f"{a=} {b=} {c=} {d=}")
+
+
+# %% tags=["gridwidth-1-2"]
+L = [1, 2, 3, 4]
+
+f4(*L)
+
+# %% tags=["gridwidth-1-2"]
+# n'importe quel itérable
+
+f4(*"abcd")
+
+# %% tags=["gridwidth-1-2"]
+L1, L2 = (1, 2), (3, 4)
+
+# 2 *params dans le même appel
+# ne posent pas problème
+f4(*L1, *L2)
+
+# %% tags=[]
+# et on peut utiliser * avec une expression
+
+f4(*range(1, 3), *range(10, 12))
+
+
+# %% [markdown]
+# ### ex. (D) avec **
+
+# %%
+def f3(a, b, c):
+    print(f"{a=} {b=} {c=}")
+    
+D = {'a': 1, 'c': 3, 'b': 2}
+
+# équivalent à func(a=1, b=2, c=3)
+f3(**D)
+
+# %% [markdown]
+# ## piège fréquent avec les arguments par défaut
+#
+# * les valeurs par défaut sont évaluées à l’endroit de la déclaration de la fonction
+
+# %%
+i = 5
+
+def f(arg = i):  # i vaut 5 au moment de la déclaration
+    print(arg)
+    
+i = 6            # i est mis à 6 après la déclaration, ça
+                 # n’est pas pris en compte
+
+f()
+
+
+# %% [markdown]
+# ### pas de mutable !
+#
+# * les valeurs par défaut de f ne sont évaluées **qu’une fois** à la création de l’objet fonction
+#   (et mises dans **f.__defaults__**)
+# * si la **valeur par défaut est mutable**, elle pourra être modifiée dans la fonction
+# * et dans ce cas, la valeur par défaut **est modifiée pour l'appel suivant** !!
+#
+# ````{admonition} à retenir !
+# :class: attention 
+# ➔ **ne jamais utiliser un mutable comme valeur par défaut !!!**
+# ````
+
+# %% [markdown] slideshow={"slide_type": "slide"}
+# #### exemple
+
+# %% tags=[]
+# on pourrait penser en lisant ceci, que sans préciser L on devrait 
+# toujours retourner une liste [a]
+
+def f(a, L = []):
+    L.append(a)
+    return L
+
+
+# %% tags=[]
+# MAIS: la valeur par défaut est évaluée par l'instruction def:
+
+f.__defaults__
+
+# %% tags=[]
+# donc ici le premier coup OK, ça fait ce qu'on attend
+
+f(1)
+
+# %% tags=[]
+# sauf que ATTENTION, on a modifié ceci
+
+f.__defaults__
+
+# %%
+# si bien qu'à l'appel suivant il se passe ceci !
+
+f(2)
+
+
+# %% [markdown]
+# #### comment faire alors ?
+#
+# la bonne pratique consiste à remplacer le mutable par `None` et à tester "à la main"  
+# de cette manière l'expression `[]` - qui crée effectivement la liste - est exécutée **à chaque fois** que nécessaire,  
+# au lieu d'une seule fois au moment du `def`
+
+# %% tags=["gridwidth-1-2"]
+# la bonne pratique
+
+def f(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    print(L)
+
+
+# %% tags=["gridwidth-1-2"]
+# comme ça pas d'embrouille
+
+f(1)
+f(2)
+f(3)
 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -647,6 +749,7 @@ show_any_args(1, b = 3, *(2,), **{'d':4})
 # * comme dans l’exemple précédent; **c’est à éviter !**
 
 # %% [markdown]
+# (label-keyword-only-argument)=
 # ### arguments *keyword-only*
 #
 # **rappel** les 4 familles de paramètres qu'on peut déclarer dans une fonction :
