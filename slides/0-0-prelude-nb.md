@@ -33,8 +33,6 @@ rise:
   transition: cube
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ```{image} media/inria-50-alpha.png
 :align: right
 :width: 100px
@@ -48,15 +46,15 @@ HTML(filename="_static/style.html")
 
 # Cours Python
 
-##### *Des fondamentaux à l'utilisation du langage*
+> *Des fondamentaux à l'utilisation du langage*
 
-+++ {"cell_style": "split"}
++++
 
 Thierry Parmentelat - Arnaud Legout - Inria  
 
 `thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## plateformes et liens
 
@@ -67,7 +65,7 @@ Thierry Parmentelat - Arnaud Legout - Inria
 | sources des notebooks | <https://github.com/flotpython/slides> |
 | exercices autocorrigés | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### et aussi le MOOC
 
@@ -75,7 +73,7 @@ en ligne sur France Université Numérique:
 le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"  
 <https://www.fun-mooc.fr/en/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/>
 
-+++ {"cell_style": "split"}
++++
 
 ## notebooks
 
@@ -87,11 +85,9 @@ le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"
 :width: 500px
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "split"}
++++
 
 ### notebooks - naviguer dans les cellules
-
-+++ {"slideshow": {"slide_type": ""}, "cell_style": "split"}
 
 pour naviguer dans les cellules :
 
@@ -130,5 +126,4 @@ L
 * modifiez la première cellule ci-dessus pour faire en sorte que X vaille 400
 * regardez maintenant la valeur de `L`
 * et évaluez la seconde cellule, vérifiez que la valeur de `L` a bien changé
-
 ````
