@@ -22,9 +22,12 @@ tracks:
   - name: fonctions
     notebooks:
     - "slides/5-[0-9]*-nb.py"
-  - name: divers
+  - name: modules et imports
     notebooks:
     - "slides/6-[0-9]*-nb.py"
+  - name: divers
+    notebooks:
+    - "slides/7-[0-9]*-nb.py"
   # - name: "compl\xE9ments"
   #   notebooks:
   #   - "slides/7-[0-9]*-nb.py"
