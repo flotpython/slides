@@ -37,6 +37,7 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
+# (label-type-hints)=
 # # *type hints*
 #
 # littéralement: ***suggestions*** *de typage*

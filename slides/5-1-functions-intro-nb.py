@@ -154,17 +154,8 @@ def type_hints_2(x: tuple[int, str, bool],
 #
 # - d'abord et surtout à **améliorer la documentation** et faciliter l'usage de la librairie en question
 # - ensuite et de manière plus optionnelle, on peut utiliser un outil externe appelé *type checker* [comme par exemple mypy](https://mypy.readthedocs.io/en/stable/) qui, lui, va utiliser cette information pour **détecter les incohérences** entre types attendus et appels effectifs; par contre pour que cette approche soit effective il faut en général que les *type hints* soient généralisés dans le code...
-
-# %% [markdown]
-# ````{admonition} note historique
-# :class: admonition-small
 #
-# les *type hints* sont disponibles depuis la version 3.5, mais étaient à l'époque peu utilisables - notamment pour définir les types composites  
-# bref, elles sont vraiment utilisables depuis disons la 3.9 - on peut maintenant écrire `dict[str, int]` pour désigner un dictionnaire dont les clés sont des chaines et les valeurs des entiers
-#
-# du coup il faut les voir comme un trait relativement récent, et une énorme proportion du code Python en reste dépourvu  
-# ce n'est pas une raison pour ne pas les utiliser, on peut le faire avec discernement: pas besoin de forcément en mettre partout !
-# ````
+# on reparle [plus en profondeur des *type hints* ici](label-type-hints)
 
 # %% [markdown]
 # ### un objet comme un autre
