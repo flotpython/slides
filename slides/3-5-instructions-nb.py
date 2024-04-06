@@ -181,7 +181,7 @@ while L:
 
 
 # %% [markdown]
-# ## `match`
+# ## `match .. case`
 #
 # une toute nouvelle instruction `match` permet de définir des alternatives selon:
 # - la taille d'une objet
