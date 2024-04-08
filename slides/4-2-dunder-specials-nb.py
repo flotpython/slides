@@ -140,6 +140,19 @@ x, y, z = classe
 y
 
 
+# %% [markdown]
+# ````{admonition} utiliser un générateur
+# :class: admonition-small
+#
+# lorsque la logique d'itération devient moins triviale que de simplement "sous-traiter" le travail à un autre objet, on utilise fréquemment un générateur pour implémenter la *dunder* `__iter__`  
+# ici par exemple on aurait pu écrire
+# ```python
+#     def __iter__(self):
+#         for s in self.students:
+#             yield s
+# ```
+# ````
+
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## appartenance: `x in obj`
 #

@@ -30,7 +30,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown]
-# # les itérations (1/2)
+# # itérations (1/3)
 #
 # * la boucle `for` est la méthode **préférée** pour itérer sur un ensemble de valeurs
 # * en général préférable au `while` en Python

@@ -30,7 +30,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # les itérations (2/2)
+# # itérations (2/3)
 
 # %% [markdown] tags=[]
 # ## compréhensions
@@ -358,9 +358,3 @@ sum((notes_eleve['maths'] for notes_eleve in notes_classe)) / len(notes_classe)
 # mais la syntaxe nous permet de nous en affranchir
 # (remarquez une seul niveau de parenthèses, et l'absence de [])
 sum(notes_eleve['maths'] for notes_eleve in notes_classe) / len(notes_classe)
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
-# # épilogue
-#
-# pour terminer le tour des concepts Python qui contribuent aux itérations,
-# il nous restera à voir la notion de **fonction génératrice** que l'on verra plus tard
