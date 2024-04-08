@@ -35,78 +35,74 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
-# # librairies utiles
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## librairie standard
+# %% [markdown]
+# # la librairie standard
+#
+# le tutorial Python sur ce sujet occupe à lui tout seul deux chapitres: [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)  
+# le spectre est très très complet, je fais ici un tri totalement arbitraire...
 
 # %% [markdown]
-# * le tutorial Python sur ce sujet occupe deux chapitres
-#   * [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et
-#   * [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)
+# ## `logging`
 #
-# * très très complet, je fais ici un tri arbitraire
-#
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `logging`
-
-# %% [markdown]
-# * dans du code de production on ne fait jamais `print()`
-# * on utilise à la place `logging`; de cette façon
-# * le code a seulement à choisir un **niveau** de message
-#   * parmi `exception`, `error`, `warning`, `info`, `debug`
-# * on pourra **plus tard** (i.e. par l'équipe Ops) 
-#   * choisir **si** on veut les messages (avec quel niveau de gravité)
-#   * choisir **où** doivent aller les messages (`/var/log`, *syslog*, *stdout*, ...)
-#   * et même selon les modules si nécessaire
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### `logging`
+# dans du code de production on ne fait jamais `print()` ! on utilise à la place `logging`, car de cette façon:
+# * le code a seulement à choisir un **niveau** de message parmi `exception`, `error`, `warning`, `info`, `debug`
+# * on pourra **choisir plus tard** (i.e. par l'équipe Ops) :
+#   * **si** on veut les messages (avec quel niveau de gravité, et depuis quels modules)
+#   * **où** doivent aller les messages (`/var/log`, *syslog*, *stdout*, ...)
 
 # %%
+# voici comment configurer logging pour avoir un comportement 'à la' print
+
 import logging
 logging.basicConfig(level=logging.INFO)
 
 # %% tags=["gridwidth-1-2"]
 # au lieu de faire 
+
 print(f"Bonjour le monde") 
 
 # %% tags=["gridwidth-1-2"]
 # on fera plutôt
+
 logging.info("Bonjour le monde")
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `sys` et `os`
+# %%
+# ou encore 
+
+logging.error("OOPS")
 
 # %% [markdown]
-# #### `import sys`
+# ## `sys` et `os`
 #
-# * gestions de variables utilisées par l’interpréteur
-#   * rappelez vous e.g. `syspath`
-#   * et plein plein d'autres dans ce module un peu fourre-tout
+# sont utilisés très fréquemment, surtout dans du code ancien, pour
+# * `import sys`  
+#   * gestions de variables utilisées par l’interpréteur
+#   * e.g. `sys.path`, et plein plein d'autres dans ce module un peu fourre-tout
+# * `import os`
+#   * accès cross-platform au système d’exploitation
+#     ````{admonition} os n'est plus vraiment utile
+#     notez toutefois que ses usages principaux ont été remplacés:
+#     -  par `pathlib` pour les fichiers (voir slide suivant)
+#     - par `subprocess` pour lancer des sous-processes
+#     ````
 
 # %% [markdown]
-# #### `import os`
+# ## `from pathlib import Path`
 #
-# * accès cross-platform au système d’exploitation
-#   * pas pour les fichiers (voir slide suivant)
-#   * mais encore pertinent e.g. pour lancer des sous-processes
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `from pathlib import Path`  ( ~~`import os.path`~~)
-
-# %% [markdown]
-# * historiquement on gérait les noms de fichiers sur disque avec le sous-module `os.path`
-# * depuis la 3.4 une alternative **orientée objet** est disponible
-# * il **faut utiliser `pathlib.Path`** pour du nouveau code 
-# * on peut tout faire avec
-#   * chercher (`glob`) tous les fichiers en `*.truc`
-#   * calculer les noms de fichier: concaténer, découper en morceaux, trouver le nom canonique
-#   * ouvrir les fichier
-#   * accéder aux métadata (taille, date, ..)
-#   * etc...
+# ( ~~`import os.path`~~)
+#
+# historiquement on gérait les noms de fichiers sur disque avec le sous-module `os.path`  
+# mais depuis la 3.4 une alternative **orientée objet** est disponible! 
+#
+# ````{admonition} n'utilisez plus os.path !
+#
+# il **faut utiliser `pathlib.Path`** pour du nouveau code ! on peut tout faire avec:
+# * chercher (`glob`) tous les fichiers en `*.truc`
+# * calculer les noms de fichier: concaténer, découper en morceaux, trouver le nom canonique
+# * ouvrir les fichier
+# * accéder aux métadata (taille, date, ..)
+# * etc...
+# ````
 
 # %% slideshow={"slide_type": "slide"}
 from pathlib import Path
@@ -124,69 +120,70 @@ for path in Path(".").glob("samples/*.py"):
         pass
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `pathlib`
+# ````{admonition} orienté objet
+#
+# avec `pathlib`, les calculs de chemin se font **directement à base de l'opérateur `/`**
+# ````
 
 # %%
-# à signaler, les calculs de chemin 
-# se font directement à base de l'opérateur /  
+# c'est très facile de se promener dans l'arbre des fichiers
+
 répertoire = Path(".")
-fichier = répertoire / "samples" / "types01.py"
+fichier = répertoire / "samples" / "fib.py"
 
 with fichier.open() as feed:
     for lineno, line in enumerate(feed, 1):
-        print(f"{lineno}:{line}", end="")
-    
-    
+        print(f"{lineno}:{line}", end="")  
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `datetime`, `math` et `random`
+# ## `datetime`, `math` et `random`
 
 # %% [markdown] slideshow={"slide_type": ""}
-# #### `datetime`
+# ### `datetime`
 #
 # * gestion des dates et des heures
 
 # %% [markdown] slideshow={"slide_type": ""}
-# #### `math`
+# ### `math`
 #
 # * fonctions mathématiques, constantes, ...
 
 # %% [markdown] slideshow={"slide_type": ""}
-# #### `random`
+# ### `random`
 #
 # * générations de nombres et séquences aléatoires, mélange aléatoire de séquences
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### formats de fichier
+# ## formats de fichier
 
 # %% [markdown]
-# #### `json`
+# ### `json`
 #
 # * sérialisation d’objets python, standard du web
 # * envoi et réception depuis toutes sources compatibles json
 
 # %% [markdown]
-# #### `csv`
+# ### `csv`
 #
 # * ouverture fichier csv, compatible Excel et tableurs
 
 # %% [markdown]
-# #### `pickle`
+# ### `pickle`
 #
 # * sérialisation d’objets python, uniquement compatible avec python
 # * sauvegarde et la chargement du disque dur
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### `collections`
+# ## le module `collections`
 #
-# * une extension des objets *built-in* `list`, `tuple`, `dict`
-# * [la doc](https://docs.python.org/3/library/collections.html)
+# une extension des objets *built-in* `list`, `tuple`, `dict`  
+# [la doc est ici](https://docs.python.org/3/library/collections.html), voici une petite sélection
 #
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ####  `collections.Counter()`
+# ###  `collections.Counter()`
 #
-# * à partir d'un itérable, construit un dictionnaire qui contient 
+# à partir d'un itérable, construit un dictionnaire qui contient
 # * comme clefs les éléments uniques
 # * et comme valeurs le nombre de fois que l’élément apparaît
 
@@ -200,23 +197,28 @@ cnt
 isinstance(cnt, dict)
 
 # %%
+# par exemple pour compter les mots dans un texte
+
 import re
 words = re.findall(r'\w+', open('../data/hamlet.txt').read().lower())
+
 Counter(words).most_common(10)
 
 # %% [markdown]
-# #### `collections.defaultdict()`
+# ### `collections.defaultdict()`
 #
 # * étend les dictionnaires pour en faciliter l’initialisation
-# * un bon remplacement pour `dict.setdefault` qui est moins parlant
-# * https://docs.python.org/3/library/collections.html?#collections.defaultdict
+# * <https://docs.python.org/3/library/collections.html?#collections.defaultdict>
 
 # %% slideshow={"slide_type": "slide"}
 from collections import defaultdict
 
+# on va fabriquer un dict    word -> liste d'indices où il apparait
 s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
-# on indique que les valeurs sont des listes
+
+# pour cela on indique que les valeurs sont des listes
 d = defaultdict(list)
+
 # si on écrit une clé qui n'est pas encore présente
 # d[k] vaut alors list()
 # c'est-à-dire une liste vide est crée automatiquement
@@ -226,16 +228,15 @@ for k, v in s:
 sorted(d.items())
 [('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `itertools` - combinatoire
+# %% [markdown]
+# ## `itertools` - combinatoire
 #
 # * implémente sous forme efficace (itérateurs)
 # * des combinatoires classiques
 # * et autres outils utiles pour écrire des boucles concises
 # * [la doc](https://docs.python.org/3/library/itertools.html)
 # * déjà abordé dans la partie 3.3 sur les itérateurs
-
-# %% [markdown]
+#
 # fournit les combinatoires communes
 #
 # * [`produit cartésien`](https://docs.python.org/3/library/itertools.html#itertools.product)
@@ -243,7 +244,7 @@ sorted(d.items())
 # * [`combinaisons`](https://docs.python.org/3/library/itertools.html#itertools.combinations) *n* parmi *p* 
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### `itertools` - produit cartésien
+# ### `itertools` - produit cartésien
 
 # %%
 from itertools import product
@@ -254,7 +255,7 @@ for x, y in product(A, B):
     print(x, y)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### `itertools` - permutations
+# ### `itertools` - permutations
 
 # %%
 from itertools import permutations
@@ -264,7 +265,7 @@ for tuple in permutations(C):
     print(tuple)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### `itertools` - combinaisons
+# ### `itertools` - combinaisons
 
 # %%
 from itertools import combinations
@@ -273,29 +274,32 @@ miniloto = list(range(5))
 for a, b in combinations(miniloto, 2):
     print(a, b)
 
-# %% slideshow={"slide_type": "slide"}
-# je n'ai pas trouvé pour les arrangements
-# une possibilité est de générer toutes les permutations
-# de chaque tirage dans les combinaisons
-for tuple in combinations(miniloto, 2):
-    for a, b in permutations(tuple):
-        print(a, b)
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### module `itertools` - divers
+# %% slideshow={"slide_type": "slide"}
+# les arrangements ne sont pas disponibles tel-quel
+# mais une possibilité est de générer toutes les permutations
+# de chaque tirage dans les combinaisons
+
+def arrangements(collection, n):
+    for tuple_ in combinations(collection, n):
+        yield from permutations(tuple_)
+
+for t in arrangements(miniloto, 2):
+    print(t)
 
 # %% [markdown] slideshow={"slide_type": ""}
+# ### module `itertools` - divers
+#
 # * parfois sans fin
 #   * `count(10) --> 10 11 12 13 14 ...`
 #   * `cycle('abcd') --> a b c d a b c d ...`
 # * ou pas
-#   * `repeat(10, 3) --> 10 10 10`
 #   * `islice('abcdefg', 2, none) --> c d e f g`
+#   * `repeat(10, 3) --> 10 10 10`
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# #### module `itertools` - suite
-
-# %% [markdown] slideshow={"slide_type": "slide"}
+# ### module `itertools` - suite
+#
 # * chainer plusieurs itérations
 #   * `chain('ABC', 'DEF') --> A B C D E F`
 #   * `chain.from_iterable(['ABC', 'DEF']) --> A B C D E F`
@@ -316,14 +320,10 @@ from itertools import filterfalse
 # %timeit -n 100 for x in (y for y in range(10000) if not (y % 2)): pass
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### librairies très utiles
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `operator`
+# ## `operator`
 #
 # * en python tout est un objet, on peut donc tout passer à une fonction, mais comment passer un opérateur comme `+`, `in`, ou `>` 
 # * le module `operator` contient la version fonctionnelle d’un grand nombre d’opérateurs python
-# * http://sametmax.com/le-module-operator-en-python/
 
 # %% slideshow={"slide_type": "slide"}
 import random
@@ -337,58 +337,9 @@ import operator
 l.sort(key=operator.itemgetter(1))
 l[-7:]
 
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ## librairies tierces (non standard)
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `pypi.org`
-
 # %% [markdown]
-# * toutes les librairies importantes se trouvent ici
-#   * https://pypi.python.org/
-# * **attention** n'importe qui peut publier
-#   * présence sur pypi ⇎ code fiable, supporté
+# ````{admonition} et plein d'autres
 #
-# * `pip` est le programme qui permet de les installer facilement
-#   * fourni avec Python à partir de 3.4 (et de 2.7.9 pour 2.x)
-#   * sinon suivre la documentation officielle de pip
-#   * https://pip.pypa.io/en/latest/installing.html
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `pip` : comment installer une librairie externe
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ```
-# $ pip help
+# à nouveau cette présentation est **loin d'être exhaustive**, n'hésitez pas à aller farfouiller par vous-même en fonction de vos besoins...
 #
-# Usage:
-#   pip <command> [options]
-#
-# Commands:
-#   install                     Install packages.
-#   download                    Download packages.
-#   uninstall                   Uninstall packages.
-#   freeze                      Output installed packages in requirements format.
-#   list                        List installed packages.
-#   show                        Show information about installed packages.
-#   search                      Search PyPI for packages
-# …
-# ```
-
-# %% slideshow={"slide_type": "slide"}
-# par exemple (enlever le ! si dans le terminal)
-
-# !pip install numpy
-
-# %% [markdown]
-# * capable de gérer les setups complexes  
-#   y compris lorsque du code binaire est nécessaire
-#   (cf *wheels*) 
-#
-# * n'affranchit pas de bien lire la doc d'installation  
-#   lorsqu'une approche naïve écohue
-#
-# * à signaler aussi :
-#   utilisez `python -m pip` à la place de `pip`  
-#   en cas de multiples installations + ou - stables  
-#   être sûr d'installer pour le bon Python
+# ````
