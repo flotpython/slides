@@ -36,71 +36,6 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 
-# %% [markdown] slideshow={"slide_type": ""}
-# # leftovers
-
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
-# ## arguments en ligne de commande
-
-# %% [markdown]
-# * un programme Python se lance typiquement depuis le terminal
-# * on a typiquement besoin de lui passer des paramètres :
-#   * nom du fichier d'entrée
-#   * options diverses..
-# * car sinon :
-#   * le programme fait toujours exactement la même chose !
-#   * soit il faut le modifier à chaque lancement
-# * exemple d'école :
-#   * un programme qui calcule la factorielle d'un nombre
-#   
-# on veut pouvoir faire
-# ```console
-# python factorielle.py 56
-# ```
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### `sys.argv`
-#
-# * méthode la plus basique: `sys.argv`
-
-# %% cell_style="center"
-# un code source
-
-# %cat samples/command_line_args1.py
-
-# %% cell_style="center"
-#  quand on le lance
-
-# !python samples/command_line_args1.py --les arguments du shell
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# ### le module `argparse`
-
-# %% [markdown]
-# * parseur de `sys.argv`
-#   * module `argparse` : la solution préconisée
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### exemple avec `argparse`
-
-# %%
-# !cat samples/command_line_args2.py
-
-# %% [markdown] slideshow={"slide_type": "slide"}
-# #### `argparse` - suite
-
-# %%
-# sans argument, ça coince
-# !python samples/command_line_args2.py
-
-# %%
-# si on l'utilise correctement
-# !python samples/command_line_args2.py fic1
-
-# %%
-# ou comme ça
-# !python samples/command_line_args2.py -v fic1 fic2
-
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## le debugger Python : `pdb`
 
@@ -177,8 +112,8 @@ def fact(n):
 #   * `import pdb; pdb.set_trace()`
 # * rappel: à partir de python-3.7:
 #   * `breakpoint()` 
-#  
-# ---
+#
+# ***
 #
 # * documentation de pdb:
 #   * https://docs.python.org/3/library/pdb.html
