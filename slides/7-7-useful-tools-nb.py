@@ -57,21 +57,6 @@ HTML(filename="_static/style.html")
 #   * c'est utile **tout de suite**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## intégration continue
-
-# %% [markdown] slideshow={"slide_type": ""}
-# * en aval des grandes plateformes, il est facile de mettre en place un CI
-#   * c'est-à-dire de déclencher des vérifications **à chaque commit**
-#   * ce qui sous-entend que vous avez écrit des test unitaires bien sûr :)
-#   * gratuit pour un usage modeste
-#   
-# * exactement la même logique avec la **documentation continue**
-#   * i.e. recalculer une doc toujours à jour
-#   * avec plusieurs versions si nécessaire
-#   * qu'on peut mettre en place grâce à un *webhook* entre,  
-#     typiquement, `github` (ou autre) et `readthedocs.io`
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ## vérification: `pylint`
 
 # %% [markdown] slideshow={"slide_type": ""}
