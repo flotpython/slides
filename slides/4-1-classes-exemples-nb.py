@@ -76,7 +76,7 @@ user1 = User("Lambert", 25)
 user1
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ## une classe est un type
+# ### une classe est un type
 #
 # * comme tous les types, la classe est une **usine à objets**  
 #   * `user = User("Dupont", 59)`  
@@ -86,7 +86,7 @@ user1
 #   * ici `name` et `age`
 
 # %% [markdown] tags=[]
-# ## affichage
+# ### affichage
 #
 # * la méthode spéciale `__repr__(self)` doit renvoyer une chaine  
 # * elle est utilisée pour
@@ -179,7 +179,7 @@ stack.pop()
 stack
 
 # %% [markdown] cell_style="center" slideshow={"slide_type": ""}
-# ## méthodes et paramètres
+# ### méthodes et paramètres
 #
 # remarquez qu'ici 
 #
@@ -529,7 +529,7 @@ cls.average_age()
 timedelta_as_year_month(cls.average_age())
 
 # %% [markdown]
-# ## héritage
+# ### héritage
 #
 # voici un dernier exemple, où on utilise cette fois massivement l'**héritage**  
 # en effet ce programme s'appuie sur la lib `arcade` (on fait comment pour l'installer déjà ?) qui expose une API très fortement influencée par l'héritage entre classes  
