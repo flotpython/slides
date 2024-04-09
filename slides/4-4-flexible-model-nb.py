@@ -37,12 +37,18 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # attributs de classe
+# # le modèle est flexible
 #
-# où on voit que le modèle peut être un peu courbé:
+# jusqu'ici on a vu le **modèle usuel**, dans lequel
+# * une instance possède des attributs de données
+# * une classe possède des méthodes
+# * une méthode prend un objet comme premier paramètre
 #
-# * les classes peuvent avoir des attributs de données
-# * les méthodes peuvent ne pas prendre un objet en paramètre
+# dans ce notebook on va voir que ce modèle peut être un peu courbé, c'est-à-dire que:
+#
+# * une classe peut aussi avoir des attributs de données
+# * une méthode peut ne pas prendre un objet en paramètre
+# * une méthode puet même prendre plutôt .. une classe en paramètre (un peu plus avancé)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## attributs de classe
@@ -125,12 +131,12 @@ s2 = Student.load_from_file('student2.txt')
 s1.name, s2.name
 
 
-# %% [markdown] slideshow={"slide_type": "slide"} tags=["level_intermediate"]
+# %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # ## méthodes de classe
 #
-# sujet lié au précédent, mais d'utilisation (beaucoup) plus rare
+# sujet avancé, lié au précédent, mais d'utilisation (beaucoup) plus rare
 
-# %% tags=["level_intermediate"]
+# %% tags=[]
 class Student:
 
     all_instances = []
@@ -147,10 +153,10 @@ class Student:
         self.record_instance(self)
 
 
-# %% tags=["level_intermediate"]
+# %% tags=[]
 s1 = Student('jean')
 len(s1.all_instances)
 
-# %% tags=["level_intermediate"]
+# %% tags=[]
 s2 = Student('jean')
 len(s1.all_instances), len(Student.all_instances)
