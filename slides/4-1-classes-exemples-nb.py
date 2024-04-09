@@ -20,7 +20,7 @@
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
 #   nbhosting:
-#     title: classes et objets
+#     title: classes - exemples
 #   rise:
 #     slideNumber: c/t
 #     start_slideshow_at: selected

@@ -20,7 +20,7 @@
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
 #   nbhosting:
-#     title: attributs de classe
+#     title: le modèle est flexible
 #   rise:
 #     slideNumber: c/t
 #     start_slideshow_at: selected
@@ -48,7 +48,7 @@ HTML(filename="_static/style.html")
 #
 # * une classe peut aussi avoir des attributs de données
 # * une méthode peut ne pas prendre un objet en paramètre
-# * une méthode puet même prendre plutôt .. une classe en paramètre (un peu plus avancé)
+# * une méthode peut même prendre plutôt .. une classe en paramètre (un peu plus avancé)
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## attributs de classe

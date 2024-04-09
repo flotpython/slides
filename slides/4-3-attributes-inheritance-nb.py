@@ -19,7 +19,7 @@
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
 #   nbhosting:
-#     title: "h\xE9ritage"
+#     title: "attributs et h\xE9ritage"
 #   rise:
 #     slideNumber: c/t
 #     start_slideshow_at: selected
