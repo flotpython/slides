@@ -88,7 +88,7 @@ class C:
 # %% [markdown] slideshow={"slide_type": "slide"} tags=["gridwidth-1-2"]
 # Le fragment
 #
-# ```
+# ```python
 # @decorateur
 # def f():
 #     pass
@@ -97,7 +97,7 @@ class C:
 # %% [markdown] slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
 # est en fait équivalent à
 #
-# ```
+# ```python
 # def f():
 #     pass
 # f = decorateur(f)
@@ -223,7 +223,7 @@ f(3, 4)
 # * `f` décoré est une instance de `NumberCalls`
 # * qui est callable via `__call__`
 # * un **appel** à `f` décoré
-# ```
+# ```python
 # f(1, 2)
 # ```
 

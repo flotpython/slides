@@ -266,7 +266,7 @@ except TypeError as e:
 #
 # **Question**: à votre avis, peut-on ajouter dans un ensemble un tuple de 2 listes ?
 #
-# ```
+# ```python
 # S.add( ([1, 2], [3, 4]) )
 # ```
 #

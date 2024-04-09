@@ -45,7 +45,7 @@ a = 'alice'
 print(a)
 
 # %% [markdown]
-# ````{admonition} digression : noms admissibles pour une variable
+# `````{admonition} digression : noms admissibles pour une variable
 # :class: note admonition-small
 #
 # pour fabriquer un nom de variable, prenez une suite illimitée de lettres, chiffres, underscores qui
@@ -85,7 +85,8 @@ print(a)
 #   - non
 #   - `ma-variable`
 #   - non
-# ````  
+# ````
+# `````
 
 # %% [markdown]
 # ## portée des variables (intermédiaire)

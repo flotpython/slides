@@ -40,7 +40,7 @@ HTML(filename="_static/style.html")
 # # `with as` et *context manager*
 
 # %% [markdown]
-# ```
+# ```python
 # with expression [as variable]:
 # 	with-block
 # ```
@@ -57,14 +57,14 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # * un objet fichier est un *context manager*
 # * le fichier OS est fermé automatiquement à la fin du `with`
-# ```
+# ```python
 # with open("../data/une-charogne.txt") as mon_fichier:
 #     for l in mon_fichier:
 #         print(l)
 # ```
 #
 # * équivalent à
-# ```
+# ```python
 # mon_fichier = open("../data/une-charogne.txt")
 # try:
 #     for l in mon_fichier:

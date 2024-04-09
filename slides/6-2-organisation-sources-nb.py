@@ -154,7 +154,7 @@
 #
 # Et donc si vous m'avez suivi, vous devez avoir quelque chose comme
 #
-# ```
+# ```bash
 # mon-depot-git/
 #              bidule/
 #                     main.py
@@ -164,7 +164,7 @@
 #
 # mais alors quand vous faites 
 #
-# ```
+# ```bash
 # $ python bidule/main.py
 # Traceback (most recent call last):
 #   File "bidule/main.py", line 1, in <module>
@@ -213,7 +213,7 @@
 #
 # Avec ce fichier en place, et toujours à la racine de mon dépôt, je peux maintenant faire la formule magique :
 #
-# ```
+# ```bash
 # $ pip install -e .
 # Obtaining file:///Users/jeanmineur/git/flotpython-course/w6/mon-depot-git
 # Installing collected packages: bidule
@@ -234,7 +234,7 @@
 # L'effet de cette commande est de modifier mon environnement pour que le répertoire courant (le `.` dans `pip install -e .`) soit utilisé pour la recherche des modules.
 # Ça signifie que je peux maintenant lancer mon programme sans souci :
 #
-#   ```
+#   ```bash
 #   $ python bidule/main.py
 #   ... déroulement normal
 #   ```

@@ -92,7 +92,7 @@ foo
 #   * pas d'impact sur la portée des variables
 # * forme générale
 #
-# ```
+# ```python
 # lambda arg1, arg2, … argN : expression using args
 # ```
 

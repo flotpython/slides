@@ -97,7 +97,7 @@ b'\x41\x42\x0a'
 #
 # c'est pratique, mais ça peut être **source de confusion**  
 # car par exemple ceci ne **marcherait pas**
-# ```
+# ```python
 # >>> b'été'
 #          ^
 # SyntaxError: bytes can only contain ASCII literal characters.

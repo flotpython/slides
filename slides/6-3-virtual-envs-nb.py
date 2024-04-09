@@ -75,7 +75,7 @@
 #
 # ### La liste de mes environnements
 #
-# ```
+# ```bash
 # [base] ~ $ conda env list
 # conda environments:
 # #
@@ -86,7 +86,7 @@
 # %% [markdown]
 # ### j'en crée un nouveau avec Python-3.12
 #
-# ```
+# ```bash
 # [base] ~ $ conda create -n demo-py312 python=3.12
 # Collecting package metadata (current_repodata.json): done
 # Solving environment: done
@@ -95,7 +95,7 @@
 
 # %% [markdown]
 # ### on le voit
-# ```
+# ```bash
 # [base] ~ $ conda env list
 # conda environments:
 # #
@@ -107,7 +107,7 @@
 # %% [markdown]
 # ### pour entrer dans le nouvel environnement
 #
-# ```
+# ```bash
 # [base] ~ $ conda activate demo-py312
 # [demo-py312] ~ $
 # ```
@@ -117,7 +117,7 @@
 #
 # très peu de choses
 #
-# ```
+# ```bash
 # [demo-py312] ~ $ pip list
 # Package    Version
 # ---------- -------------------
@@ -129,20 +129,20 @@
 
 # %% [markdown]
 # ### on y installe ce qu'on veut
-# ```
+# ```bash
 # [demo-py312] ~ $ pip install numpy
 # ```
 
 # %% [markdown]
 # ### la version de python
-# ```
+# ```bash
 # [demo-py312] ~ $ python --version
 # Python 3.12.2
 # ```
 
 # %% [markdown]
 # ### sortir
-# ```
+# ```bash
 # [demo-py312] ~ $ conda deactivate
 # [base] ~ $
 # ```
@@ -156,7 +156,7 @@
 
 # %% [markdown]
 # ### on n'a pas perturbé l'environnement de départ
-# ```
+# ```bash
 # [base] ~ $ pip show numpy
 # Name: numpy
 # Version: 1.18.1
@@ -164,7 +164,7 @@
 
 # %% [markdown]
 # ### pour détruire l'environnement en question
-# ```
+# ```bash
 # [base] ~ $ conda env remove -n demo-py312
 #
 # Remove all packages in environment /Users/jeanmineur/miniconda3/envs/demo-py312:

@@ -355,7 +355,6 @@ par exemple dans `jupyter lab` voyez le menu `Kernel`
   * utile notamment sur un module
 
 ```{code-cell} ipython3
-
 import math
 dir(math)
 ```

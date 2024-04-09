@@ -71,7 +71,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # ### syntaxe
 #
-# ```
+# ```python
 # def name(arg1, arg2, .. argN):
 #     <statement>
 #     return <value>   # peut apparaitre n’importe où
@@ -89,7 +89,7 @@ HTML(filename="_static/style.html")
 # ````
 
 # %% [markdown]
-# ```
+# ```python
 # # pas du tout usuel, mais pour bien comprendre :
 # # on peut parfaitement écrire ceci
 # if test:

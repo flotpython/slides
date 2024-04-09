@@ -166,7 +166,7 @@ while L:
 #
 # si vous avez besoin de massivement insérer aussi **en début de liste**, alors envisagez la liste **doublement chainée**
 #
-# ```
+# ```python
 # from collections import deque
 # deque?
 # ```

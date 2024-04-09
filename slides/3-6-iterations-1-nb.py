@@ -461,7 +461,7 @@ for a, b in zip(liste1, liste2):
 # :align: center
 # ```
 # ````
-# ````
+# `````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### un itérateur s'épuise

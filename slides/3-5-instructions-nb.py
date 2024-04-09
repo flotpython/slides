@@ -40,7 +40,7 @@ HTML(filename="_static/style.html")
 #
 # L'instruction conditionnelle en Python:
 #
-# ```
+# ```python
 # if <test1>:
 #     <statement1>
 # elif <test2>:
@@ -105,7 +105,7 @@ print(appreciation(11.5))
 # il existe aussi une **expression**  permettant de faire quelque chose comme *if .. then .. else ..*  
 # la syntaxe générale est 
 #
-#   ```
+#   ```python
 #   <exp_1> if <test> else <exp_2>
 #   ```
 #
