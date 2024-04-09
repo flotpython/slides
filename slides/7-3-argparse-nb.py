@@ -36,7 +36,7 @@ HTML(filename="_static/style.html")
 #
 # il est parfois aussi utile de publier un vrai "lanceur", c'est-à-dire un programme complet, destiné à être lancé en tant que tel avec une commande dans le terminal, genre
 #
-# ```console
+# ```bash
 # $ python script.py
 # ```
 #
@@ -49,7 +49,7 @@ HTML(filename="_static/style.html")
 #
 # par exemple si vous avez écrit un programme qui calcule la factorielle, on veut pouvoir écrire
 #
-# ```console
+# ```bash
 # $ python factorielle.py 6
 # factorial(6)=720
 # ```
@@ -186,7 +186,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # et de cette façon, après avoir installé le package avec `pip install` (localement ou pas), vous ou votre utilisateur pourra lancer la commande `bidule`, qui sera branchée sur la fonction `main` du module `monmodule` dans le package `monpackage`
 #
-# ```console
+# ```bash
 # # une fois installé, on peut faire ceci dans le terminal
 # $ bidule 6
 # 720
