@@ -30,7 +30,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown]
-# # écrire un point d'entrée
+# # écrire un lanceur
 #
 # quand on écrit un projet en Python, on peut publier uniquement une librairie : un paquet de classes, de fonctions, destinées à être utilisées depuis une autre application.
 #
