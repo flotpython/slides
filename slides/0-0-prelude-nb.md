@@ -60,10 +60,10 @@ Thierry Parmentelat - Arnaud Legout - Inria
 
 | contenu | url |
 |-:|:-|
-| notebooks | <https://nbhosting.inria.fr/> |
 | HTML statique | <https://flotpython-slides.readthedocs.io/> |
 | sources des notebooks | <https://github.com/flotpython/slides> |
-| exercices autocorrigés | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
+| notebooks live (nécessite un login) | <https://nbhosting.inria.fr/> |
+| exercices autocorrigés (idem) | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
 
 +++
 
