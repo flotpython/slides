@@ -43,7 +43,7 @@ HTML(filename="_static/style.html")
 # ### `breakpoint()`
 
 # %% [markdown]
-# depuis la version 3.7, pour mettre un point d'arrêt dans un programme on peut utiliser `breakpoint()`
+# pour mettre un point d'arrêt dans un programme on peut utiliser `breakpoint()`
 
 # %% tags=["gridwidth-1-2"]
 def fact(n):
@@ -105,29 +105,28 @@ def fact(n):
 # * lance le debugger en post-mortem
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# ### *old-school* breakpoints
-
-# %% [markdown]
-# * pour mettre un *breakpoint* dans votre code
-#   * `import pdb; pdb.set_trace()`
-# * rappel: à partir de python-3.7:
-#   * `breakpoint()` 
-#
-# ***
-#
-# * documentation de pdb:
-#   * https://docs.python.org/3/library/pdb.html
-#   
-#
-
-# %% [markdown] slideshow={"slide_type": "slide"}
 # ### sous IPython
+#
+# dans `ipython` (ou dans un notebook), vous pouvez utiliser la *magic* `%%debug`  
+#
+# ````{admonition} magic de cellule
+# :class: tip
+#
+# rappelez-vous que avec **un seul `%`** on a affaire à une *magic* de **ligne**  
+# et avec **deux pourcents `%%`** c'est une magique **de cellule** 
+#
+# donc nous ici on utilise presque toujours le double pourcent
+# ````
 
 # %%
-def foo():
-    y = x
+def fact(n):
+    print(f"in fact with {n=}")
+    if n <= 1:
+        return 1
+    else:
+        return n * fact(n-1)
 
 
 # %%
 # %%debug
-foo()
+fact(3)
