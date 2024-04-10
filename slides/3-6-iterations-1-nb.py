@@ -664,6 +664,7 @@ for i, (d1, d2) in enumerate(product(dim1, dim2), 1):
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
+# (label-for-under-the-hood)=
 # ## sous le capot
 #
 # pour les curieux..
