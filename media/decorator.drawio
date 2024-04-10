@@ -1,0 +1,31 @@
+<mxfile host="65bd71144e">
+    <diagram id="ilW4iNarMf_ycaWCBr6j" name="Page-1">
+        <mxGraphModel dx="905" dy="648" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 20px;&quot; color=&quot;#006600&quot; face=&quot;Courier New&quot;&gt;&amp;nbsp;# raw function&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;def foo(*args):&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;|&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;|&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;|&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;return something&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;strokeColor=#006600;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="80" width="270" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font color=&quot;#3333ff&quot; style=&quot;font-size: 20px;&quot; face=&quot;Courier New&quot;&gt;&amp;nbsp;# decorated function&lt;br&gt;&amp;nbsp;&lt;br&gt;&amp;nbsp;def decorated_foo(*args):&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;print(&quot;IN&quot;)&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;result = &lt;/font&gt;&lt;font style=&quot;font-size: 20px;&quot; face=&quot;Courier New&quot;&gt;&lt;font color=&quot;#006600&quot;&gt;foo(*args)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#3333ff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;print(&quot;OUT&quot;)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#3333ff&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;return result&lt;/font&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;strokeColor=#3333FF;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="80" width="330" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="endArrow=classic;html=1;fontFamily=Courier New;fontSize=20;fontColor=#3333FF;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;strokeColor=#FF0000;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="350" y="180" as="sourcePoint"/>
+                        <mxPoint x="470" y="180" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="&lt;font color=&quot;#ff0000&quot;&gt;decorator&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Courier New;fontSize=20;fontColor=#3333FF;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="190" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;font color=&quot;#3333ff&quot;&gt;decorated_foo&lt;/font&gt; = &lt;font color=&quot;#ff0000&quot;&gt;decorator&lt;/font&gt;(foo)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Courier New;fontSize=20;fontColor=#006600;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="290" width="400" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

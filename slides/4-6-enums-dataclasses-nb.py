@@ -90,6 +90,7 @@ Value.ONE <= Value.TWO
 # <https://docs.python.org/3/library/enum.html>
 
 # %% [markdown]
+# (label-dataclasses)=
 # ## `dataclasses`
 
 # %% [markdown]
