@@ -9,7 +9,7 @@ tracks:
     - "slides/1-[0-9]*-nb.md"
   - name: premiers pas
     notebooks:
-    - 101/0*.md
+    - slides/101/0*.md
   - name: types de base
     notebooks:
     - "slides/2-[0-9]*-nb.py"
