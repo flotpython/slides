@@ -29,7 +29,7 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": ""}
-# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+# Licence CC BY-NC-ND, Thierry Parmentelat
 
 # %%
 from IPython.display import HTML
@@ -37,6 +37,12 @@ HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
 # # `asyncio`
+
+# %% [markdown]
+# ````{admonition} xxx à revoir entièrement
+#
+# sans doute pas à jour
+# ````
 
 # %% [markdown]
 # ## objectifs

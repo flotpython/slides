@@ -35,6 +35,8 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
+# (label-classes-inheritance)=
+#
 # # attributs & héritage
 
 # %% [markdown]
@@ -175,6 +177,7 @@ HTML(filename="_static/style.html")
 # ```
 
 # %% [markdown] slideshow={"slide_type": ""}
+# (label-access-attributes-usual)=
 # ## écriture d'attribut: pas de recherche
 #
 # quand on **écrit** un attribut dans un objet, le mécanisme est simple:  

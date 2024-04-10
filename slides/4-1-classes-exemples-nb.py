@@ -37,9 +37,10 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
+# (label-classes-intro)=
+#
 # # classes : exemples
-
-# %% [markdown] slideshow={"slide_type": ""}
+#
 # les classes servent à définir **de nouveau types**  
 #
 # * en sus des types prédéfinis `str`, `list`, `set`, `dict`, ...
