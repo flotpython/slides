@@ -208,6 +208,16 @@ HTML(filename="_static/style.html")
 # * le chercher dans l'espace de nom de l'objet lui-même
 # * sinon dans l'espace de nom de sa classe
 # * sinon dans les super-classes (on verra les détails plus loin)
+#
+# ````{admonition} cas particulier des dunders
+# :class: admonition-small
+#
+# on a vu que le langage peut faire une **recherche implicite** de *dunder* - 
+# c'est le cas par exemple quand on recherche `__iter__` parce que l'objet est itéré, 
+# ou qu'on cherche `__call__` parce que l'objet est appelé  
+# dans ces cas-là on ne **regarde pas dans l'objet lui-même**  
+# c'est une subtilité, qui ne va pas trop nous concerner dans ce chapitre, mais dont on verra l'impact dans [la section sur les métaclasses](label-metaclasses)
+# ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### ex1. de résolution d'attribut

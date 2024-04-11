@@ -67,7 +67,7 @@ HTML(filename="_static/style.html")
 # - `obj.get_value()` qui renvoie la valeur courante
 # - `obj.set_value(new_value)` qui permet de modifier la valeur - et qui n'autorisera pas de valeur en dehors de l'intervalle de la jauge
 #
-# ici on prend volontairement un exemple où ces méthodes d'accès sont relativement simples, mais ce formalisme est très général et souvent possé à son extrême: le code qui utilise la classe ne fait **jamais** directement référence aux attributs, mais **toujours** au travers de ces méthodes d'accès; et de cette façon on assure l'encapsulation, on peut garantir les invariants, etc...
+# ici on prend volontairement un exemple où ces méthodes d'accès sont relativement simples, mais ce formalisme est très général et souvent poussé à son extrême: le code qui utilise la classe ne fait **jamais** directement référence aux attributs, mais **toujours** au travers de ces méthodes d'accès; et de cette façon on assure l'encapsulation, on peut garantir les invariants, etc...
 
 # %% [markdown]
 # ### en Python
@@ -176,6 +176,10 @@ station0
 #     def set_value(self, newvalue):
 #         # on force la nouvelle valeur à être dans l'intervalle
 #         self._value = max(0, min(newvalue, 100))
+#
+#     # et pour être cohérent on fournit aussi un getter
+#     def get_value(self):
+#         return self._value
 # ```
 
 # %% [markdown]
@@ -208,6 +212,9 @@ class Gauge:
     # d'abord le getter
     @property
     def value(self):
+        """
+        the docstring
+        """
         return self._value
     
     # la syntaxe pour définir le 'setter' correspondant 
@@ -216,12 +223,20 @@ class Gauge:
     @value.setter
     def value(self, newvalue):
         self._value = max(0, min(newvalue, 100))
-        
 
 
 # %% [markdown]
 # avec ce code, on peut manipuler les objets de la classe "normalement", 
 # et pourtant on contrôle bien la validité de la valeur
+#
+# ````{admonition} value ou _value ?
+# :class: attention
+#
+# c'est important de bien faire la différence 
+#
+# - entre l'attribut `_value` qui est un attribut "normal" dans lequel on range la donnée, 
+# - et l'attribut `value` qui est la propriété pour y accéder; gare aux récursions infinies en cas de confusion !
+# ````
 
 # %% cell_style="split"
 # à la création
@@ -237,14 +252,22 @@ g
 g.value
 
 
-# %% [markdown] tags=["level_intermediate"]
+# %% [markdown]
+# ````{admonition} on la voit dans le help()
+# :class: admonition-small
+#
+# regardez ce que donne le `help(g)`, vous verrez apparaitre `value` dans les descriptors, avec son *docstring*
+# ````
+
+# %% [markdown] tags=[]
 # ## l'autre syntaxe
 #
-# en fait il y a deux syntaxes pour définir une property, choisir entre les deux est une question de goût
+# en fait il y a deux syntaxes pour définir une property, choisir entre les deux est une question de goût  
+# (perso je préfère celle-ci, je la trouve plus facile à retenir)
 #
-# voici la deuxième syntaxe, utilisée dans la classe `Gauge`
+# quoi qu'il en soit, voici la deuxième syntaxe, utilisée dans la classe `Gauge`
 
-# %% tags=["level_intermediate"]
+# %% tags=[]
 # version avec une property - deuxième syntaxe
 
 class Gauge:
@@ -258,6 +281,9 @@ class Gauge:
     
     # le getter - généralement on le cache avec ce _ au début du nom
     def _get_value(self):
+        """
+        the docstring
+        """
         return self._value
 
     # pareil
@@ -268,14 +294,28 @@ class Gauge:
     value = property(_get_value, _set_value)
 
 
-# %% tags=["level_intermediate"] cell_style="split"
+# %% tags=[] cell_style="split"
 # à la création
 g = Gauge(1000); g
 
-# %% tags=["level_intermediate"] cell_style="split"
+# %% tags=[] cell_style="split"
 # ou à la modification
 g.value = -10
 g
+
+# %% [markdown]
+# ````{admonition} les détails
+# :class: admonition-x-small
+#
+# `property` attend au maximum 4 paramètres:
+# - le getter - doit retourner la valeur lue
+# - le setter - accès en écriture interdit si non fourni
+# - le deleter - `del` interdit si non fourni
+# - le docstring - peut être fourni ici , sinon pris dans le getter
+# ````
+
+# %%
+help(g)
 
 # %% [markdown]
 # ## conclusion
@@ -283,8 +323,18 @@ g
 # %% [markdown]
 # en Python, on aime bien **accéder aux attributs** d'un objet **directement**, et ne pas **s'encombrer de *getters* et *setters*** qui obscurcissent le code pour rien
 #
-# mais on a parfois besoin que l'accès à un attribut passe par une **couche de logique**
+# comme on a parfois besoin que l'accès à un attribut passe par une **couche de logique**
 # * soit pour implémenter une indirection
 # * soit pour contrôler la validité des arguments
 #
-# et dans ces cas-là on **définit une property**, qui permet de conserver le code existant (pas de changement de l'API)
+# dans ces cas-là on **définit une property**, qui permet de conserver le code existant (pas de changement de l'API)
+#
+# ````{admonition} les accès aux attributs
+# :class: warning
+#
+# le lecteur curieux doit se dire à ce stade que les accès aux attributs, tels qu'on les a présentés dans le notebook précédent,
+# n'expliquent pas du tout comment peuvent bien fonctionner les *properties*
+#
+# et effectivement, jusqu'ici on n'a présenté qu'une version **très édulcorée** de la mécanique générale, qui est passablement complexe, et sur laquelle on reviendra plus longuement dans le dernier chapitre  
+# cela dit, pour une utilisation de base des classes et des objets, tout ceci est amplement suffisant pour écrire du code correct et efficace :)
+# ````
