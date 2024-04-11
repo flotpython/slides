@@ -29,16 +29,16 @@
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 
-# %% [markdown] slideshow={"slide_type": ""}
-# # enums et dataclasses
-
 # %% [markdown]
-# dans ce notebook nous allons découvrir - très rapidement - deux façons de créer rapidement des classes qui répondent à des besoins spécifiques
+# # enums et dataclasses
+#
+# (et namedtuples)
+#
+# dans ce notebook nous allons découvrir - très rapidement - quelques façons de créer rapidement des classes qui répondent à des besoins spécifiques
 
 # %% [markdown]
 # ## `enums`
-
-# %% [markdown]
+#
 # la notion de classe énumérée est à rapprocher de la notion de catégorie en pandas, c'est-à-dire un type qui peut prendre un nombre fini, et généralement petit, de valeurs.
 
 # %%
@@ -85,15 +85,13 @@ Value.ONE <= Value.TWO
 # %% [markdown]
 # ### pour en savoir plus
 #
-# ceci est un rapide aperçu, pour plus de détails voyez cette page
-#
+# ceci est un rapide aperçu, pour plus de détails voyez cette page  
 # <https://docs.python.org/3/library/enum.html>
 
 # %% [markdown]
 # (label-dataclasses)=
-# ## `dataclasses`
-
-# %% [markdown]
+# ## `dataclass`
+#
 # les dataclasses sont conçues pour pouvoir créer facilement des classes de type 'enregistrement', c'est-à-dire lorsqu'un objet contient simplement quelques attributs de données
 
 # %%
@@ -151,9 +149,46 @@ v1 <= v2
 # %% [markdown]
 # ### pour en savoir plus
 #
-# de nouveau pour approfondir, voyez cette page
-#
+# de nouveau pour approfondir, voyez cette page  
 # <https://docs.python.org/3/library/dataclasses.html>
 
 # %% [markdown]
-# ***
+# ## `namedtuple`
+#
+# dans une veine similaire, on peut citer également la notion de `namedtuple`, exposée par le module `collections`  
+# comme son nom l'indique, il permet de fabriquer des objets qui se comportent comme des tuples, mais dans lesquels les différents éléments sont nommés  
+# ou si vous préférez, qui se comportent comme des objets, mais qu'on peut aussi accéder comme des tuples :)
+
+# %%
+from collections import namedtuple
+
+# on fabrique une classe comme ceci
+Person = namedtuple("Person", ('name', 'age'))
+
+# %%
+# on l'utilise comme une classe usuelle
+
+p1 = Person("jean", 32)
+p1
+
+# %%
+# au travers de ses attributs
+
+p1.name
+
+# %%
+# sauf que ça peut s'utiliser **aussi** comme un tuple
+
+p1[0]
+
+# %%
+# vraiment comme un tuple, donc unpacking disponible
+
+n, a = p1
+n
+
+# %% [markdown]
+# ### pour en savoir plus
+#
+# plus de détails ici  
+# <https://docs.python.org/3/library/collections.html#collections.namedtuple>
