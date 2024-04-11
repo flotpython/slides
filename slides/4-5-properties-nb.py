@@ -332,7 +332,7 @@ help(g)
 # ````{admonition} les accès aux attributs
 # :class: warning
 #
-# le lecteur curieux doit se dire à ce stade que les accès aux attributs, tels qu'on les a présentés dans le notebook précédent,
+# le lecteur curieux doit se dire à ce stade que les accès aux attributs, tels qu'on les a présentés dans ce qui précède,
 # n'expliquent pas du tout comment peuvent bien fonctionner les *properties*
 #
 # et effectivement, jusqu'ici on n'a présenté qu'une version **très édulcorée** de la mécanique générale, qui est passablement complexe, et sur laquelle on reviendra plus longuement dans le dernier chapitre  
