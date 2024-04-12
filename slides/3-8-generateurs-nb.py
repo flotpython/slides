@@ -31,7 +31,7 @@ HTML(filename="_static/style.html")
 
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # les générateurs - itérations (3/3)
+# # itér.. (3/3) - générateurs
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## résumé
@@ -183,7 +183,7 @@ try:
     next(g)
 except StopIteration:
     print("pas de troisieme")
-    
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## expression génératrice *vs* fonction génératrice

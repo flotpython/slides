@@ -30,7 +30,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # itérations (2/3)
+# # itér.. (2/3) - compr. et genexp
 
 # %% [markdown] tags=[]
 # ## compréhensions
