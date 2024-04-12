@@ -318,6 +318,16 @@ g
 help(g)
 
 # %% [markdown]
+# ## use cases
+#
+# quelques exemples de classes où on pourrait vouloir mettre des properties
+#
+# - la classe `Gauge`, ou toute autre variante où les données doivent respecter des contraintes
+# - la classe `Temperature`, ou toute variante où on veut pouvoir accéder à une valeur selon plusieurs unités (`t.kelvin = 0; t.celsius == -273`)
+# - la classe `RomanNumber`, pour pouvoir lire ou écrire en chiffres ou en lettres
+# - ...
+
+# %% [markdown]
 # ## conclusion
 
 # %% [markdown]
@@ -332,7 +342,7 @@ help(g)
 # ````{admonition} les accès aux attributs
 # :class: warning
 #
-# le lecteur curieux doit se dire à ce stade que les accès aux attributs, tels qu'on les a présentés dans ce qui précède,
+# le lecteur curieux doit se dire à ce stade que les **accès aux attributs**, tels qu'on les a présentés dans ce qui précède,
 # n'expliquent pas du tout comment peuvent bien fonctionner les *properties*
 #
 # et effectivement, jusqu'ici on n'a présenté qu'une version **très édulcorée** de la mécanique générale, qui est passablement complexe, et sur laquelle on reviendra plus longuement dans le dernier chapitre  
