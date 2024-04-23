@@ -6,34 +6,31 @@ tracks:
   sections:
   - name: introduction
     notebooks:
-    - "slides/1-[0-9]*-nb.md"
+    - "notebooks/1-[0-9]*-nb.md"
   - name: premiers pas
     notebooks:
-    - slides/101/0*.md
+    - notebooks/101/0*.md
   - name: types de base
     notebooks:
-    - "slides/2-[0-9]*-nb.py"
+    - "notebooks/2-[0-9]*-nb.py"
   - name: syntaxe & instructions
     notebooks:
-    - "slides/3-[0-9]*-nb.py"
+    - "notebooks/3-[0-9]*-nb.py"
   - name: classes
     notebooks:
-    - "slides/4-[0-9]*-nb.py"
+    - "notebooks/4-[0-9]*-nb.py"
   - name: fonctions
     notebooks:
-    - "slides/5-[0-9]*-nb.py"
+    - "notebooks/5-[0-9]*-nb.py"
   - name: modules et imports
     notebooks:
-    - "slides/6-[0-9]*-nb.py"
+    - "notebooks/6-[0-9]*-nb.py"
   - name: divers
     notebooks:
-    - "slides/7-[0-9]*-nb.py"
-  # - name: "compl\xE9ments"
-  #   notebooks:
-  #   - "slides/7-[0-9]*-nb.py"
+    - "notebooks/7-[0-9]*-nb.py"
   - name: "sujets avanc\xE9s"
     notebooks:
-    - "slides/8-[0-9]*-nb.py"
+    - "notebooks/8-[0-9]*-nb.py"
 #- description: "Cours: suppl\xE9ments"
 #  id: extras
 #  name: extras

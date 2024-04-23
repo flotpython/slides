@@ -423,7 +423,7 @@ list(absolute.parents)
 # est-ce que le nom de mon objet Path 
 # a une certaine forme ?
 
-absolute.match("**/slides/*")
+absolute.match("**/notebooks/*")
 
 # %%
 absolute.match("**/*globbing*")

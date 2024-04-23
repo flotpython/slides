@@ -7,7 +7,7 @@ logo: media/logo-python.svg
 repository:
   url: https://github.com/flotpython/slides
   branch: main
-  path_to_book: slides
+  path_to_book: notebooks
 
 html:
   use_repository_button: yes

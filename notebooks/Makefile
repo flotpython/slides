@@ -1,3 +1,4 @@
+
 all: book
 
 include Makefile.book
@@ -10,7 +11,6 @@ NBNORMFLAGS = -l1 -L Licence -s2 -S 'IPython.display' -t h1
 include Makefile.norm
 
 # derive jb toc from nbhosting
-TOCDIR = slides
 include Makefile.toc
 
 ### NOTE
