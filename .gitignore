@@ -5,3 +5,9 @@ _build
 trash
 .macnb
 *.rename
+obsolete-notebooks/
+riddles/
+temporaire.*
+islice.txt
+tmp.txt
+test.txt
