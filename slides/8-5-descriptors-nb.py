@@ -80,11 +80,11 @@ HTML(filename="_static/style.html")
 # la caractéristique assez troublante des descripteurs est la suivante:  
 # si pendant la recherche "habituelle"
 # * on trouve un attribut
-# * **et que celui-ci est une instance de descripteur**
-# * **alors on l'évalue** (on l'appelle)
-# pour obtenir la valeur finale de l'attribut ou pour écrire/détruire selon le contexte
+# * et que celui-ci est une **instance de descripteur**
+# * alors **on l'appelle** pour obtenir la valeur finale de l'attribut
+#   ou pour écrire/détruire selon le contexte
 #
-# ça nous rappelle un peu les propriétés (et de fait les propriétés sont implémentées à base de descripteurs)
+# ça nous rappelle un peu les propriétés (et de fait les propriétés sont implémentées à base de descripteurs...)
 
 # %% [markdown]
 # ## exemple: un attribut d'instance
@@ -94,16 +94,20 @@ HTML(filename="_static/style.html")
 VERBOSE = True
 
 def verbose(*args, **kwds):
-    VERBOSE and print(*args, **kwds)
+    if VERBOSE:
+        print(*args, **kwds)
 
+
+# %% [markdown]
+# ### v0: un peu poussif
 
 # %% slideshow={"slide_type": "slide"}
 # ici on implémente un attribut usuel (d'instance)
 # il faut être attentif à bien ranger la donnée dans l'instance
 # et pas dans le descripteur !!!
 
-# une classe de descripteur pour implémenter l'attribut 'name'
-class InstanceAttributeDescriptor:
+# une classe de descripteur pour implémenter l'attribut 'age'
+class AgeDescriptor:
  
     def __init__(self):
         # ici self est l'instance du descripteur
@@ -118,25 +122,29 @@ class InstanceAttributeDescriptor:
         # owner: ici ça va être None (pourrait recevoir 
         #        la classe Person dans d'autres use cases)
 
-        # du coup bien faire attention à écrire dans `instance` et pas dans `self` !
-        oldname = instance._name
-        verbose(f"getter returning {oldname=}\n  -- {self=} {instance=}")
-        return oldname
+        # du coup bien faire attention à ranger dans `instance` et pas dans `self` !
+        current_age = instance._age
+        verbose(f"getter returning {current_age=}\n  -- {self=} {instance=}")
+        return current_age
  
-    def __set__(self, instance, newname):
-        # attention à ne pas utiliser instance.name
+    def __set__(self, instance, new_age):
+        # attention à ne pas utiliser instance.age
         # car on cacherait le descripteur !
-        verbose(f"setting: {newname}\n  -- {self=} {instance=}")
-        instance._name = newname
+        verbose(f"setting: age={new_age}\n  -- with {self=} {instance=}")
+        instance._age = new_age
  
     def __delete__(self, instance):
-        verbose(f"deleting: {instance._name}\n  -- {instance=}")
-        del instance._name
+        verbose(f"deleting: {instance._age}\n  -- from {instance=}")
+        del instance._age
 
 
 class Person:
     # on range une instance de Descriptor dans Person.__dict__['name']
-    name = InstanceAttributeDescriptor()
+    age = AgeDescriptor()
+
+    # fait une lecture et une écriture
+    def birthday(self):
+        self.age += 1     
 
 
 # %%
@@ -144,17 +152,92 @@ class Person:
 # un attribut 'name' à toutes les instances de Person
 
 p1, p2 = Person(), Person()
-p1.name = "John"
-p2.name = "Doe"
+p1.age = 12
+p2.age = 20
 
-p1.name, p2.name
+# %%
+# sont bien différents
+
+p1.age, p2.age
+
+# %%
+p1.birthday()
 
 
 # %% [markdown]
-# ````{admonition} exercice
+# ### v1: mieux avec `__set_name__`
 #
-# notre descriptor est spécialisé pour l'attribut `name`, transformez-le pour qu'il puisse servir à n'importe quel attribut
-# ````
+# notre descripteur est spécialisé pour l'attribut `name`, c'est franchement sous-optimal, on ne va pas récrire le même code à chaque fois  
+# voici comment améliorer, en tirant profit de la dunder `__set_name__` pour capturer le nom de l'attribut
+
+# %%
+# de nouveau un ici on implémente un attribut usuel (d'instance)
+# mais qui peut marcher pour n'importe quel nom
+
+class InstanceAttributeDescriptor:
+ 
+    def __set_name__(self, owner, name):
+        # par exemple 'age'
+        self.public_name = name
+        self.private_name = '_' + name
+    
+    def __get__(self, instance, owner):
+        current_value = getattr(instance, self.private_name)
+        verbose(f"getter: {self.public_name} -> {current_value}")
+        return current_value
+ 
+    def __set__(self, instance, new_value):
+        verbose(f"setter: {self.public_name} -> {new_value}")
+        setattr(instance, self.private_name, new_value)        
+ 
+
+class Person:
+    age = InstanceAttributeDescriptor()
+    name = InstanceAttributeDescriptor()
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def birthday(self):
+        self.age += 1         
+
+
+# %%
+# avec ce code, c'est comme si on avait ajouté 
+# un attribut 'name' à toutes les instances de Person
+
+p1, p2 = Person("john", 12), Person("bill", 20)
+
+# %%
+# sont bien différents
+
+p1.age, p2.age
+
+# %%
+p1.birthday()
+
+# %%
+VERBOSE
+
+# %% [markdown]
+# ### un peu d'introspection
+
+# %%
+# l'instance de descripteur est ici
+
+vars(Person)['age']
+
+# %%
+# et ses deux attributs sont
+
+vars(vars(Person)['age'])
+
+# %%
+# et dans un objet Person on trouve ceci
+
+vars(p1)
+
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## stockage des attributs
@@ -173,21 +256,24 @@ p1.name, p2.name
 # voyons cette deuxième alternative, pour implémenter un attribut de classe
 
 # %% [markdown]
-# ## exemple: un attribut de classe
+# ### exemple: un attribut de classe
 #
 # et ceci avec un tout petit changement:
 
 # %% slideshow={"slide_type": "slide"}
 # ici on implémente un attribut de classe
-# pour ça on va ranger la valeur .. dans le descripteur (l'instance du)
+# pour ça on va ranger la valeur .. directement dans le (l'instance du) descripteur 
 
 # c-a-d dans self plutot que dans instance
 
 class ClassAttributeDescriptor:
 
-    # la solution de l'exercice: ranger le nom de l'attribut dans le descripteur
-    def __init__(self, attribute):
-        self.attribute = attribute
+    def __set_name__(self, owner, name):
+        self.public_name = name
+        # on pourrait aussi ranger un _private_name
+        # mais ce n'est pas nécessaire, car ici on veut un attribut
+        # de classe, donc on peut ranger la donnée dans le descripteur
+        # et du coup le nom n'a aucun importance, on va mettre en dur '_value'
  
     def __get__(self, instance, owner):
         # pas besoin de s'embeter à prendre un nom compliqué
@@ -197,16 +283,14 @@ class ClassAttributeDescriptor:
  
     def __set__(self, instance, newvalue):
         self._value = newvalue
- 
-    def __delete__(self, instance):
-        del self.value
 
 
 class Person:
-    # l'attribut 'normal' 
+    # un attribut 'normal' 
     name = InstanceAttributeDescriptor()
+    # un attribut de classe
     # ici du coup toutes les instances partagent l'attribut
-    shared = ClassAttributeDescriptor("shared")
+    shared = ClassAttributeDescriptor()
 
 
 # %%
@@ -226,6 +310,8 @@ print("========== shared:", p1.shared, "<->", p2.shared)
 
 
 # %% [markdown]
+# ## attribut en lecture seule
+#
 # ````{admonition} read-only
 #
 # on a vu que pour rendre une propriété *read-only*, il suffisait de ne pas fournir de *setter*  
@@ -246,6 +332,12 @@ print("========== shared:", p1.shared, "<->", p2.shared)
 #
 # - `name` pour le descripteur
 # - `_name` pour la donnée
+
+# %% [markdown]
+# ## exemples pratiques
+#
+# voyez quelques exemples utiles de validateurs ici:  
+# <https://docs.python.org/fr/3/howto/descriptor.html#validator-class>
 
 # %% [markdown] slideshow={"slide_type": ""}
 # ## *data descriptors*
@@ -327,5 +419,5 @@ pnd.name
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ## pour en savoir plus
 #
-# * [la doc sur les descriptors](https://docs.python.org/3/howto/descriptor.html) (qui parle aussi des properties)
+# * [la doc sur les descriptors](https://docs.python.org/fr/3/howto/descriptor.html) excellente intro de Raymond Hettinger, qui parle aussi des properties
 #
