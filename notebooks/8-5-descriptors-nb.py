@@ -70,6 +70,7 @@ HTML(filename="_static/style.html")
 # un descripteur est une classe qui détermine le comportement lors de l’accès, l’affectation et l’effacement d’un attribut
 #
 # une classe avec **au moins une des méthodes** suivantes est un descripteur
+#
 # * `__get__()`
 # * `__set__()`
 # * `__delete__()`
@@ -79,6 +80,7 @@ HTML(filename="_static/style.html")
 #
 # la caractéristique assez troublante des descripteurs est la suivante:  
 # si pendant la recherche "habituelle"
+#
 # * on trouve un attribut
 # * et que celui-ci est une **instance de descripteur**
 # * alors **on l'appelle** pour obtenir la valeur finale de l'attribut

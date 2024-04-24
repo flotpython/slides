@@ -42,6 +42,7 @@ HTML(filename="_static/style.html")
 # * itérations 1/3
 #   - la boucle `for` sur les types de base / containers (`list`, `set`, `dict`)
 #   - combinatoires usuelles: `range`, `itertools` ...
+#
 # * itérations 2/3
 #   - compréhensions (de liste, d'ensemble, de dictionnaire)
 #   - expressions génératrices: itération "paresseuse"
@@ -193,6 +194,7 @@ except StopIteration:
 #
 # * une expression génératrice `(expr(x) for x in iterable)`  
 #   retourne un objet de type `generator`
+#
 # * l'appel à une fonction génératrice produit aussi un objet de type *generator*
 # * il est fréquent - par abus de langage - d'appeler aussi simplement *générateur*  
 #   une fonction génératrice

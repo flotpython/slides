@@ -7,7 +7,7 @@
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -version
+#       -toc, -rise, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -21,11 +21,6 @@
 #     pygments_lexer: ipython3
 #   nbhosting:
 #     title: instructions
-#   rise:
-#     slideNumber: c/t
-#     start_slideshow_at: selected
-#     theme: sky
-#     transition: cube
 # ---
 
 # %% [markdown]

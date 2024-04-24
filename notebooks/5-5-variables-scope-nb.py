@@ -76,9 +76,11 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # * dans d'autres langages, il y a nécessité de **déclarer** une variable  
 #   avant de s'en servir (typiquement les langages compilés)
+#
 # * ce n'est pas le cas en Python
 #
 # toutefois:
+#
 # * **le fait d'affecter** une variable joue ce rôle-là
 # * et il y a aussi bien sûr **les paramètres** de la fonction
 

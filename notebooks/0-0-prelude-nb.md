@@ -26,11 +26,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: "pr\xE9lude"
-rise:
-  slideNumber: c/t
-  start_slideshow_at: selected
-  theme: sky
-  transition: cube
 ---
 
 ```{image} media/inria-50-alpha.png

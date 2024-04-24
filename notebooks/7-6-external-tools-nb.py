@@ -43,11 +43,13 @@ HTML(filename="_static/style.html")
 #
 # c'est juste indispensable de **toujours** travailler sous un SCM !  
 # vous commencez un projet, ayez le réflexe de :
+#
 # * créer un dossier
 # * `git init`
 # * et commiter fréquemment
 #
 # pensez ensuite à dupliquer votr dépôt sur une plateforme distante (github - gitlab - bitbucket)
+#
 # * pour avoir une sauvegarde
 # * et éventuellement collaborer
 #
@@ -62,6 +64,7 @@ HTML(filename="_static/style.html")
 # * toutes les librairies importantes se trouvent ici  <https://pypi.python.org/>
 # * **attention** souvenez-vous que n'importe qui peut y publier !  
 #   la présence sur pypi **ne veut pas dire** code fiable, supporté
+#
 # * `pip` est le programme qui permet de les installer facilement  
 #   <https://pip.pypa.io/en/latest/installation/>
 
@@ -143,8 +146,10 @@ HTML(filename="_static/style.html")
 # le problème principal avec `pylint`: trop de features, du coup **beaucoup de bruit** !  
 # il convient de déterminer avec l'expérience les traits importants  
 # pour cela, commencer avec la liste complète, et **éliminer le bruit**:
+#
 # * constituer un fichier de config pour le projet  
 #   <https://pylint.readthedocs.io/en/stable/user_guide/configuration/index.html#configuration>
+#
 # * enlever progressivement les erreurs acceptables  
 #   ce qui peut se faire à tous les niveaux: projet  ou fichier ou  même ligne par ligne
 

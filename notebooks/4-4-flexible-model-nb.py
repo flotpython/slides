@@ -7,7 +7,7 @@
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -version
+#       -toc, -rise, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -20,12 +20,7 @@
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
 #   nbhosting:
-#     title: le modèle est flexible
-#   rise:
-#     slideNumber: c/t
-#     start_slideshow_at: selected
-#     theme: sky
-#     transition: cube
+#     title: "le mod\xE8le est flexible"
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -40,6 +35,7 @@ HTML(filename="_static/style.html")
 # # le modèle est flexible
 #
 # jusqu'ici on a vu le **modèle usuel**, dans lequel
+#
 # * une instance possède des attributs de données
 # * une classe possède des méthodes
 # * une méthode prend un objet comme premier paramètre

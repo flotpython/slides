@@ -77,6 +77,7 @@ HTML(filename="_static/style.html")
 # ### protocole *context manager* 
 #
 # l’objet résultat de l'expression doit avoir deux méthodes `__enter__` et `__exit__`
+#
 # * entrée dans le `with`:
 #     * à l’entrée du contexte, `__enter__(self)` est exécuté;
 #     * le retour de `__enter__` est assigné à la variable mentionnée dans le `.. as var`
@@ -86,6 +87,7 @@ HTML(filename="_static/style.html")
 # * sortie en cas d'exception:
 #   * `__exit__(self, exc_type, exc_value, exc_traceback)` est appelé avec  
 #     `exc_type`, `exc_value`, `exc_traceback` sont les type, valeur et *traceback* (pile) de l’exception
+#
 #   * le retour de `__exit__` est utilisé:  
 #     si `False` ➔ l’exception est relancée  
 #     si `True` ➔ l’exception est supprimée (étouffée)

@@ -47,8 +47,10 @@ HTML(filename="_static/style.html")
 #
 # * - fonctions
 #   - pas d'état après exécution
+#
 # * - **modules**
 #   - **garde l'état, une seule instance par programme**
+#
 # * - classes
 #   - instances multiples, chacune garde l'état, héritage
 # ```
@@ -78,6 +80,7 @@ HTML(filename="_static/style.html")
 # * un module est un **objet** Python, correspondant au **chargement en mémoire**  
 #   du code venant d'un fichier ou dossier source  
 #   (dans le cas d'un *répertoire* on parle alors d'un *package* - on en reparlera)
+#
 # * les différents composants du code sont alors accessibles **comme un attribut** du module  
 #   (c'est à dire les variables qui sont définis au *toplevel* dans le fichier source)
 
@@ -160,15 +163,19 @@ mod.spam('good')
 # * - code
 #   - définit la variable
 #   - commentaire
+#
 # * - `import mod`
 #   - `mod`
 #   - de type module, avec des attributs
+#
 # * - `import mod as mymod`
 #   - `mymod`
 #   - à part ça, même effet que `import mod`
+#
 # * - `from mod import spam`
 #   - `spam`
 #   - on n'a pas accès au module, seulement un attribut 
+#
 # * - 
 #   - 
 #   - qui est directement accessible via la variable `spam`
@@ -301,12 +308,15 @@ pack1.pack2.mod.FOO
 # principalement deux choses:
 #
 # 1. vérifier si le module est déjà chargé, et sinon:
+#
 #   * **trouver** le fichier/dossier correspondant au module
 #     on en reparle un peu plus tard (c'est un sujet délicat)
 #     *rappel*: on ne met pas le `.py` du fichier lors d’un import
+#
 #   * **compiler** (si besoin) le module en byte-code  
 #     cela est *caché* dans les dossiers `__pycache__`
 #     pas besoin de s'en occuper, on n'en parlera plus
+#
 #   * **charger** en mémoire le module pour construire les objets qu’il définit  
 #     typiquement fonctions, classes, variables globales au module  
 #     et les ranger dans les attributs du module
@@ -319,6 +329,7 @@ pack1.pack2.mod.FOO
 #
 # * comme l’importation est une opération lourde, un module n’est chargé qu’**une seule fois**  
 #   dit autrement, les imports suivants retrouvent le module **déjà présent en mémoire**
+#
 # * c'est optimal pour l'exécution du code  
 #   mais attention **pendant la phase de mise au point** interactive  
 #
@@ -455,8 +466,10 @@ pi = 10
 # ### exécuter un module comme un script
 #
 # un module peut avoir deux rôles
+#
 # * un module classique qui doit être importé  
 #   `import module`
+#
 # * un script exécutable  
 #   `$ python module.py`
 #

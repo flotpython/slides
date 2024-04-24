@@ -6,7 +6,7 @@
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -version
+#       -toc, -rise, -version
 #     text_representation:
 #       extension: .py
 #       format_name: light
@@ -22,6 +22,8 @@
 #     title: Organiser les sources
 # ---
 
+# Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
 # # Comment organiser les sources de votre projet Python
 #
 # Où on va voir que :
@@ -36,6 +38,9 @@
 #
 # Vous trouverez dans le dépôt git ici: <https://github.com/flotpython/bidule> un microscopique petit projet qui illustre notre propos.
 # ````
+
+from IPython.display import HTML
+HTML(filename="_static/style.html")
 
 # ## Complément - niveau intermédiaire
 #
@@ -250,12 +255,15 @@
 # * `name` est le nom sous lequel votre projet sera rangé dans PyPI
 # * `packages` est une liste de noms de packages ; tel qu'on l'a écrit, cela sera calculé à partir du contenu de votre dépôt ; dans notre cas on aurait pu aussi bien écrire en dur `['bidule']`;
 #   dans les cas les plus simples on a `packages == [ name ]`
+#
 # * `version` est bien entendu important dès que vous commencez à publier sur PyPI (et même avant) pour que PyPI puisse servir la version la plus récente, et/ou satisfaire des exigences précises (les applis qui vous utilisent peuvent par exemple préciser une version minimale, etc...)
 #   Cette chaine devrait être [compatible avec semver (semantic versioning)](https://semver.org/)
 #   i.e. qu'un numéro de version usuel contient 3 parties (major, minor, patch), comme par ex. "2.1.3"
 #   le terme `semantic` signifie ici que **toute rupture de compatibilité** doit se traduire par une incrémentation du numéro majeur (sauf s'il vaut `0`, on a le droit de tâtonner avec une 0.x; d'où l'importance de la version 1.0)
+#
 # * `install_requires` : si votre package a besoin d'une librairie non-standard, disons par exemple `numpy`, il est **très utile** de le préciser ici ; de cette façon, lorsqu'un de vos utilisateurs installera votre appli avec `pip install bidule`, `pip` pourra **gérer les dépendances** et s'assurer que `numpy` est installé également ;
 #   bien sûr on n'en est pas là, mais je vous recommande de maintenir **dès le début** la liste de vos dépendances ici
+#
 # * informatifs : `author`, `author_email`, `description`, `keywords`, `url`, `license`,  pour affichage sur PyPI ;
 #   une mention spéciale à propos de `long_description`, qu'en général on veut afficher à partir de `README.md`, d'où l'idiome fréquent :
 #
@@ -267,6 +275,7 @@
 #      ...
 #   )
 #   ```
+#
 # * etc… beaucoup d'autres réglages et subtilités autour de `setup.py` ; je conseille de prendre les choses comme elles viennent : commencez avec la liste qui est ici, et n'ajoutez d'autres trucs que lorsque ça correspond à un besoin pour vous !
 
 # ### Packager un point d'entrée
@@ -288,6 +297,7 @@
 #
 # Voici tout ceci illustré sur un exemple réel.  
 # Dans cet exemple, le package (PyPI) s'appelle `apssh`, la commande qu'on veut exposer s'appelle `apssh`, du coup on a
+#
 #  * un dossier `apssh` pour matérialiser le package
 #  * un module `apssh/apssh.py`, qui définit
 #  * une classe `Apssh`, qui expose une méthode `main()`
@@ -310,6 +320,7 @@
 # * il faut naturellement obtenir un login/password
 # * avant de pouvoir utiliser le nom `bidule`, il faut l'enregistrer :  
 #   `python setup.py register`
+#
 # * aussi il vous faudra installer `twine` :  
 #   `pip install twine`
 #
@@ -317,6 +328,7 @@
 #
 # * préparer le packaging  
 #   `python setup.py sdist bdist_wheel`
+#
 # * pousser sur PyPI  
 #   `twine upload dist/*`
 #
@@ -328,6 +340,7 @@
 # `pip install bidule`
 #
 # Remarquez que l'on conseille parfois, pour éviter d'éventuels soucis de divergence entre les commandes `python`/`python3` et `pip`/`pip3`,
+#
 # * de remplacer tous les appels à `pip`  
 # * par plutôt `python -m pip`, qui permet d'être sûr qu'on installe dans le bon environnement.
 #
@@ -337,6 +350,7 @@
 # * `pip freeze` : pour une liste complète des modules installés dans l'environnement, avec leur numéro de version
 # * `pip list` : sans grand intérêt, si ce n'est dans sa forme
 #   `pip list -o` qui permet de lister les modules qui pourraient être mis à jour
+#
 # * `pip install -r requirements.txt` : pour installer les modules dont la liste est dans le fichier `requirements.txt`
 
 # ## Packages et `__init__.py`

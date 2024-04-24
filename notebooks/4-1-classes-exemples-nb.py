@@ -197,6 +197,7 @@ stack
 # * **invariants**: garantir de bonnes propriétés si on utilise les objets au travers des méthodes (encapsulation)
 # * et aussi (sera vu ultérieurement): intégrer **vos objets dans le langage**  
 #   i.e. donner un sens à des constructions comme  
+#
 #   * `x in obj`
 #   * `obj[x]`
 #   * `if obj:`

@@ -19,6 +19,8 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
+#   nbhosting:
+#     title: "op\xE9rateurs"
 # ---
 
 # %% [markdown] cell_style="center"

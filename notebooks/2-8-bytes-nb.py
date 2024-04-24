@@ -46,6 +46,7 @@ HTML(filename="_static/style.html")
 #
 # * le type `bytes` correspond, comme son nom l'indique, à une séquence d'**octets**  
 #   donc entiers **entre 0 et 255**
+#
 # * le type `bytes` est donc un autre exemple de **séquence** (comme `str`)
 # * c'est également un type **non mutable**
 
@@ -404,6 +405,7 @@ s.encode('ascii', errors='replace')
 # * le [`BOM` (byte order mark)](https://en.wikipedia.org/wiki/Byte_order_mark)  
 #   est un mécanisme permettant de disambigüer  
 #   entre les 3 encodages utf-8, utf-16 et utf-32
+#
 # * du coup si vous savez qu'un document est en Unicode  
 #   mais sans savoir quel encodage au juste  
 #   le BOM permet de le trouver

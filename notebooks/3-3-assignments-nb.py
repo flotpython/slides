@@ -19,6 +19,8 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
+#   nbhosting:
+#     title: affectations
 # ---
 
 # %% [markdown] cell_style="center"
@@ -69,6 +71,7 @@ print(a)
 #   - légal?
 #   - nom
 #   - légal?
+#
 # * - `abc`
 #   - oui
 #   - `ma_variable`
@@ -77,6 +80,7 @@ print(a)
 #   - oui
 #   - `_`
 #   - oui
+#
 # * - `_caché`
 #   - oui
 #   - `while`
@@ -153,6 +157,7 @@ print(b)
 
 # %% [markdown]
 # il y a bien sûr quelques contraintes
+#
 # * il faut la même forme à grauche et à droite
 # * mais les types peuvent être différents (tuple à gauche, liste à droite, ..)
 #
@@ -220,6 +225,7 @@ print(f"{a=} {b=} {c=} {d=}")
 #
 # * ici les variables pointent vers le même objet !
 #   (ça se voit qu'on ne crée qu'une seule liste)
+#
 # * on crée donc une référence partagée
 
 # %%

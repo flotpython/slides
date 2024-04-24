@@ -219,6 +219,7 @@ def fibo(n):
 #       ...
 #   ```
 #   on peut remplacer dans tout le code chaque appel à `ma_fonction` par un appel équivalent à la fonction décorée par `bidule`
+#
 # * sachez aussi que les usages avancés des décorateurs permettent de passer des paramètres ... au décorateur lui-même; un sujet que je vous laisse creuser si vous êtes intéressé
 
 # %% [markdown] tags=[]
@@ -413,6 +414,7 @@ def fibo(n):
 # ### comment ça marche ?
 #
 # on applique simplement les principes qu'on a vus jusqu'ici:
+#
 # * on calcule `Cache(fibo)`
 # * qui se trouve être un objet *callable* car `Cache` implémente `__call__()`
 # * et c'est cet objet qui est appelé lorsqu'on écrit `fibo(300)`
@@ -496,5 +498,3 @@ def test(num, L):
 test(100000, range(10))
 
 
-
-# %%

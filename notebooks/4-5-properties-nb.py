@@ -335,6 +335,7 @@ help(g)
 # en Python, on aime bien **accéder aux attributs** d'un objet **directement**, et ne pas **s'encombrer de *getters* et *setters*** qui obscurcissent le code pour rien
 #
 # comme on a parfois besoin que l'accès à un attribut passe par une **couche de logique**
+#
 # * soit pour implémenter une indirection
 # * soit pour contrôler la validité des arguments
 #

@@ -45,6 +45,7 @@ HTML(filename="_static/style.html")
 # ## `logging`
 #
 # dans du code de production on ne fait jamais `print()` ! on utilise à la place `logging`, car de cette façon:
+#
 # * le code a seulement à choisir un **niveau** de message parmi `exception`, `error`, `warning`, `info`, `debug`
 # * on pourra **choisir plus tard** (i.e. par l'équipe Ops) :
 #   * **si** on veut les messages (avec quel niveau de gravité, et depuis quels modules)
@@ -75,6 +76,7 @@ logging.error("OOPS")
 # ## `sys` et `os`
 #
 # sont utilisés très fréquemment, surtout dans du code ancien, pour
+#
 # * `import sys`  
 #   * gestions de variables utilisées par l’interpréteur
 #   * e.g. `sys.path`, et plein plein d'autres dans ce module un peu fourre-tout
@@ -97,6 +99,7 @@ logging.error("OOPS")
 # ````{admonition} n'utilisez plus os.path !
 #
 # il **faut utiliser `pathlib.Path`** pour du nouveau code ! on peut tout faire avec:
+#
 # * chercher (`glob`) tous les fichiers en `*.truc`
 # * calculer les noms de fichier: concaténer, découper en morceaux, trouver le nom canonique
 # * ouvrir les fichier
@@ -184,6 +187,7 @@ with fichier.open() as feed:
 # ###  `collections.Counter()`
 #
 # à partir d'un itérable, construit un dictionnaire qui contient
+#
 # * comme clefs les éléments uniques
 # * et comme valeurs le nombre de fois que l’élément apparaît
 

@@ -19,6 +19,8 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
+#   nbhosting:
+#     title: syntaxe
 # ---
 
 # %% [markdown] cell_style="center"
@@ -37,8 +39,10 @@ HTML(filename="_static/style.html")
 #
 # * la fin d’une ligne est significative  
 #   → pas de `;` nécessaire à la fin de la ligne
+#
 # * un **bloc** d’instructions doit avoir la **même indentation** en partant de la gauche  
 #   → pas besoin de `{}` pour délimiter un bloc  
+#
 # * indentation recommandée : 4 espaces
 
 # %% tags=["gridwidth-1-2"]
@@ -55,6 +59,7 @@ foo()
 # :class: warning
 #
 # les principaux pièges pour les débutants:
+#
 # * évitez d'utiliser des `Tab` (le plus simple: ne **jamais** mettre de `Tab`)
 # * et attention aux copier/coller qui peuvent décaler des lignes
 # ````
@@ -84,6 +89,7 @@ print(foo())
 #
 # * instruction: une construction qui fait un effet de bord, qui change l'environnement  
 #   mais **qui ne renvoie rien**
+#
 # * expression: une construction **qui renvoie quelque chose**  
 #   du coup, les expressions peuvent être combinées à l'infini
 #
@@ -130,31 +136,37 @@ print(foo())
 #   - else
 #   - import
 #   - pass
+#
 # * - None
 #   - break
 #   - except
 #   - in
 #   - raise
+#
 # * - True
 #   - class
 #   - finally
 #   - is
 #   - return
+#
 # * - and
 #   - continue
 #   - for
 #   - lambda
 #   - try
+#
 # * - as
 #   - def
 #   - from
 #   - nonlocal
 #   - while
+#
 # * - assert
 #   - del
 #   - global
 #   - not
 #   - with
+#
 # * - async
 #   - elif
 #   - if

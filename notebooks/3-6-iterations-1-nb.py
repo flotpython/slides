@@ -116,6 +116,7 @@ for i in range(len(liste)):
 # * *rappel*: on peut facilement itérer sur un dictionnaire
 # * la plupart du temps, sur à la fois clés et valeurs
 #   `for k, v in d.items():`
+#
 # * pour itérer sur les clés, restons simple: `for k in d:`
 # * enfin sur les valeurs `for v in d.values():`
 #
@@ -242,6 +243,7 @@ list(map(lambda x: x**2, L))
 # * qui présentent la particularité de **consommer peu de mémoire**
 # * en fait un objet itérateur capture uniquement  
 #   **la logique de l'itération**, mais pas les données
+#
 # * c'est-à-dire où on en est, et comment passer au suivant
 
 # %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]

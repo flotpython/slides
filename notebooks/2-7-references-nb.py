@@ -155,6 +155,7 @@ a[0] = 'spam'
 #
 # la solution pour ne pas modifier `b`: faire une **copie** de `a`  
 # il y a deux types de copies en Python:
+#
 # * la *shallow copy* (superficielle)
 #   * pour les toutes les séquences, utiliser simplement `a[:]`
 #   * pour les dictionnaires utiliser `D.copy()`
@@ -167,8 +168,10 @@ a[0] = 'spam'
 #
 # * la différence entre *shallow* et *deep* copy n’existe que pour les  
 #   objets composites (les objets qui contiennent d’autres objets)
+#
 # * ***shallow copy***: crée un nouvel objet composite et y insère  
 #   les **références** vers les objets contenus dans l’original
+#
 # * ***deep copy***: crée un nouvel objet et insère de **manière récursive**  
 #   une copie des objets trouvés dans l’original  
 #   évite les boucles infinies
@@ -271,8 +274,10 @@ print(b)
 #
 # on n'a parlé jusqu'ici que de références partagées créées par **affectation**  
 # **mais** il existe (plein) d'autres cas de figure :
+#
 # * appel de fonction: l'objet passé en argument à une fonction  
 #   se retrouve affecté au **paramètre** dans la **fonction**
+#
 # * se méfier aussi des références **entre objets**
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -321,6 +326,7 @@ print(L)
 #
 # * Python sait réutiliser les objets  
 #   *e.g.* les petits entiers - slide suivant
+#
 # * Python sait libérer les objets non utilisés (garbage collector)
 #   * un objet sans référence est libéré
 #   * contrôle via le module `gc`

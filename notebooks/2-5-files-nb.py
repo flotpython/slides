@@ -40,8 +40,10 @@ HTML(filename="_static/style.html")
 #
 # * on a très souvent besoin de lire ou d'écrire un fichier par programme  
 #   notamment bien sûr pour lire les entrées ou sauver les résultats
+#
 # * pour la lecture en pratique on utilise souvent des librairies  
 #   e.g. pour lire du ***json*** ou du ***yaml***, ou des formats spécialisés
+#
 # * toutefois il est bon de savoir utiliser les outils de bas niveau  
 #   (enfin, aussi bas niveau que ce qu'offre Python…)
 
@@ -203,6 +205,7 @@ with open("temporaire.txt") as reader:
 # * on interagit avec l'objet fichier avec un objet **`bytes`** et non `str`
 # * c'est-à-dire que la lecture retourne un `bytes`  
 #   et on ne peut que écrire un `bytes`
+#
 # * il n’y a aucun encodage, décodage,  
 #   et aucune conversion de fin de ligne (auberge espagnole)
 

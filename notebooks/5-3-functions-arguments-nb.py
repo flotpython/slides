@@ -7,7 +7,7 @@
 #     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
 #       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
 #       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -version
+#       -toc, -rise, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -21,11 +21,6 @@
 #     pygments_lexer: ipython3
 #   nbhosting:
 #     title: fonctions
-#   rise:
-#     slideNumber: c/t
-#     start_slideshow_at: selected
-#     theme: sky
-#     transition: cube
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -155,12 +150,15 @@ foo(a)
 # * - (I)
 #   - `def foo(x):`
 #   - paramètre **positionnel** ou ordonné ou usuel/normal
+#
 # * - (II)
 #   - `def foo(x=10):`
 #   - paramètre avec **valeur par défaut**
+#
 # * - (III)
 #   - `def foo(*args):`
 #   - correspond aux arguments non nommés "en plus"
+#
 # * - (IV)
 #   - `def foo(**kwds):`
 #   - correspond aux arguments nommés "en plus"
@@ -177,6 +175,7 @@ foo(a)
 # * - (A)
 #   - `foo(argument)`
 #   - argument non nommé
+#
 # * - (B)
 #   - `foo(parametre=argument):`
 #   - argument nommé
@@ -186,9 +185,11 @@ foo(a)
 # :class: admonition-small
 #
 # ```{list-table}
+#
 # * - (C)
 #   - `def foo(*args):`
 #   - les objets dans `args` (itérable) sont passés comme des arguments (A) non nommés
+#
 # * - (D)
 #   - `def foo(**kwds):`
 #   - les objets dans `kwds` (un dictionnaire) sont passés comme des arguments (B) nommés
@@ -395,6 +396,7 @@ def variable(*args1, *args2):
 # ### (IV) paramètre multiple `**kwds`
 #
 # le mécanismes est exactement le même, mais avec les **arguments nommés**:
+#
 # * on regarde tous ceux qui n'ont pas encore été liés à un paramètre,
 # * au lieu de créer un tuple, on crée cette fois un **un dictionnaire**, de façon à mémoriser les noms en plus des valeurs  
 # * et c'est ce dictionnaire qui est affecté au paramètre `kwds`
@@ -484,9 +486,11 @@ named_args1(b = 2, c=3)
 # dans un appel de fonction, on recommande de matérialiser deux groupes
 #
 # 1. en premier les non-nommés:
+#
 #    * argument(s) positionnels (`name`), 
 #    * forme(s) `*name`
 # 2. puis ensuite les arguments nommés
+#
 #    * argument(s) nommés (`name=value`),
 #    * forme(s) `**name`
 
@@ -679,6 +683,7 @@ cannot_name_a(1, c=3, b=2)
 # ```
 #
 # comme on le voit, cela revient à insérer les contenus en place dans les arguments
+#
 # * les éléments de `L` comme des arguments non nommés
 # * et ceux de `D` comme des arguments nommés
 #
@@ -769,6 +774,7 @@ f()
 #
 # * les valeurs par défaut de f ne sont évaluées **qu’une fois** à la création de l’objet fonction
 #   (et mises dans **f.__defaults__**)
+#
 # * si la **valeur par défaut est mutable**, elle pourra être modifiée dans la fonction
 # * et dans ce cas, la valeur par défaut **est modifiée pour l'appel suivant** !!
 #

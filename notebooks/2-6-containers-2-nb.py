@@ -332,6 +332,7 @@ x = set(range(2))
 # * généralisation d’une table de hash
 # * collection **ordonnée** (depuis la 3.7)  
 #   d'associations *clé → valeur*
+#
 # * on accède aux objets à l’aide d’une clef  
 #   (et non d’un indice comme pour une liste)
 #

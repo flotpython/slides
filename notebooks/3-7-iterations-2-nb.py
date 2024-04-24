@@ -214,6 +214,7 @@ result
 # * on a une liste d'éléments - beaucoup, genre $10^6$
 # * on veut pouvoir accéder **en temps constant**  
 #   à un élément à partir d'un id
+#
 # * solution: créer un dictionnaire - qu'on appelle un *index*  
 #   (comme dans les bases de données)
 
@@ -320,6 +321,7 @@ sys.getsizeof(G2)
 # * les compréhensions de *dictionnaire* et d'*ensemble* sont souvent justifiées
 # * par contre, pour les *listes*: **toujours bien se demander**  
 #   si on a vraiment besoin de **construire la liste**
+#
 # * ou si au contraire on a juste **besoin d'itérer** dessus  
 #   (souvent une seule fois d'ailleurs)
 

@@ -49,6 +49,7 @@ HTML(filename="_static/style.html")
 # mais a des limitations (notamment: confusion possible sur l'utilisation des librairies)
 #
 # le but avec les *type hints* est introduire un mécanisme **optionnel** pour améliorer la situation
+#
 # * meilleure **documentation**: faciliter l'accès à une nouvelle lib
 # * analyse statique: **trouver les bugs** plus tôt
 # * et plus anecdotiquement, meilleures performances
@@ -143,8 +144,10 @@ NAMES : list[str] = []
 #
 # * - `list[int]`
 #   - liste d'enters
+#
 # * - `tuple[str, int]`
 #   - un tuple à deux éléments, une chaine et un entier
+#
 # * - `dict[str, list[int]]`
 #   - dictionnaire dont les clés sont des chaines et les valeurs des listes d'entiers
 # ```

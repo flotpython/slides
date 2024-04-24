@@ -141,6 +141,7 @@ if (match := re.search('abzz', 'ababzzz')):
 # ### les objets `Match` 
 #
 # le résultat de `re.match()` est ... de type `Match`, qui fournit
+#
 # * les détails de ce qui a été trouvé (où et quoi)
 # * et aussi les sous-chaines correspondant aux **groupes**, dont on reparlera...
 
@@ -494,6 +495,7 @@ match_all(pattern, [string1, string2])
 #
 # * chez certaines personnes, il y a un avant et un après les expressions régulières  
 #   je ne veux pas vous refroidir, mais ça n'est très **clairement pas** un outil à utiliser **à tour de bras** !
+#
 # * dès que ça devient un tout petit peu compliqué, pensez à utiliser un testeur en ligne, vous gagnerez du temps  
 #   <https://pythex.org>  
 #   <https://regex101.com/> (bien choisir Python)
@@ -504,7 +506,9 @@ match_all(pattern, [string1, string2])
 #
 # * un peu de détente, avec ce jeu de mots croisés basé sur les regexps  
 #   <https://regexcrossword.com>
+#
 # * vous avez de quoi commencer avec un solide bagage; toutefois il y a encore beaucoup d'autres possibilités, notamment les options de compilation (pour ignorer la chasse par exemple, et j'en passe..) n'hésitez pas à lire le guide introductif dans la doc
 #   <https://docs.python.org/fr/3/howto/regex.html>
+#
 # * enfin il y a aussi un tour complet de la syntaxe des regexps  
 #   <https://docs.python.org/fr/3/library/re.html#regular-expression-syntax>

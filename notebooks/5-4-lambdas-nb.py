@@ -64,6 +64,7 @@ anonymous(10)
 #
 # * elle peut donc apparaître  
 #   là où une fonction classique ne peut pas
+#
 # * typiquement à l'intérieur d'une expression
 # * par contre pas trop adapté pour du code compliqué 
 #   * doit pouvoir être écrit sous forme d'une seule expression
@@ -87,6 +88,7 @@ foo
 #
 # * le corps d’une fonction lambda  
 #   doit tenir sur **une seule expression**
+#
 #   * uniquement applicable à des fonctions simples
 #   * pas de déclaration de variable locale
 #   * pas d'impact sur la portée des variables
@@ -130,6 +132,7 @@ call(lambda a, b: a * b, 3, 5)
 # * argument `key`:  
 #   une fonction pour spécifier le critère de tri  
 #   typiquement une fonction lambda
+#
 # * argument `reverse`:  
 #   booléen qui définit l’ordre de tri  
 #   par défaut `reverse=False`: tri ascendant

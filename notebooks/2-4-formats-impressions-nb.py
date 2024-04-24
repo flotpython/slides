@@ -19,6 +19,8 @@
 #     name: python
 #     nbconvert_exporter: python
 #     pygments_lexer: ipython3
+#   nbhosting:
+#     title: formatage et impressions
 # ---
 
 # %% [markdown] cell_style="center"
@@ -38,6 +40,7 @@ HTML(filename="_static/style.html")
 # %% [markdown] tags=[]
 # pour le formatage des chaines: utilisez les ***f-strings***, qui évitent les répétitions fastidieuses  
 # l'idée consiste à
+#
 # * faire précéder la chaine par un `f`
 # * et embarquer directement dans la chaine des `{}`
 # * qui peut contenir une expression Python (un nom de variable, ou plus élaboré)

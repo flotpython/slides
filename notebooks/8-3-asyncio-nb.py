@@ -193,6 +193,7 @@ print("Durée totale {}s".format(time.time() - begin))
 #
 # * le code de la version asynchrone a un flux de contrôle 'normal':  
 #   pas besoin de créer des callbacks, qui auraient nécessité de découper le traitement en morceaux
+#
 # * nous n'avons pas non plus eu besoin de créer/manipuler un *thread*
 # * on pourrait faire tourner en parallèle n'importe quelle tâche réactive
 #   * comme réagir à une entrée clavier

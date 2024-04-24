@@ -48,8 +48,10 @@ HTML(filename="_static/style.html")
 #
 # * - fonctions
 #   - pas d'état après exécution
+#
 # * - modules
 #   - garde l'état, une seule instance par programme
+#
 # * - **classes**
 #   - **instances multiples**, **chacune garde l'état**, **héritage**
 # ```
@@ -63,6 +65,7 @@ HTML(filename="_static/style.html")
 #
 # * - objectif
 #   - réutilisabilité, donc
+#
 # * - comment
 #   - modularité & héritage (a.k.a. espaces de nom et recherche d'attribut)
 # ```
@@ -156,6 +159,7 @@ HTML(filename="_static/style.html")
 #
 # * - variable
 #   - liaison lexicale, en remontant dans le code
+#
 # * - attribut
 #   - liaison dynamique, en remontant dans les espaces de nom
 # ```
@@ -171,6 +175,7 @@ HTML(filename="_static/style.html")
 # * - attribut en **écriture**  
 #   - `obj.attribute = ...`  
 #   - i.e. à gauche d'une affectation
+#
 # * - attributs en **lecture** 
 #   - `obj.attribute` 
 #   - les autres cas
@@ -199,6 +204,7 @@ HTML(filename="_static/style.html")
 # ## résolution d'attribut pour la lecture
 #
 # pour la lecture par contre, le mécanisme de résolution des attributs est plus élaboré
+#
 # * fil ournit la **mécanique de base** de la POO
 # * et sous-tend notamment (mais pas que) la mécanique de l'héritage
 
@@ -287,6 +293,7 @@ vector = Vector(2, 2)
 #
 # - avec la fonction *builtin* `vars(obj)`, on peut inspecter le contenu d'un espace de noms (et **seulement lui**) 
 # - avec la *builtin* `dirs(obj)` on peut cette fois accéder à **l'ensemble des attributs** qui sont disponibles sur `x`, c'est donc la somme des attributs trouvés:
+#
 #     * dans l'espace de nom de `x`
 #     * dans l'espace de nom de sa classe
 #     * et de ses super-classes
@@ -322,6 +329,7 @@ subvector.length()
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # comment fait-on pour trouver `subvector.length` ? c'est exactement le même mécanisme qui est à l'oeuvre ! pour évaluer `subvector.length()`, on cherche l'attribut `length` 
+#
 # * dans l'instance `subvector` : non
 # * dans sa classe `SubVector` : non
 # * dans la super-classe `Vector` : ok, on prend ça
@@ -352,6 +360,7 @@ subvector = SubVector(6, 8)
 #
 # * - `obj.liste += ['foo']`
 #   - **écriture**
+#
 # * - `obj.liste.append('foo')`
 #   - **lecture** !
 # ```
@@ -541,6 +550,7 @@ o2 = C()
 # lors de la recherche, si on ne trouve pas dans l'objet ni dans sa classe, il faut décider dans quel ordre on recherche dans les super-classes - pour le cas pathologique où l'attribut serait présent dans plusieurs d'entre elles
 #
 # on utilise pour cela le *MRO : method resolution order*; l’algorithme est le suivant
+#
 # * liste toutes les super-classes en utilisant un algorithme DFLR (depth first, left to right)
 # * si classe dupliquée, **ne garder que la dernière** occurrence
 

@@ -59,8 +59,10 @@ HTML(filename="_static/style.html")
 #
 # * - **fonctions**
 #   - **pas d'état après exécution**
+#
 # * - modules
 #   - garde l'état, une seule instance par programme
+#
 # * - classes
 #   - instances multiples, chacune garde l'état, héritage
 # ```
@@ -84,6 +86,7 @@ HTML(filename="_static/style.html")
 #
 # ````{admonition} une fonction peut modifier ses paramètres !
 # les arguments sont passés **par référence**
+#
 # * donc crée des **références partagées**
 # * attention aux types mutables, ils peuvent être modifiés par la fonction
 # ````
@@ -283,10 +286,12 @@ help(hyperbolic)
 # ## PEP8
 #
 # d'après la PEP8, on doit
+#
 # * utiliser une (ou plusieurs) ligne(s) vide(s) pour séparer les fonctions, classes et les grands blocs d’instructions
 # * rappel: les noms de fonctions sont en minuscules
 # * rappel: espace autour des opérateurs et après les virgules  
 #   `a = f(1, 2) + g(3, 4)`
+#
 # * rappel: des espaces autour de l'`=`, et **pas** après la fonction  
 #   `f(1, 2)` et non pas ~~`f (1, 2)`~~ car un espace en trop   
 #   `a = f(1, 2)` et non pas ~~`a=f(1, 2)`~~ car manque des espaces 

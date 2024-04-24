@@ -190,6 +190,7 @@ while L:
 #   * `L.pop(i)` pour supprimer à un endroit précis
 #   * `L.remove(x)` supprime la première occurrence de `x` dans `L`  
 #     s’il n’y a pas de `x`, une exception est retournée
+#
 #   * `del L[i]` supprime le i-ème élément
 #   * `del L[i:j]`  
 #     `del L[i:j:k]` supprime tous les éléments de la slice
@@ -415,6 +416,7 @@ except Exception as e:
 # * à ce stade, vous vous demandez sans doute:  
 #   *pourquoi créer un tuple ?*  
 #   si c'est juste moins puissant que la liste ?
+#
 # * la réponse est liée aux tables de hachage  
 #   (dictionnaires et ensembles)  
 #   que l'on va voir un peu plus tard  
