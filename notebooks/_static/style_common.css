@@ -7,7 +7,7 @@
  * .myst targets jupyter-lab rendering
  */
 
-/* use more horizontal space when available 
+/* use more horizontal space when available
  * this is otherwise arbitrarily set to 88rem
  */
 
@@ -15,7 +15,12 @@
     .bd-page-width {
         max-width: initial !important;
     }
+    .navbar-brand.logo>img {
+        max-width: 170px
+    }
 }
+/* but keep the upper-left logo to grow too much */
+
 
 /* not too much space between paragraphs */
 :is(.bd-container, .myst) :is(p, ul) {
