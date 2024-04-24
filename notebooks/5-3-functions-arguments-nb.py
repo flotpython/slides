@@ -389,7 +389,6 @@ variable2(1)
 
 def variable(*args1, *args2):
     pass
-```
 
 
 # %% [markdown]
@@ -411,7 +410,7 @@ def variable(*args1, *args2):
 
 def named_args(**kwds):
     print(f"kwds={kwds}")
-    
+
 # var_named
 named_args()
 

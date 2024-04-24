@@ -41,7 +41,7 @@ $ python hello.py
 ```
 
 qui va nous afficher dans le terminal
-```raw
+```console
 hello world
 ```
 
