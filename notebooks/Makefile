@@ -1,8 +1,4 @@
-
-all: book
-
 include Makefile.book
-
 include Makefile.style
 
 # should work now
