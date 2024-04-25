@@ -186,7 +186,7 @@ while L:
 # %% [markdown]
 # ### retraits
 #
-# * toujours des modification en place:
+# * toujours des modifications en place:
 #   * `L.pop(i)` pour supprimer à un endroit précis
 #   * `L.remove(x)` supprime la première occurrence de `x` dans `L`  
 #     s’il n’y a pas de `x`, une exception est retournée
