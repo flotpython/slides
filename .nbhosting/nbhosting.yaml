@@ -42,7 +42,8 @@ builds:
 - id: handouts
   name: static html
   description: searchable static html as produced by jupyter-book
-  directory: slides
-  script: |
-    pip install jupyter-book
-    jupyter-book build .
+  external_url: https://flotpython-slides.readthedocs.io/
+#  directory: slides
+#  script: |
+#    pip install jupyter-book
+#    jupyter-book build .
