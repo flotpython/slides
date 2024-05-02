@@ -1,4 +1,3 @@
----
 tracks:
 - description: programmer en Python
   id: slides
@@ -6,70 +5,44 @@ tracks:
   sections:
   - name: introduction
     notebooks:
-    - "notebooks/1-[0-9]*-nb.md"
+    - notebooks/1-[0-9]*-nb
   - name: premiers pas
     notebooks:
-    - notebooks/101/0*.md
+    - notebooks/101/0*
   - name: types de base
     notebooks:
-    - "notebooks/2-[0-9]*-nb.py"
+    - notebooks/2-[0-9]*-nb
   - name: syntaxe & instructions
     notebooks:
-    - "notebooks/3-[0-9]*-nb.py"
+    - notebooks/3-[0-9]*-nb
   - name: classes
     notebooks:
-    - "notebooks/4-[0-9]*-nb.py"
+    - notebooks/4-[0-9]*-nb
   - name: fonctions
     notebooks:
-    - "notebooks/5-[0-9]*-nb.py"
+    - notebooks/5-[0-9]*-nb
   - name: modules et imports
     notebooks:
-    - "notebooks/6-[0-9]*-nb.py"
+    - notebooks/6-[0-9]*-nb
   - name: divers
     notebooks:
-    - "notebooks/7-[0-9]*-nb.py"
-  - name: "sujets avanc\xE9s"
+    - notebooks/7-[0-9]*-nb
+  - name: sujets avancés
     notebooks:
-    - "notebooks/8-[0-9]*-nb.py"
-#- description: "Cours: suppl\xE9ments"
-#  id: extras
-#  name: extras
-#  sections:
-#  - name: numpy
-#    notebooks:
-#    - "slides-extras/1*.py"
-#  - name: pandas
-#    notebooks:
-#    - "slides-extras/2*.py"
-#  - name: notebooks
-#    notebooks:
-#    - "slides-extras/3*.py"
-#  - name: tests
-#    notebooks:
-#    - "slides-extras/4*.py"
-#  - name: doc
-#    notebooks:
-#    - "slides-extras/5*.py"
-#  - name: packaging
-#    notebooks:
-#    - "slides-extras/6*.py"
-#  - name: vscode
-#    notebooks:
-#    - "slides-extras/7*.py"
-
+    - notebooks/8-[0-9]*-nb
 static-mappings:
-  - source: data
-    destination: data
-  - source: media
-    destination: media
-  - source: rise.css
-    destination: media/rise.css
+- source: data
+  destination: data
+- source: media
+  destination: media
+- source: rise.css
+  destination: media/rise.css
 
 builds:
-  - id: handouts
-    name: static html
-    description: searchable static html as produced by jupyter-book
-    directory: slides
-    script: |
-      pip install jupyter-book
-      jupyter-book build .
+- id: handouts
+  name: static html
+  description: searchable static html as produced by jupyter-book
+  directory: slides
+  script: |
+    pip install jupyter-book
+    jupyter-book build .

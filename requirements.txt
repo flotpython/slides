@@ -39,3 +39,6 @@ jupyterlab-myst
 jupyterlab-courselevels
 jupyterlab-gridwidth
 jupyterlab-rise
+
+# for updating nbhosting toc from jupyter book
+ruamel.yaml

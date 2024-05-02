@@ -1,4 +1,5 @@
 format: jb-book
+root: 0-0-prelude-nb
 parts:
 - caption: introduction
   chapters:
@@ -27,4 +28,31 @@ parts:
 - caption: "sujets avanc\xE9s"
   chapters:
   - glob: 8-[0-9]*-nb
-root: 0-0-prelude-nb
+
+# leftovers from a previous version
+# formerly in .nbhosting/nbhosting.yaml
+#- description: "Cours: suppl\xE9ments"
+#  id: extras
+#  name: extras
+#  sections:
+#  - name: numpy
+#    notebooks:
+#    - "slides-extras/1*.py"
+#  - name: pandas
+#    notebooks:
+#    - "slides-extras/2*.py"
+#  - name: notebooks
+#    notebooks:
+#    - "slides-extras/3*.py"
+#  - name: tests
+#    notebooks:
+#    - "slides-extras/4*.py"
+#  - name: doc
+#    notebooks:
+#    - "slides-extras/5*.py"
+#  - name: packaging
+#    notebooks:
+#    - "slides-extras/6*.py"
+#  - name: vscode
+#    notebooks:
+#    - "slides-extras/7*.py"
