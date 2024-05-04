@@ -53,12 +53,27 @@ Thierry Parmentelat - Arnaud Legout - Inria
 
 ## plateformes et liens
 
+### ce cours
+
 | contenu | url |
 |-:|:-|
 | HTML statique | <https://flotpython-slides.readthedocs.io/> |
 | sources des notebooks | <https://github.com/flotpython/slides> |
 | notebooks live (nécessite un login) | <https://nbhosting.inria.fr/> |
-| exercices autocorrigés (idem) | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
+
+### exercices
+
+| contenu | url |
+|-:|:-|
+| exos Pure Python | <https://flotpython-exos-python.readthedocs.io/> |
+| exos Data Science (accessoirement) | <https://flotpython-exos-ds.readthedocs.io/> |
+| exercices autocorrigés (nécessite un login) | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
+
+### support pour installations
+
+| contenu | url |
+|-:|:-|
+| extrait du cours des Mines | <https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installations> |
 
 +++
 
@@ -70,19 +85,70 @@ le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"
 
 +++
 
-## notebooks
+## outils et notebooks
 
-* introduction très rapide au fonctionnement de la plateforme
-* utilisez les boutons pour cacher / afficher la structure du cours
+on peut suivre le cours sans installation locale (plateforme nbhosting, jupyterlite)  
+par contre si vous optez pour une installation locale, il vous faut idéalement (on mentionne les outils recommandés dans le lien ci-dessus)
 
-```{image} media/nbhosting-buttons.png
-:align: center
-:width: 500px
+- un terminal avec `git` (sur Windows: "git for windows" vient avec un terminal "bash")
+- un éditeur de code - (vs-code)
+- une installation Python - évidemment - (miniconda)
+- IPython, et Jupyter pour les notebooks
+  qui s'installe - comme tous les outils Python - avec
+  ```bash
+  pip install jupyterlab
+  ```
+
++++
+
+### cloner le repo
+
+```bash
+$ cd le/bon/dossier
+$ git clone https://github.com/flotpython/slides
+$ cd slides/notebookes
+$ ls
 ```
 
 +++
 
-### notebooks - naviguer dans les cellules
+### IPython
+
+```bash
+# depuis le terminal
+$ cd le/bon/dossier/slides/notebooks
+
+$ ipython
+Python 3.12.2 | packaged by conda-forge | (main, Feb 16 2024, 21:00:12) [Clang 16.0.6 ]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.23.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: print("hello world")
+hello world
+
+In [2]: exit()
+$ 
+```
+
++++
+
+### Jupyter
+
+```bash
+# depuis le terminal
+$ cd le/bon/dossier/slides/notebooks
+
+$ jupyter lab
+... qui va ouvrir une fenêtre dans le navigateur
+... il vous faut alors laisser ce terminal tranquille, il est occcupé...
+```
+
+* double-cliquez sur un nom de fichier pour l'ouvrir
+* terminez votre session avec *File* -> *Shut Down*: votre terminal redevient disponible
+
++++
+
+### naviguer dans les cellules
 
 pour naviguer dans les cellules :
 
@@ -97,7 +163,8 @@ pour
 * et **passer à la cellule suivante**
 ````
 
-on peut aussi utiliser la flêche triangulaire dans la menubar, mais c'est beaucoup moins pratique, car en fait on passe son temps à faire essentiellement ça !
+on peut aussi utiliser la flêche triangulaire dans la menubar,
+mais c'est beaucoup moins pratique, car en fait on passe son temps à faire essentiellement ça !
 
 à vous d'essayer; bien sûr vous pouvez revenir en arrière et modifier une cellule, mais il faut bien penser à toujours l'évaluer
 
@@ -118,3 +185,15 @@ L
 * regardez maintenant la valeur de `L`
 * et évaluez la seconde cellule, vérifiez que la valeur de `L` a bien changé
 ````
+
++++
+
+### nbhosting
+
+sur nbhosting vous avez sans installation: jupyter + le cours  
+utilisez les boutons pour cacher / afficher la structure du cours
+
+```{image} media/nbhosting-buttons.png
+:align: center
+:width: 500px
+```
