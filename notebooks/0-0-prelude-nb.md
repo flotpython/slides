@@ -74,6 +74,15 @@ Thierry Parmentelat - Arnaud Legout - Inria
 | contenu | url |
 |-:|:-|
 | extrait du cours des Mines | <https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installations> |
+| vidéo de démo des outils | <https://www.youtube.com/watch?app=desktop&v=i_ZcP7iNw-U> |
+
+````{admonition} pour cloner ce cours
+
+```bash
+git clone https://github.com/flotpython/slides.git
+```
+
+````
 
 +++
 
