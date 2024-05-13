@@ -169,19 +169,16 @@ ainsi la même variable peut désigner par ex. d'abord un entier, puis une liste
 (en fait les variables sont seulement **des références** aux objets)
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### modèle mental : objets mutables
 
-+++
-
 selon leur type, les objets sont
 
-* modifiables : **mutables**
-* ou pas : **immutables**  
-  (ou parfois immuables)
+* modifiables : ***mutables***
+* ou pas : ***immutables***  (on dit aussi parfois *immuables*)
 
-par exemple une liste est **mutable**...
+par exemple: une liste est **mutable**...
 
 ```{code-cell} ipython3
 ---
@@ -207,7 +204,7 @@ chaine = 'abc'
 try:
     chaine[1] = 'z'
 except Exception as exc:
-    print("BOOM !", exc)
+    print("BOOM !", exc, " -- ", type(exc))
 ```
 
 ### modèle mental: objets égaux, mêmes objets ?
@@ -228,7 +225,6 @@ slideshow:
 ```
 
 ```{code-cell} ipython3
-
 %%ipythontutor curInstr=2
 
 a = b = [1, 2]
@@ -237,16 +233,26 @@ c = [1, 2]
 
 dans ce cas de figure, on a 
 
-- deux objets de type liste différents - chacune des deux lignes crée un objet liste
-- et trois variables, dont les deux premières désignent (on dit aussi réfèrent, ou pointent vers) le même objet liste
+- deux objets de type liste, distincts - car chacune des deux lignes en crée un 
+- et trois variables, dont les deux premières désignent (on dit aussi font référence à, ou réfèrent, ou pointent vers...) le même objet liste
 
-en Python on a deux opérateurs qui permettent de savoir
+`````{admonition} les opérateurs == et is
+
+en Python on a **deux opérateurs** qui permettent de savoir
 
 - avec `==` si deux objets sont **égaux** - si leurs contenus sont identiques
-- avec `is` si les deux objets sont en fait **le même objet** - c'est-à-dire si ils sont rangés au même endroit dans la mémoire, si on veut
+- avec `is` si les deux objets sont en fait **le même objet** - c'est-à-dire, si on préfère: si ils sont rangés **au même endroit** dans la mémoire
+
+````{admonition} qui peut le plus peut le moins
+:class: admonition-x-small danger
+
+et dans l'immense majorité des cas, lorsque `x is y`, alors `x == y`; mais pas toujours, par exemple essayez avec `math.nan`...
+````
+`````
 
 ```{code-cell} ipython3
 a = b = [1, 2]
+
 c = [1, 2]
 ```
 
@@ -255,6 +261,7 @@ c = [1, 2]
 
 # les deux premières variables 
 # réfèrent bien le même objet
+
 a is b
 ```
 
@@ -262,6 +269,7 @@ a is b
 :tags: [gridwidth-1-2]
 
 # ce n'est pas le cas pour a et c
+
 a is c
 ```
 
@@ -269,33 +277,30 @@ a is c
 # par contre les trois variables sont égales
 # au sens de == car dans les deux listes on a 
 # les mêmes valeurs
+
 a == b == c
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## primer
-
-+++
 
 * survol du langage à 30.000 pieds
 * sur quelques exemples hyper simples
 * pour introduire les notions les plus importantes
-* fonctions, classes, modules
-* **sans approfondir**
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### primer : les commentaires
+* notamment fonctions, classes, modules, exceptions, ...
+* seulement pour introduire le vocabulaire, et donc **sans approfondir**
 
 +++
+
+### primer : les commentaires
 
 tout ce qu’il y a après un `#` est ignoré par l’interpréteur
 
 ```{code-cell} ipython3
 # programme de test qui ne fait pas grand-chose
+
 L = [1, 2]
 x = 5
+
 if x > 3:   # on peut commenter où on veut
     # mais en pratique c'est mieux de prendre
     # toute la ligne comme ceci car on s'efforce
@@ -303,11 +308,9 @@ if x > 3:   # on peut commenter où on veut
     print(L)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"tags": ["gridwidth-1-2"]}
 
 ### primer : indentation et syntaxe
-
-+++ {"tags": ["gridwidth-1-2"]}
 
 * contrairement à beaucoup d'autres langages
   * la mise en page (sauts de ligne et indentations)
@@ -408,22 +411,27 @@ class MyFirstClass:
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-person = MyFirstClass(
-    "Jean Dupont", 25)
+# si vous préférez on aurait pu appeler la classe 'Person'
+# et alors on écrirait:
+# person = Person("Jean Dupont", 25)
+
+# mais ici avec le nom que j'ai choisi, on ferait
+instance = MyFirstClass("Jean Dupont", 25)
 ```
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-person
+# et lorsqu'on l'affiche
+
+instance
 ```
 
 à quoi ça sert ?
 
-* étendre les types de base fournis par le langage
-* avec des types spécifiques à votre application
-* pour pouvoir passer des objets 'composites' (encapsulation)
-* et éventuellement réutiliser par héritage
+* **étendre** les types de base (fournis par le langage) avec des types spécifiques à **votre application**
+* pour pouvoir passer des objets 'composites' (**encapsulation**)
+* et éventuellement **réutiliser** par héritage
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -432,11 +440,10 @@ person
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-# ici j'utilise un trait qui date de la version 3.9
+# grâce aux type hints, on peut donner
+# une indication sur le type attendu de la variable
 
-# on peut donner une indication sur le type attendu de la variable
-
-# comme ceci :     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+# comme ceci :     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 persons = []       # type: list[MyFirstClass]
 
 # ou encore ici:    ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓   et  ↓↓↓  et ↓↓↓↓↓↓↓↓↓↓↓↓
@@ -461,10 +468,9 @@ search(group, "Jean Dupont")
 
 les *type hints*, traduites en "annotations de type"
 
-* sont **entièrement optionnelles**
+* sont **entièrement optionnelles** (sont ignorées par le langage)
 * mais aident à lire, à utiliser, et à documenter le code
-* vérifiables par un outil externe  
-  e.g. [`mypy`](http://mypy-lang.org/)
+* vérifiables par un outil externe - e.g. [`mypy`](http://mypy-lang.org/)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -495,11 +501,12 @@ pi = "la tour de Pi"
 math.pi
 ```
 
-* brique de base de la **réutilisabilité**
-* correspond à un fichier (ou répertoire) de source
-* fonctionne comme un espace de noms
-* ma variable `pi` coexiste avec celle de `math`  
-  mais elles sont différentes - **pas de conflit**
+le module est une des briques de base de la **réutilisabilité**:
+
+* il permet de mettre un bout de code en commun entre plusieurs applications: une librairie
+* il correspond (en général) à un fichier (ou répertoire) de source
+* fonctionne comme un **espace de noms**
+* par exemple: ma variable `pi` coexiste avec celle de `math`, mais il n'y a **pas de conflit**
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -508,23 +515,25 @@ math.pi
 +++
 
 * programmation orientée objet
-
-* notation `objet.methode()`
+* notation `objet.attribut`: lorsque vous voyez un `.` dans le code, c'est qu'on va chercher un attribut dans un objet
+* peut être utilisé pour ranger de la donnée ou du code
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-# appeler une méthode
-x = "abc"
-x.upper()
+# que ce soit pout accéder à un attribut (de donnée)
+
+p = MyFirstClass("jean", 43)
+p.age
 ```
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-# accéder à un attribut
-p = MyFirstClass("jean", 43)
-p.age
+# ou pour appeler une méthode
+
+x = "abc"
+x.upper()
 ```
 
 en fait le `.` correpond à un mécanisme général, dit de **recherche d'attributs**, dont on reparlera bien sûr
@@ -532,7 +541,8 @@ en fait le `.` correpond à un mécanisme général, dit de **recherche d'attrib
 ```{admonition} remarque
 :class: note
 
-on a dit plus haut par abus de langage "la variable `pi` du module `math`"; en réalité ça correspond en effet à une variable globale au module, mais techniquement lorsqu'on écrit `math.pi` on fait référence à un **attribut** du module `pi`
+on a dit plus haut par abus de langage "la variable `pi` du module `math`"  
+en réalité ça correspond en effet à une variable globale au module, mais techniquement lorsqu'on écrit `math.pi` on fait référence à un **attribut** du module `pi`
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -573,20 +583,26 @@ for i in range(len(liste)):
 ```
 
 ````{admonition} et si on a besoin de l'index ?
-:class: note
+:class: note admonition-small
 
-on verra qu'avec la fonction `enumerate()` on peut toujours éviter ce vilain `for i in range(len(truc))` même si dans la boucle on a besoin de `i`
+on verra qu'avec la fonction `enumerate()` on peut toujours éviter ce vilain  
+`for i in range(len(truc))` même si dans la boucle on a besoin de `i`
 ````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### primer : exceptions
 
+en enfin pour terminer, on trouve dans le langage la notion d'**exception**, qui est maintenant classique  
+l'idée c'est de pouvoir "remonter la pile des appels" sans avoir à retourner une valeur spéciale qui indiquerait une erreur
+
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-# une fonction qui fait boom
-# mais pas immédiatement
+# une fonction qui fait boom (parce division par zéro)
+# mais pas au premier appel
+
+
 def boom(n):
     if n > 0:
         return boom(n-1)
