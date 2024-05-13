@@ -17,11 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: "g\xE9n\xE9ralit\xE9s"
-rise:
-  slideNumber: c/t
-  start_slideshow_at: selected
-  theme: sky
-  transition: cube
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -117,6 +112,11 @@ def factorielle(n):
 
 ### pourquoi python ? : ouvert et gratuit
 
+notamment toutes les discussions sont en ligne et hébergées sur un site *discourse* ici  
+<https://discuss.python.org/>  
+notamment, si vous êtes intéressé aux évolutions du langage:  
+<https://discuss.python.org/c/ideas/6>
+
 +++
 
 ## la Python Software Foundation (PSF)
@@ -124,13 +124,16 @@ def factorielle(n):
 possède les droits sur Python et assure son développement
 
 * essentiellement aucune restriction sur le code Python et son usage, même commercial
-* https://docs.python.org/3/license.html
+* <https://docs.python.org/3/license.html>  
+  adapté à un très vaste spectre d'usages
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### philosophie python
 
 ```{code-cell} ipython3
+# le zen de Python est capturé dans un module idoine
+
 import this
 ```
 
