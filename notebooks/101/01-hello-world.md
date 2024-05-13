@@ -17,8 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: hello world
-rise:
-  scroll: true
 ---
 
 # premiers pas
@@ -286,6 +284,12 @@ que pensez-vous que va faire maintenant notre programme ?
 * remarquez aussi (pour les geeks) qu'on peut passer à `hello_name`
   un peu ce qu'on veut (une chaine, un nombre...)
 
+````{admonition} dossier courant ?
+en fait techniquement, le module `separate` est trouvé parce qu'il est dans le même dossier que `hello.py`, qui est le *point d'entrée*, c'est-à-dire le fichier qu'on passe à la commande `python` pour lancer le programme
+
+pour vous en convaincre, changez de dossier et relancez le programme, ça fonctionne toujours
+````
+
 +++
 
 ## ma première classe
@@ -321,9 +325,10 @@ for name in ["Alice", "Bob", "Charlie"]:
 
 ### que retenir ?
 
-* ici on crée une classe `Person` qui est une usine à fabriquer des objets
+* ici on crée une classe `Person` qui est  comme tousles types - une **usine à fabriquer des objets**  
 * on s'en sert pour fabriquer trois objets de type `Person`  
-  lorsqu'on appelle `Person(name)` en fait on appelle `__init__(self, name)`  (le constructeur)
+* lorsqu'on appelle `Person(name)`, en fait on appelle `__init__(self, name)`  
+  (le *dunder* init, i.e. le constructeur)
 * sur lesquels on peut ensuite appeler une méthode `hello()`
 
 * l'intérêt étant que l'instance `person` a capturé le nom, on n'a plus besoin de le repasser à `hello()`
