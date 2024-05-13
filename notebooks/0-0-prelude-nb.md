@@ -105,8 +105,15 @@ par contre si vous optez pour une installation locale, il vous faut idéalement 
 - IPython, et Jupyter pour les notebooks
   qui s'installe - comme tous les outils Python - avec
   ```bash
-  pip install jupyterlab
+  pip install jupyter
   ```
+
+````{admonition} suivez bien les instructions
+:class: admonition-small
+
+c'est utile de se souvenir que `pip install` est la commande magique qui permet d'installer de nouveaux modules  
+dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installation-des-extras-python)
+````  
 
 +++
 
@@ -152,8 +159,13 @@ $ jupyter lab
 ... il vous faut alors laisser ce terminal tranquille, il est occcupé...
 ```
 
-* double-cliquez sur un nom de fichier pour l'ouvrir
+* double-cliquez sur un nom de fichier pour l'ouvrir  
 * terminez votre session avec *File* -> *Shut Down*: votre terminal redevient disponible
+
+````{admonition} jupytext
+
+avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installation-des-extras-python)
+````
 
 +++
 
