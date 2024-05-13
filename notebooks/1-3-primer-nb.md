@@ -17,11 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'primer: un rapide survol'
-rise:
-  slideNumber: c/t
-  start_slideshow_at: selected
-  theme: sky
-  transition: cube
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -106,6 +101,7 @@ en Python la réalité est donc subtilement différente; c'est l'objet qui occup
 :tags: [gridwidth-1-2]
 
 # créons quelques objets
+
 a = 1
 b = "ma chaine"
 liste = [1, 10., 10 + 10j]
@@ -116,6 +112,7 @@ liste = [1, 10., 10 + 10j]
 
 # et définissons une fonction
 # en fait c'est un objet aussi !
+
 def foo(x):
     return x * 2
 
@@ -124,11 +121,9 @@ import math
 ```
 
 ```{code-cell} ipython3
-
-:tags: [gridwidth-1-3]
-
 # a désigne un entier
 # b désigne une chaine
+
 type(a), type(b)
 ```
 
@@ -136,14 +131,16 @@ type(a), type(b)
 :tags: [gridwidth-1-3, gridwidth-1-2]
 
 # une liste
+
 type(liste)
 ```
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-3, gridwidth-1-2]
 
-# les indices commencent à 0
 # un complexe
+# (les indices commencent à 0)
+
 type(liste[2])
 ```
 
@@ -151,16 +148,15 @@ type(liste[2])
 :tags: [gridwidth-1-3, gridwidth-1-2]
 
 # un module
+
 type(math)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-3, gridwidth-1-2]
----
+:tags: [gridwidth-1-3, gridwidth-1-2]
+
 # une fonction
+
 type(foo)
 ```
 
@@ -189,7 +185,6 @@ par exemple une liste est **mutable**...
 
 ```{code-cell} ipython3
 ---
-
 slideshow:
   slide_type: slide
 ---
@@ -233,7 +228,6 @@ slideshow:
 ```
 
 ```{code-cell} ipython3
-
 
 %%ipythontutor curInstr=2
 
@@ -617,7 +611,6 @@ print("la vie continue")
 
 ```{code-cell} ipython3
 ---
-
 slideshow:
   slide_type: slide
 ---
@@ -637,7 +630,6 @@ print("la vie ne continue pas !")
 
 ```{code-cell} ipython3
 ---
-
 slideshow:
   slide_type: slide
 ---
