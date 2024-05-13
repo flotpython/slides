@@ -17,8 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: print vs return
-rise:
-  scroll: true
 ---
 
 # `print()` *vs* `return`
@@ -88,7 +86,7 @@ dit autrement, la logique de Python dans ce mode c'est
 je vous montre la différence avec ce programme totalement bidon
 
 ```{code-cell} ipython3
-!cat run_or_repl.py
+%cat run_or_repl.py
 ```
 
 #### normal run

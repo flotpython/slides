@@ -17,8 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: exos - fichiers et chaines
-rise:
-  scroll: true
 ---
 
 # exos
@@ -32,7 +30,7 @@ rise:
 Voici un nouveau fichier de données
 
 ```{code-cell} ipython3
-!cat data-students.txt
+%cat data-students.txt
 ```
 
 On vous demande d'écrire un programme qui produit ce texte

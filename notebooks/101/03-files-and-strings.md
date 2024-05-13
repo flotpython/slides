@@ -17,8 +17,6 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: fichiers et chaines
-rise:
-  scroll: true
 ---
 
 # fichiers et chaines
@@ -48,23 +46,20 @@ with open("tmp-names.txt", 'w') as writer:
 
 si vous faites tourner ça sur votre ordi, vous devez constater la présence d'un nouveau fichier `tmp-names.txt` dans votre explorateur de fichier; et dedans nous avons écrit trois lignes avec les 3 noms
 
-+++
-
-sur MacOS et linux, depuis le notebook vous pouvez aussi faire
-
 ```{code-cell} ipython3
-# ça c'est juste pour vérifier le contenu
-# du fichier qu'on vient de créer
+# ceci est juste pour vérifier le contenu du fichier qu'on vient de créer
+# le %cat est de nouveau une magic IPython - ne marchera pas dans python 'tout court'
 
-!cat tmp-names.txt
+%cat tmp-names.txt
 ```
 
-qui signifie:
-* lancer dans le terminal (c'est le propos du `!` en début de ligne)
-* la commande `cat tmp-names.txt` (sans le `!` donc)
-* c'est-à-dire tout simplement, afficher le contenu du fichier `tmp-names.txt`
+````{admonition} c'est quoi cat ?
+
+`cat` est une commande du terminal Unix qui concatène le contenu de plusieurs fichiers  
+comme on n'en donne qu'un seul, la commande affiche le contenu de ce fichier
 
 et on y trouve bien ce à quoi on s'attendait
+````
 
 +++
 
@@ -79,17 +74,27 @@ et on y trouve bien ce à quoi on s'attendait
   comme pour toutes les variables, on aurait pu choisir n'importe quoi
 * en appelant `print()` avec `file=writer`, on a provoqué l'écriture dans le fichier et non plus dans le terminal
 
-+++
-
 et aussi - mais c'est un peu plus subtil:
 
 * ici nous avons créé un **fichier texte**
 * du coup toutes les opérations sur le fichier (lecture et écriture)  
   vont se faire à base de **chaines de caractères**
-* c'est-à-dire que si je veux écrire l'entier 64 dans le fichier,
-  je ne peux le faire qu'en écrivant dans le fichier les 2 caractères `6` et `4`
 
-question: comment on pourrait aussi vouloir écrire l'entier `64` dans un fichier ?
+````{admonition} et l'encodage ?
+:class: admonition-small
+
+en toute rigueur, on devrait préciser l'encodage qu'on veut utiliser:
+```python
+with open("tmp-names.txt", 'w', encoding='utf-8') as writer:
+    ...
+```
+mais pour commencer, *let's keep it simple*...
+````
+
+d'ailleurs dans la même veine, un petit quiz:
+
+- si je veux écrire l'entier 64 dans le fichier, je ne peux le faire qu'en écrivant dans le fichier les 2 caractères `6` et `4`
+- mais question: comment on pourrait aussi vouloir écrire l'entier `64` dans un fichier ?
 
 +++
 
@@ -97,11 +102,9 @@ question: comment on pourrait aussi vouloir écrire l'entier `64` dans un fichie
 
 +++
 
-Bien sûr ce fichier, on aurait pu l'écrire avec un éditeur de texte
-
-Mais peu importe comment on l'a créé, maintenant voyons comment on peut le relire par programme
-
-C'est la même idée exactement, mais on va cette fois passer à `open` un mode d'ouverture qui est `'r'` - pour, *wait for it...* **`read`** eh oui !
+bien sûr ce fichier, on aurait pu l'écrire avec un éditeur de texte  
+mais peu importe comment on l'a créé, maintenant voyons comment on peut le relire par programme  
+c'est la même idée exactement, mais on va cette fois passer à `open` un mode d'ouverture qui est `'r'` - pour, *wait for it...* **`read`** eh oui !
 
 ```{code-cell} ipython3
 with open("tmp-names.txt", 'r') as reader:
