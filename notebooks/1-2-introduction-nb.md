@@ -36,26 +36,29 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ## pourquoi Python ?
 
-* syntaxe simple
+* **conçu pour être lisible**, syntaxe simple
   * pas de délimitations  `begin end ; {} `
   * uniquement des indentations
-  * aucune ambiguïté
-  * une seule façon d’écrire
-* portable
-  * Windows, Linux, Mac OS, etc.
+  * la lisibilité fait partir de l'ADN du langage
 * typage dynamique
   * pas de perte de temps à l'écriture des programmes
+* portable
+  * Windows, Linux, Mac OS, etc.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### pourquoi Python ?  : lisible
 
 ```{code-cell} ipython3
-# le sucre syntaxique réduit au minimum
+# le sucre syntaxique est réduit au minimum
 # c'est un partis-pris de conception
 # le code est lisible par construction
+
 def factorielle(n):
-    return 1 if n <= 1 else n * factorielle(n-1)
+    if n <= 1:
+        return 1
+    else:
+        return n * factorielle(n-1)
 ```
 
 ```{code-cell} ipython3
@@ -66,24 +69,21 @@ factorielle(0)
 factorielle(8)
 ```
 
-````{admonition} trop court ?
+````{admonition} trop long ?
 :class: seealso
 
-bien sûr on peut aussi écrire de façon plus bavarde si on préfère, comme par ex.
+bien sûr on peut aussi écrire de façon plus concise si on préfère, comme par ex.
 
 ```python
 def factorielle(n):
-    if n <= 1:
-        return 1
-    else:
-        return n * factorielle(n-1)
+    return 1 if n <= 1 else n * factorielle(n-1)
 ```
 
 ````
 
 +++
 
-### pourquoi Python ? : puissant
+### pourquoi Python ? : puissant (*batteries included*)
 
 * types disponibles très puissants et flexibles
   * entiers non bornés, nombres complexes
@@ -105,8 +105,7 @@ def factorielle(n):
 * REPL: usage interactif (ipython / notebook)
 * pré-compilation en byte-code des programmes (.pyc)
   * totalement transparent
-  * mais pas optimisé comme du code machine  
-    compilé à partir de C
+  * mais pas non plus optimisé comme du code machine..
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -170,9 +169,7 @@ import this
 
 +++
 
-### quand ne pas utiliser python ?
-
-**comment prendre la décision d’utiliser Python ?**
+### comment prendre la décision d’utiliser Python ?
 
 * balancer vitesse de développement avec performance
 * Python gagne presque toujours
@@ -182,10 +179,6 @@ import this
 ### comment tester la performance ?
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 %%timeit
 
 # on construit la liste des premiers carrés
@@ -204,11 +197,8 @@ on ne peut l'utiliser que dans `ipython` ou dans les notebooks
 ### comment tester la place mémoire ?
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [level_intermediate, gridwidth-1-2]
----
+:tags: [level_intermediate, gridwidth-1-2]
+
 # retourne le nombre d'octets
 # utilisés pour stoker un objet
 
@@ -349,7 +339,9 @@ par exemple dans `jupyter lab` voyez le menu `Kernel`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## comment avoir de l'aide: `dir`
+## comment avoir de l'aide
+
+### `dir()`
 
 +++
 
@@ -364,7 +356,7 @@ dir(math)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### comment avoir de l’aide ?
+### `help()`
 
 +++ {"slideshow": {"slide_type": "-"}}
 
@@ -389,7 +381,35 @@ help(math.factorial)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-## aide IPython (et notebooks)
+### complétion
+
++++
+
+**apprenez à utiliser `<TAB>` pour la complétion!!**  
+cela fait ggner un temps fou !  
+et d'ailleurs pas que dans jupyter, c'est pervasif: dans le shell/terminal, dans vs-code, etc...
+
+```{code-cell} ipython3
+# tapez le début
+# math.fac
+# puis à ce stade taper <TAB>
+# ce qui va vous aider à finir la phrase avec un mot connu
+```
+
+si votre début de phrase est trop flou, vous aurez à choisir dans une liste de possibles  
+dans ce cas, utilisez le clavier pour sélectionner la bonne
+
+```{code-cell} ipython3
+# tapez ceci
+# math.
+# et là si vous tapez <TAB> on va vous afficher les possibilités
+# c'est à dire en gros le contenu de dir(math) comme on l'a vu plus haut
+# mais c'est interactif
+```
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### aide avec `symbol?`
 
 +++
 
@@ -415,48 +435,16 @@ math?
 math.factorial?
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### aide IPython (et notebooks) (2)
-
-+++ {"tags": []}
-
-utiliser `TAB` pour la complétion
-
-```{code-cell} ipython3
-:tags: []
-
-# ditto, il faut avoir chargé le module
-# **avant** de pouvoir utiliser la complétion
-from sklearn import tree
-```
-
-+++ {"tags": []}
-
-utiliser le clavier pour sélectionner
-
-```{code-cell} ipython3
-:tags: []
-
-# tree.<taper TAB>
-```
-
-+++ {"tags": []}
-
-### aide IPython (et notebooks) (3)
+### aide avec `symbol??`
 
 avec un double `??` on peut avoir accès au code source
 
 ```{code-cell} ipython3
-:tags: []
-
 # bien sûr il faut avoir **évalué** l'import
 from argparse import ArgumentParser
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # avant de pouvoir instrospecter l'objet ArgumentParser
 ArgumentParser??
 ```
