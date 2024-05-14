@@ -99,7 +99,7 @@ print(a)
 #
 # à savoir également, l'affectation sert aussi de **déclaration**: si vous affectez une variable dans une fonction, cela signifie que la variable est **locale à la fonction**
 #
-# `````{admonition} UnboudLocalError
+# `````{admonition} UnboundLocalError
 # :class: attention admonition-small
 #
 # du coup dans le programme suivant, on observe une erreur; pouvez-vous expliquer pourquoi ?
