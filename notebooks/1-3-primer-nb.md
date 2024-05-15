@@ -348,7 +348,7 @@ qui permettent de traiter rapidement pas mal de sujets
 
 il y a aussi la "librairie standard" qui vient avec plein d'utilitaires:
 
-- `path`: gestion des fichiers, et calculs de chemins 
+- `pathlib`: gestion des fichiers, et calculs de chemins 
 - `datetime`: date et heure
 - `random`: générateur de nombres aléatoires
 - `itertools`: itérations comme permutations, combinaisons, produit cartésien, ...
