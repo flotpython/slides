@@ -39,7 +39,7 @@ HTML(filename="_static/style.html")
 # %% [markdown]
 # ***évaluez la cellule suivante*** pour faire apparaitre le sommaire des vidéos, en 4 parties
 
-# %% hide_input=false tags=["remove-input"]
+# %% tags=["remove-input"]
 # les vidéos sur youtube
 parts = (
     ("le passage des arguments", "8hLlyUbXZ3U", "12:53"),
