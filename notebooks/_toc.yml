@@ -1,9 +1,9 @@
 format: jb-book
-root: 0-0-prelude-nb
+root: mines/0-intro-nb
 parts:
-- caption: introduction
+- caption: un petit jeu
   chapters:
-  - glob: 1-[0-9]*-nb
+  - glob: mines/1-[0-9]*-nb
 - caption: types de base
   chapters:
   - glob: 2-[0-9]*-nb
