@@ -73,7 +73,7 @@ Thierry Parmentelat - Arnaud Legout - Inria
 
 | contenu | url |
 |-:|:-|
-| extrait du cours des Mines | <https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installations> |
+| extrait du cours des Mines | <https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html> |
 | vidéo de démo des outils | <https://www.youtube.com/watch?app=desktop&v=i_ZcP7iNw-U> |
 
 ````{admonition} pour cloner ce cours
@@ -112,7 +112,7 @@ par contre si vous optez pour une installation locale, il vous faut idéalement 
 :class: admonition-small
 
 c'est utile de se souvenir que `pip install` est la commande magique qui permet d'installer de nouveaux modules  
-dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installation-des-extras-python)
+dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html#installation-des-extras-python)
 ````  
 
 +++
@@ -164,7 +164,7 @@ $ jupyter lab
 
 ````{admonition} jupytext
 
-avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p23-intro.readthedocs.io/en/next-year/1-01-installations-nb.html#installation-des-extras-python)
+avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html#installation-des-extras-python)
 ````
 
 +++
