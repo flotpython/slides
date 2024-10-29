@@ -18,7 +18,8 @@ parts:
   - glob: 5-[0-9]*-nb
 - caption: divers
   chapters:
-  - glob: 7-[0-9]*-nb
+  # skip numpy
+  - glob: 7-[0-24-9]*-nb
 
 # leftovers from a previous version
 # formerly in .nbhosting/nbhosting.yaml
