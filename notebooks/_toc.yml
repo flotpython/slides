@@ -1,12 +1,9 @@
 format: jb-book
-root: 0-0-prelude-nb
+root: mines/0-intro-nb
 parts:
-- caption: introduction
+- caption: un petit jeu
   chapters:
-  - glob: 1-[0-9]*-nb
-- caption: premiers pas
-  chapters:
-  - glob: 101/0*
+  - glob: mines/1-[0-9]*-nb
 - caption: types de base
   chapters:
   - glob: 2-[0-9]*-nb
@@ -19,15 +16,10 @@ parts:
 - caption: fonctions
   chapters:
   - glob: 5-[0-9]*-nb
-- caption: modules et imports
-  chapters:
-  - glob: 6-[0-9]*-nb
 - caption: divers
   chapters:
-  - glob: 7-[0-9]*-nb
-- caption: "sujets avanc\xE9s"
-  chapters:
-  - glob: 8-[0-9]*-nb
+  # skip numpy
+  - glob: 7-[0-24-9]*-nb
 
 # leftovers from a previous version
 # formerly in .nbhosting/nbhosting.yaml
