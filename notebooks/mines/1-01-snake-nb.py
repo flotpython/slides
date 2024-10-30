@@ -78,5 +78,5 @@ HTML(filename="_static/style.html")
 #
 # Voyez le TP qui se trouve ici
 #
-# <https://nbhosting.inria.fr/builds/python-exos/python/latest/python-tps/snake/README-snake-nb.html>
+# <https://flotpython-exos-python.readthedocs.io/en/main/tps/snake/README-snake-nb.html>
 # ````
