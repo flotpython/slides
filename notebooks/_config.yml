@@ -37,10 +37,10 @@ sphinx:
       home_page_in_toc: false
       toc_title: "Dans cette section:"
 
-    html_favicon: ../media/flotpython-favicon.svg
+    html_favicon: ../media/logo-p24-favicon.svg
     html_show_copyright: false
     # not quite convincing but...
-    html_extra_path: 
+    html_extra_path:
       - media
     # required as of 2024 May to get %matplotlib ipympl
     # to show up (at all, not even interactive) in the book output
