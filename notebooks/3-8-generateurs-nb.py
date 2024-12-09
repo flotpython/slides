@@ -147,15 +147,15 @@ except Exception as exc:
 # car oui, cet objet `g` est en fait de type `generator`; c'est exactement le même type qu'une expression génératrice:
 
 # %%
-# g a le même type que par exemple cette genexp
+# g a le même type que par exemple cette genexpr
 
-ge = (x**2 for x in range(3))
-type(g) is type(ge)
+genexpr = (x**2 for x in range(3))
+type(g) is type(genexpr)
 
 # %% [markdown]
 # ### c'est un itérateur
 #
-# du coup comme pour les genexps, notre objet `g` est un itérateur, et donc il s'épuise comme tous les itérateurs:
+# du coup comme pour les genexprs, notre objet `g` est un itérateur, et donc il s'épuise comme tous les itérateurs:
 #
 
 # %%
@@ -165,7 +165,7 @@ for i in g:
     print(i, end=" ")
 print("\nsecond tour")
 for i in g:
-    print(i, end=" ")    
+    print(i, end=" ")
 
 # %% [markdown]
 # ### avec `next()`
@@ -180,6 +180,9 @@ g = syracuse(2)
 
 print("le premier", next(g))
 print("le deuxième", next(g))
+
+# du coup ici ça va faire boom
+# en levant l'exception prédéfinie StopIteration
 try:
     next(g)
 except StopIteration:
@@ -203,7 +206,7 @@ except StopIteration:
 # ### quand c'est simple
 #
 # prenons un cas simpliste: on veut calculer les carrés d'une collection d'objets  
-# dans ce cas-là on peut utiliser n'importe laquelle des deux formes (genexp ou générateur)
+# dans ce cas-là on peut utiliser n'importe laquelle des deux formes (genexpr ou générateur)
 
 # %% cell_style="split"
 data = (2, -1, 4)

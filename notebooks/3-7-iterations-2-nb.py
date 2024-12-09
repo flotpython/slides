@@ -30,7 +30,7 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 
 # %% [markdown] slideshow={"slide_type": ""}
-# # itér.. (2/3) - compr. et genexp
+# # itér.. (2/3) - compr. et genexpr
 
 # %% [markdown] tags=[]
 # ## compréhensions
@@ -219,19 +219,22 @@ result
 #   (comme dans les bases de données)
 
 # %% slideshow={"slide_type": "slide"}
-# créer une table qui permet un accès direct à partir du nom
+# créer un dict qui permet un accès direct à partir du nom
 personnes = [
     {'nom': 'Martin', 'prenom': 'Julie', 'age': 18},
     {'nom': 'Dupont', 'prenom': 'Jean', 'age': 32},
     {'nom': 'Durand', 'prenom': 'Pierre', 'age': 25},  
 ]
 
+# l'idiome pour créer un index
 index = {personne['nom']: personne for personne in personnes}
+
 index
 
 # %%
 # le concept est le même que dans une base de données
 # en termes d'accès rapide à partir du nom qui jour le rôle d'id
+
 index['Martin']
 
 # %% [markdown]
@@ -255,6 +258,7 @@ index['Martin']
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### expression génératrice
 #
+# pour éviter ces problèmes: utiliser une *genexpr*
 # * ça se présente un peu comme une compréhension de liste  
 # * mais **avec des `()` à la place des `[]`**
 # * supporte les `if` et les imbrications  
@@ -283,7 +287,7 @@ for y in G:
 # ### les genexprs sont des itérateurs
 #
 # * même "contenu" que la compréhension
-# * mais pas la même implémentation: les genexps sont de type `generator` (en particulier ce sont des **itérateurs**)
+# * mais pas la même implémentation: une *genexpr* est de type `generator` (en particulier c'est un **itérateur**)
 
 # %% tags=["gridwidth-1-2"]
 # compréhension
@@ -319,11 +323,9 @@ sys.getsizeof(G2)
 # ### compréhension ou genexpr ?
 #
 # * les compréhensions de *dictionnaire* et d'*ensemble* sont souvent justifiées
-# * par contre, pour les *listes*: **toujours bien se demander**  
-#   si on a vraiment besoin de **construire la liste**
+# * par contre, pour les *listes*: **toujours bien se demander** si on a vraiment besoin de **construire la liste**
 #
-# * ou si au contraire on a juste **besoin d'itérer** dessus  
-#   (souvent une seule fois d'ailleurs)
+# * ou si au contraire on a juste **besoin d'itérer** dessus (souvent une seule fois d'ailleurs)
 
 # %% [markdown]
 # * si on a vraiment besoin de cette liste, alors la compréhension est OK
@@ -340,8 +342,7 @@ from random import randint
 matieres = ('maths', 'français', 'philo')
 
 def notes_eleve_aleatoires():
-    return {matiere: randint(0, 20) 
-            for matiere in matieres}
+    return {matiere: randint(0, 20) for matiere in matieres}
 
 
 # %% cell_style="center"

@@ -241,9 +241,7 @@ list(map(lambda x: x**2, L))
 #
 # * les **itérateurs** sont une sous-famille des itérables
 # * qui présentent la particularité de **consommer peu de mémoire**
-# * en fait un objet itérateur capture uniquement  
-#   **la logique de l'itération**, mais pas les données
-#
+# * en fait un objet itérateur capture uniquement  **la logique de l'itération**, mais pas les données
 # * c'est-à-dire où on en est, et comment passer au suivant
 
 # %% slideshow={"slide_type": ""} tags=["gridwidth-1-2"]
@@ -360,6 +358,7 @@ for item in iterator:
 
 # %%
 # count fait partie du module itertools
+
 from itertools import count
 # count?
 
@@ -374,6 +373,7 @@ for i in count():
 
 # %% tags=["gridwidth-1-2"]
 # on peut changer les réglages
+# ici en partant de 2 avec un step de 5
 
 for i in count(2, 5):
     print(i, end=" ")
@@ -455,6 +455,7 @@ for a, b in zip(liste1, liste2):
 # ```python
 # # zip s'arrête dès que 
 # # l'un de ses morceaux s'arrête
+#
 # for index, item in zip(count(), L):
 #     print(f"{index} {item}")
 # ```
@@ -514,7 +515,7 @@ for i in R:
 #
 # on trouve dans le module `itertools` plusieurs utilitaires très pratiques :
 #
-# * `count` pour énumérer les entiers (un `range` sans borne)
+# * `count` pour énumérer les entiers (voir plus haut)
 # * `chain` pour chainer plusieurs itérables
 # * `cycle` pour rejouer un itérable en boucle
 # * `repeat` pour énumérer plusieurs fois le même objet

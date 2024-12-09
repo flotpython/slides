@@ -221,6 +221,8 @@ from pathlib import Path
 home = Path.home()
 
 # l'opérateur / est défini sur Path
+# et bien sûr ici CE N'EST PAS une division !
+
 subdir = home / "git"
 
 if subdir.exists():
