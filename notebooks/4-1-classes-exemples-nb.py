@@ -52,6 +52,13 @@ HTML(filename="_static/style.html")
 #
 # * avec le mot-clé `class` on définit **un nouveau type**  
 # * une classe définit des **méthodes spéciales**; ici **`__init__`** et **`__repr__`**
+#
+# ````{admonition}  méthodes dites spéciales et dunder methods
+# :class: tip
+#
+# les méthodes dont le nom commence et termine par `__` s'appellent des *dunder* - raccourci de "*double underscore*"  
+# cela est réservé aux méthodes dites *méthodes spéciales*, dont le constructeur et l'afficheur font partie
+# ````
 
 # %% tags=["gridwidth-1-2"]
 class User:
@@ -192,8 +199,9 @@ stack
 # %% [markdown] tags=[]
 # ## intérêts de cette approche
 #
-# * on peut se définir ses propres types de données
-# * par exemple grouper les données qui vont ensemble dans un objet unique, facile à passer à d'autres fonctions
+# * on peut se définir ses **propres types** de données
+#   * par exemple pour grouper les données qui vont ensemble dans un objet unique, facile à passer à d'autres fonctions
+#   * de préférence à l'utilisation d'un objet de base (par exemple liste ou dict) qui est beaucoup moins parlant
 # * **invariants**: garantir de bonnes propriétés si on utilise les objets au travers des méthodes (encapsulation)
 # * et aussi (sera vu ultérieurement): intégrer **vos objets dans le langage**  
 #   i.e. donner un sens à des constructions comme  
@@ -221,8 +229,8 @@ stack
 #
 # ````{admonition} conventions de nommage
 # :class: attention admonition-small
-# cette séparation n'est pas toujours sous-titrée de manière explicite - comme ici où nous avons mis un `_` au début du nom de l'attribut; 
-# il faut parfois faire appel à son bon sens
+# cette séparation n'est pas toujours sous-titrée de manière explicite - comme ici où nous avons mis un `_` au début du nom de l'attribut;  
+# il faut parfois faire appel à son bon sens - ou simplement lire la doc *a.k.a.* RTFM
 # ````
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -243,7 +251,7 @@ import pandas as pd
 df = pd.read_csv("../data/Worldwide-Earthquake-database.csv")
 
 # et on obtient .. un objet de la classe pd.DataFrame
-# (c'est plus pratique que une liste de distionnaires ou autres)
+# (c'est plus pratique que une liste de dictionnaires ou autres)
 # et sur lequel on a des méthodes comme ici .head()
 
 df.head(4)
@@ -434,7 +442,7 @@ class Student:
         return f"{self.first_name} {self.last_name}"
     
     def age(self) -> TimeDelta:
-        # the différence between 2 Dates is a TimeDelta
+        # the difference between 2 Dates is a TimeDelta
         return Date.today() - self.birth_date
     
     def repr_age(self) -> str:
