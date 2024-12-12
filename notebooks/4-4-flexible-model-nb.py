@@ -3,11 +3,6 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
-#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -rise, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -63,14 +58,17 @@ HTML(filename="_static/style.html")
 
 # %% cell_style="center"
 class Student:
-    
+
     all_students = []   # ici all_students est un attribut
                         # de la classe, et pas des instances
-    
+
     def __init__(self, name):
         self.name = name
-        Student.all_students.append(self)  # on peut y faire référence 
-                                           # en partant de la classe
+        
+        # on peut y faire référence
+        # en partant de la classe
+        
+        Student.all_students.append(self)
 
 
 # %% cell_style="center"
@@ -82,13 +80,15 @@ print(f"after step 1 we have {len(Student.all_students)} students")
 
 # %% cell_style="center"
 # est-ce que ceci va fonctionner aussi ?
+
 print(f"after step 1 we have {len(s.all_students)} students")
 
 # %% cell_style="center"
 # du coup on peut comme cela agréger des choses relatives
 # à tous les objets de la classe
+
 s = Student('pierre')
-print(f"after step 1 we have {len(Student.all_students)} students")
+print(f"after step 2 we have {len(Student.all_students)} students")
 
 
 # %% [markdown]
@@ -106,14 +106,15 @@ print(f"after step 1 we have {len(Student.all_students)} students")
 
 # %%
 class Student:
-    
+
     def __init__(self, name):
         self.name = name
-        
+
     # on ne peut pas appeler cette méthode
     # avec un objet de type Student,
     # puisque précisément, c'est son propos
     # de construire un objet
+
     @staticmethod
     def load_from_file(filename):
         with open(filename) as f:
@@ -122,15 +123,18 @@ class Student:
 
 # %%
 # et on l'appelle comme ceci
+
 s1 = Student.load_from_file('student1.txt')
 s2 = Student.load_from_file('student2.txt')
+
+# et si on inspecte leur contenus
 s1.name, s2.name
 
 
 # %% [markdown] slideshow={"slide_type": "slide"} tags=[]
 # ## méthodes de classe
 #
-# sujet avancé, lié au précédent, mais d'utilisation (beaucoup) plus rare
+# sujet avancé, lié au précédent, mais d'utilisation plus rare:
 
 # %% tags=[]
 class Student:
@@ -140,6 +144,7 @@ class Student:
     # avec cette déclaration, ce n'est pas 
     # l'objet qui est passé en paramètre à 
     # la méthode, mais sa classe !
+    
     @classmethod
     def record_instance(cls, instance):
         cls.all_instances.append(instance)
@@ -151,8 +156,10 @@ class Student:
 
 # %% tags=[]
 s1 = Student('jean')
+
 len(s1.all_instances)
 
 # %% tags=[]
 s2 = Student('jean')
+
 len(s1.all_instances), len(Student.all_instances)
