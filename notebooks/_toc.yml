@@ -16,6 +16,9 @@ parts:
 - caption: fonctions
   chapters:
   - glob: 5-[0-9]*-nb
+- caption: modules
+  chapters:
+  - glob: 6-[0-9]*-nb
 - caption: divers
   chapters:
   # skip numpy
