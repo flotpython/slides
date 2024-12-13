@@ -7,12 +7,8 @@ ipub:
     toggle_output: true
     toggle_output_all: true
 jupytext:
-  cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
   cell_metadata_json: true
   encoding: '# -*- coding: utf-8 -*-'
-  notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version,-language_info.version,
-    -language_info.codemirror_mode.version, -language_info.codemirror_mode,-language_info.file_extension,
-    -language_info.mimetype, -toc, -version
   text_representation:
     extension: .md
     format_name: myst
@@ -113,7 +109,7 @@ par contre si vous optez pour une installation locale, il vous faut idéalement 
 
 c'est utile de se souvenir que `pip install` est la commande magique qui permet d'installer de nouveaux modules  
 dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html#installation-des-extras-python)
-````  
+````
 
 +++
 
