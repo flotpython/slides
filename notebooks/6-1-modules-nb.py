@@ -3,11 +3,6 @@
 # jupyter:
 #   celltoolbar: Slideshow
 #   jupytext:
-#     cell_metadata_filter: all,-hidden,-heading_collapsed,-run_control,-trusted,-editable
-#     notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version,
-#       -jupytext.text_representation.format_version,-language_info.version, -language_info.codemirror_mode.version,
-#       -language_info.codemirror_mode,-language_info.file_extension, -language_info.mimetype,
-#       -toc, -version
 #     text_representation:
 #       extension: .py
 #       format_name: percent
@@ -21,11 +16,6 @@
 #     pygments_lexer: ipython3
 #   nbhosting:
 #     title: modules
-#   rise:
-#     slideNumber: c/t
-#     start_slideshow_at: selected
-#     theme: sky
-#     transition: cube
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
@@ -79,7 +69,7 @@ HTML(filename="_static/style.html")
 #
 # * un module est un **objet** Python, correspondant au **chargement en mémoire**  
 #   du code venant d'un fichier ou dossier source  
-#   (dans le cas d'un *répertoire* on parle alors d'un *package* - on en reparlera)
+#   (dans le cas d'un *dossier* on parle alors d'un *package* - on en reparlera)
 #
 # * les différents composants du code sont alors accessibles **comme un attribut** du module  
 #   (c'est à dire les variables qui sont définis au *toplevel* dans le fichier source)
@@ -119,7 +109,7 @@ mod.spam('good')
 # puisque le nom de la variable est tiré du nom du fichier (sans le `.py`), cela signifie qu'on ne pourra pas prendre n'importe quoi comme nom de fichier; et notamment **on ne peut pas utiliser le `-`**:
 #
 # * `truc_v22.py`: **OK** comme pour un module
-# * ~~`truc-bidule.py`~~: **KO** pour un module - à la rigueur pour un point d'entrée
+# * ~~`truc-bidule.py`~~: **KO** pour un module
 # ````
 
 # %% [markdown]
@@ -127,7 +117,7 @@ mod.spam('good')
 # :class: tip admonition-small
 #
 # bien entendu, si la fonction `spam` avait une variable locale, elle ne serait pas visible dans le module  
-# la plupart du temps, il s'agit de fonctions et de classes
+# la plupart du temps, ce qui eat visible dans le module, ce sont des fonctions et des classes; et parfois des constantes
 # ````
 
 # %% [markdown]
@@ -136,11 +126,15 @@ mod.spam('good')
 # on l'a déjà vu, mais pour rappel
 #
 # * un attribut est une annotation sur un objet (ici le module `mod`)
-#   * qui associe un nom (ici `spam`) à un autre objet (la fonction)
-#   * on référence un attribut par `obj.attribute`
+# * dans l'espace de noms de l'objet, on "attache" un nom (ici `spam`) qui désigne autre objet (ici la fonction)
+# * pour utiliser (aller chercher) un attribut, la syntaxe est `obj.attribute`  
 # * un attribut n'est **pas une variable**
 #   * les variables sont résolues par liaison lexicale
 #   * les attributs sont résolus à run-time
+#
+# ```{admonition} rappel
+# tout ce qu'on a vu dans la leçon sur les classes, où a beaucoup parlé d'attributs, s'applique ici
+# ```
 
 # %% [markdown]
 # ````{admonition} objet *vs* dictionnaire
