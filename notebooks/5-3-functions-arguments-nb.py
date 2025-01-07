@@ -390,7 +390,7 @@ def variable(*args1, *args2):
 # %% [markdown]
 # ### (IV) paramètre multiple `**kwds`
 #
-# le mécanismes est exactement le même, mais avec les **arguments nommés**:
+# le mécanisme est exactement le même, mais avec les **arguments nommés**:
 #
 # * on regarde tous ceux qui n'ont pas encore été liés à un paramètre,
 # * au lieu de créer un tuple, on crée cette fois un **un dictionnaire**, de façon à mémoriser les noms en plus des valeurs  
