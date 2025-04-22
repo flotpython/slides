@@ -51,25 +51,25 @@ Thierry Parmentelat - Arnaud Legout - Inria
 
 ### ce cours
 
-| contenu | url |
+| contenu &nbsp; | &nbsp; url |
 |-:|:-|
-| HTML statique | <https://flotpython-slides.readthedocs.io/> |
+| HTML statique | <https://flotpython.github.io/slides/> |
 | sources des notebooks | <https://github.com/flotpython/slides> |
 | notebooks live (nécessite un login) | <https://nbhosting.inria.fr/> |
 
 ### exercices
 
-| contenu | url |
+| contenu &nbsp; | &nbsp; url |
 |-:|:-|
 | exos Pure Python | <https://flotpython-exos-python.readthedocs.io/> |
-| exos Data Science (accessoirement) | <https://flotpython-exos-ds.readthedocs.io/> |
 | exercices autocorrigés (nécessite un login) | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
+| exos Data Science (accessoirement) | <https://flotpython-exos-ds.readthedocs.io/> |
 
 ### support pour installations
 
-| contenu | url |
+| contenu &nbsp; | &nbsp; url |
 |-:|:-|
-| extrait du cours des Mines | <https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html> |
+| extrait du cours des Mines | <https://ue12-p25.github.io/intro/1-1-installations/> |
 | vidéo de démo des outils | <https://www.youtube.com/watch?app=desktop&v=i_ZcP7iNw-U> |
 
 ````{admonition} pour cloner ce cours
@@ -93,7 +93,7 @@ le MOOC "Python 3 : des fondamentaux aux concepts avancés du langage"
 ## outils et notebooks
 
 on peut suivre le cours sans installation locale (plateforme nbhosting, jupyterlite)  
-par contre si vous optez pour une installation locale, il vous faut idéalement (on mentionne les outils recommandés dans le lien ci-dessus)
+par contre si vous optez pour une installation locale, il vous faut idéalement (cette liste figure dans la doc d'installation ci-dessus)
 
 - un terminal avec `git` (sur Windows: "git for windows" vient avec un terminal "bash")
 - un éditeur de code - (vs-code)
@@ -108,7 +108,7 @@ par contre si vous optez pour une installation locale, il vous faut idéalement 
 :class: admonition-small
 
 c'est utile de se souvenir que `pip install` est la commande magique qui permet d'installer de nouveaux modules  
-dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html#installation-des-extras-python)
+dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p25.github.io/intro/1-1-installations/#-les-librairies-num%C3%A9riques)
 ````
 
 +++
@@ -152,7 +152,7 @@ $ cd le/bon/dossier/slides/notebooks
 
 $ jupyter lab
 ... qui va ouvrir une fenêtre dans le navigateur
-... il vous faut alors laisser ce terminal tranquille, il est occcupé...
+... il vous faut alors laisser ce terminal tranquille, il est occupé...
 ```
 
 * double-cliquez sur un nom de fichier pour l'ouvrir  
@@ -160,7 +160,7 @@ $ jupyter lab
 
 ````{admonition} jupytext
 
-avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p24-intro.readthedocs.io/en/main/1-01-installations-nb.html#installation-des-extras-python)
+avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p25.github.io/intro/1-1-installations/#-les-librairies-num%C3%A9riques)
 ````
 
 +++
