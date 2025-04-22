@@ -1,0 +1,62 @@
+version: 1
+
+project:
+  toc:
+
+    - file: 0-0-prelude-nb.md
+
+    - title: introduction
+      children:
+        - pattern: 1-[0-9]*-nb.md
+    - title: premiers pas
+      children:
+        - pattern: 101/0*
+    - title: types de base
+      children:
+        - pattern: 2-[0-9]*-nb.md
+    - title: syntaxe & instructions
+      children:
+        - pattern: 3-[0-9]*-nb.md
+    - title: classes
+      children:
+        - pattern: 4-[0-9]*-nb.md
+    - title: fonctions
+      children:
+        - pattern: 5-[0-9]*-nb.md
+    - title: modules et imports
+      children:
+        - pattern: 6-[0-9]*-nb.md
+    - title: divers
+      children:
+        - pattern: 7-[0-9]*-nb.md
+    - title: "sujets avancés"
+      children:
+        - pattern: 8-[0-9]*-nb.md
+
+# leftovers from a previous version
+# formerly in .nbhosting/nbhosting.yaml
+#- description: "Cours: suppl\xE9ments"
+#  id: extras
+#  name: extras
+#  sections:
+#  - name: numpy
+#    notebooks:
+#    - "slides-extras/1*.py"
+#  - name: pandas
+#    notebooks:
+#    - "slides-extras/2*.py"
+#  - name: notebooks
+#    notebooks:
+#    - "slides-extras/3*.py"
+#  - name: tests
+#    notebooks:
+#    - "slides-extras/4*.py"
+#  - name: doc
+#    notebooks:
+#    - "slides-extras/5*.py"
+#  - name: packaging
+#    notebooks:
+#    - "slides-extras/6*.py"
+#  - name: vscode
+#    notebooks:
+#    - "slides-extras/7*.py"
