@@ -385,8 +385,6 @@ def divide(x,y):
   * par exemple fermer un fichier
 
 ```{code-cell} ipython3
-:tags: [raises-exception]
-
 def finally_trumps_return(n):
     try:
         return 2 / n
@@ -395,6 +393,8 @@ def finally_trumps_return(n):
 ```
 
 ```{code-cell} ipython3
+:tags: [raises-exception]
+
 finally_trumps_return(0)
 ```
 
