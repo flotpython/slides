@@ -130,7 +130,9 @@ def fact(n):
         return n * fact(n-1)
 ```
 
+pour essayer, enlever les commentaires dans cette cellule
+
 ```{code-cell} ipython3
-%%debug
-fact(3)
+# %%debug
+# fact(3)
 ```
