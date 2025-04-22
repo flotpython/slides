@@ -67,11 +67,10 @@ Python permet de retrouver la commande de lancement du point d'entrée au traver
 
 considérons pour commencer le programme suivant
 
-```{code-cell} ipython3
-# %cat est une 'magic' de IPythion
-# qui permet d'afficher le contenu de fact_sysargv.py
-
-%cat samples/fact_sysargv.py
+```{literalinclude} samples/fact_sysargv.py
+:caption: dans le dossier `samples/`
+:linenos:
+:emphasize-lines: 11,14
 ```
 
 ```{code-cell} ipython3
@@ -132,15 +131,18 @@ vous pouvez regarder le code de `fact_sysargv2.py` pour voir comment on a implé
 
 on ne va pas ici entrer dans les détails, mais simplement montrer le code qui se comporterait comme `fact_sysargv2`.py
 
-```{code-cell} ipython3
-%cat samples/fact_argparse.py
+```{literalinclude} samples/fact_argparse.py
+:caption: dans le dossier `samples/`
+:linenos:
+:emphasize-lines: 2, 9, 12, 13, 14, 16, 20, 24, 25
+
 ```
 
 ce code peut sembler un peu plus bavard que tout à l'heure; mais d'abord il donne un programme plus agréable à utiliser
 
 ```{code-cell} ipython3
-# si on ne passe pas les paramètres imposés, 
-# le programme ne fait rien, 
+# si on ne passe pas les paramètres imposés,
+# le programme ne fait rien,
 # mais il nous explique comment on aurait dû l'appeler
 
 ! python samples/fact_argparse.py

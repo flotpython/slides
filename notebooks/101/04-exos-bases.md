@@ -23,10 +23,16 @@ nbhosting:
 
 +++
 
-Voici un nouveau fichier de données
+Voici un nouveau fichier de données `data-students.txt` qui contient
 
-```{code-cell} ipython3
-%cat data-students.txt
+```{literalinclude} data-students.txt
+:linenos:
+```
+
+```{admonition} pour le créer sur votre ordi
+mettez votre souris dans le fichier ci-dessus  
+cela affiche une icone 'copier' dans le coin en haut à gauche  
+copiez le contenu créez le fichier avec par exemple vs-code
 ```
 
 On vous demande d'écrire un programme qui produit ce texte

@@ -40,22 +40,13 @@ with open("tmp-names.txt", 'w') as writer:
     print("Charlie", file=writer)
 ```
 
-si vous faites tourner ça sur votre ordi, vous devez constater la présence d'un nouveau fichier `tmp-names.txt` dans votre explorateur de fichier; et dedans nous avons écrit trois lignes avec les 3 noms
+si vous faites tourner ça sur votre ordi, vous devez constater la présence d'un
+nouveau fichier `tmp-names.txt` dans votre explorateur de fichier; et dedans
+nous avons écrit trois lignes avec les 3 noms:
 
-```{code-cell} ipython3
-# ceci est juste pour vérifier le contenu du fichier qu'on vient de créer
-# le %cat est de nouveau une magic IPython - ne marchera pas dans python 'tout court'
-
-%cat tmp-names.txt
+```{literalinclude} tmp-names.txt
+:caption: pour vérifier le contenu du fichier qu'on vient de créer
 ```
-
-````{admonition} c'est quoi cat ?
-
-`cat` est une commande du terminal Unix qui concatène le contenu de plusieurs fichiers  
-comme on n'en donne qu'un seul, la commande affiche le contenu de ce fichier
-
-et on y trouve bien ce à quoi on s'attendait
-````
 
 +++
 

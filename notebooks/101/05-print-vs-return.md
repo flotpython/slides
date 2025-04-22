@@ -81,8 +81,7 @@ dit autrement, la logique de Python dans ce mode c'est
 
 je vous montre la différence avec ce programme totalement bidon
 
-```{code-cell} ipython3
-%cat run_or_repl.py
+```{literalinclude} run_or_repl.py
 ```
 
 #### normal run

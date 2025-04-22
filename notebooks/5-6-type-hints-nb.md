@@ -83,16 +83,18 @@ ajouter('abc', 'def')
 %pip install mypy
 ```
 
-```{code-cell} ipython3
-# avec ce fichier source
+du coup avec ce fichier source
 
-%cat samples/typehints.py
+```{literalinclude} samples/typehints.py
+:caption: dans le dossier `samples/`
+:linenos:
+:emphasize-lines: 3,8
 ```
 
-```{code-cell} ipython3
-# on obtient ces diagnostics d'erreur sans avoir besoin d'exécuter
-# ce qui signifie qu'on peut le faire AVANT même de faire les tests
+on obtient ces diagnostics d'erreur sans avoir besoin d'exécuter  
+ce qui signifie qu'on peut le faire AVANT même de faire les tests
 
+```{code-cell} ipython3
 !mypy samples/typehints.py
 ```
 

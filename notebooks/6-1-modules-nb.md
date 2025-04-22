@@ -66,7 +66,7 @@ un module, c’est principalement juste un espace de noms
 c’est grâce à ces différents espaces de noms que deux fichiers `foo.py` et `bar.py` peuvent tous les deux définir la même variable `tutu` sans que ça pose le moindre problème de les utiliser tous les deux dans la même application
 ````
 
-+++
++++ {"slideshow": {"slide_type": ""}, "tags": []}
 
 ### c'est quoi un module ?
 
@@ -77,15 +77,12 @@ c’est grâce à ces différents espaces de noms que deux fichiers `foo.py` et 
 * les différents composants du code sont alors accessibles **comme un attribut** du module  
   (c'est à dire les variables qui sont définis au *toplevel* dans le fichier source)
 
-```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
-# regardons ce qu'il y a dans ce fichier source
 
-!cat mod.py
+regardons ce qu'il y a dans ce fichier `mod.py`
+
+```{literalinclude} mod.py
+:linenos:
+:emphasize-lines: 5, 9
 ```
 
 ```{code-cell} ipython3
@@ -356,7 +353,7 @@ principalement deux choses:
     typiquement fonctions, classes, variables globales au module  
     et les ranger dans les attributs du module
 
-2. affecter la variable locale - comme on l'a vu plus haut 
+2. affecter la variable locale - comme on l'a vu plus haut
 
 +++
 
@@ -519,10 +516,9 @@ un module peut avoir deux rôles
 
 chaque module a un attribut `__name__` qui est défini par l’import
 
-```{code-cell} ipython3
-:tags: [gridwidth-1-2]
-
-%cat toplevel.py
+```{literalinclude} toplevel.py
+:linenos:
+:emphasize-lines: 1, 3
 ```
 
 ```{code-cell} ipython3
@@ -532,7 +528,7 @@ import toplevel
 print(toplevel.__name__) 
 ```
 
-#### `if __name__ == "__main__"`
+#### l'idiome `if __name__ == "__main__"`
 
 sauf que, si le module est le point d'entrée (on l'a lancé avec `python foo.py`), alors son exécution n’est pas le résultat d’un import  
 ... et du coup dans ce cas-là on ne trouve pas dans `__name__` ce qu'on pourrait attendre (`foo`) mais la chaine standard `__main__`
@@ -547,10 +543,10 @@ if __name__ == '__main__':
 
 voici un exemple
 
-```{code-cell} ipython3
-:tags: [gridwidth-1-2]
-
-%cat samples/fib.py
+```{literalinclude} samples/fib.py
+:linenos:
+:caption: dans le dossier `samples/`
+:emphasize-lines: 3
 ```
 
 ```{code-cell} ipython3
@@ -640,8 +636,6 @@ def f():
 f()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
-
 ### recharger un module
 
 on a vu plus haut comment configurer IPython pour pouvoir travailler efficacement depuis `ipython` ou un notebook
@@ -650,8 +644,9 @@ en général c'est suffisant, mais si nécessaire on peut aussi utiliser le modu
 
 voici un exemple complet
 
-```{code-cell} ipython3
-%cat toplevel.py
+```{literalinclude} toplevel.py
+:linenos:
+:emphasize-lines: 1, 3
 ```
 
 ```{code-cell} ipython3
