@@ -26,13 +26,9 @@ nbhosting:
 
 # Programmer en Python
 
-> *Des fondamentaux à l'utilisation du langage*
-
-+++
-
-Thierry Parmentelat - Arnaud Legout - Inria  
-
 `thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
+
+> *Des fondamentaux à l'utilisation du langage*
 
 +++
 
