@@ -26,13 +26,6 @@ dans ce notebook on va approfondir cette notion
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## déjà rencontré
 
 où trouve-t-on des context managers ?  

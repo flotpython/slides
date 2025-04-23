@@ -22,15 +22,6 @@ nbhosting:
 `lambda` est une ***expression***, pas une ***instruction***  
 qui permet de créer un objet **fonction anonyme** et à la volée
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 

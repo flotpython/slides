@@ -26,13 +26,6 @@ il est **important** de les connaitre a minima - ne serait-ce que pour ne pas r�
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## numpy
 
 les structures de données natives de Python - listes, tuples, dictionnaires, ensembles, etc... - sont très pratiques, mais pas super efficaces !  

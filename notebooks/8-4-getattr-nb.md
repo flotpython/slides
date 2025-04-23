@@ -16,15 +16,6 @@ nbhosting:
   title: properties
 ---
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 (label-getattr)=

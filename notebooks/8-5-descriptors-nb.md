@@ -39,15 +39,6 @@ on s'adresse donc à partir d'ici à un public curieux et très avancé; *you wi
 
 +++ {"slideshow": {"slide_type": ""}}
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
-+++ {"slideshow": {"slide_type": ""}}
-
 ## pourquoi c'est intéressant ?
 
 la recherche des attributs est **totalement centrale** dans le langage  

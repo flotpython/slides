@@ -24,10 +24,6 @@ nbhosting:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## les concepts majeurs de python
 
 +++ {"tags": ["gridwidth-1-2"]}

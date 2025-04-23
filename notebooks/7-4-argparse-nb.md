@@ -28,14 +28,7 @@ $ python script.py
 
 on appelle alors ce fichier `script.py` un **lanceur**, une **commande**, ou encore un **point d'entrée**
 
-+++ {"slideshow": {"slide_type": "-"}, "tags": []}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
++++
 
 ## lire les arguments
 

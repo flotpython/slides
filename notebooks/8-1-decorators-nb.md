@@ -20,14 +20,7 @@ nbhosting:
 
 en guise de complément, ce notebook introduit la notion de *decorator*
 
-+++ {"slideshow": {"slide_type": "-"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
++++
 
 ## déjà rencontré
 

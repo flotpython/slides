@@ -23,13 +23,6 @@ nbhosting:
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 il s'agit d'une notion **transverse aux langages de programmation**, et présente dans la plupart d'entre eux  
 et en particulier historiquement dans Perl, qui en avait fait un *first-class citizen*
 

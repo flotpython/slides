@@ -23,13 +23,6 @@ nbhosting:
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ce notebook ne contient que des exemples, le corps de la présentation est pour l'instant resté [au format PowerPoint](15-metaclasses.pptx)
 
 +++ {"slideshow": {"slide_type": "slide"}}

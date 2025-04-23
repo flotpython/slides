@@ -24,10 +24,6 @@ nbhosting:
 
 > version de référence: python-3.10
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
 +++
 
 ## pourquoi Python ?

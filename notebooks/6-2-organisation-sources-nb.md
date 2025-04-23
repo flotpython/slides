@@ -33,13 +33,6 @@ Vous trouverez dans le dépôt git ici: <https://github.com/flotpython/bidule> u
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## Complément - niveau intermédiaire
 
 Vous venez d'écrire un super algorithme qui simule le climat de l'an 2100, et vous voulez le publier ? Nous allons voir ici comment organiser les sources de votre projet, pour que ce soit à la fois

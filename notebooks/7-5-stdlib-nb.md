@@ -22,14 +22,7 @@ nbhosting:
 le tutorial Python sur ce sujet occupe à lui tout seul deux chapitres: [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)  
 le spectre est très très complet, je fais ici un tri totalement arbitraire...
 
-+++ {"slideshow": {"slide_type": ""}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
++++
 
 ## `logging`
 

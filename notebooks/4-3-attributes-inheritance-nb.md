@@ -16,15 +16,6 @@ nbhosting:
   title: "attributs et h\xE9ritage"
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 (label-classes-inheritance)=

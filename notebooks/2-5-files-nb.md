@@ -30,13 +30,6 @@ nbhosting:
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## formats et librairies 
 
 si vous devez lire des formats communs, faites-le avec:

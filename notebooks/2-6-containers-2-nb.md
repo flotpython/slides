@@ -28,15 +28,6 @@ plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## problèmes avec les séquences
 
 de deux ordres principalement

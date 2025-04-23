@@ -21,13 +21,6 @@ nbhosting:
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## c'est quoi ?
 
 il s'agit d'un mécanisme pour gérer les situations exceptionnelles, comme par exemple

@@ -22,15 +22,6 @@ nbhosting:
 pour visualiser le comportement de nos programmes, et notamment cet aspect de partage de la mémoire  
 nous allons utiliser des illustrations produites par l'excellent <https://pythontutor.com>
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ```{code-cell} ipython3
 %load_ext ipythontutor
 ```

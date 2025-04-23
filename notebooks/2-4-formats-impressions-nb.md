@@ -19,17 +19,6 @@ nbhosting:
 
 # formatage et impressions
 
-+++ {"cell_style": "center"}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-:lines_to_next_cell: 2
-
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ## formatage des chaînes : f-strings

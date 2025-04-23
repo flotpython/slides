@@ -24,14 +24,7 @@ nbhosting:
 ou *la programmation asynchrone en Python*  
 un sujet qui mériterait, ici encore, une formation à soi tout seul... donc ici on va se contenter d'un tout petit vernis
 
-+++ {"slideshow": {"slide_type": ""}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
++++
 
 ## objectifs
 

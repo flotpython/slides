@@ -24,13 +24,6 @@ dans ce notebook nous allons découvrir - très rapidement - quelques façons de
 
 +++
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 ## `enums`
 
 la notion de classe énumérée est à rapprocher de la notion de catégorie en pandas, c'est-à-dire un type qui peut prendre un nombre fini, et généralement petit, de valeurs.

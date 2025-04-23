@@ -20,15 +20,6 @@ nbhosting:
 
 # itér.. (2/3) - compr. et genexpr
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"tags": []}
 
 ## compréhensions

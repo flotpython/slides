@@ -30,17 +30,6 @@ nbhosting:
 
 +++
 
-```{image} media/inria-50-alpha.png
-:align: right
-:width: 100px
-```
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 Thierry Parmentelat - Arnaud Legout - Inria  
 
 `thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
