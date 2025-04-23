@@ -313,7 +313,7 @@ with open("../data/hamlet.txt") as feed:
 # exemple 2 : les regexps
 
 import re
-pattern = "(\d+)(st|nd|rd|th) edition"
+pattern = r"(\d+)(st|nd|rd|th) edition"
 
 with open("../data/hamlet.txt") as feed:
     for lineno, line in enumerate(feed, 1):

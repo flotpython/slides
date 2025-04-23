@@ -184,11 +184,11 @@ def match_all(pattern, strings):
     """
     # compute max space
     margin = max(len(x) for x in strings) + 2 # for the quotes
-    
+
     for string in strings:
         string_repr = f"'{string}'"
         print(f"'{pattern}' ⇆ {string_repr:>{margin}} → ", end="")
-        
+
         if not (match := re.match(pattern, string)):
             print("NO")
         elif not (match.start() == 0 and match.end() == len(string)):
@@ -526,13 +526,13 @@ définis en fonction de la configuration de l'OS en termes de langue
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-match_all('\w+', ['eFç0', 'été', ' ta98'])
+match_all(r'\w+', ['eFç0', 'été', ' ta98'])
 ```
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
-match_all('\s?\w+', ['eFç0', 'été', ' ta98'])
+match_all(r'\s?\w+', ['eFç0', 'été', ' ta98'])
 ```
 
 +++ {"slideshow": {"slide_type": ""}}

@@ -486,42 +486,48 @@ print(s)
 
 +++ {"tags": ["gridwidth-1-2"]}
 
-voici un problème commun, surtout sous Windows:
+voici un problème commun, surtout sous Windows:  
+on aurait envie d'écrire
+
+```python
+s = 'C:\Temp\test.txt'
+```
+
+````{admonition} Python-3.12
+:class: note admonition-smaller
+
+ceci était déjà faux avec les anciennes versions de Python
+à cause du `\t` qui est compris comme une tabulation
+
+ceci **ne fonctionne plus** avec les versions récentes de Python  
+en effet depuis 3.12, un `\T` dans une chaine provoque carrément une erreur de syntaxe - ce qui est sans doute mieux au sens où au moins on détecte l'erreur plus tôt...
+````
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
+# du coup on est amené à utiliser plutôt une raw-string
 
-s = 'C:\Temp\test.txt'
+s = r'C:\Temp\test.txt'
 print(s)
 ```
-
-+++ {"cell_style": "center"}
-
-* `\T` n’existe pas comme échappement; Python interprète correctement `\T`
-* mais `\t` est compris comme une tabulation !!
-
-````{admonition} Python-3.12
-:class: note admonition-small
-
-il semble même qu'en 3.12, un `\T` dans une chaine provoque carrément une erreur de syntaxe - ce qui est sans doute mieux au sens où au moins on détecte l'erreur plus tôt...
-````
 
 +++
 
-pour résoudre ce problème, on peut utiliser des double-backslash `\\`, mais ce n'est vraiment pas élégant  
-la bonne solution consiste à utiliser une "raw string", dans laquelle les backslash ne sont *pas interprétés*
+en dehors des raw-strings, on utilise fréquemment des backslash pour échapper les caractères spéciaux
 
-```{code-cell} ipython3
-# pour créer une raw-string, simplement faire précéder le string d'un 'r'
+| séquence | signification |
+|----------:|:---------------|
+| `\n`     | nouvelle ligne |
+| `\t`     | tabulation    |
+| `\r`     | retour chariot|
+| `\\`     | backslash     |
+| `\'`     | apostrophe    |
+| `\"`     | guillemet     |
 
-s = r'C:\Temp\test1.bin'
-
-print(s)
-```
-
-````{admonition} préférez le / pour les chemins de fichier
-
-notez que le plus souvent, vous pouvez aussi bien utiliser un `/` au lieu d'un `\` dans les chemins de fichiers sous Windows, ce qui résoud tous les problèmes d'échappement
+```{admonition} noms de fichiers et slash /
+:class: tip
+pour revenir aux noms de fichiers, sachez que vous pouvez **utiliser partout un slash (`/`)** dans les chemins de fichiers **même sous Windows**, Python se débrouillera pour le convertir en backslash (`\`) lorsque nécessaire  
+c'est une pratique **courante** et **recommandée**, car ça résoud justement tous les problèmes d'échappement
 
 les *raw-strings* restent une feature bien pratique dans d'autres contextes, notamment avec les expressions régulières, que nous n'avons pas pu utiliser comme exemple ici puisqu'on n'en a pas encore parlé..
 ````
