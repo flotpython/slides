@@ -362,7 +362,7 @@ list(g)
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
 
- def f(name="jean"):
+def f(name="jean"):
     """le docstring"""
     pass
 f.__name__
