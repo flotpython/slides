@@ -11,7 +11,7 @@ project:
   license: CC-BY-NC-SA-4.0
   # inserted under the title
   authors:
-    - Thierry Parmentelat
+    - Thierry Parmentelat & Arnaud Legout
   github: https://github.com/flotpython/slides
   keywords:
     - Informatique
