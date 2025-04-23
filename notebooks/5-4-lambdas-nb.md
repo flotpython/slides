@@ -17,6 +17,11 @@ nbhosting:
   title: lambdas
 ---
 
+# fonctions lambda
+
+`lambda` est une ***expression***, pas une ***instruction***  
+qui permet de créer un objet **fonction anonyme** et à la volée
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,11 +30,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# fonctions lambda
-
-`lambda` est une ***expression***, pas une ***instruction***  
-qui permet de créer un objet **fonction anonyme** et à la volée
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]

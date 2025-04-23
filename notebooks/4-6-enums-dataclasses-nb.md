@@ -16,13 +16,6 @@ nbhosting:
   title: enums & dataclasses
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # enums et dataclasses
 
 (et namedtuples)
@@ -30,6 +23,13 @@ HTML(filename="_static/style.html")
 dans ce notebook nous allons découvrir - très rapidement - quelques façons de créer rapidement des classes qui répondent à des besoins spécifiques
 
 +++
+
+Licence CC BY-NC-ND, Thierry Parmentelat
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## `enums`
 

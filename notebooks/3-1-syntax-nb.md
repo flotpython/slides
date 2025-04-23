@@ -17,6 +17,8 @@ nbhosting:
   title: syntaxe
 ---
 
+# syntaxe
+
 +++ {"cell_style": "center"}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,8 +27,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# syntaxe
 
 +++ {"tags": ["gridwidth-1-2"]}
 

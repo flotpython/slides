@@ -17,6 +17,10 @@ nbhosting:
   title: fonctions
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# fonctions: rappels
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,12 +29,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# fonctions: rappels
-
-+++
 
 ## objectifs de cette section
 
@@ -140,7 +138,7 @@ times('-spam-', 4)
 
 ### *type hints*
 
-si on le souhaite, on **peut** indiquer le type des paramètres attendus et du résultat  
+si on le souhaite, on **peut** indiquer le type des paramètres attendus et du résultat
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
@@ -323,7 +321,7 @@ d'après la PEP8, on doit
 
 * rappel: des espaces autour de l'`=`, et **pas** après la fonction  
   `f(1, 2)` et non pas ~~`f (1, 2)`~~ car un espace en trop   
-  `a = f(1, 2)` et non pas ~~`a=f(1, 2)`~~ car manque des espaces 
+  `a = f(1, 2)` et non pas ~~`a=f(1, 2)`~~ car manque des espaces
 
 +++
 

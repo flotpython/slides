@@ -19,21 +19,19 @@ nbhosting:
 
 +++ {"slideshow": {"slide_type": ""}}
 
+# `asyncio`
+
+ou *la programmation asynchrone en Python*  
+un sujet qui mériterait, ici encore, une formation à soi tout seul... donc ici on va se contenter d'un tout petit vernis
+
++++ {"slideshow": {"slide_type": ""}}
+
 Licence CC BY-NC-ND, Thierry Parmentelat
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# `asyncio`
-
-ou *la programmation asynchrone en Python*  
-un sujet qui mériterait, ici encore, une formation à soi tout seul... donc ici on va se contenter d'un tout petit vernis
-
-+++
 
 ## objectifs
 
@@ -197,7 +195,7 @@ for url in urls:
 print("Durée totale {}s".format(time.time() - begin))
 ```
 
-la différence de performance va varier d'un environnement à l'autre, mais dans la plupart des cas on observe que la version asynchrone est de l'ordre de 4 fois plus rapide ! 
+la différence de performance va varier d'un environnement à l'autre, mais dans la plupart des cas on observe que la version asynchrone est de l'ordre de 4 fois plus rapide !
 
 +++ {"slideshow": {"slide_type": ""}}
 
@@ -306,7 +304,7 @@ d'ailleurs avant l'arrivé de `asyncio` dans la 3.5, il y a eu dans la 3.4 une v
 
 ### pour en savoir plus
 
-je vous renvoie vers le chapitre 8 du MOOC "Python : des fondamentaux aux concepts avancés du langage" sur <https://fun-mooc.fr>, où je développe tout ceci beaucoup plus avant 
+je vous renvoie vers le chapitre 8 du MOOC "Python : des fondamentaux aux concepts avancés du langage" sur <https://fun-mooc.fr>, où je développe tout ceci beaucoup plus avant
 
 +++
 

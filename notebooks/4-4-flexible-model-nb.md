@@ -17,15 +17,6 @@ nbhosting:
   title: "le mod\xE8le est flexible"
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 # le modèle est flexible
@@ -41,6 +32,15 @@ dans ce notebook on va voir que ce modèle peut être un peu courbé, c'est-à-d
 * une classe peut aussi avoir des attributs de données
 * une méthode peut ne pas prendre un objet en paramètre
 * une méthode peut même prendre plutôt .. une classe en paramètre (un peu plus avancé)
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

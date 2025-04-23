@@ -17,6 +17,8 @@ nbhosting:
   title: formatage et impressions
 ---
 
+# formatage et impressions
+
 +++ {"cell_style": "center"}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -27,8 +29,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# formatage et impressions
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -17,11 +17,11 @@ nbhosting:
   title: 'cours 8/9: les fonctions'
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Aurélien Noce
+# fonctions : sommaire vidéos
 
 +++
 
-# fonctions : sommaire vidéos
+Licence CC BY-NC-ND, Thierry Parmentelat & Aurélien Noce
 
 ```{code-cell} ipython3
 from IPython.display import HTML

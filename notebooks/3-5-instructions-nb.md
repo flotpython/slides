@@ -17,6 +17,11 @@ nbhosting:
   title: instructions
 ---
 
+# instructions
+
+principalement les structures de contrôle, et quelques-unes plus anecdotiques  
+nous laissons intentionnellement de coté le `for` pour le moment, ainsi que le `try..except`
+
 +++ {"cell_style": "center"}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,11 +30,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# instructions
-
-principalement les structures de contrôle, et quelques-unes plus anecdotiques  
-nous laissons intentionnellement de coté le `for` pour le moment, ainsi que le `try..except`
 
 +++ {"tags": ["gridwidth-1-2"]}
 
@@ -47,7 +47,7 @@ else:
     <statement4>
 ```
 
-repose sur une évaluation dite ***paresseuse***, c'est-à-dire que l'instruction s'arrête **au premier test qui est vrai** (on n'évalue pas les tests suivants)  
+repose sur une évaluation dite ***paresseuse***, c'est-à-dire que l'instruction s'arrête **au premier test qui est vrai** (on n'évalue pas les tests suivants)
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]

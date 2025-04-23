@@ -16,6 +16,10 @@ nbhosting:
   title: "les it\xE9rations (2/2)"
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# itér.. (2/3) - compr. et genexpr
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
@@ -24,10 +28,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# itér.. (2/3) - compr. et genexpr
 
 +++ {"tags": []}
 
@@ -294,6 +294,7 @@ ou quand on avait comparé `range()` avec une liste
 ### expression génératrice
 
 pour éviter ces problèmes: utiliser une *genexpr*
+
 * ça se présente un peu comme une compréhension de liste  
 * mais **avec des `()` à la place des `[]`**
 * supporte les `if` et les imbrications  

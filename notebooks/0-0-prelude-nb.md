@@ -24,6 +24,12 @@ nbhosting:
   title: "pr\xE9lude"
 ---
 
+# Programmer en Python
+
+> *Des fondamentaux à l'utilisation du langage*
+
++++
+
 ```{image} media/inria-50-alpha.png
 :align: right
 :width: 100px
@@ -34,12 +40,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# Cours Python
-
-> *Des fondamentaux à l'utilisation du langage*
-
-+++
 
 Thierry Parmentelat - Arnaud Legout - Inria  
 

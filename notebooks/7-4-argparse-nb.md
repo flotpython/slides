@@ -16,15 +16,6 @@ nbhosting:
   title: "\xE9crire un lanceur"
 ---
 
-+++ {"slideshow": {"slide_type": "-"}, "tags": []}
-
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # écrire un lanceur
 
 quand on écrit un projet en Python, on peut publier uniquement une librairie : un paquet de classes, de fonctions, destinées à être utilisées depuis une autre application.
@@ -37,7 +28,14 @@ $ python script.py
 
 on appelle alors ce fichier `script.py` un **lanceur**, une **commande**, ou encore un **point d'entrée**
 
-+++
++++ {"slideshow": {"slide_type": "-"}, "tags": []}
+
+Licence CC BY-NC-ND, Thierry Parmentelat
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## lire les arguments
 

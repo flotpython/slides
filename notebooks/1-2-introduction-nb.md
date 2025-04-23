@@ -17,18 +17,16 @@ nbhosting:
   title: "g\xE9n\xE9ralit\xE9s"
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-+++
-
 # généralités
 
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
 
 > version de référence: python-3.10
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 +++
 
@@ -263,6 +261,7 @@ que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python
   * A. Legout et T. Parmentelat
 * [MOOC : apprendre à coder en Python](https://www.fun-mooc.fr/en/cours/apprendre-a-coder-avec-python/)
   un peu plus simple
+
 * http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
 * et sans doute des dizaines d'autres
 

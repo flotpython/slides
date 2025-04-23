@@ -17,17 +17,6 @@ nbhosting:
   title: "op\xE9rateurs"
 ---
 
-+++ {"cell_style": "center"}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-:lines_to_next_cell: 2
-
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # opérateurs
 
 un survol des opérateurs pour construire les expressions
@@ -38,7 +27,16 @@ un survol des opérateurs pour construire les expressions
 comme pour tous les langages, les opérateurs ont une précédence; dans le doute: mettez des parenthèses !
 ````
 
-+++
++++ {"cell_style": "center"}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+:lines_to_next_cell: 2
+
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## rappels
 
@@ -152,7 +150,7 @@ par exemple
 
 +++
 
-* $x^y$ : `x ** y` 
+* $x^y$ : `x ** y`
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]

@@ -17,6 +17,12 @@ nbhosting:
   title: regexps
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# expressions régulières
+
++++
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
@@ -24,14 +30,8 @@ from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
-# expressions régulières
-
-+++
-
 il s'agit d'une notion **transverse aux langages de programmation**, et présente dans la plupart d'entre eux  
-et en particulier historiquement dans Perl, qui en avait fait un *first-class citizen* 
+et en particulier historiquement dans Perl, qui en avait fait un *first-class citizen*
 
 +++ {"slideshow": {"slide_type": ""}}
 
@@ -450,7 +450,7 @@ on verra plus bas comment, pour éviter ça, on peut les nommer
 ### alternative : `..|..`
 
 pour filtrer avec une regexp **ou** une autre  
-ça se complique un peu, attention à bien lire les choses 
+ça se complique un peu, attention à bien lire les choses
 
 ```{code-cell} ipython3
 :tags: []
@@ -600,7 +600,7 @@ match_all('(ab|cd)$', ['ab', 'abcd'])
 
 ### plusieurs occurrences d'un groupe : `(?P=name)`
 
-on peut aussi spécifier que **le même groupe** apparaisse plusieurs fois  
+on peut aussi spécifier que **le même groupe** apparaisse plusieurs fois
 
 ```{code-cell} ipython3
 # la deuxième occurrence de <nom> doit être la même que la première
@@ -620,7 +620,7 @@ match_all(pattern, [string1, string2])
 * dès que ça devient un tout petit peu compliqué, pensez à utiliser un testeur en ligne, vous gagnerez du temps  
   <https://pythex.org>  
   <https://regex101.com/> (bien choisir Python)
-  ... et plein d'autres ...  
+  ... et plein d'autres ...
 
 +++ {"slideshow": {"slide_type": ""}}
 

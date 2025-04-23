@@ -17,13 +17,6 @@ nbhosting:
   title: context managers
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 # *context managers*
@@ -32,6 +25,13 @@ l'instruction `with .. as` s'utilise exclusivement avec des objets qui sont des 
 dans ce notebook on va approfondir cette notion
 
 +++
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## déjà rencontré
 
@@ -123,7 +123,6 @@ class Raises():
     def __exit__(self, *args):
         print(f"in exit: args={args}")
         return False   # relance l'exception
-
 ```
 
 ```{code-cell} ipython3

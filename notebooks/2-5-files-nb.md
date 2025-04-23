@@ -17,13 +17,6 @@ nbhosting:
   title: fichiers
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 # fichiers
 
 * on a très souvent besoin de lire ou d'écrire un fichier par programme  
@@ -36,6 +29,13 @@ HTML(filename="_static/style.html")
   (enfin, aussi bas niveau que ce qu'offre Python…)
 
 +++
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## formats et librairies 
 
@@ -160,7 +160,7 @@ on peut agir sur ce comportement avec
   ```
 
 on en reparlera au sujet des itérations...
-````        
+````
 
 +++
 

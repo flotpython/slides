@@ -16,6 +16,14 @@ nbhosting:
   title: "it\xE9rations (1/2)"
 ---
 
+# itér.. (1/3) - for, itertools
+
+* la boucle `for` est la méthode **préférée** pour itérer sur un ensemble de valeurs
+* en général préférable au `while` en Python
+  * on peut faire un `for` sur n'importe quel itérable
+  * ce n'est pas le cas pour le `while`
+  * avec `for` c'est l'itérable qui se charge de la logique
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
@@ -24,14 +32,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# itér.. (1/3) - for, itertools
-
-* la boucle `for` est la méthode **préférée** pour itérer sur un ensemble de valeurs
-* en général préférable au `while` en Python
-  * on peut faire un `for` sur n'importe quel itérable
-  * ce n'est pas le cas pour le `while`
-  * avec `for` c'est l'itérable qui se charge de la logique
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -612,7 +612,7 @@ for i in R:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 du coup par exemple,  
-**ne pas essayer d'itérer deux fois** sur un `zip()` ou un `enumerate()`, vous observeriez le même phénomène  
+**ne pas essayer d'itérer deux fois** sur un `zip()` ou un `enumerate()`, vous observeriez le même phénomène
 
 +++
 

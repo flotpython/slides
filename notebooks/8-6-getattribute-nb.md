@@ -19,20 +19,20 @@ nbhosting:
 
 +++ {"slideshow": {"slide_type": ""}}
 
+# attr.. (3/3) - `__getattribute__`
+
+accès aux attributs - troisième et dernier notebook  
+*aka putting it all together*:  
+où on essaye de réconcilier toutes ces façons d'accéder aux attributs: *properties*, *`__getattr__`*, et autres *descriptors*
+
++++ {"slideshow": {"slide_type": ""}}
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# attr.. (3/3) - `__getattribute__`
-
-accès aux attributs - troisième et dernier notebook  
-*aka putting it all together*:  
-où on essaye de réconcilier toutes ces façons d'accéder aux attributs: *properties*, *`__getattr__`*, et autres *descriptors*
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -57,8 +57,6 @@ par rapport à la version simpliste qu'on a vue dans les premiers chapitres, il 
 **on écrit toujours directement dans l'objet** 
 
 il existe toutefois un *hook*: on invoque si elle existe la *dunder* `__setattr__`
-
-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -19,15 +19,6 @@ nbhosting:
 
 +++ {"slideshow": {"slide_type": ""}}
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
-+++ {"slideshow": {"slide_type": ""}}
-
 # attr.. (2/3) - descripteurs
 
 accès aux attributs - second notebook
@@ -45,6 +36,15 @@ on s'est efforcé d'aborder jusqu'ici des notions qui ont une application dans l
 à partir de maintenant par contre, on entre de plain-pied dans les tréfonds du langage, et il est vraiment rare qu'on ait besoin de modifier le langage au point de devoir descendre aussi profond dans les soutes...  
 on s'adresse donc à partir d'ici à un public curieux et très avancé; *you will have been warned* ;-)
 ````
+
++++ {"slideshow": {"slide_type": ""}}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 +++ {"slideshow": {"slide_type": ""}}
 

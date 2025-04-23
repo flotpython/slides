@@ -17,6 +17,11 @@ nbhosting:
   title: librairies utiles
 ---
 
+# la librairie standard
+
+le tutorial Python sur ce sujet occupe à lui tout seul deux chapitres: [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)  
+le spectre est très très complet, je fais ici un tri totalement arbitraire...
+
 +++ {"slideshow": {"slide_type": ""}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,13 +30,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# la librairie standard
-
-le tutorial Python sur ce sujet occupe à lui tout seul deux chapitres: [chapitre 10](https://docs.python.org/3/tutorial/stdlib.html) et [chapitre 11](https://docs.python.org/3/tutorial/stdlib2.html)  
-le spectre est très très complet, je fais ici un tri totalement arbitraire...
-
-+++
 
 ## `logging`
 
@@ -270,7 +268,7 @@ fournit les combinatoires communes
 
 * [`produit cartésien`](https://docs.python.org/3/library/itertools.html#itertools.product)
 * [`permutations`](https://docs.python.org/3/library/itertools.html#itertools.permutations)
-* [`combinaisons`](https://docs.python.org/3/library/itertools.html#itertools.combinations) *n* parmi *p* 
+* [`combinaisons`](https://docs.python.org/3/library/itertools.html#itertools.combinations) *n* parmi *p*
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -17,6 +17,12 @@ nbhosting:
   title: "port\xE9e d\u2019une variable"
 ---
 
++++ {"slideshow": {"slide_type": "slide"}}
+
+# portée d’une variable
+
++++
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
@@ -31,12 +37,6 @@ slideshow:
 ---
 %load_ext ipythontutor
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-# portée d’une variable
-
-+++
 
 * la portée d’une variable (ou scope) consiste  
   à répondre à deux questions

@@ -17,16 +17,16 @@ nbhosting:
   title: exceptions
 ---
 
+# exceptions
+
++++
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# exceptions
-
-+++
 
 ## c'est quoi ?
 
@@ -124,7 +124,7 @@ comme vous pouvez le voir sur la première figure, on regarde dans la pile des a
 comment faire alors ?  
 c'est là qu'intervient l'instruction `try .. except` qui va nous permettre d'*attraper* l'exception  
 
-dans sa version la plus simple, elle se présente comme ceci: 
+dans sa version la plus simple, elle se présente comme ceci:
 
 ```{code-cell} ipython3
 # une instruction `try except` permet de capturer une exception

@@ -17,15 +17,6 @@ nbhosting:
   title: containers
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 # containers (1/2)
@@ -35,7 +26,14 @@ plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
 * liste et tuple: ce notebook
 * dictionnaire, ensemble: un peu plus tard
 
-+++
++++ {"slideshow": {"slide_type": "slide"}}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## la liste
 
@@ -46,7 +44,7 @@ plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
   * comme une liste est un objet, on peut avoir une liste de listes
   * ou y mettre d'autres containers
 * bref, c'est super malléable et hyper pratique
-  * toutefois, pas toujours hyper-efficace 
+  * toutefois, pas toujours hyper-efficace
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

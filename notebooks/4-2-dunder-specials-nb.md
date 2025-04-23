@@ -17,18 +17,20 @@ nbhosting:
   title: dunder methods
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# classes : méthodes spéciales
+
+aussi appelées *dunder methods*
+
++++
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# classes : méthodes spéciales
-
-aussi appelées *dunder methods*
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

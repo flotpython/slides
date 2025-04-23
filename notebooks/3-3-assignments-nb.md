@@ -17,6 +17,13 @@ nbhosting:
   title: affectations
 ---
 
++++ {"slideshow": {"slide_type": "slide"}}
+
+# affectations
+
+est-ce vraiment utile d'expliquer les affectations (en anglais *assignment*) ?  
+étonnamment il y a un million de choses à dire sur les multiples formes de l'affectation !
+
 +++ {"cell_style": "center"}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -27,15 +34,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-# affectations
-
-est-ce vraiment utile d'expliquer les affectations (en anglais *assignment*) ?  
-étonnamment il y a un million de choses à dire sur les multiples formes de l'affectation !
-
-+++
 
 ## affectation simple
 

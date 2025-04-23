@@ -17,13 +17,6 @@ nbhosting:
   title: numpy - pandas
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-```{code-cell} ipython3
-from IPython.display import HTML
-HTML(filename="_static/style.html")
-```
-
 +++ {"slideshow": {"slide_type": ""}}
 
 # numpy - pandas
@@ -32,6 +25,13 @@ ce sont deux librairies qui **ne font pas partie** de la librairie standard, mai
 il est **important** de les connaitre a minima - ne serait-ce que pour ne pas réinventer la roue !
 
 +++
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
+
+```{code-cell} ipython3
+from IPython.display import HTML
+HTML(filename="_static/style.html")
+```
 
 ## numpy
 

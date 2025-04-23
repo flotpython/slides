@@ -15,10 +15,6 @@ nbhosting:
   title: Environnements virtuels
 ---
 
-Licence CC BY-NC-ND, Thierry Parmentelat
-
-+++
-
 # Environnements virtuels
 
 Terminons ce tour d'horizon pour dire un mot des environnements virtuels.
@@ -31,6 +27,10 @@ en 2024, c'est une approche qui n'a **que des inconvénients** :
 * en plus par-dessus le marché, dans certains cas il faut être super utilisateur pour modifier l'installation ; typiquement on passe son temps à faire `sudo pip` au lieu de `pip`…
 
 et le seul avantage, c'est que tous les utilisateurs de l'ordi peuvent partager l'installation ; sauf que, plus de 99 fois sur 100, il n'y a qu'un seul utilisateur pour un ordi ! Bref, c'est une pratique totalement dépassée.
+
++++
+
+Licence CC BY-NC-ND, Thierry Parmentelat
 
 ```{code-cell} ipython3
 from IPython.display import HTML

@@ -17,6 +17,10 @@ nbhosting:
   title: fonctions
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# passage de paramètres
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,12 +29,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# passage de paramètres
-
-+++
 
 ## paramètres multiples
 
@@ -240,7 +238,6 @@ en cas de doute n'hésitez pas à tout nommer, ou en tous cas plus que stricteme
 def agenda(nom, prenom, tel, age, job):
     
     print(f"{nom=}, {prenom=}, {tel=}, {age=}, {job=}")
-
 ```
 
 #### appel

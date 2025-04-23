@@ -39,7 +39,7 @@ c'est le propos des métaclasses, que nous allons étudier maintenant
 ## à quoi ça sert ?
 
 hum, bonne question ! en réalité on peut s'en servir pour énormément de choses! (même si, bien souvent il y a d'autres alternatives, dans la ménagerie de concepts Python, pour faire ces choses sans passer par les métaclasses...)  
-mais bon en tous cas c'est intéressant du point de vue conceptuel !  
+mais bon en tous cas c'est intéressant du point de vue conceptuel !
 
 +++
 
@@ -206,7 +206,7 @@ on peut donc poursuivre notre analyse, on est toujours en train d'évaluer `Clas
 
 au moment d'appeler `__new__` on la cherche à partir de l'objet `Class`  
 qui en général n'a pas redéfini cette méthode  
-on 
+on
 
 +++
 

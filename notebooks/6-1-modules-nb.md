@@ -17,6 +17,8 @@ nbhosting:
   title: modules
 ---
 
+# modules & packages
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
@@ -25,10 +27,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# modules & packages
-
-+++
 
 ## pour réutiliser du code en python
 

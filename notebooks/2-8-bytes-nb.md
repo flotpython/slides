@@ -17,16 +17,16 @@ nbhosting:
   title: str et bytes
 ---
 
+# données binaires
+
++++
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# données binaires
-
-+++
 
 ## le type `bytes`
 
@@ -315,7 +315,7 @@ ord('é')
 * comme d'utiliser une **configuration globale** de l'ordi
 * sans parler des polices de caractères..
 
-voyons comment on en arrive par exemple à recevoir un mail en gloubli-goulba  
+voyons comment on en arrive par exemple à recevoir un mail en gloubli-goulba
 
 ```{code-cell} ipython3
 :cell_style: center

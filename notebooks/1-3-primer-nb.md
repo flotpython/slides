@@ -17,16 +17,14 @@ nbhosting:
   title: 'primer: un rapide survol'
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
-
-+++
-
 # survol du langage
 
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

@@ -16,6 +16,10 @@ nbhosting:
   title: "d\xE9corateurs"
 ---
 
+# décorateurs
+
+en guise de complément, ce notebook introduit la notion de *decorator*
+
 +++ {"slideshow": {"slide_type": "-"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
@@ -24,12 +28,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-# décorateurs
-
-en guise de complément, ce notebook introduit la notion de *decorator*
-
-+++
 
 ## déjà rencontré
 
@@ -446,7 +444,6 @@ class Cache:
                 self.cached_values[args] = result
                 return result
         return decorated
-
 ```
 
 ```{code-cell} ipython3
@@ -504,7 +501,6 @@ def runtime(func):
         print(func.__name__, time.perf_counter()-t)
         return res
     return wrapper
-
 ```
 
 ```{code-cell} ipython3
@@ -524,7 +520,6 @@ def counter(func):
         return res
     wrapper.count = 0
     return wrapper
-
 ```
 
 ```{code-cell} ipython3
@@ -548,7 +543,6 @@ The returned value: {}
         print(s.format(func.__name__, args, kwargs, res))
         return res
     return wrapper
-
 ```
 
 ```{code-cell} ipython3

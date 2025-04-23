@@ -16,6 +16,10 @@ nbhosting:
   title: "les g\xE9n\xE9rateurs"
 ---
 
++++ {"slideshow": {"slide_type": ""}}
+
+# itér.. (3/3) - générateurs
+
 +++ {"slideshow": {"slide_type": "slide"}}
 
 Licence CC BY-NC-ND, Thierry Parmentelat
@@ -24,10 +28,6 @@ Licence CC BY-NC-ND, Thierry Parmentelat
 from IPython.display import HTML
 HTML(filename="_static/style.html")
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
-
-# itér.. (3/3) - générateurs
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -99,7 +99,6 @@ def syracuse(n):
         # la différence entre yield et return
         if current == 1:
             return
-
 ```
 
 ### c'est une fonction génératrice
@@ -348,7 +347,7 @@ for depth, leaf in iter_scan(tree):
 mais vous voyez que la double boucle `for child in ...: for x in ...`  
 est un peu bizarre, si on compare avec le code qu'on avait écrit en premier
 
-pour ce genre d'usage, on a à notre disposition une instruction `yield from` qui va faire le travail de manière beaucoup plus élégante; voici ce que ça donne si on l'utilise  
+pour ce genre d'usage, on a à notre disposition une instruction `yield from` qui va faire le travail de manière beaucoup plus élégante; voici ce que ça donne si on l'utilise
 
 ```{code-cell} ipython3
 def iter_scan2(tree, depth=0):
