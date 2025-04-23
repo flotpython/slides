@@ -19,7 +19,7 @@ nbhosting:
 
 +++ {"slideshow": {"slide_type": ""}}
 
-# classes : méthodes spéciales
+# méthodes spéciales
 
 aussi appelées *dunder methods*
 
