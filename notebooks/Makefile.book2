@@ -1,5 +1,7 @@
+# in development, use myst start
+
 book:
-	jupyter-book build .
+	myst build
 
 book-clean:
 	rm -rf _build
