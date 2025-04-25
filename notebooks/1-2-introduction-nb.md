@@ -214,7 +214,7 @@ sys.getsizeof([10, 20, 30])
 
 * version 3.x
   * conseil: ne pas utiliser un trait spécifique à la toute dernière version pour du code à large diffusion
-  * minimum recommandé 3.8
+  * minimum recommandé 3.10
 
 * ~~version 2.7~~
   * **surtout ne pas utiliser !**
