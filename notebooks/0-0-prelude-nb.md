@@ -40,7 +40,7 @@ nbhosting:
 |-:|:-|
 | HTML statique | <https://flotpython.github.io/slides/> |
 | sources des notebooks | <https://github.com/flotpython/slides> |
-| notebooks live (nécessite un login) | <https://nbhosting.inria.fr/> |
+| notebooks live (nécessite un login) | <https://nbhosting.inria.fr/auditor/notebook/python-slides/> |
 
 ### exercices
 
