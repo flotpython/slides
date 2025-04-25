@@ -1,7 +1,8 @@
 # NOTE THAT in addition to this file, you need to check on github.com
-# the Settings -> Environments tab
-# then select the 'github-pages' environment
-# and make sure the branch of interest (here myst) is allowed in the 'Branch protection rules' area
+# - enable github pages (select deploy from a branch)
+# - go to the Settings -> Environments tab
+#   then select the 'github-pages' environment
+#   and make sure the branch of interest (here main) is allowed in the 'Branch protection rules' area
 
 name: Deploy MyST to GitHub Pages
 
