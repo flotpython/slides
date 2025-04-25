@@ -313,8 +313,8 @@ d'après la PEP8, on doit
   `a = f(1, 2) + g(3, 4)`
 
 * rappel: des espaces autour de l'`=`, et **pas** après la fonction  
-  `f(1, 2)` et non pas ~~`f (1, 2)`~~ car un espace en trop   
-  `a = f(1, 2)` et non pas ~~`a=f(1, 2)`~~ car manque des espaces
+  `f(1, 2)` et non pas {del}`` `f (1, 2)` `` car un espace en trop   
+  `a = f(1, 2)` et non pas {del}`` `a=f(1, 2)` `` car manque des espaces
 
 +++
 

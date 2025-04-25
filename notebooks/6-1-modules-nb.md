@@ -120,7 +120,7 @@ mod.spam('good')
 puisque le nom de la variable est tiré du nom du fichier (sans le `.py`), cela signifie qu'on ne pourra pas prendre n'importe quoi comme nom de fichier; et notamment **on ne peut pas utiliser le `-`**:
 
 * `truc_v22.py`: **OK** comme pour un module
-* ~~`truc-bidule.py`~~: **KO** pour un module
+* {del}`` `truc-bidule.py` ``: **KO** pour un module
 ````
 
 +++

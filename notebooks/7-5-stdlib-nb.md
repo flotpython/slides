@@ -81,7 +81,7 @@ sont utilisés très fréquemment, surtout dans du code ancien, pour
 
 ## `from pathlib import Path`
 
-( ~~`import os.path`~~)
+( {del}`` `import os.path` ``)
 
 historiquement on gérait les noms de fichiers sur disque avec le sous-module `os.path`  
 mais depuis la 3.4 une alternative **orientée objet** est disponible! 

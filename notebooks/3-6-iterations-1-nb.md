@@ -82,7 +82,7 @@ l'instruction `else` attachée à un `for` est d'un usage plutôt rare en pratiq
 
 ### bouh c'est vilain !
 
-dès que vous voyez ~~`for i in range(len(truc))`~~ vous devez vous dire qu'il y a mieux à faire:
+dès que vous voyez {del}`` `for i in range(len(truc))` `` vous devez vous dire qu'il y a mieux à faire:
 
 ```{code-cell} ipython3
 ---

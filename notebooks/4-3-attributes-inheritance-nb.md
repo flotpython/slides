@@ -644,4 +644,4 @@ class D(B, C): pass
 +++ {"tags": ["level_intermediate"]}
 
 * parcours DFLR: `D`, `B`, `A`, `object`, `C`, `A`, `object`
-* suppressions : `D`, `B`, ~~`A`~~, ~~`object`~~, `C`, `A`, `object`
+* suppressions : `D`, `B`, {del}`` `A` ``, {del}`` `object` ``, `C`, `A`, `object`
