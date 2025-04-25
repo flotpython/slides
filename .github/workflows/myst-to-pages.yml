@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - jb2
+      - main
 
 
 # the following sets permissions of the GITHUB_TOKEN
