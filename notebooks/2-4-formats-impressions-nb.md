@@ -197,10 +197,7 @@ with open('test.txt', 'w') as channel:
     print("\n", file=channel)
 ```
 
-```{code-cell} ipython3
-:tags: [gridwidth-1-2]
-
-!cat test.txt
+```{literalinclude} test.txt
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}}

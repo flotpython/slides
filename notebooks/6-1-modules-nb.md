@@ -183,11 +183,8 @@ la forme `import mod` est la plus basique; il en existe des variantes:
 
 * - `from mod import spam`
   - `spam`
-  - on n'a pas accès au module, seulement un attribut 
-
-* - 
-  - 
-  - qui est directement accessible via la variable `spam`
+  - on n'a pas accès au module, seulement un attribut  
+    qui est directement accessible via la variable `spam`
 ```
 
 
@@ -198,7 +195,6 @@ on peut aussi importer plusieurs symboles du même module, et/ou les renommer si
 par exemple que font à votre avis les phrases suivantes
 
 ```python
-
 import mod1, mod2 as mymod2, mod3
 
 from mod import var, var2 as myvar2, var3
@@ -227,23 +223,27 @@ dans ce cas-là, les attributs du module/package vont nous permettre de nous y r
 
 **si on a cette arborescence de fichiers**
 
-    pack1/
-      pack2/
+```text
+pack1/
+    pack2/
         mod.py
-          class Foo
+            class Foo
+```
 
 +++ {"tags": ["gridwidth-1-2"]}
 
 **on retrouve l'équivalent dans l'espace des modules**
 
-    pack1
-    pack1.pack2
-    pack1.pack2.mod
-    pack1.pack2.mod.Foo
+```text
+pack1
+pack1.pack2
+pack1.pack2.mod
+pack1.pack2.mod.Foo
+```
 
 +++
 
-````{admonition} le contenu du package
+`````{admonition} le contenu du package
 
 **le fichier `__init__.py`**
 
@@ -251,7 +251,9 @@ le module `pack1` peut aussi avoir d'autres attributs que juste ceux qui corresp
 il suffit pour cela d'écrire un fichier `__init__.py` (dans le dossier correspondant, bien sûr)  
 et alors les variables globales dans ce code sont également ajoutées comme attributs dans le package
 
-**Quiz**: sachant que dans notre contexte le fichier `pack1/__init__.py` contient ceci:
+````{admonition} Quiz
+:class: dropdown caution
+sachant que dans notre contexte le fichier `pack1/__init__.py` contient ceci:
 ```python
 print('pack1 init')
 
@@ -260,8 +262,9 @@ x = 1
 from .pack2.mod import FOO
 ```
 
-quels sera à votre avis la liste de tous les attributs de `pack1` ? la réponse est un peu plus bas
+quel sera à votre avis la liste de tous les attributs de `pack1` ? la réponse est un peu plus bas
 ````
+`````
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -271,12 +274,11 @@ quels sera à votre avis la liste de tous les attributs de `pack1` ? la réponse
 
 dans ce genre de contexte on peut avoir envie de ne charger qu'une partie du package, c'est possible avec quasiment la même syntaxe:
 
-```{code-cell} ipython3
-:tags: []
+voyons le contenu de cet autre module qui s'appelle aussi `mod`
 
-# voyons le contenu de cet autre module qui s'appelle aussi mod
-
-!cat pack1/pack2/mod.py
+```{literalinclude} pack1/pack2/mod.py
+:linenos:
+:emphasize-lines: 1,3
 ```
 
 ```{code-cell} ipython3
