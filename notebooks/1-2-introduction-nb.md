@@ -19,10 +19,15 @@ nbhosting:
 
 # généralités
 
+````{admonition} Programmer en Python !
 
-> *Python3 : des fondamentaux à l'utilisation du langage*
+  ```{admonition} Version de référence
+:class: attention
+Python-3.10
+```
 
-> version de référence: python-3.10
+ou disons plutôt, c'est le minimum requis pour ce cours :)
+````
 
 +++
 
@@ -62,7 +67,7 @@ factorielle(8)
 ```
 
 ````{admonition} trop long ?
-:class: seealso
+:class: seealso dropdown
 
 bien sûr on peut aussi écrire de façon plus concise si on préfère, comme par ex.
 
@@ -216,7 +221,7 @@ sys.getsizeof([10, 20, 30])
   * conseil: ne pas utiliser un trait spécifique à la toute dernière version pour du code à large diffusion
   * minimum recommandé 3.10
 
-* ~~version 2.7~~
+* {del}`version 2.7`
   * **surtout ne pas utiliser !**
   * en fin de vie - supporté jusque 1er janvier 2020
   * de moins en moins problématique (mais attention sur MacOS)
@@ -232,7 +237,8 @@ personnellement, pour un accès rapide à la documentation, je fais très facile
 ````{admonition} le plus simple: chercher sur google
 :class: tip
 
-que l'on peut consulter aussi comme ceci <https://www.google.com/search?q=python+module+datetime>
+que l'on peut consulter aussi comme ceci  
+<https://www.google.com/search?q=python+module+datetime>
 
 ````
 
