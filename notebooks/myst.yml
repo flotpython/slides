@@ -19,7 +19,8 @@ project:
     - PSL
     - UE12
     - Python
-  date: 2025-04-22
+  # remove this because it shows up on every single page
+  # date: 2025-04-22
   # bibliography: []
   settings:
     # this is too aggressive, and remove things like <module ...> 
