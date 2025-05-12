@@ -133,150 +133,21 @@ possède les droits sur Python et assure son développement
 import this
 ```
 
-## quand utiliser python ?
-
-* scripts (mais pas **uniquement** ça!)
-* programmation système
-* Internet
-* base de données
-* prototypage rapide
-* calcul scientifique avec `numpy`
-* exploration dans les données avec `pandas` et `scikit-learn`
-* backend web avec `Django` / `Flask`
-* …
-
 +++
-
-### quand ne pas utiliser Python ?
-
-* Python est **plutôt gourmand en mémoire**
-  * tout est objet ➔ surcoût partout
-  * exemples sur une machine 64 bits
-
-|      objet     |   octets  | natif C |
-|----------------|-----------|---------|
-| petit entier   | 28 octets |8 octets|
-| chaine 'a'     | 50 octets |1 octet|
-| chaine 'é'     | 74 octets |2 octets|
-
-* Python plutôt bon en termes de vitesse
-  * fonctions de base implémentées en C optimisé
-  * PyPy très rapide par rapport à CPython
-  * pensez à utiliser `numpy`
-
-+++
-
-### comment prendre la décision d’utiliser Python ?
-
-* balancer vitesse de développement avec performance
-* Python gagne presque toujours
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### comment tester la performance ?
-
-```{code-cell} ipython3
-%%timeit
-
-# on construit la liste des premiers carrés
-[x**2 for x in range(10000)]
-```
-
-````{admonition} attention
-:class: attention
-
-cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython  
-on ne peut l'utiliser que dans `ipython` ou dans les notebooks
-````
-
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
-
-### comment tester la place mémoire ?
-
-```{code-cell} ipython3
-:tags: [level_intermediate, gridwidth-1-2]
-
-# retourne le nombre d'octets
-# utilisés pour stoker un objet
-
-import sys
-sys.getsizeof([10])
-```
-
-```{code-cell} ipython3
-:tags: [level_intermediate, gridwidth-1-2]
-
-sys.getsizeof([10, 20])
-```
-
-```{code-cell} ipython3
-:tags: [level_intermediate]
-
-sys.getsizeof([10, 20, 30])
-```
 
 ## quelle version de python ?
 
 * version 3.x
   * conseil: ne pas utiliser un trait spécifique à la toute dernière version pour du code à large diffusion
-  * minimum recommandé 3.10
+  * une version par an (actuellement 3.13)
+  * minimum recommandé (aujourd'hui en 2025): 3.10
 
-* {del}`version 2.7`
-  * **surtout ne pas utiliser !**
-  * en fin de vie - supporté jusque 1er janvier 2020
-  * de moins en moins problématique (mais attention sur MacOS)
+```{admonition} ne plus utiliser 2.x !
+:class: danger dropdown
 
-+++
-
-## documentation
-
-personnellement, pour un accès rapide à la documentation, je fais très facilement une recherche google genre
-
-> python module datetime
-
-````{admonition} le plus simple: chercher sur google
-:class: tip
-
-que l'on peut consulter aussi comme ceci  
-<https://www.google.com/search?q=python+module+datetime>
-
-````
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### fourni avec Python
-
-* site officielle de la doc Python
-  * <https://docs.python.org/>
-  * aussi en français ici <https://docs.python.org/fr/3/>
-  * très riche: du tutoriel à la description du langage
-* contient notamment le Python tutorial
-  * <https://docs.python.org/3/tutorial/>
-  * initialement Guido van Rossum
-  * niveau débutant à moyen
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### des cours
-
-* [MOOC Python : des fondamentaux à l'utilisation du langage](https://www.fun-mooc.fr/fr/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/)
-  * A. Legout et T. Parmentelat
-* [MOOC : apprendre à coder en Python](https://www.fun-mooc.fr/en/cours/apprendre-a-coder-avec-python/)
-  un peu plus simple
-
-* http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
-* et sans doute des dizaines d'autres
-
-+++ {"slideshow": {"slide_type": "slide"}}
-
-### et aussi
-
-* l'incontournable stackoverflow (SO)
-  * <https://stackoverflow.com/questions/tagged/python+python-3.x>
-  * on peut directement chercher sur Google
-
-* enfin pour ceux qui aiment les *cheat sheet*
-  * <https://perso.limsi.fr/pointal/python:memento>
+* la version 2.7 est morte et enterré (a été supportée jusque 1er janvier 2020)
+* de moins en moins problématique (mais attention sur MacOS !)
+```
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -290,7 +161,9 @@ que l'on peut consulter aussi comme ceci
   * interpréteur en ligne de commande
 * en option, `ipython` en remplacement
   * nécessite une installation supplémentaire
-  * `pip install ipython`
+    ```bash
+    pip install ipython
+    ```
 
 ````{admonition} pour installer des librairies depuis le web (pypi.org)
 :class: tip
@@ -313,8 +186,12 @@ dans le terminal toujours:
 +++
 
 * **Jupyter notebooks**
-  * `pip install jupyterlab`
-  * `jupyter lab`
+  ```bash
+  # pour installer
+  pip install jupyterlab
+  # et ensuite pour démarrer la session de notebooks
+  jupyter lab
+  ```
 * IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
   atom, eclipse, ... bcp de variantes)
 
@@ -446,4 +323,140 @@ from argparse import ArgumentParser
 ```{code-cell} ipython3
 # avant de pouvoir instrospecter l'objet ArgumentParser
 ArgumentParser??
+```
+
++++
+
+## documentation
+
+personnellement, pour un accès rapide à la documentation, je fais très facilement une recherche google genre
+
+> python module datetime
+
+````{admonition} le plus simple: chercher sur google
+:class: tip
+
+que l'on peut consulter aussi comme ceci  
+<https://www.google.com/search?q=python+module+datetime>
+
+````
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### fourni avec Python
+
+* site officiel de la doc Python
+  * <https://docs.python.org/>
+  * aussi en français ici <https://docs.python.org/fr/3/>
+  * très riche: du tutoriel à la description du langage
+* contient notamment le Python tutorial
+  * <https://docs.python.org/3/tutorial/>
+  * initialement Guido van Rossum
+  * niveau débutant à moyen
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### des cours
+
+* [MOOC Python : des fondamentaux à l'utilisation du langage](https://www.fun-mooc.fr/fr/cours/python-3-des-fondamentaux-aux-concepts-avances-du-langage/)
+  * A. Legout et T. Parmentelat
+* [MOOC : apprendre à coder en Python](https://www.fun-mooc.fr/en/cours/apprendre-a-coder-avec-python/)
+  un peu plus simple
+
+* http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
+* et sans doute des dizaines d'autres
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### et aussi
+
+* l'incontournable stackoverflow (SO)
+  * <https://stackoverflow.com/questions/tagged/python+python-3.x>
+  * on peut directement chercher sur Google
+
+* enfin pour ceux qui aiment les *cheat sheet*
+  * <https://perso.limsi.fr/pointal/python:memento>
+
++++
+
+## quand utiliser python ?
+
+* scripts (mais pas **uniquement** ça!)
+* programmation système
+* Internet
+* base de données
+* prototypage rapide
+* calcul scientifique avec `numpy`
+* exploration dans les données avec `pandas` et `scikit-learn`
+* backend web avec `Django` / `Flask`
+* …
+
++++
+
+### quand ne pas utiliser Python ?
+
+* Python est **plutôt gourmand en mémoire**
+  * tout est objet ➔ surcoût partout
+  * exemples sur une machine 64 bits
+
+|      objet     |   octets  | natif C |
+|----------------|-----------|---------|
+| petit entier   | 28 octets |8 octets|
+| chaine 'a'     | 50 octets |1 octet|
+| chaine 'é'     | 74 octets |2 octets|
+
+* Python plutôt bon en termes de vitesse
+  * fonctions de base implémentées en C optimisé
+  * PyPy très rapide par rapport à CPython
+  * pensez à utiliser `numpy`
+
++++
+
+### comment prendre la décision d’utiliser Python ?
+
+* balancer vitesse de développement avec performance
+* Python gagne presque toujours
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+### comment tester la performance ?
+
+```{code-cell} ipython3
+%%timeit
+
+# on construit la liste des premiers carrés
+[x**2 for x in range(10000)]
+```
+
+````{admonition} attention
+:class: attention
+
+cette construction avec les `%` n'est pas standard Python, c'est une *magic* de IPython  
+on ne peut l'utiliser que dans `ipython` ou dans les notebooks
+````
+
++++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
+
+### comment tester la place mémoire ?
+
+```{code-cell} ipython3
+:tags: [level_intermediate, gridwidth-1-2]
+
+# retourne le nombre d'octets
+# utilisés pour stoker un objet
+
+import sys
+sys.getsizeof([10])
+```
+
+```{code-cell} ipython3
+:tags: [level_intermediate, gridwidth-1-2]
+
+sys.getsizeof([10, 20])
+```
+
+```{code-cell} ipython3
+:tags: [level_intermediate]
+
+sys.getsizeof([10, 20, 30])
 ```
