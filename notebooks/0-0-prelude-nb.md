@@ -28,11 +28,20 @@ nbhosting:
 :align: right
 :width: 100px
 ```
+
 Licence CC BY-NC-ND, Thierry Parmentelat & Arnaud Legout
 
 ```{code-cell} ipython3
 from IPython.display import HTML
 HTML(filename="_static/style.html")
+```
+
+```{admonition} Version obsolete
+:class: danger
+
+Cette version du cours est celle produite avec Jupyter Book v1 (celle qui utilise Sphinx).  
+Aujourd'hui nous utilisons Jupyter Book v2, et du coup cette version-ci est (un peu) obsolete.  
+Veuillez vous référer à la [dernière version du cours](https://flotpython.github.io/slides) à la place.
 ```
 
 # Cours Python
