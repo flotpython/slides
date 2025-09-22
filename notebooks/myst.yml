@@ -38,7 +38,7 @@ site:
   #     url: https://mystmd.org/guide
   domains: []
   options:
-    favicon: media/flotpython-favicon.svg
+    favicon: media/flotpython-favicon.svg.ico
     logo: media/logo-python.svg
     # very visible in the header
     logo_text: "Programmer en Python"
