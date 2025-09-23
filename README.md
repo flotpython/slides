@@ -1,5 +1,5 @@
 # slides
 
-Notebooks pour animer un cours présentiel
+cours Python en présentiel
 
-version statique en ligne : <https://flotpython.github.io/slides/>
+[![Published](https://img.shields.io/badge/Published-Website-green)](https://python.info-mines.paris)

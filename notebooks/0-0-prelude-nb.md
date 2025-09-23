@@ -26,36 +26,33 @@ nbhosting:
 
 # Programmer en Python
 
-`thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
-
 > *Des fondamentaux à l'utilisation du langage*
+
+
+[![Published](https://img.shields.io/badge/Published-Website-green)](https://python.info-mines.paris)
+[![MyST Build Status](https://img.shields.io/github/actions/workflow/status/flotpython/slides/myst-to-pages.yml?branch=main&label=MyST%20Build%20Status)](https://github.com/flotpython/slides/actions/workflows/myst-to-pages.yml)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/flotpython/slides)
+[![nbhosting (requires login)](https://img.shields.io/badge/nbhosting-(requires%20login)-blueviolet)](https://nbhosting.inria.fr/auditor/notebook/python-slides)
+
+[![License: CC BY-NC-ND](https://img.shields.io/badge/License-CC%20BY--NC--ND-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/) `thierry.parmentelat@inria.fr` - `arnaud.legout@inria.fr`
 
 +++
 
 ## plateformes et liens
 
-### ce cours
-
-| contenu &nbsp; | &nbsp; url |
-|-:|:-|
-| HTML statique | <https://flotpython.github.io/slides/> |
-| sources des notebooks | <https://github.com/flotpython/slides> |
-| notebooks live (nécessite un login) | <https://nbhosting.inria.fr/auditor/notebook/python-slides/> |
-
 ### exercices
 
-| contenu &nbsp; | &nbsp; url |
-|-:|:-|
-| exos Pure Python | <https://flotpython-exos-python.readthedocs.io/> |
-| exercices autocorrigés (nécessite un login) | <https://nbhosting.inria.fr/auditor/notebook/exos-mooc> |
-| exos Data Science (accessoirement) | <https://flotpython-exos-ds.readthedocs.io/> |
+[![exos Python](https://img.shields.io/badge/exos-Python-darkgreen)](htps://python-exos.info-mines.paris)
+[![exos mooc autocorrigés (requires login)](https://img.shields.io/badge/exos%20mooc-autocorrigés%20(requires%20login)-blueviolet)](https://nbhosting.inria.fr/auditor/notebook/exos-mooc)
+[![exos Data Science](https://img.shields.io/badge/exos-Data%20Science%20(accessoirement)-darkgreen)](htps://numerique-exos.info-mines.paris)
+
 
 ### support pour installations
 
-| contenu &nbsp; | &nbsp; url |
-|-:|:-|
-| extrait du cours des Mines | <https://ue12-p25.github.io/intro/1-1-installations/> |
-| vidéo de démo des outils | <https://www.youtube.com/watch?app=desktop&v=i_ZcP7iNw-U> |
+[![Extrait du cours des Mines](https://img.shields.io/badge/Extrait%20du%20cours%20des%20Mines-online-blue)](https://ue12-p25.github.io/intro/1-1-installations/)
+[![Vidéo de démo des outils](https://img.shields.io/badge/Vidéo%20de%20démo%20des%20outils-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=i_ZcP7iNw-U)
+
+
 
 ````{admonition} pour cloner ce cours
 
