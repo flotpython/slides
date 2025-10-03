@@ -16,11 +16,9 @@ nbhosting:
   title: "les it\xE9rations (2/2)"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # itér.. (2/3) - compr. et genexpr
 
-+++ {"tags": []}
++++
 
 ## compréhensions
 
@@ -34,7 +32,7 @@ pour appliquer une fonction à un ensemble de valeurs
 :align: center
 ```
 
-+++ {"tags": []}
++++
 
 ### `map` + `filter`
 
@@ -239,10 +237,6 @@ un idiome classique :
   (comme dans les bases de données)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # créer un dict qui permet un accès direct à partir du nom
 personnes = [
     {'nom': 'Martin', 'prenom': 'Julie', 'age': 18},
@@ -280,7 +274,7 @@ finalement c'est **exactement** la même discussion que itérateur *vs* itérabl
 ou quand on avait comparé `range()` avec une liste
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### expression génératrice
 
@@ -364,8 +358,6 @@ G2 = (x**2 for x in range(100_000))
 sys.getsizeof(G2)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### compréhension ou genexpr ?
 
 * les compréhensions de *dictionnaire* et d'*ensemble* sont souvent justifiées
@@ -379,7 +371,7 @@ sys.getsizeof(G2)
 * mais dans le cas contraire il faut **préférer un itérateur**, c'est le propos de l'**expression génératrice**
 * qui souvent revient à remplacer `[]` par `()` - ou même juste enlever les `[]`
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 apprenez à bien choisir entre compréhension et genexpr (les deux sont utiles)
 

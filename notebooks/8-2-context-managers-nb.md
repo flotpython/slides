@@ -17,8 +17,6 @@ nbhosting:
   title: context managers
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # *context managers*
 
 l'instruction `with .. as` s'utilise exclusivement avec des objets qui sont des ***context managers***
@@ -100,7 +98,7 @@ finally:
 ```
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple avec relance d’exception
 
@@ -139,8 +137,6 @@ with Raises():
     # no exception here
     pass
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### exemple sans relance d’exception
 

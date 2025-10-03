@@ -17,8 +17,6 @@ nbhosting:
   title: classes - exemples
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-classes-intro)=
 
 # classes : exemples
@@ -28,7 +26,7 @@ les classes servent à définir **de nouveau types**
 * en sus des types prédéfinis `str`, `list`, `set`, `dict`, ...
 * plus adaptés à l'application
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}}
++++ {"cell_style": "center"}
 
 ## `class` 
 
@@ -72,8 +70,6 @@ user1 = User("Lambert", 25)
 user1
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### une classe est un type
 
 * comme tous les types, la classe est une **usine à objets**  
@@ -83,7 +79,7 @@ user1
   * rangées dans des **attributs** de l'objet
   * ici `name` et `age`
 
-+++ {"tags": []}
++++
 
 ### affichage
 
@@ -127,8 +123,6 @@ print(f"je viens de voir {user1}")
 
 str(user1)
 ```
-
-+++ {"tags": []}
 
 ````{admonition} deux méthodes spéciales pour l'affichage
 :class: attention dropdown
@@ -197,7 +191,7 @@ stack.pop()
 stack
 ```
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": ""}}
++++ {"cell_style": "center"}
 
 ### méthodes et paramètres
 
@@ -208,7 +202,7 @@ remarquez qu'ici
 * car le premier paramètre `self` est lié à **l'objet sur lequel on envoie** la méthode
 * et la phrase `stack.push(some_item)` est en fait équivalente à `Stack.push(stack, some_item)`
 
-+++ {"tags": []}
++++
 
 ## intérêts de cette approche
 
@@ -247,11 +241,11 @@ cette séparation n'est pas toujours sous-titrée de manière explicite - comme 
 il faut parfois faire appel à son bon sens - ou simplement lire la doc *a.k.a.* RTFM
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemples de classes
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple : `np.ndarray` et `pd.DataFrame`
 
@@ -280,18 +274,11 @@ df.head(4)
 df[df.TOTAL_INJURIES > 300_000]
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### exemple : `class Point`
 
 un grand classique: on groupe les coordonnées x et y dans un objet
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
 import math
 
 class Point:
@@ -324,16 +311,9 @@ a, b
 a.distance(b)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### exemple : `class Circle` (1)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
 class Circle1:
 
     def __init__(self, center: Point, radius: float):
@@ -364,17 +344,11 @@ c1
 c1.contains(a)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### exemple : `class Circle` (2)
 
 la même chose exactement, mais en utilisant une méthode spéciale
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 class Circle2:
 
     def __init__(self, center: Point, radius: float):
@@ -425,10 +399,6 @@ si vous avez bien suivi la partie sur la présentation du code, vous remarquerez
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # normalement si on avait appliqué la PEP008 à l'époque,
 # la classe date aurait dû s'appeler Date
 from datetime import date as Date
@@ -448,11 +418,8 @@ TimeDelta(weeks=2)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # et je peux faire de l'arithmétique; par exemple:
 
 today = Date.today()
@@ -480,15 +447,13 @@ def timedelta_as_year_month(age: TimeDelta) -> str:
     return f"{years} ans, {months} mois"
 ```
 
-+++ {"tags": []}
-
 ````{admonition} si on allait jusqu'au bout de la logique
 :class: dropdown
 
 en pratique on irait même jusqu'à spécialiser `TimeDelta`, de façon à redéfinir son `repr()` avec ce format; toutefois c'est un peu scabreux à faire...
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple : `class Student`
 
@@ -523,15 +488,11 @@ que les attributs de la classe (comme `Point` et `Circle` ci-dessus)
 mais comme on le voit avec la classe `Student`, ce n'est **pas du tout obligatoire** !
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### `class Student` - utilisation
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # création d'une instance
 
 achille = Student("Achille", "Talon", 2001, 7, 14)
@@ -549,16 +510,10 @@ achille.age()
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # si on voulait une présentation plus ad hoc
 
 print(f"{achille} a {achille.repr_age()}")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### exemple : class `Class` 
 
@@ -590,7 +545,7 @@ comme 2ème paramètre l'élément neutre de l'addition dans notre espace (ici l
 parce qu'on ne peut pas ajouter 0 et un objet `TimeDelta`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### `class Class` - utilisation
 
@@ -687,7 +642,7 @@ window = Window()
 arcade.run()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## résumé (1/2)
 
@@ -700,7 +655,7 @@ arcade.run()
   * ou passé en paramètre à une fonction,
   * etc, etc...
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## résumé (2/2)
   

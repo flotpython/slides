@@ -17,13 +17,11 @@ nbhosting:
   title: dunder methods
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # méthodes spéciales
 
 aussi appelées *dunder methods*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## méthodes spéciales / *dunder methods*
 
@@ -41,7 +39,7 @@ c'est-à-dire donner un sens à des phrases commme:
 * et même appel! `obj(x)`
 * etc...
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## `len(obj)`
 
@@ -69,7 +67,7 @@ de manière similaire :
 
 * `__int__(self)` pour redéfinir `int(obj)` et similaires
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## opérateurs: `obj1 + obj2`
 
@@ -103,13 +101,11 @@ classe1 + classe2
 dans la pratique, on peut aussi avoir à définir `__radd__` de façon à redéfinir le cas où on pourrait s'additionner avec des objets d'un autre type, comme des types *builtin* de nombres par exemple; mais ne nous égarons pas..
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## itérations: `for item in obj:`
 
 ```{code-cell} ipython3
-:tags: []
-
 class Classe:
 
     def __init__(self, students):
@@ -151,7 +147,7 @@ ici par exemple on aurait pu écrire
 ```
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## appartenance: `x in obj`
 
@@ -176,8 +172,6 @@ classe = Classe(['jean', 'laurent', 'benoit'])
 
 'jean' in classe
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## indexations: `obj[x]`
 
@@ -218,8 +212,6 @@ classe['jean']
 
 classe['pierre'] is None
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## classe *callable*: `obj(x)`
 
@@ -368,8 +360,6 @@ S = {line, line}
 print(f"{D=}, {len(S)=}")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## résumé
   
 une classe peut définir des **méthodes spéciales**
@@ -379,7 +369,7 @@ une classe peut définir des **méthodes spéciales**
 * optionnellement d'autres pour donner du sens à des constructions du langage sur ces objets
 * ces méthodes ont toutes un nom en `__truc__` (*dunder methods*)
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
++++
 
 ## pour en savoir plus
 

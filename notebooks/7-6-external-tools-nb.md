@@ -17,11 +17,9 @@ nbhosting:
   title: outils externes utiles
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # outils externes utiles
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## git
 
@@ -39,7 +37,7 @@ pensez ensuite à dupliquer votr dépôt sur une plateforme distante (github - g
 
 **n'attendez pas d'en avoir besoin !**:  *c'est utile **tout de suite***
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## librairies tierces (non standard)
 
@@ -89,7 +87,7 @@ pip install numpy
   `python -m pip` à la place de `pip`  
   en cas de multiples installations + ou - stables, pour être sûr d'installer pour le bon Python
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### librairies notables
 
@@ -129,7 +127,7 @@ un outil externe qui vérifie le code par analyse statique
 pip install pylint
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### filtrer la sortie de `pylint`
 

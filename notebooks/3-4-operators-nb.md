@@ -43,47 +43,32 @@ comme pour tous les langages, les opérateurs ont une précédence; dans le dout
   * pas que sur les nombres
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 'on peut juste juxtaposer' ' deux chaines'
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 'ou les' + ' additioner'
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 ['et', 'les'] + ['listes', 'aussi']
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 4 * '-00-'
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 4 * [1, 2]
 ```
 
@@ -92,20 +77,14 @@ tags: [gridwidth-1-2]
 digression: tous les opérateurs du langage sont dépendants du type des opérandes
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 10 + 20
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 "10" + "20"
 ```
 
@@ -134,8 +113,6 @@ par exemple
 
 19 % 3
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### puissance `**`
 
@@ -195,11 +172,8 @@ est_moyenne(11)
     B ne sera pas évalué
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # une fonction avec side-effect
 counter = 0
 

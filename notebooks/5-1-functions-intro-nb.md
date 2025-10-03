@@ -17,8 +17,6 @@ nbhosting:
   title: fonctions
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # fonctions: rappels
 
 +++
@@ -91,7 +89,7 @@ else:
 func() # exécute une version qui dépend du test
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### *duck typing*
 
@@ -126,8 +124,6 @@ times(1.6, 9)
 #  ... et même comme ceci !
 times('-spam-', 4)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### *type hints*
 
@@ -175,18 +171,11 @@ on reparle [plus en profondeur des *type hints* ici](label-type-hints)
 voici à nouveau un exemple biscornu; ce n'est évidemment pas recommandé, mais pour bien comprendre, sachez que c'est légal de faire ceci:
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: []
----
 # la fonction est un objet 
 times   
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # pas du tout recommandé, mais 
 # on peut affecter cet objet à une autre variable !
 foo = times
@@ -196,8 +185,6 @@ foo(3, 14)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et redéfinir `times` pour faire + à la place de * !
 def times(x, y):
     # ne vraiment pas faire ça en vrai !!
@@ -205,8 +192,6 @@ def times(x, y):
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # maintenant times fait une addition !
 times(3, 4)
 ```
@@ -232,7 +217,7 @@ dans ce cas la clause `finally` est exécutée avant de quitter la fonction
 voir la section sur les exceptions pour comprendre la sémantique de l'instruction `try .. finally`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## les docstrings
 
@@ -252,8 +237,6 @@ def hyperbolic(x, y):
     """
     return x**2 - y**2
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 c'est ce qui est utilisé pour afficher la doc avec `help(objet)`
 
@@ -325,10 +308,6 @@ d'après la PEP8, on doit
 * et donc une fonction peut modifier les objets qu'on lui passe
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # nous allons illustrer ce mécanisme de 
 # références partagées grâce à pythontutor.com
 
@@ -336,10 +315,6 @@ slideshow:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor curInstr=2 width=1000 height=400
 
 # les arguments d'une fonction sont toujours passés par référence
@@ -354,10 +329,6 @@ print(liste)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor width=800 height=450 heapPrimitives=true
 def mess_with2(a, b):
     a = 3          # ceci n'aura pas de conséquence sur A

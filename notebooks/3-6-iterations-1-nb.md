@@ -24,7 +24,7 @@ nbhosting:
   * ce n'est pas le cas pour le `while`
   * avec `for` c'est l'itérable qui se charge de la logique
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 * **et aussi** de nombreuses techniques pour itérer **de manière optimisée**
   * compréhensions
@@ -33,7 +33,7 @@ nbhosting:
   * générateurs (encore appelées fonctions génératrices)
 * attention / rappel : avec numpy, pas de `for`, programmation vectorielle
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## la boucle `for`
 
@@ -56,7 +56,7 @@ comme dans beaucoup d'autres langages, et comme pour le `while` :
 * `continue` termine abruptement  
   l'itération courante et passe à la suivante
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `for .. else`
 
@@ -78,18 +78,15 @@ else:
 l'instruction `else` attachée à un `for` est d'un usage plutôt rare en pratique
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### bouh c'est vilain !
 
 dès que vous voyez {del}`` `for i in range(len(truc))` `` vous devez vous dire qu'il y a mieux à faire:
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 liste = [10, 20, 40, 80, 120]
 
 # la bonne façon de faire un for
@@ -162,8 +159,6 @@ except Exception as exc:
     print(f"OOPS {type(exc)} {exc}")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 la technique usuelle consiste à utiliser une copie
 
 ```{code-cell} ipython3
@@ -207,8 +202,6 @@ for t in D.items():
 for nom, age in D.items():
     print(nom, age)
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ## itérables et itérateurs
 
@@ -270,8 +263,6 @@ map(lambda x: x**2, L)
 list(map(lambda x: x**2, L))
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### itérateurs
 
 * les **itérateurs** sont une sous-famille des itérables
@@ -280,11 +271,8 @@ list(map(lambda x: x**2, L))
 * c'est-à-dire où on en est, et comment passer au suivant
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 import sys
 
 L = list(range(1000))
@@ -301,7 +289,7 @@ I = iter(L)
 sys.getsizeof(I)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 cette boucle Python
 ```python
@@ -320,7 +308,7 @@ for (int i=0;
 }
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ce qui montre qu'on peut s'en sortir avec **seulement un entier** comme mémoire  
 et donc on ne veut **pas devoir allouer** une liste de 100.000 éléments juste pour pouvoir faire cette boucle !
@@ -392,7 +380,7 @@ for item in iterator:
 en réalité un `range()` n'est pas techniquement un itérateur; mais bon ça y ressemble beaucoup...
 ````
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++
 
 `````{admonition} exercice
 :class: seealso
@@ -411,7 +399,7 @@ comme **une usine** à fabriquer des listes
 ````
 `````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `count` : un itérateur infini
 
@@ -472,8 +460,6 @@ for i, item in enumerate(L):
     print(f"{i}: {item}")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ```{image} media/iter-enumerate.svg
 :align: center
 ```
@@ -493,8 +479,6 @@ with open("some-file.txt") as f:
     for lineno, line in enumerate(f, 1):
         print(f"{lineno}:{line}", end="")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### `zip`
 
@@ -553,7 +537,7 @@ for index, item in zip(count(), L):
 ````
 `````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### un itérateur s'épuise
 
@@ -600,8 +584,6 @@ for i in R:
     print(i)    
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 du coup par exemple,  
 **ne pas essayer d'itérer deux fois** sur un `zip()` ou un `enumerate()`, vous observeriez le même phénomène
 
@@ -618,7 +600,7 @@ on trouve dans le module `itertools` plusieurs utilitaires très pratiques :
 * `islice` pour n'énumérer que certains morceaux
 * `zip_longest` fonctionne comme `zip` mais s'arrête au morceau le plus long
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `chain`
 
@@ -627,11 +609,8 @@ on trouve dans le module `itertools` plusieurs utilitaires très pratiques :
 ```
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: ''
----
+:cell_style: center
+
 from itertools import chain
 data1 = (10, 20, 30)
 data2 = (100, 200, 300)
@@ -653,8 +632,6 @@ for i, d in enumerate(chain(data1, data2)):
     print(f"{i}x{d}", end=" ")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `cycle`
 
 ```{image} media/iter-cycle.svg
@@ -673,8 +650,6 @@ for i, d in enumerate(cycle(data1)):
         break
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `repeat`
 
 ```{code-cell} ipython3
@@ -689,8 +664,6 @@ padding = repeat(1000, 3)
 for i, d in enumerate(chain(data1, padding, data2)):
     print(f"{i}x{d}", end=" ")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### `islice`
 
@@ -746,8 +719,6 @@ with Path('islice.txt').open() as f:
         print(line, end="")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `zip_longest()`
 
 comme `zip`, mais s'arrête à l'entrée la plus longue  
@@ -779,7 +750,7 @@ Le module `itertools` propose aussi quelques combinatoires usuelles:
 * et d'autres... 
 * <https://docs.python.org/3/library/itertools.html>
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple avec `product`
 
@@ -793,15 +764,13 @@ for i, (d1, d2) in enumerate(product(dim1, dim2), 1):
     print(f"i={i}, d1={d1} d2={d2}")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ````{admonition} exercice
 :class: seeaso
 
 le code de Vigenere se prête particulièrement bien à ces outils d'assembage d'itérabes (voir notebook séparé)
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 (label-for-under-the-hood)=
 ## sous le capot
@@ -825,7 +794,7 @@ sous le capot, la boucle `for` va faire:
   * appeler `next()` sur cet itérateur
   * jusqu'à obtenir l'exception `StopIteration`
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `iter()` et `next()`
 
@@ -843,11 +812,8 @@ for item in iterable:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # est en gros équivalente
 # à ce fragment
 
@@ -879,7 +845,7 @@ par exemple, comment prendre un élément - n'importe lequel - dans un ensemble 
   * les générateurs
 * il faut **penser à les utiliser**, c’est le plus rapide et le plus lisible
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ### quel objet est un itérateur ? (avancé)
 
@@ -890,16 +856,11 @@ tester si
   `iter(obj) is obj`
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 def is_iterator(obj):
     return iter(obj) is obj
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### par exemple
 
@@ -907,11 +868,8 @@ def is_iterator(obj):
 * un fichier **est** son propre itérateur
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # créons un fichier
 with open("tmp.txt", 'w') as F:
     for i in range(6):

@@ -16,11 +16,9 @@ nbhosting:
   title: "les g\xE9n\xE9rateurs"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # itér.. (3/3) - générateurs
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## résumé
 
@@ -181,11 +179,9 @@ except StopIteration:
     print("pas de troisieme")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## expression génératrice *vs* fonction génératrice
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### rappel: vocabulaire
 
@@ -257,7 +253,7 @@ et en particulier les différentes variables locales, les paramètres, etc...
 pour les curieux: cela signifie que le langage doit "mettre au freezer" (des morceaux de) la pile d'exécution entre deux `next()`; incidemment c'est ce trait qui a permis de développer ensuite la programmation asynchrone avex la librairie `asyncio`; mais c'est une autre histoire complètement...
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exercice
 

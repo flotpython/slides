@@ -39,7 +39,7 @@ si vous devez lire des formats communs, faites-le avec:
 - `pandas.read_csv()` pour du csv
 - etc...
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## mais sinon: `open()` est le point d'entrée
 
@@ -105,10 +105,6 @@ writer.close()
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # pour inspecter ce qu'on vient d'écrire
 # dans le fichier qui s'appelle "temporaire.txt"
 # dans le répertoire courant
@@ -176,17 +172,17 @@ on en reparlera au sujet des itérations...
   ```
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### autres méthodes en lecture
 
 comme toujours, il y a plein d'autres méthodes disponibles sur les fichiers texte, reportez-vous à la documentation pour des besoins spécifiques
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## fichiers ouverts en binaire
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++
 
 ### ajouter `b` dans le mode
 
@@ -204,11 +200,8 @@ pour ouvrir un fichier **en mode binaire**:
   et aucune conversion de fin de ligne (auberge espagnole)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # pour fabriquer un objet bytes, je peux par exemple 
 # encoder un texte qui comporte des accents
 # (on reparlera des encodages plus tard)
@@ -230,12 +223,9 @@ type(binaire), len(binaire), len(text)
 ```
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:cell_style: center
+:tags: [gridwidth-1-2]
+
 # remarquez le 'b' dans le mode d'ouverture
 
 with open('temporaire.bin', 'wb') as out_file:
@@ -244,12 +234,9 @@ with open('temporaire.bin', 'wb') as out_file:
 ```
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:cell_style: center
+:tags: [gridwidth-1-2]
+
 # pareil en lecture, le mode avec un 'b'
 # va faire que read() retourne un objet bytes
 
@@ -258,11 +245,8 @@ with open('temporaire.bin', 'rb') as in_file:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # et donc on retombe bien sur nos pieds
 binaire2 == binaire
 ```
@@ -282,8 +266,6 @@ with open('temporaire.bin', 'r') as feed:
 text2 == text
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ## le module `pathlib`
 
 ### objectifs
@@ -293,7 +275,7 @@ text2 == text
 * notamment, en remplacement de `os.path` qui est *old-school* (et super vilain)
 * le sous-titre pour `pathlib`: *object-oriented filesystem paths*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### présentation du module
 
@@ -311,7 +293,7 @@ text2 == text
 * ne gère pas les urls
 * voir [documentation complète](https://docs.python.org/3/library/pathlib.html)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ````{admonition} en remplacement de ...
 :class: dropdown
@@ -325,7 +307,7 @@ pour les anciens, le module `pathlib` remplace entre autres:
 * enfin il contient un wrapper pour `open()`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### un exemple
 
@@ -517,7 +499,7 @@ list(root.glob("**"))
 list(root.glob("**/*[0-9]"))
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_advanced"]}
++++ {"tags": ["level_advanced"]}
 
 ## notions avancées
 
@@ -535,7 +517,7 @@ import locale
 locale.getpreferredencoding(False)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_advanced"]}
++++ {"tags": ["level_advanced"]}
 
 * appeler `open()` sans préciser l'encodage peut être risqué
   * dépend des réglages sur la machine cible

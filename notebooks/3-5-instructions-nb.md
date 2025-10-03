@@ -190,10 +190,6 @@ une toute nouvelle instruction `match` permet de définir des alternatives selon
 - et en fait pas mal d'autres choses...
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # dans une version à-la switch
 
 def http_error(status):
@@ -265,7 +261,7 @@ lorsque le programme atteint cette instruction, la fonction courante s'arrête i
 il y a des instructions, notamment `try` et `with`, qui peuvent entrainer un peu de nettoyage avant qu'on sorte vraiment de la fonction
 ````
 
-+++ {"tags": []}
++++
 
 ## `pass`
 
@@ -290,7 +286,7 @@ l'instruction `pass` ne fait rien; elle est en général utilisée lorsque la sy
   * un slicing de séquence: `del L[i:j:k]`
   * un dictionnaire: `del D[clef]`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exécuter du code
 
@@ -309,7 +305,7 @@ nous allons voir à présent deux **fonctions**, donc tehcniquement ce ne sont p
   * et retourne le résultat de cette évaluation
 * le code est bien sûr passé dans un `str`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `exec()` pour une instruction
 
@@ -353,8 +349,6 @@ print(exec(i2))
 print(exec("fact(3)"))
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `exec()` *vs* `eval()`
 
 ```{code-cell} ipython3
@@ -382,8 +376,6 @@ print(eval(e1))
 print(eval(e2)['alice'])
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `eval()` pour une expression
 
 ```{code-cell} ipython3
@@ -395,8 +387,6 @@ except Exception as e:
     import traceback
     traceback.print_exc()
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### *use with care*
 

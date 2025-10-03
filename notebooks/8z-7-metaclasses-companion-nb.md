@@ -17,15 +17,13 @@ nbhosting:
   title: "m\xE9taclasses (incomplet)"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # avertissement
 
 +++
 
 ce notebook ne contient que des exemples, le corps de la présentation est pour l'instant resté [au format PowerPoint](15-metaclasses.pptx)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 # Exemple 1
 
@@ -48,8 +46,6 @@ class MaMetaClasse(type):
 class C(metaclass=MaMetaClasse):
     x = 1
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 # Exemple 2
 
@@ -79,10 +75,6 @@ class C(metaclass=UpperAttrMetaclass):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 c = C()
 # une instance a la méthode common_func
 # parce qu'on a fait hériter C de BaseOfAll
@@ -108,8 +100,6 @@ print(C.__bases__)
 ```{code-cell} ipython3
 print(c.common_func())
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 # Exemple 3
 
@@ -137,8 +127,6 @@ print(type(B()))
 # et bien sûr
 type(meta)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 # Exemple 4
 

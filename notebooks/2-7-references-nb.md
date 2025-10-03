@@ -36,10 +36,6 @@ nous allons utiliser des illustrations produites par l'excellent <https://python
   (enfin, vous et ceux qui vous lisent …)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor heapPrimitives=true curInstr=1 width=900 height=850
 
 # une liste avec une sous-liste qui contient un dict et un tuple
@@ -57,10 +53,6 @@ L = ['abc', [ { (1, 2) : 1}, ([3], 4)], 5]
   * faire de `a` une **référence** de l’objet (ou vers l'objet, si vous préférez)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor heapPrimitives=true width=800 curInstr=1
 a = 3
 ```
@@ -70,10 +62,6 @@ a = 3
 du coup on peut **facilement** avoir **plusieurs variables** qui référencent le **même** objet
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor heapPrimitives=true width=800 curInstr=2
 
 # on aurait pu écrire aussi
@@ -102,10 +90,6 @@ si vous avez fait du C++, on se retrouverait avec `b` qui vaut 4 et `a` qui vaut
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: '-'
----
 %%ipythontutor heapPrimitives=true width=800 curInstr=1
 
 a = 3
@@ -121,20 +105,15 @@ et alors cela impacte **toutes** les références vers cet objet
 que ce soit depuis une variable, ou depuis l'intérieur d'un autre objet
 
 ```{code-cell} ipython3
----
-cell_style: center
-lines_to_next_cell: 2
-slideshow:
-  slide_type: slide
----
+:cell_style: center
+:lines_to_next_cell: 2
+
 %%ipythontutor heapPrimitives=true width=800 height=300 curInstr=1
 a = [1, 2]
 b = a
 # en changeant a on change b
 a[0] = 'spam'
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ### types mutables / immutables
 
@@ -148,7 +127,7 @@ a[0] = 'spam'
 | **`set`** | **mutable** |
 | **`frozenset`** | non |
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ````{admonition} rappel
 
@@ -189,11 +168,8 @@ il y a deux types de copies en Python:
 ### exemple d'utilisation de *shallow copy*
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: slide
----
+:cell_style: center
+
 %%ipythontutor heapPrimitives=true height=400 width=800 curInstr=1
 
 # comme ci-dessus
@@ -229,7 +205,7 @@ dans ce cas de figure, la donnée de départ n'est pas assez profonde pour qu'il
 :width: 500px
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "cell_style": "center"}
++++ {"cell_style": "center"}
 
 ### rappel: `is` et `==`
 
@@ -246,11 +222,8 @@ dans ce cas de figure, la donnée de départ n'est pas assez profonde pour qu'il
   * forme inverse `obj1 != obj2`
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 a = [0, 1, 2]
 b = a[:]
 a is b
@@ -275,18 +248,13 @@ c is d
 c == a
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### copie profonde nécessaire ?
 
 voyons maintenant un cas où la donnée de départ est -un peu - plus profonde, maintenant ça fait une différence de choisir l'une ou l'autre copie
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: '-'
----
+:cell_style: center
+
 %%ipythontutor heapPrimitives=true height=450 width=800 curInstr=1
 
 # cette fois a est un peu plus profond
@@ -302,7 +270,6 @@ print(b)
 
 ```{code-cell} ipython3
 :cell_style: center
-:slideshow: {}
 
 %%ipythontutor heapPrimitives=true height=500 width=900 curInstr=2
 import copy
@@ -324,7 +291,7 @@ on n'a parlé jusqu'ici que de références partagées créées par **affectatio
 
 * se méfier aussi des références **entre objets**
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### appel de fonction
 
@@ -348,12 +315,9 @@ pas besoin qu'il y ait nécessairement plusieurs variables dans le paysage
 on peut le voir sur l'exemple pathologique suivant
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: slide
-tags: [level_intermediate]
----
+:cell_style: center
+:tags: [level_intermediate]
+
 %%ipythontutor heapPrimitives=true height=400 width=900 curInstr=1
 
 repete = 4 * [[0]]
@@ -370,11 +334,8 @@ print(f"repete après {repete}")
 ainsi on peut aussi créer des structures cycliques
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [level_advanced]
----
+:tags: [level_advanced]
+
 %%ipythontutor
 
 L = [None]
@@ -397,7 +358,7 @@ print(L)
   * un champ contenant un compteur de références  
     voir `sys.getrefcount(obj)`
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_advanced"]}
++++ {"tags": ["level_advanced"]}
 
 ### optimisation interne à Python
 

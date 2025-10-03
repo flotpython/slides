@@ -57,7 +57,7 @@ un module, c’est principalement juste un espace de noms
 c’est grâce à ces différents espaces de noms que deux fichiers `foo.py` et `bar.py` peuvent tous les deux définir la même variable `tutu` sans que ça pose le moindre problème de les utiliser tous les deux dans la même application
 ````
 
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
++++
 
 ### c'est quoi un module ?
 
@@ -77,11 +77,6 @@ regardons ce qu'il y a dans ce fichier `mod.py`
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
 # pour utiliser ce code, je commence par l'importer
 
 import mod
@@ -98,8 +93,6 @@ mod
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et depuis cet objet là, je peux accéder via ses attributs
 # aux différents morceaux du code, par exemple
 
@@ -107,8 +100,6 @@ mod.GLOBALE
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # ou encore 
 
 mod.spam('good')
@@ -266,7 +257,7 @@ quel sera à votre avis la liste de tous les attributs de `pack1` ? la réponse 
 ````
 `````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### importer un morceau du package
 
@@ -282,8 +273,6 @@ voyons le contenu de cet autre module qui s'appelle aussi `mod`
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # on pourrait l'importer comme ceci
 # remarquez que l'on charge bien les packages intermédiaires
 # qui sont pack1 et pack1.pack2
@@ -292,8 +281,6 @@ import pack1.pack2.mod
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et l'utiliser comme cela
 
 pack1.pack2.mod.FOO
@@ -464,7 +451,7 @@ en première lecture vous pouvez vous arrêter ici, la suite couvre des aspects 
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_advanced"]}
++++ {"tags": ["level_advanced"]}
 
 ## notions avancées
 
@@ -575,13 +562,11 @@ on peut accèder aux attributs d’un module en utilisant
 
 **remarque** `locals()` retourne l’espace de nommage à l’endroit de l’appel
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 exemple avec `globals()`
 
 ```{code-cell} ipython3
-:tags: []
-
 # cette variable est globale
 foo = 10
 
@@ -607,14 +592,11 @@ g['foo']
 
 ```{code-cell} ipython3
 :cell_style: center
-:tags: []
 
 # si on n'est pas dans une fonction ou une classe,
 # locals() et globals() retournent la même chose
 locals() == globals()
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 exemple avec `locals()`
 

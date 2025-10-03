@@ -17,8 +17,6 @@ nbhosting:
   title: affectations
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 # affectations
 
 est-ce vraiment utile d'expliquer les affectations (en anglais *assignment*) ?  
@@ -136,8 +134,6 @@ foo()
 print(f"outside {variable=}")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## affectation par *unpacking*
 
 une forme très fréquente - et très pratique - d'affectation  
@@ -174,30 +170,21 @@ a, b = b, a
 * il ne peut y avoir qu’une seule variable de ce type (sinon ce srait ambigu)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 L = [1, 2, 3, 4, 5]
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: fragment
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 a, *b = L
 print(f"{a=} {b=}")
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 a, *b, c, d = L
 print(f"{a=} {b=} {c=} {d=}")
 ```
@@ -286,8 +273,6 @@ liste = ([1, 2], [10, 20], [100, 200])
 for a, b in liste:
     print(f"{a=}x{b=}", end=" ")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## expression d'affectation (*walrus*)
 

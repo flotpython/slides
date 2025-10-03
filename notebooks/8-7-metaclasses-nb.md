@@ -17,8 +17,6 @@ nbhosting:
   title: context managers
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-metaclasses)=
 # métaclasses
 

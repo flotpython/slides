@@ -19,11 +19,11 @@ nbhosting:
 
 # formatage et impressions
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## formatage des chaînes : f-strings
 
-+++ {"tags": []}
++++
 
 pour le formatage des chaines: utilisez les ***f-strings***, qui évitent les répétitions fastidieuses  
 l'idée consiste à
@@ -63,7 +63,7 @@ f"360° = {2*math.pi} radians"
 notez qu'entre les `{}`, on peut mettre un **nom de variable** mais aussi, plus généralement, écrire **une expression** (faire un calcul)
 ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### *f-string* : expression et format
 
@@ -125,8 +125,6 @@ f"|{nom:<12}|{nom:^12}|{nom:>12}|"
 num = 123
 f"|{num:<12}|{num:-^12}|{num:0>12}|"
 ```
-
-+++ {"slideshow": {"slide_type": ""}, "tags": []}
 
 ### expression dans le format
 
@@ -200,7 +198,7 @@ with open('test.txt', 'w') as channel:
 ```{literalinclude} test.txt
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### plusieurs paramètres
 
@@ -247,7 +245,7 @@ c'est **la bonne façon** de conserver des traces d'exécutionpour un programme 
 * il est **recommandé** d'utiliser les f-strings
 * mais les deux autres formes existent encore, a minima savoir les lire
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### formatage avec `str.format()` (*old-school*)
 
@@ -288,30 +286,22 @@ d = 3
 
 ### attention avec `+`
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
++++
 
 * on peut être parfois tenté d’utiliser la concaténation `+`
 
 ```{code-cell} ipython3
-:tags: []
-
 'abc' + 'def'
 ```
-
-+++ {"tags": []}
 
 * par contre **attention**, on ne peut concaténer que des `str`, il faut convertir explicitement avec `str()`
 
 ```{code-cell} ipython3
-:tags: []
-
 age = 35
 try: 'alice a ' + age + ' ans'
 except Exception as e: print ("OOPS", e)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 'alice a ' + str(age) + ' ans'
 ```

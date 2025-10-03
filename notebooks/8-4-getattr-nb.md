@@ -16,8 +16,6 @@ nbhosting:
   title: properties
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-getattr)=
 # attr.. (1/3) - `__getattr__`
 
@@ -142,7 +140,7 @@ ce mécanisme - somme toute très simple - peut rendre de grands services, et il
 
 dans les sections suivantes par contre, on va commencer à voir des détails qui sont réservés aux codeurs avancés voire très avancés:)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exercices
 

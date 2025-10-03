@@ -17,8 +17,6 @@ nbhosting:
   title: asyncio / async / await
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # `asyncio`
 
 ou *la programmation asynchrone en Python*  
@@ -53,13 +51,13 @@ dans ce référentiel, la programmation asynchrone est **très adaptée** à la 
 en effet, pour augmenter les performances d'une application *CPU bound*, on ne peut s'en tirer qu'en mettant en jeu plusieurs coeurs en même temps - d'où le recours au *multiprocessing* ou au *multithreading*  
 par contre dans le cas des applications *I/O bound*, l'essentiel du temps le CPU ne fait rien que d'attendre que les I/O se terminent; du coup il est possible d'**accélérer très sensiblement** les performances, en se tournant vers un modèle *mono-threadé* mais qui *schedule* intelligemment les différents traitements, qui peuvent ainsi se dérouler en parallèle - en apparence au moins - tout en maximisant l'utilisation du CPU, et sans les risques de contamination liées au *multi-threading*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## un exemple
 
 imaginons qu'on ait besoin de récupérer plusieurs URLs en parallèle
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### version asynchrone
 
@@ -100,10 +98,6 @@ async def asynchroneous(url):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # voici par exemple comment on peut lancer
 # plusieurs coroutines en parallèle
 
@@ -138,10 +132,6 @@ mais ici dans l'environnement des notebooks, comme on l'a signalé plus haut, on
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # mesurons la performance
 
 import time
@@ -154,8 +144,6 @@ await main(urls)
 
 print("Durée totale {}s".format(time.time() - begin))
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### en séquence, pour comparer
 
@@ -173,10 +161,6 @@ def synchroneous(url):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # et si on on lit les 4 de cette manière:
 
 import time
@@ -190,7 +174,7 @@ print("Durée totale {}s".format(time.time() - begin))
 
 la différence de performance va varier d'un environnement à l'autre, mais dans la plupart des cas on observe que la version asynchrone est de l'ordre de 4 fois plus rapide !
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### bien remarquer
 
@@ -203,7 +187,7 @@ la différence de performance va varier d'un environnement à l'autre, mais dans
   * faire tourner un processus séparé
   * lire un fichier local...
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## les outils
 
@@ -219,7 +203,7 @@ la différence de performance va varier d'un environnement à l'autre, mais dans
 * une boucle d'événement, par exemple `asyncio.run()`
 * le coeur de la librairie est collé à l'OS et tire parti du framework
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## pourquoi c'est mieux que des threads
 
@@ -231,7 +215,7 @@ du coup on n'**utilise pas le *scheduler* de *threads* de l'OS**, et c'est la bo
 
 la contrepartie par contre, c'est qu'une tache asynchrone doit s'abstenir de "garder la main" trop longtemps, sinon les autres coroutines sont en situation de famine.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## un autre exemple
 
@@ -265,8 +249,6 @@ results = await asyncio.gather(mysleep(1), mysleep(0.5), mysleep(1.5))
 results
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ## librairies disponibles
 
 * toutes les librairies réseau sont disponibles: http, telnet, ssh, ...
@@ -276,7 +258,7 @@ results
 **préférez cette solution**: dès que vous devez faire quelque chose de réactif, et  
 **restez loin des *threads*** autant que vous pouvez !
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## comment ça marche
 
@@ -286,7 +268,7 @@ on a vu que le fonctionnement des générateurs imposait de "*mettre au freezer*
 avec ce mécanisme on a tout ce qu'il faut pour faire un *scheduler* soft !  
 d'ailleurs avant l'arrivé de `asyncio` dans la 3.5, il y a eu dans la 3.4 une version où les coroutines étaient implantées comme des générateurs...
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### coroutine
 

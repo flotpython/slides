@@ -17,11 +17,9 @@ nbhosting:
   title: instructions
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## le debugger Python : `pdb`
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `breakpoint()`
 
@@ -54,17 +52,11 @@ def fact(n):
 | p | print |
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # si on exécute, le programme s'arrête 
 # et on peut ensuite exécuter pas à pas, 
 # inspecter la pile et les variables, ...
 # fact(3)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### `pdb.run()`
 
@@ -79,7 +71,7 @@ pdb.run('mymodule.test()')
 
 * lance le debugger depuis la console sur la fonction `test()`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `pdb.pm()` - post-mortem
 
@@ -99,7 +91,7 @@ pdb.pm()
 
 * lance le debugger en post-mortem
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### sous IPython
 

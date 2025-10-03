@@ -17,15 +17,13 @@ nbhosting:
   title: "attributs revisit\xE9s"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # attr.. (3/3) - `__getattribute__`
 
 accès aux attributs - troisième et dernier notebook  
 *aka putting it all together*:  
 où on essaye de réconcilier toutes ces façons d'accéder aux attributs: *properties*, *`__getattr__`*, et autres *descriptors*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## la mécanique générale: 
 
@@ -49,11 +47,11 @@ par rapport à la version simpliste qu'on a vue dans les premiers chapitres, il 
 
 il existe toutefois un *hook*: on invoque si elle existe la *dunder* `__setattr__`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## accès en lecture: `__getattribute__`
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 * 1er niveau de customisation *light*
   * en redéfinissant `__getattr__`
@@ -65,11 +63,11 @@ il existe toutefois un *hook*: on invoque si elle existe la *dunder* `__setattr_
   * d'appeler ou pas `__getattr__`
   * et de contourner les descripteurs/properties
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### avertissement
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 * si `__getattr__` est relativement inoffensif
 * par contre redéfinir `__getattribute__` 
@@ -77,10 +75,6 @@ il existe toutefois un *hook*: on invoque si elle existe la *dunder* `__setattr_
 * et a vite fait de vous sauter à la figure !
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 class WithGetAttr:
 
     # seulement pour les attributs
@@ -100,11 +94,8 @@ print(gwa.y)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # vous pouvez toujours écrire ce 
 # que vous voulez dans __dict__ 
 # ou autre, avec ce code
@@ -141,7 +132,7 @@ wgu.bar = 100
 wgu.bar
 ```
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ##### ça va très loin
 
@@ -152,8 +143,6 @@ wgu.bar
 wgu.__dict__
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### subtilité de `__getattribute__`
 
 +++
@@ -162,11 +151,11 @@ wgu.__dict__
   * des méthodes spéciales en `__*__`
   * exercice : pourquoi ?
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### accès en écriture
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 * quand on écrit `inst.x = blabla`
 * le défaut cette fois est d'écrire dans `self.__dict__['x']`
@@ -174,11 +163,11 @@ wgu.__dict__
 * pour faire appel à la stratégie par défaut
   * `object.__setattr_`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### écriture
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 * évidemment `__setattr__` ne peut pas faire
   * `instance.name = blabla`
@@ -186,10 +175,6 @@ wgu.__dict__
   * sous peine de récursion infinie
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 class WithSetAttr:
 
     def __setattr__(self, attrname, value):
@@ -203,11 +188,9 @@ wsa.name = 'john'
 wsa.name
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## conclusion
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### lecture
 
@@ -218,7 +201,7 @@ wsa.name
 * `__getattr__`, agit sur tous les attributs
   * qui ne sont pas trouvés autrement
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### écriture
 
@@ -228,19 +211,19 @@ wsa.name
   * on écrit toujours dans l'objet
   * et pas dans la classe ou super-classes
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exercice
 
 * `attr-dynamic-properties`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exercice
 
 * `attr-proxy`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## pour en savoir plus
 

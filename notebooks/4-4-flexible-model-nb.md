@@ -17,8 +17,6 @@ nbhosting:
   title: "le mod\xE8le est flexible"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # le modèle est flexible
 
 jusqu'ici on a vu le **modèle usuel**, dans lequel
@@ -33,7 +31,7 @@ dans ce notebook on va voir que ce modèle peut être un peu courbé, c'est-à-d
 * une méthode peut ne pas prendre un objet en paramètre
 * une méthode peut même prendre plutôt .. une classe en paramètre (un peu plus avancé)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## attributs de classe
 
@@ -101,7 +99,7 @@ notez que dans la définition de `__init__` on aurait pu aussi écrire `self.all
 pourquoi ?
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## méthodes statiques
 
@@ -134,15 +132,11 @@ s2 = Student.load_from_file('student2.txt')
 s1.name, s2.name
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
-
 ## méthodes de classe
 
 sujet avancé, lié au précédent, mais d'utilisation plus rare:
 
 ```{code-cell} ipython3
-:tags: []
-
 class Student:
 
     all_instances = []
@@ -161,16 +155,12 @@ class Student:
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 s1 = Student('jean')
 
 len(s1.all_instances)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 s2 = Student('jean')
 
 len(s1.all_instances), len(Student.all_instances)

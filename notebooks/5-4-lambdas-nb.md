@@ -56,7 +56,7 @@ anonymous(10)
 * par contre pas trop adapté pour du code compliqué 
   * doit pouvoir être écrit sous forme d'une seule expression
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `lambda` *vs* `def`
 
@@ -104,8 +104,6 @@ f(1)
 (lambda x: x+1)(12)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## exemples d'utilisation
 
 ```{code-cell} ipython3
@@ -138,10 +136,6 @@ call(lambda a, b: a * b, 3, 5)
   par défaut `reverse=False`: tri ascendant
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 sample = "This is a test string from Andrew".split()
 sample
 ```
@@ -167,15 +161,9 @@ sorted(sample, key=str.lower)
 sorted(sample, key=lambda s: str.lower(s))
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ou encore avec une autree donnée
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 student_marks = [('marc', 12), ('eric', 15), ('jean', 12), ('gabriel', 18)]
 
 # on n'indique pas comment trier : c'est l'ordre "naturel" des tuples
@@ -195,14 +183,12 @@ import operator
 sorted(student_marks, key=operator.itemgetter(1))
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ````{admonition} pour en savoir plus
 
 pour aller plus loin sur le tri, voir <https://docs.python.org/3/howto/sorting.html>
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `reverse()` et `reversed()`
 
@@ -242,8 +228,6 @@ reversed(source)
 list(reversed(source))
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## `map()` et `filter()`
 
 +++
@@ -258,11 +242,8 @@ list(reversed(source))
     qui sont vraies (techniquement, telles que `bool(val) == True`)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 L = [1, 2, 3, 4]
 m = map(lambda x: x**2, L)
 # le résultat est un itérateur
@@ -300,11 +281,8 @@ for i in m:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 source = range(1, 5)
 f = filter(lambda x: x%2 == 0, 
            map(lambda x:x**2, source))
@@ -339,7 +317,7 @@ g is iter(g)
 list(g)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ## introspection (avancé)
 
@@ -355,7 +333,7 @@ list(g)
 * par contre c’est intéressant en lecture  
   pour comprendre les détails d’implémentation
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### lecture d'attributs
 
@@ -392,11 +370,9 @@ f.__module__
 f.__defaults__
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### aller plus loin
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 * si le sujet vous intéresse  
   voyez [le module inspect](https://docs.python.org/3/library/inspect.html) dans la librairie standard

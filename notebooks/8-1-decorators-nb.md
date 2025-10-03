@@ -52,7 +52,7 @@ exemples
 * je veux 'cacher' les résultats de la fonction que j'ai déjà calculés
 * ...
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## principe
 
@@ -68,7 +68,7 @@ en toute rigueur, on devrait dire qu'un décorateur est un *callable*
 voir plus bas pour plus de détails
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemple
 
@@ -78,10 +78,6 @@ essentiellement la même chose que sur la figure, avec quelques détails en plus
 * comment trouver proprement le nom de la fonction
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # pour débugger une fonction, c'est pratique
 # de pouvoir afficher les arguments et le résultat
 
@@ -116,11 +112,8 @@ add1(10, 20)
 ```
 
 ```{code-cell} ipython3
----
-cell_style: split
-slideshow:
-  slide_type: slide
----
+:cell_style: split
+
 # on peut appliquer la même recette
 # à n'importe quelle fonction
 # une autre
@@ -219,7 +212,7 @@ def fibo(n):
 en fait le même principe s'applique aux classes; on peut concevoir une fonction qui prend en paramètre un objet classe et le transforme en une autre classe  
 et en fait on en a aussi déjà vu un exemple, je vous renvoie à [la section sur les *dataclasses*](label-dataclasses)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## conclusion
 
@@ -234,7 +227,7 @@ et en fait on en a aussi déjà vu un exemple, je vous renvoie à [la section su
 
 * sachez aussi que les usages avancés des décorateurs permettent de passer des paramètres ... au décorateur lui-même; un sujet que je vous laisse creuser si vous êtes intéressé
 
-+++ {"tags": []}
++++
 
 ## les attributs de fonction (avancé)
 
@@ -244,7 +237,6 @@ et en fait on en a aussi déjà vu un exemple, je vous renvoie à [la section su
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # quand on utilise `def` 
 # on a gratuitement le nom
@@ -254,14 +246,11 @@ add.__name__
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # et le docstring
 
 add.__doc__
 ```
-
-+++ {"tags": []}
 
 ### préserver les attributs spéciaux
 
@@ -269,7 +258,6 @@ du coup, notre première implémentation est améliorable car
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # ce n'est pas très parlant
 # on aimerait avoir ici 'add'
@@ -279,7 +267,6 @@ add1.__name__
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # pareil ici, on a perdu la docstring, c'est vide
 
@@ -287,12 +274,8 @@ add1.__doc__
 ```
 
 ```{code-cell} ipython3
----
-cell_style: split
-slideshow:
-  slide_type: ''
-tags: []
----
+:cell_style: split
+
 # du coup on pourrait écrire quelque chose comme ceci  
 # (mais voyez le slide suivant pour la 'bonne' façon de faire)
 
@@ -309,13 +292,10 @@ def decorator2(f):
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 add2 = decorator2(add)
 add2.__name__, add2.__doc__
 ```
-
-+++ {"tags": []}
 
 ### préserver les attributs spéciaux (2)
 
@@ -324,7 +304,6 @@ qui va faire tout ce travail pour nous, avec une simple ligne en plus par rappor
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 from functools import wraps
 
@@ -340,7 +319,6 @@ def decorator3(f):
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # et maintenant on a bien tout comme on voulait
 
@@ -472,7 +450,7 @@ en élaborant sur ce principe on peut écrire toutes les combinaisons, i.e.:
 - sous la forme d'une fonction un décorateur de fonction ou de classe
 - sous la forme d'une classe un décorateur de fonction ou de classe
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## quelques exemples
 
@@ -497,10 +475,6 @@ def runtime(func):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 def counter(func):
     """
     Décorateur qui affiche le nombre d'appels à une fonction 
@@ -516,10 +490,6 @@ def counter(func):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 def logfunc(func):
     """
     Décorateur qui log l'activité d'une fonction.
@@ -539,11 +509,8 @@ The returned value: {}
 ```
 
 ```{code-cell} ipython3
----
-lines_to_next_cell: 3
-slideshow:
-  slide_type: slide
----
+:lines_to_next_cell: 3
+
 @logfunc
 @counter
 @runtime

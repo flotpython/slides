@@ -22,7 +22,7 @@ nbhosting:
 
 > *Python3 : des fondamentaux à l'utilisation du langage*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## les concepts majeurs de python
 
@@ -52,7 +52,7 @@ nbhosting:
 
   ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## modèle mental : tout est objet
 
@@ -61,10 +61,6 @@ nbhosting:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor heapPrimitives=true height=500 width=800 curInstr=2
 a = 1
 b = "ma chaine"
@@ -85,7 +81,7 @@ si vous connaissez un langage compilé, vous pouvez avoir cette idée que
 en Python la réalité est donc subtilement différente; c'est l'objet qui occupe la mémoire (en fait toujours dans la mémoire dynamique et jamais dans la pile), et la variable est toujours une référence (pensez en gros: pointeur) vers l'objet.
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### modèle mental : tout objet est typé
 
@@ -173,10 +169,6 @@ selon leur type, les objets sont
 par exemple: une liste est **mutable**...
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor heapPrimitives=true
 
 # je peux MODIFIER la liste
@@ -209,10 +201,6 @@ c'est super important de bien comprendre
 on en reparlera longuement, mais voyons cet exemple pour bien illustrer le concept
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %load_ext ipythontutor
 ```
 
@@ -321,8 +309,6 @@ else:
     print("on ne passe pas ici")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### primer : types "fournis"
 
 avec le langage sont fournis des types de base (*batteries included*) 
@@ -353,7 +339,7 @@ et si ce dont on a besoin n'est pas dans la librairie standard,
 il y a ... des centaines de milliers de librairies disponibles sur <https://pypi.org>  
 y compris notamment `numpy`, `pandas`, `scikit-learn`, et énormément d'autres...
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : fonction
 
@@ -382,7 +368,7 @@ my_first_function(2, 10)
 * brique de base de la réutilisabilité
 * remarquez la syntaxe orientée *bloc*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : classe
 
@@ -425,7 +411,7 @@ instance
 * pour pouvoir passer des objets 'composites' (**encapsulation**)
 * et éventuellement **réutiliser** par héritage
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : *type hints*
 
@@ -464,7 +450,7 @@ les *type hints*, traduites en "annotations de type"
 * mais aident à lire, à utiliser, et à documenter le code
 * vérifiables par un outil externe - e.g. [`mypy`](http://mypy-lang.org/)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : module
 
@@ -500,7 +486,7 @@ le module est une des briques de base de la **réutilisabilité**:
 * fonctionne comme un **espace de noms**
 * par exemple: ma variable `pi` coexiste avec celle de `math`, mais il n'y a **pas de conflit**
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : attributs
 
@@ -537,7 +523,7 @@ on a dit plus haut par abus de langage "la variable `pi` du module `math`"
 en réalité ça correspond en effet à une variable globale au module, mais techniquement lorsqu'on écrit `math.pi` on fait référence à un **attribut** du module `pi`
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : itérations
 
@@ -581,7 +567,7 @@ on verra qu'avec la fonction `enumerate()` on peut toujours éviter ce vilain
 `for i in range(len(truc))` même si dans la boucle on a besoin de `i`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### primer : exceptions
 
@@ -618,10 +604,6 @@ print("la vie continue")
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor height=500 width=850
 
 # sans exception : le programme crashe
@@ -637,10 +619,6 @@ print("la vie ne continue pas !")
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor height=500 width=850 curInstr=12
 
 # avec exception

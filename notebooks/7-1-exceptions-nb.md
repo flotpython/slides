@@ -85,11 +85,8 @@ def time_bomb(n):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [raises-exception, gridwidth-1-2]
----
+:tags: [raises-exception, gridwidth-1-2]
+
 # si on essaye de l'exécuter
 # ça se passe mal
 
@@ -149,11 +146,8 @@ voyons maintenant la logique de l'exception dans le contexte d'appels, éventuel
 si on attrape l'exception, notre premier exemple devient ceci:
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 def driver_try():
     try:
         time_bomb(2)
@@ -266,7 +260,7 @@ c'est pourquoi `except` est généralement utilisée sous sa forme `except .. as
 
 selon le type de l'exception, on va trouver les détails dans des attributs, et toujours au moins l'attribut `args`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple de `except .. as`
 
@@ -419,10 +413,6 @@ pour cela rien de plus simple:
     sont mis dans un attribut `args` (un tuple)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 class SplitError(Exception):
     pass
 
@@ -442,10 +432,6 @@ toutefois en développement, ce n'est pas évident de tout envisager du premier 
 aussi on trouve une forme assez répandue: attrape-tout avec instrumentation
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 import traceback
 
 try:
@@ -465,10 +451,6 @@ except:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # la même chose avec le module logging
 # en vrai on ne fait jamais print()
 import logging

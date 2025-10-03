@@ -17,8 +17,6 @@ nbhosting:
   title: type hints
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-type-hints)=
 # *type hints*
 
@@ -58,8 +56,6 @@ def ajouter(x: int, y:int) -> int:
 
 ajouter('abc', 'def')
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### à quoi ça sert alors ? vérifier
 
@@ -143,7 +139,7 @@ notez qu'on peut utiliser les `[]` pour fabriquer des types plus précis, par ex
   - dictionnaire dont les clés sont des chaines et les valeurs des listes d'entiers
 ```
 
-+++ {"tags": []}
++++
 
 ### aliases
 
@@ -226,7 +222,7 @@ f: Callable[[Foo, Bar], bool]
 
 pour les détails, reportez-vous comme d'hab à <https://docs.python.org/3/library/typing.html>
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### le module `typing` (2)
 
@@ -243,7 +239,7 @@ et aussi
 * `TypeVar` pour manipuler des types génériques (à la template C++)
   * grâce auxquels on peut implémenter des classes génériques
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## conclusion
 
@@ -257,7 +253,7 @@ du coup pensez à l'utiliser à chaque fois que les choses deviennent ambigües
 
 par contre, pour pouvoir faire de la vérification statique, il faut viser une couverture beaucoup plus large pour que ça apporte vraiment quelque chose
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## ATTENTION avec `isinstance`
 
@@ -271,11 +267,8 @@ pour vérifier si une variable est *acceptable* pour un **type**
 alors que `isinstance` se base uniquement sur l'héritage de **classes**
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [raises-exception]
----
+:tags: [raises-exception]
+
 # ceci déclenche un TypeError
 from typing import Union
 

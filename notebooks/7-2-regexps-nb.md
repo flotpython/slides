@@ -17,8 +17,6 @@ nbhosting:
   title: regexps
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # expressions régulières
 
 +++
@@ -26,7 +24,7 @@ nbhosting:
 il s'agit d'une notion **transverse aux langages de programmation**, et présente dans la plupart d'entre eux  
 et en particulier historiquement dans Perl, qui en avait fait un *first-class citizen*
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## c'est quoi ?
 
@@ -41,27 +39,21 @@ voici pour commencer deux exemples élémentaires:
 * `(ab)+` : toutes les suites de **au moins 1 occurrence** de `ab`
   * `'ab'`, `'abab'`, `'ababab'`, … sont les mots reconnus
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## le module `re`
 
 en Python, les expressions régulières sont accessibles au travers du module `re`
 
 ```{code-cell} ipython3
-:tags: []
-
 import re
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ### `re.match()` 
 
 `re.match()` vérifie si l'expression régulière peut être trouvée **au début** de la chaine
 
 ```{code-cell} ipython3
-:tags: []
-
 # en anglais on dit pattern, ou regexp
 # en français on dit filtre, ou encore parfois motif
 
@@ -148,7 +140,7 @@ il existe plusieurs autres fonctions pour utiliser les regexps, et notamment
 reportez-vous à [la documentation du module](https://docs.python.org/3/library/re.html) pour ces variantes
 ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### les objets `Match` 
 
@@ -166,8 +158,6 @@ pattern, string = "(ab)+", "the baba of regexps"
 begin, end = match.span()
 string[begin:end]
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 #### helper
 
@@ -206,13 +196,11 @@ def match_all(pattern, strings):
 match_all('(ab)+', ['ab', 'abab', 'ababzzz', ''])
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## construire un pattern
 
 une fois ceci en place, voyons les différents outils - on va dire aussi opérateurs - qui nous permettent de construire ce fameux pattern
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### un caractère précis `a`
 
@@ -242,8 +230,6 @@ du coup il est très fréquent qu'on utilise systématiquement une *raw-string* 
 match_all(r"\.", ["a", ".a"])
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### n'importe quel caractère : `.`
 
 ```{code-cell} ipython3
@@ -258,8 +244,6 @@ match_all('.', ['a', 'Θ', '.', 'ab', ''])
 
 match_all(r'\.', ['a', 'Θ', '.', 'ab', ''])
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ### **un seul** caractère parmi un ensemble: `[..]`
 
@@ -276,11 +260,8 @@ match_all('[a-z]', ['a', '', '0'])
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 match_all('[a-z0-9]', ['a', '9', '-'])
 ```
 
@@ -290,8 +271,6 @@ match_all('[a-z0-9]', ['a', '9', '-'])
 # pour insérer un '-', on peut par exemple le mettre à la fin
 match_all('[0-9+-]', ['0', '+', '-', 'A'])
 ```
-
-+++ {"tags": []}
 
 ### idem mais complémenté : `[^..]`
 
@@ -309,8 +288,6 @@ match_all('[^a-z]', ['a', '0', '↑', 'Θ'])
 
 match_all('[^a-z0-9]', ['a', '9', '-', 'Θ'])
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### 0 ou plusieurs occurrences : `..*`
 
@@ -339,8 +316,6 @@ on peut avoir à **utiliser des parenthèses** si nécessaire
 ````
 
 ```{code-cell} ipython3
-:tags: []
-
 # ici l'étoile s'applique seulement au 'b'
 
 match_all('ab*', ['a', 'abb', 'abab', 'baba'])
@@ -353,8 +328,6 @@ match_all('ab*', ['a', 'abb', 'abab', 'baba'])
 
 match_all('(ab)*', ['a', 'abb', 'abab', 'baba'])
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### 1 ou plusieurs occurrences : `..+`
 
@@ -371,8 +344,6 @@ match_all('[a-z]+', ['', 'abc', 'xyz9'])
 
 match_all('(ab)+', ['', 'ab', 'abcd', 'abab'])
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### concaténation
 
@@ -409,8 +380,6 @@ dans cette forme simple les groupes sont anonymes, et on les retrouve par leur r
 ````
 
 ```{code-cell} ipython3
-:tags: []
-
 # ici on a deux groupes
 pattern = "([a-z]+)=([a-z0-9]+)"
 
@@ -423,8 +392,6 @@ match
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et si on veut ensuite extraire de la chaine
 # les deux parties (la variable et la valeur)
 # on les a ici, dans l'ordre où apparaissent les groupes
@@ -446,38 +413,28 @@ pour filtrer avec une regexp **ou** une autre
 ça se complique un peu, attention à bien lire les choses
 
 ```{code-cell} ipython3
-:tags: []
-
 # 'ab' ou 'cd'
 
 match_all('ab|cd', ['ab', 'cd', 'abcd'])
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 'ab' ou 'cd*'
 
 match_all('ab|cd*', ['ab', 'c', 'cd', 'cdd'])
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 'ab' ou '(cd)*'
 
 match_all('ab|(cd)*', ['ab', 'c', 'cd', 'cdd'])
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 0 ou + occurrences de (ab ou cd)
 
 match_all('(ab|cd)*', ['ab', 'c', 'cd', 'cdd', 'abcd'])
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### 0 ou 1 occurrences : `..?`
 
@@ -490,8 +447,6 @@ très pratique pour les morceaux optionnels
 
 match_all('[a-z]?', ['', 'b', 'xy'])
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### nombre d'occurrences dans un intervalle : `..{n,m}`
 
@@ -510,8 +465,6 @@ le `a` peut bien sûr être n'importe quelle regexp compliquée hein
 
 match_all('(ab){1,3}', ['', 'ab', 'abab', 'ababab', 'ababababababab'])
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ### classes de caractères `\s` etc..
 
@@ -535,8 +488,6 @@ match_all(r'\w+', ['eFç0', 'été', ' ta98'])
 match_all(r'\s?\w+', ['eFç0', 'été', ' ta98'])
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ### groupe nommé : `(?P<name>..)`
 
 pour obtenir le même effet que les groupes anonymes `(..)`  
@@ -556,14 +507,10 @@ match
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et c'est plus lisible pour aller extraire les morceaux
 
 match.group('variable'), match.group('valeur')
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### début et fin de chaine : `^` et `$`
 
@@ -589,8 +536,6 @@ match_all('ab|cd', ['ab', 'abcd'])
 match_all('(ab|cd)$', ['ab', 'abcd'])
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ### plusieurs occurrences d'un groupe : `(?P=name)`
 
 on peut aussi spécifier que **le même groupe** apparaisse plusieurs fois
@@ -615,7 +560,7 @@ match_all(pattern, [string1, string2])
   <https://regex101.com/> (bien choisir Python)
   ... et plein d'autres ...
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## pour aller plus loin
 

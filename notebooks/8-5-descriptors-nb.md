@@ -17,8 +17,6 @@ nbhosting:
   title: "attributs revisit\xE9s"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # attr.. (2/3) - descripteurs
 
 accès aux attributs - second notebook
@@ -37,7 +35,7 @@ on s'est efforcé d'aborder jusqu'ici des notions qui ont une application dans l
 on s'adresse donc à partir d'ici à un public curieux et très avancé; *you will have been warned* ;-)
 ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## pourquoi c'est intéressant ?
 
@@ -48,7 +46,7 @@ de plus pour que le modèle fonctionne, on a dû implémenter deux mécanismes s
 
 mais bon à nouveau, si on s'en tient à une utilisation usuelle du langage, tout ceci est complètement optionnel !
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## descripteurs
 
@@ -60,7 +58,7 @@ une classe avec **au moins une des méthodes** suivantes est un descripteur
 * `__set__()`
 * `__delete__()`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### caractéristique troublante
 
@@ -90,10 +88,6 @@ def verbose(*args, **kwds):
 ### v0: un peu poussif
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # ici on implémente un attribut usuel (d'instance)
 # il faut être attentif à bien ranger la donnée dans l'instance
 # et pas dans le descripteur !!!
@@ -237,8 +231,6 @@ vars(vars(Person)['age'])
 vars(p1)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## stockage des attributs
 
 le protocole nous expose à la fois les deux instances:
@@ -261,10 +253,6 @@ voyons cette deuxième alternative, pour implémenter un attribut de classe
 et ceci avec un tout petit changement:
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # ici on implémente un attribut de classe
 # pour ça on va ranger la valeur .. directement dans le (l'instance du) descripteur 
 
@@ -326,7 +314,7 @@ ici c'est un peu différent, pour obtenir ce comportement il **faut définir `__
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## attention aux noms
 
@@ -344,7 +332,7 @@ la tradition est d'utiliser
 voyez quelques exemples utiles de validateurs ici:  
 <https://docs.python.org/fr/3/howto/descriptor.html#validator-class>
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ## *data descriptors*
 
@@ -369,11 +357,6 @@ trouver un exemple un peu parlant
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: []
----
 class DataDescriptor:
 
     def __get__(self, instance, owner):
@@ -395,11 +378,8 @@ class PersonData:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 pd = PersonData()
 pd.name
 ```
@@ -412,11 +392,6 @@ pd.name
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: []
----
 class DescriptorNonData:
 
     # sans __set__ on parle 
@@ -433,11 +408,8 @@ class PersonNonData:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 pnd = PersonNonData()
 pnd.name = 'bill'
 pnd.name
@@ -449,8 +421,6 @@ pnd.name
 del pnd.name
 pnd.name
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## pour en savoir plus
 

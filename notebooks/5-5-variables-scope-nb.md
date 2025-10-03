@@ -17,15 +17,9 @@ nbhosting:
   title: "port\xE9e d\u2019une variable"
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 # portée d’une variable
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: '-'
----
 %load_ext ipythontutor
 ```
 
@@ -39,7 +33,7 @@ slideshow:
     depuis quelles parties de mon code 
     je peux accéder à cette variable ?
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## portée lexicale
 
@@ -60,7 +54,7 @@ le terme *lexical* signifie qu'on n'a que besoin de **lire** le programme, et pa
 a contrario, la résolution des attributs ne peut se faire que à *run-time*    
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## déclaration ?
 
@@ -106,7 +100,7 @@ def foo(x):
               #     plus haut dans foo)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## règle **LEGB**
 
@@ -132,7 +126,7 @@ l'unité de base est la **fonction** - il **n'y pas de visibilité de bloc**
 (comme on la trouve dans d'autres langages)
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## variable globale
 
@@ -154,8 +148,6 @@ def foo():
      
 foo()
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## exemple de visibilité (1)
 
@@ -183,8 +175,6 @@ def foo():
 foo()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## exemple de visibilité (2) cassé
 
 +++
@@ -192,11 +182,8 @@ foo()
 une variable ne peut pas être à la fois globale et locale !
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [raises-exception]
----
+:tags: [raises-exception]
+
 L = [1, 2]
 
 def f():
@@ -217,7 +204,7 @@ except UnboundLocalError:
 qui n'a pas encore été initialisée
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemple de visibilité (2) revu
 
@@ -229,10 +216,6 @@ pour réparer, on peut:
 1. ou encore passer la globale en paramètre
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 L = [1, 2]
  
 def f(L):
@@ -243,8 +226,6 @@ def f(L):
 f(L)
 print(L)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ## attention aux classes
 
@@ -269,8 +250,6 @@ class Foo:
         pass
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## `global` et `nonlocal`
 
 +++
@@ -287,7 +266,7 @@ mais revenons à nos fonctions:
 * c'est à cela que servent les mots clefs  
   `global` ou `nonlocal`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemple avec `global` (1)
 
@@ -334,7 +313,7 @@ G
 dans la deuxième forme, on a juste créé une **deuxième variable G** qui est locale à la fonction, et "cache" la globale, qui donc n'est pas modifiée
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemple avec `global` (2)
 
@@ -384,7 +363,7 @@ G
 ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affectée dans `increment_G`, c'est une variable *locale* à la fonction (et donc pas la globale); mais elle n'a pas encore de valeur ! d'où l'erreur `UnboundLocalError`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ## faut-il utiliser `global` ?
 
@@ -399,7 +378,7 @@ ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affecté
   * la configuration d'une application
   * est souvent implémentée comme un singleton
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ## spécificités de `global`
 
@@ -413,7 +392,7 @@ ce qui se passe ici c'est: on commence par lire `G`; mais comme `G` est affecté
   * est automatiquement créée dans le module
   * même si elle n’existait pas avant
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## exemple avec `nonlocal`
 
@@ -462,7 +441,7 @@ c1()
 c2()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ## les noms de builtins
 
@@ -475,7 +454,7 @@ c2()
   * python ne donne aucun warning dans ce cas
  * dans ce cas - comme toujours - `pylint` est un outil très utile
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ### les noms de builtins
 
@@ -510,11 +489,8 @@ len(dir(__builtins__))
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [level_intermediate]
----
+:tags: [level_intermediate]
+
 errors = (x for x in dir(builtins) if 'Error' in x or 'Warning' in x)
 
 columns, width = 4, 18
@@ -525,12 +501,9 @@ for i, error in enumerate(errors, 1):
 ```
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: slide
-tags: [level_intermediate]
----
+:cell_style: center
+:tags: [level_intermediate]
+
 others = (x for x in dir(builtins) 
           if not ('Error' in x or 'Warning' in x or '__' in x))
 

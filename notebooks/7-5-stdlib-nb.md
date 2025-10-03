@@ -98,10 +98,6 @@ il **faut utiliser `pathlib.Path`** pour du nouveau code ! on peut tout faire av
 ````
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 from pathlib import Path
 
 for path in Path(".").glob("samples/*.py"):
@@ -116,8 +112,6 @@ for path in Path(".").glob("samples/*.py"):
     with path.open():
         pass
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ````{admonition} orienté objet
 
@@ -135,29 +129,27 @@ with fichier.open() as feed:
         print(f"{lineno}:{line}", end="")  
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## `datetime`, `math` et `random`
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `datetime`
 
 * gestion des dates et des heures
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `math`
 
 * fonctions mathématiques, constantes, ...
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### `random`
 
 * générations de nombres et séquences aléatoires, mélange aléatoire de séquences
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## formats de fichier
 
@@ -181,14 +173,14 @@ with fichier.open() as feed:
 * sérialisation d’objets python, uniquement compatible avec python
 * sauvegarde et la chargement du disque dur
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## le module `collections`
 
 une extension des objets *built-in* `list`, `tuple`, `dict`  
 [la doc est ici](https://docs.python.org/3/library/collections.html), voici une petite sélection
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ###  `collections.Counter()`
 
@@ -198,10 +190,6 @@ une extension des objets *built-in* `list`, `tuple`, `dict`
 * et comme valeurs le nombre de fois que l’élément apparaît
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 from collections import Counter
 
 cnt = Counter(['red', 'blue', 'red', 'green', 'blue', 'blue'])
@@ -227,10 +215,6 @@ Counter(words).most_common(10)
 * <https://docs.python.org/3/library/collections.html?#collections.defaultdict>
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 from collections import defaultdict
 
 # on va fabriquer un dict    word -> liste d'indices où il apparait
@@ -263,7 +247,7 @@ fournit les combinatoires communes
 * [`permutations`](https://docs.python.org/3/library/itertools.html#itertools.permutations)
 * [`combinaisons`](https://docs.python.org/3/library/itertools.html#itertools.combinations) *n* parmi *p*
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `itertools` - produit cartésien
 
@@ -276,8 +260,6 @@ for x, y in product(A, B):
     print(x, y)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `itertools` - permutations
 
 ```{code-cell} ipython3
@@ -287,8 +269,6 @@ C = ['a', 'b', 'c', 'd']
 for tuple in permutations(C):
     print(tuple)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### `itertools` - combinaisons
 
@@ -301,10 +281,6 @@ for a, b in combinations(miniloto, 2):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # les arrangements ne sont pas disponibles tel-quel
 # mais une possibilité est de générer toutes les permutations
 # de chaque tirage dans les combinaisons
@@ -317,8 +293,6 @@ for t in arrangements(miniloto, 2):
     print(t)
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
-
 ### module `itertools` - divers
 
 * parfois sans fin
@@ -328,7 +302,7 @@ for t in arrangements(miniloto, 2):
   * `islice('abcdefg', 2, none) --> c d e f g`
   * `repeat(10, 3) --> 10 10 10`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### module `itertools` - suite
 
@@ -343,18 +317,10 @@ for t in arrangements(miniloto, 2):
   * `filterfalse(lambda x: x%2, range(10)) --> 0 2 4 6 8`
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 from itertools import filterfalse
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: '-'
----
 %timeit -n 100 for x in filterfalse(lambda x:x%2, range(10000)): pass
 ```
 
@@ -362,18 +328,12 @@ slideshow:
 %timeit -n 100 for x in (y for y in range(10000) if not (y % 2)): pass
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## `operator`
 
 * en python tout est un objet, on peut donc tout passer à une fonction, mais comment passer un opérateur comme `+`, `in`, ou `>` 
 * le module `operator` contient la version fonctionnelle d’un grand nombre d’opérateurs python
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 import random
 l = [('a', random.randint(1, 1000)) for i in range(100)]
 l.sort(key=lambda x: x[1])

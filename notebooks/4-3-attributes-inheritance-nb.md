@@ -16,8 +16,6 @@ nbhosting:
   title: "attributs et h\xE9ritage"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-classes-inheritance)=
 
 # attributs & héritage
@@ -40,7 +38,7 @@ nbhosting:
   - **instances multiples**, **chacune garde l'état**, **héritage**
 ```
 
-+++ {"tags": []}
++++
 
 ## programmation orientée objet
 
@@ -55,7 +53,7 @@ pourquoi et comment ?
   - modularité & héritage (a.k.a. espaces de nom et recherche d'attribut)
 ```
 
-+++ {"tags": []}
++++
 
 ### réutilisabilité & modularité
 
@@ -76,7 +74,7 @@ une façon d'écrire du code **modulaire**:
   ici pas de public/protected/private, on se base sur des conventions de nommage
 ````
 
-+++ {"tags": []}
++++
 
 ### réutilisabilité & héritage
 
@@ -124,7 +122,7 @@ ce n'est pas le cas pour les instances des types natifs, mais bon..
 * les espaces de nom sont imbriqués (*nested*) - par ex. `package.module.classe.methode`
 * l'héritage rend cela dynamique, *i.e.* la résolution des attributs **est faite à *runtime***
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### variables et attributs
 
@@ -172,7 +170,7 @@ nous allons voir cela en détail tout de suite, et pour cela il nous faut distin
   - les autres cas
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 (label-access-attributes-usual)=
 ## écriture d'attribut: pas de recherche
@@ -192,7 +190,7 @@ et quand on écrit `self.name = name`, on le crée
 on considère que c'est une écriture si le terme `obj.attribute` est **à gauche** d'une affectation
 ````
 
-+++ {"slideshow": {"slide_type": ""}, "cell_style": "center"}
++++ {"cell_style": "center"}
 
 ## résolution d'attribut pour la lecture
 
@@ -222,7 +220,7 @@ dans ces cas-là on ne **regarde pas dans l'objet lui-même**
 c'est une subtilité, qui ne va pas trop nous concerner dans ce chapitre, mais dont on verra l'impact dans [la section sur les métaclasses](label-metaclasses)
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### ex1. de résolution d'attribut
 
@@ -255,34 +253,26 @@ vector.length()
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # on va voir ça en détail 
 # dans pythontutor
 %load_ext ipythontutor
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 #### 2 espaces de nom distincts
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 * la classe `Vector` a les attributs
   * `__init__`
   * `length`
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 * l'objet `vector` a les attributs
   * `x` et `y`,
   * mais pas `length` !
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor width=1000 height=400 curInstr=7
 import math
 class Vector:
@@ -294,8 +284,6 @@ class Vector:
 
 vector = Vector(2, 2)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ````{admonition} les fonctions vars() et dirs()
 :class: admonition-small
@@ -312,7 +300,7 @@ ce n'est pas forcément à retenir, mais c'est utile si on essaie d'inspecter le
 enfin notez que, quand on se livre à ce genre d'introspection, on enlève souvent, pour clarifier, les attributs qui contiennent `__`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### résumé
 
@@ -321,7 +309,7 @@ donc dans ce cas simple de la classe `Vector` et de l'instance `vector`:
 * `vector.x` fait référence à l'attribut posé **directement sur l'instance**
 * `vector.length` fait référence à la méthode qui est **dans la classe**
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### ex2. résolution d'attribut avec héritage
 
@@ -341,8 +329,6 @@ subvector = SubVector(6, 8)
 subvector.length()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 comment fait-on pour trouver `subvector.length` ? c'est exactement le même mécanisme qui est à l'oeuvre ! pour évaluer `subvector.length()`, on cherche l'attribut `length` 
 
 * dans l'instance `subvector` : non
@@ -350,10 +336,6 @@ comment fait-on pour trouver `subvector.length` ? c'est exactement le même méc
 * dans la super-classe `Vector` : ok, on prend ça
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %%ipythontutor width=1000 height=400 curInstr=8
 import math
 class Vector:
@@ -387,15 +369,15 @@ il faut se méfier parfois: il y a écriture si  et seulement si il y a **affect
 
 alors même que dans les deux cas il y a bien modification des données, évidemment
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## héritage
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### syntaxe
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 une classe peut hériter d’une (ou plusieurs) autre classes
   
@@ -409,7 +391,7 @@ class Class(Super1, Super2):
     pass
 ```
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 * si A hérite de B, ont dit que
   * A est une **sous-classe** de B
@@ -451,11 +433,8 @@ a, b = A(), B()
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 isinstance(a, A), issubclass(B, A)
 ```
 
@@ -484,16 +463,13 @@ isinstance(a, (A, B))
 * permet de ne pas mentionner explicitement  
   le nom de la classe mère (code + générique)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### `super()` dans le constructeur
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # illustration de super() 
 # dans le constructeur
 
@@ -522,16 +498,11 @@ c = C(10)
 d = D(100, 200)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 #### `super()` dans une méthode standard
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # super() est souvent rencontrée
 # dans __init__ mais s'applique
 # partout
@@ -541,11 +512,8 @@ class C:
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 class D(C):
     def f(self):
         # remarquez l'absence
@@ -566,8 +534,6 @@ c = C(); c.f()
 d = D(); d.f()
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## résumé
 
 * les instances et classes sont des objets mutables (sauf classes *builtin*)
@@ -581,13 +547,13 @@ d = D(); d.f()
   * les objets ont des attributs de type donnée
   * mais le modèle est flexible, dans le notebook suivant on va voir quelques exceptions notables
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ## annexe: MRO & graphe d’héritage
 
 (très avancé)
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ### graphe d'héritage
 
@@ -626,7 +592,7 @@ on utilise pour cela le *MRO : method resolution order*; l’algorithme est le s
 * liste toutes les super-classes en utilisant un algorithme DFLR (depth first, left to right)
 * si classe dupliquée, **ne garder que la dernière** occurrence
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate", "gridwidth-1-2"]}
++++ {"tags": ["level_intermediate", "gridwidth-1-2"]}
 
 ```{image} media/mro.png
 :align: center

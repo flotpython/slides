@@ -16,8 +16,6 @@ nbhosting:
   title: properties
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 (label-properties)=
 # properties
 
@@ -256,7 +254,7 @@ g.value
 regardez ce que donne le `help(g)`, vous verrez apparaitre `value` dans les descriptors, avec son *docstring*
 ````
 
-+++ {"tags": []}
++++
 
 ## l'autre syntaxe
 
@@ -266,8 +264,6 @@ en fait il y a deux syntaxes pour définir une property, choisir entre les deux 
 quoi qu'il en soit, voici la deuxième syntaxe, utilisée dans la classe `Gauge`
 
 ```{code-cell} ipython3
-:tags: []
-
 # version avec une property - deuxième syntaxe
 
 class Gauge:
@@ -296,7 +292,6 @@ class Gauge:
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # à la création
 g = Gauge(1000); g
@@ -304,7 +299,6 @@ g = Gauge(1000); g
 
 ```{code-cell} ipython3
 :cell_style: split
-:tags: []
 
 # ou à la modification
 g.value = -10

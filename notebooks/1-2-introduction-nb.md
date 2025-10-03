@@ -42,7 +42,7 @@ ou disons plutôt, c'est le minimum requis pour ce cours :)
 * portable
   * Windows, Linux, Mac OS, etc.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### pourquoi Python ?  : lisible
 
@@ -104,7 +104,7 @@ def factorielle(n):
   * totalement transparent
   * mais pas non plus optimisé comme du code machine..
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### pourquoi python ? : ouvert et gratuit
 
@@ -123,7 +123,7 @@ possède les droits sur Python et assure son développement
 * <https://docs.python.org/3/license.html>  
   adapté à un très vaste spectre d'usages
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### philosophie python
 
@@ -132,8 +132,6 @@ possède les droits sur Python et assure son développement
 
 import this
 ```
-
-+++
 
 ## quelle version de python ?
 
@@ -149,7 +147,7 @@ import this
 * de moins en moins problématique (mais attention sur MacOS !)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## comment lancer python ?
 
@@ -179,7 +177,7 @@ dans le terminal toujours:
 :width: 600px
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### ... ou dans un environnement graphique
 
@@ -192,6 +190,7 @@ dans le terminal toujours:
   # et ensuite pour démarrer la session de notebooks
   jupyter lab
   ```
+
 * IDE de votre choix (**vs-code**, PyCharm, SublimeText,  
   atom, eclipse, ... bcp de variantes)
 
@@ -213,7 +212,7 @@ il faut savoir interrompre/redémarrer son interpréteur !
 par exemple dans `jupyter lab` voyez le menu `Kernel`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## comment avoir de l'aide
 
@@ -230,11 +229,9 @@ import math
 dir(math)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### `help()`
 
-+++ {"slideshow": {"slide_type": "-"}}
++++
 
 * `help(objet)`
   * retourne une aide en ligne sur l’objet
@@ -254,8 +251,6 @@ help(math)
 # ou juste une fonction
 help(math.factorial)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### complétion
 
@@ -282,8 +277,6 @@ dans ce cas, utilisez le clavier pour sélectionner la bonne
 # c'est à dire en gros le contenu de dir(math) comme on l'a vu plus haut
 # mais c'est interactif
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### aide avec `symbol?`
 
@@ -325,8 +318,6 @@ from argparse import ArgumentParser
 ArgumentParser??
 ```
 
-+++
-
 ## documentation
 
 personnellement, pour un accès rapide à la documentation, je fais très facilement une recherche google genre
@@ -341,7 +332,7 @@ que l'on peut consulter aussi comme ceci
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### fourni avec Python
 
@@ -354,7 +345,7 @@ que l'on peut consulter aussi comme ceci
   * initialement Guido van Rossum
   * niveau débutant à moyen
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### des cours
 
@@ -366,7 +357,7 @@ que l'on peut consulter aussi comme ceci
 * http://fr.openclassrooms.com/informatique/cours/apprenez-a-programmer-en-python
 * et sans doute des dizaines d'autres
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### et aussi
 
@@ -417,7 +408,7 @@ que l'on peut consulter aussi comme ceci
 * balancer vitesse de développement avec performance
 * Python gagne presque toujours
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### comment tester la performance ?
 
@@ -435,7 +426,7 @@ cette construction avec les `%` n'est pas standard Python, c'est une *magic* de 
 on ne peut l'utiliser que dans `ipython` ou dans les notebooks
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"tags": ["level_intermediate"]}
 
 ### comment tester la place mémoire ?
 

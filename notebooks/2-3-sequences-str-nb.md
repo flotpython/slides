@@ -17,11 +17,9 @@ nbhosting:
   title: "s\xE9quences et chaines"
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # séquences & chaines
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## c'est quoi une séquence ?
 
@@ -50,7 +48,7 @@ nous allons voir pour commencer des choses valables **sur toutes les séquences*
 et donc en particulier sur les chaines de caractères, puisque les chaines sont des séquences
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## fonctions sur toutes les séquences
 
@@ -63,7 +61,7 @@ et donc en particulier sur les chaines de caractères, puisque les chaines sont 
 * `len(S)`
   * donne la taille en nombre d’éléments
 
-+++ {"tags": []}
++++
 
 ### les séquences sont des itérables
 
@@ -93,7 +91,7 @@ for item in S:
   la famille des itérables est donc plus large que les séquences
   ````
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### appartenance, recherches
 
@@ -138,7 +136,7 @@ la notion de slicing est **très massivement utilisée** dans toutes les librair
 * omettre les bornes
 * compter depuis la fin, avec un indice négatif
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/egg-bacon.svg
 :align: center
@@ -179,11 +177,11 @@ s[-3:10]
 s[:]
 ```
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ### les bornes
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/egg-bacon-bornes.svg
 :align: center
@@ -213,8 +211,6 @@ s[6:]
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 s[0:3] + s[3:6] + s[6:] == s
 ```
 
@@ -222,7 +218,7 @@ s[0:3] + s[3:6] + s[6:] == s
 
 ### le pas
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/egg-bacon.svg
 :align: center
@@ -254,8 +250,6 @@ s[:8:3]
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 s[-2::-3]
 ```
 
@@ -263,14 +257,14 @@ s[-2::-3]
 
 ### pas d'exception
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/egg-bacon.svg
 :align: center
 :width: 450px
 ```
 
-+++ {"tags": []}
++++
 
 les slices ont un comportement plus permissif que l'indexation
 
@@ -298,7 +292,7 @@ s[100:200]
 
 ### exemples
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/egg-bacon.svg
 :align: center
@@ -341,11 +335,9 @@ s[2:0:-1]
 s[2::-1]
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### formes idiomatiques
 
-+++ {"tags": []}
++++
 
 s = [1, 2, 3]
 
@@ -439,7 +431,7 @@ print(s)
 notez bien les parenthèses dans ce deuxième exemple, car sinon c'est une erreur de syntaxe
 ````
 
-+++ {"tags": []}
++++
 
 ### échappements dans les chaines
 
@@ -480,8 +472,6 @@ s = 'backslash \\\tquote \''
 print(s)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### *raw-strings*
 
 +++ {"tags": ["gridwidth-1-2"]}
@@ -505,13 +495,12 @@ en effet depuis 3.12, un `\T` dans une chaine provoque carrément une erreur de 
 
 ```{code-cell} ipython3
 :tags: [gridwidth-1-2]
+
 # du coup on est amené à utiliser plutôt une raw-string
 
 s = r'C:\Temp\test.txt'
 print(s)
 ```
-
-+++
 
 en dehors des raw-strings, on utilise fréquemment des backslash pour échapper les caractères spéciaux
 
@@ -557,11 +546,9 @@ def double(n):
 help(double)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## opérations sur les `str`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### toutes les opérations des séquences
 
@@ -621,7 +608,7 @@ except TypeError as e:
     print("OOPS", e, type(e))
 ```
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}}
++++ {"cell_style": "center"}
 
 ## méthodes sur les `str`
 
@@ -650,7 +637,7 @@ lorsqu'on nettoie une ligne qu'on a lue dans un fichier, on peut envisager
 d'utiliser `rstrip()` qui ne nettoie qu'à droite, là où se situe le NEWLINE
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### `split()` et `join()`
 
@@ -690,8 +677,6 @@ liste
 # ou n'importe quel autre séparateur
 "+++".join(liste)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### remplacements, recherches
 
@@ -754,7 +739,7 @@ type("abc") is str
 type(str)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": ["level_advanced"]}
++++ {"tags": ["level_advanced"]}
 
 ### un peu d'introspection...
 

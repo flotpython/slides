@@ -17,8 +17,6 @@ nbhosting:
   title: numpy - pandas
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # numpy - pandas
 
 ce sont deux librairies qui **ne font pas partie** de la librairie standard, mais qui ont une importance considérable dans l'écosystème Python  

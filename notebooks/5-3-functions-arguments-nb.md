@@ -17,8 +17,6 @@ nbhosting:
   title: fonctions
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # passage de paramètres
 
 +++
@@ -49,7 +47,7 @@ mais un peu de soin est nécessaire pour bien expliquer le mécanisme général
 HELLO 1+2+3
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### et une variante 
 
@@ -63,18 +61,15 @@ HELLO 1+2+3
 HEY 1==2==3
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### implémentation
 
 et pour commencer voyons comment on ferait ça en Python
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # la première variante
 
 def myprint(*args, **kwds):
@@ -123,7 +118,6 @@ lorsqu'il peut y avoir ambiguïté :
 * `argument`: l'objet réellement passé à la fonction
 
 ```{code-cell} ipython3
-:slideshow: {}
 :tags: [gridwidth-1-2]
 
 # ici x est un PARAMÈTRE
@@ -148,7 +142,7 @@ de façon à ce que tous les arguments soient exposés à la fonction
 * et 2 manières **de passer un argument** à une fonction (en fait 2+2)
 * les deux familles se ressemblent un peu, mais il y a tout de même des différences
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### les 4 sortes de paramètres
 
@@ -171,7 +165,7 @@ de façon à ce que tous les arguments soient exposés à la fonction
   - correspond aux arguments nommés "en plus"
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### les 2+2 sortes d'arguments
 
@@ -251,8 +245,6 @@ agenda('doe', 'alice', '0404040404', 35, 'medecin')
 agenda(prenom='alice', nom='doe', age=35, tel='0404040404', job='medecin')
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### (II) paramètre avec valeur par défaut
 
 dans le code précédent, qu'on les mette dans l'ordre ou pas, on **doit** passer à la fonction 5 arguments
@@ -330,13 +322,11 @@ et pour les exploiter la fonction n'a qu'à, par exemple, itérer sur le paramè
 un peu comme avec `self` dans les méthodes de classe, le nom de paramètre `args` correspond à un usage assez fréquent, mais en réalité c'est un paramètre usuel et on peut lui donner n'importe quel nom
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### ex. avec 0 ou plus arguments
 
 ```{code-cell} ipython3
-:tags: []
-
 # définition
 
 def variable(*args):
@@ -344,38 +334,28 @@ def variable(*args):
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 0 argument
 
 variable()
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 1 argument
 
 variable(1)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 5 arguments 
 
 variable(1, 2, 3, 4, "cinq")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 #### ex. avec au moins 2 arguments 
 
 on peut aussi très simplement créer une fonction qui attend au moins deux arguments, le reste étant optionnel
 
 ```{code-cell} ipython3
-:tags: []
-
 # au moins deux arguments
 
 def variable2(one, two, *args):
@@ -383,23 +363,17 @@ def variable2(one, two, *args):
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 2 arguments
 
 variable2(1, 2)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 3 arguments
 variable2(1, 2, 3)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # 5 arguments 
 
 variable2(1, 2, 3, 4, "cinq")
@@ -436,16 +410,11 @@ le mécanisme est exactement le même, mais avec les **arguments nommés**:
 
 ici encore le nombre d’arguments nommés peut être quelconque
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### ex. 1
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
 # cette fonction peut être appelée avec autant d'arguments
 # qu'on veut, mais il doivent tous être nommés
 
@@ -479,11 +448,6 @@ named_args(10)
 #### ex. 2
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: []
----
 # pareil ici, autant d'arguments nommés qu'on veut
 # et cette fois on peut aussi lui passer un argument nommé
 
@@ -507,8 +471,6 @@ named_args1(a = 1, b = 2)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 named_args1(b = 2, c=3)
 ```
 
@@ -517,11 +479,11 @@ named_args1(b = 2, c=3)
 * ici encore cette forme de paramètre **ne peut apparaître qu'une fois**
 * car sinon, comme avec `*args`, la liaison serait ambigüe
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## ordre des paramètres et arguments
 
-+++ {"tags": []}
++++
 
 ### paramètres
 
@@ -542,7 +504,7 @@ historiquement à l'origine, on **devait déclarer dans cet ordre** :
 nous verrons [un peu plus loin](label-keyword-only-argument) que le paramètre attrape-tout `*args` peut aussi être mis un peu plus tôt que cela dans la liste des paramètres
 ````
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": ""}}
++++ {"cell_style": "center"}
 
 ### arguments
 
@@ -557,15 +519,11 @@ dans un appel de fonction, on recommande de matérialiser deux groupes
    * argument(s) nommés (`name=value`),
    * forme(s) `**name`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemple: appel
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 # une fonction passe-partout qui affiche juste ses paramètres 
 # pour nous permettre d'illustrer les appels 
 
@@ -590,21 +548,14 @@ show_any_args(x=1)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # on recommande de mettre les arguments non-nommés en premier
 
 show_any_args(1, 4, 5, 3, x = 1, y = 2)
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [raises-exception]
----
+:tags: [raises-exception]
+
 # car ceci est illégal et déclenche une SyntaxError
 
 foo(1, x=1, 4, 5, 3, y=2)
@@ -620,8 +571,6 @@ foo(1, x=1, 4, 5, 3, y=2)
 def foo(b=10, a):
     pass
 ```
-
-+++ {"slideshow": {"slide_type": ""}}
 
 ## *keyword-only* / *positional-only* 
 
@@ -654,10 +603,6 @@ voyons comment marchent ces deux mécanismes
 on va prendre une fonction qui combine un peu tous les types de paramètres, et pour commencer on va les mettre dans l'ordre standard
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # une fonction qui combine les différents types de paramètres
 
 def normal(a, b=100, *args, **kwds):
@@ -698,10 +643,6 @@ imaginons maintenant que je veuille **imposer à l'appelant de nommer `b`**
 pour cela il me suffit de déplacer **l'attrape-tout avant le paramètre `b`** comme ceci
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # on peut déclarer un paramètre nommé **après** l'attrape-tout *args
 # du coup ici le paramètre nommé `b` devient un *keyword-only* parameter
 
@@ -731,18 +672,13 @@ must_name_b(1, 2)
 must_name_b(1, b=2)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}, "tags": []}
-
 ### paramètre *positional-only*
 
 en général on peut toujours nommer, des arguments même si le paramètre, est positionnel
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # on peut nommer un paramètre positionnel
 
 def normal(a, b, c):
@@ -750,11 +686,8 @@ def normal(a, b, c):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # la preuve    
 normal(b=2, a=1, c=3)
 ```
@@ -770,11 +703,8 @@ def cannot_name_a(a, /, b, c):
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [raises-exception]
----
+:tags: [raises-exception]
+
 # la preuve
 
 cannot_name_a(b=2, a=1, c=3)
@@ -785,8 +715,6 @@ cannot_name_a(b=2, a=1, c=3)
 
 cannot_name_a(1, c=3, b=2)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 (label-args-unpacking)=
 ## *unpacking* des arguments
@@ -824,11 +752,8 @@ du coup on peut utiliser **autant de fois qu'on veut** ces deux formes dans un a
 ### ex. (C) avec *
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 def f4(a, b, c, d):
     print(f"{a=} {b=} {c=} {d=}")
 ```
@@ -860,8 +785,6 @@ f4(*L1, *L2)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # et on peut utiliser * avec une expression
 
 f4(*range(1, 3), *range(10, 12))
@@ -930,13 +853,11 @@ f()
 ➔ **ne jamais utiliser un mutable comme valeur par défaut !!!**
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### exemple
 
 ```{code-cell} ipython3
-:tags: []
-
 # on pourrait penser en lisant ceci, que sans préciser L on devrait 
 # toujours retourner une liste [a]
 
@@ -946,24 +867,18 @@ def f(a, L = []):
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # MAIS: la valeur par défaut est évaluée par l'instruction def:
 
 f.__defaults__
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # donc ici le premier coup OK, ça fait ce qu'on attend
 
 f(1)
 ```
 
 ```{code-cell} ipython3
-:tags: []
-
 # sauf que ATTENTION, on a modifié ceci
 
 f.__defaults__
@@ -1003,11 +918,9 @@ f(2)
 f(3)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## pour résumer
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### 2 groupes d'arguments : positionnels et nommés
 

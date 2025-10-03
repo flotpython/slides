@@ -17,13 +17,11 @@ nbhosting:
   title: nombres
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 # les nombres
 
 les types de base pour les nombres sont:`int`, `float`, `complex`, `bool`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## les entiers
 
@@ -36,7 +34,7 @@ les types de base pour les nombres sont:`int`, `float`, `complex`, `bool`
 
 ceux qui ont eu à faire ça en C apprécieront
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### nombres : division
 
@@ -63,8 +61,6 @@ mais la division mérite quelques mots:
 # reste div. entière
 8 % 5
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### nombres : opérateurs
 
@@ -94,7 +90,7 @@ x
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### conversions
 
@@ -119,7 +115,7 @@ il existe aussi des fonctions `floor()` et `ceil()` dans le module `math`
 toutefois la méthode ci-dessus est plus générale, elle s'applique à tous les types en Python
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### nombres complexes
 
@@ -153,13 +149,11 @@ a.imag
 remarquez qu'ici à nouveau, le terme `a.real` consiste à rechercher l'**attribut** `real` dans l'objet (désigné par) `a`
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### le module `math`
 
 ```{code-cell} ipython3
-:tags: []
-
 # pour anticiper un peu
 # sur les listes...
 # ici on veut les 6 derniers
@@ -198,7 +192,7 @@ et à nouveau, l'écriture `math.tau` consiste à rechercher l'attribut `tau` da
 et pareil exactement pour `math.sin`, qui désigne … un objet fonction
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## booléens
 
@@ -301,10 +295,6 @@ voyons cela sur un exemple
 vous vous souvenez de l'exemple avec les deux objets liste ?
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 # ici on crée deux objets liste distincts
 
 # le premier (avec deux références)
@@ -314,10 +304,6 @@ c = [1, 2]
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %load_ext ipythontutor
 ```
 
@@ -330,7 +316,7 @@ a = b = [1, 2]
 c = [1, 2]
 ```
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}}
++++ {"cell_style": "center"}
 
 du coup on peut écrire des choses comme
 
@@ -359,8 +345,6 @@ a == c
 a != c
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ou encore comme
 
 ```{code-cell} ipython3
@@ -375,8 +359,6 @@ ou encore comme
 # plus lisible que   not (1 in a)
 1 not in a
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### test sur un booléen
 
@@ -401,8 +383,6 @@ if a == b:
 else:
     print("différents")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### test sur un non-booléen
 
@@ -430,7 +410,7 @@ if bool(a):
 les valeurs "fausses" correspondent à un **nombre nul**, ou à un **container vide** (liste, chaine, ..)
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### tests sur une valeur non booléenne & conversion
 
@@ -487,8 +467,6 @@ bool(1)
 bool(" ")
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## l'encodage des flottants
 
 +++
@@ -500,16 +478,10 @@ bool(" ")
   * IEE-754: [WikiPedia](https://en.wikipedia.org/wiki/IEEE_754) - [interactif **64bits**](http://www.binaryconvert.com/convert_double.html)
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: '-'
----
 # flottant = imprécision structurelle !
 
 0.1 + 0.2
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### `float` = 64 bits
 
@@ -537,7 +509,7 @@ sys.float_info
 sur 64 bits, l'erreur relative est de l'ordre de $10^{-15}$ / $10^{-16}$
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### pas spécifique à Python
 
@@ -566,8 +538,6 @@ import math
 math.isclose(0.3, 0.1+0.2)
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### contournements
 
 +++
@@ -578,7 +548,7 @@ math.isclose(0.3, 0.1+0.2)
   * avec plus de précision et de contrôle qu’avec le type float
 * le [module `fractions`](https://docs.python.org/3/library/fractions.html) permet de travailler sur des rationnels
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### exemples - `decimal`
 
@@ -594,8 +564,6 @@ x = Decimal('0.1') + Decimal('0.2')
 
 x == Decimal('0.3')
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### exemples - `fractions`
 
@@ -621,7 +589,7 @@ x == 0.3
 
 ## plus exotique
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### entrer un entier en hexa, binaire, octal
 
@@ -649,8 +617,6 @@ pour créer des entiers sous forme littérale, dans d'autres bases
 # octal
 0o377
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### afficher un entier sous forme hexa, binaire, octale
 
@@ -688,7 +654,7 @@ le terme anglais pour désigner de telles fonctions est *builtin*
 
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### opérations *bitwise*
 
@@ -713,7 +679,7 @@ y & 15     # bitwise AND de 0100 (4) et 1111 (15)
 * mais par contre **très utile** avec numpy et pandas  
   pour manipuler notamment les masques
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### décalages
 

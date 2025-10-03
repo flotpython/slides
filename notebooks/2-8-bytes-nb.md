@@ -75,8 +75,6 @@ b
 b'\x41\x42\x0a'
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ````{admonition} les détails sordides
 :class: dropdown
 
@@ -152,7 +150,7 @@ set(dir(bytes)) - set(dir(str))
   * notamment crucial en présence d'accents ou autres non-ASCII
   * et donc vous êtes confrontés à l'**encodage** des chaines
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### de multiples encodages
 
@@ -187,7 +185,7 @@ set(dir(bytes)) - set(dir(str))
     * UTF-32: taille fixe, 4 octets par caractère
     * UTF-16: taille variable, 2 ou 4 octets
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ```{image} media/unicode-table.png
 :align: center
@@ -227,8 +225,6 @@ i2 = b[0]
 # and there's the same indeed
 i1 == i2
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ***
 
@@ -281,8 +277,6 @@ chr(codepoint)
 ord('é')
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ## Martine Ã©crit en UTF-8
 
 +++ {"tags": ["gridwidth-1-2"]}
@@ -291,7 +285,7 @@ ord('é')
 :align: center
 ```
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}}
++++ {"cell_style": "center"}
 
 ### pourquoi l’encodage c’est souvent un souci ?
 
@@ -359,7 +353,7 @@ reçu
   * préserve l'invariant *un char = un octet*
   * au prix .. d'une **multitude** d'encodages distincts
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### encodages par défaut
 
@@ -395,7 +389,7 @@ sys.getdefaultencoding()
 
 en principe, au 21-ème siècle vous devez avoir utf-8 partout !
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## partie pour les avancés
 
@@ -476,7 +470,7 @@ s.encode('ascii', errors='replace')
   mais sans savoir quel encodage au juste  
   le BOM permet de le trouver
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 le BOM consiste à ajouter un header pour utf-16 et utf-32  
 qui crée une inflation artificielle
@@ -503,8 +497,6 @@ b[:4]
 s1000 = 1000*'x'
 len(s1000.encode('utf32'))
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### petit retour sur le type `str`
 
@@ -551,7 +543,7 @@ warn
 
 et enfin, utilisez `\Uxxxxxxxx` pour 4 octets, si codepoint encore plus grand (pas fréquemment utile)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### un exemple
 
@@ -559,8 +551,6 @@ et enfin, utilisez `\Uxxxxxxxx` pour 4 octets, si codepoint encore plus grand (p
 s = '\u0534\u06AB\u05E7\u098b\u0bf8\u0f57\u2fb6'
 print(s)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 avec ces trois notations '\x` `\u` et `\u` il faut bien sûr utiliser **exactement**, respectivement, 2, 4 ou 8 digits hexadécimaux.
 
@@ -604,8 +594,6 @@ buff
 for char in buff:
     print(char, end=" ")
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 #### méthodes sur `bytearray`
 

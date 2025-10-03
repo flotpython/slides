@@ -17,8 +17,6 @@ nbhosting:
   title: containers
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # containers (2/2)
 
 plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
@@ -26,7 +24,7 @@ plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
 * liste, tuple (vus précédemment)
 * dictionnaire, ensemble: ce notebook
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ## problèmes avec les séquences
 
@@ -40,8 +38,6 @@ de deux ordres principalement
 a = list(range(30000000))
 'x' in a      # c’est long !
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### (2) on ne peut indexer que par un entier
 
@@ -136,7 +132,7 @@ except TypeError as e:
 toutefois cela ne s'applique pas à l'ensemble, ce qui peut créer une légère confusion
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### création
 
@@ -161,17 +157,12 @@ S1 = set(L1)
 S1
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### opérations sur `set`
 
 ```{code-cell} ipython3
----
-lines_to_next_cell: 2
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:lines_to_next_cell: 2
+:tags: [gridwidth-1-2]
+
 S1
 ```
 
@@ -212,8 +203,6 @@ S1 & S2            # intersection
 
 (S1 & S2) | (S1 - S2) | (S2 - S1) == (S1 | S2)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### le `set`: méthodes
 
@@ -393,7 +382,7 @@ x = set(range(2))
 * c’est une structure de données très puissante
 * le dictionnaire est un type **mutable**
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### création
 
@@ -451,11 +440,8 @@ dict( [ ('a', 'A'), ('b', 'B') ] )
 * `D.copy()` *shallow copy* de `D`
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 D = {'alice': 35, 'bob' : 9, 'charlie': 6}
 D
 ```
@@ -588,7 +574,7 @@ clefs
 
 ici à nouveau, il y a [plein d'autres méthodes très utiles, à découvrir ici](https://docs.python.org/3/tutorial/datastructures.html#dictionaries)
 
-+++ {"cell_style": "center", "slideshow": {"slide_type": "slide"}, "tags": ["level_intermediate"]}
++++ {"cell_style": "center", "tags": ["level_intermediate"]}
 
 ### création automatique de valeurs (avancé)
 
@@ -602,12 +588,9 @@ ici à nouveau, il y a [plein d'autres méthodes très utiles, à découvrir ici
 * ce qui évite de devoir tester la présence de la clé
 
 ```{code-cell} ipython3
----
-cell_style: center
-slideshow:
-  slide_type: slide
-tags: [level_intermediate]
----
+:cell_style: center
+:tags: [level_intermediate]
+
 from collections import defaultdict
 
 # ici je décide que les valeurs sont des listes

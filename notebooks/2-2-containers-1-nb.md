@@ -17,8 +17,6 @@ nbhosting:
   title: containers
 ---
 
-+++ {"slideshow": {"slide_type": ""}}
-
 # containers (1/2)
 
 plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
@@ -39,7 +37,7 @@ plusieurs types pratiques et efficaces sont fournis *de base*, et notamment
 * bref, c'est super malléable et hyper pratique
   * toutefois, pas toujours hyper-efficace
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### basique
 
@@ -64,8 +62,6 @@ L
 # commencent à 0
 L[2]
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### modification par index
 
@@ -92,8 +88,6 @@ L[2] = "BOOM"
 L
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### modification par slice
 
 ```{code-cell} ipython3
@@ -103,35 +97,29 @@ liste = [1, 2, 4, 8, 16, 32]
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # le slicing est disponible
 # sur les listes
 liste[2:]
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
-tags: [gridwidth-1-2]
----
+:tags: [gridwidth-1-2]
+
 # on peut aussi modifier
 # toute une slice
 liste[2:4] = [10, 20, 30]
 liste
 ```
 
-+++ {"slideshow": {"slide_type": ""}, "tags": ["gridwidth-1-2"]}
++++ {"tags": ["gridwidth-1-2"]}
 
 ```{image} media/writing-a-list-slice.png
 :align: center
 ```
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 ### attention
 
@@ -141,7 +129,7 @@ liste
   * **insère** tous les éléments de la liste `L2` à la position `i`
   * après avoir supprimé les éléments `i` jusqu’à `j-1` dans `L`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### modification sous pythontutor
 
@@ -165,18 +153,10 @@ liste
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: slide
----
 %load_ext ipythontutor
 ```
 
 ```{code-cell} ipython3
----
-slideshow:
-  slide_type: ''
----
 %%ipythontutor curInstr=1 width=1000
 liste = [1, 2, 4, 8, 16, 32]
 liste[2:4] = [10, 20, 30]
@@ -295,8 +275,6 @@ for i in range(1, 21, 5):
 list(range(1, 21, 5))
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
 ### exemples de listes
 
 ```{code-cell} ipython3
@@ -387,11 +365,11 @@ pour conclure - temporairement - sur ce sujet:
   `L.reverse()` renverse la liste en place (et retourne `None`)  
   `reversed(L)` retourne une **copie** renversée
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### avertissements à propos des listes
 
-+++ {"slideshow": {"slide_type": ""}}
++++
 
 #### (1) les itérateurs sont plus forts
 
@@ -416,7 +394,7 @@ c'est pourquoi `range()` **ne renvoie pas une liste** mais un itérateur
 mais on reparlera longuement de tout ça
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 #### (2) pas efficace pour calcul scientifique
 
@@ -468,7 +446,7 @@ T1 == T2
  * `(4,)` est un **tuple**
 ````
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++
 
 ### basique
 
@@ -508,8 +486,6 @@ try:
 except Exception as e:
     print("OOPS", e)
 ```
-
-+++ {"slideshow": {"slide_type": "slide"}}
 
 ### pourquoi le tuple ?
 
