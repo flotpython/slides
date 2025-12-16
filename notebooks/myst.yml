@@ -29,7 +29,7 @@ project:
 
 site:
   #template: book-theme
-  template: https://github.com/flotpython/myst-theme/releases/download/custom/book.zip
+  template: https://github.com/flotpython/myst-theme/releases/download/custom/book-theme.zip
   # used in the tab name
   title: programmer en Python
   # this would be for the horizontal header bar - not used here (yet)
