@@ -170,7 +170,7 @@ il y a deux types de copies en Python:
 ```{code-cell} ipython3
 :cell_style: center
 
-%%ipythontutor heapPrimitives=true height=400 width=800 curInstr=1
+%%ipythontutor heapPrimitives=true height=420 width=800 curInstr=1
 
 # comme ci-dessus
 a = [1, 2]
@@ -271,7 +271,7 @@ print(b)
 ```{code-cell} ipython3
 :cell_style: center
 
-%%ipythontutor heapPrimitives=true height=500 width=900 curInstr=2
+%%ipythontutor heapPrimitives=true height=480 width=900 curInstr=2
 import copy
 a = [1, [2]]
 # maintenant avec une copie profonde: on n'a plus de souci
@@ -296,14 +296,14 @@ on n'a parlé jusqu'ici que de références partagées créées par **affectatio
 ### appel de fonction
 
 ```{code-cell} ipython3
-%%ipythontutor
+%%ipythontutor height=400
 L = [1, 2, 3]
 
 def foo(x):
     x[1] = 'BOOM'
 
 foo(L)
-print(L)
+print("après foo()", L)
 ```
 
 +++ {"tags": ["level_intermediate"]}
@@ -319,7 +319,6 @@ on peut le voir sur l'exemple pathologique suivant
 :tags: [level_intermediate]
 
 %%ipythontutor heapPrimitives=true height=400 width=900 curInstr=1
-
 repete = 4 * [[0]]
 print(f"repete avant {repete}")
 
@@ -336,7 +335,7 @@ ainsi on peut aussi créer des structures cycliques
 ```{code-cell} ipython3
 :tags: [level_advanced]
 
-%%ipythontutor
+%%ipythontutor heapPrimitives=true height=400
 
 L = [None]
 L[0] = L
