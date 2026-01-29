@@ -49,7 +49,7 @@ nbhosting:
 
 ### support pour installations
 
-[![Extrait du cours des Mines](https://img.shields.io/badge/Extrait%20du%20cours%20des%20Mines-online-blue)](https://ue12-p25.github.io/intro/1-1-installations/)
+[![Extrait du cours des Mines](https://img.shields.io/badge/Extrait%20du%20cours%20des%20Mines-online-blue)](https://intro.info-mines.paris/1-1-installations/)
 [![Vidéo de démo des outils](https://img.shields.io/badge/Vidéo%20de%20démo%20des%20outils-YouTube-red?logo=youtube)](https://www.youtube.com/watch?v=i_ZcP7iNw-U)
 
 
@@ -90,7 +90,7 @@ par contre si vous optez pour une installation locale, il vous faut idéalement 
 :class: admonition-small
 
 c'est utile de se souvenir que `pip install` est la commande magique qui permet d'installer de nouveaux modules  
-dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://ue12-p25.github.io/intro/1-1-installations/#-les-librairies-num%C3%A9riques)
+dans notre cas toutefois, on a besoin d'un peu plus que jupyterlab, veillez à bien suivre les instructions d'installation et [**notamment cette partie**](https://intro.info-mines.paris/1-1-installations/#-les-librairies-num%C3%A9riques)
 ````
 
 +++
@@ -142,7 +142,7 @@ $ jupyter lab
 
 ````{admonition} jupytext
 
-avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://ue12-p25.github.io/intro/1-1-installations/#-les-librairies-num%C3%A9riques)
+avec les notebooks sauvés au format texte, (`*-nb.md` ou `*-np.py`), si le double clic ouvre un fichier texte, c'est que vous n'avez pas bien suivi les consignes d'installation, et [**notamment cette partie**](https://intro.info-mines.paris/1-1-installations/#-les-librairies-num%C3%A9riques)
 ````
 
 +++
