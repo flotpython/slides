@@ -21,6 +21,8 @@ project:
     - Python
   # remove this because it shows up on every single page
   # date: 2025-04-22
+  jupyter:
+    lite: true
   # bibliography: []
   settings:
     # this is too aggressive, and remove things like <module ...> 
