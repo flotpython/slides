@@ -24,6 +24,8 @@ project:
   jupyter:
     lite: true
   # bibliography: []
+  plugins:
+    - https://raw.githubusercontent.com/choldgraf/myst-lightbox/main/src/index.mjs
   settings:
     # this is too aggressive, and remove things like <module ...> 
     # that we sometimes want to show
